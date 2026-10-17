@@ -22,8 +22,8 @@ jobs:
       - run: npm ci --ignore-scripts
       - run: npx @11ty/eleventy
         env:
-          SITE_URL: https://grandpajackai.github.io/skillmaxx
-          PATH_PREFIX: /skillmaxx/
+          SITE_URL: https://skillmaxx.gilventures.ai
+          PATH_PREFIX: /
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
