@@ -16,7 +16,7 @@ desc: "Skills, plugins and MCP servers checked against official docs for Claude 
    <input id="q" type="search" placeholder="Search {{ skills.length }} skills, e.g. database, browser, deploy…" aria-label="Search skills"><kbd>/</kbd></label>
  </div>
  <div class="hr" aria-hidden="true"><div class="demo">
-  <div class="ch"><span class="mono">{{ demo.mono }}</span><div class="cn"><h3>{{ demo.name }}</h3><span class="meta2">{{ demo.typeLabel }} · {{ demo.category }}</span></div></div>
+  <div class="ch"><span class="mono">{{ demo.mono }}</span><div class="cn"><h3>{{ demo.name }}</h3><span class="meta2">{{ demo.typeLabel }} · {{ demo.catLabel }}</span></div></div>
   <p>{{ demo.description | truncate(90) }}</p>
   <div class="dtabs">{% for a in site.agents %}<span data-a="{{ a }}" class="{{ demo.compatibility[a] }}">{{ a|agentName }}</span>{% endfor %}</div>
   <div class="dcode"><span class="pr">$</span><code id="dcode"></code></div>

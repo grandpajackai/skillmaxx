@@ -1,5 +1,7 @@
 export default function(c){
  c.addPassthroughCopy({"src/assets":"assets"});
+ c.addFilter("host",u=>{try{return new URL(u).hostname.replace(/^www\./,"")}catch(e){return "Listing"}});
+ c.addFilter("listingLabel",u=>/anthropics\//.test(u)?"Claude marketplace":/xai-org\//.test(u)?"Grok marketplace":/openai\//.test(u)?"Codex marketplace":/npmjs/.test(u)?"npm":(()=>{try{return new URL(u).hostname.replace(/^www\./,"")}catch(e){return "Listing"}})());
  c.addFilter("json",v=>JSON.stringify(v));
  c.addFilter("agentName",k=>({claude_code:"Claude Code",codex:"Codex",grok_build:"Grok Build",cursor:"Cursor",pi:"Pi"})[k]);
  c.addFilter("statusLabel",s=>s==="documented"?"Verified from docs":s==="tested"?"Tested":"Not yet tested");

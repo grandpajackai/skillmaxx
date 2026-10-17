@@ -5,5 +5,5 @@ const merge={"developer tools":"development","observability":"monitoring","mcp (
 const T={"plugin":"Plugin","mcp-server":"MCP server","npm-mcp-package":"MCP (npm)"};
 export default raw.items.map(x=>{const c=(x.category||"other").toLowerCase();const docs=A.filter(a=>x.compatibility[a]==="documented");
  const w=x.name.replace(/^@[^/]+\//,"").split(/[\s\-_/]+/).filter(Boolean);
- return {...x,category:merge[c]||c,typeLabel:T[x.type]||x.type,docs,docCount:docs.length,mono:(w.length>1?w[0][0]+w[1][0]:w[0].slice(0,2)).toUpperCase(),
+ return {...x,category:merge[c]||c,catLabel:(merge[c]||c).replace(/\b\w/g,m=>m.toUpperCase()).replace(/\bMcp\b/,"MCP").replace(/\bAi\b/,"AI").replace(/\bApi\b/,"API"),typeLabel:T[x.type]||x.type,docs,docCount:docs.length,mono:(w.length>1?w[0][0]+w[1][0]:w[0].slice(0,2)).toUpperCase(),
   featured:x.listings.length>=3};}).sort((a,b)=>a.name.replace(/^@/,"").localeCompare(b.name.replace(/^@/,""),"en",{sensitivity:"base"}));

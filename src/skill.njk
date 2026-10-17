@@ -9,9 +9,9 @@ eleventyComputed:
 ---
 {% from "macros.njk" import card, pill, status %}
 <div class="wrap detail">
-<p class="crumbs"><a href="/">SkillMaxx</a> / <a href="/?cat={{ s.category|urlencode }}#browse">{{ s.category }}</a> / {{ s.name }}</p>
+<p class="crumbs"><a href="/">SkillMaxx</a> / <a href="/?cat={{ s.category|urlencode }}#browse">{{ s.catLabel }}</a> / {{ s.name }}</p>
 <header class="dh"><span class="mono lg">{{ s.mono }}</span><div><h1>{{ s.name }}</h1><p class="lead">{{ s.description }}</p>
-<p class="tags"><span class="tag">{{ s.typeLabel }}</span><span class="tag">{{ s.category }}</span><a class="tag link" href="{{ s.source_url }}" rel="nofollow noopener">Source ↗</a>{% for l in s.listings %}<a class="tag link" href="{{ l }}" rel="nofollow noopener">Listing ↗</a>{% endfor %}</p></div></header>
+<p class="tags"><span class="tag">{{ s.typeLabel }}</span><span class="tag">{{ s.catLabel }}</span><a class="tag link" href="{{ s.source_url }}" rel="nofollow noopener">Source ↗</a>{% for l in s.listings %}<a class="tag link" href="{{ l }}" rel="nofollow noopener">{{ l | listingLabel }} ↗</a>{% endfor %}</p></div></header>
 <div class="dgrid">
 <section class="installbox" data-install='{{ s.install|json }}'>
  <h2>Install</h2>
@@ -27,5 +27,5 @@ eleventyComputed:
 {% if s.notes %}<p class="note">{{ s.notes }}</p>{% endif %}
 <p class="muted">Before installing, check the source repo: plugins and MCP servers can run code and reach your accounts.</p></aside>
 </div>
-{% set rel = skills | related(s) %}{% if rel.length %}<h2 class="sh">Related in {{ s.category }}</h2><div class="grid g4">{% for r in rel %}{{ card(r) }}{% endfor %}</div>{% endif %}
+{% set rel = skills | related(s) %}{% if rel.length %}<h2 class="sh">Related in {{ s.catLabel }}</h2><div class="grid g4">{% for r in rel %}{{ card(r) }}{% endfor %}</div>{% endif %}
 </div>
