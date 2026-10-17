@@ -7,7 +7,7 @@ function setAgent(a,persist=true){agent=a;if(persist){a?localStorage.setItem(KEY
  $$(".ag").forEach(b=>b.setAttribute("aria-checked",b.dataset.agent===a?"true":"false"));
  const sel=$("#agent");if(sel&&sel.value!==a){sel.value=a;}
  const paint=()=>[...$$(".card[data-slug]"),...($("#mc")?$$(".card",$("#mc").content):[])].forEach(c=>{const ins=(INS&&INS[c.dataset.slug])||{},q=$(".quick",c);if(!q)return;const cmd=a&&ins[a];q.hidden=!cmd;if(cmd)$("code",q).textContent=cmd;c.classList.toggle("dim",!!a&&!c.dataset.docs.split(" ").includes(a))});
- if(a&&!INS&&$(".card[data-slug]")){(window.SMX_IDX_P||(window.SMX_IDX_P=fetch(window.SMX_INDEX_URL||"/index.json").then(r=>r.json()))).then(d=>{INS={};d.forEach(x=>INS[x.s]=x.i);if(agent===a)paint()})}else paint();
+ if(a&&!INS&&$(".card[data-slug]")){(window.SMX_IDX_P||(window.SMX_IDX_P=fetch(window.SMX_INDEX_URL||((window.SMX_BASE||"")+"/index.json")).then(r=>r.json()))).then(d=>{INS={};d.forEach(x=>INS[x.s]=x.i);if(agent===a)paint()})}else paint();
  $$(".tab").forEach(t=>{if(a&&t.dataset.tab===a)t.click()});
  if(typeof filter==="function")filter();}
 $$(".ag").forEach(b=>b.addEventListener("click",()=>setAgent(agent===b.dataset.agent?"":b.dataset.agent)));
@@ -55,9 +55,9 @@ const mt=$(".matrix");if(mt&&$("#mq")){const rows=$$("tbody tr",mt),mq=$("#mq"),
 // command palette
 const pal=$("#palette"),pq=$("#pq"),pr=$("#pr");let idx=null,sel=0,res=[];
 async function openPal(){if(!idx)idx=await (window.SMX_IDX_P||(window.SMX_IDX_P=fetch(window.SMX_INDEX_URL).then(r=>r.json())));pal.showModal();pq.value="";render();pq.focus()}
-function render(){const t=pq.value.toLowerCase().trim();const CL=Object.fromEntries(idx.map(x=>[x.c,x.cl]));const cats=[...new Set(idx.map(x=>x.c))].filter(c=>t&&c.includes(t)).slice(0,3).map(c=>({label:"Category: "+CL[c],href:"/?cat="+encodeURIComponent(c)+"#browse"}));
- const ags=Object.entries(NAMES).filter(([k,v])=>t&&v.toLowerCase().includes(t)).map(([k,v])=>({label:"Agent: "+v,href:"/?agent="+k+"#browse"}));
- const sk=idx.map(x=>{const n=x.n.toLowerCase();let s=n.startsWith(t)?3:n.includes(t)?2:t.split("").every((ch,i,arr)=>n.indexOf(ch,i?n.indexOf(arr[i-1]):0)>=0)?1:0;return [s,x]}).filter(([s])=>!t||s>0).sort((a,b)=>b[0]-a[0]).slice(0,8).map(([,x])=>({label:x.n,sub:x.t+" · "+x.cl,href:"/skills/"+x.s+"/"}));
+function render(){const t=pq.value.toLowerCase().trim();const CL=Object.fromEntries(idx.map(x=>[x.c,x.cl]));const cats=[...new Set(idx.map(x=>x.c))].filter(c=>t&&c.includes(t)).slice(0,3).map(c=>({label:"Category: "+CL[c],href:(window.SMX_BASE||"")+"/?cat="+encodeURIComponent(c)+"#browse"}));
+ const ags=Object.entries(NAMES).filter(([k,v])=>t&&v.toLowerCase().includes(t)).map(([k,v])=>({label:"Agent: "+v,href:(window.SMX_BASE||"")+"/?agent="+k+"#browse"}));
+ const sk=idx.map(x=>{const n=x.n.toLowerCase();let s=n.startsWith(t)?3:n.includes(t)?2:t.split("").every((ch,i,arr)=>n.indexOf(ch,i?n.indexOf(arr[i-1]):0)>=0)?1:0;return [s,x]}).filter(([s])=>!t||s>0).sort((a,b)=>b[0]-a[0]).slice(0,8).map(([,x])=>({label:x.n,sub:x.t+" · "+x.cl,href:(window.SMX_BASE||"")+"/skills/"+x.s+"/"}));
  res=[...ags,...cats,...sk];sel=0;pr.innerHTML=res.map((r,i)=>`<li class="${i?"":"sel"}"><a href="${r.href}">${r.label}${r.sub?`<small>${r.sub}</small>`:""}</a></li>`).join("")||"<li class=muted>No matches</li>"}
 if(pal){pq.addEventListener("input",render);pq.addEventListener("keydown",e=>{const li=$$("li",pr);if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();sel=(sel+(e.key==="ArrowDown"?1:-1)+li.length)%li.length;li.forEach((l,i)=>l.classList.toggle("sel",i===sel))}if(e.key==="Enter"&&res[sel])location.href=res[sel].href});
  pal.addEventListener("click",e=>{if(e.target===pal)pal.close()});$$("[data-open-search]").forEach(b=>b.addEventListener("click",openPal));}

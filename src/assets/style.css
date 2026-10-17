@@ -1,6 +1,6 @@
-@font-face{font-family:Inter;src:url(/assets/fonts/inter.woff2) format("woff2");font-weight:100 900;font-display:swap}
-@font-face{font-family:"JetBrains Mono";src:url(/assets/fonts/jetbrains-mono-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
-@font-face{font-family:"JetBrains Mono";src:url(/assets/fonts/jetbrains-mono-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Inter;src:url(fonts/inter.woff2) format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"JetBrains Mono";src:url(fonts/jetbrains-mono-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"JetBrains Mono";src:url(fonts/jetbrains-mono-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
 :root{--bg:#0A0A0B;--s:#111113;--s2:#16161A;--b:rgba(255,255,255,.08);--b2:rgba(255,255,255,.16);--t:#EDEDEF;--m:#8A8F98;--a:#C6F432;--a2:#22D3EE;--ok:#22C55E;--doc:#7DD3FC;--un:#52525B;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--t);font:15px/24px Inter,system-ui,-apple-system,Segoe UI,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:var(--t)}a:hover{color:var(--a)}.wrap{max-width:1200px;margin:0 auto;padding:0 24px}main{min-height:60vh}

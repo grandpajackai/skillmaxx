@@ -19,5 +19,5 @@
 <p class="wrap fine">Data checked against official docs on {{ site.checked }}.</p></footer>
 <div class="toast" role="status" aria-live="polite" hidden>Copied ✓</div>
 <dialog class="palette" id="palette"><input id="pq" placeholder="Search skills, categories, agents…" aria-label="Search"><ul id="pr"></ul><p class="muted">↑↓ to move · Enter to open · Esc to close</p></dialog>
-<script>window.SMX_INDEX_URL="/index.json";</script><script src="/assets/app.js" defer></script>
+<script>window.SMX_BASE="{{ site.base }}";window.SMX_INDEX_URL="{{ site.base }}/index.json";</script><script src="/assets/app.js" defer></script>
 </body></html>
