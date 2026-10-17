@@ -1,0 +1,19 @@
+---
+layout: base.njk
+title: "How SkillMaxx works: methodology and statuses"
+permalink: /how-it-works/
+desc: "Where SkillMaxx data comes from, what 'Verified from docs' and 'Not yet tested' mean, and what we don't claim."
+---
+<div class="wrap prose"><h1 class="ph">How it works</h1>
+<p class="lead">SkillMaxx answers one question: <em>will this skill work in my agent, and what's the install command?</em> Here's exactly how we answer it, and where we stop short.</p>
+<h2>1. Where the data comes from</h2><ul>
+<li>Anthropic's official Claude Code plugin marketplace</li><li>OpenAI's official Codex plugin marketplace</li><li>xAI's official Grok Build plugin marketplace</li><li>The official MCP reference servers</li><li>MCP server packages published on npm</li></ul>
+<h2>2. What the statuses mean</h2>
+<p><span class="st documented">✓ Verified from docs</span>: an official source (the agent's own docs or marketplace) publishes the install method. Every one of these links to that source on the skill's page.</p>
+<p><span class="st unknown">Not yet tested</span>: we found no official docs for that agent. It may still work. If you know it does, <a href="/submit/">tell us</a>.</p>
+<p><span class="st tested">Tested</span>: reserved for real install tests. <b>No skill has this status yet</b>, because we don't run hands-on tests. When we start, we'll say so here.</p>
+<h2>3. Special cases</h2><ul>
+<li><b>Grok Build + Claude Code plugins:</b> xAI's docs say Grok Build reads Claude Code plugins automatically. We count that as verified from docs and flag it on each affected listing.</li>
+<li><b>npm MCP packages:</b> we show commands in each agent's general MCP setup format, but we mark them not yet tested until the package's own docs confirm them.</li></ul>
+<h2>4. Independence</h2><p>SkillMaxx isn't affiliated with Anthropic, OpenAI, xAI, Anysphere or Pi. Sponsored placements are labeled, limited to one per row, and never change a status.</p>
+<p class="muted">Last checked against official docs: {{ site.checked }}.</p></div>

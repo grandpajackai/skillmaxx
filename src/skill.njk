@@ -3,15 +3,29 @@ layout: base.njk
 pagination: {data: skills, size: 1, alias: s}
 permalink: "/skills/{{ s.slug }}/"
 eleventyComputed:
-  title: "{{ s.name }}: install for Claude Code, Codex, Grok Build, Cursor & Pi"
+  title: "{{ s.name }}: install in Claude Code, Codex, Grok Build, Cursor & Pi"
   desc: "{{ s.description | truncate(150) }}"
   jsonld: {"@context":"https://schema.org","@type":"SoftwareApplication","name":"{{ s.name }}","description":"{{ s.description | truncate(150) }}","applicationCategory":"DeveloperApplication","url":"{{ s.source_url }}","operatingSystem":"Cross-platform"}
 ---
-{% from "badge.njk" import badge %}
-<p class="crumbs"><a href="/">All skills</a> / {{ s.category }}</p>
-<h1>{{ s.name }}</h1><p class="lead">{{ s.description }}</p>
-<p class="meta"><span class="tag">{{ s.category }}</span> <span class="tag">{{ s.type }}</span> <a href="{{ s.source_url }}" rel="nofollow noopener">Source ↗</a> · {% for l in s.listings %}<a href="{{ l }}" rel="nofollow noopener">Listing ↗</a> {% endfor %}</p>
-<h2>Install by agent</h2><div class="installs">{% for a in site.agents %}<div class="inst"><div class="ih"><b>{{ a|agentName }}</b><span>{{ badge(s.compatibility[a]) }}{% if s.compat_sources[a] %} <a class="src" href="{{ s.compat_sources[a] }}" rel="nofollow noopener">source ↗</a>{% endif %}</span></div>
-{% if s.install[a] %}<div class="code"><code>{{ s.install[a] }}</code><button onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent);this.textContent='Copied'">Copy</button></div>{% else %}<p class="muted">No official install instructions found yet.</p>{% endif %}</div>{% endfor %}</div>
+{% from "macros.njk" import card, pill, status %}
+<div class="wrap detail">
+<p class="crumbs"><a href="/">SkillMaxx</a> / <a href="/?cat={{ s.category|urlencode }}#browse">{{ s.category }}</a> / {{ s.name }}</p>
+<header class="dh"><span class="mono lg">{{ s.mono }}</span><div><h1>{{ s.name }}</h1><p class="lead">{{ s.description }}</p>
+<p class="tags"><span class="tag">{{ s.typeLabel }}</span><span class="tag">{{ s.category }}</span><a class="tag link" href="{{ s.source_url }}" rel="nofollow noopener">Source ↗</a>{% for l in s.listings %}<a class="tag link" href="{{ l }}" rel="nofollow noopener">Listing ↗</a>{% endfor %}</p></div></header>
+<div class="dgrid">
+<section class="installbox" data-install='{{ s.install|json }}'>
+ <h2>Install</h2>
+ <div class="tabs" role="tablist">{% for a in site.agents %}<button role="tab" type="button" data-tab="{{ a }}" class="tab {{ s.compatibility[a] }}" aria-selected="{{ 'true' if loop.first else 'false' }}"><i class="ad" style="--c:{{ site.agentColor[a] }}"></i>{{ a|agentName }}</button>{% endfor %}</div>
+ {% for a in site.agents %}<div class="panel2" role="tabpanel" data-panel="{{ a }}" {% if not loop.first %}hidden{% endif %}>
+  <div class="phead">{{ status(s.compatibility[a]) }}{% if s.compat_sources[a] %}<a href="{{ s.compat_sources[a] }}" rel="nofollow noopener">Official docs ↗</a>{% endif %}</div>
+  {% if s.install[a] %}<div class="code"><code>{{ s.install[a] }}</code><button class="copy" type="button">Copy</button></div>
+   <p class="foot">{% if s.compatibility[a]=='documented' %}Checked against official docs on {{ site.checked }}. Not tested hands-on.{% else %}This command follows {{ a|agentName }}'s general MCP setup format but hasn't been confirmed for this package. Check its README first.{% endif %}</p>
+  {% else %}<div class="none"><p><b>No official {{ a|agentName }} instructions yet.</b> We haven't found docs saying this works in {{ a|agentName }}.</p><a href="/submit/">Know it works? Tell us →</a></div>{% endif %}
+ </div>{% endfor %}
+</section>
+<aside class="compat"><h2>Compatibility</h2><ul>{% for a in site.agents %}<li><span><i class="ad" style="--c:{{ site.agentColor[a] }}"></i>{{ a|agentName }}</span>{{ status(s.compatibility[a]) }}</li>{% endfor %}</ul>
 {% if s.notes %}<p class="note">{{ s.notes }}</p>{% endif %}
-<p class="muted">"Documented" means an official source publishes the install method. SkillMaxx has not tested it.</p>
+<p class="muted">Before installing, check the source repo: plugins and MCP servers can run code and reach your accounts.</p></aside>
+</div>
+{% set rel = skills | related(s) %}{% if rel.length %}<h2 class="sh">Related in {{ s.category }}</h2><div class="grid g4">{% for r in rel %}{{ card(r) }}{% endfor %}</div>{% endif %}
+</div>

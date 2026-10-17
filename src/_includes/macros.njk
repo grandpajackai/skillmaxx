@@ -1,0 +1,10 @@
+{% macro pill(s, a) %}<span class="pill {{ s }}" title="{{ a|agentName }}: {{ s|statusLabel }}"><i class="ad" style="--c:{{ site.agentColor[a] }}"></i>{{ a|agentName }}</span>{% endmacro %}
+{% macro status(s) %}<span class="st {{ s }}">{% if s=='documented' %}✓ Verified from docs{% else %}Not yet tested{% endif %}</span>{% endmacro %}
+{% macro card(s, extra) %}
+<article class="card" data-slug="{{ s.slug }}" data-cat="{{ s.category }}" data-type="{{ s.type }}" data-docs="{{ s.docs|join(' ') }}" data-n="{{ s.docCount }}" data-name="{{ s.name|lower }}" data-text="{{ (s.name+' '+s.description+' '+s.category)|lower }}" data-install='{{ s.install|json }}'>
+<a class="cl" href="/skills/{{ s.slug }}/" aria-label="{{ s.name }}"></a>
+<div class="ch"><span class="mono" aria-hidden="true">{{ s.mono }}</span><div class="cn"><h3>{{ s.name }}</h3><span class="meta2">{{ s.typeLabel }} · {{ s.category }}</span></div>{% if extra %}<span class="spon">{{ extra }}</span>{% endif %}</div>
+<p>{{ s.description | truncate(110) }}</p>
+<div class="pills">{% for a in site.agents %}{{ pill(s.compatibility[a], a) }}{% endfor %}</div>
+<div class="quick"><code></code><button class="qc" type="button">Copy</button></div>
+</article>{% endmacro %}

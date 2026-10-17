@@ -1,18 +1,64 @@
 ---
 layout: base.njk
-title: "Agent skills, plugins & MCP servers for every coding agent"
+title: "Find agent skills that actually work in your agent"
+desc: "Skills, plugins and MCP servers checked against official docs for Claude Code, Codex, Grok Build, Cursor and Pi, with the exact install command for each."
 ---
-{% from "badge.njk" import badge %}
-<section class="hero"><h1>Every agent skill.<br><span class="grad">Every coding agent.</span></h1><p>{{ site.tagline }} {{ skills.length }} listings, with honest compatibility labels.</p></section>
-<div class="filters"><input id="q" type="search" placeholder="Search skills, e.g. database, browser, github…" aria-label="Search">
-<select id="agent" aria-label="Agent"><option value="">Any agent</option>{% for a in site.agents %}<option value="{{a}}">Documented for {{ a|agentName }}</option>{% endfor %}</select>
-<select id="cat" aria-label="Category"><option value="">All categories</option>{% set cats = [] %}{% for s in skills %}{% if s.category not in cats %}{% set cats = (cats.push(s.category), cats) %}{% endif %}{% endfor %}{% for c in cats|sort %}<option>{{c}}</option>{% endfor %}</select></div>
-<p class="count" aria-live="polite"><span id="n">{{ skills.length }}</span> results <span id="empty" hidden>· No matches. Try a different search.</span></p>
-<div class="grid" id="grid">{% for s in skills %}
-<a class="card" href="/skills/{{ s.slug }}/" data-cat="{{ s.category }}" data-agents="{% for a in site.agents %}{% if s.compatibility[a]=='documented' %}{{a}} {% endif %}{% endfor %}" data-text="{{ (s.name+' '+s.description+' '+s.category)|lower }}">
-<div class="ct"><h3>{{ s.name }}</h3><span class="tag">{{ s.category }}</span></div><p>{{ s.description | truncate(120) }}</p>
-<div class="agents">{% for a in site.agents %}<span class="dot {{ s.compatibility[a] }}" title="{{ a|agentName }}: {{ s.compatibility[a] }}">{{ a|agentName }}</span>{% endfor %}</div></a>{% endfor %}</div>
-<section id="newsletter" class="panel"><h2>Stacks of new skills, weekly</h2><p>Every new skill, plugin and MCP server across coding agents, every week. <em>Signup coming soon. This form isn't connected yet.</em></p><form onsubmit="event.preventDefault();this.querySelector('p').hidden=false"><input type="email" placeholder="you@example.com" aria-label="Email"><button class="btn" type="submit">Notify me</button><p hidden class="muted">Thanks! The newsletter isn't live yet, so nothing was saved.</p></form></section>
-<script>const q=document.getElementById('q'),ag=document.getElementById('agent'),ca=document.getElementById('cat'),cards=[...document.querySelectorAll('.card')];
-function f(){let n=0,t=q.value.toLowerCase();cards.forEach(c=>{const ok=(!t||c.dataset.text.includes(t))&&(!ag.value||c.dataset.agents.split(' ').includes(ag.value))&&(!ca.value||c.dataset.cat==ca.value);c.hidden=!ok;n+=ok});document.getElementById('n').textContent=n;document.getElementById('empty').hidden=n>0}
-[q,ag,ca].forEach(e=>{e.addEventListener('input',f);e.addEventListener('change',f)});const u=new URLSearchParams(location.search);if(u.get('q'))q.value=u.get('q');if(u.get('agent'))ag.value=u.get('agent');if(u.get('cat'))ca.value=u.get('cat');f();</script>
+{% from "macros.njk" import card, pill %}
+{% set demo = skills | where("slug","sentry") %}{% set demo = demo[0] or skills[0] %}
+<section class="hero wrap">
+ <div class="hl">
+  <span class="eyebrow"><i class="live"></i>Checked against official docs · {{ site.checked }}</span>
+  <h1>Find agent skills that actually work in <em>your</em> agent.</h1>
+  <p class="sub">{{ site.tagline }}</p>
+  <div class="picker" role="radiogroup" aria-label="I use"><span class="pl">I use:</span>
+   {% for a in site.agents %}<button type="button" role="radio" class="ag" data-agent="{{ a }}" aria-checked="false"><i class="ad" style="--c:{{ site.agentColor[a] }}"></i>{{ a|agentName }}</button>{% endfor %}</div>
+  <label class="bigsearch"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+   <input id="q" type="search" placeholder="Search {{ skills.length }} skills, e.g. database, browser, deploy…" aria-label="Search skills"><kbd>/</kbd></label>
+ </div>
+ <div class="hr" aria-hidden="true"><div class="demo">
+  <div class="ch"><span class="mono">{{ demo.mono }}</span><div class="cn"><h3>{{ demo.name }}</h3><span class="meta2">{{ demo.typeLabel }} · {{ demo.category }}</span></div></div>
+  <p>{{ demo.description | truncate(90) }}</p>
+  <div class="dtabs">{% for a in site.agents %}<span data-a="{{ a }}" class="{{ demo.compatibility[a] }}">{{ a|agentName }}</span>{% endfor %}</div>
+  <div class="dcode"><span class="pr">$</span><code id="dcode"></code></div>
+  <div class="dst" id="dst"></div>
+  <script type="application/json" id="demodata">{{ {install:demo.install, compat:demo.compatibility} | json | safe }}</script>
+ </div></div>
+</section>
+<section class="wrap stats">
+ <div><b>{{ skills.length }}</b><span>skills & MCP servers</span></div><div><b>5</b><span>coding agents</span></div>
+ <div><b>{{ skills | sumDocs }}</b><span>install methods verified from docs</span></div><div><b>4</b><span>official marketplaces + npm</span></div>
+</section>
+<section class="wrap how">
+ <h2 class="sh">How it works</h2>
+ <ol><li><span>1</span><h3>Pick your agent</h3><p>Choose Claude Code, Codex, Grok Build, Cursor or Pi. The whole site adjusts to it.</p></li>
+ <li><span>2</span><h3>Find a skill</h3><p>Search or filter by category, type and status. Each listing links back to its official source.</p></li>
+ <li><span>3</span><h3>Copy the right command</h3><p>Get the install command from that agent's official docs. If there are no docs yet, we say so.</p></li></ol>
+ <p class="muted">Honest labels: <span class="st documented">✓ Verified from docs</span> means an official source publishes the install method. <span class="st unknown">Not yet tested</span> means no official per-agent docs yet. We haven't run hands-on install tests. <a href="/how-it-works/">Full methodology →</a></p>
+</section>
+<section class="wrap">
+ <div class="rowh"><h2 class="sh">Featured</h2><span class="muted">In 3 or more official marketplaces</span></div>
+ <div class="hrow">{% set n = 0 %}{% for s in skills %}{% if s.featured and n < 7 %}{% set n = n + 1 %}{{ card(s) }}{% if n == 2 %}<article class="card sponsor"><div class="ch"><span class="mono">+</span><div class="cn"><h3>Your skill here</h3><span class="meta2">Sponsored slot · 1 per row</span></div><span class="spon">Sponsored</span></div><p>Reach developers while they're choosing what to install. Always labeled, and never changes a status.</p><a class="btn ghost" href="/advertise/">Advertise →</a></article>{% endif %}{% endif %}{% endfor %}</div>
+</section>
+<section class="wrap browse" id="browse">
+ <div class="rowh"><h2 class="sh">Browse</h2><button class="btn ghost fbtn" type="button" id="fopen">Filters</button></div>
+ <div class="bl">
+ <aside class="facets" id="facets"><div class="fh"><b>Filters</b><button type="button" id="fclose" aria-label="Close filters">✕</button></div>
+  <fieldset><legend>Works in</legend><select id="agent" aria-label="Agent"><option value="">Any agent</option>{% for a in site.agents %}<option value="{{ a }}">{{ a|agentName }}</option>{% endfor %}</select></fieldset>
+  <fieldset><legend>Status (for chosen agent)</legend><label><input type="radio" name="st" value="" checked> All</label><label><input type="radio" name="st" value="documented"> Verified from docs</label><label><input type="radio" name="st" value="unknown"> Not yet tested</label></fieldset>
+  <fieldset><legend>Type</legend>{% for t in skills|pluck("type")|uniq %}<label><input type="checkbox" name="type" value="{{ t }}"> {{ (skills|where("type",t))[0].typeLabel }} <em>{{ (skills|where("type",t)).length }}</em></label>{% endfor %}</fieldset>
+  <fieldset><legend>Category</legend><select id="cat" aria-label="Category"><option value="">All categories</option>{% for c in skills|pluck("category")|uniq|sort %}<option value="{{ c }}">{{ c }} ({{ (skills|where("category",c)).length }})</option>{% endfor %}</select></fieldset>
+  <button type="button" class="btn ghost" id="freset">Reset filters</button>
+ </aside>
+ <div class="results">
+  <div class="rbar"><p class="count" aria-live="polite"><b id="n">{{ skills.length }}</b> results</p><label class="sort">Sort <select id="sort"><option value="compat">Most compatible</option><option value="az">A–Z</option></select></label></div>
+  <div class="grid" id="grid">{% for s in skills %}{{ card(s) }}{% endfor %}</div>
+  <div class="empty" id="empty" hidden><h3>No matches</h3><p>Try a broader search, a different agent, or a popular category: <a href="?cat=database#browse">database</a>, <a href="?cat=deployment#browse">deployment</a>, <a href="?cat=monitoring#browse">monitoring</a>.</p><a class="btn ghost" href="/submit/">Submit this skill →</a></div>
+  <button class="btn ghost more" id="more" type="button">Load more</button>
+ </div></div>
+</section>
+<section class="wrap teaser"><div class="rowh"><h2 class="sh">Compatibility at a glance</h2><a href="/matrix/">Full matrix →</a></div>
+ <div class="heat">{% for a in site.agents %}{% set c = 0 %}{% for s in skills %}{% if s.compatibility[a]=='documented' %}{% set c = c + 1 %}{% endif %}{% endfor %}
+ <div class="hrow2"><span class="hn"><i class="ad" style="--c:{{ site.agentColor[a] }}"></i>{{ a|agentName }}</span><div class="bar"><i style="width:{{ (c/skills.length*100)|round(1) }}%"></i></div><span class="hc">{{ c }} / {{ skills.length }} verified from docs</span></div>{% endfor %}</div>
+</section>
+<section class="wrap" id="newsletter"><div class="news"><div><h2>SkillMaxx Weekly</h2><p>New skills, plugins and MCP servers across all 5 agents, plus whatever changed in the official docs. Every Tuesday.</p></div>
+ <form id="nform"><input type="email" required placeholder="you@example.com" aria-label="Email"><button class="btn" type="submit">Join the waitlist</button><p class="muted" id="nmsg" hidden>Thanks! The newsletter isn't live yet, so nothing was saved or sent.</p></form></div></section>

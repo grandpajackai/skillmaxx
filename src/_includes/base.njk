@@ -1,8 +1,22 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{{ title }} | SkillMaxx</title><meta name="description" content="{{ desc or site.tagline }}">
-<link rel="canonical" href="{{ site.url }}{{ page.url }}"><meta property="og:title" content="{{ title }}"><meta property="og:description" content="{{ desc or site.tagline }}"><meta property="og:type" content="website"><meta property="og:url" content="{{ site.url }}{{ page.url }}"><meta name="twitter:card" content="summary">
+<link rel="canonical" href="{{ site.url }}{{ page.url }}"><meta property="og:title" content="{{ title }}"><meta property="og:description" content="{{ desc or site.tagline }}"><meta property="og:type" content="website"><meta property="og:url" content="{{ site.url }}{{ page.url }}"><meta name="twitter:card" content="summary"><meta name="theme-color" content="#0A0A0B">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="/assets/style.css">
-<script type="application/ld+json">{{ (jsonld or {"@context":"https://schema.org","@type":"WebSite","name":"SkillMaxx","url":site.url}) | json | safe }}</script>
-</head><body><header class="nav"><a class="logo" href="/">Skill<span>Maxx</span></a><nav><a href="/matrix/">Matrix</a><a href="/submit/">Submit</a><a href="/advertise/">Advertise</a><a href="/#newsletter" class="btn sm">Newsletter</a></nav></header>
+<script type="application/ld+json">{{ (jsonld or site.ldWebsite) | json | safe }}</script>
+<script>window.SMX_AGENTS={{ site.agentNames|json|safe }};</script>
+</head><body>
+<header class="nav"><div class="wrap navi"><a class="logo" href="/"><span class="lm">S</span><span>Skill<b>Maxx</b></span></a>
+<nav class="links"><a href="/#browse">Browse</a><a href="/matrix/">Matrix</a><a href="/how-it-works/">How it works</a><a href="/submit/">Submit</a></nav>
+<button class="kpill" type="button" data-open-search><span>Search skills…</span><kbd>⌘K</kbd></button>
+<a class="adv" href="/advertise/">Advertise</a><a class="btn sm" href="/#newsletter">Newsletter</a></div></header>
 <main>{{ content | safe }}</main>
-<footer><p>SkillMaxx is independent and not affiliated with Anthropic, OpenAI, xAI, Cursor or Pi. <b>Documented</b> = an official source publishes the install method. <b>Unknown</b> = no official docs found. We have not tested anything yet.</p></footer></body></html>
+<footer><div class="wrap fgrid"><div><a class="logo" href="/"><span class="lm">S</span><span>Skill<b>Maxx</b></span></a><p class="muted">Independent, not affiliated with Anthropic, OpenAI, xAI, Anysphere (Cursor) or Pi. Sponsored placements are always labeled and never change a status.</p></div>
+<div><h4>Product</h4><a href="/#browse">Browse</a><a href="/matrix/">Compatibility matrix</a><a href="/submit/">Submit a skill</a></div>
+<div><h4>Trust</h4><a href="/how-it-works/">How it works</a><a href="/advertise/">Advertise</a></div>
+<div><h4>Statuses</h4><p class="muted"><span class="st documented">✓ Verified from docs</span> an official source publishes the install method.<br><span class="st unknown">Not yet tested</span> no official per-agent docs found. No hands-on install tests yet.</p></div></div>
+<p class="wrap fine">Data checked against official docs on {{ site.checked }}.</p></footer>
+<div class="toast" role="status" aria-live="polite" hidden>Copied ✓</div>
+<dialog class="palette" id="palette"><input id="pq" placeholder="Search skills, categories, agents…" aria-label="Search"><ul id="pr"></ul><p class="muted">↑↓ to move · Enter to open · Esc to close</p></dialog>
+<script>window.SMX_INDEX_URL="/index.json";</script><script src="/assets/app.js" defer></script>
+</body></html>
