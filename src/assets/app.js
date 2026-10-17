@@ -21,7 +21,7 @@ if(grid){const q=$("#q"),ca=$("#cat"),so=$("#sort"),cards=$$(".card",grid),more=
   let list=cards.filter(c=>{const docs=c.dataset.docs.split(" ");
    if(t&&!t.split(/\s+/).every(w=>c.dataset.text.includes(w)))return false;
    if(ca.value&&c.dataset.cat!==ca.value)return false;if(types.length&&!types.includes(c.dataset.type))return false;
-   if(a){if(st==="documented"&&!docs.includes(a))return false;if(st==="unknown"&&docs.includes(a))return false;if(!st&&false)return false}
+   const tested=(c.dataset.tested||"").split(" ").filter(Boolean);if(st==="tested"&&(a?!tested.includes(a):!tested.length))return false;if(a){if(st==="documented"&&!docs.includes(a))return false;if(st==="unknown"&&docs.includes(a))return false;if(!st&&false)return false}
    else if(st==="documented"&&docs[0]==="")return false;else if(st==="unknown"&&docs.length>=5)return false;return true});
   const key=so.value;list.sort(key==="az"?(x,y)=>x.dataset.name.localeCompare(y.dataset.name):(x,y)=>{const ax=a?(+y.dataset.docs.split(" ").includes(a))-(+x.dataset.docs.split(" ").includes(a)):0;return ax||(y.dataset.n-x.dataset.n)||x.dataset.name.localeCompare(y.dataset.name)});
   cards.forEach(c=>c.hidden=true);list.forEach((c,i)=>{grid.appendChild(c);c.hidden=i>=shown});
@@ -45,10 +45,10 @@ const nf=$("#nform");if(nf)nf.addEventListener("submit",e=>{e.preventDefault();$
 // demo card
 const dd=$("#demodata");if(dd&&!matchMedia("(prefers-reduced-motion: reduce)").matches||dd){const d=JSON.parse(dd.textContent),order=Object.keys(NAMES);let i=0;
  const step=()=>{const a=order[i%order.length];$$(".dtabs span").forEach(s=>s.classList.toggle("on",s.dataset.a===a));$("#dcode").textContent=d.install[a]||`# No official ${NAMES[a]} instructions yet`;
-  $("#dst").innerHTML=d.compat[a]==="documented"?'<span class="st documented">✓ Verified from docs</span>':'<span class="st unknown">Not yet tested</span>';i++};
+  $("#dst").innerHTML={tested:'<span class="st tested">Tested ✓</span>',failed:'<span class="st failed">✕ Failed</span>',documented:'<span class="st documented">✓ Verified from docs</span>'}[d.compat[a]]||'<span class="st unknown">Not yet tested</span>';i++};
  step();if(!matchMedia("(prefers-reduced-motion: reduce)").matches)setInterval(step,2200);}
 // matrix
-const mt=$(".matrix");if(mt){const rows=$$("tbody tr",mt),mq=$("#mq"),hu=$("#hideu"),a5=$("#all5");
+const mt=$(".matrix");if(mt&&$("#mq")){const rows=$$("tbody tr",mt),mq=$("#mq"),hu=$("#hideu"),a5=$("#all5");
  const run=()=>{const t=mq.value.toLowerCase();let n=0;rows.forEach(r=>{const ok=(!t||r.dataset.text.includes(t))&&(!hu.checked||!agent||r.dataset.docs.split(" ").includes(agent))&&(!a5.checked||r.dataset.n==="5");r.hidden=!ok;n+=ok});$("#mn").textContent=`${n} shown${hu.checked&&!agent?" (pick your agent on the home page to use 'hide')":""}`};
  if(agent)$$(`[data-a="${agent}"]`,mt).forEach(c=>c.classList.add("mine"));[mq,hu,a5].forEach(e=>e.addEventListener("input",run));run();}
 // command palette

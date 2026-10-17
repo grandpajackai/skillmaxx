@@ -1,0 +1,193 @@
+# JFrog Plugin for Claude Code
+
+JFrog plugin for [Claude Code](https://claude.com/product/claude-code): artifact management, security scanning, and supply-chain best practices, and Agent Guard.
+
+## Features
+
+The JFrog plugin provides the following capabilities, grouped by component:
+
+| Component | Feature | Description |
+| --- | --- | --- |
+| **MCP** | JFrog MCP server | Remote JFrog MCP server auto-attached to every session via `.mcp.json` (OAuth, no API keys). Run `/jfrog-init` to set the host. |
+| **Skill** | JFrog Platform | Interact with Artifactory repositories, builds, permissions, users, access tokens, projects, release bundles, and platform administration via the JFrog CLI and REST/GraphQL APIs. Also covers security audits, CVE lookups, and Advanced Security exposure queries. |
+| **Skill** | Package curation | Check whether npm, Maven, PyPI, Go, and other packages are safe, curated, or allowed, then download them through Artifactory remote caches or curation-aware package managers. |
+| **Hook + Skill** | Agent Package Resolution (Preview) | Automatically route packages installed by the AI agent through your organization's JFrog Artifactory, keeping agent-driven installs inside your Curation, Xray, and governance perimeter. |
+| **Hook** | Plugin MCP rewrite | On SessionStart / FileChanged, rewrite discovered installed-plugin `.mcp.json` files through Agent Guard (`--rewrite-mcp-json`) so stdio MCP entries launch via `@jfrog/agent-guard`. |
+| **Hook** | Skill Governance (Preview) | Evaluates the skills Claude invokes against your organization's JFrog skill governance policies, and blocks the ones that violate them — showing which policies were violated and the command to request a waiver. Enforcement runs in the JFrog Agent Guard; the hook only carries the event to it. |
+| **Skill** | Agent Guard | Claude manages MCPs through the JFrog Agent Guard. Through the Agent Guard you can discover, install, configure, update, and remove MCP servers from the JFrog AI Catalog approved for your project, and authenticate to remote HTTP MCPs via OAuth, API key, or bearer token. |
+
+> [!IMPORTANT]
+> **Skill Governance blocks on policy, not on infrastructure.** Three outcomes, and they are
+> distinct:
+>
+> - **Your JFrog policies deny the skill** — **blocked**, naming the policies it violated and the
+>   command to request a waiver.
+> - **The Agent Guard runs, but cannot reach a verdict in time** — **blocked**. It got as far as
+>   the check and could not answer, so it does not guess.
+> - **The Agent Guard cannot be *run at all*** — `npx` missing, the registry unreachable, no JFrog
+>   server configured — **allowed**. A machine that cannot run the guard is not governed by it, and
+>   blocking there would stop work without enforcing anything.
+>
+> A user who is entitled to nothing is unaffected either way: the Agent Guard returns "allow" for
+> an unconfigured or unentitled user, so no setup is needed to opt out of the feature.
+
+---
+
+## Prerequisites
+
+Before installing, make sure you have:
+
+- **JFrog host URL and access token** — Your JFrog platform URL and a valid access token.
+- **Claude Code CLI** (≥ 1.0) — The Claude Code CLI.
+- **Node.js** (≥ 18) — with `npx` on your `PATH` (used by the Agent Guard). Without it Skill Governance cannot run, and governed actions are allowed unchecked.
+- **Git Bash on Windows** — the Skill Governance hook runs as a Bash command so that it behaves identically on every platform. Install [Git for Windows](https://git-scm.com/downloads/win); without it the hook cannot run and governed actions are allowed unchecked. Not needed on macOS or Linux.
+- **Skill runtime requirements** — `jf` CLI, `jq`, and `curl` on `PATH`, plus a configured JFrog instance. For the minimum versions, see the upstream skills [`Requirements`](https://github.com/jfrog/jfrog-skills/blob/main/README.md#requirements). Configure the CLI with `jf config add` — see [Authentication](#authentication).
+- **JFrog AI Catalog** (optional) — If you want to use the Agent Guard feature, your JFrog subscription needs to include the AI Catalog entitlement. Contact your JFrog account team if you're unsure whether it's enabled.
+- **JFrog CLI ≥ 2.105.0** (optional) — If you want the Agent Guard to auto-resolve the credentials/server ID from the JFrog CLI configuration. Older CLIs don't support the `--format` flag used by `jf config show` for this.
+- **JFrog project** (optional) — If you want to use the Agent Guard feature.
+
+---
+
+## Installation
+
+### Install the Claude plugin
+
+From the official Anthropic marketplace, inside Claude Code:
+
+```
+/plugin install jfrog@claude-plugins-official
+```
+
+Or from a terminal:
+
+```bash
+claude plugin install jfrog@claude-plugins-official
+```
+
+If install fails with a wall of `Invalid schema: plugins.N...` errors, those entries belong to **other** plugins in the shared official catalog, not JFrog. Claude Code validates the whole marketplace as one unit and does not refresh a stale local cache on install. Update the catalog and retry:
+
+```bash
+claude plugin marketplace update claude-plugins-official
+claude plugin install jfrog@claude-plugins-official
+```
+
+Then run **`/jfrog-init`** to complete the shared readiness walk, **restart Claude Code**, and verify below.
+
+### Local development
+
+From a clone of this repository (repository root **is** the plugin root):
+
+```bash
+claude --plugin-dir /path/to/claude-plugin
+```
+
+---
+
+## Authentication
+
+### 1. Set persistent environment variables
+
+| Variable | Description |
+| --- | --- |
+| `JFROG_URL` | Your JFrog platform URL, e.g. `https://mycompany.jfrog.io` (no trailing `/`). |
+| `JFROG_ACCESS_TOKEN` | Your JFrog access token |
+
+### 2. Configure the JFrog CLI
+
+If you have never configured the JFrog CLI on this machine:
+
+1. Open your terminal.
+2. Run:
+   ```bash
+   jf config add
+   ```
+3. Follow the interactive prompts to enter the same JFrog platform URL and access token.
+
+Setting `JFROG_URL` / `JFROG_ACCESS_TOKEN` alone does **not** replace a successful `/jfrog-init` walk or repair a failed one. Fix the step `/jfrog-init` reports, re-run it, then restart Claude Code.
+
+---
+
+## Verify
+
+Verification is a required install step, not a troubleshooting fallback:
+
+1. `/plugins` → **Installed** — the JFrog plugin is listed.
+2. Run **`/jfrog-init`** — it completes without blocking errors. Restart Claude Code if it changed the MCP config.
+3. `jf rt ping` — succeeds against your configured server.
+
+If a check fails, see [Recovery](#recovery). Fix the step `/jfrog-init` reports, re-run it, then restart Claude Code.
+
+## Recovery
+
+| Symptom | Do this | Do **not** do this |
+| --- | --- | --- |
+| MCP missing after install | Run `/jfrog-init`, complete OAuth if prompted, **restart Claude Code**, re-check MCP tools. | Assume `JFROG_URL` alone will register MCP. |
+| `/jfrog-init` stopped at CLI/auth | Follow the skill prompt, then **re-run `/jfrog-init`**. | Skip init and only export env vars. |
+| Install fails with marketplace schema errors | Run `claude plugin marketplace update claude-plugins-official` and retry. | Treat `plugins.0.source` as a diagnosis of this plugin. |
+
+---
+
+## Plugin MCP rewrite (Agent Guard)
+
+On every Claude Code `SessionStart` (and when `installed_plugins.json` / `known_marketplaces.json` change), the plugin discovers installed-plugin `.mcp.json` paths under `$CLAUDE_CONFIG_DIR/plugins` (default `~/.claude`) — including marketplace live trees for string-source plugins — plus this plugin's own `.mcp.json` when present, and runs `npx @jfrog/agent-guard --rewrite-mcp-json` against those paths. Stdio MCP entries are rewritten to launch through Agent Guard; remote `url` / `http` / `sse` / `ws` entries are left unchanged. A fast SessionStart helper registers FileChanged `watchPaths` (skipped when the kill switch is on); the slower rewrite hook emits `/reload-plugins` guidance via `additionalContext` when files were updated.
+
+The hook soft-fails (never breaks the session): missing project key, Agent Guard gate failure, or rewrite errors log and exit 0. Concurrent rewrite invocations share a lock file and soft-skip with status `busy`.
+
+| Env | Purpose |
+| --- | --- |
+| `JF_AGENT_REWRITE_MCP_JSON_DISABLE=1` | Kill switch — skip rewrite and watchPaths registration |
+| `JF_PROJECT` / `JFROG_PROJECT` | Project key (also inferred from existing `_JF_ARGS project=` in discovered mcp.json) |
+| `JF_SERVER` / `JFROG_SERVER_ID` | Optional server ID for the gate / `--server` |
+| `JFROG_AGENT_GUARD_VERSION` | Override pinned `@jfrog/agent-guard` version |
+| `JFROG_AGENT_GUARD_REPO` | Private npm registry for `@jfrog/agent-guard` |
+| `JFROG_AGENT_GUARD_BIN` | Local Agent Guard binary (skips npx) |
+| `JF_ALIGN_MCP_JSON_ROOTS` | Override discovery roots (POSIX `:`/`,`; Windows `;`/`,`) |
+| `JF_REWRITE_MCP_JSON_LOCK_PATH` | Override rewrite concurrency lock file path |
+| `CLAUDE_CONFIG_DIR` | Claude config root (default `~/.claude`) |
+
+---
+
+## Agent Package Resolution (Preview)
+
+> **Preview Notice:** This feature is in preview and licensed under the Apache License 2.0. For clarity: This software is provided "as-is" without warranty of any kind, and without support obligations or service level commitments. Behavior, APIs, conventions, and structure may change without notice between releases. JFrog makes no guarantees of backward compatibility during the preview release cycle. Use in production environments is at your own risk.
+
+The plugin can now automatically route the packages your AI agent installs (npm, PyPI, Maven, Go, Docker, Helm, and NuGet) through your organization's JFrog Artifactory instead of public registries. This keeps agent-driven dependency installs inside your organization's governance perimeter.
+
+Agent Package Resolution is in preview. The shipped template enables it with empty repository bindings (nothing is routed until Consent Enable or an admin adds `defaultGlobalRepos`). To get started:
+
+- **Users:** see the [User Guide](docs/package-resolution-user-guide.md).
+- **Admins:** see the [Admin Guide](docs/package-resolution-admin-guide.md).
+
+---
+
+## Usage
+
+Once configured, interact with the JFrog plugin through natural language. Examples are grouped by capability.
+
+### JFrog Platform skill
+
+| Ask the agent… | What happens |
+| --- | --- |
+| "List my Artifactory repositories." | Returns repositories via the JFrog CLI. |
+| "Upload this build to Artifactory." | Publishes build artifacts and metadata. |
+| "Run a security audit on this project." | Runs an Xray / Advanced Security audit and summarizes findings. |
+| "Show me details on CVE-2021-23337." | Looks up CVE details in JFrog Advanced Security. |
+| "Create a scoped access token for CI." | Creates an access token with the requested scope. |
+| "Promote this release bundle to production." | Uses Lifecycle / Distribution APIs to promote the bundle. |
+
+### Package curation skill
+
+| Ask the agent… | What happens |
+| --- | --- |
+| "Is `lodash@4.17.21` safe to install?" | Checks JFrog Public Catalog signals and curation policy for the package. |
+| "Is this Maven package approved for use?" | Checks curation entitlement and policy for the requested package. |
+| "Download `requests` via JFrog." | Resolves the package through an Artifactory remote cache or curation-aware package manager. |
+
+### Agent Package Resolution
+
+When Agent Package Resolution is enabled and configured, no special prompt syntax is required. Ask the agent to install or use a package as you normally would, and the plugin routes supported package operations through your organization's Artifactory.
+
+| Ask the agent…                         | What happens                                                             |
+| -------------------------------------- | ------------------------------------------------------------------------ |
+| "Add `lodash` to this project."        | Resolves the npm package through the configured Artifactory repository.  |
+| "Add Excel file import to this app."   | The agent selects a suitable package 

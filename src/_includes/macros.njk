@@ -1,10 +1,11 @@
 {% macro pill(s, a) %}{% set C = {claude_code:"#D97757",codex:"#9CA3AF",grok_build:"#EDEDEF",cursor:"#60A5FA",pi:"#A78BFA"} %}{% set AB = {claude_code:"CC",codex:"CX",grok_build:"GB",cursor:"CU",pi:"Pi"} %}<span class="pill {{ s }}" title="{{ a|agentName }}: {{ s|statusLabel }}"><i class="ad" style="--c:{{ C[a] }}"></i><span class="full">{{ a|agentName }}</span><span class="abbr" aria-hidden="true">{{ AB[a] }}</span><span class="sr">: {{ s|statusLabel }}</span></span>{% endmacro %}
-{% macro status(s) %}<span class="st {{ s }}">{% if s=='documented' %}✓ Verified from docs{% else %}Not yet tested{% endif %}</span>{% endmacro %}
+{% macro status(s) %}<span class="st {{ s }}">{% if s=='documented' %}✓ Verified from docs{% elif s=='tested' %}Tested ✓{% elif s=='failed' %}✕ Failed{% else %}Not yet tested{% endif %}</span>{% endmacro %}
+{% macro logo(s, cls) %}{% if s.logo %}<img class="logo-img {{ cls }}" src="{{ s.logo }}" alt="" width="38" height="38" loading="lazy" decoding="async">{% else %}<span class="mono {{ cls }}" aria-hidden="true">{{ s.mono }}</span>{% endif %}{% endmacro %}
 {% macro card(s, extra) %}
-<article class="card" data-slug="{{ s.slug }}" data-cat="{{ s.category }}" data-type="{{ s.type }}" data-docs="{{ s.docs|join(' ') }}" data-n="{{ s.docCount }}" data-name="{{ s.name|lower }}" data-text="{{ (s.name+' '+s.description+' '+s.category)|lower }}" data-install='{{ s.install|json }}'>
+<article class="card" data-slug="{{ s.slug }}" data-cat="{{ s.category }}" data-type="{{ s.type }}" data-docs="{{ s.docs|join(' ') }}" data-tested="{{ s.tested|join(' ') }}" data-stars="{{ s.meta.stars or 0 }}" data-n="{{ s.docCount }}" data-name="{{ s.name|lower }}" data-text="{{ (s.name+' '+s.description+' '+s.category)|lower }}" data-install='{{ s.install|json }}'>
 <a class="cl" href="/skills/{{ s.slug }}/" aria-label="{{ s.name }}"></a>
-<div class="ch"><span class="mono" aria-hidden="true">{{ s.mono }}</span><div class="cn"><h3>{{ s.name }}</h3><span class="meta2">{{ s.typeLabel }} · {{ s.catLabel }}</span></div>{% if extra %}<span class="spon">{{ extra }}</span>{% endif %}</div>
-<p>{{ s.description | truncate(110) }}</p>
-<div class="pills">{% for a in ["claude_code","codex","grok_build","cursor","pi"] %}{{ pill(s.compatibility[a], a) }}{% endfor %}</div>
+<div class="ch">{% if s.logo %}<img class="logo-img" src="{{ s.logo }}" alt="" width="38" height="38" loading="lazy" decoding="async">{% else %}<span class="mono" aria-hidden="true">{{ s.mono }}</span>{% endif %}<div class="cn"><h3>{{ s.name }}</h3><span class="meta2">{{ s.typeLabel }} · {{ s.catLabel }}</span></div>{% if extra %}<span class="spon">{{ extra }}</span>{% endif %}</div>
+<p>{{ s.description | truncate(110) }}</p>{% if s.meta.stars or s.testedCount %}<div class="cmeta">{% if s.meta.stars %}<span>★ {{ s.meta.stars|kfmt }}</span>{% endif %}{% if s.testedCount %}<span class="tok">Tested ✓ in {{ s.testedCount }}</span>{% endif %}</div>{% endif %}
+<div class="pills">{% for a in ["claude_code","codex","grok_build","cursor","pi"] %}{{ pill(s.eff[a], a) }}{% endfor %}</div>
 <div class="quick"><code></code><button class="qc" type="button">Copy</button></div>
 </article>{% endmacro %}

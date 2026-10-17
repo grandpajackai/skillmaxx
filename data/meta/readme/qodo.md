@@ -1,0 +1,145 @@
+# Qodo skills
+
+The canonical, provider-neutral source for Qodo’s local coding-agent skills.
+
+> Qodo authors skills once; marketplaces update plugins; the CLI updates the runtime.
+
+Every distributed skill contains its complete reviewed workflow. Coding agents do not fetch task
+instructions from the Qodo CLI. The CLI provides authentication, managed tools, offline tool help,
+runtime updates, passive skill notices, and verified maintenance through each recorded lifecycle
+owner. Enterprise and historical CLI-managed installations can update automatically; marketplace
+plugins remain owned by their host.
+
+## Packages
+
+| Package | Installed by default | Skills |
+|---|---:|---|
+| `qodo` | Yes | setup, codebase wisdom, local review, PR review resolver |
+| `qodo-standards` | No | rules discovery and standards administration |
+
+Qodo Standards stays a separate opt-in package. Updating the core package never installs it.
+
+## Contribute a skill update
+
+Edit `skills/<name>/SKILL.md` directly in GitHub, open a PR, wait for CI, and merge.
+Contributors do not need Node or local commands. Automation collects merged changes into one
+separate release PR with versions and generated marketplace packages. A release owner merges
+that PR to start protected publication. See [Contributing](CONTRIBUTING.md) for the complete flow.
+The [Actions guide](.github/workflows/README.md) explains the six workflows and when to use them.
+
+For optional local validation, run `npm ci` and `npm test` in a full Git checkout. Tests prepare
+and clean up an isolated release preview without changing contributor files or requiring generated
+packages in the source branch. Prepared releases still receive strict artifact checks without
+regeneration. See [local testing](CONTRIBUTING.md#test-locally) for base selection and direct checks.
+
+## Install
+
+Use the official Qodo listing in Claude Code, Codex, or Kiro. The marketplace owns installation
+and updates; install the Qodo CLI separately and complete `qodo login` on first use.
+
+Qodo's Antigravity bundles include the manifest metadata and square logo required for Marketplace
+review. Until a curated listing is provider-visible, install the generated core plugin from a release
+containing `antigravity-plugins/`; Qodo Standards remains a separate opt-in plugin. See
+[Antigravity installation and acceptance](docs/antigravity.md) for Marketplace status, CLI versus
+IDE setup, release availability, and the native smoke-test gate.
+
+For a compatible local agent without an official Qodo listing, use skills.sh. One command can
+target multiple agents:
+
+```sh
+npx skills add https://github.com/qodo-ai/qodo-skills \
+  --skill qodo-setup \
+  --skill qodo-codebase-wisdom \
+  --skill qodo-review \
+  --skill qodo-review-resolver \
+  --agent cursor \
+  --agent gemini-cli \
+  --global \
+  --yes
+```
+
+Install Qodo Standards only when requested:
+
+```sh
+npx skills add https://github.com/qodo-ai/qodo-skills \
+  --skill qodo-get-rules \
+  --skill qodo-manage-standards \
+  --agent cursor \
+  --global \
+  --yes
+```
+
+The CLI detects supported local agents and prints the exact command without running it. If none is
+detected, it reads skills.sh's current supported-agent catalog, excludes the marketplace-owned
+Claude Code, Codex, and Kiro IDs, and offers the remaining agents as a multi-select. The bundled
+catalog remains a read-only offline fallback:
+
+```sh
+qodo agents status --json
+qodo agents catalog --json
+qodo agents install --agent cursor,gemini-cli --json
+qodo agents install --agent cursor --standards --json
+```
+
+`--standards` adds a separate Qodo Standards command; it never broadens the core package.
+
+## Update
+
+The coding-agent conversation is the primary experience. Agents run the CLI without a TTY,
+resolve the complete operation and request only missing human approval in the conversation.
+Users need not type commands, paths or an agent-ID list.
+
+- Marketplace install: apply the Qodo update in that host, then start a new session.
+- skills.sh install: inventory the installed scope with `npx skills list --json` and
+  `npx skills list -g --json`, then run a scope-preserving skills.sh update/re-add command.
+- Verified enterprise install: Qodo maintains recorded copies under the disclosed automatic policy.
+  For requested maintenance, the agent checks `qodo agents update --help`, then uses
+  `--enterprise --dry-run --json` and the exact returned `--apply-plan` command after resolving
+  any still-needed approval. Direct terminal users can choose `qodo agents update --enterprise`.
+- Qodo CLI: updates independently through `qodo update` and its background runtime updater.
+
+Availability and completion notices on stderr are passive: continue the task without inventory
+or an unsolicited update question. Automatic maintenance follows the existing disclosed policy,
+source and opt-outs. Only requested manual maintenance requires resolving the full operation
+before any additional consent; reuse approval that already covers it. New sessions load updated
+files when convenient.
+
+If the installed CLI lacks planning, the agent inspects `qodo update --help` and uses the supported
+`qodo update --check --json` to establish the available CLI release and recorded source. Explain
+the runtime prerequisite and request only missing authorization before one `qodo update --json`.
+Skill-update consent alone does not authorize a CLI upgrade. Never override source or channel;
+recheck version and planning support afterward. A failed/unsupported check, no available update,
+failed upgrade or missing planning support ends this maintenance attempt with a conversational
+blocker, without a terminal handoff or reinstall. CLI-only consent does not authorize the subsequent
+skills operation; resolve its complete plan and reuse any approval covering that scope.
+
+## Repository layout
+
+```text
+skills/                         canonical authored skills
+packages/                       generated Claude packages
+codex-packages/                 generated Codex packages
+antigravity-plugins/            generated Antigravity plugins (core and optional Standards)
+kiro-power*/                    generated Kiro Powers
+distribution/catalog.json      package membership and discovery metadata
+distribution/marketplaces.json provider release adapters
+distribution/qodo-skills-index.json  compact stale-version index
+releases/                       immutable release records
+scripts/                        generation, validation, and release automation
+```
+
+Generated provider roots are byte-equivalent projections of the canonical skill with only
+distribution and host provenance stamped into commands/frontmatter. `npm test` rejects drift,
+thin loaders, missing workflows, package leakage, unsafe paths, and inconsistent versions.
+
+## Maintainers
+
+Start with [architecture](docs/architecture.md), [releasing](docs/releasing.md), and the
+[cutover and release strategy](docs/cutover-and-release-strategy.md).
+
+```sh
+npm run release:prepare -- --summary "Improve review guidance" --skill qodo-review=patch
+npm test
+```
+
+Do not edit generated provider packages by hand.

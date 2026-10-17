@@ -10,22 +10,28 @@ eleventyComputed:
 {% from "macros.njk" import card, pill, status %}
 <div class="wrap detail">
 <p class="crumbs"><a href="/">SkillMaxx</a> / <a href="/?cat={{ s.category|urlencode }}#browse">{{ s.catLabel }}</a> / {{ s.name }}</p>
-<header class="dh"><span class="mono lg">{{ s.mono }}</span><div><h1>{{ s.name }}</h1><p class="lead">{{ s.description }}</p>
-<p class="tags"><span class="tag">{{ s.typeLabel }}</span><span class="tag">{{ s.catLabel }}</span><a class="tag link" href="{{ s.source_url }}" rel="nofollow noopener">Source ↗</a>{% for l in s.listings %}<a class="tag link" href="{{ l }}" rel="nofollow noopener">{{ l | listingLabel }} ↗</a>{% endfor %}</p></div></header>
+<header class="dh">{% if s.logo %}<img class="logo-img lg" src="{{ s.logo }}" alt="{{ s.name }} logo" width="64" height="64">{% else %}<span class="mono lg">{{ s.mono }}</span>{% endif %}<div><h1>{{ s.name }}</h1><p class="lead">{{ s.description }}</p>
+<p class="tags"><span class="tag">{{ s.typeLabel }}</span><span class="tag">{{ s.catLabel }}</span><a class="tag link" href="{{ s.source_url }}" rel="nofollow noopener">Source ↗</a>{% for l in s.listings %}<a class="tag link" href="{{ l }}" rel="nofollow noopener">{{ l | listingLabel }} ↗</a>{% endfor %}</p>
+{% if s.meta.repo %}<dl class="repo"><div><dt>GitHub</dt><dd><a href="{{ s.meta.repo }}" rel="nofollow noopener">{{ s.meta.repo | replace("https://github.com/","") | replace("/tree/HEAD/"," › ") }} ↗</a></dd></div>{% if s.meta.stars != null %}<div><dt>Stars</dt><dd>★ {{ s.meta.stars|kfmt }}</dd></div>{% endif %}{% if s.meta.updated %}<div><dt>Last updated</dt><dd><time datetime="{{ s.meta.updated }}">{{ s.meta.updated|day }}</time> <span class="muted">({{ s.meta.updated|ago }})</span></dd></div>{% endif %}{% if s.testedCount %}<div><dt>Hands-on tests</dt><dd class="tok">Tested ✓ in {{ s.testedCount }} of 5</dd></div>{% endif %}</dl>{% endif %}
+</div></header>
 <div class="dgrid">
 <section class="installbox" data-install='{{ s.install|json }}'>
  <h2>Install</h2>
- <div class="tabs" role="tablist">{% for a in site.agents %}<button role="tab" type="button" data-tab="{{ a }}" class="tab {{ s.compatibility[a] }}" aria-selected="{{ 'true' if loop.first else 'false' }}"><i class="ad" style="--c:{{ site.agentColor[a] }}"></i>{{ a|agentName }}</button>{% endfor %}</div>
- {% for a in site.agents %}<div class="panel2" role="tabpanel" data-panel="{{ a }}" {% if not loop.first %}hidden{% endif %}>
-  <div class="phead">{{ status(s.compatibility[a]) }}{% if s.compat_sources[a] %}<a href="{{ s.compat_sources[a] }}" rel="nofollow noopener">Official docs ↗</a>{% endif %}</div>
-  {% if s.install[a] %}<div class="code"><code>{{ s.install[a] }}</code><button class="copy" type="button">Copy</button></div>
-   <p class="foot">{% if s.compatibility[a]=='documented' %}Checked against official docs on {{ site.checked }}. Not tested hands-on.{% else %}This command follows {{ a|agentName }}'s general MCP setup format but hasn't been confirmed for this package. Check its README first.{% endif %}</p>
-  {% else %}<div class="none"><p><b>No official {{ a|agentName }} instructions yet.</b> We haven't found docs saying this works in {{ a|agentName }}.</p><a href="/submit/">Know it works? Tell us →</a></div>{% endif %}
+ <div class="tabs" role="tablist">{% for a in site.agents %}<button role="tab" type="button" data-tab="{{ a }}" class="tab {{ s.eff[a] }}" aria-selected="{{ 'true' if loop.first else 'false' }}"><i class="ad" style="--c:{{ site.agentColor[a] }}"></i>{{ a|agentName }}{% if s.eff[a]=='tested' %} <span class="tk" aria-label="tested">✓</span>{% elif s.eff[a]=='failed' %} <span class="tx" aria-label="failed">✕</span>{% endif %}</button>{% endfor %}</div>
+ {% for a in site.agents %}{% set t = s.test[a] %}<div class="panel2" role="tabpanel" data-panel="{{ a }}" {% if not loop.first %}hidden{% endif %}>
+  <div class="phead"><span class="sts">{% if t %}{{ status(s.eff[a]) }}{% endif %}{{ status(s.compatibility[a]) if s.compatibility[a]=='documented' or not t }}</span>{% if s.compat_sources[a] %}<a href="{{ s.compat_sources[a] }}" rel="nofollow noopener">Official docs ↗</a>{% endif %}</div>
+  {% if s.install[a] %}<div class="code"><code>{{ s.install[a] }}</code><button class="copy" type="button">Copy</button></div>{% else %}<div class="none"><p><b>No official {{ a|agentName }} instructions yet.</b> We haven't found docs saying this works in {{ a|agentName }}.</p><a href="/submit/">Know it works? Tell us →</a></div>{% endif %}
+  {% if t %}<div class="testres {{ t.status }}"><p><b>{% if t.status=='pass' %}Tested ✓{% else %}Failed{% endif %}</b> on {{ t.at|day }}: {% if t.status=='pass' %}installed and loaded in a throwaway sandbox with no credentials.{% else %}the install or load check didn't pass in our sandbox. It may need an account, API key or extra setup.{% endif %}</p>
+   {% if a=='codex' %}<p class="muted">Tested from a local mirror of the official openai/plugins marketplace, because the CLI reserves the official name for signed-in users.</p>{% endif %}{% if a=='pi' %}<p class="muted">Pi has no plugin system. This checks that Pi installs the repo as a package and finds its skills. Hooks and MCP servers don't load in Pi.</p>{% endif %}
+   <details><summary>Log excerpt</summary><pre>{{ t.log }}</pre></details>
+   {% if t.history.length %}<div class="hist" aria-label="Test history">{% for h in t.history %}<span class="hd {{ h.status }}" title="{{ h.at|day }}: {{ 'Tested ✓' if h.status=='pass' else 'Failed' }}"></span>{% endfor %}<span class="muted">{{ t.history.length }} run{{ 's' if t.history.length>1 }}, latest {{ t.at|day }}</span></div>{% endif %}</div>
+  {% elif s.install[a] %}<p class="foot">{% if s.compatibility[a]=='documented' %}Checked against official docs on {{ site.checked }}. Hands-on test not available for this agent yet.{% else %}This command follows {{ a|agentName }}'s general MCP setup format but hasn't been confirmed for this package. Check its README first.{% endif %}</p>{% endif %}
  </div>{% endfor %}
 </section>
-<aside class="compat"><h2>Compatibility</h2><ul>{% for a in site.agents %}<li><span><i class="ad" style="--c:{{ site.agentColor[a] }}"></i>{{ a|agentName }}</span>{{ status(s.compatibility[a]) }}</li>{% endfor %}</ul>
+<aside class="compat"><h2>Compatibility</h2><ul>{% for a in site.agents %}<li><span><i class="ad" style="--c:{{ site.agentColor[a] }}"></i>{{ a|agentName }}</span>{{ status(s.eff[a]) }}</li>{% endfor %}</ul>
 {% if s.notes %}<p class="note">{{ s.notes }}</p>{% endif %}
 <p class="muted">Before installing, check the source repo: plugins and MCP servers can run code and reach your accounts.</p></aside>
 </div>
-{% set rel = skills | related(s) %}{% if rel.length %}<h2 class="sh">Related in {{ s.catLabel }}</h2><div class="grid g4">{% for r in rel %}{{ card(r) }}{% endfor %}</div>{% endif %}
+{% if s.readme %}<section class="readme"><div class="rowh"><h2 class="sh">README</h2><a href="{{ s.meta.repo }}" rel="nofollow noopener">View on GitHub ↗</a></div><div class="md">{{ s.readme.html | safe }}</div>{% if s.readme.truncated %}<a class="btn ghost" href="{{ s.meta.repo }}" rel="nofollow noopener">Read the full README on GitHub →</a>{% endif %}<p class="muted">Preview from the source repo. Images are removed.</p></section>{% endif %}
+{% set rel = skills | related(s) %}{% if rel.length %}<h2 class="sh">Similar alternatives</h2><div class="grid g4">{% for r in rel %}{{ card(r) }}{% endfor %}</div>{% endif %}
 </div>

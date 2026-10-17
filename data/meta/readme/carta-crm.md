@@ -1,0 +1,19 @@
+![Banner](assets/banner.png)
+
+# Carta Plugins
+
+> **Read-only mirror.** This repo is automatically published from an internal repository. Do not open pull requests here — all development and review happens internally.
+
+The official repository of Carta plugins for AI Agents, as a [Claude Plugin Marketplace](https://code.claude.com/docs/en/discover-plugins).
+
+## Documentation
+
+Visit the [Carta Developer Platform website here](https://docs.carta.com/api-platform/guides/guides/claude-mcp-setup/) for installation and support documentation.
+
+## Plugins
+
+| Plugin | Description |
+|--------|-------------|
+| [carta-cap-table](plugins/carta-cap-table) | Skills and MCP server for querying Carta cap tables, grants, SAFEs, 409A valuations, waterfall scenarios, and more |
+| [carta-crm](plugins/carta-crm) | Manage the Carta CRM conversationally — search, add, update, and enrich investors, companies, contacts, deals, notes, and fundraisings via the public API |
+| [carta-investors](plugins/carta-investors) | Skills and MCP server for querying Carta fund admin data, including NAV, performance, allocations, and regulatory reporting |
