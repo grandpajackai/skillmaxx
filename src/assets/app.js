@@ -54,9 +54,9 @@ const mt=$(".matrix");if(mt){const rows=$$("tbody tr",mt),mq=$("#mq"),hu=$("#hid
 // command palette
 const pal=$("#palette"),pq=$("#pq"),pr=$("#pr");let idx=null,sel=0,res=[];
 async function openPal(){if(!idx)idx=await fetch(window.SMX_INDEX_URL).then(r=>r.json());pal.showModal();pq.value="";render();pq.focus()}
-function render(){const t=pq.value.toLowerCase().trim();const cats=[...new Set(idx.map(x=>x.c))].filter(c=>t&&c.includes(t)).slice(0,3).map(c=>({label:"Category: "+c,href:"/?cat="+encodeURIComponent(c)+"#browse"}));
+function render(){const t=pq.value.toLowerCase().trim();const CL=Object.fromEntries(idx.map(x=>[x.c,x.cl]));const cats=[...new Set(idx.map(x=>x.c))].filter(c=>t&&c.includes(t)).slice(0,3).map(c=>({label:"Category: "+CL[c],href:"/?cat="+encodeURIComponent(c)+"#browse"}));
  const ags=Object.entries(NAMES).filter(([k,v])=>t&&v.toLowerCase().includes(t)).map(([k,v])=>({label:"Agent: "+v,href:"/?agent="+k+"#browse"}));
- const sk=idx.map(x=>{const n=x.n.toLowerCase();let s=n.startsWith(t)?3:n.includes(t)?2:t.split("").every((ch,i,arr)=>n.indexOf(ch,i?n.indexOf(arr[i-1]):0)>=0)?1:0;return [s,x]}).filter(([s])=>!t||s>0).sort((a,b)=>b[0]-a[0]).slice(0,8).map(([,x])=>({label:x.n,sub:x.t+" · "+x.c,href:"/skills/"+x.s+"/"}));
+ const sk=idx.map(x=>{const n=x.n.toLowerCase();let s=n.startsWith(t)?3:n.includes(t)?2:t.split("").every((ch,i,arr)=>n.indexOf(ch,i?n.indexOf(arr[i-1]):0)>=0)?1:0;return [s,x]}).filter(([s])=>!t||s>0).sort((a,b)=>b[0]-a[0]).slice(0,8).map(([,x])=>({label:x.n,sub:x.t+" · "+x.cl,href:"/skills/"+x.s+"/"}));
  res=[...ags,...cats,...sk];sel=0;pr.innerHTML=res.map((r,i)=>`<li class="${i?"":"sel"}"><a href="${r.href}">${r.label}${r.sub?`<small>${r.sub}</small>`:""}</a></li>`).join("")||"<li class=muted>No matches</li>"}
 if(pal){pq.addEventListener("input",render);pq.addEventListener("keydown",e=>{const li=$$("li",pr);if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();sel=(sel+(e.key==="ArrowDown"?1:-1)+li.length)%li.length;li.forEach((l,i)=>l.classList.toggle("sel",i===sel))}if(e.key==="Enter"&&res[sel])location.href=res[sel].href});
  pal.addEventListener("click",e=>{if(e.target===pal)pal.close()});$$("[data-open-search]").forEach(b=>b.addEventListener("click",openPal));}

@@ -46,11 +46,12 @@ desc: "Skills, plugins and MCP servers checked against official docs for Claude 
   <fieldset><legend>Works in</legend><select id="agent" aria-label="Agent"><option value="">Any agent</option>{% for a in site.agents %}<option value="{{ a }}">{{ a|agentName }}</option>{% endfor %}</select></fieldset>
   <fieldset><legend>Status (for chosen agent)</legend><label><input type="radio" name="st" value="" checked> All</label><label><input type="radio" name="st" value="documented"> Verified from docs</label><label><input type="radio" name="st" value="unknown"> Not yet tested</label></fieldset>
   <fieldset><legend>Type</legend>{% for t in skills|pluck("type")|uniq %}<label><input type="checkbox" name="type" value="{{ t }}"> {{ (skills|where("type",t))[0].typeLabel }} <em>{{ (skills|where("type",t)).length }}</em></label>{% endfor %}</fieldset>
-  <fieldset><legend>Category</legend><select id="cat" aria-label="Category"><option value="">All categories</option>{% for c in skills|pluck("category")|uniq|sort %}<option value="{{ c }}">{{ c }} ({{ (skills|where("category",c)).length }})</option>{% endfor %}</select></fieldset>
+  <fieldset><legend>Category</legend><select id="cat" aria-label="Category"><option value="">All categories</option>{% for c in skills|pluck("category")|uniq|sort %}<option value="{{ c }}">{{ (skills|where("category",c))[0].catLabel }} ({{ (skills|where("category",c)).length }})</option>{% endfor %}</select></fieldset>
   <button type="button" class="btn ghost" id="freset">Reset filters</button>
  </aside>
  <div class="results">
   <div class="rbar"><p class="count" aria-live="polite"><b id="n">{{ skills.length }}</b> results</p><label class="sort">Sort <select id="sort"><option value="compat">Most compatible</option><option value="az">A–Z</option></select></label></div>
+  <p class="legend" aria-hidden="true"><span><b>CC</b> Claude Code</span><span><b>CX</b> Codex</span><span><b>GB</b> Grok Build</span><span><b>CU</b> Cursor</span><span><b>Pi</b> Pi</span><span>· solid = verified from docs, dashed = not yet tested</span></p>
   <div class="grid" id="grid">{% for s in skills %}{{ card(s) }}{% endfor %}</div>
   <div class="empty" id="empty" hidden><h3>No matches</h3><p>Try a broader search, a different agent, or a popular category: <a href="?cat=database#browse">database</a>, <a href="?cat=deployment#browse">deployment</a>, <a href="?cat=monitoring#browse">monitoring</a>.</p><a class="btn ghost" href="/submit/">Submit this skill →</a></div>
   <button class="btn ghost more" id="more" type="button">Load more</button>
