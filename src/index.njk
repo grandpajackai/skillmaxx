@@ -7,7 +7,7 @@ desc: "Skills, plugins and MCP servers checked against official docs for Claude 
 {% set demo = skills | where("slug","sentry") %}{% set demo = demo[0] or skills[0] %}
 <section class="hero wrap">
  <div class="hl">
-  <span class="eyebrow"><i class="live"></i>Checked against official docs & tested hands-on · {{ site.checked }}</span>
+  <span class="eyebrow"><i class="live"></i>Docs-checked & sandbox-tested · {{ site.checked }}</span>
   <h1>Find agent skills that actually work in <em>your</em> agent.</h1>
   <p class="sub">{{ site.tagline }}</p>
   <div class="picker" role="radiogroup" aria-label="I use"><span class="pl">I use:</span>
@@ -26,7 +26,7 @@ desc: "Skills, plugins and MCP servers checked against official docs for Claude 
 </section>
 <section class="wrap stats">
  <div><b>{{ skills.length }}</b><span>skills & MCP servers</span></div><div><b>5</b><span>coding agents</span></div>
- <div><b>{{ skills | sumDocs }}</b><span>install methods verified from docs</span></div><div><b>{{ testing.pass }}</b><span>hands-on installs Tested ✓{% if testing.runAt %} · {{ testing.runAt|day }}{% endif %}</span></div>
+ <div><b>{{ skills | sumDocs }}</b><span>install methods verified from docs</span></div><div><b>{{ testing.pass }}</b><span>of {{ testing.total }} sandboxed install tests passed</span></div>
 </section>
 <section class="wrap how">
  <h2 class="sh">How it works</h2>
@@ -52,7 +52,7 @@ desc: "Skills, plugins and MCP servers checked against official docs for Claude 
  <div class="results">
   <div class="rbar"><p class="count" aria-live="polite"><b id="n">{{ skills.length }}</b> results</p><label class="sort">Sort <select id="sort"><option value="compat">Most compatible</option><option value="az">A–Z</option></select></label></div>
   <p class="legend" aria-hidden="true"><span><b>CC</b> Claude Code</span><span><b>CX</b> Codex</span><span><b>GB</b> Grok Build</span><span><b>CU</b> Cursor</span><span><b>Pi</b> Pi</span><span>· solid = verified from docs, dashed = not yet tested</span></p>
-  <div class="grid" id="grid">{% for s in skills %}{{ card(s) }}{% endfor %}</div>
+  <div class="grid" id="grid">{% for s in skills %}{% if loop.index0 == 48 %}<template id="mc">{% endif %}{{ card(s) }}{% endfor %}{% if skills.length > 48 %}</template>{% endif %}</div>
   <div class="empty" id="empty" hidden><h3>No matches</h3><p>Try a broader search, a different agent, or a popular category: <a href="?cat=database#browse">database</a>, <a href="?cat=deployment#browse">deployment</a>, <a href="?cat=monitoring#browse">monitoring</a>.</p><a class="btn ghost" href="/submit/">Submit this skill →</a></div>
   <button class="btn ghost more" id="more" type="button">Load more</button>
  </div></div>
