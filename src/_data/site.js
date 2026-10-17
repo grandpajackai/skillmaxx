@@ -1,0 +1,1 @@
+export default {name:"SkillMaxx",url:"https://skillmaxx.dev",tagline:"Find agent skills, plugins & MCP servers — and see which coding agents they work in.",agents:["claude_code","codex","grok_build","cursor","pi"]};

@@ -1,0 +1,14 @@
+import {chromium} from 'playwright';
+const b=await chromium.launch();const p=await b.newPage({viewport:{width:1366,height:900}});const R=[];
+const n=async()=>+(await p.textContent('#n'));const vis=async()=>p.$$eval('.card',c=>c.filter(x=>!x.hidden).length);
+await p.goto('http://localhost:8080/');const total=await n();R.push(['initial',total,await vis()]);
+await p.fill('#q','github');R.push(['q=github',await n(),await vis()]);
+await p.fill('#q','');await p.selectOption('#agent','codex');R.push(['agent=codex',await n(),await vis()]);
+await p.selectOption('#agent','pi');R.push(['agent=pi (expect 0)',await n(),await p.isVisible('#empty')]);
+await p.selectOption('#agent','grok_build');await p.selectOption('#cat','deployment');R.push(['grok+deployment',await n(),await vis()]);
+await p.screenshot({path:'shots/home-filtered.png',fullPage:false});
+await p.selectOption('#agent','');await p.selectOption('#cat','');await p.fill('#q','zzzz');R.push(['nonsense',await n(),await p.isVisible('#empty')]);
+await p.goto('http://localhost:8080/?agent=codex&q=figma');R.push(['url params codex+figma',await n(),await vis()]);
+await p.click('.card:not([hidden])');R.push(['click card ->',p.url()]);
+await p.screenshot({path:'shots/skill-figma.png',fullPage:true});
+console.log(JSON.stringify(R,null,0));await b.close();

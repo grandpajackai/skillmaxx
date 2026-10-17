@@ -1,0 +1,18 @@
+---
+layout: base.njk
+title: "Agent skills, plugins & MCP servers for every coding agent"
+---
+{% from "badge.njk" import badge %}
+<section class="hero"><h1>Every agent skill.<br><span class="grad">Every coding agent.</span></h1><p>{{ site.tagline }} {{ skills.length }} listings, with honest compatibility labels.</p></section>
+<div class="filters"><input id="q" type="search" placeholder="Search skills, e.g. database, browser, github…" aria-label="Search">
+<select id="agent" aria-label="Agent"><option value="">Any agent</option>{% for a in site.agents %}<option value="{{a}}">Documented for {{ a|agentName }}</option>{% endfor %}</select>
+<select id="cat" aria-label="Category"><option value="">All categories</option>{% set cats = [] %}{% for s in skills %}{% if s.category not in cats %}{% set cats = (cats.push(s.category), cats) %}{% endif %}{% endfor %}{% for c in cats|sort %}<option>{{c}}</option>{% endfor %}</select></div>
+<p class="count" aria-live="polite"><span id="n">{{ skills.length }}</span> results <span id="empty" hidden>· No matches. Try a different search.</span></p>
+<div class="grid" id="grid">{% for s in skills %}
+<a class="card" href="/skills/{{ s.slug }}/" data-cat="{{ s.category }}" data-agents="{% for a in site.agents %}{% if s.compatibility[a]=='documented' %}{{a}} {% endif %}{% endfor %}" data-text="{{ (s.name+' '+s.description+' '+s.category)|lower }}">
+<div class="ct"><h3>{{ s.name }}</h3><span class="tag">{{ s.category }}</span></div><p>{{ s.description | truncate(120) }}</p>
+<div class="agents">{% for a in site.agents %}<span class="dot {{ s.compatibility[a] }}" title="{{ a|agentName }}: {{ s.compatibility[a] }}">{{ a|agentName }}</span>{% endfor %}</div></a>{% endfor %}</div>
+<section id="newsletter" class="panel"><h2>Stacks of new skills, weekly</h2><p>Every new skill, plugin and MCP server across coding agents, every week. <em>Signup coming soon. This form isn't connected yet.</em></p><form onsubmit="event.preventDefault();this.querySelector('p').hidden=false"><input type="email" placeholder="you@example.com" aria-label="Email"><button class="btn" type="submit">Notify me</button><p hidden class="muted">Thanks! The newsletter isn't live yet, so nothing was saved.</p></form></section>
+<script>const q=document.getElementById('q'),ag=document.getElementById('agent'),ca=document.getElementById('cat'),cards=[...document.querySelectorAll('.card')];
+function f(){let n=0,t=q.value.toLowerCase();cards.forEach(c=>{const ok=(!t||c.dataset.text.includes(t))&&(!ag.value||c.dataset.agents.split(' ').includes(ag.value))&&(!ca.value||c.dataset.cat==ca.value);c.hidden=!ok;n+=ok});document.getElementById('n').textContent=n;document.getElementById('empty').hidden=n>0}
+[q,ag,ca].forEach(e=>{e.addEventListener('input',f);e.addEventListener('change',f)});const u=new URLSearchParams(location.search);if(u.get('q'))q.value=u.get('q');if(u.get('agent'))ag.value=u.get('agent');if(u.get('cat'))ca.value=u.get('cat');f();</script>

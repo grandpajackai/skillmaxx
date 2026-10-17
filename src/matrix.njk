@@ -1,0 +1,7 @@
+---
+layout: base.njk
+title: "Compatibility matrix for agent skills across coding agents"
+desc: "Which agent skills, plugins and MCP servers have documented install methods for Claude Code, Codex, Grok Build, Cursor and Pi."
+---
+{% from "badge.njk" import badge %}<h1>Compatibility matrix</h1><p class="lead">Documented means an official source publishes the install method. Unknown means we found no official docs. Nothing here is tested yet.</p>
+<div class="tw"><table><thead><tr><th>Skill</th><th>Category</th>{% for a in site.agents %}<th>{{ a|agentName }}</th>{% endfor %}</tr></thead><tbody>{% for s in skills %}<tr><td><a href="/skills/{{ s.slug }}/">{{ s.name }}</a></td><td>{{ s.category }}</td>{% for a in site.agents %}<td>{{ badge(s.compatibility[a]) }}</td>{% endfor %}</tr>{% endfor %}</tbody></table></div>
