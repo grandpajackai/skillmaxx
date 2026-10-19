@@ -7,4 +7,65 @@ title: "Advertise on SkillMaxx: reach developers using coding agents"
 <div class="card static hl2"><h2 class="h3">Featured slot</h2><p class="price">$79<small>/month</small></p><p class="muted">The one Sponsored card in the Featured row, clearly labeled.</p></div>
 <div class="card static"><h2 class="h3">Category sponsor</h2><p class="price">$29<small>/month</small></p><p class="muted">One sponsor per category page.</p></div></div>
 <div class="why"><div><h2>High-intent readers</h2><p>Visitors arrive searching for a specific capability and leave with an install command. That's the moment they pick a tool.</p></div><div><h2>Every agent at once</h2><p>One listing reaches Claude Code, Codex, Grok Build, Cursor and Pi users, not a single ecosystem.</p></div><div><h2>Labeled, never blended</h2><p>Sponsored cards are marked "Sponsored" and never alter compatibility statuses or sort order.</p></div></div>
-<p class="muted">These are placeholder launch prices and aren't on sale yet. Paid placements never change a status or a ranking.</p></div>
+<p class="muted" style="margin-bottom:10px">Paid placements never change a status or a ranking.</p>
+
+<div class="card static" style="margin-top:20px" id="inquiry-form">
+  <h2 class="h3">Inquire about advertising</h2>
+  <p class="muted">Fill out the form below and someone will respond by email — usually within a business day.</p>
+  <form id="ad-form" action="https://formsubmit.co/skillmaxx@gilventures.ai" method="POST" style="display:flex;flex-direction:column;gap:14px;margin-top:12px">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_subject" value="New Advertiser Inquiry - SkillMaxx">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <label for="ad-name" style="font-size:13px;color:var(--m)">Name <span style="color:#e55">*</span></label>
+        <input type="text" id="ad-name" name="name" required placeholder="Your name" style="background:var(--s2);color:var(--t);border:1px solid var(--b2);border-radius:9px;padding:9px 12px;font:inherit;font-size:14px;min-height:40px">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <label for="ad-email" style="font-size:13px;color:var(--m)">Email <span style="color:#e55">*</span></label>
+        <input type="email" id="ad-email" name="email" required placeholder="you@example.com" style="background:var(--s2);color:var(--t);border:1px solid var(--b2);border-radius:9px;padding:9px 12px;font:inherit;font-size:14px;min-height:40px">
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:4px">
+      <label for="ad-company" style="font-size:13px;color:var(--m)">Company</label>
+      <input type="text" id="ad-company" name="company" placeholder="Your company or product" style="background:var(--s2);color:var(--t);border:1px solid var(--b2);border-radius:9px;padding:9px 12px;font:inherit;font-size:14px;min-height:40px">
+    </div>
+    <div style="display:flex;flex-direction:column;gap:4px">
+      <label for="ad-type" style="font-size:13px;color:var(--m)">Ad type <span style="color:#e55">*</span></label>
+      <select id="ad-type" name="ad_type" required style="background:var(--s2);color:var(--t);border:1px solid var(--b2);border-radius:9px;padding:9px 12px;font:inherit;font-size:14px;min-height:40px">
+        <option value="">Select one…</option>
+        <option value="Newsletter sponsor ($49/issue)">Newsletter sponsor — $49/issue</option>
+        <option value="Featured slot ($79/month)">Featured slot — $79/month</option>
+        <option value="Category sponsor ($29/month)">Category sponsor — $29/month</option>
+      </select>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:4px">
+      <label for="ad-message" style="font-size:13px;color:var(--m)">Message <span style="color:#e55">*</span></label>
+      <textarea id="ad-message" name="message" required rows="4" placeholder="Tell us about your skill, plugin or MCP server and what you're interested in…" style="background:var(--s2);color:var(--t);border:1px solid var(--b2);border-radius:9px;padding:9px 12px;font:inherit;font-size:14px;resize:vertical;min-height:90px"></textarea>
+    </div>
+    <button type="submit" class="btn" style="align-self:flex-start;padding:10px 24px;font-weight:600">Send inquiry</button>
+  </form>
+  <div id="ad-success" hidden style="margin-top:14px;padding:14px;border-radius:9px;background:rgba(198,244,50,.08);border:1px solid rgba(198,244,50,.3)">
+    <p style="margin:0;color:var(--a);font-weight:600">✓ Inquiry sent</p>
+    <p class="muted" style="margin:6px 0 0">Thanks! Someone will get back to you by email, usually within a business day.</p>
+  </div>
+  <p id="ad-error" hidden style="margin-top:10px;color:#e55;font-size:13px">Something went wrong. Please try again or email us directly at skillmaxx@gilventures.ai.</p>
+</div>
+
+<script>
+(function(){
+  var form = document.getElementById('ad-form');
+  var ok = document.getElementById('ad-success');
+  var err = document.getElementById('ad-error');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    err.hidden = true;
+    var fd = new FormData(form);
+    fetch(form.action, {method:'POST',body:fd}).then(function(r){
+      if(r.ok){ form.hidden=true; ok.hidden=false }
+      else { err.hidden=false }
+    }).catch(function(){ err.hidden=false });
+  });
+})();
+</script>
+</div>

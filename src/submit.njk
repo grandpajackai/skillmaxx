@@ -1,7 +1,248 @@
 ---
 layout: base.njk
 title: "Submit an agent skill, plugin or MCP server"
+desc: "Submit your skill, plugin or MCP server to SkillMaxx — free listing on the skills directory across 5 coding agents."
 ---
-<div class="wrap prose"><h1 class="ph">Submit a skill</h1><p class="lead">Built a skill, plugin or MCP server? Submissions open soon. Listing is free.</p>
-<div class="card static"><h2 class="h3">What we'll ask for</h2><ul><li>Name and a one-line description</li><li>Source link (GitHub, npm or an official marketplace)</li><li>A link to the official install docs for each agent you support. That's what earns "Verified from docs".</li><li>Category</li></ul>
-<p class="muted">Submissions aren't open yet, and this page doesn't collect anything.</p></div></div>
+<div class="wrap prose">
+  <h1 class="ph">Submit a skill</h1>
+  <p class="lead">Built a skill, plugin or MCP server for a coding agent? Submit it here for a free listing. We verify install methods against official docs and, where possible, sandbox-test the install.</p>
+
+  <div class="card static" id="form-card">
+    <form
+      action="https://formsubmit.co/skillmaxx@gilventures.ai"
+      method="POST"
+      id="submit-form"
+      novalidate
+    >
+      {# Hidden formsubmit.co config #}
+      <input type="hidden" name="_subject" value="New SkillMaxx submission">
+      <input type="hidden" name="_next" value="{{ site.url }}{{ site.base }}/submit/?sent=true">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      {# Honeypot #}
+      <input type="text" name="_honey" style="display:none" aria-hidden="true" tabindex="-1" autocomplete="off">
+
+      <fieldset>
+        <legend>Skill info</legend>
+        <div class="fg">
+          <label class="fl">
+            <span>Skill name <em class="muted">required</em></span>
+            <input type="text" name="name" required placeholder="e.g. Sentry, Postgres MCP, Tailwind plugin" maxlength="120">
+          </label>
+          <label class="fl">
+            <span>One-line description <em class="muted">required</em></span>
+            <input type="text" name="description" required placeholder="What does it do, in one sentence" maxlength="200">
+          </label>
+          <label class="fl">
+            <span>Source URL <em class="muted">required</em></span>
+            <input type="url" name="source_url" required placeholder="https://github.com/you/your-skill or npm package URL" maxlength="400">
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Category</legend>
+        <div class="fg">
+          <label class="fl">
+            <span>Category <em class="muted">required</em></span>
+            <select name="category" required>
+              <option value="" disabled selected>Choose a category…</option>
+              <option value="automation">Automation</option>
+              <option value="communication">Communication</option>
+              <option value="database">Database</option>
+              <option value="deployment">Deployment</option>
+              <option value="design">Design</option>
+              <option value="development">Development</option>
+              <option value="education & research">Education &amp; Research</option>
+              <option value="mcp servers">MCP Servers</option>
+              <option value="monitoring">Monitoring</option>
+              <option value="productivity">Productivity</option>
+              <option value="security">Security</option>
+              <option value="utilities">Utilities</option>
+              <option value="other">Other</option>
+            </select>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Install docs for each agent you support</legend>
+        <p class="muted hint">Link to the official docs page that shows the install command for each agent you support. That's what earns "Verified from docs" on your listing. Leave blank for agents you don't support yet.</p>
+        <div class="fg agrid">
+          <label class="fl">
+            <span class="alabel"><i class="ad" style="--c:{{ site.agentColor.claude_code }}"></i>Claude Code</span>
+            <input type="url" name="install_claude_code" placeholder="https://docs.anthropic.com/…" maxlength="400">
+          </label>
+          <label class="fl">
+            <span class="alabel"><i class="ad" style="--c:{{ site.agentColor.codex }}"></i>Codex</span>
+            <input type="url" name="install_codex" placeholder="https://…" maxlength="400">
+          </label>
+          <label class="fl">
+            <span class="alabel"><i class="ad" style="--c:{{ site.agentColor.grok_build }}"></i>Grok Build</span>
+            <input type="url" name="install_grok_build" placeholder="https://…" maxlength="400">
+          </label>
+          <label class="fl">
+            <span class="alabel"><i class="ad" style="--c:{{ site.agentColor.cursor }}"></i>Cursor</span>
+            <input type="url" name="install_cursor" placeholder="https://…" maxlength="400">
+          </label>
+          <label class="fl">
+            <span class="alabel"><i class="ad" style="--c:{{ site.agentColor.pi }}"></i>Pi</span>
+            <input type="url" name="install_pi" placeholder="https://…" maxlength="400">
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="form-actions">
+        <button type="submit" class="btn">Submit skill</button>
+        <p class="muted">Submitting sends your entry to our review queue. Listings are free. We'll verify install docs before publishing.</p>
+      </div>
+    </form>
+
+    {# Success state — shown when redirected back with ?sent=true #}
+    <div class="success-msg" id="success-msg" hidden>
+      <div class="check-icon">✓</div>
+      <h2>Submission received</h2>
+      <p>We got your skill &mdash; it's in the review queue. We check install docs and where possible sandbox-test the install before publishing. You'll hear from us if we need anything.</p>
+      <a href="{{ site.base }}/" class="btn ghost">Back to SkillMaxx</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  #form-card {
+    padding: 28px;
+    margin-top: 20px;
+    margin-bottom: 48px;
+  }
+  #submit-form fieldset {
+    margin-bottom: 24px;
+  }
+  #submit-form legend {
+    font-size: 14px;
+    color: var(--t);
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 600;
+    margin-bottom: 10px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--b);
+    width: 100%;
+  }
+  .fg {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .agrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .fl {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .fl > span {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--t);
+  }
+  .fl > span em {
+    font-style: normal;
+  }
+  .alabel {
+    display: flex !important;
+    align-items: center;
+    gap: 6px;
+  }
+  .fl input,
+  .fl select,
+  .fl textarea {
+    background: var(--s2);
+    color: var(--t);
+    border: 1px solid var(--b2);
+    border-radius: 9px;
+    padding: 10px 12px;
+    font: inherit;
+    font-size: 14px;
+    min-height: 42px;
+    transition: border-color .15s;
+  }
+  .fl input:focus,
+  .fl select:focus,
+  .fl textarea:focus {
+    outline: 2px solid rgba(198,244,50,.4);
+    outline-offset: 1px;
+    border-color: var(--a);
+  }
+  .fl input::placeholder,
+  .fl textarea::placeholder {
+    color: var(--un);
+  }
+  .hint {
+    margin: 0 0 10px;
+    line-height: 20px;
+  }
+  .form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    margin-top: 4px;
+    padding-top: 20px;
+    border-top: 1px solid var(--b);
+  }
+  .form-actions .btn {
+    font-size: 15px;
+    padding: 12px 24px;
+  }
+  .success-msg {
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .check-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(198,244,50,.15);
+    color: var(--a);
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    border: 1px solid rgba(198,244,50,.3);
+  }
+  .success-msg h2 {
+    font-size: 22px;
+    margin: 0 0 10px;
+  }
+  .success-msg p {
+    color: var(--m);
+    max-width: 460px;
+    margin: 0 auto 20px;
+    line-height: 22px;
+  }
+  .success-msg .btn {
+    margin: 0 auto;
+  }
+  @media (max-width: 640px) {
+    #form-card { padding: 18px; }
+    .agrid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  (() => {
+    const sent = new URLSearchParams(location.search).get('sent');
+    if (sent === 'true') {
+      document.getElementById('submit-form').hidden = true;
+      document.getElementById('success-msg').hidden = false;
+      // Clean the URL without reload
+      const u = new URL(location);
+      u.searchParams.delete('sent');
+      history.replaceState(null, '', u);
+    }
+  })();
+</script>

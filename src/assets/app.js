@@ -42,7 +42,7 @@ if(grid){const q=$("#q"),ca=$("#cat"),so=$("#sort"),cards=[...$$(".card",grid),.
  $("#fopen").addEventListener("click",()=>$("#facets").classList.add("open"));$("#fclose").addEventListener("click",()=>$("#facets").classList.remove("open"));}
 setAgent(agent,false);if(filter)filter();
 // newsletter placeholder
-const nf=$("#nform");if(nf)nf.addEventListener("submit",e=>{e.preventDefault();$("#nmsg").hidden=false});
+const nf=$("#nform");if(nf)nf.addEventListener("submit",e=>{setTimeout(()=>{$("#nmsg").hidden=false},300)});
 // demo card
 const dd=$("#demodata");if(dd&&!matchMedia("(prefers-reduced-motion: reduce)").matches||dd){const d=JSON.parse(dd.textContent),order=Object.keys(NAMES);let i=0;
  const step=()=>{const a=order[i%order.length];$$(".dtabs span").forEach(s=>s.classList.toggle("on",s.dataset.a===a));$("#dcode").textContent=d.install[a]||`# No official ${NAMES[a]} instructions yet`;
