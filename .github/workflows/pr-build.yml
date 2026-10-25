@@ -1,0 +1,23 @@
+name: PR build
+on:
+  pull_request:
+    branches: [master]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npx @11ty/eleventy
+        env:
+          SITE_URL: https://skillmaxx.gilventures.ai
+          PATH_PREFIX: /
+      - name: Sanity check output
+        run: |
+          test -f _site/index.html
+          test -f _site/CNAME || test -f src/CNAME || true
+          n=$(find _site/skills -name index.html | wc -l); echo "skill pages: $n"; test "$n" -gt 100
