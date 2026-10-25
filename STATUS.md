@@ -20,7 +20,7 @@
 - [ ] **Grok Build ambiguous installs:** auth0, grafana-mcp, postman, pr-review-toolkit now need `@<qualifier>`; update listed commands.
 - [ ] **Re-verify DKIM** resolves (`dns.google/resolve?name=zmail._domainkey.gilventures.ai&type=TXT`).
 - [ ] **Nightly scheduling:** no cron on the box; the nightly relies on a Grok Bot routine (missed Oct 17–24 while usage was out).
-- [ ] **Branch protection** — see Session log 2026-10-25.
+- [x] **Branch protection** on `master` enabled 2026-10-25: PR required, `build` check required (strict), no force-push/deletion, admins can bypass (for the nightly routine). Squash-merge + auto-delete branches on.
 
 ## In progress / claimed by
 | Task | Agent | Branch | Since |
@@ -35,4 +35,4 @@
 5. Sponsor outreach (needs Brandon's approval; see PLAN.md).
 
 ## Session log
-- **2026-10-25 · Grok Bot** — Catch-up refresh after Oct 17–24 missed nightlies: +videogen (424 skills), 803/902 tests pass (8 regressions, logged in testing/results/2026-10-25.json). Fixed /advertise mobile overflow and dishonest newsletter text. Swapped newsletter to Beehiiv embed + attribution with fallback link and styled wrapper (screenshots: review/beehiiv/). nightly.sh now builds for the custom domain. Added COLLABORATING.md, STATUS.md, PR CI workflow; attempted branch protection.
+- **2026-10-25 · Grok Bot** — Catch-up refresh after Oct 17–24 missed nightlies: +videogen (424 skills), 803/902 tests pass (8 regressions, logged in testing/results/2026-10-25.json). Fixed /advertise mobile overflow and dishonest newsletter text. Swapped newsletter to Beehiiv embed + attribution with fallback link and styled wrapper (screenshots: review/beehiiv/). nightly.sh now builds for the custom domain. Added COLLABORATING.md, STATUS.md, PR CI workflow; enabled branch protection on master (landed via PR #1).
