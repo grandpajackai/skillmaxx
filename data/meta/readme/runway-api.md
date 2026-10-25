@@ -45,8 +45,8 @@ The Git-backed equivalent is `codex plugin marketplace add runwayml/skills`. The
 For an OpenAI package export, use Node.js 24.12 or newer:
 
 ```sh
-npm ci --ignore-scripts
-npm run build:plugin
+npm --prefix tooling ci --ignore-scripts
+npm --prefix tooling run build:plugin
 ```
 
 This creates `.build/runway-api-4.0.0.zip`. It exports the root plugin files and active Dev skills from an explicit allowlist, excluding the legacy archive and development files. Package validation and native authentication are separate checks.
@@ -90,7 +90,15 @@ Standalone skills do not automatically configure MCP. Use one installation path 
 
 ## Legacy generation and utility skills
 
-The older `rw-generate-*`, `use-runway-api`, and `rw-check-org-details` skills and their helpers are archived under [`legacy/`](https://github.com/runwayml/skills/tree/main/legacy). They are retired from the active plugin and have not been refreshed. The archive explains explicit standalone installation for self-contained skills and the repository checkout needed for shared Python helpers. Existing marketplace installs pinned to an older commit keep that version until updated.
+The older `rw-generate-*`, `use-runway-api`, and `rw-check-org-details` skills and their helpers remain available at [this pinned revision](https://github.com/runwayml/skills/tree/342b34b0df2bd3e6747beaa5fdb9ef11d565be94/legacy). They are retired and are no longer included in the current plugin repository files.
+
+Install the self-contained `use-runway-api` skill explicitly:
+
+```sh
+npx skills add https://github.com/runwayml/skills/tree/342b34b0df2bd3e6747beaa5fdb9ef11d565be94/legacy --skill use-runway-api
+```
+
+For the older Python helpers, clone this repository, check out that revision, and run from `legacy/`. Existing marketplace installs pinned to an older commit keep that version until updated.
 
 ## Credentials and usage
 
@@ -100,6 +108,6 @@ Use the [current docs](https://docs.dev.runwayml.com/), [MCP connection guide](h
 
 ## Development and release
 
-Edit the root manifests and active `skills/` directly. There is no generated plugin copy or sync step. Run `npm run build:plugin` to export a ZIP; add any new skill resources to its explicit file allowlist. CI checks the export, cross-host paths, and portable schemas. See [the maintainer guide](https://github.com/runwayml/skills/blob/main/docs/plugin-release.md).
+Edit the root manifests and active `skills/` directly. There is no generated plugin copy or sync step. Build and test dependencies live under `tooling/` so plugin installation does not install development packages. Run `npm --prefix tooling run build:plugin` to export a ZIP; add any new skill resources to its explicit file allowlist. CI checks the export, cross-host paths, and portable schemas. See [the maintainer guide](https://github.com/runwayml/skills/blob/main/docs/plugin-release.md).
 
 Licensed under [MIT](LICENSE).

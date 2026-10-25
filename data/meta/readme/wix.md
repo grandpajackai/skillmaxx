@@ -39,6 +39,16 @@ Install using [Gemini CLI](https://geminicli.com):
 gemini extensions install https://github.com/wix/skills
 ```
 
+### Antigravity Plugin
+
+In [Antigravity](https://antigravity.google), open **Customizations → Plugins**, click **+ Install from URL**, and enter `https://github.com/wix/skills/tree/main/antigravity/wix`. Or, from a terminal:
+
+```bash
+agy plugin install https://github.com/wix/skills/tree/main/antigravity/wix
+```
+
+The Wix MCP server signs you in to your Wix account the first time a Wix tool is used.
+
 ### Skills CLI
 
 Install using [skills CLI](https://github.com/vercel-labs/skills):
@@ -63,6 +73,9 @@ npx skills add wix/skills -g
 | [wix-headless](skills/wix-headless/SKILL.md) | Connect Wix business services to a headless frontend (SDK + Wix CLI), and optionally build & host the site | Setting up a Wix Headless backend or adding Wix business features (Stores, Bookings, CMS, Blog, Events, Forms, Members, Restaurants, Portfolio, Pricing Plans) — install apps, seed content, and produce an SDK-integration guide; for managed projects also scaffold a new site (create) or wire an existing design (connect), then build and release. Works across managed, self-managed, and stripe project types |
 | [wix-vibe-headless](skills/wix-vibe-headless/SKILL.md) | Connect an existing front end to Wix over client-only REST | Wiring a vibe-coded / HTML / Vite app to a live Wix site (storefront, bookings, blog, events, portfolio, restaurants, CMS, pricing plans) from the browser with a public `WIX_CLIENT_ID` — no SDK, no backend |
 | [wix-docs](skills/wix-docs/SKILL.md) | Look up the Wix API/SDK docs (shared fallback) | Confirming an exact Wix endpoint, method schema, field, or enum before writing code — `curl` doc-search + the `.md`-twin trick, or the Wix MCP tools. Referenced by the other skills as their docs-lookup fallback |
+| [wix-export](skills/wix-export/SKILL.md) | Export or create a Wix Studio 2 site | Exporting an existing Studio 2 site or creating a new one into its own folder, installing or signing in to the origami CLI only when that is missing, and continuing straight into the change the user asked for. Not for Wix Editor or Studio 1 sites, or for content and business changes (use wix-manage) |
+| [wix-import](skills/wix-import/SKILL.md) | Import local site code into a Wix Studio 2 site | Saving an exported Origami site back to Wix, or bringing code from any other project into an existing or new Studio 2 site — sets up the origami CLI when missing, validates the files, and confirms what the import replaces before uploading images or saving. Not for Wix Editor or Studio 1 sites, or for content and business changes (use wix-manage) |
+| [wix-readme](skills/wix-readme/SKILL.md) | Index of the plugin: its skills and the Wix MCP tools | Right after installing the plugin, or when asking what the plugin can do and which skill or tool fits a task |
 | [wix-replatform](wix-replatform/README.md) | Migrate sites from WordPress and other platforms into Wix | Migrating an existing business from another platform into Wix. Both backend data and website. `npx skills add wix/skills/wix-replatform` |
 
 ## Supported Agents
@@ -89,22 +102,24 @@ These skills work with any agent that supports the [Agent Skills specification](
 
 When a major bump is required (a breaking change in the underlying `wix-cli`), the previous major continues on a `release/<N>.x` maintenance branch and receives backports for genuine bugs only — no new features.
 
-## Releasing
-
-Run the [`release-bump`](https://github.com/wix-private/ax-skills/actions/workflows/release-bump.yml) workflow from the **Actions** tab of `wix-private/ax-skills` and pick a `version_strategy`. The rest is automatic — the bump PR auto-merges once checks pass, the sync carries the new version to `wix/skills`, and [`release.yml`](https://github.com/wix/skills/blob/main/.github/workflows/release.yml) there publishes to npm via Trusted Publishing.
-
 ## Serving (`www.wix.com/skills`)
 
 Besides the npm package, skills are served as raw markdown / `.tgz` at `https://www.wix.com/skills/<name>` (also `dev.wix.com/skills`), directly from the `main` branch of `wix/skills` with no build step. Responses are cached, so a change reflects there within a few minutes of reaching that branch.
 
+## Privacy and telemetry
+
+Only `wix-replatform` collects telemetry. The other skills send nothing of their own; calls they make to Wix APIs and the Wix MCP are covered by the [Wix Privacy Policy](https://www.wix.com/about/privacy).
+
+During a migration run, `wix-replatform`:
+
+- **Sends run telemetry to Wix** (`https://frog.wix.com/migration-data-validator`): stage timings and outcomes, migrated record counts, errors and gaps by type (never record contents), the source platform and site URL, the destination site ID and the operator's Wix user ID. Turn it off with `RP_TELEMETRY_BI_DISABLED=1`.
+- **Reads the agent's Claude Code session transcripts** (`~/.claude/projects/`) at the end of the run, copies them compressed into the migration project's `telemetry/transcripts/` folder on your machine, and adds a summary (token cost, turn counts, tool failures, retry loops) to the run telemetry. The transcripts themselves stay local. Turn it off with `RP_TELEMETRY_TRANSCRIPT_DISABLED=1`.
+
+Set the variables in the environment the agent runs in. See [wix-replatform/README.md](wix-replatform/README.md).
+
 ## Contributing
 
-The source of truth for these skills is **[`wix-private/ax-skills`](https://github.com/wix-private/ax-skills)** (default branch `master`). The public repository, [`github.com/wix/skills`](https://github.com/wix/skills), is a read-only mirror of it: every merge to `ax-skills` master is synced there automatically, and pull requests opened against the mirror are not merged.
-
-- **Wix employees:** open pull requests in `wix-private/ax-skills`. Review, evals and the skill-review check run there.
-- **Everyone else:** open an issue in `wix/skills` describing the change. A maintainer ports accepted changes to the source.
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on adding new skills.
+To report a problem with a skill or suggest a change, [open an issue](https://github.com/wix/skills/issues/new). Pull requests are not merged in this repository; accepted changes are made by the maintainers. See [CONTRIBUTING.md](CONTRIBUTING.md) for what makes a useful report.
 
 ## License
 

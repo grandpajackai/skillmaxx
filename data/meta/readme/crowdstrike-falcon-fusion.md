@@ -79,7 +79,7 @@ export FALCON_CLIENT_SECRET=your_client_secret_here
 # export FALCON_BASE_URL=https://api.us-3.crowdstrike.com  # US-GOV-1: https://api.laggar.gcw.crowdstrike.com
 ```
 
-Credentials come from environment variables (checked first) or the TOML profile, and are never hardcoded. Verify your setup:
+Credentials come from environment variables (checked first) or the TOML profile, and are never hardcoded. Either source can hold a 1Password secret reference (`op://<vault>/<item>/<field>`) instead of the client ID or secret, which `auth.py` reads with the 1Password CLI so the secret stays off disk. On a network that re-signs TLS traffic, set a profile's `ca_bundle` to your organization's CA bundle. See the [setup skill](skills/setup/SKILL.md) for both. Verify your setup:
 
 ```bash
 python common/scripts/auth.py
@@ -192,8 +192,4 @@ A workflow goes from idea to running in five steps. The orchestrator coordinates
 
 The `use-cases/` directory contains pattern-matchable workflow scenarios. Some are drawn from [CrowdStrike Tech Hub](https://www.crowdstrike.com/tech-hub/ng-siem/) blog posts; others are grounded directly in the bundled example workflows and the community "Workflow Wednesday" series. Each names the sub-skills it needs and cites its source.
 
-Grounded in bundled example workflows:
-
-- [Detection Enrichment](use-cases/detection-enrichment.md): enrich a detection's indicators with VirusTotal, then comment/tag the case or blocklist
-- [Detection Deduplication](use-cases/detection-deduplication.md): find and close duplicate Next-Gen SIEM detections with an Event Query dedup
-- [Human-in-the-Loop Containment](use-cas
+Grounded in bundled e

@@ -191,6 +191,7 @@ Available skills (in datarobot-* folders):
 - datarobot-agent-assist: Building and deploying agents
 - datarobot-setup: Local DataRobot development setup (SDK, dr-cli, Agent Assist)
 - datarobot-workload-api: Create, configure, debug, observe, and roll out container workloads on DataRobot's Workload API
+- datarobot-gap-analysis: Enterprise-readiness gap analysis for any agent repository
 - datarobot-connectivity-datastore-sql: SQL through DataRobot data connections (datastores)
 - datarobot-connectivity-jdbc-sql: SQL through DataRobot with a caller-supplied JDBC URL
 
@@ -281,4 +282,4 @@ This repository contains skills for common DataRobot workflows. You can also con
 | `skills/datarobot-feature-engineering/` | Instructions for feature engineering, feature discovery, and feature importance analysis. | [SKILL.md](skills/datarobot-feature-engineering/SKILL.md) |
 | `skills/datarobot-model-monitoring/` | Tools for monitoring model performance, tracking data drift, and managing model health. | [SKILL.md](skills/datarobot-model-monitoring/SKILL.md) |
 | `skills/datarobot-model-explainability/` | Tools for model explainability, prediction explanations, SHAP values, and model diagnostics. | [SKILL.md](skills/datarobot-model-explainability/SKILL.md) |
-| `skills/datarobot-data-preparation/` | Utilities for data upload, dataset management, an
+| `sk

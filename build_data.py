@@ -73,7 +73,7 @@ for it in items.values():
   it["listing_url"]=it["listings"][0];it.setdefault("notes","")
   if it["compatibility"]["grok_build"]=="documented" and it["compat_sources"]["grok_build"]==GK_AUTO: it["notes"]=(it["notes"]+" Grok Build status relies on xAI docs saying Grok reads Claude Code plugins automatically.").strip()
 out=sorted(items.values(),key=lambda x:x["name"].lower())
-json.dump({"generated":"2026-10-16","status_legend":{"documented":"official source (compat_sources[agent]) publishes the install method; NOT tested by SkillMaxx","unknown":"no official per-item documentation found"},"sources":[CC_MP,CX_MP,GK_MP,"https://github.com/modelcontextprotocol/servers","https://registry.npmjs.org (keywords:mcp-server)",CC_DOC,CX_DOC,GK_DOC,GK_AUTO,CC_MCP,CX_MCP,CU_MCP],"items":out},open("data/skills.json","w"),indent=1)
+json.dump({"generated":"2026-10-25","status_legend":{"documented":"official source (compat_sources[agent]) publishes the install method; NOT tested by SkillMaxx","unknown":"no official per-item documentation found"},"sources":[CC_MP,CX_MP,GK_MP,"https://github.com/modelcontextprotocol/servers","https://registry.npmjs.org (keywords:mcp-server)",CC_DOC,CX_DOC,GK_DOC,GK_AUTO,CC_MCP,CX_MCP,CU_MCP],"items":out},open("data/skills.json","w"),indent=1)
 from collections import Counter
 print(len(out),{a:sum(i["compatibility"][a]=="documented" for i in out) for a in A},Counter(i["type"] for i in out))
 bad=[i["slug"] for i in out for a in A if i["compatibility"][a]=="documented" and not i["compat_sources"][a]];print("missing src",bad)

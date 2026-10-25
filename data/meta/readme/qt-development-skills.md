@@ -29,8 +29,8 @@ for the full cross-platform story.
 
 | Skill | Type | Description |
 |-------|------|-------------|
-| `qt-cpp-review` | Review | Deterministic linting + 6 parallel deep-analysis agents for Qt C++ code. Covers model rule compliance, memory ownership, thread safety, correctness, error handling, and performance. |
-| `qt-qml-review` | Review | Deterministic QML linting (47+ rules) + parallel deep-analysis agents for bindings, layout, loaders, delegates, states, and performance. |
+| `qt-cpp-review` | Review | Deterministic linting + deep analysis for Qt C++ code (inline for small scopes, parallel shard agents above about 2,500 lines). Covers model rule compliance, memory ownership, thread safety, correctness, error handling, and performance. |
+| `qt-qml-review` | Review | Deterministic QML linting (48+ rules) + deep analysis (inline for small scopes, parallel shard agents above about 1,500 lines) for bindings, layout, loaders, delegates, states, and performance. |
 | `qt-qml` | Conceptual | QML best practices for writing, reviewing, fixing, and refactoring. Corrects systematic LLM pre-training biases around bindings, scoping, modules, JS interop, and types. |
 | `qt-canvas2d` | Conceptual | Qt Canvas2D (Qt 6.12+, Qt Canvas Painter) best practices for GPU-accelerated imperative 2D drawing in QML — gauges, charts, waveforms, freehand drawing. Corrects LLM confusion with the legacy Qt Quick `Canvas` and HTML5 `<canvas>` APIs |
 | `qt-ui-design` | Conceptual | UI design and audit for Qt/QML, web, and embedded (MPU/MCU) targets. Covers screen layout, navigation, and UX review with platform-aware defaults for geometry, viewing distance, input, and locale. |
@@ -59,12 +59,19 @@ for the full cross-platform story.
 | Tool | Description |
 |------|-------------|
 | `qt-documentation-mcp` | Hosted MCP server for Qt API documentation lookup across the latest release and active LTS branches. Bundled with the `qt-development-skills` plugin; also available standalone via the official MCP registry as `io.qt/qt-documentation-mcp`. |
+| `qml-live-preview-mcp` | A local MCP server that launches a Qt Quick application and live-previews QML edits in it, without a rebuild. |
 
 ### Qt Documentation MCP Tool
 
 See [`mcp/qt-documentation-mcp/README.md`](mcp/qt-documentation-mcp/README.md)
 for endpoint and manual setup instructions for AI clients other than
 Claude Code.
+
+### QML Live Preview MCP Tool
+
+Read the [`Introducing the QML Live Preview MCP Tool for Agentic Development of Embedded Devices`](https://www.qt.io/blog/introducing-the-qml-live-preview-mcp-tool-for-agentic-development-of-embedded-devices) blog post to gain more information about the QML-Live-Preview-MCP-Server.
+
+See [`mcp/qml-live-preview-mcp/README.md`](mcp/qml-live-preview-mcp/README.md) for endpoint and manual setup instructions.
 
 ## Repository Structure
 
@@ -109,9 +116,9 @@ Codex CLI support natively:
 name: qt-qml-review
 description: >-
   Reviews QML source files for correctness, performance, and
-  maintainability. Deterministic linting (47+ rules) plus
-  parallel deep-analysis agents for bindings, layout, loaders,
-  delegates, states, and performance.
+  maintainability. Deterministic linting (48+ rules) plus
+  deep analysis (parallel shard agents for large scopes) for
+  bindings, layout, loaders, delegates, states, and performance.
 license: LicenseRef-Qt-Commercial OR BSD-3-Clause
 compatibility: >-
   Designed for Claude Code, GitHub Copilot, and similar agents.
@@ -171,7 +178,7 @@ creating platform variants.
 Condensed variants and tools that can't run scripts or subagents
 give less thorough results. For example, GitHub Copilot loads only
 the static guidance of the review skills, without the linter or
-the parallel agents. See
+the deep-analysis agents. See
 [Requirements and platform support](docs/skills/requirements.md)
 for per-skill requirements and limits.
 
@@ -197,7 +204,15 @@ ln -s "$(pwd)/skills/qt-qml-review" ~/.claude/skills/qt-qml-review
 
 # Or copy into a project for team use
 cp -r skills/qt-qml-review .claude/skills/qt-qml-review
+
+# Review skills only: also install their review agents. The plugin
+# install does this for you; a skill-only copy does not include agents/.
+mkdir -p ~/.claude/agents
+cp agents/cpp-review-agent.md agents/qml-review-agent.md ~/.claude/agents/
 ```
+
+Without the agents, `qt-cpp-review` and `qt-qml-review` still work:
+they fall back to the general-purpose agent.
 
 Claude Code auto-discovers skills — no restart needed.
 
@@ -250,42 +265,4 @@ loaded.
 
 ### VSCode Agents (Copilot and others)
 
-Run `Chat: Install Plugin From Source` from the Command Palette.
-Enter `https://github.com/TheQtCompanyRnD/agent-skills` (this repo) to clone and install
-
-### Gemini CLI
-
-Install as an extension:
-
-```bash
-gemini extensions install https://github.com/TheQtCompanyRnD/agent-skills
-```
-
-Or import skills into your project's context file:
-
-```bash
-# Add to GEMINI.md (loaded automatically)
-echo '@skills/qt-qml-review/SKILL.md' >> GEMINI.md
-```
-
-### Cursor and Windsurf
-
-Neither tool reads skill directories. Copy the skill in as a rule:
-
-```bash
-# Cursor: the full SKILL.md becomes a project rule
-mkdir -p .cursor/rules/qt-qml-review
-cp skills/qt-qml-review/SKILL.md .cursor/rules/qt-qml-review/RULE.md
-
-# Windsurf: use the condensed variant from platforms/
-mkdir -p .windsurf/rules
-cp skills/qt-qml-review/platforms/windsurf.md .windsurf/rules/qt-qml-review.md
-```
-
-Windsurf variants exist for `qt-cpp-review`, `qt-qml-review`,
-`qt-qml-docs` and `qt-qml`. Scripts and subagents don't run on
-these tools, so only the static guidance applies.
-
-## Documentation site
-
-A browsable documentation site is built from the `docs/` director
+Run `Chat: Install Plugin From Source` from the Comm

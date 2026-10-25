@@ -61,11 +61,11 @@
 
 **DeepEval** is a simple-to-use, open-source LLM evaluation framework, for evaluating large-language model systems. It is similar to Pytest but specialized for unit testing LLM apps. DeepEval incorporates the latest research to run evals via metrics such as G-Eval, task completion, answer relevancy, hallucination, etc., which use LLM-as-a-judge and other NLP models that run **locally on your machine**.
 
-Whether you're building AI agents, RAG pipelines, or chatbots, implemented via LangChain or OpenAI, DeepEval has you covered. With it, you can easily evaluate:
+Whether you're building AI agents, multi-turn chatbots, voice agents, RAG pipelines, or anything else, implemented via LangChain or OpenAI, DeepEval has you covered. With it, you can easily evaluate:
 
 - **LLM apps end-to-end** as black boxes
-- **Complete agent trajectories** across every decision and action
-- **Individual agent steps** such as LLM calls, tool use, retrieval, and sub-agent handoffs
+- **Complete AI agent trajectories** across every decision and action
+- **Individual AI agent steps** such as LLM calls, tool use, retrieval, and sub-agent handoffs
 
 Use these evaluations to determine the optimal models, prompts, and architecture to improve your AI quality, prevent prompt drifting, or even transition from OpenAI to Claude with confidence.
 
@@ -89,9 +89,9 @@ Use these evaluations to determine the optimal models, prompts, and architecture
     - [DAG](https://deepeval.com/docs/metrics-dag) — DeepEval's graph-based deterministic LLM-as-a-judge metric builder
 
   - <details>
-    <summary><b>Agentic Metrics</b></summary>
+    <summary><b>AI Agent Metrics</b></summary>
 
-    - [Task Completion](https://deepeval.com/docs/metrics-task-completion) — evaluate whether an agent accomplished its goal
+    - [Task Completion](https://deepeval.com/docs/metrics-task-completion) — evaluate whether an AI agent accomplished its goal
     - [Tool Correctness](https://deepeval.com/docs/metrics-tool-correctness) — check if the right tools were called with the right arguments
     - [Goal Accuracy](https://deepeval.com/docs/metrics-goal-accuracy) — measure how accurately the agent achieved the intended goal
     - [Step Efficiency](https://deepeval.com/docs/metrics-step-efficiency) — evaluate whether the agent took unnecessary steps
@@ -103,18 +103,6 @@ Use these evaluations to determine the optimal models, prompts, and architecture
     </details>
 
   - <details>
-    <summary><b>RAG Metrics</b></summary>
-
-    - [Answer Relevancy](https://deepeval.com/docs/metrics-answer-relevancy) — measure how relevant the RAG pipeline's output is to the input
-    - [Faithfulness](https://deepeval.com/docs/metrics-faithfulness) — evaluate whether the RAG pipeline's output factually aligns with the retrieval context
-    - [Contextual Recall](https://deepeval.com/docs/metrics-contextual-recall) — measure how well the RAG pipeline's retrieval context aligns with the expected output
-    - [Contextual Precision](https://deepeval.com/docs/metrics-contextual-precision) — evaluate whether relevant nodes in the RAG pipeline's retrieval context are ranked higher
-    - [Contextual Relevancy](https://deepeval.com/docs/metrics-contextual-relevancy) — measure the overall relevance of the RAG pipeline's retrieval context to the input
-    - [RAGAS](https://deepeval.com/docs/metrics-ragas) — average of answer relevancy, faithfulness, contextual precision, and contextual recall
-
-    </details>
-
-  - <details>
     <summary><b>Multi-Turn Metrics</b></summary>
 
     - [Knowledge Retention](https://deepeval.com/docs/metrics-knowledge-retention) — evaluate whether the chatbot retains factual information throughout a conversation
@@ -122,6 +110,29 @@ Use these evaluations to determine the optimal models, prompts, and architecture
     - [Turn Relevancy](https://deepeval.com/docs/metrics-turn-relevancy) — evaluate whether the chatbot generates consistently relevant responses throughout a conversation
     - [Turn Faithfulness](https://deepeval.com/docs/metrics-turn-faithfulness) — check if the chatbot's responses are factually grounded in retrieval context across turns
     - [Role Adherence](https://deepeval.com/docs/metrics-role-adherence) — evaluate whether the chatbot adheres to its assigned role throughout a conversation
+
+    </details>
+
+  - <details>
+    <summary><b>Voice Agent Metrics</b></summary>
+
+    - [Agent Responsiveness](https://deepeval.com/docs/metrics-agent-responsiveness) — check whether the voice agent answered when it was spoken to
+    - [Turn-Taking Naturalness](https://deepeval.com/docs/metrics-turn-taking-naturalness) — measure response latency and interruptions across the call
+    - [Voice Naturalness](https://deepeval.com/docs/metrics-voice-naturalness) — evaluate how natural the voice agent sounds
+    - [Transcription Accuracy](https://deepeval.com/docs/metrics-transcription-accuracy) — check whether the voice agent's speech-to-text heard the caller correctly
+    - [Audio Glitch](https://deepeval.com/docs/metrics-audio-glitch) — detect audio artifacts in the voice agent's speech
+
+    </details>
+
+  - <details>
+    <summary><b>RAG Metrics</b></summary>
+
+    - [Answer Relevancy](https://deepeval.com/docs/metrics-answer-relevancy) — measure how relevant the output is to the input
+    - [Faithfulness](https://deepeval.com/docs/metrics-faithfulness) — evaluate whether the RAG pipeline's output factually aligns with the retrieval context
+    - [Contextual Recall](https://deepeval.com/docs/metrics-contextual-recall) — measure how well the RAG pipeline's retrieval context aligns with the expected output
+    - [Contextual Precision](https://deepeval.com/docs/metrics-contextual-precision) — evaluate whether relevant nodes in the RAG pipeline's retrieval context are ranked higher
+    - [Contextual Relevancy](https://deepeval.com/docs/metrics-contextual-relevancy) — measure the overall relevance of the RAG pipeline's retrieval context to the input
+    - [RAGAS](https://deepeval.com/docs/metrics-ragas) — average of answer relevancy, faithfulness, contextual precision, and contextual recall
 
     </details>
 
@@ -168,12 +179,4 @@ Use these evaluations to determine the optimal models, prompts, and architecture
 
 # 🔌 Integrations
 
-DeepEval plugs into any LLM framework — OpenAI Agents, LangChain, CrewAI, and more. The same traces can go to **Confident AI** once you're live, where evals run on every production trace.
-
-## Frameworks
-
-- [LangChain](https://www.deepeval.com/integrations/frameworks/langchain?utm_source=GitHub) — evaluate LangChain applications with a callback handler
-- [LangGraph](https://www.deepeval.com/integrations/frameworks/langgraph?utm_source=GitHub) — evaluate LangGraph agents with a callback handler
-- [Pydantic AI](https://www.deepeval.com/integrations/frameworks/pydanticai?utm_source=GitHub) — evaluate Pydantic AI agents with type-safe validation
-- [CrewAI](https://www.deepeval.com/integrations/frameworks/crewai?utm_source=GitHub) — evaluate CrewAI multi-agent systems
-- [Anthropic](https://www.deepeval.com/integrations/frameworks/anthropic?utm_source=GitHub) — evaluate and trace Claude applications via a
+DeepEval plugs into any LLM framework — OpenAI Agents, LangChain, CrewAI, and more

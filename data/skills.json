@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-16",
+ "generated": "2026-10-25",
  "status_legend": {
   "documented": "official source (compat_sources[agent]) publishes the install method; NOT tested by SkillMaxx",
   "unknown": "no official per-item documentation found"
@@ -13933,6 +13933,40 @@
    ],
    "listing_url": "https://github.com/anthropics/claude-plugins-official",
    "notes": "Grok Build status relies on xAI docs saying Grok reads Claude Code plugins automatically."
+  },
+  {
+   "slug": "videogen",
+   "name": "Videogen",
+   "description": "AI video generator and AI video editor. Go from text to video, image to video, or script to video, then export an MP4.",
+   "source_url": "https://videogen.io/videogen-mcp",
+   "category": "media",
+   "type": "plugin",
+   "install": {
+    "claude_code": null,
+    "codex": null,
+    "grok_build": "grok plugin install videogen --trust",
+    "cursor": null,
+    "pi": null
+   },
+   "compatibility": {
+    "claude_code": "unknown",
+    "codex": "unknown",
+    "grok_build": "documented",
+    "cursor": "unknown",
+    "pi": "unknown"
+   },
+   "compat_sources": {
+    "claude_code": null,
+    "codex": null,
+    "grok_build": "https://x.ai/news/grok-plugin-marketplace",
+    "cursor": null,
+    "pi": null
+   },
+   "listings": [
+    "https://github.com/xai-org/plugin-marketplace"
+   ],
+   "listing_url": "https://github.com/xai-org/plugin-marketplace",
+   "notes": ""
   },
   {
    "slug": "vsql-extension-builder",

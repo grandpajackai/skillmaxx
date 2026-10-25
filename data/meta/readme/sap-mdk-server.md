@@ -70,7 +70,7 @@ If you're on an Intel Mac, you may need to:
     - With Cline open, look below the prompt box and click **Manage MCP Servers**.
     - In the dialog, click **Settings**. The MCP Servers page opens.
     - Click **Configure MCP Servers**. This will open the `cline_mcp_settings.json` file in your editor.
-    - In the JSON settings file, add a configuration block for MDK MCP server within the `mcpServers` section, and save the file. The supported schema versions include 26.6 (default), 26.3, 25.9, 25.6, 24.11, and 24.7.
+    - In the JSON settings file, add a configuration block for MDK MCP server within the `mcpServers` section, and save the file. The supported schema versions include 26.9 (default), 26.6, 26.3, 25.9, 25.6, 24.11, and 24.7.
 
     ```json
     {
@@ -78,7 +78,7 @@ If you're on an Intel Mac, you may need to:
         "mdk-mcp": {
           "type": "stdio",
           "command": "mdk-mcp",
-          "args": ["--schema-version", "26.6"]
+          "args": ["--schema-version", "26.9"]
         }
       }
     }
@@ -106,7 +106,7 @@ If you're on an Intel Mac, you may need to:
         "mdk-mcp": {
           "type": "stdio",
           "command": "mdk-mcp",
-          "args": ["--schema-version", "26.6"]
+          "args": ["--schema-version", "26.9"]
         }
       }
     }
@@ -138,7 +138,7 @@ If you're on an Intel Mac, you may need to:
       "mcp": {
         "mdk-mcp": {
           "type": "local",
-          "command": ["mdk-mcp", "--schema-version", "26.6"],
+          "command": ["mdk-mcp", "--schema-version", "26.9"],
           "enabled": true
         }
       }
@@ -158,7 +158,7 @@ If you're on an Intel Mac, you may need to:
         "mdk-mcp": {
           "type": "stdio",
           "command": "mdk-mcp",
-          "args": ["--schema-version", "26.6"]
+          "args": ["--schema-version", "26.9"]
         }
       }
     }
@@ -182,7 +182,7 @@ If you're on an Intel Mac, you may need to:
          "mcpServers": {
            "mdk-mcp": {
              "command": "/usr/local/bin/node",
-             "args": ["/usr/local/lib/node_modules/@sap/mdk-mcp-server/build/index.js", "--schema-version", "26.6"]
+             "args": ["/usr/local/lib/node_modules/@sap/mdk-mcp-server/build/index.js", "--schema-version", "26.9"]
            }
          }
        }
@@ -257,4 +257,4 @@ This release of the MDK MCP server includes the following tools, which can be ac
 | Tools     | Description | Parameters      |
 |----------|-----|-----------|
 | `mdk-create`    | Creates MDK projects or entity metadata using templates (CRUD, List Detail, Base). Use this for initializing new projects or adding entity metadata to existing projects.  | - `folderRootPath:` The path of the current project root folder. <br> - `scope:` The scope of creation:<br>• `project`: Initialize a new MDK project with full structure<br>• `entity`: Add entity metadata to an existing project<br> - `templateType:` The type of template to use (crud, list detail, base). Note: `base` template is only valid for project scope.<br> - `oDataEntitySets:` The OData entity sets relevant to the user prompt, separated by commas.<br> - `offline:` Whether to generate the project in offline mode (only applicable for project scope). Set to false unless offline is explicitly specified. |
-| `mdk-gen`    | Generates MDK artifacts including pages, actions, i18n files, and rule references. Returns prompts for LLM processing (pages, actions, i18n) or searches for rule examples.  | - `artifactType:` The type of artifact to generate:<br>• `page`: Generate MDK page files (`.page`) with databinding or layout<br>• `action`: Generate MDK action files (`.action`)<br>• `i18n`: Generate internationalization files (`.properties`)<br>• `rule`: Search for and return relevant JavaScript rule examples<br> - `folderRootPath:` The path of the current project root folder (not required for rule artifact type).<br><br>**For page artifacts:**<br> - `pageType:` Type of page `page`):<br>• `databinding`: Data-driven pages with controls bound to OData<br>• `layout`: Structure-focused pages with specific layouts<br> - `controlType:` The control type for databinding pages (required when pageType is `databinding`). Available types: ObjectTable, FormCell, KeyValue, ObjectHeader, ContactTable, SimplePropertyCollection, ObjectCard, DataTable, KPIHeader, ProfileHeader, ObjectCollection, Timeline, TimelinePreview, Calen
+| `mdk-gen`    | Generates MDK artifacts including pages, actions, i18n files, and rule references. Returns prompts for LLM processing (pages, actions, i18n) or searches for rule examples.  | - `artifactType:` The type of artifact to generate:<br>• `page`: Generate MDK page files (`.page`) with databinding or layout<br>• `action`: Generate MDK action files (`.action`)<br>• `i18n`: Generate internationalization files (`.properties`)<br>• `rule`: Search for and return relevant JavaScript rule examples<br> - `folderRootPath:` The path of the current project root folder (not required for rule artifact type).<br><br>**For page artifacts:**<br> - `pageType:` Type of page `page`):<br>• `databinding`: Data-driven pages with controls bound to OData<br>• `layout`: Structure-focused pages with specific layouts<br> - `controlType:` The control type for databinding pages (required when pageType is `databinding`). Available types: ObjectTable, FormCell, KeyValue, ObjectHeader, ContactTable, SimplePropertyCollection, ObjectCard, DataTable, KPIHeader, ProfileHeader, ObjectCollection, Timeline, TimelinePreview,

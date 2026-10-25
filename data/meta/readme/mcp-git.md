@@ -8,7 +8,7 @@ A Model Context Protocol server for Git repository interaction and automation. T
 
 Source: https://github.com/modelcontextprotocol/servers/tree/main/src/git
 
-Requires MCP Python SDK 1.x (`mcp>=1.29.0,<2`). SDK 2.0 renamed APIs this server uses. The port to v2 is in progress.
+Requires MCP Python SDK 2.x (`mcp>=2.3,<3`). The server is built on the SDK's high-level `MCPServer`: each tool is a typed Python function, and the SDK derives its input schema from the signature.
 
 Please note that mcp-server-git is currently in early development. The functionality and available tools are subject to change and expansion as we continue to develop and improve the server.
 
@@ -99,6 +99,17 @@ Please note that mcp-server-git is currently in early development. The functiona
      - `contains` (string, optional): The commit sha that branch should contain. Do not pass anything to this param if no commit sha is specified
      - `not_contains` (string, optional): The commit sha that branch should NOT contain. Do not pass anything to this param if no commit sha is specified
    - Returns: List of branches
+
+### Protocol versions
+
+The server speaks both eras of the Model Context Protocol over stdio, with nothing to configure: a **2026-07-28** client (discovered with `server/discover`, no session) and a **2025-11-25** client (the `initialize` handshake). The client's first request decides which. Tools behave the same in both.
+
+Roots is deprecated in 2026-07-28, and this server never asks a client for Roots in either era: repository access comes from `--repository` alone, or, with no `--repository`, from each tool call's `repo_path`. Methods the 2026-07-28 specification removes, such as `ping`, are answered only on a 2025-11-25 connection.
+
+### Errors
+
+- **A tool that fails** returns a result with `isError: true` whose text is `Error executing tool <name>: <message>`, so the model can read it and correct the call. This covers git errors (an unknown revision, a failed command), a `repo_path` that is not a repository or is outside `--repository`, the flag-injection guards, and arguments that do not match the tool's input schema.
+- **An unknown tool name** is a protocol error, JSON-RPC `-32602` (`Unknown tool: <name>`), as the specification requires in both eras. Before 2.0.0 it was an `isError` result.
 
 ## Installation
 
@@ -280,50 +291,4 @@ You can use the MCP inspector to debug the server. For uvx installations:
 npx @modelcontextprotocol/inspector uvx mcp-server-git
 ```
 
-Or if you've installed the package in a specific directory or are developing on it:
-
-```
-cd path/to/servers/src/git
-npx @modelcontextprotocol/inspector uv run mcp-server-git
-```
-
-Running `tail -n 20 -f ~/Library/Logs/Claude/mcp*.log` will show the logs from the server and may
-help you debug any issues.
-
-## Development
-
-### Tests and coverage
-
-The test suite drives `serve()` in-process through an MCP `ClientSession`
-(see `tests/conftest.py`). From `src/git`:
-
-```bash
-uv run --frozen pytest                 # the tests
-uv run --frozen pytest --cov --cov-report=term-missing --cov-report=json
-```
-
-The second command adds branch coverage of `src/mcp_server_git`, printed per
-file and written to `coverage.json` (ignored by git). Every file must stay at
-or above 90% of its lines and 90% of its branches. Code that cannot be reached
-is marked `# pragma: no cover  # <reason>` rather than lowering that bar.
-
-### Trying changes in a client
-
-There are two ways to try your changes in a client:
-
-1. Run the MCP inspector to test your changes. See [Debugging](#debugging) for run instructions.
-
-2. Test using the Claude desktop app. Add the following to your `claude_desktop_config.json`:
-
-### Docker
-
-```json
-{
-  "mcpServers": {
-    "git": {
-      "command": "docker",
-      "args": [
-        "run",
-        "--rm",
-        "-i",
-        "--mount", "type=bind,src=/User
+Or if you've installed the package in a specific directory or are develop

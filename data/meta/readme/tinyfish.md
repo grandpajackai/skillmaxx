@@ -1,44 +1,102 @@
 # TinyFish Web Agent Integrations
 
-TinyFish Web Agent provides AI-powered web automation using natural language instructions and can interact with any website including bot-protected pages. TinyFish Web Agent works across multiple sites and adapts to page changes without breaking, making it the perfect tool for automations and AI agents. Check out all our integrations or get started with our [API](https://docs.tinyfish.ai).
+Bring TinyFish's web tools into your AI agents and automated workflows.
 
-## What is TinyFish Web Agent useful for?
+These integrations let your agents search the web, read pages, and complete tasks in a real browser. TinyFish handles the web work and returns results to your agent or workflow, where you can use them to answer questions, update records, or trigger the next step.
 
-- Navigating websites and completing workflows using plain English
-- Scraping data from bot-protected or dynamic pages
-- Automating form submissions and multi-step browser tasks
-- Extracting structured data from any web page at scale
-- Running browser automations across authenticated systems
-- Opening hundreds of URLs and collecting results from every page
+Choose your platform below, or follow the [API quick start](https://docs.tinyfish.ai/quick-start) to build your own connection.
 
-## Integrations
+![High-level diagram: agents and workflows call the integrations in this repository, which connect to TinyFish's hosted web tools. Results return to the calling agent or workflow.](./docs/assets/tinyfish-integrations.svg)
 
-| Integration        | Description                                                    |
-| ------------------ | ---------------------------------------------------------------- |
-| [Claude](./claude) | Plugin for [Claude Code](https://code.claude.com), Claude.ai, Claude Desktop, and Claude Cowork |
-| [Grok](./grok)     | Plugin for [Grok Build](https://x.ai) — search, fetch, and goal-driven web automation via TinyFish's hosted MCP server |
-| [Dify](./dify)     | Plugin for the [Dify](https://dify.ai) AI application platform |
-| [LangChain](./langchain) | `langchain-tinyfish` — TinyFish Search, Fetch, Web Agent, and Browser as LangChain tools |
-| [Google ADK](./google-adk) | `tinyfish-adk` — TinyFish tools for the Google Agent Development Kit |
-| [Hermes](./hermes) | `tinyfish-hermes` — TinyFish Search and Fetch as a [Hermes Agent](https://github.com/NousResearch/Hermes-Agent) web provider plugin |
-| [Pi](./pi)         | `@tiny-fish/pi` — TinyFish skills and MCP server for the [Pi coding agent](https://pi.dev) |
-| [n8n](./n8n)       | Community node for the [n8n](https://n8n.io) workflow automation platform |
+## Choose an integration
 
-## Contribution guidelines
+### AI assistants and coding agents
 
-Want to contribute to these integrations? We love adding TinyFish Web Agent to new ecosystems! Check out individual integration directories for setup and development instructions.
-
-## Identifying your integration to TinyFish
-
-Every integration that calls the REST API directly must send two headers on every request.
-
-| header | value |
+| Integration | What it adds |
 |---|---|
-| `X-TF-Client-Name` | the bare integration token — the same value used for `api_integration` where one exists: `dify`, `hermes`, `n8n` |
-| `X-TF-Client-Version` | the integration's own published version |
+| [Claude](./claude) | Hosted MCP tools and skills for Claude Code, Claude.ai, Claude Desktop, and Cowork. Covers search, page extraction, automation, browser control, and monitoring. |
+| [Grok](./grok) | Grok Build plugin with hosted MCP tools and skills for web research, automation, authenticated sites, browser control, and monitoring. |
+| [Hermes](./hermes) | Search and Fetch providers, a cloud browser provider, and the `tinyfish_agent` tool for goal-based web automation. |
+| [Pi](./pi) | `@tiny-fish/pi`: six skills that use TinyFish through an MCP adapter or the TinyFish CLI. |
 
-Do not send `X-TF-Request-Origin` yourself; `api` is the transport and the server derives it, and the `tinyfish` SDK already sets its own value. Integrations that wrap the SDK set `TF_CLIENT_NAME` / `TF_CLIENT_VERSION` alongside `TF_API_INTEGRATION` instead — the SDK turns those two into the headers above from `tinyfish>=0.5.0`, and ignores them before that. `langchain` and `google-adk` set only `TF_API_INTEGRATION` today. Without any of this, telemetry cannot tell the integration from a hand-written curl.
+### Agent frameworks
+
+| Integration | What it adds |
+|---|---|
+| [LangChain](./langchain) | `langchain-tinyfish`: Search, Fetch, Web Agent, and Browser tools, with async support and progress streaming inside LangGraph. |
+| [Google ADK](./google-adk) | `tinyfish-adk`: seven function tools for search, extraction, browser sessions, automation, and run management. |
+
+### Workflow platforms
+
+| Integration | What it adds |
+|---|---|
+| [Dify](./dify) | Plugin for Dify workflows and agents. Start synchronous, asynchronous, or streamed automations, then check or list runs. |
+| [n8n](./n8n) | `n8n-nodes-tinyfish`: community node for browser automation and run management. Works in workflows and as an n8n AI Agent tool. |
+
+## What you can do
+
+Available tools vary by integration:
+
+- **Search:** Find live web results with titles, snippets, and source URLs.
+- **Fetch:** Read page content as Markdown, HTML, or JSON, including pages rendered with JavaScript.
+- **Web Agent:** Give TinyFish a URL and a goal. It navigates pages, clicks buttons, fills forms, and returns results.
+- **Browser:** Create a remote browser session for direct control through Playwright, Puppeteer, or another CDP client.
+- **Monitoring:** Check a page or search topic on a schedule and send results to a webhook through supported MCP integrations.
+
+The MCP tools also support saved browser profiles for tasks on sites you have signed into.
+
+Search and Fetch are free within daily allowances. Automation, browser sessions, and monitor checks draw from your TinyFish wallet. See the [documentation](https://docs.tinyfish.ai/) for current usage details.
+
+## Get started
+
+1. Open the guide for your integration above.
+2. Install the package, plugin, or workflow node.
+3. Connect your TinyFish account using the guide's authentication steps. Some integrations use browser sign-in; others require an [API key](https://agent.tinyfish.ai/api-keys).
+4. Run an example from the integration guide.
+
+For another MCP-compatible client, follow the [MCP setup guide](https://docs.tinyfish.ai/mcp-integration).
+
+## Example: collect product prices in n8n
+
+Add a TinyFish Web Agent node to your workflow and provide a starting URL and a goal:
+
+```text
+URL: https://scrapeme.live/shop
+
+Goal: Extract the first 2 product names and prices.
+Return JSON with a products array containing name and price.
+```
+
+TinyFish runs the browser task and returns the result to n8n. Use downstream nodes to save the products to Google Sheets or send an update to Slack.
+
+Follow the [n8n tutorial](https://docs.tinyfish.ai/integrations/n8n) for setup and a complete workflow.
+
+## Documentation and examples
+
+- [Developer documentation](https://docs.tinyfish.ai/)
+- [API quick start](https://docs.tinyfish.ai/quick-start)
+- [Agent API reference](https://docs.tinyfish.ai/agent-api/reference)
+- [MCP setup](https://docs.tinyfish.ai/mcp-integration)
+- [Dify guide](https://docs.tinyfish.ai/integrations/dify)
+- [TinyFish Cookbook](https://github.com/tinyfish-io/tinyfish-cookbook)
+
+## Contributing
+
+To improve an integration or add support for another platform, follow the development instructions in the relevant integration directory and open a pull request. Repository maintainers can find release instructions in [Maintainer notes](./.github/MAINTAINERS.md).
+
+Integrations that call the REST API directly must send these headers on every request:
+
+| Header | Value |
+|---|---|
+| `X-TF-Client-Name` | The bare integration token, matching `api_integration` where one exists, such as `dify`, `hermes`, or `n8n`. |
+| `X-TF-Client-Version` | The integration's published version. |
+
+Python SDK integrations use `TF_API_INTEGRATION` for attribution. With `tinyfish>=0.5.0`, `TF_CLIENT_NAME` and `TF_CLIENT_VERSION` set the corresponding headers; older SDK versions ignore these two variables. LangChain and Google ADK currently set only `TF_API_INTEGRATION`.
+
+Do not set `X-TF-Request-Origin` manually; TinyFish derives the REST transport origin, and the SDK sets its own value.
+
+For questions or bugs, [open an issue](https://github.com/tinyfish-io/tinyfish-web-agent-integrations/issues).
 
 ## License
 
-These integrations are licensed under the MIT License.
+[MIT](./LICENSE).

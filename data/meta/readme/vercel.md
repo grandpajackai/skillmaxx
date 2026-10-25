@@ -64,7 +64,7 @@ A text-form relational graph covering:
 - Common cross-product workflows
 - Migration awareness for sunset products
 
-### Skills (34 skills)
+### Skills (37 skills)
 
 | Skill                   | Covers                                                                                                                               |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
@@ -83,11 +83,12 @@ A text-form relational graph covering:
 | `domains`              | Public domain search and pricing, CLI and Registrar API operations, project domains, DNS, transfers, and renewals                    |
 | `env-vars`              | Environment variable management — .env files, vercel env commands, OIDC tokens                                                       |
 | `eve`                   | Filesystem-first framework for durable AI agents, agent applications, channels, sandboxes, schedules, evals, and frontend clients    |
-| `flags-sdk`             | Feature flags and A/B tests — Flags SDK, provider adapters, `vercel flags` CLI, precompute, Flags Explorer                           |
+| `flags-sdk`             | Flags SDK code in Next.js and SvelteKit — `flag()` declarations, provider adapters, precompute, Flags Explorer endpoint                |
 | `is-agentic`            | Score how ready a website, domain, or public MCP endpoint is for AI agents, and act on the Is Agentic report                        |
 | `knowledge-update`      | Knowledge update guidance for the plugin                                                                                             |
 | `marketplace`           | Integration discovery and installation (`vercel integration add` / `vercel install`), provider agent skills, auto-provisioned env vars, unified billing |
 | `microfrontends`        | Multi-zone and microfrontend architecture, routing, deployment boundaries, and shared dependencies                                   |
+| `offload-to-sandbox`    | Offload heavy builds, test suites, and parallel agent work to Vercel Sandboxes with the `vercel sandbox` CLI: base snapshots, sharding, cleanup |
 | `queues`                | Vercel Queues — durable topics, `@vercel/queue` publish/consume, consumer groups, retries, delays, idempotency, Queues vs Workflows   |
 | `react-best-practices`  | React/Next.js performance optimization — 64 rules across 8 categories                                                                |
 | `routing-middleware`    | Request interception before cache, rewrites, redirects, personalization — Edge/Node.js/Bun runtimes                                  |
@@ -96,6 +97,7 @@ A text-form relational graph covering:
 | `vercel-cli`            | All CLI commands — deploy, env, dev, domains, cache management, MCP integration, marketplace                                         |
 | `vercel-connect`        | Managed OAuth tokens and third-party connections for apps, MCP servers, and eve agents                                               |
 | `vercel-firewall`       | DDoS protection, WAF rules, rate limiting, bot filtering, and IP controls                                                            |
+| `vercel-flags`          | Vercel Flags — plan flags, choose an integration, `vercel flags` CLI, rollouts, A/B tests, `@vercel/flags-core`, safe retirement       |
 | `vercel-functions`      | Node.js, Bun, Python, and Rust runtimes on Fluid Compute, streaming, WebSockets, Cron Jobs, configuration                         |
 | `vercel-sandbox`        | Ephemeral Firecracker microVMs for running untrusted/AI-generated code safely                                                        |
 | `vercel-services`       | Multiple frontends and backends in one project, with public rewrites and private service bindings                                    |
@@ -150,5 +152,4 @@ What is collected:
 - `plugin:version`: sent with telemetry batches so usage can be grouped by plugin version.
 - `plugin:install_id`: the locally stored random installation UUID.
 - `plugin:agent_harness`: each distinct detected agent harness category observed per installation per UTC day.
-- `skill:invoked`: the name of a skill or command that ships with this plugin (for example `ai-sdk`, `workflow`, `deploy`) each time it is loaded through the agent's `Skill` tool — whether you typed the slash command or the model chose it. See [Skill telemetry](#skill-telemetry) below.
-- `skill:injected`: the same skill names, sent when the plugin's opt-in injection hooks (`pretooluse-skill-inject`, `u
+- `skill:invoked`: the name of a skill or command that ships wit

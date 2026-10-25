@@ -136,6 +136,15 @@ Example:
   - MIME type: `application/json`
   - Returns the same shape as `read_graph` (entities and relations)
   - Mutation tools (`create_entities`, `create_relations`, `add_observations`, `delete_entities`, `delete_observations`, `delete_relations`) emit `notifications/resources/updated` for this URI, so subscribed clients see live changes
+  - How a client subscribes depends on its protocol version: a 2026-07-28 client names the URI in the `resourceSubscriptions` of its `subscriptions/listen` request and gets the updates on that stream; a 2025-era client calls `resources/subscribe`
+
+## Protocol versions
+
+The server serves both protocol eras on stdio from the same process. The client's first message picks the era of the connection: a 2026-07-28 client opens with `server/discover` and sends its protocol version, identity and capabilities with each request, and a 2025-era client opens with the `initialize` handshake. The tools and the resource are the same on both.
+
+## Requirements
+
+Node.js 24 or later, when the server runs through `npx` or from source.
 
 # Usage with Claude Desktop
 
@@ -334,23 +343,4 @@ Follow these steps for each interaction:
    - While conversing with the user, be attentive to any new information that falls into these categories:
      a) Basic Identity (age, gender, location, job title, education level, etc.)
      b) Behaviors (interests, habits, etc.)
-     c) Preferences (communication style, preferred language, etc.)
-     d) Goals (goals, targets, aspirations, etc.)
-     e) Relationships (personal and professional relationships up to 3 degrees of separation)
-
-4. Memory Update:
-   - If any new information was gathered during the interaction, update your memory as follows:
-     a) Create entities for recurring organizations, people, and significant events
-     b) Connect them to the current entities using relations
-     c) Store facts about them as observations
-```
-
-## Building
-
-Docker:
-
-```sh
-docker build -t mcp/memory -f src/memory/Dockerfile . 
-```
-
-For Awareness: a prior mcp/memory volume contains an index.js file that could be overwritten by the new container. If you 
+     c) P
