@@ -1,6 +1,6 @@
 # PR draft: skillmatic-ai/awesome-agent-skills
 
-**Status:** NOT opened. Waiting for Brandon's review.
+**Status:** OPENED 2026-10-25: https://github.com/skillmatic-ai/awesome-agent-skills/pull/219
 **Repo:** https://github.com/skillmatic-ai/awesome-agent-skills (CONTRIBUTING: format `[Title](URL) - Description.`, add to the right section, no duplicates; directories are explicitly in scope via "Skill Marketplaces & directories")
 **Section:** `### Skill Marketplaces & directories` (append after `skills.sh`)
 **Branch:** `add-skillmaxx`
