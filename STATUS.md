@@ -25,7 +25,7 @@
 ## In progress / claimed by
 | Task | Agent | Branch | Since |
 |---|---|---|---|
-| _(none)_ | | | |
+| Growth workstream (channels, PR drafts, newsletter #1, sponsor kit, analytics rec) | Grok Bot | grokbot/growth | 2026-10-25 |
 
 ## Next up
 1. Confirm formsubmit activation and DKIM.
