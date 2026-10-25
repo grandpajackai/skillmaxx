@@ -25,14 +25,15 @@
 ## In progress / claimed by
 | Task | Agent | Branch | Since |
 |---|---|---|---|
-| Growth workstream (channels, PR drafts, newsletter #1, sponsor kit, analytics rec) | Grok Bot | grokbot/growth | 2026-10-25 |
+| _(none)_ | | | |
 
 ## Next up
 1. Confirm formsubmit activation and DKIM.
 2. Fix the 4 ambiguous Grok Build install commands.
 3. Decide on Beehiiv Pro vs free before ~Nov 2.
 4. Tune Beehiiv form for mobile.
-5. Sponsor outreach (needs Brandon's approval; see PLAN.md).
+5. Growth (see growth/): approve the skillmatic PR draft, paste newsletter #1 into Beehiiv, create a Cloudflare account for Web Analytics, approve the outreach drafts (growth/outreach/).
 
 ## Session log
 - **2026-10-25 · Grok Bot** — Catch-up refresh after Oct 17–24 missed nightlies: +videogen (424 skills), 803/902 tests pass (8 regressions, logged in testing/results/2026-10-25.json). Fixed /advertise mobile overflow and dishonest newsletter text. Swapped newsletter to Beehiiv embed + attribution with fallback link and styled wrapper (screenshots: review/beehiiv/). nightly.sh now builds for the custom domain. Added COLLABORATING.md, STATUS.md, PR CI workflow; enabled branch protection on master (landed via PR #1).
+- **2026-10-25 · Grok Bot** — Growth workstream: growth/CHANNELS.md (25 channels ranked, rules checked: heilcheng excludes directories, travisvn bans AI-assisted PRs, awesome-claude-code takes issue-form submissions only, punkpeye is servers only), PR draft for skillmatic-ai/awesome-agent-skills (not opened), newsletter issue #1, SPONSORS.md (founding pricing, 12 targets), 3 cold-intro drafts (not sent), analytics recommendation (Cloudflare Web Analytics; needs an account). Nothing submitted, sent, or created.
