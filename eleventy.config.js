@@ -1,7 +1,7 @@
 import { EleventyHtmlBasePlugin } from "@11ty/eleventy";
 export default function(c){
  c.addPlugin(EleventyHtmlBasePlugin);
- c.addPassthroughCopy({"src/assets":"assets"});
+ c.addPassthroughCopy({"src/assets":"assets"});c.addPassthroughCopy({"src/root":"/"});
  c.addFilter("host",u=>{try{return new URL(u).hostname.replace(/^www\./,"")}catch(e){return "Listing"}});
  c.addFilter("listingLabel",u=>/anthropics\//.test(u)?"Claude marketplace":/xai-org\//.test(u)?"Grok marketplace":/openai\//.test(u)?"Codex marketplace":/npmjs/.test(u)?"npm":(()=>{try{return new URL(u).hostname.replace(/^www\./,"")}catch(e){return "Listing"}})());
  c.addFilter("json",v=>JSON.stringify(v));
