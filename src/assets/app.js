@@ -41,8 +41,6 @@ if(grid){const q=$("#q"),ca=$("#cat"),so=$("#sort"),cards=[...$$(".card",grid),.
  q.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();document.getElementById("browse").scrollIntoView({behavior:"smooth"})}});
  $("#fopen").addEventListener("click",()=>$("#facets").classList.add("open"));$("#fclose").addEventListener("click",()=>$("#facets").classList.remove("open"));}
 setAgent(agent,false);if(filter)filter();
-// newsletter placeholder
-const nf=$("#nform");if(nf)nf.addEventListener("submit",e=>{setTimeout(()=>{$("#nmsg").hidden=false},300)});
 // demo card
 const dd=$("#demodata");if(dd&&!matchMedia("(prefers-reduced-motion: reduce)").matches||dd){const d=JSON.parse(dd.textContent),order=Object.keys(NAMES);let i=0;
  const step=()=>{const a=order[i%order.length];$$(".dtabs span").forEach(s=>s.classList.toggle("on",s.dataset.a===a));$("#dcode").textContent=d.install[a]||`# No official ${NAMES[a]} instructions yet`;
@@ -65,3 +63,4 @@ document.addEventListener("keydown",e=>{const typing=/INPUT|TEXTAREA|SELECT/.tes
  if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault();openPal()}
  else if(e.key==="/"&&!typing){e.preventDefault();const q=$("#q");q?q.focus():openPal()}});
 })();
+{const w=document.querySelector(".bhf");if(w){const t=()=>w.querySelectorAll("iframe:not([title])").forEach(f=>f.title="SkillMaxx Weekly newsletter signup");t();new MutationObserver(t).observe(w,{childList:true,subtree:true})}}
