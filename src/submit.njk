@@ -12,12 +12,12 @@ desc: "Submit your skill, plugin or MCP server to SkillMaxx — free listing on 
       action="https://formsubmit.co/skillmaxx@gilventures.ai"
       method="POST"
       id="submit-form"
-      novalidate
+      data-smx-form data-err="#submit-err" data-mail="mailto:skillmaxx@gilventures.ai?subject=Skill%20submission"
     >
       {# Hidden formsubmit.co config #}
       <input type="hidden" name="_subject" value="New SkillMaxx submission">
       <input type="hidden" name="_next" value="{{ site.url }}{{ site.base }}/submit/?sent=true">
-      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_autoresponse" value="Thanks for sending a tool to SkillMaxx!&#10;&#10;It&#x27;s in the review queue. A human (me, Brandon) looks at every submission, usually within a few days. If the install docs check out, it gets listed and joins the nightly install tests in Claude Code, Codex, Grok Build, Cursor and Pi, so you&#x27;ll see real pass/fail results with logs, good or bad.&#10;&#10;Got install notes for a specific agent, or think we&#x27;ll get something wrong? Email skillmaxx@gilventures.ai and we&#x27;ll sort it out.&#10;&#10;Brandon&#10;SkillMaxx · https://skillmaxx.gilventures.ai">
       <input type="hidden" name="_template" value="table">
       {# Honeypot #}
       <input type="text" name="_honey" style="display:none" aria-hidden="true" tabindex="-1" autocomplete="off">
@@ -92,11 +92,13 @@ desc: "Submit your skill, plugin or MCP server to SkillMaxx — free listing on 
         </div>
       </fieldset>
 
+      <div class="fg"><label class="fl"><span>Your email <em class="muted">optional, for a confirmation and listing updates</em></span><input type="email" name="email" placeholder="you@example.com" maxlength="200"></label></div>
       <div class="form-actions">
         <button type="submit" class="btn">Submit skill</button>
         <p class="muted">Submitting sends your entry to our review queue. Listings are free. We'll verify install docs before publishing.</p>
       </div>
     </form>
+    <p id="submit-err" role="alert" hidden style="margin-top:10px;color:#e55;font-size:13px"></p>
 
     {# Success state — shown when redirected back with ?sent=true #}
     <div class="success-msg" id="success-msg" hidden>
@@ -246,3 +248,4 @@ desc: "Submit your skill, plugin or MCP server to SkillMaxx — free listing on 
     }
   })();
 </script>
+<script src="/assets/forms.js" defer></script>

@@ -64,3 +64,9 @@ document.addEventListener("keydown",e=>{const typing=/INPUT|TEXTAREA|SELECT/.tes
  else if(e.key==="/"&&!typing){e.preventDefault();const q=$("#q");q?q.focus():openPal()}});
 })();
 {const w=document.querySelector(".bhf");if(w){const t=()=>w.querySelectorAll("iframe:not([title])").forEach(f=>f.title="SkillMaxx Weekly newsletter signup");t();new MutationObserver(t).observe(w,{childList:true,subtree:true})}}
+// Lazy-load the Beehiiv newsletter embed: its loader pulls in several third-party scripts,
+// so only fetch it when a signup card is about to scroll into view.
+(function(){var els=document.querySelectorAll('.bhf[data-bhform]');if(!els.length)return;
+function load(el){if(el.dataset.bhl)return;el.dataset.bhl=1;var s=document.createElement('script');s.async=true;s.src='https://subscribe-forms.beehiiv.com/v3/loader.js';s.setAttribute('data-beehiiv-form',el.dataset.bhform);el.appendChild(s)}
+if(!('IntersectionObserver'in window)){els.forEach(load);return}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.unobserve(e.target);load(e.target)}})},{rootMargin:'600px 0px'});els.forEach(function(el){io.observe(el)})})();
