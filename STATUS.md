@@ -52,3 +52,7 @@
 - **2026-10-26 · Grok Bot**: Merged PR #16: /advertise/ inquiry form now posts to the formsubmit AJAX endpoint and only shows "Inquiry sent" on a confirmed success (form still needs the formsubmit activation click).
 - **2026-10-26 · Grok Bot**: Stripe (live, Gil Ventures LLC) one-time Products/Prices/Payment Links for the 4 founding sponsor slots ($19 newsletter, $29 featured, $15 category, $49 bundle); each collects email and redirects to /sponsor/thanks/?slot=<key>. Links added to src/_data/sponsorLinks.json (PR awaiting Brandon review).
 - **2026-10-26 (Grok Bot, stripe-links):** Added monthly subscription Payment Links (Featured $25/mo, Category $13/mo, Founding bundle $42/mo, Newsletter 4 issues $59/mo; success URL /sponsor/thanks/?slot=<key>-monthly) alongside the one-time links. Price cards now show 'Pay once' + 'Subscribe & save (cancel anytime)'. Stripe customer portal config NOT created (connector lacks permission) — cancellations by email to skillmaxx@gilventures.ai until portal is enabled.
+
+## 2026-10-26 — Stripe customer portal
+- Created live billing portal config bpc_1UUuTKHnNCwlg7U0D15J5OZG (cancel at period end, payment method update, invoice history, headline "Manage your SkillMaxx sponsorship", return URL /advertise/, login page on).
+- portalUrl set in sponsorLinks.json; /advertise/ now links "Manage or cancel your subscription" with email fallback.
