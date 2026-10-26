@@ -11,7 +11,7 @@ desc: "Free daily report from SkillMaxx's nightly sandbox run: how many agent sk
 <div class="wrap prose"><div class="tw"><table class="matrix"><thead><tr><th>Date</th><th>Add-ons</th><th>Installs passed</th><th>Needs a key</th><th>Confirmed broke</th><th>Really fixed</th><th>Flaky</th><th>New</th></tr></thead><tbody>
 {% for r in reports %}<tr><th scope="row"><a href="/reports/{{ r.date }}/">{{ r.date }}</a></th><td>{{ r.addons }}</td><td class="tok">{{ r.pass }}/{{ r.total }}</td><td>{{ r.needs_key }}</td><td>{{ r.broke.length if r.broke else "–" }}</td><td>{{ r.fixed.length if r.fixed else "–" }}</td><td>{{ r.flaky_list.length if r.flaky_list else "–" }}</td><td>{{ r.added.length if r.added else "–" }}</td></tr>{% endfor %}</tbody></table></div>
 <p class="muted">"–" means there was no earlier run to compare with. Missed nights are not backfilled. Daily pages are an archive; for the current answer use <a href="/reports/latest/">today's report</a>, and for the big picture the <a href="/reports/week/">weekly scorecards</a>. <a href="/how-we-test/">How we test</a></p></div>
-{% set nlid = "newsletter" %}{% set nlh = "Get the weekly scorecard" %}{% set nlp = "" %}
+{% set nlid = "newsletter" %}{% set nlh = "SkillMaxx Weekly" %}{% set nlp = "" %}
 {% include "nlembed.njk" %}
 {% set il = [] %}{% for r in reports %}{% set il = (il.push({"@type":"ListItem","position":loop.index,"url":site.url + "/reports/" + r.date + "/","name":"Daily install report " + r.date}), il) %}{% endfor %}
 {% set jsonld = {"@context":"https://schema.org","@type":"ItemList","name":"SkillMaxx daily install reports","itemListElement":il} %}
