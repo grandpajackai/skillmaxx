@@ -1,13 +1,13 @@
-<!-- Paste into Beehiiv. Title / subtitle / preview text below; body starts at the first heading. -->
-**Title:** This week in agent skills #1: we installed 902 things so you don't have to
+<!-- Final issue #1. Beehiiv paste-ready copy: issue-001-beehiiv.md. All numbers from testing/results/2026-10-25.json and data/skills.json. -->
+**Title:** SkillMaxx #1: we installed 902 things so you don't have to
 **Subtitle:** 803 worked. The other 99 have stories.
-**Preview text:** Four Grok installs broke overnight, Codex went 65 for 65, and a video plugin crashed the party.
+**Preview text:** Codex went 65 for 65, Cursor had a rough week, and a video plugin crashed the party.
 
----
+![SkillMaxx](../brand/beehiiv/skillmaxx-banner-1200x300.png)
 
-## Hi, it's SkillMaxx 👋
+## ok so here's the deal 👋
 
-Short version of what we do: we take every agent skill, plugin and MCP server we can find, install it in a fresh sandbox inside **Claude Code, Codex, Grok Build, Cursor and Pi**, and write down what happened. No vibes, just logs.
+We take every agent skill, plugin and MCP server we can find, install it in a fresh sandbox in **Claude Code, Codex, Grok Build, Cursor and Pi**, and write down what happened. No vibes. Just logs.
 
 This is issue #1. Here's the scoreboard.
 
@@ -24,35 +24,39 @@ This is issue #1. Here's the scoreboard.
 
 The directory now tracks **424** skills, plugins and MCP servers.
 
-## Plot twist of the week: "which auth0 did you mean?"
+Codex: flawless. Didn't even break a sweat. Cursor: 29 of 52 MCP servers connected in our keyless sandbox. Most of the misses want an API key or an account, so don't panic, just bring your own keys. Full list: https://skillmaxx.gilventures.ai/guides/best-mcp-servers-cursor/
 
-Four plugins that installed fine on Oct 16 now fail in Grok Build: **auth0, grafana-mcp, postman, pr-review-toolkit**. Nothing about the plugins themselves broke. The same names now live in more than one marketplace, so `grok plugin install auth0 --trust` politely refuses and asks you to pin one with `auth0@<marketplace>`.
+## Plot twist: "which auth0 did you mean?"
 
-**Fix:** add the `@qualifier`. We're updating the commands on SkillMaxx to match.
+Four plugins that installed fine on Oct 16 now fail in Grok Build: **auth0, grafana-mcp, postman, pr-review-toolkit**. The plugins didn't break. The same names now live in more than one marketplace, so Grok politely refuses and asks you to pin one, like `auth0@<marketplace>`.
 
-## New in the directory
+**Fix:** add the `@qualifier`. What does install in Grok Build: https://skillmaxx.gilventures.ai/guides/what-installs-in-grok-build/
 
-- **videogen** (Grok Build): text → video, image → video, script → MP4. It passed its install test on the first try. We're not saying it's showing off, but it's showing off.
+## New kid: videogen
 
-## Crowd favorites (by GitHub stars)
+**videogen** (Grok Build) does text → video, image → video, script → MP4. Passed its install test on the first try. Not saying it's showing off. It's showing off.
+
+## Crowd favorites (GitHub stars)
 
 - **superpowers**: about 305k ★
 - **mattpocock-skills**: about 303k ★
 - The official **MCP reference servers** (fetch, filesystem, git, memory, sequential-thinking, time): about 92k ★ each, and still the backbone of half the setups out there
 
-## Things that didn't connect
+## Things that ghosted us
 
-- **cyanheads PubMed MCP** and **gdharness** failed to connect in Claude Code this week (they passed on Oct 16). gdharness also wants a Godot editor running, which is fair: it's a Godot harness.
-- One Claude Code test (postiz) timed out talking to GitHub. That's flaky network, not the plugin. We'll retest.
+- **cyanheads PubMed MCP** and **gdharness** stopped connecting in Claude Code (both passed Oct 16). gdharness also wants a Godot editor running. Fair, it's a Godot harness.
+- One Claude Code test (postiz) timed out talking to GitHub. Flaky network, not the plugin. Retesting.
 
-## How we test (the 20-second version)
+## How we test (20 seconds)
 
-Fresh sandbox, no API keys, no credentials, real agent CLI. Pass means the agent itself lists the thing as installed or enabled (or, for MCP, connected). Every result links to its log. Details: https://skillmaxx.gilventures.ai/how-it-works/
+Fresh sandbox, no API keys, real agent CLI. Pass means the agent itself lists it as installed or enabled (for MCP, connected). Every result links to its log: https://skillmaxx.gilventures.ai/how-it-works/
 
 ---
 
-**Find something that works in *your* agent →** https://skillmaxx.gilventures.ai
+**Find what works in *your* agent →** https://skillmaxx.gilventures.ai
 
-Built a skill? Submit it and we'll run it through all five agents: https://skillmaxx.gilventures.ai/submit/
+Built a skill? We'll run it through all five agents: https://skillmaxx.gilventures.ai/submit/
+
+**Want this spot?** Founding sponsors get a slot in this email for $19 an issue. Hit reply or see https://skillmaxx.gilventures.ai/advertise/
 
 See you next week. Fewer ambiguous auth0s, hopefully.
