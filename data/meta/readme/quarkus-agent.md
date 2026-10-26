@@ -140,6 +140,30 @@ Alternatively, use the direct download method with an absolute path to `java`:
 }
 ```
 
+#### SmallRye ACP client
+
+The [SmallRye ACP client](https://github.com/smallrye/smallrye-acp-client) can run ACP-compatible agents with Quarkus Agent MCP.
+
+Install the ACP CLI:
+
+```bash
+jbang app install --name acp io.smallrye.ai:acp-java-client:0.2.1:runner
+```
+
+Install an ACP agent from the registry (for example Claude Code):
+
+```bash
+acp registry install claude-acp
+```
+
+Then run the agent with Quarkus Agent MCP over stdio:
+
+```bash
+acp run -a claude-acp \
+  --mcp-server-config '{"type":"stdio","name":"quarkus-agent","command":"jbang","args":["quarkus-agent-mcp@quarkusio"]}' \
+  -p "Create a Quarkus REST app"
+```
+
 ### Via direct download
 
 Download the uber-jar from the [latest GitHub Release](https://github.com/quarkusio/quarkus-agent-mcp/releases/latest), then:
@@ -296,12 +320,3 @@ Once a Quarkus app is running in dev mode, the agent can discover and use all De
 | Endpoints | `quarkus_searchTools` query: `endpoint` | List all REST endpoints and their URLs |
 | Dev Services | `quarkus_searchTools` query: `dev-services` | View database URLs, container info |
 | Log levels | `quarkus_searchTools` query: `log` | Change log levels at runtime |
-| Exceptions | `devui-exceptions_getLastException` | Get last compilation/deployment/runtime exception with stack trace and source location |
-
-### Extension skills
-
-The agent can read extension-specific coding skills using `quarkus_skills`. Skills contain patterns, testing guidelines, and common pitfalls for each extension — things like "always use `@Transactional` for write operations with Panache" or "don't create REST clients manually, let CDI inject them."
-
-When called without a query, skills are organized by category (Web, Data, Security, Core, etc.) for easier discovery.
-
-Skills are loaded using a four-layer ch
