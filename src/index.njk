@@ -1,15 +1,15 @@
 ---
 layout: base.njk
 title: "Find agent skills that actually work in your agent"
-desc: "Skills, plugins and MCP servers checked against official docs for Claude Code, Codex, Grok Build, Cursor and Pi, with the exact install command for each."
+desc: "We actually install each skill, plugin and MCP server in every agent that supports it (Claude Code, Codex, Grok Build, Cursor, Pi), re-run nightly, and publish pass/fail with the reason. Plus the exact install command."
 ---
 {% from "macros.njk" import card, pill %}
 {% set demo = skills | where("slug","sentry") %}{% set demo = demo[0] or skills[0] %}
 <section class="hero wrap">
  <div class="hl">
-  <span class="eyebrow"><i class="live"></i>Docs-checked & sandbox-tested · {{ site.checked }}</span>
+  <span class="eyebrow"><i class="live"></i>Install-tested in 5 real agents · last run {{ testing.runDate }}</span>
   <h1>Find agent skills that actually work in <em>your</em> agent.</h1>
-  <p class="sub">{{ site.tagline }}</p>
+  <p class="sub hero-line"><b>We don't copy READMEs.</b> We actually install each add-on in Claude Code, Codex, Grok Build, Cursor and Pi (wherever it's supported), re-run it nightly, and tell you what passed, what broke, and why.</p>
   <div class="picker" role="radiogroup" aria-label="I use"><span class="pl">I use:</span>
    {% for a in site.agents %}<button type="button" role="radio" class="ag" data-agent="{{ a }}" aria-checked="false"><i class="ad" style="--c:{{ site.agentColor[a] }}"></i>{{ a|agentName }}</button>{% endfor %}</div>
   <label class="bigsearch"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -24,16 +24,17 @@ desc: "Skills, plugins and MCP servers checked against official docs for Claude 
   <script type="application/json" id="demodata">{{ {install:demo.install, compat:demo.eff} | json | safe }}</script>
  </div></div>
 </section>
-<section class="wrap stats">
- <div><b>{{ skills.length }}</b><span>skills & MCP servers</span></div><div><b>5</b><span>coding agents</span></div>
- <div><b>{{ skills | sumDocs }}</b><span>install methods verified from docs</span></div><div><b>{{ testing.pass }}</b><span>of {{ testing.total }} sandboxed install tests passed</span></div>
+<section class="wrap stats" aria-label="Latest test run">
+ <div><b>{{ testing.addons }}</b><span>add-ons install-tested</span></div><div><b>{{ testing.total }}</b><span>real installs in the latest run</span></div>
+ <div><b>{{ testing.pass }}</b><span>passed ({{ testing.fail }} failed, reasons published)</span></div><div><b>{{ testing.runDate }}</b><span>last test run</span></div>
 </section>
 <section class="wrap how">
- <h2 class="sh">How it works</h2>
- <ol><li><span>1</span><h3>Pick your agent</h3><p>Choose Claude Code, Codex, Grok Build, Cursor or Pi. The whole site adjusts to it.</p></li>
- <li><span>2</span><h3>Find a skill</h3><p>Search or filter by category, type and status. Each listing links back to its official source.</p></li>
- <li><span>3</span><h3>Copy the right command</h3><p>Get the install command from that agent's official docs. If there are no docs yet, we say so.</p></li></ol>
- <p class="muted">Honest labels: <span class="st documented">✓ Verified from docs</span> means an official source publishes the install method. <span class="st tested">Tested ✓</span> means our harness installed and loaded it in that agent's real CLI, in a throwaway sandbox. <span class="st unknown">Not yet tested</span> means no docs and no test result yet. <a href="/how-it-works/">Full methodology →</a></p>
+ <h2 class="sh">How we test (yes, actually)</h2>
+ <ol><li><span>1</span><h3>We pull the add-ons</h3><p>From public lists: the official Claude Code, Codex and Grok Build marketplaces, the MCP reference servers and npm. {{ skills.length }} so far.</p></li>
+ <li><span>2</span><h3>We run the real install, nightly</h3><p>In each agent's real CLI, in a throwaway sandbox with no accounts or keys. Then we check the agent actually loaded it.</p></li>
+ <li><span>3</span><h3>We publish pass/fail + why</h3><p>Every result gets a date and a log excerpt. Failures stay up, not swept under the rug.</p></li></ol>
+ <p class="muted">Why care? You don't burn an hour on an install that was never going to work. <a href="/how-we-test/">How we test, limits included →</a></p>
+ <p class="muted">Honest labels: <span class="st tested">Tested ✓</span> our harness installed and loaded it in that agent. <span class="st failed">✕ Failed</span> it didn't, and the log says why. <span class="st documented">✓ Verified from docs</span> an official source publishes the install method. <span class="st unknown">Not yet tested</span> no docs and no test yet.</p>
 </section>
 <section class="wrap">
  <div class="rowh"><h2 class="sh">Featured</h2><span class="muted">In 3 or more official marketplaces</span></div>
