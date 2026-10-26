@@ -1,0 +1,25 @@
+---
+layout: base.njk
+pagination: {data: weeks, size: 1, alias: w}
+permalink: "/reports/week/{{ w.key }}/"
+ogType: article
+eleventyComputed:
+  title: "Agent install scorecard, week {{ w.key }}: which skills and MCP servers really work"
+  desc: "SkillMaxx weekly scorecard {{ w.first }} to {{ w.last }}: {{ w.trend[w.trend.length-1].rate }}% of agent add-on installs passed. Confirmed broke {{ w.broke_n }}, really fixed {{ w.fixed_n }}, {{ w.flaky_n }} flaky. Most reliable agent: {{ w.ranking[0].name }}."
+  issueDate: "{{ w.last }}"
+---
+{% set t = w.trend[w.trend.length-1] %}
+<div class="wrap prose"><p class="muted"><a href="/reports/week/">Weekly scorecards</a> › {{ w.key }}</p>
+<h1 class="ph">Install scorecard: week {{ w.key }}</h1>
+<p class="answer">From {{ w.first }} to {{ w.last }} ({{ w.runs }} nightly run{% if w.runs != 1 %}s{% endif %}), {{ t.pass }} of {{ t.tested }} judgeable installs passed on the last night ({{ t.rate }}%). <b>{{ w.broke_n }}</b> confirmed broke, <b>{{ w.fixed_n }}</b> really fixed, and {{ w.flaky_n }} flip-flopped, which we refuse to count as news. The most reliable agent was <b>{{ w.ranking[0].name }}</b> at {{ w.ranking[0].rate }}%.</p>
+{% include "weekchart.njk" %}
+{% for v in w.version_changes %}{% if v.broke %}<p><b>Agent update:</b> {{ v.agent|agentName }} <code>{{ v.from }}</code> → <code>{{ v.to }}</code> on {{ v.date }}: {{ v.broke }} installs stopped working.</p>{% endif %}{% endfor %}
+{% if w.standout %}<h2>Standout of the week</h2><p><a href="/skills/{{ w.standout.slug }}/"><b>{{ w.standout.name }}</b></a>: clean in {{ w.standout.agents.length }} agents with zero flakes. {{ w.standout.desc }}</p>{% endif %}
+<h2>Confirmed broke ({{ w.broke_n }})</h2>{% if w.broke.length %}<ul>{% for x in w.broke %}<li><a href="/skills/{{ x.slug }}/">{{ x.name }}</a> ({{ x.n }} agent-night{% if x.n != 1 %}s{% endif %})</li>{% endfor %}</ul>{% else %}<p>Nothing failed two nights running after a good night.</p>{% endif %}
+<h2>Really fixed ({{ w.fixed_n }})</h2>{% if w.fixed.length %}<ul>{% for x in w.fixed %}<li><a href="/skills/{{ x.slug }}/">{{ x.name }}</a></li>{% endfor %}</ul>{% else %}<p>Nothing came back after two or more bad nights.</p>{% endif %}
+{% if w.flaky.length %}<h2>Flaky ({{ w.flaky_n }})</h2><p>Pass one night, fail the next. Not broken, not fixed, just moody.</p><ul>{% for x in w.flaky %}<li><a href="/skills/{{ x.slug }}/">{{ x.name }}</a></li>{% endfor %}</ul>{% endif %}
+{% if w.needs_key %}<p><b>{{ w.needs_key }}</b> installs failed only because they need an API key our sandbox doesn't have. We count those separately.</p>{% endif %}
+<p class="muted">Built from the nightly <a href="/reports/">daily reports</a>. <a href="/reports/latest/">Check a tool for today</a> · <a href="/how-we-test/">How we test</a></p></div>
+{% set nlid = "newsletter" %}{% set nlh = "Get this scorecard by email every Tuesday" %}{% set nlp = "Free. One email a week. No daily spam, promise." %}
+{% include "nlembed.njk" %}
+{% set jsonld = {"@context":"https://schema.org","@type":"Article","headline":title,"description":desc,"datePublished":w.last,"dateModified":w.last,"mainEntityOfPage":site.url + page.url,"image":site.url + "/assets/og.png","author":{"@type":"Organization","name":"SkillMaxx"},"publisher":{"@type":"Organization","name":"SkillMaxx","logo":{"@type":"ImageObject","url":site.url + "/assets/og.png"} } } %}

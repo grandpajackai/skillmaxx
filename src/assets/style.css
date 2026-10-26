@@ -138,3 +138,12 @@ h2.h3{font-size:17px;margin:0 0 8px}
 .faq details{border:1px solid #26272b;border-radius:10px;padding:12px 16px;margin:8px 0}.faq summary{cursor:pointer}.faq summary h3{display:inline;font-size:16px;margin:0}.faq p{margin:8px 0 0}.answer{font-size:16px}.related-links{display:flex;flex-wrap:wrap;gap:8px 18px;margin:16px 0}
 .nlissue img{max-width:100%;height:auto;border-radius:10px}.nlissue table{border-collapse:collapse;margin:12px 0}.nlissue td,.nlissue th{border:1px solid #26272b;padding:6px 10px;text-align:left}
 .hero-line{color:var(--t,#e8e8ea)}.hero-line b{color:var(--a)}.ltb{margin:6px 0 0}
+/* reports: safe-to-install lookup + weekly chart */
+.safe{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;margin:16px 0}
+.safe input,.safe select{font:inherit;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);color:inherit;min-width:0}
+.safe input{flex:1 1 220px}
+.safelist{list-style:none;padding:0}.safelist li{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.safelist .st-pass b{color:#22c55e}.safelist .st-needs_key b{color:#eab308}.safelist .st-broken b{color:#ef4444}.safelist .st-pending b{color:#f97316}
+.wchart{margin:16px 0;max-width:600px}.wchart svg{display:block;height:auto}
+.callout{border-left:4px solid #f97316}
+.rank{width:100%;border-collapse:collapse;font-size:14px}.rank th,.rank td{padding:8px 6px;text-align:left;border-bottom:1px solid rgba(255,255,255,.08)}.rank .tok{color:#22c55e}

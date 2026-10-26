@@ -1,0 +1,292 @@
+[
+ {
+  "key": "2026-44",
+  "start": "2026-10-26",
+  "end": "2026-11-01",
+  "first": "2026-10-26",
+  "last": "2026-10-26",
+  "runs": 1,
+  "trend": [
+   {
+    "date": "2026-10-26",
+    "pass": 802,
+    "tested": 890,
+    "total": 902,
+    "needs_key": 12,
+    "rate": 90.1
+   }
+  ],
+  "ranking": [
+   {
+    "agent": "codex",
+    "name": "Codex",
+    "pass": 65,
+    "tested": 65,
+    "rate": 100.0,
+    "flaky": 0,
+    "needs_key": 0
+   },
+   {
+    "agent": "grok_build",
+    "name": "Grok Build",
+    "pass": 313,
+    "tested": 331,
+    "rate": 94.6,
+    "flaky": 12,
+    "needs_key": 0
+   },
+   {
+    "agent": "claude_code",
+    "name": "Claude Code",
+    "pass": 340,
+    "tested": 361,
+    "rate": 94.2,
+    "flaky": 2,
+    "needs_key": 6
+   },
+   {
+    "agent": "pi",
+    "name": "Pi",
+    "pass": 57,
+    "tested": 87,
+    "rate": 65.5,
+    "flaky": 0,
+    "needs_key": 0
+   },
+   {
+    "agent": "cursor",
+    "name": "Cursor",
+    "pass": 27,
+    "tested": 46,
+    "rate": 58.7,
+    "flaky": 0,
+    "needs_key": 6
+   }
+  ],
+  "fixed": [],
+  "broke": [
+   {
+    "slug": "gdharness",
+    "name": "gdharness",
+    "n": 2
+   }
+  ],
+  "flaky": [
+   {
+    "slug": "airwallex-dev",
+    "name": "Airwallex Dev",
+    "n": 2
+   },
+   {
+    "slug": "cyanheads-pubmed-mcp-server",
+    "name": "@cyanheads/pubmed-mcp-server",
+    "n": 1
+   },
+   {
+    "slug": "alloydb-omni",
+    "name": "Alloydb Omni",
+    "n": 1
+   },
+   {
+    "slug": "claude-code-setup",
+    "name": "Claude Code Setup",
+    "n": 1
+   },
+   {
+    "slug": "claude-security",
+    "name": "Claude Security",
+    "n": 1
+   }
+  ],
+  "fixed_n": 0,
+  "broke_n": 2,
+  "flaky_n": 13,
+  "needs_key": 12,
+  "standout": {
+   "slug": "superpowers",
+   "name": "Superpowers",
+   "desc": "Superpowers teaches Claude brainstorming, subagent driven development with built in code review, systematic debugging, and red/green TDD. Additionally, it teaches Claude how to author and test new ski",
+   "agents": [
+    "claude_code",
+    "codex",
+    "grok_build",
+    "pi"
+   ],
+   "why": null,
+   "stars": 305178
+  },
+  "version_changes": [],
+  "svg": "<svg viewBox=\"0 0 560 180\" width=\"100%\" role=\"img\" aria-labelledby=\"ct\" class=\"chart\" xmlns=\"http://www.w3.org/2000/svg\"><title id=\"ct\">Install pass rate by night: 2026-10-26 90.1%</title><line x1=\"34\" y1=\"146\" x2=\"526\" y2=\"146\" stroke=\"currentColor\" stroke-opacity=\".25\"/><text x=\"4\" y=\"38\" font-size=\"11\" fill=\"currentColor\">92%</text><text x=\"4\" y=\"150\" font-size=\"11\" fill=\"currentColor\">85%</text><path d=\"M280.0,66.0\" fill=\"none\" stroke=\"#22c55e\" stroke-width=\"3\" stroke-linejoin=\"round\"/><circle cx=\"280.0\" cy=\"66.0\" r=\"4\" fill=\"#22c55e\"/><text x=\"280.0\" y=\"57.0\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">90.1%</text><text x=\"280.0\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">10-26</text></svg>"
+ },
+ {
+  "key": "2026-43",
+  "start": "2026-10-19",
+  "end": "2026-10-25",
+  "first": "2026-10-25",
+  "last": "2026-10-25",
+  "runs": 1,
+  "trend": [
+   {
+    "date": "2026-10-25",
+    "pass": 795,
+    "tested": 890,
+    "total": 902,
+    "needs_key": 12,
+    "rate": 89.3
+   }
+  ],
+  "ranking": [
+   {
+    "agent": "codex",
+    "name": "Codex",
+    "pass": 65,
+    "tested": 65,
+    "rate": 100.0,
+    "flaky": 0,
+    "needs_key": 0
+   },
+   {
+    "agent": "claude_code",
+    "name": "Claude Code",
+    "pass": 338,
+    "tested": 361,
+    "rate": 93.6,
+    "flaky": 0,
+    "needs_key": 6
+   },
+   {
+    "agent": "grok_build",
+    "name": "Grok Build",
+    "pass": 306,
+    "tested": 331,
+    "rate": 92.4,
+    "flaky": 0,
+    "needs_key": 0
+   },
+   {
+    "agent": "pi",
+    "name": "Pi",
+    "pass": 57,
+    "tested": 87,
+    "rate": 65.5,
+    "flaky": 0,
+    "needs_key": 0
+   },
+   {
+    "agent": "cursor",
+    "name": "Cursor",
+    "pass": 29,
+    "tested": 46,
+    "rate": 63.0,
+    "flaky": 0,
+    "needs_key": 6
+   }
+  ],
+  "fixed": [],
+  "broke": [],
+  "flaky": [],
+  "fixed_n": 0,
+  "broke_n": 0,
+  "flaky_n": 0,
+  "needs_key": 12,
+  "standout": {
+   "slug": "videogen",
+   "name": "Videogen",
+   "desc": "AI video generator and AI video editor. Go from text to video, image to video, or script to video, then export an MP4.",
+   "agents": [
+    "grok_build"
+   ],
+   "why": "new tonight",
+   "stars": null
+  },
+  "version_changes": [],
+  "svg": "<svg viewBox=\"0 0 560 180\" width=\"100%\" role=\"img\" aria-labelledby=\"ct\" class=\"chart\" xmlns=\"http://www.w3.org/2000/svg\"><title id=\"ct\">Install pass rate by night: 2026-10-25 89.3%</title><line x1=\"34\" y1=\"146\" x2=\"526\" y2=\"146\" stroke=\"currentColor\" stroke-opacity=\".25\"/><text x=\"4\" y=\"38\" font-size=\"11\" fill=\"currentColor\">91%</text><text x=\"4\" y=\"150\" font-size=\"11\" fill=\"currentColor\">84%</text><path d=\"M280.0,66.0\" fill=\"none\" stroke=\"#22c55e\" stroke-width=\"3\" stroke-linejoin=\"round\"/><circle cx=\"280.0\" cy=\"66.0\" r=\"4\" fill=\"#22c55e\"/><text x=\"280.0\" y=\"57.0\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">89.3%</text><text x=\"280.0\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">10-25</text></svg>"
+ },
+ {
+  "key": "2026-42",
+  "start": "2026-10-12",
+  "end": "2026-10-18",
+  "first": "2026-10-16",
+  "last": "2026-10-16",
+  "runs": 1,
+  "trend": [
+   {
+    "date": "2026-10-16",
+    "pass": 810,
+    "tested": 889,
+    "total": 901,
+    "needs_key": 12,
+    "rate": 91.1
+   }
+  ],
+  "ranking": [
+   {
+    "agent": "codex",
+    "name": "Codex",
+    "pass": 65,
+    "tested": 65,
+    "rate": 100.0,
+    "flaky": 0,
+    "needs_key": 0
+   },
+   {
+    "agent": "grok_build",
+    "name": "Grok Build",
+    "pass": 317,
+    "tested": 330,
+    "rate": 96.1,
+    "flaky": 0,
+    "needs_key": 0
+   },
+   {
+    "agent": "claude_code",
+    "name": "Claude Code",
+    "pass": 341,
+    "tested": 361,
+    "rate": 94.5,
+    "flaky": 0,
+    "needs_key": 6
+   },
+   {
+    "agent": "pi",
+    "name": "Pi",
+    "pass": 57,
+    "tested": 87,
+    "rate": 65.5,
+    "flaky": 0,
+    "needs_key": 0
+   },
+   {
+    "agent": "cursor",
+    "name": "Cursor",
+    "pass": 30,
+    "tested": 46,
+    "rate": 65.2,
+    "flaky": 0,
+    "needs_key": 6
+   }
+  ],
+  "fixed": [],
+  "broke": [],
+  "flaky": [],
+  "fixed_n": 0,
+  "broke_n": 0,
+  "flaky_n": 0,
+  "needs_key": 12,
+  "standout": {
+   "slug": "superpowers",
+   "name": "Superpowers",
+   "desc": "Superpowers teaches Claude brainstorming, subagent driven development with built in code review, systematic debugging, and red/green TDD. Additionally, it teaches Claude how to author and test new ski",
+   "agents": [
+    "claude_code",
+    "codex",
+    "grok_build",
+    "pi"
+   ],
+   "why": null,
+   "stars": 305178
+  },
+  "version_changes": [],
+  "svg": "<svg viewBox=\"0 0 560 180\" width=\"100%\" role=\"img\" aria-labelledby=\"ct\" class=\"chart\" xmlns=\"http://www.w3.org/2000/svg\"><title id=\"ct\">Install pass rate by night: 2026-10-16 91.1%</title><line x1=\"34\" y1=\"146\" x2=\"526\" y2=\"146\" stroke=\"currentColor\" stroke-opacity=\".25\"/><text x=\"4\" y=\"38\" font-size=\"11\" fill=\"currentColor\">93%</text><text x=\"4\" y=\"150\" font-size=\"11\" fill=\"currentColor\">86%</text><path d=\"M280.0,66.0\" fill=\"none\" stroke=\"#22c55e\" stroke-width=\"3\" stroke-linejoin=\"round\"/><circle cx=\"280.0\" cy=\"66.0\" r=\"4\" fill=\"#22c55e\"/><text x=\"280.0\" y=\"57.0\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">91.1%</text><text x=\"280.0\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">10-16</text></svg>"
+ }
+]

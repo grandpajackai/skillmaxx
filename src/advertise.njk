@@ -24,6 +24,9 @@ desc: "Sponsor the SkillMaxx newsletter or a featured slot in the directory of a
 <li>Newsletter: {% if sponsorLinks.subscribers %}<b>{{ sponsorLinks.subscribers }}</b> subscribers{% else %}just launched; subscriber count shared privately and in your monthly report{% endif %}</li>
 <li>Site traffic: analytics are being set up, so no traffic numbers yet</li>
 </ul>
+{% if weeks.length %}{% set w = weeks[0] %}<h3>Why developers trust the numbers (week {{ w.key }})</h3>
+<p class="muted">Every listed add-on, really installed every night. Failures get a retry, "broken" needs two bad nights, and missing-API-key failures are counted apart. Your sponsorship never touches these results.</p>
+{% include "weekchart.njk" %}<p class="muted"><a href="/reports/week/{{ w.key }}/">Full weekly scorecard</a> · <a href="/reports/latest/">Today's install check</a></p>{% endif %}
 <p class="muted"><b>Ad specs:</b> newsletter blurb up to 50 words + 1 link; featured card: name, 1-line pitch (max 90 chars), logo (square SVG or PNG, 256px+), link; category sponsor: logo + link. Every placement is labeled "Sponsored". Full specs: email <a href="mailto:skillmaxx@gilventures.ai">skillmaxx@gilventures.ai</a>.</p>
 </section>
 

@@ -1,5 +1,39 @@
 ---
+layout: base.njk
 permalink: /reports/latest/
-eleventyExcludeFromCollections: true
+ogType: article
+eleventyComputed:
+  title: "Is it safe to install today? Agent skill and MCP install check ({{ reports[0].date }})"
+  desc: "Check if an agent skill, plugin or MCP server installs today in Claude Code, Codex, Grok Build, Cursor or Pi. Updated nightly from real sandbox installs: {{ reports[0].pass }} of {{ reports[0].total }} passed on {{ reports[0].date }}, {{ reports[0].needs_key }} only need an API key."
 ---
-{% set u = "/reports/" + reports[0].date + "/" %}<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Latest SkillMaxx daily report</title><meta name="robots" content="noindex"><link rel="canonical" href="{{ site.url }}{{ u }}"><meta http-equiv="refresh" content="0; url={{ u }}"><script>location.replace("{{ u }}")</script></head><body><a href="{{ u }}">Latest report: {{ reports[0].date }}</a></body></html>
+{% set r = reports[0] %}
+<div class="wrap prose"><p class="muted"><a href="/reports/">Daily reports</a> › Latest ({{ r.date }})</p>
+<h1 class="ph">Is it safe to install today?</h1>
+<p class="answer">Type a skill, plugin or MCP server and pick your agent. The answer comes from last night's real install in a clean sandbox ({{ r.date }}): <b>{{ r.pass }} of {{ r.total }} installs passed</b>, {{ r.needs_key }} only need your API key, {{ r.broken }} have failed two nights running and {{ r.pending }} are on a one-night wobble we re-check tomorrow.</p>
+<form id="safe" class="safe" role="search" onsubmit="return false">
+<label for="sq">Tool name</label> <input id="sq" type="search" placeholder="e.g. Playwright, Slack, GitHub" autocomplete="off">
+<label for="sa">Agent</label> <select id="sa"><option value="">Any agent</option>{% for a in site.agents %}<option value="{{ a }}">{{ a|agentName }}</option>{% endfor %}</select>
+</form>
+<div id="sr" aria-live="polite"><p class="muted">Start typing to check a tool.</p></div>
+<script type="application/json" id="sd">{{ latestRows.rows | json | safe }}</script>
+<script>(function(){var D=JSON.parse(document.getElementById("sd").textContent),N=window.SMX_AGENTS||{},q=document.getElementById("sq"),a=document.getElementById("sa"),o=document.getElementById("sr");
+var V={pass:["Safe today","installed and loaded last night"],needs_key:["Needs your API key","only failed because our sandbox has no key; add yours"],broken:["Broken","failed two nights in a row, wait or check the log"],pending:["Wobbly","failed last night but worked the night before; re-checking tonight"]};
+function e(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function go(){var t=q.value.trim().toLowerCase(),g=a.value;if(!t&&!g){o.innerHTML='<p class="muted">Start typing to check a tool.</p>';return}
+var m=D.filter(function(x){return(!g||x.a===g)&&(!t||x.n.toLowerCase().indexOf(t)>-1||x.s.indexOf(t)>-1)}).slice(0,25);
+if(!m.length){o.innerHTML='<p>Nothing by that name tested in that agent last night. <a href="/?q='+encodeURIComponent(t)+'">Search the directory</a>.</p>';return}
+o.innerHTML='<ul class="safelist">'+m.map(function(x){var v=V[x.st];return'<li class="st-'+x.st+'"><a href="/skills/'+e(x.s)+'/">'+e(x.n)+'</a> in '+e(N[x.a]||x.a)+': <b>'+v[0]+'</b>'+(x.f&&x.st==="pass"?' (flaky lately, retry if it hiccups)':'')+' <span class="muted">('+v[1]+')</span></li>'}).join("")+'</ul>'}
+q.addEventListener("input",go);a.addEventListener("change",go);var p=new URLSearchParams(location.search);if(p.get("q")){q.value=p.get("q");}if(p.get("agent")){a.value=p.get("agent")}go()})()</script>
+{% for v in r.version_changes %}{% if v.broke %}<div class="card static callout" style="margin:20px 0"><h2 class="h3">Agent update alert: {{ v.agent|agentName }}</h2><p><code>{{ v.from }}</code> → <code>{{ v.to }}</code>: <b>{{ v.broke }} install{% if v.broke != 1 %}s{% endif %}</b> that worked the night before stopped working{% if v.items.length %} ({% for x in v.items %}<a href="/skills/{{ x.slug }}/">{{ x.name }}</a>{% if not loop.last %}, {% endif %}{% endfor %}){% endif %}. If you just updated, that's probably why.</p></div>{% endif %}{% else %}<p class="muted">No agent version changed since {{ r.prev_date or "the last run" }}, so no update-shaped breakage tonight.</p>{% endfor %}
+{% if not r.version_changes.length and r.prev_date %}{% endif %}
+</div>
+{% set nlid = "newsletter-top" %}{% set nlh = "Get the weekly scorecard by email" %}{% set nlp = "This page updates nightly and is never emailed. The free weekly email (Tuesdays) has the week's install scorecard plus new tools." %}
+{% include "nlembed.njk" %}
+<div class="wrap prose">
+<h2>What is this page?</h2><p>It's the always-current version of the <a href="/reports/">SkillMaxx daily install report</a>. Every night we run the real install command for every listed add-on in each agent that supports it, retry failures once, and only call something broken after two bad nights. Dated pages are the archive; this URL always shows the newest run.</p>
+{% include "reportbody.njk" %}
+</div>
+{% set nlid = "newsletter" %}{% set nlh = "Get the weekly scorecard" %}{% set nlp = "" %}
+{% include "nlembed.njk" %}
+{% set jsonld = {"@context":"https://schema.org","@type":"Dataset","name":"SkillMaxx latest install test results","description":desc,"url":site.url + page.url,"dateModified":r.date,"temporalCoverage":r.date,"isAccessibleForFree":true,"license":"https://creativecommons.org/licenses/by/4.0/","creator":{"@type":"Organization","name":"SkillMaxx","url":site.url + "/"},"keywords":["is it safe to install","agent skills","MCP servers","Claude Code","Codex","Grok Build","Cursor","Pi","install tests"],"variableMeasured":["installs passed","needs API key","broken two nights","pending re-check","flaky"]} %}
+{% set jsonld2 = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I know if an agent skill or MCP server is safe to install today?","acceptedAnswer":{"@type":"Answer","text":"Search it on this page. SkillMaxx installs every listed add-on nightly in Claude Code, Codex, Grok Build, Cursor and Pi in a clean sandbox. On " + r.date + ", " + r.pass + " of " + r.total + " installs passed."} },{"@type":"Question","name":"What does 'needs your API key' mean?","acceptedAnswer":{"@type":"Answer","text":"The install only failed because the add-on asked for an API key or token, and our sandbox has none on purpose. It usually works once you add your own key."} },{"@type":"Question","name":"When does SkillMaxx call an add-on broken?","acceptedAnswer":{"@type":"Answer","text":"Only after it fails two nights in a row. Each failed install is retried once, a single bad night is marked pending, and add-ons that flip-flop are marked flaky."} }]} %}
