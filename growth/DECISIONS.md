@@ -15,3 +15,10 @@
 8. **PR #25** (flaky-vs-broken guide, guide feedback boxes, privacy + terms): approved, DRAFT label removed, merged.
 9. **Bluesky profile:** bio + banner set via API on 2026-10-26 (avatar and display name "SkillMaxx AI" kept).
 10. **Beehiiv:** drop from the Pro trial to the free plan before Nov 2, 2026 (reminder; nothing changed yet).
+
+## 2026-10-26 (evening)
+11. **Daily report posts:** drafted only for big events (≥1k-star tool confirmed broken, or agent update breaking ≥3 installs) plus a weekly scorecard post. No daily emails.
+12. **Advertise/submit autoresponses:** text approved as written; forms use standard POST + reCAPTCHA.
+13. **First post / pinned post:** Tue Oct 27 ~9:30 AM ET, after Brandon reviews the social assets.
+14. **Content strategy:** daily posting within Buffer's free limits on every channel, platform-specific formats, built on pillars (results, industry knowledge, report/newsletter CTAs, sponsorships, viral-news commentary, industry leaders, seasonal/Q4–Q1/BFCM), modelled on what similar popular accounts do. Never political.
+15. **Knowledge base:** everything is documented in the repo (HANDBOOK.md is the index) so any collaborator or agent can catch up.
