@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Display name | `SkillMaxx ✓` |
-| Bio (≤160) | `We install agent skills & MCP servers in Claude Code, Codex, Grok, Cursor and Pi every night and post what actually works. Free weekly digest.` |
+| Bio (≤160) | `We install agent skills & MCP servers in Claude Code, Codex, Grok, Cursor and Pi every night and post what works. Free daily report + weekly newsletter.` |
 | Location | `in a sandbox, no API keys` |
 | Website | https://skillmaxx.gilventures.ai |
 | Avatar | `growth/x/avatar-400.png` (400×400, full-bleed lime check-X) |
