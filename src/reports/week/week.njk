@@ -20,6 +20,6 @@ eleventyComputed:
 {% if w.flaky.length %}<h2>Flaky ({{ w.flaky_n }})</h2><p>Pass one night, fail the next. Not broken, not fixed, just moody.</p><ul>{% for x in w.flaky %}<li><a href="/skills/{{ x.slug }}/">{{ x.name }}</a></li>{% endfor %}</ul>{% endif %}
 {% if w.needs_key %}<p><b>{{ w.needs_key }}</b> installs failed only because they need an API key our sandbox doesn't have. We count those separately.</p>{% endif %}
 <p class="muted">Built from the nightly <a href="/reports/">daily reports</a>. <a href="/reports/latest/">Check a tool for today</a> · <a href="/how-we-test/">How we test</a></p></div>
-{% set nlid = "newsletter" %}{% set nlh = "Get this scorecard by email every Tuesday" %}{% set nlp = "Free. One email a week. No daily spam, promise." %}
+{% set nlid = "newsletter" %}{% set nlh = "Get this scorecard by email every Tuesday" %}{% set nlp = "Free, every Tuesday: this scorecard plus new skills and what broke. The daily report stays on the site, no daily emails." %}
 {% include "nlembed.njk" %}
 {% set jsonld = {"@context":"https://schema.org","@type":"Article","headline":title,"description":desc,"datePublished":w.last,"dateModified":w.last,"mainEntityOfPage":site.url + page.url,"image":site.url + "/assets/og.png","author":{"@type":"Organization","name":"SkillMaxx"},"publisher":{"@type":"Organization","name":"SkillMaxx","logo":{"@type":"ImageObject","url":site.url + "/assets/og.png"} } } %}

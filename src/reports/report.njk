@@ -17,7 +17,7 @@ eleventyComputed:
 <div class="wrap prose">
 {% include "reportbody.njk" %}
 </div>
-{% set nlid = "newsletter" %}{% set nlh = "Get the weekly scorecard" %}{% set nlp = "" %}
+{% set nlid = "newsletter" %}{% set nlh = "SkillMaxx Weekly" %}{% set nlp = "" %}
 {% include "nlembed.njk" %}
 {% set jsonld = {"@context":"https://schema.org","@type":"Dataset","name":"SkillMaxx install test results " + r.date,"description":desc,"url":site.url + page.url,"datePublished":r.date,"temporalCoverage":r.date,"isAccessibleForFree":true,"license":"https://creativecommons.org/licenses/by/4.0/","creator":{"@type":"Organization","name":"SkillMaxx","url":site.url + "/"},"keywords":["agent skills","MCP servers","Claude Code","Codex","Grok Build","Cursor","Pi","install tests"],"variableMeasured":["installs tested","installs passed","installs failed","newly broke","fixed","new add-ons"]} %}
 {% set jsonld2 = {"@context":"https://schema.org","@type":"Article","headline":title,"description":desc,"datePublished":r.date,"dateModified":r.date,"mainEntityOfPage":site.url + page.url,"image":site.url + "/assets/og.png","author":{"@type":"Organization","name":"SkillMaxx"},"publisher":{"@type":"Organization","name":"SkillMaxx","logo":{"@type":"ImageObject","url":site.url + "/assets/og.png"} } } %}

@@ -147,3 +147,4 @@ h2.h3{font-size:17px;margin:0 0 8px}
 .wchart{margin:16px 0;max-width:600px}.wchart svg{display:block;height:auto}
 .callout{border-left:4px solid #f97316}
 .rank{width:100%;border-collapse:collapse;font-size:14px}.rank th,.rank td{padding:8px 6px;text-align:left;border-bottom:1px solid rgba(255,255,255,.08)}.rank .tok{color:#22c55e}
+.nlcard .news{margin:40px 0}.nlcard .news h2{font-size:24px;margin:0 0 8px}.nlcard .news p{margin:0;color:var(--m)}
