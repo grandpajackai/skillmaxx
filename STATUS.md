@@ -95,3 +95,4 @@
 - Owner dashboard: live Sponsors section (paid checkouts + active subs, snapshot time shown, Stripe link). Payment watcher not built (Brandon's call).
 - BFCM Founding 12 approved: tracking table in growth/sponsors/PIPELINE.md, routine-ready note growth/routines/BFCM-FOUNDING-12.md, banner PR #35 open as draft (unmerged, date-gated Nov 27–30).
 - growth/sponsors/SCALING.md: current inventory, competitor patterns, cap/waitlist/rotation proposal. Gap: sponsor placements (homepage card, category pages) are not data-driven yet.
+- **2026-10-26 · Grok Bot**: Nov 7 build-in-public post (advertise-form story) rejected by Brandon; replaced on X/Bluesky/LinkedIn with the approved flaky-vs-broken "something we got wrong" post (links /guides/flaky-vs-broken/).
