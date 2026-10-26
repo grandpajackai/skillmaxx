@@ -4,20 +4,31 @@ title: "Advertise on SkillMaxx: reach developers using coding agents"
 desc: "Sponsor the SkillMaxx newsletter or a featured slot in the directory of agent skills, plugins and MCP servers for Claude Code, Codex, Grok Build, Cursor and Pi."
 ---
 <div class="wrap"><h1 class="ph">Advertise</h1><p class="lead">Put your skill, plugin or MCP server in front of developers choosing what to install, across 5 agents. We're brand new with no traffic numbers yet, so we won't make any up.</p>
-<style>.fbadge{display:inline-block;margin:4px 0 14px;padding:5px 11px;border-radius:999px;background:rgba(198,244,50,.12);border:1px solid rgba(198,244,50,.4);color:var(--a);font-size:13px;font-weight:600;max-width:100%}@media (min-width:961px){.tiers{grid-template-columns:repeat(4,1fr)}}.price .was{color:var(--m);font-size:.6em;font-weight:500;margin-right:6px;text-decoration-thickness:2px}</style>
+<style>.mk{margin:10px 0;padding-left:18px;line-height:1.9}.mk b{color:var(--a)}.fbadge{display:inline-block;margin:4px 0 14px;padding:5px 11px;border-radius:999px;background:rgba(198,244,50,.12);border:1px solid rgba(198,244,50,.4);color:var(--a);font-size:13px;font-weight:600;max-width:100%}@media (min-width:961px){.tiers{grid-template-columns:repeat(4,1fr)}}.tier .book{align-self:flex-start;margin-top:auto}.tier{cursor:pointer}.price .was{color:var(--m);font-size:.6em;font-weight:500;margin-right:6px;text-decoration-thickness:2px}</style>
 <p class="fbadge">Founding sponsor pricing, first 10 sponsors</p>
-<div class="tiers"><div class="card static"><h2 class="h3">Newsletter sponsor</h2><p class="price"><s class="was" aria-label="Regular price $49">$49</s> $19<small>/issue</small></p><p class="muted">One sponsor per issue: about 50 words and one link, labeled "Sponsor".</p></div>
-<div class="card static hl2"><h2 class="h3">Featured slot</h2><p class="price"><s class="was" aria-label="Regular price $79">$79</s> $29<small>/month</small></p><p class="muted">The one Sponsored card in the Featured row, plus a top-of-category placement, clearly labeled.</p></div>
-<div class="card static"><h2 class="h3">Category sponsor</h2><p class="price"><s class="was" aria-label="Regular price $29">$29</s> $15<small>/month</small></p><p class="muted">Your logo on one category page. One sponsor per category.</p></div>
-<div class="card static"><h2 class="h3">Founding bundle</h2><p class="price">$49<small>/month</small></p><p class="muted">All three for a month, plus a "Founding Sponsor" credit on this page.</p></div>
-</div>
+<div class="tiers">{% for t in sponsorLinks.slots %}<div class="card static tier{% if t.highlight %} hl2{% endif %}" id="slot-{{ t.key }}"><h2 class="h3">{{ t.name }}</h2><p class="price">{% if t.was %}<s class="was" aria-label="Regular price ${{ t.was }}">${{ t.was }}</s> {% endif %}${{ t.price }}<small>/{{ t.unit }}</small></p><p class="muted">{{ t.desc }}</p>{% if t.url %}<a class="btn book" href="{{ t.url }}" rel="noopener" data-slot="{{ t.key }}">Book now</a>{% else %}<a class="btn book" href="#inquiry-form" data-slot="{{ t.key }}" aria-label="Book {{ t.name }}: open the inquiry form">Book now</a>{% endif %}</div>
+{% endfor %}</div>
 <p class="muted">Founding rates are locked for 6 months. After the first 10 sponsors, the regular prices apply.</p>
 <div class="why"><div><h2>High-intent readers</h2><p>Visitors arrive searching for a specific capability and leave with an install command. That's the moment they pick a tool.</p></div><div><h2>Every agent at once</h2><p>One listing reaches Claude Code, Codex, Grok Build, Cursor and Pi users, not a single ecosystem.</p></div><div><h2>Labeled, never blended</h2><p>Sponsored cards are marked "Sponsored" and never alter compatibility statuses or sort order.</p></div></div>
 <p class="muted" style="margin-bottom:10px">Paid placements never change a status or a ranking.</p>
 
+
+<section class="card static" id="media-kit" style="margin-top:28px"><h2 class="h3">Media kit: the real numbers</h2>
+<p class="muted">Updated automatically every time the site builds. We only publish numbers we can prove.</p>
+<ul class="mk">
+<li><b>{{ skills.length }}</b> skills, plugins and MCP servers listed</li>
+<li><b>5</b> agents covered: Claude Code, Codex, Grok Build, Cursor, Pi</li>
+{% if testing.total %}<li><b>{{ testing.total }}</b> sandboxed install tests in the latest run, <b>{{ testing.pass }}</b> passing ({{ testing.runAt | truncate(10, true, "") }})</li>{% endif %}
+<li>Test results refreshed nightly; failures are published, not hidden</li>
+<li>Newsletter: {% if sponsorLinks.subscribers %}<b>{{ sponsorLinks.subscribers }}</b> subscribers{% else %}just launched; subscriber count shared privately and in your monthly report{% endif %}</li>
+<li>Site traffic: analytics are being set up, so no traffic numbers yet</li>
+</ul>
+<p class="muted"><b>Ad specs:</b> newsletter blurb up to 50 words + 1 link; featured card: name, 1-line pitch (max 90 chars), logo (square SVG or PNG, 256px+), link; category sponsor: logo + link. Every placement is labeled "Sponsored". Full specs: email <a href="mailto:skillmaxx@gilventures.ai">skillmaxx@gilventures.ai</a>.</p>
+</section>
+
 <div class="card static" style="margin-top:20px" id="inquiry-form">
   <h2 class="h3">Inquire about advertising</h2>
-  <p class="muted">Fill out the form below and someone will respond by email — usually within a business day.</p>
+  <p class="muted">Pick a slot (or something custom) and tell us about your tool. Fill out the form below and someone will respond by email — usually within a business day.</p>
   <form id="ad-form" action="https://formsubmit.co/skillmaxx@gilventures.ai" method="POST" style="display:flex;flex-direction:column;gap:14px;margin-top:12px">
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_template" value="table">
@@ -40,10 +51,11 @@ desc: "Sponsor the SkillMaxx newsletter or a featured slot in the directory of a
       <label for="ad-type" style="font-size:13px;color:var(--m)">Ad type <span style="color:#e55">*</span></label>
       <select id="ad-type" name="ad_type" required style="background:var(--s2);color:var(--t);border:1px solid var(--b2);border-radius:9px;padding:9px 12px;font:inherit;font-size:14px;min-height:40px">
         <option value="">Select one…</option>
-        <option value="Newsletter sponsor ($19/issue founding)">Newsletter sponsor — $19/issue (founding)</option>
-        <option value="Featured slot ($29/month founding)">Featured slot — $29/month (founding)</option>
-        <option value="Category sponsor ($15/month founding)">Category sponsor — $15/month (founding)</option>
-        <option value="Founding bundle ($49/month)">Founding bundle — $49/month</option>
+        <option value="Custom / other" data-slot="custom">Something custom</option>
+        <option value="Newsletter sponsor ($19/issue founding)" data-slot="newsletter">Newsletter sponsor — $19/issue (founding)</option>
+        <option value="Featured slot ($29/month founding)" data-slot="featured">Featured slot — $29/month (founding)</option>
+        <option value="Category sponsor ($15/month founding)" data-slot="category">Category sponsor — $15/month (founding)</option>
+        <option value="Founding bundle ($49/month)" data-slot="bundle">Founding bundle — $49/month</option>
       </select>
     </div>
     <div style="display:flex;flex-direction:column;gap:4px">
@@ -64,6 +76,12 @@ desc: "Sponsor the SkillMaxx newsletter or a featured slot in the directory of a
   var form = document.getElementById('ad-form');
   var ok = document.getElementById('ad-success');
   var err = document.getElementById('ad-error');
+  var sel=document.getElementById('ad-type');
+  function pick(k){for(var i=0;i<sel.options.length;i++){if(sel.options[i].dataset.slot===k){sel.selectedIndex=i;break}}}
+  document.querySelectorAll('a.book[href="#inquiry-form"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();pick(a.dataset.slot);var f=document.getElementById('inquiry-form');f.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(function(){sel.focus({preventScroll:true})},400);history.replaceState(null,'','#inquiry-form')})});
+  document.querySelectorAll('.tier').forEach(function(c){c.addEventListener('click',function(e){if(e.target.closest('a'))return;var b=c.querySelector('a.book');if(b)b.click()})});
+  var m=location.search.match(/[?&]slot=([a-z]+)/);if(m)pick(m[1]);
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
     err.hidden = true;
