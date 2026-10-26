@@ -11,8 +11,8 @@ Developers deciding which skill or MCP server to install in their coding agent. 
 ## The one rule
 **Money never changes a test result or a ranking.** Sponsored slots are labeled "Sponsored," always. If your plugin fails a test, the site says so, and we'll happily help you fix it.
 
-## Founding-sponsor menu (first 5 sponsors, rate locked 6 months)
-| Slot | What you get | Founding price | Later list price* |
+## Founding-sponsor menu (first 10 sponsors, rate locked 6 months)
+| Slot | What you get | Founding price | Regular price* |
 |---|---|---|---|
 | Featured listing | Labeled spot in the homepage featured row, plus a top-of-category placement | **$29 / mo** | $79 / mo |
 | Newsletter sponsor | One short blurb in *This week in agent skills* | **$19 / issue** | $49 / issue |
@@ -20,6 +20,11 @@ Developers deciding which skill or MCP server to install in their coding agent. 
 | Founding bundle | All three for a month, plus a "Founding Sponsor" credit on /advertise | **$49 / mo** | – |
 
 \*Comparable directories charge $49–$399 (CodexStacks $49/issue and $79/mo featured; AI Indigo $199 for 30 days; MCPHubz $399/mo). Founding prices are low because the audience is too. We'll share real numbers every month.
+
+On /advertise/ the regular prices are shown struck through next to the founding prices, under a "Founding sponsor pricing, first 10 sponsors" badge.
+
+## Planned: Black Friday / Cyber Monday promo (late Nov 2026)
+Run a BF/CM sponsor promo around Nov 27–30, 2026 (Black Friday Nov 27, Cyber Monday Nov 30): a limited-time push of the founding rates (e.g. lock founding pricing for 12 months instead of 6, or a free extra issue with any booking). Announce on X, Reddit and the newsletter; ends Cyber Monday 11:59 PM ET. Needs Brandon's review before it goes out.
 
 Every sponsor gets a monthly report with pageviews, clicks to your listing, and newsletter subscribers. It's real data, even when the numbers are small.
 
