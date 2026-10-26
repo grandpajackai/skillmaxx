@@ -70,3 +70,9 @@
 - **2026-10-26 · Grok Bot**: FormSubmit activated by Brandon (6:16 PM ET); open issue closed, dashboard updated.
 - **2026-10-26 · Grok Bot**: Report-page signup boxes (/reports/latest/, daily pages, /reports/, weekly pages, and guides via the shared include) now use the homepage 'SkillMaxx Weekly' card, aligned to the 780px content column; stacked on mobile, no overflow at 390px (screenshots in /workspace/signup-*.png on the box).
 - **2026-10-26 · Grok Bot**: /advertise/ inquiry form: immediate 'Sending…' state with the button disabled (no double submit), 'Still sending…' after 6 s, abort after 20 s with a clear message + mailto fallback, success shown only on FormSubmit {success:true}. Cause of Brandon's 'no reaction': the old code gave no feedback while the request was in flight. Live endpoint test (TEST submission) answered success in 0.29 s.
+
+## 2026-10-26 — Grok Bot: forms + perf + autoresponse (grokbot/forms-perf-autoreply)
+- New shared `/assets/forms.js`: instant Sending… + disabled button, Still sending… at 6 s, 20 s timeout with mailto fallback, bfcache reset. Used by /advertise/, /submit/, /sponsor/thanks/.
+- /advertise/ and /submit/ now normal POST with reCAPTCHA + FormSubmit `_autoresponse` (FormSubmit does not send autoresponses over AJAX or with `_captcha=false`). /submit/ gained an optional email field. Sponsor thanks stays AJAX (Stripe receipt already confirms).
+- Perf: Beehiiv form embed lazy-loads via IntersectionObserver (it pulls ~30 third-party requests: PerimeterX, GTM, Google Fonts…); Beehiiv attribution.js loads 1.5 s after window load.
+- Autoresponse untested end-to-end (needs reCAPTCHA); Brandon to test with his own email.

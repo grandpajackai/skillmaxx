@@ -11,7 +11,7 @@ noindex: true
 <div class="card static" id="intake" style="margin-top:20px">
 <h2 class="h3">Your ad assets</h2>
 <p class="muted">Specs: logo as a square SVG or PNG (256px or larger), one link, and ad copy up to 50 words (newsletter) or a 90-character pitch (featured card). Everything is labeled "Sponsored".</p>
-<form id="sp-form" action="https://formsubmit.co/skillmaxx@gilventures.ai" method="POST" style="display:flex;flex-direction:column;gap:14px;margin-top:12px">
+<form id="sp-form" data-smx-form data-ajax data-err="#sp-err" data-ok="#sp-ok" data-mail="mailto:skillmaxx@gilventures.ai?subject=Sponsor%20assets" action="https://formsubmit.co/skillmaxx@gilventures.ai" method="POST" style="display:flex;flex-direction:column;gap:14px;margin-top:12px">
 <input type="hidden" name="_captcha" value="false"><input type="hidden" name="_template" value="table"><input type="hidden" name="_subject" value="Sponsor assets - SkillMaxx">
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px">
 <label style="display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--m)">Name *<input name="name" required style="{{ fs }}"></label>
@@ -30,6 +30,6 @@ noindex: true
 <p id="sp-err" hidden style="margin-top:10px;color:#e55;font-size:13px">Something went wrong. Please email your assets to skillmaxx@gilventures.ai.</p>
 </div>
 <p class="muted" style="margin-top:16px">Questions? <a href="mailto:skillmaxx@gilventures.ai">skillmaxx@gilventures.ai</a> · <a href="/advertise/#media-kit">Media kit</a></p>
-<script>(function(){var s=document.getElementById('sp-slot'),m=location.search.match(/[?&]slot=([a-z]+)/);if(m)for(var i=0;i<s.options.length;i++)if(s.options[i].dataset.slot===m[1])s.selectedIndex=i;
-var f=document.getElementById('sp-form');f.addEventListener('submit',function(e){e.preventDefault();document.getElementById('sp-err').hidden=true;fetch(f.action.replace('formsubmit.co/','formsubmit.co/ajax/'),{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}}).then(function(r){return r.json()}).then(function(d){if(d&&(d.success===true||d.success==='true')){f.hidden=true;document.getElementById('sp-ok').hidden=false}else document.getElementById('sp-err').hidden=false}).catch(function(){document.getElementById('sp-err').hidden=false})})})();</script>
+<script>(function(){var s=document.getElementById('sp-slot'),m=location.search.match(/[?&]slot=([a-z]+)/);if(m)for(var i=0;i<s.options.length;i++)if(s.options[i].dataset.slot===m[1])s.selectedIndex=i;})();</script>
+<script src="/assets/forms.js" defer></script>
 </div>
