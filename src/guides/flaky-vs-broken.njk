@@ -1,0 +1,30 @@
+---
+layout: base.njk
+title: "Flaky vs broken: how we decide if an agent plugin install really failed"
+permalink: /guides/flaky-vs-broken/
+ogType: article
+desc: "Why one failed install isn't news: SkillMaxx only calls an agent skill or MCP server broken after two failing nights, labels flip-floppers flaky, and separates missing API keys."
+---
+{% set w = weeks | sort(false, false, "key") | last %}
+<div class="wrap prose"><h1 class="ph">Flaky vs broken: how we decide if an install really failed</h1>
+<p class="lead">We install every agent skill, plugin and MCP server we track in Claude Code, Codex, Grok Build, Cursor and Pi every night. In our first week we called things "broken" or "fixed" off a single night. Then we noticed 13 of our 14 "fixed" items had simply flip-flopped. So we changed the rules. Here they are, in plain words.</p>
+<h2>When does SkillMaxx call an install broken?</h2>
+<p class="answer">Only after it fails two nights in a row, after one automatic retry in a fresh sandbox each night. A single bad night is marked <em>pending</em>, not broken.</p>
+<h2>What does "flaky" mean on SkillMaxx?</h2>
+<p class="answer">An install is flaky if it flip-flops between pass and fail across the last three runs, or only passes on retry. Flaky installs are labeled, never counted as broken or fixed, and never picked as the standout of the day.{% if w %} In week {{ w.key }}, {{ w.flaky_n }} add-ons were flaky.{% endif %}</p>
+<h2>What if an install only failed because of a missing API key?</h2>
+<p class="answer">Our sandbox deliberately has no accounts or keys. When the log shows a missing key or credential, we list it as <em>needs your key</em> instead of broken.{% if w %} That was {{ w.needs_key }} installs in week {{ w.key }}.{% endif %} It will probably work once you add yours.</p>
+<h2>When is something "really fixed"?</h2>
+<p class="answer">Only when it passes after two or more bad nights. A pass after one bad night is just the flake resolving itself.</p>
+<h2>Why so strict?</h2>
+<p>Because "tested nightly" is only worth something if the results are boring most days. Shouting about noise trains people to ignore the real breakage, and it isn't fair to tool authors whose installs failed for reasons that had nothing to do with them.</p>
+<div class="card static" style="margin:20px 0"><h2 class="h3">Tell us if we got it wrong</h2><p>These rules are new, and we're a small project. If you think a tool is labeled wrong, or the rules should be different, <a href="mailto:skillmaxx@gilventures.ai?subject=Flaky%20vs%20broken%20feedback">email us</a>. We'll rerun it and reply.</p></div>
+{% set faqs = [
+ {q:"When does SkillMaxx call an agent plugin install broken?", a:"Only after it fails two nights in a row, with one automatic retry in a fresh sandbox each night. One bad night is shown as pending."},
+ {q:"What is a flaky install?", a:"One that flip-flops between pass and fail across the last three nightly runs or only passes on retry. SkillMaxx labels it flaky and doesn't count it as broken or fixed."},
+ {q:"Does a missing API key count as a failure?", a:"No. SkillMaxx tests without any keys, so failures caused by missing credentials are listed separately as needs your key."}
+] %}{% set art = {headline:"Flaky vs broken: how we decide if an install really failed", description:desc} %}
+<p class="related-links"><a href="/reports/latest/">Is it safe to install today? →</a><a href="/how-we-test/">How we test →</a><a href="/guides/best-mcp-servers-cursor/">MCP servers that work in Cursor →</a></p>
+{% include "faq.njk" %}
+</div>
+{% include "nlembed.njk" %}
