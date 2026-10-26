@@ -1,0 +1,7 @@
+{# expects: faqs = [{q,a}], art = {headline, description, url} #}
+<section class="faq" aria-labelledby="faqh"><h2 id="faqh">FAQ</h2>{% for f in faqs %}<details><summary><h3>{{ f.q }}</h3></summary><p>{{ f.a }}</p></details>{% endfor %}</section>
+{% set qa = [] %}{% for f in faqs %}{% set qa = (qa.push({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a} }), qa) %}{% endfor %}
+
+{% set dm = (testing.runAt or site.checked) | day %}{% set fq = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":qa} %}{% set ar = {"@context":"https://schema.org","@type":"Article","headline":art.headline,"description":art.description,"mainEntityOfPage":site.url+page.url,"url":site.url+page.url,"datePublished":"2026-10-25","dateModified":dm,"image":site.url+"/assets/og.png","author":{"@type":"Organization","name":"SkillMaxx","url":site.url+"/"},"publisher":{"@type":"Organization","name":"SkillMaxx","logo":{"@type":"ImageObject","url":site.url+"/assets/og.png"} } } %}
+<script type="application/ld+json">{{ ar | json | safe }}</script>
+<script type="application/ld+json">{{ fq | json | safe }}</script>

@@ -3,9 +3,10 @@ layout: base.njk
 pagination: {data: skills, size: 1, alias: s}
 permalink: "/skills/{{ s.slug }}/"
 eleventyComputed:
-  title: "{{ s.name }}: install in Claude Code, Codex, Grok Build, Cursor & Pi"
-  desc: "{{ s.description | truncate(150) }}"
-  jsonld: {"@context":"https://schema.org","@type":"SoftwareApplication","name":"{{ s.name }}","description":"{{ s.description | truncate(150) }}","applicationCategory":"DeveloperApplication","url":"{{ s.source_url }}","operatingSystem":"Cross-platform"}
+  title: "{{ s.name | safe }}{% if skills | dupName(s) %} ({{ s.slug }}){% endif %}: install in Claude Code, Codex, Grok Build, Cursor & Pi"
+  desc: "{{ s.description | truncate(150) | safe }}{% if skills | dupName(s) %} ({{ s.typeLabel }}){% elif skills | dupDesc(s) %} ({{ s.name | safe }}){% endif %}"
+  jsonld: {"@context":"https://schema.org","@type":"SoftwareApplication","name":"{{ s.name | safe }}","description":"{{ s.description | truncate(150) | safe }}","applicationCategory":"DeveloperApplication","applicationSubCategory":"{{ s.typeLabel }}","url":"{{ site.url }}/skills/{{ s.slug }}/","sameAs":"{{ s.source_url }}","operatingSystem":"Cross-platform"}
+  jsonld2: {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"SkillMaxx","item":"{{ site.url }}/"},{"@type":"ListItem","position":2,"name":"{{ s.name | safe }}","item":"{{ site.url }}/skills/{{ s.slug }}/"}]}
 ---
 {% from "macros.njk" import card, pill, status %}
 <div class="wrap detail">
