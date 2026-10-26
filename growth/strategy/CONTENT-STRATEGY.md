@@ -54,7 +54,7 @@ Guardrails: never political (no election, policy or culture-war hooks, even on N
 Big-event posts (≥1k★ tool confirmed broken 2 nights, or agent update breaking ≥3 installs) jump the queue the same day after Brandon's OK, using a spare slot.
 
 ## Platform playbooks
-**X @SkillMaxxAI.** Hook in line 1 (number, myth, confession). ≤280 chars, one idea. Text-first for takes; image for scorecards/data. No hashtags (0–1 max). No link in the main post; CTA days use a 2-post thread with the link in post 2. 3–5 sniper replies/day. Pin the launch post.
+**X @SkillMaxxAI.** Hook in line 1 (number, myth, lesson learned). ≤280 chars, one idea. Text-first for takes; image for scorecards/data. No hashtags (0–1 max). No link in the main post; CTA days use a 2-post thread with the link in post 2. 3–5 sniper replies/day. Pin the launch post.
 **Bluesky @skillmaxx.bsky.social.** 200–300 chars, lowercase-friendly, peer-to-peer, no bait ("thoughts?"). Link inline; first URL makes the card. Alt text on every image. Natural keywords (claude code, mcp, cursor) route posts into dev custom feeds; 0–1 hashtag. Later: build a "MCP & agent-skills builders" starter pack (pillar 8).
 **LinkedIn SkillMaxx AI page.** Founder first person, signed "Brandon" on founder posts. Short title line, numbered lists, one question at the end. Image posts by default (image beat link, text and document posts on company pages in a 2026 study); links in post are fine for company pages.
 
