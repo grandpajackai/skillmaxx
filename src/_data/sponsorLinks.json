@@ -1,10 +1,56 @@
 {
   "_readme": "One entry per /advertise/ price card. When a Stripe Payment Link exists, paste it into `url` (and set its success URL to https://skillmaxx.gilventures.ai/sponsor/thanks/?slot=<key>). Empty url = the Book now button scrolls to the inquiry form with this slot preselected.",
   "slots": [
-    {"key": "newsletter", "name": "Newsletter sponsor", "price": 19, "was": 49, "unit": "issue", "desc": "One sponsor per issue: about 50 words and one link, labeled \"Sponsor\".", "url": ""},
-    {"key": "featured", "name": "Featured slot", "price": 29, "was": 79, "unit": "month", "desc": "The one Sponsored card in the Featured row, plus a top-of-category placement, clearly labeled.", "url": "", "highlight": true},
-    {"key": "category", "name": "Category sponsor", "price": 15, "was": 29, "unit": "month", "desc": "Your logo on one category page. One sponsor per category.", "url": ""},
-    {"key": "bundle", "name": "Founding bundle", "price": 49, "was": null, "unit": "month", "desc": "All three for a month, plus a \"Founding Sponsor\" credit on this page.", "url": ""}
+    {
+      "key": "newsletter",
+      "name": "Newsletter sponsor",
+      "price": 19,
+      "was": 49,
+      "unit": "issue",
+      "desc": "One sponsor per issue: about 50 words and one link, labeled \"Sponsor\".",
+      "url": "https://buy.stripe.com/5kQ00jgPG7LCfRr8rn8g000",
+      "subPrice": 59,
+      "subUnit": "4 issues/mo",
+      "subUrl": "https://buy.stripe.com/5kQ28rczqd5WfRrfTP8g007"
+    },
+    {
+      "key": "featured",
+      "name": "Featured slot",
+      "price": 29,
+      "was": 79,
+      "unit": "month",
+      "desc": "The one Sponsored card in the Featured row, plus a top-of-category placement, clearly labeled.",
+      "url": "https://buy.stripe.com/eVq5kDdDuaXO8oZ0YV8g001",
+      "highlight": true,
+      "subPrice": 25,
+      "subUnit": "mo",
+      "subUrl": "https://buy.stripe.com/4gM14nczq7LCfRr3738g004"
+    },
+    {
+      "key": "category",
+      "name": "Category sponsor",
+      "price": 15,
+      "was": 29,
+      "unit": "month",
+      "desc": "Your logo on one category page. One sponsor per category.",
+      "url": "https://buy.stripe.com/3cI28rfLCgi8cFfgXT8g002",
+      "subPrice": 13,
+      "subUnit": "mo",
+      "subUrl": "https://buy.stripe.com/3cI9AT42U9TKcFfgXT8g005"
+    },
+    {
+      "key": "bundle",
+      "name": "Founding bundle",
+      "price": 49,
+      "was": null,
+      "unit": "month",
+      "desc": "All three for a month, plus a \"Founding Sponsor\" credit on this page.",
+      "url": "https://buy.stripe.com/8x2cN52YQaXO8oZ8rn8g003",
+      "subPrice": 42,
+      "subUnit": "mo",
+      "subUrl": "https://buy.stripe.com/00w5kDari1ne6gR4b78g006"
+    }
   ],
-  "subscribers": null
+  "subscribers": null,
+  "portalUrl": ""
 }
