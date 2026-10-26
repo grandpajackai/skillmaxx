@@ -86,10 +86,14 @@ desc: "Sponsor the SkillMaxx newsletter or a featured slot in the directory of a
     e.preventDefault();
     err.hidden = true;
     var fd = new FormData(form);
-    fetch(form.action, {method:'POST',body:fd}).then(function(r){
-      if(r.ok){ form.hidden=true; ok.hidden=false }
-      else { err.hidden=false }
-    }).catch(function(){ err.hidden=false });
+    // Use formsubmit's AJAX endpoint: the plain endpoint returns 200 HTML even when
+    // the inbox isn't activated, so the old code showed "sent" while nothing was delivered.
+    fetch(form.action.replace('formsubmit.co/','formsubmit.co/ajax/'), {method:'POST',body:fd,headers:{'Accept':'application/json'}})
+      .then(function(r){ return r.json() })
+      .then(function(d){
+        if(d && (d.success===true || d.success==='true')){ form.hidden=true; ok.hidden=false }
+        else { err.hidden=false; if(d && d.message) console.warn('formsubmit:', d.message) }
+      }).catch(function(){ err.hidden=false });
   });
 })();
 </script>
