@@ -4,14 +4,14 @@ pagination: {data: skills, size: 1, alias: s}
 permalink: "/skills/{{ s.slug }}/"
 eleventyComputed:
   title: "{{ s.name | safe }}{% if skills | dupName(s) %} ({{ s.slug }}){% endif %}: install in Claude Code, Codex, Grok Build, Cursor & Pi"
-  desc: "{{ s.description | truncate(150) | safe }}{% if skills | dupName(s) %} ({{ s.typeLabel }}){% elif skills | dupDesc(s) %} ({{ s.name | safe }}){% endif %}"
+  desc: "{{ s.description | truncate(118) | safe }} Real install-test results.{% if skills | dupName(s) %} ({{ s.typeLabel }}){% elif skills | dupDesc(s) %} ({{ s.name | safe }}){% endif %}"
   jsonld: {"@context":"https://schema.org","@type":"SoftwareApplication","name":"{{ s.name | safe }}","description":"{{ s.description | truncate(150) | safe }}","applicationCategory":"DeveloperApplication","applicationSubCategory":"{{ s.typeLabel }}","url":"{{ site.url }}/skills/{{ s.slug }}/","sameAs":"{{ s.source_url }}","operatingSystem":"Cross-platform"}
   jsonld2: {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"SkillMaxx","item":"{{ site.url }}/"},{"@type":"ListItem","position":2,"name":"{{ s.name | safe }}","item":"{{ site.url }}/skills/{{ s.slug }}/"}]}
 ---
 {% from "macros.njk" import card, pill, status %}
 <div class="wrap detail">
 <p class="crumbs"><a href="/">SkillMaxx</a> / <a href="/?cat={{ s.category|urlencode }}#browse">{{ s.catLabel }}</a> / {{ s.name }}</p>
-<header class="dh">{% if s.logo %}<img class="logo-img lg" src="{{ s.logo }}" alt="{{ s.name }} logo" width="64" height="64">{% else %}<span class="mono lg">{{ s.mono }}</span>{% endif %}<div><h1>{{ s.name }}</h1><p class="lead">{{ s.description }}</p>
+<header class="dh">{% if s.logo %}<img class="logo-img lg" src="{{ s.logo }}" alt="{{ s.name }} logo" width="64" height="64">{% else %}<span class="mono lg">{{ s.mono }}</span>{% endif %}<div><h1>{{ s.name }}</h1>{% set lt = "" %}{% for a in site.agents %}{% if s.test[a] and (s.test[a].at|day) > lt %}{% set lt = s.test[a].at|day %}{% endif %}{% endfor %}{% if lt %}<p class="ltb"><a href="/how-we-test/" class="tag tok">Last tested {{ lt }}</a></p>{% endif %}<p class="lead">{{ s.description }}</p>
 <p class="tags"><span class="tag">{{ s.typeLabel }}</span><span class="tag">{{ s.catLabel }}</span><a class="tag link" href="{{ s.source_url }}" rel="nofollow noopener">Source ↗</a>{% for l in s.listings %}<a class="tag link" href="{{ l }}" rel="nofollow noopener">{{ l | listingLabel }} ↗</a>{% endfor %}</p>
 {% if s.meta.repo %}<dl class="repo"><div><dt>GitHub</dt><dd><a href="{{ s.meta.repo }}" rel="nofollow noopener">{{ s.meta.repo | replace("https://github.com/","") | replace("/tree/HEAD/"," › ") }} ↗</a></dd></div>{% if s.meta.stars != null %}<div><dt>Stars</dt><dd>★ {{ s.meta.stars|kfmt }}</dd></div>{% endif %}{% if s.meta.updated %}<div><dt>Last updated</dt><dd><time datetime="{{ s.meta.updated }}">{{ s.meta.updated|day }}</time></dd></div>{% endif %}{% if s.testedCount %}<div><dt>Hands-on tests</dt><dd class="tok">Tested ✓ in {{ s.testedCount }} of 5</dd></div>{% endif %}</dl>{% endif %}
 </div></header>

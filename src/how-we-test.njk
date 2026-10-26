@@ -1,0 +1,34 @@
+---
+layout: base.njk
+title: "How we test: every add-on, really installed in 5 agents, nightly"
+permalink: /how-we-test/
+ogType: article
+desc: "SkillMaxx runs the real install of every skill, plugin and MCP server in Claude Code, Codex, Grok Build, Cursor and Pi each night and publishes pass/fail with the reason. Methods, limits and FAQ."
+---
+<div class="wrap prose"><h1 class="ph">How we test</h1>
+<p class="answer">Short version: we don't trust READMEs. Every night we take each add-on, run its real install command in every agent that supports it (Claude Code, Codex, Grok Build, Cursor, Pi), check the agent actually loaded it, and publish pass or fail with the reason. Latest run, {{ testing.runDate }}: {{ testing.addons }} add-ons, {{ testing.total }} installs, {{ testing.pass }} passed, {{ testing.fail }} failed.</p>
+<h2>The 3 steps</h2>
+<ol><li><b>We pull the add-ons from public lists.</b> The official Claude Code, Codex and Grok Build marketplaces, the official MCP reference servers, and MCP packages on npm. {{ skills.length }} listed today.</li>
+<li><b>We run the real install, nightly.</b> Each agent's own CLI, inside a throwaway sandbox with an empty home folder and no accounts or API keys. Then the agent has to list it as installed, enabled or loaded. For MCP servers, the health check has to connect.</li>
+<li><b>We publish pass/fail with reasons.</b> Every result on a skill's page has a date and a log excerpt. Failures stay up. Each skill page shows a "Last tested" date.</li></ol>
+<h2>Latest run by agent</h2>
+<div class="tw"><table class="matrix"><thead><tr><th>Agent</th><th>Installs</th><th>Passed</th><th>Failed</th></tr></thead><tbody>
+{% for a in site.agents %}{% set b = testing.by[a] or {} %}<tr><th scope="row">{{ a|agentName }}</th><td>{{ (b.pass or 0) + (b.fail or 0) }}</td><td class="tok">{{ b.pass or 0 }}</td><td>{{ b.fail or 0 }}</td></tr>{% endfor %}</tbody></table></div>
+<h2>Honest limits</h2><ul>
+<li><b>Tested only where supported.</b> An add-on is only tested in agents that support that kind of add-on. That's why it's {{ testing.total }} tests across {{ testing.addons }} add-ons, not 5 × everything. Cursor's CLI has no plugin installer, so Cursor only gets MCP servers; Pi has no MCP.</li>
+<li><b>"Pass" means it installs and loads.</b> We don't run your prompts or poke every feature. A pass means you won't get stuck at step one.</li>
+<li><b>No keys, no accounts.</b> Add-ons that need a login or API key often fail in our sandbox and may work fine once you add yours. The log tells you which.</li>
+<li><b>Nights can get missed.</b> If a run fails or is skipped, the dates on the site say so. We never backfill a result we didn't run.</li></ul>
+<h2>Why it matters</h2>
+<p><b>For developers:</b> don't waste an hour on an install that was never going to work in your agent. Check the result, copy the command, move on.</p>
+<p><b>For sponsors:</b> the people here are mid-decision, picking what to install in a specific agent today. A verified, high-intent audience, and sponsored slots are labeled and never change a test result. <a href="/advertise/">Advertise →</a></p>
+<p>Status definitions and per-agent details: <a href="/how-it-works/">How it works</a>.</p>
+{% set faqs = [
+ {q:"Does SkillMaxx actually install every add-on?", a:"Yes. Every night our harness runs the real install command for each add-on in each agent that supports it (Claude Code, Codex, Grok Build, Cursor, Pi) and records pass or fail with a log excerpt. The latest run on " + testing.runDate + " covered " + testing.addons + " add-ons and " + testing.total + " installs, with " + testing.pass + " passing."},
+ {q:"How often are SkillMaxx results updated?", a:"The tests re-run nightly, around 2 AM ET. Each skill page shows the date it was last tested, so you always know how fresh a result is."},
+ {q:"What does a pass mean?", a:"The agent's real CLI installed the add-on in a clean sandbox with no accounts or API keys and then listed it as installed, enabled or loaded. For MCP servers the health check had to connect. It does not mean every feature was exercised."},
+ {q:"Why did an add-on fail?", a:"Usually because it needs an account, API key or extra setup our keyless sandbox doesn't have. The log excerpt on the skill page shows the exact error."},
+ {q:"Why isn't every add-on tested in all 5 agents?", a:"We only test where an agent supports that type of add-on. For example, Cursor's CLI only takes MCP servers and Pi has no MCP support."}
+] %}{% set art = {headline:"How SkillMaxx tests agent skills, plugins and MCP servers", description:"Nightly real-install tests in Claude Code, Codex, Grok Build, Cursor and Pi."} %}
+{% include "faq.njk" %}
+</div>
