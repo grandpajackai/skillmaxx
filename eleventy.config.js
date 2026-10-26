@@ -14,6 +14,8 @@ export default function(c){
  c.addFilter("pluck",(a,k)=>a.map(x=>x[k]));
  c.addFilter("where",(a,k,v)=>a.filter(x=>x[k]===v));
  c.addFilter("related",(all,s)=>{const tok=t=>new Set((t||"").toLowerCase().match(/[a-z]{4,}/g)||[]);const st=tok(s.name+" "+s.description);const sc=x=>{const xt=tok(x.name+" "+x.description);let i=0;for(const w of xt)if(st.has(w))i++;return i/(st.size+xt.size-i||1)+(x.category===s.category?.15:0)+x.testedCount*.02};return all.filter(x=>x.slug!==s.slug).map(x=>[sc(x),x]).sort((a,b)=>b[0]-a[0]).slice(0,4).map(a=>a[1])});
+ c.addFilter("dupName",(all,s)=>all.filter(x=>x.name===s.name).length>1);
+ c.addFilter("dupDesc",(all,s)=>all.filter(x=>x.description===s.description).length>1);
  c.addFilter("sumDocs",a=>a.reduce((n,x)=>n+x.docCount,0));
  return {pathPrefix:process.env.PATH_PREFIX??"/skillmaxx/",dir:{input:"src",output:"_site"},htmlTemplateEngine:"njk"};
 }

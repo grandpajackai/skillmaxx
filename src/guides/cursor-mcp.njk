@@ -2,16 +2,32 @@
 layout: base.njk
 title: "Best MCP servers that actually work in Cursor (tested)"
 permalink: /guides/best-mcp-servers-cursor/
+ogType: article
 desc: "Every MCP server we installed in a real Cursor CLI sandbox, and which ones connected and listed their tools. Real test results, no guesses."
 ---
 {% set ok = [] %}{% set bad = [] %}{% for s in skills %}{% if s.test.cursor %}{% if s.test.cursor.status == "pass" %}{% set ok = (ok.push(s), ok) %}{% else %}{% set bad = (bad.push(s), bad) %}{% endif %}{% endif %}{% endfor %}
 <div class="wrap prose"><h1 class="ph">Best MCP servers that actually work in Cursor</h1>
 <p class="lead">We put each MCP server in <code>~/.cursor/mcp.json</code> inside a throwaway sandbox (no accounts, no API keys) and counted it as working only if Cursor reported it ready and listed its tools. In our latest run{% if testing.runAt %} ({{ testing.runAt | replace("T"," ") }}){% endif %}, <b>{{ ok.length }} of {{ ok.length + bad.length }}</b> connected.</p>
-<h2>Connected in Cursor ✓ ({{ ok.length }})</h2>
+{% set total = ok.length + bad.length %}
+<h2>Which MCP servers actually work in Cursor?</h2>
+<p class="answer">In our latest keyless sandbox run, {{ ok.length }} of {{ total }} MCP servers we tested connected in Cursor and listed their tools. The full list is below, and each one links to its install command and test log.</p>
+<h3>Connected in Cursor ✓ ({{ ok.length }})</h3>
 <div class="tw"><table class="matrix"><thead><tr><th>Server</th><th>What it does</th></tr></thead><tbody>
 {% for s in ok %}<tr><th scope="row"><a href="/skills/{{ s.slug }}/">{{ s.name }}</a></th><td style="white-space:normal">{{ s.description | truncate(110) }}</td></tr>{% endfor %}</tbody></table></div>
-<h2>Didn't connect in our sandbox ({{ bad.length }})</h2>
+<h2>Why do some MCP servers fail in Cursor?</h2>
+<p class="answer">Most of the {{ bad.length }} servers that didn't connect need an account, an API key or extra arguments, and our sandbox deliberately has none. That makes them failures in a clean test, not proof they're broken. Add your own key in <code>~/.cursor/mcp.json</code>, then check that server's page for the exact config and the log from our run.</p>
+<h3>Didn't connect in our sandbox ({{ bad.length }})</h3>
 <p>Most of these need an account, an API key, or extra arguments, which our keyless sandbox doesn't provide. They may work fine once you add yours. Each page has the log.</p>
 <ul>{% for s in bad %}<li><a href="/skills/{{ s.slug }}/">{{ s.name }}</a></li>{% endfor %}</ul>
+<h2>How do I add an MCP server to Cursor?</h2>
+<p class="answer">Add an entry under <code>mcpServers</code> in <code>~/.cursor/mcp.json</code> (global) or <code>.cursor/mcp.json</code> in your project, with the server's command and arguments, then restart Cursor or reload MCP settings. Every SkillMaxx server page shows the exact config line for Cursor where official docs or our tests support it.</p>
+{% set faqs = [
+ {q:"How many MCP servers work in Cursor?", a:"In SkillMaxx's latest sandboxed test, " + ok.length + " of " + total + " MCP servers connected in Cursor and listed their tools, with no accounts or API keys configured. Servers that need credentials usually fail that keyless test but can work once you add your own key."},
+ {q:"How does SkillMaxx test MCP servers in Cursor?", a:"Each server is added to ~/.cursor/mcp.json in a throwaway sandbox running the real Cursor CLI. It only counts as working if Cursor reports the server ready and lists its tools. We don't run prompts, so a pass means it installs and connects, not that every tool behaves."},
+ {q:"Why does an MCP server fail to connect in Cursor?", a:"The usual causes are a missing API key or account, required arguments such as a path or URL, or a package that crashes on start. Open the server's SkillMaxx page to see the log excerpt from our run, then check its README for the required environment variables."},
+ {q:"Where is the Cursor MCP config file?", a:"Cursor reads MCP servers from ~/.cursor/mcp.json for all projects and from .cursor/mcp.json inside a project for that project only. Both use an mcpServers object where each key is a server name with its command, args and optional env values."}
+] %}{% set art = {headline:"Best MCP servers that actually work in Cursor", description:desc} %}
+<p class="related-links"><a href="/guides/what-installs-in-grok-build/">What installs in Grok Build →</a><a href="/matrix/">Compatibility matrix →</a><a href="/how-it-works/">How we test →</a><a href="/newsletter/">Newsletter archive →</a></p>
+{% include "faq.njk" %}
 <p class="muted">"Works" means install and connect only. We don't run your prompts. See <a href="/how-it-works/">how we test</a>.</p></div>
 {% include "nlembed.njk" %}
