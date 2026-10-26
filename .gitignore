@@ -4,3 +4,4 @@ review/*/*-full.png
 npm.json
 *.log
 .env*
+testing/logs/
