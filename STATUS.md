@@ -88,3 +88,10 @@
 - growth/strategy/CONTENT-STRATEGY.md: Buffer free limits verified (10 queued/channel, 3 channels, no free first-comment), daily cadence on all 3 channels, research-backed times, 8 pillars with per-platform mix, weekly rhythm, platform playbooks, cited examples from @cursor_ai, @levelsio, @swyx, Simon Willison and small viral list accounts, seasonal calendar through Q1, keep/rework/retire table for old drafts.
 - growth/strategy/drafts.py → DRAFTS-2026-10-27.md + drafts-2026-10-27.json: 14 days (Oct 27–Nov 9) × 3 platforms, length-checked; Nov 8 scorecard has placeholders to fill from weekly_scorecard.py.
 - Review Page for Brandon written. Nothing queued in Buffer, nothing posted.
+
+## 2026-10-26 · Grok Bot: Stripe labels, sponsor view, BFCM, scaling (night)
+- Stripe (live, Gil Ventures LLC): new product prod_VVyuClXisDSMeP "SkillMaxx Newsletter sponsor: 4 issues/month (founding rate)" + price price_1UUwwaHnNCwlg7U0sl7PCDRx ($59/mo) + payment link plink_1UUwwgHnNCwlg7U00IiKEK23 (https://buy.stripe.com/eVq00jdDu9TK48J5fb8g008, redirect /sponsor/thanks/?slot=newsletter-monthly, metadata slot). Site now points to it; old link plink_1UUuIZHnNCwlg7U0AU6NoctY deactivated after deploy; old $59 price price_1UUuINHnNCwlg7U0fiCULKlu archived. 0 subscriptions existed on any price. Renamed the 4 other products + clearer descriptions ("…: 1 issue / 1 month (founding rate)"). No payouts/refunds/bank/settings touched.
+- Stripe notification email: not exposed via our API access; Brandon checks in Stripe app → Settings → Personal details / Communication preferences.
+- Owner dashboard: live Sponsors section (paid checkouts + active subs, snapshot time shown, Stripe link). Payment watcher not built (Brandon's call).
+- BFCM Founding 12 approved: tracking table in growth/sponsors/PIPELINE.md, routine-ready note growth/routines/BFCM-FOUNDING-12.md, banner PR open (unmerged, date-gated Nov 27–30).
+- growth/sponsors/SCALING.md: current inventory, competitor patterns, cap/waitlist/rotation proposal. Gap: sponsor placements (homepage card, category pages) are not data-driven yet.

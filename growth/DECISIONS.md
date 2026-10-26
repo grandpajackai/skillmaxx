@@ -27,3 +27,9 @@
 16. **Cadence:** daily on X, Bluesky and LinkedIn, 1 Buffer post per channel per day, refilled each Sunday (Buffer Free = 10 queued per channel, refillable). Replaces the 3×/week Bluesky and 2×/week LinkedIn plan once approved.
 17. **Times (ET):** X weekdays 9:30 AM, Sat 11 AM, Sun 6 PM; Bluesky weekdays 7:30 PM, Sat 5 PM, Sun 6 PM; LinkedIn weekdays 12 PM (Wed 4 PM), weekends 10 AM. Launch posts all at 9:30 AM Tue Oct 27, then pinned.
 18. **Format:** one daily theme, three native posts; X keeps links out of the main post (thread post 2 on CTA days); 8 pillars with per-platform mix in CONTENT-STRATEGY.md.
+
+## 2026-10-26 (late night)
+19. **Stripe labels:** best-practice fix approved: separate product for the $59/mo 4-issue newsletter plan; clearer names/descriptions on all sponsor products.
+20. **No payment watcher:** Brandon uses the dashboard Sponsors section + Stripe emails.
+21. **BFCM Founding 12:** approved (12-month founding lock + free December newsletter shoutout for bookings Nov 27–30), tracked in PIPELINE.md, no Stripe changes; final banner copy to Brandon before Nov 27.
+22. **Beehiiv:** keep Pro trial features for now; Brandon re-opts/downgrades himself on the date (supersedes #10's "before Nov 2" action for Grok Bot).

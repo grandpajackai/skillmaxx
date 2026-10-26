@@ -2,7 +2,14 @@
 
 Targets come from [../SPONSORS.md](../SPONSORS.md). Stages: **Target → Contacted → Replied → Booked → Live → Renewed / Lost**. Outreach starts after newsletter issue #1 is sent (standing approval from Brandon; he closes custom deals).
 
-Founding sponsors booked: **0 / 10**. Payment: Stripe Payment Links **pending** (account connection in progress).
+Founding sponsors booked: **0 / 10**. Payment: 8 live Stripe Payment Links (see `src/_data/sponsorLinks.json`). Live view: owner dashboard canvas → Sponsors (pulled from Stripe at refresh).
+
+## Rate locks and promo commitments
+Every booking gets a row here. Default founding lock = 6 months from first payment. **Founding 12 (BFCM, approved 2026-10-26):** anything booked Fri Nov 27 12:00 AM ET → Mon Nov 30 11:59 PM ET gets the founding rate locked 12 months + one free newsletter shoutout in a December issue. No Stripe changes: existing prices stay; we honour the lock by never migrating these subscriptions to new prices before the lock date.
+
+| Sponsor | Stripe customer | Slot | First paid | Rate | Locked until | Promo | Dec shoutout issue | Notes |
+|---|---|---|---|---|---|---|---|---|
+| _(none yet)_ | | | | | | | | |
 
 | Company | Why they fit | Contact | Stage | Last touch | Next step | Slot / value |
 |---|---|---|---|---|---|---|
