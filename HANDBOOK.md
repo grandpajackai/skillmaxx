@@ -20,6 +20,8 @@ One page to catch up. Site: https://skillmaxx.gilventures.ai · Repo: grandpajac
 | Weekly scorecard drafts | [growth/weekly/](growth/weekly/) |
 | Test pipeline | `testing/` (nightly.sh, run_tests.py, daily_report.py, weekly_scorecard.py) |
 | Stripe payment links | `src/_data/sponsorLinks.json` |
+| Sponsor inventory, rotation, scaling | [growth/sponsors/SCALING.md](growth/sponsors/SCALING.md) |
+| Sponsor rate locks + promo commitments | [growth/sponsors/PIPELINE.md](growth/sponsors/PIPELINE.md) |
 
 ## Routines (Grok Bot, times ET)
 | Routine | Schedule | Status (Oct 26, 6:53 PM ET) |
@@ -29,8 +31,8 @@ One page to catch up. Site: https://skillmaxx.gilventures.ai · Repo: grandpajac
 | Sunday recap | Sun 6:00 PM | not run yet |
 | SkillMaxx reply sniper (log: growth/x/sniper-log.md) | every 15 min, 8:00 AM–10:45 PM | last 6:50 PM, ok |
 | Brandon personal-brand sniper | — | paused |
-| Sponsor-payment watcher | — | **missing** (proposed, see STATUS.md) |
-| BFCM prep (banner Nov 27, revert Dec 1) | — | **missing** (proposed) |
+| Sponsor-payment watcher | — | not built: Brandon chose the live Sponsors section on the dashboard + Stripe emails instead |
+| BFCM Founding 12 banner (up Nov 27, down Dec 1) | one-off, 12:05 AM ET | routine-ready note: [growth/routines/BFCM-FOUNDING-12.md](growth/routines/BFCM-FOUNDING-12.md); banner PR open, unmerged |
 
 ## Accounts (no secrets here, ever; logins live in the vault)
 | Service | Account / ID | Notes |
@@ -46,7 +48,7 @@ One page to catch up. Site: https://skillmaxx.gilventures.ai · Repo: grandpajac
 | Bluesky | SkillMaxx AI | API; replies need Brandon's OK |
 | LinkedIn | company page "SkillMaxx AI" | via Buffer |
 | Reddit | u/SkillMaxxHQ | manual drafts |
-| Owner dashboard | Grok Bot canvas d70f3b85-34d9-4642-b1a1-ff1f64a40b22 | |
+| Owner dashboard | Grok Bot canvas d70f3b85-34d9-4642-b1a1-ff1f64a40b22 | has a Sponsors section (Stripe snapshot at refresh) |
 
 ## Standing rules
 $0 budget · no secrets in chat or repo · Brandon reviews every post before Buffer · only SkillMaxx accounts · log every session in STATUS.md.
