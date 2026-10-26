@@ -1,0 +1,371 @@
+[
+ {
+  "date": "2026-10-26",
+  "run_at": "2026-10-26T02:07-04:00",
+  "versions": {
+   "claude_code": "2.1.197 (Claude Code)",
+   "codex": "codex-cli 0.163.0",
+   "grok_build": "grok 1.0.62 (1474f9cbdd91)",
+   "cursor": "2026.10.16-e3cb207",
+   "pi": "pi 0.73.1"
+  },
+  "total": 902,
+  "pass": 802,
+  "addons": 424,
+  "by": {
+   "claude_code": {
+    "pass": 340,
+    "fail": 27,
+    "total": 367
+   },
+   "codex": {
+    "pass": 65,
+    "fail": 0,
+    "total": 65
+   },
+   "grok_build": {
+    "pass": 313,
+    "fail": 18,
+    "total": 331
+   },
+   "cursor": {
+    "pass": 27,
+    "fail": 25,
+    "total": 52
+   },
+   "pi": {
+    "pass": 57,
+    "fail": 30,
+    "total": 87
+   }
+  },
+  "fail": 100,
+  "prev_date": "2026-10-25",
+  "prev_pass": 795,
+  "prev_total": 902,
+  "broke": [
+   {
+    "slug": "putervision-vision-memory-mcp",
+    "name": "@putervision/vision-memory-mcp",
+    "agent": "cursor"
+   },
+   {
+    "slug": "expo",
+    "name": "Expo",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "mcp-git",
+    "name": "MCP git (reference)",
+    "agent": "cursor"
+   },
+   {
+    "slug": "mergify",
+    "name": "Mergify",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "migration-to-aws",
+    "name": "Migration To AWS",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "slack",
+    "name": "Slack",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "snowflake-cortex-code",
+    "name": "Snowflake Cortex Code",
+    "agent": "grok_build"
+   }
+  ],
+  "fixed": [
+   {
+    "slug": "cyanheads-pubmed-mcp-server",
+    "name": "@cyanheads/pubmed-mcp-server",
+    "agent": "claude_code"
+   },
+   {
+    "slug": "airwallex-dev",
+    "name": "Airwallex Dev",
+    "agent": "claude_code"
+   },
+   {
+    "slug": "airwallex-dev",
+    "name": "Airwallex Dev",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "alloydb-omni",
+    "name": "Alloydb Omni",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "claude-code-setup",
+    "name": "Claude Code Setup",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "claude-security",
+    "name": "Claude Security",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "clay",
+    "name": "Clay",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "dash0",
+    "name": "Dash0",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "data-engineering",
+    "name": "Data Engineering",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "pydantic-ai",
+    "name": "Pydantic AI",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "qodo",
+    "name": "Qodo",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "ui-theme-designer",
+    "name": "UI Theme Designer",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "ui5-modernization",
+    "name": "Ui5 Modernization",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "valtown",
+    "name": "Valtown",
+    "agent": "grok_build"
+   }
+  ],
+  "added": [],
+  "removed": [],
+  "standout": {
+   "slug": "qodo",
+   "name": "Qodo",
+   "desc": "Bring Qodo's codebase intelligence, coding standards, and code review into your coding agent.",
+   "agents": [
+    "claude_code",
+    "codex",
+    "grok_build",
+    "pi"
+   ],
+   "why": "fixed tonight",
+   "stars": 58
+  }
+ },
+ {
+  "date": "2026-10-25",
+  "run_at": "2026-10-25T21:51-04:00",
+  "versions": {
+   "claude_code": "2.1.197 (Claude Code)",
+   "codex": "codex-cli 0.163.0",
+   "grok_build": "grok 1.0.62 (1474f9cbdd91)",
+   "cursor": "2026.10.16-e3cb207",
+   "pi": "pi 0.73.1"
+  },
+  "total": 902,
+  "pass": 795,
+  "addons": 424,
+  "by": {
+   "claude_code": {
+    "pass": 338,
+    "fail": 29,
+    "total": 367
+   },
+   "codex": {
+    "pass": 65,
+    "fail": 0,
+    "total": 65
+   },
+   "grok_build": {
+    "pass": 306,
+    "fail": 25,
+    "total": 331
+   },
+   "cursor": {
+    "pass": 29,
+    "fail": 23,
+    "total": 52
+   },
+   "pi": {
+    "pass": 57,
+    "fail": 30,
+    "total": 87
+   }
+  },
+  "fail": 107,
+  "prev_date": "2026-10-16",
+  "prev_pass": 810,
+  "prev_total": 901,
+  "broke": [
+   {
+    "slug": "cyanheads-pubmed-mcp-server",
+    "name": "@cyanheads/pubmed-mcp-server",
+    "agent": "claude_code"
+   },
+   {
+    "slug": "airwallex-dev",
+    "name": "Airwallex Dev",
+    "agent": "claude_code"
+   },
+   {
+    "slug": "airwallex-dev",
+    "name": "Airwallex Dev",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "alloydb-omni",
+    "name": "Alloydb Omni",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "claude-code-setup",
+    "name": "Claude Code Setup",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "claude-security",
+    "name": "Claude Security",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "clay",
+    "name": "Clay",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "dash0",
+    "name": "Dash0",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "data-engineering",
+    "name": "Data Engineering",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "gdharness",
+    "name": "gdharness",
+    "agent": "claude_code"
+   },
+   {
+    "slug": "gdharness",
+    "name": "gdharness",
+    "agent": "cursor"
+   },
+   {
+    "slug": "pydantic-ai",
+    "name": "Pydantic AI",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "qodo",
+    "name": "Qodo",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "ui-theme-designer",
+    "name": "UI Theme Designer",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "ui5-modernization",
+    "name": "Ui5 Modernization",
+    "agent": "grok_build"
+   },
+   {
+    "slug": "valtown",
+    "name": "Valtown",
+    "agent": "grok_build"
+   }
+  ],
+  "fixed": [],
+  "added": [
+   {
+    "slug": "videogen",
+    "name": "Videogen"
+   }
+  ],
+  "removed": [],
+  "standout": {
+   "slug": "videogen",
+   "name": "Videogen",
+   "desc": "AI video generator and AI video editor. Go from text to video, image to video, or script to video, then export an MP4.",
+   "agents": [
+    "grok_build"
+   ],
+   "why": "new tonight",
+   "stars": null
+  }
+ },
+ {
+  "date": "2026-10-16",
+  "run_at": "2026-10-16T21:46-04:00",
+  "versions": {
+   "claude_code": "2.1.197 (Claude Code)",
+   "codex": "codex-cli 0.163.0",
+   "grok_build": "grok 1.0.62 (1474f9cbdd91)",
+   "cursor": "2026.10.16-e3cb207",
+   "pi": "pi 0.73.1"
+  },
+  "total": 901,
+  "pass": 810,
+  "addons": 423,
+  "by": {
+   "claude_code": {
+    "pass": 341,
+    "fail": 26,
+    "total": 367
+   },
+   "codex": {
+    "pass": 65,
+    "fail": 0,
+    "total": 65
+   },
+   "grok_build": {
+    "pass": 317,
+    "fail": 13,
+    "total": 330
+   },
+   "cursor": {
+    "pass": 30,
+    "fail": 22,
+    "total": 52
+   },
+   "pi": {
+    "pass": 57,
+    "fail": 30,
+    "total": 87
+   }
+  },
+  "fail": 91,
+  "standout": {
+   "slug": "superpowers",
+   "name": "Superpowers",
+   "desc": "Superpowers teaches Claude brainstorming, subagent driven development with built in code review, systematic debugging, and red/green TDD. Additionally, it teaches Claude how to author and test new ski",
+   "agents": [
+    "claude_code",
+    "codex",
+    "grok_build",
+    "pi"
+   ],
+   "why": null,
+   "stars": 305178
+  }
+ }
+]

@@ -1,0 +1,5 @@
+---
+permalink: /reports/latest/
+eleventyExcludeFromCollections: true
+---
+{% set u = "/reports/" + reports[0].date + "/" %}<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Latest SkillMaxx daily report</title><meta name="robots" content="noindex"><link rel="canonical" href="{{ site.url }}{{ u }}"><meta http-equiv="refresh" content="0; url={{ u }}"><script>location.replace("{{ u }}")</script></head><body><a href="{{ u }}">Latest report: {{ reports[0].date }}</a></body></html>

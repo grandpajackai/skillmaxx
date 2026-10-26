@@ -33,7 +33,7 @@ desc: "We actually install each skill, plugin and MCP server in every agent that
  <ol><li><span>1</span><h3>We pull the add-ons</h3><p>From public lists: the official Claude Code, Codex and Grok Build marketplaces, the MCP reference servers and npm. {{ skills.length }} so far.</p></li>
  <li><span>2</span><h3>We run the real install, nightly</h3><p>In each agent's real CLI, in a throwaway sandbox with no accounts or keys. Then we check the agent actually loaded it.</p></li>
  <li><span>3</span><h3>We publish pass/fail + why</h3><p>Every result gets a date and a log excerpt. Failures stay up, not swept under the rug.</p></li></ol>
- <p class="muted">Why care? You don't burn an hour on an install that was never going to work. <a href="/how-we-test/">How we test, limits included →</a></p>
+ <p class="muted">Why care? You don't burn an hour on an install that was never going to work. <a href="/how-we-test/">How we test, limits included →</a> · <a href="/reports/latest/">Today's daily report →</a></p>
  <p class="muted">Honest labels: <span class="st tested">Tested ✓</span> our harness installed and loaded it in that agent. <span class="st failed">✕ Failed</span> it didn't, and the log says why. <span class="st documented">✓ Verified from docs</span> an official source publishes the install method. <span class="st unknown">Not yet tested</span> no docs and no test yet.</p>
 </section>
 <section class="wrap">
