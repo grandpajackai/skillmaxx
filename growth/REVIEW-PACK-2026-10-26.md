@@ -48,7 +48,7 @@ Everything here is a **draft for Brandon's approval**. Nothing was queued in Buf
 | Dial | Where we sit | Sounds like | Never sounds like |
 |---|---|---|---|
 | Cheeky ↔ corporate | 70% cheeky | "Codex went 65 for 65. Show-off." | "We are excited to announce…" |
-| Humble ↔ hype | 80% humble | "We're 2 weeks old, the numbers are small, tell us what's missing." | "The #1 / ultimate / definitive directory" |
+| Humble ↔ hype | 80% humble | "We're brand new, the numbers are small, tell us what's missing." | "The #1 / ultimate / definitive directory" |
 | Receipts ↔ opinions | 90% receipts | "802/890 clean, 13 flaky we refused to count." | "Everyone knows X is better" |
 
 ## Rules
