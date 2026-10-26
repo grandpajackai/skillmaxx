@@ -1,0 +1,13 @@
+---
+layout: base.njk
+title: "Weekly agent install scorecards: which skills, plugins and MCP servers really work"
+permalink: /reports/week/
+desc: "SkillMaxx weekly install scorecards: pass-rate trend, agent reliability ranking, confirmed breakage and flaky add-ons across Claude Code, Codex, Grok Build, Cursor and Pi."
+---
+<div class="wrap prose"><h1 class="ph">Weekly install scorecards</h1>
+<p class="answer">One page per ISO week, built from that week's nightly installs. Flaky results and missing-API-key failures are counted apart, so the numbers mean something.{% if weeks.length %} Latest: <a href="/reports/week/{{ weeks[0].key }}/">week {{ weeks[0].key }}</a>, most reliable agent {{ weeks[0].ranking[0].name }}.{% endif %}</p>
+<div class="tw"><table class="matrix"><thead><tr><th>Week</th><th>Runs</th><th>Pass rate (last night)</th><th>Confirmed broke</th><th>Really fixed</th><th>Flaky</th><th>Top agent</th></tr></thead><tbody>
+{% for w in weeks %}<tr><th scope="row"><a href="/reports/week/{{ w.key }}/">{{ w.key }}</a></th><td>{{ w.runs }}</td><td class="tok">{{ w.trend[w.trend.length-1].rate }}%</td><td>{{ w.broke_n }}</td><td>{{ w.fixed_n }}</td><td>{{ w.flaky_n }}</td><td>{{ w.ranking[0].name }}</td></tr>{% endfor %}</tbody></table></div>
+<p class="muted"><a href="/reports/latest/">Is your tool safe to install today?</a> · <a href="/reports/">Daily archive</a></p></div>
+{% set il = [] %}{% for w in weeks %}{% set il = (il.push({"@type":"ListItem","position":loop.index,"url":site.url + "/reports/week/" + w.key + "/","name":"Install scorecard week " + w.key}), il) %}{% endfor %}
+{% set jsonld = {"@context":"https://schema.org","@type":"ItemList","name":"SkillMaxx weekly install scorecards","itemListElement":il} %}

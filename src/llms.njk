@@ -6,7 +6,7 @@ eleventyExcludeFromCollections: true
 
 > SkillMaxx is an independent directory of {{ skills.length }} agent skills, plugins and MCP servers. Each listing shows install commands and compatibility for Claude Code, Codex, Grok Build, Cursor and Pi, based on official docs and sandboxed install tests ({{ testing.pass }} of {{ testing.total }} tests passed in the latest run). Data checked {{ site.checked }}.
 
-How we test: we pull add-ons from public lists (official Claude Code, Codex and Grok Build marketplaces, MCP reference servers, npm), run the real install command in each supported agent's CLI in a clean sandbox with no credentials, re-run nightly, and publish pass/fail with a log excerpt for every result. Latest run {{ testing.runDate }}: {{ testing.addons }} add-ons, {{ testing.total }} install tests, {{ testing.pass }} passed, {{ testing.fail }} failed. Limits: tested only in agents that support that add-on type; "pass" means it installs and loads, not that every feature was exercised.
+How we test: we pull add-ons from public lists (official Claude Code, Codex and Grok Build marketplaces, MCP reference servers, npm), run the real install command in each supported agent's CLI in a clean sandbox with no credentials, re-run nightly (retrying each failed install once and calling something broken only after two failing nights), and publish pass/fail with a log excerpt for every result. Latest run {{ testing.runDate }}: {{ testing.addons }} add-ons, {{ testing.total }} install tests, {{ testing.pass }} passed, {{ testing.fail }} failed. Limits: tested only in agents that support that add-on type; "pass" means it installs and loads, not that every feature was exercised.
 
 Statuses: "Tested" = installed and loaded by our harness in a sandbox with no credentials; "Verified from docs" = an official source documents the install; "Failed" = the hands-on check didn't pass; "Not yet tested" = no docs or test yet.
 
@@ -14,7 +14,9 @@ Statuses: "Tested" = installed and loaded by our harness in a sandbox with no cr
 - [Directory home]({{ site.url }}/): search all skills and filter by agent
 - [Compatibility matrix]({{ site.url }}/matrix/): every skill × 5 agents
 - [How we test]({{ site.url }}/how-we-test/): nightly install-testing methodology, limits and FAQ
-- [Daily install reports]({{ site.url }}/reports/): free per-night report of what installed, newly broke, got fixed and was added; latest at {{ site.url }}/reports/latest/. Web only, not emailed; the weekly newsletter carries a weekly scorecard of these runs
+- [Is it safe to install today?]({{ site.url }}/reports/latest/): always-current nightly results with a per-agent lookup for every add-on. Statuses: pass, needs your API key (failed only for lack of credentials), pending (one bad night, re-checked), broken (failed two nights running), flaky (flip-flopping). Latest run {{ reports[0].date }}: {{ reports[0].pass }}/{{ reports[0].total }} passed, {{ reports[0].needs_key }} need a key, {{ reports[0].broken }} broken, {{ reports[0].pending }} pending
+- [Weekly install scorecards]({{ site.url }}/reports/week/): pass-rate trend chart and agent reliability ranking per ISO week{% if weeks.length %}; latest week {{ weeks[0].key }}, most reliable agent {{ weeks[0].ranking[0].name }} ({{ weeks[0].ranking[0].rate }}%){% endif %}. The free weekly newsletter (Tuesdays) carries this scorecard
+- [Daily report archive]({{ site.url }}/reports/): dated nightly pages (web only, not emailed, not indexed; use /reports/latest/ for the current answer)
 - [How it works]({{ site.url }}/how-it-works/): methodology and status definitions
 - [Machine-readable index]({{ site.url }}/index.json): all skills as JSON
 

@@ -1,0 +1,4 @@
+<figure class="wchart">{{ w.svg | safe }}<figcaption class="muted">Nightly install pass rate, {{ w.first }} to {{ w.last }}. Counts only installs we can judge without an API key.</figcaption></figure>
+<h3>Agent reliability ranking</h3>
+<div class="tw"><table class="rank"><thead><tr><th>#</th><th>Agent</th><th>Pass rate</th><th>Installs passed</th><th>Flaky</th><th>Needs a key</th></tr></thead><tbody>
+{% for x in w.ranking %}<tr><td>{{ loop.index }}</td><th scope="row">{{ x.name }}</th><td class="tok">{{ x.rate }}%</td><td>{{ x.pass }}/{{ x.tested }}</td><td>{{ x.flaky }}</td><td>{{ x.needs_key }}</td></tr>{% endfor %}</tbody></table></div>

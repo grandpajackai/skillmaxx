@@ -8,7 +8,7 @@ Usage: run_tests.py [--agents claude_code,grok_build,...] [--limit N] [--jobs 6]
 import json,re,subprocess,sys,os,datetime,argparse,concurrent.futures as cf,shlex
 HERE=os.path.dirname(os.path.abspath(__file__));ROOT=os.path.dirname(HERE);T="/workspace/agents/templates"
 SBX=os.path.join(HERE,"sbx.sh");ANSI=re.compile(r"\x1b\[[0-9;?]*[A-Za-z]")
-ap=argparse.ArgumentParser();ap.add_argument("--agents",default="claude_code,codex,grok_build,cursor,pi");ap.add_argument("--limit",type=int,default=0);ap.add_argument("--jobs",type=int,default=6);ap.add_argument("--only",default="");ap.add_argument("--timeout",type=int,default=150)
+ap=argparse.ArgumentParser();ap.add_argument("--agents",default="claude_code,codex,grok_build,cursor,pi");ap.add_argument("--limit",type=int,default=0);ap.add_argument("--jobs",type=int,default=6);ap.add_argument("--only",default="");ap.add_argument("--timeout",type=int,default=150);ap.add_argument("--retry",type=int,default=0)
 a=ap.parse_args();AG=a.agents.split(",")
 items=json.load(open(os.path.join(ROOT,"data/skills.json")))["items"]
 if a.only: items=[i for i in items if i["slug"] in a.only.split(",")]
@@ -46,6 +46,11 @@ def grok_ok(o):
   m=re.search(r"Installed \d+ plugin\(s\) from [^:]+: ([^\n]+)",pre)
   return bool(m) and all(re.search(rf":\s+{re.escape(n.strip())}\s+\[",post) for n in m[1].split(","))
 def run(c):
+  r=run1(c);n=0
+  while r["status"]=="fail" and n<a.retry:  # retry a failed install once (or --retry times) in a fresh sandbox
+    n+=1;r2=run1(c);r2["retry"]=r2["status"];r2["first_log"]=r["log"][-300:];r=r2
+  return r
+def run1(c):
   it,ag,tpl,cmd,check=c
   try:
     p=subprocess.run([SBX,f"{T}/{tpl}" if tpl else "",cmd],capture_output=True,text=True,timeout=a.timeout);o=ANSI.sub("",p.stdout+p.stderr);ok=check(o)
