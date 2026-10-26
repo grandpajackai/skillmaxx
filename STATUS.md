@@ -57,3 +57,5 @@
 - Created live billing portal config bpc_1UUuTKHnNCwlg7U0D15J5OZG (cancel at period end, payment method update, invoice history, headline "Manage your SkillMaxx sponsorship", return URL /advertise/, login page on).
 - portalUrl set in sponsorLinks.json; /advertise/ now links "Manage or cancel your subscription" with email fallback.
 - **2026-10-26 · Grok Bot**: X bio updated in growth/x/PROFILE.md: dropped 'Receipts, not vibes.' for 'Free weekly digest.' (Brandon's call). Dashboard X profile kit synced.
+- **2026-10-26 · Grok Bot**: Final X bio (Brandon, live on X) in growth/x/PROFILE.md + dashboard: '...post what works. Free daily report + weekly newsletter.'
+- **2026-10-26 · Grok Bot**: PROPOSED, waiting on Brandon's go-ahead: a daily-report X post plus a report page on the site with newsletter signup (backs the bio's 'free daily report').
