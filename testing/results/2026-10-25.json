@@ -1,5 +1,5 @@
 {
- "run_at": "2026-10-25T18:25-04:00",
+ "run_at": "2026-10-25T21:51-04:00",
  "versions": {
   "claude_code": "2.1.197 (Claude Code)",
   "codex": "codex-cli 0.163.0",
@@ -55,7 +55,7 @@
    "slug": "currents-mcp",
    "agent": "cursor",
    "status": "fail",
-   "log": "\u2713 Enabled and approved MCP server: currentsmcp\n$ verify:\ncurrentsmcp: Error: Connection failed\nFailed to list tools: Failed to load MCP 'currentsmcp': MCP error -32000: Connection closed; stderr: [18:25:30.113] ERROR (139): CURRENTS_API_KEY is not set. Add your Currents API key to the environment (for example: export CURRENTS_API_KEY=<your-key>)."
+   "log": "\u2713 Enabled and approved MCP server: currentsmcp\n$ verify:\ncurrentsmcp: Error: Connection failed\nFailed to list tools: Failed to load MCP 'currentsmcp': MCP error -32000: Connection closed; stderr: [21:51:26.443] ERROR (139): CURRENTS_API_KEY is not set. Add your Currents API key to the environment (for example: export CURRENTS_API_KEY=<your-key>)."
   },
   {
    "slug": "cyanheads-git-mcp-server",
@@ -139,7 +139,7 @@
    "slug": "ironbee-ai-devtools",
    "agent": "cursor",
    "status": "fail",
-   "log": "\u2713 Enabled and approved MCP server: ironbeeaidevtools\n$ verify:\nironbeeaidevtools: Error: Connection failed\nFailed to list tools: Failed to load MCP 'ironbeeaidevtools': MCP error -32000: Connection closed; stderr: npm warn deprecated prebuild-install@7.1.3: No longer maintained. Please contact the author of the relevant native addon; alternatives are available."
+   "log": "TIMEOUT after 150s"
   },
   {
    "slug": "lerianstudio-matcher-mcp",
@@ -331,7 +331,7 @@
    "slug": "zereight-mcp-gitlab",
    "agent": "cursor",
    "status": "fail",
-   "log": "\u2713 Enabled and approved MCP server: zereightmcpgitlab\n$ verify:\nzereightmcpgitlab: Error: Connection failed\nFailed to list tools: Failed to load MCP 'zereightmcpgitlab': MCP error -32000: Connection closed; stderr: ERROR [18:26:44.248] (138): GITLAB_PERSONAL_ACCESS_TOKEN environment variable is not set INFO [18:26:44.251] (138): Either set GITLAB_PERSONAL_ACCESS_TOKEN (or --token, or G..."
+   "log": "\u2713 Enabled and approved MCP server: zereightmcpgitlab\n$ verify:\nzereightmcpgitlab: Error: Connection failed\nFailed to list tools: Failed to load MCP 'zereightmcpgitlab': MCP error -32000: Connection closed; stderr: ERROR [21:52:46.295] (138): GITLAB_PERSONAL_ACCESS_TOKEN environment variable is not set INFO [21:52:46.297] (138): Either set GITLAB_PERSONAL_ACCESS_TOKEN (or --token, or G..."
   },
   {
    "slug": "activecampaign",
@@ -468,14 +468,14 @@
   {
    "slug": "airwallex-dev",
    "agent": "claude_code",
-   "status": "pass",
-   "log": "Installing plugin \"airwallex-dev@claude-plugins-official\"...\u2714 Successfully installed plugin: airwallex-dev@claude-plugins-official (scope: user)\n$ verify:\n  \u276f airwallex-dev@claude-plugins-official\n    Status: \u2714 enabled"
+   "status": "fail",
+   "log": "Installing plugin \"airwallex-dev@claude-plugins-official\"...\u2718 Failed to install plugin \"airwallex-dev@claude-plugins-official\": Failed to checkout commit 877551077786664d1cbeb32013443291c66e69e6: fatal: unable to access 'https://github.com/airwallex/airwallex-marketplace.git/': Failed to connect to github.com port 443 after 134465 ms: Could not connect to server\nfatal: could not fetch 3ca6685479d4bab5b67620b39ed97503ef2d96a7 from promisor remote\n$ verify:\nNo plugins installed. Use `claude plugin install` to install a plugin."
   },
   {
    "slug": "airwallex-dev",
    "agent": "grok_build",
-   "status": "pass",
-   "log": "Installed 1 plugin(s) from claude-plugins-official: airwallex-dev\n$ verify:\n  airwallex-dev-f07bfda1: airwallex-dev [git: https://github.com/airwallex/airwallex-marketplace.git] (claude-plugins-official)"
+   "status": "fail",
+   "log": "Error: Couldn't scan every marketplace while resolving \"airwallex-dev\", so it can't be resolved safely. Unscanned source(s):\n  - claude-plugins-official\nRetry, or pin the source explicitly with `grok plugin install airwallex-dev@<qualifier>`.\n$ verify:\nNo plugins installed. Run `grok plugin install --help` to get started."
   },
   {
    "slug": "aiterm-mcp",
@@ -522,8 +522,8 @@
   {
    "slug": "alloydb-omni",
    "agent": "grok_build",
-   "status": "pass",
-   "log": "Installed 1 plugin(s) from claude-plugins-official: alloydb-omni\n$ verify:\n  alloydb-omni-56213cd7: alloydb-omni [git: https://github.com/gemini-cli-extensions/alloydb-omni.git] (claude-plugins-official)"
+   "status": "fail",
+   "log": "Error: Couldn't scan every marketplace while resolving \"alloydb-omni\", so it can't be resolved safely. Unscanned source(s):\n  - claude-plugins-official\nRetry, or pin the source explicitly with `grok plugin install alloydb-omni@<qualifier>`.\n$ verify:\nNo plugins installed. Run `grok plugin install --help` to get started."
   },
   {
    "slug": "alloydb-omni",
@@ -715,7 +715,7 @@
    "slug": "atlassian",
    "agent": "pi",
    "status": "pass",
-   "log": "up to date, audited 1 package in 259ms\nfound 0 vulnerabilities\nInstalled git:github.com/atlassian/atlassian-mcp-server\n$ verify:\n  git:github.com/atlassian/atlassian-mcp-server\n    /home/sbx/.pi/agent/git/github.com/atlassian/atlassian-mcp-server\n/home/sbx/.pi/agent/git/github.com/atlassian/atlassian-mcp-server/skills/capture-tasks-from-meeting-notes/SKILL.md\n/home/sbx/.pi/agent/git/github.com/atlassian/atlassian-mcp-server/skills/generate-status-report/SKILL.md"
+   "log": "up to date, audited 1 package in 279ms\nfound 0 vulnerabilities\nInstalled git:github.com/atlassian/atlassian-mcp-server\n$ verify:\n  git:github.com/atlassian/atlassian-mcp-server\n    /home/sbx/.pi/agent/git/github.com/atlassian/atlassian-mcp-server\n/home/sbx/.pi/agent/git/github.com/atlassian/atlassian-mcp-server/skills/capture-tasks-from-meeting-notes/SKILL.md\n/home/sbx/.pi/agent/git/github.com/atlassian/atlassian-mcp-server/skills/generate-status-report/SKILL.md"
   },
   {
    "slug": "atlassian-rovo",
@@ -762,8 +762,8 @@
   {
    "slug": "auth0",
    "agent": "grok_build",
-   "status": "fail",
-   "log": "Error: Couldn't scan every marketplace while resolving \"auth0\", so it can't be resolved safely. Unscanned source(s):\n  - xAI Official\nRetry, or pin the source explicitly with `grok plugin install auth0@<qualifier>`.\n$ verify:\nNo plugins installed. Run `grok plugin install --help` to get started."
+   "status": "pass",
+   "log": "Installed 1 plugin(s) from claude-plugins-official: auth0\n$ verify:\n  auth0-58bbe375: auth0 [git: https://github.com/auth0/agent-skills.git] (claude-plugins-official)"
   },
   {
    "slug": "aws-agents",
@@ -973,7 +973,7 @@
    "slug": "azure-sql-developer",
    "agent": "pi",
    "status": "pass",
-   "log": "up to date, audited 1 package in 272ms\nfound 0 vulnerabilities\nInstalled git:github.com/microsoft/azure-sql-database-container\n$ verify:\n/home/sbx/.pi/agent/git/github.com/microsoft/azure-sql-database-container/skills/azuresql-db-auth/SKILL.md\n/home/sbx/.pi/agent/git/github.com/microsoft/azure-sql-database-container/skills/azuresql-db-ci/SKILL.md\n/home/sbx/.pi/agent/git/github.com/microsoft/azure-sql-database-container/skills/azuresql-db-connections/SKILL.md\n/home/sbx/.pi/agent/git/github.com/microsoft/azure-sql-database-container/skills/azuresql-db-container/SKILL.md"
+   "log": "up to date, audited 1 package in 248ms\nfound 0 vulnerabilities\nInstalled git:github.com/microsoft/azure-sql-database-container\n$ verify:\n/home/sbx/.pi/agent/git/github.com/microsoft/azure-sql-database-container/skills/azuresql-db-auth/SKILL.md\n/home/sbx/.pi/agent/git/github.com/microsoft/azure-sql-database-container/skills/azuresql-db-ci/SKILL.md\n/home/sbx/.pi/agent/git/github.com/microsoft/azure-sql-database-container/skills/azuresql-db-connections/SKILL.md\n/home/sbx/.pi/agent/git/github.com/microsoft/azure-sql-database-container/skills/azuresql-db-container/SKILL.md"
   },
   {
    "slug": "base44",
@@ -1303,7 +1303,7 @@
    "slug": "chrome-devtools",
    "agent": "pi",
    "status": "fail",
-   "log": "npm error command sh -c node scripts/prepare.ts\nnpm error A complete log of this run can be found in: /home/sbx/.npm/_logs/2026-10-25T22_27_41_971Z-debug-0.log\nError: npm install --omit=dev failed with code 1\n$ verify:\n/home/sbx/.pi/agent/git/github.com/ChromeDevTools/chrome-devtools-mcp/skills/a11y-debugging/SKILL.md\n/home/sbx/.pi/agent/git/github.com/ChromeDevTools/chrome-devtools-mcp/skills/chrome-devtools-cli/SKILL.md\n/home/sbx/.pi/agent/git/github.com/ChromeDevTools/chrome-devtools-mcp/skills/chrome-devtools/SKILL.md\n/home/sbx/.pi/agent/git/github.com/ChromeDevTools/chrome-devtools-mcp/skills/cookie-debugging/SKILL.md"
+   "log": "npm error command sh -c node scripts/prepare.ts\nnpm error A complete log of this run can be found in: /home/sbx/.npm/_logs/2026-10-26T01_53_59_855Z-debug-0.log\nError: npm install --omit=dev failed with code 1\n$ verify:\n/home/sbx/.pi/agent/git/github.com/ChromeDevTools/chrome-devtools-mcp/skills/a11y-debugging/SKILL.md\n/home/sbx/.pi/agent/git/github.com/ChromeDevTools/chrome-devtools-mcp/skills/chrome-devtools-cli/SKILL.md\n/home/sbx/.pi/agent/git/github.com/ChromeDevTools/chrome-devtools-mcp/skills/chrome-devtools/SKILL.md\n/home/sbx/.pi/agent/git/github.com/ChromeDevTools/chrome-devtools-mcp/skills/cookie-debugging/SKILL.md"
   },
   {
    "slug": "chrome-devtools-mcp",
@@ -1321,7 +1321,7 @@
    "slug": "chrome-devtools-mcp",
    "agent": "pi",
    "status": "fail",
-   "log": "npm error command sh -c node scripts/prepare.ts\nnpm error A complete log of this run can be found in: /home/sbx/.npm/_logs/2026-10-25T22_27_43_579Z-debug-0.log\nError: npm install --omit=dev failed with code 1\n$ verify:\n/home/sbx/.pi/agent/git/github.com/ChromeDevTools/chrome-devtools-mcp/skills/a11y-debugging/SKILL.md\n/home/sbx/.pi/agent/git/github.com/ChromeDevTools/chrome-devtools-mcp/skills/chrome-devtools-cli/SKILL.md\n/home/sbx/.pi/agent/git/github.com/ChromeDevTools/chrome-devtools-mcp/skills/chrome-devtools/SKILL.md\n/home/sbx/.pi/agent/git/github.com/ChromeDevTools/chrome-devtools-mcp/skills/cookie-debugging/SKILL.md"
+   "log": "npm error command sh -c node scripts/prepare.ts\nnpm error A complete log of this run can be found in: /home/sbx/.npm/_logs/2026-10-26T01_54_01_822Z-debug-0.log\nError: npm install --omit=dev failed with code 1\n$ verify:\n/home/sbx/.pi/agent/git/github.com/ChromeDevTools/chrome-devtools-mcp/skills/a11y-debugging/SKILL.md\n/home/sbx/.pi/agent/git/github.com/ChromeDevTools/chrome-devtools-mcp/skills/chrome-devtools-cli/SKILL.md\n/home/sbx/.pi/agent/git/github.com/ChromeDevTools/chrome-devtools-mcp/skills/chrome-devtools/SKILL.md\n/home/sbx/.pi/agent/git/github.com/ChromeDevTools/chrome-devtools-mcp/skills/cookie-debugging/SKILL.md"
   },
   {
    "slug": "chronograph-gp",
@@ -1416,8 +1416,8 @@
   {
    "slug": "claude-code-setup",
    "agent": "grok_build",
-   "status": "pass",
-   "log": "Installed 1 plugin(s) from claude-plugins-official: claude-code-setup\n$ verify:\n  claude-code-setup-71f7df4e: claude-code-setup [local: /home/sbx/.grok/marketplace-cache/783232b622f8182e/plugins/claude-code-setup] (claude-plugins-official)"
+   "status": "fail",
+   "log": "Error: Couldn't scan every marketplace while resolving \"claude-code-setup\", so it can't be resolved safely. Unscanned source(s):\n  - xAI Official\nRetry, or pin the source explicitly with `grok plugin install claude-code-setup@<qualifier>`.\n$ verify:\nNo plugins installed. Run `grok plugin install --help` to get started."
   },
   {
    "slug": "claude-md-management",
@@ -1440,8 +1440,8 @@
   {
    "slug": "claude-security",
    "agent": "grok_build",
-   "status": "pass",
-   "log": "Installed 1 plugin(s) from claude-plugins-official: claude-security\n$ verify:\n  claude-security-88149fd2: claude-security [local: /home/sbx/.grok/marketplace-cache/783232b622f8182e/plugins/claude-security] (claude-plugins-official)"
+   "status": "fail",
+   "log": "Error: Couldn't scan every marketplace while resolving \"claude-security\", so it can't be resolved safely. Unscanned source(s):\n  - claude-plugins-official\nRetry, or pin the source explicitly with `grok plugin install claude-security@<qualifier>`.\n$ verify:\nNo plugins installed. Run `grok plugin install --help` to get started."
   },
   {
    "slug": "clay",
@@ -1452,8 +1452,8 @@
   {
    "slug": "clay",
    "agent": "grok_build",
-   "status": "pass",
-   "log": "Installed 1 plugin(s) from claude-plugins-official: clay\n$ verify:\n  agent-plugins-git-clay-7e0a35be: clay [git: https://github.com/clay-run/agent-plugins.git] (claude-plugins-official)"
+   "status": "fail",
+   "log": "Error: Couldn't scan every marketplace while resolving \"clay\", so it can't be resolved safely. Unscanned source(s):\n  - xAI Official\nRetry, or pin the source explicitly with `grok plugin install clay@<qualifier>`.\n$ verify:\nNo plugins installed. Run `grok plugin install --help` to get started."
   },
   {
    "slug": "clerk",
@@ -1603,7 +1603,7 @@
    "slug": "code-modernization",
    "agent": "claude_code",
    "status": "fail",
-   "log": "Installing plugin \"code-modernization@claude-plugins-official\"...\u2718 Failed to install plugin \"code-modernization@claude-plugins-official\": Plugin temp_local_1792967276515_189q4b has an invalid manifest file at /home/sbx/.claude/plugins/cache/temp_local_1792967276515_189q4b/.claude-plugin/plugin.json.\nValidation errors: userConfig.track: Unrecognized key: \"options\", userConfig.panel: Unrecognized key: \"options\"\n$ verify:\nNo plugins installed. Use `claude plugin install` to install a plugin."
+   "log": "Installing plugin \"code-modernization@claude-plugins-official\"...\u2718 Failed to install plugin \"code-modernization@claude-plugins-official\": Plugin temp_local_1792979665320_f2z5d1 has an invalid manifest file at /home/sbx/.claude/plugins/cache/temp_local_1792979665320_f2z5d1/.claude-plugin/plugin.json.\nValidation errors: userConfig.track: Unrecognized key: \"options\", userConfig.panel: Unrecognized key: \"options\"\n$ verify:\nNo plugins installed. Use `claude plugin install` to install a plugin."
   },
   {
    "slug": "code-modernization",
@@ -1848,8 +1848,8 @@
   {
    "slug": "dash0",
    "agent": "grok_build",
-   "status": "pass",
-   "log": "Installed 1 plugin(s) from claude-plugins-official: dash0-agent-plugin\n$ verify:\n  dash0-agent-plugin-e753c038: dash0-agent-plugin [git: https://github.com/dash0hq/dash0-agent-plugin.git] (claude-plugins-official)"
+   "status": "fail",
+   "log": "Error: Couldn't scan every marketplace while resolving \"dash0\", so it can't be resolved safely. Unscanned source(s):\n  - xAI Official\nRetry, or pin the source explicitly with `grok plugin install dash0@<qualifier>`.\n$ verify:\nNo plugins installed. Run `grok plugin install --help` to get started."
   },
   {
    "slug": "data",
@@ -1896,8 +1896,8 @@
   {
    "slug": "data-engineering",
    "agent": "grok_build",
-   "status": "pass",
-   "log": "Installed 1 plugin(s) from claude-plugins-official: astronomer-data\n$ verify:\n  agents-f71b233b: astronomer-data [git: https://github.com/astronomer/agents.git] (claude-plugins-official)"
+   "status": "fail",
+   "log": "Error: Couldn't scan every marketplace while resolving \"data-engineering\", so it can't be resolved safely. Unscanned source(s):\n  - xAI Official\nRetry, or pin the source explicitly with `grok plugin install data-engineering@<qualifier>`.\n$ verify:\nNo plugins installed. Run `grok plugin install --help` to get started."
   },
   {
    "slug": "data-engineering",
@@ -2113,7 +2113,7 @@
    "slug": "dsh-mcp-connector",
    "agent": "cursor",
    "status": "fail",
-   "log": "\u2713 Enabled and approved MCP server: dshmcpconnector\n$ verify:\ndshmcpconnector: Error: Connection failed\nFailed to list tools: Failed to load MCP 'dshmcpconnector': MCP error -32000: Connection closed; stderr: npm error could not determine executable to run npm error A complete log of this run can be found in: /home/sbx/.npm/_logs/2026-10-25T22_28_25_925Z-debug-0.log"
+   "log": "\u2713 Enabled and approved MCP server: dshmcpconnector\n$ verify:\ndshmcpconnector: Error: Connection failed\nFailed to list tools: Failed to load MCP 'dshmcpconnector': MCP error -32000: Connection closed; stderr: npm error could not determine executable to run npm error A complete log of this run can be found in: /home/sbx/.npm/_logs/2026-10-26T01_55_09_704Z-debug-0.log"
   },
   {
    "slug": "duckdb-skills",
@@ -2389,7 +2389,7 @@
    "slug": "gdharness",
    "agent": "cursor",
    "status": "fail",
-   "log": "\u2713 Enabled and approved MCP server: gdharness\n$ verify:\ngdharness: Error: Connection failed\nFailed to list tools: Failed to load MCP 'gdharness': MCP error -32022: Unsupported protocol version: 2025-11-25; stderr: [SERVER] No Godot executable found. Until that is fixed every tool that runs the engine will say so. gdharness running on stdio [2026-10-25T22:28:40.276Z] [GodotBridge:INFO] Editor brid..."
+   "log": "\u2713 Enabled and approved MCP server: gdharness\n$ verify:\ngdharness: Error: Connection failed\nFailed to list tools: Failed to load MCP 'gdharness': MCP error -32022: Unsupported protocol version: 2025-11-25; stderr: [SERVER] No Godot executable found. Until that is fixed every tool that runs the engine will say so. gdharness running on stdio [2026-10-26T01:55:24.004Z] [GodotBridge:INFO] Editor brid..."
   },
   {
    "slug": "github",
@@ -2520,8 +2520,8 @@
   {
    "slug": "grafana-mcp",
    "agent": "grok_build",
-   "status": "fail",
-   "log": "Error: Couldn't scan every marketplace while resolving \"grafana-mcp\", so it can't be resolved safely. Unscanned source(s):\n  - xAI Official\nRetry, or pin the source explicitly with `grok plugin install grafana-mcp@<qualifier>`.\n$ verify:\nNo plugins installed. Run `grok plugin install --help` to get started."
+   "status": "pass",
+   "log": "Installed 1 plugin(s) from claude-plugins-official: grafana-mcp\n$ verify:\n  grafana-mcp-9095200f: grafana-mcp [git: https://github.com/grafana/ai-marketplace.git] (claude-plugins-official)"
   },
   {
    "slug": "granola",
@@ -3145,7 +3145,7 @@
    "slug": "mattpocock-skills",
    "agent": "pi",
    "status": "pass",
-   "log": "up to date, audited 1 package in 359ms\nfound 0 vulnerabilities\nInstalled git:github.com/mattpocock/skills\n$ verify:\n/home/sbx/.pi/agent/git/github.com/mattpocock/skills/skills/engineering/ask-matt/SKILL.md\n/home/sbx/.pi/agent/git/github.com/mattpocock/skills/skills/engineering/code-review/SKILL.md\n/home/sbx/.pi/agent/git/github.com/mattpocock/skills/skills/engineering/codebase-design/SKILL.md\n/home/sbx/.pi/agent/git/github.com/mattpocock/skills/skills/engineering/diagnosing-bugs/SKILL.md"
+   "log": "npm notice To update run: npm install -g npm@11.21.1\nnpm notice\nInstalled git:github.com/mattpocock/skills\n$ verify:\n/home/sbx/.pi/agent/git/github.com/mattpocock/skills/skills/engineering/ask-matt/SKILL.md\n/home/sbx/.pi/agent/git/github.com/mattpocock/skills/skills/engineering/code-review/SKILL.md\n/home/sbx/.pi/agent/git/github.com/mattpocock/skills/skills/engineering/codebase-design/SKILL.md\n/home/sbx/.pi/agent/git/github.com/mattpocock/skills/skills/engineering/diagnosing-bugs/SKILL.md"
   },
   {
    "slug": "mbox-mcp",
@@ -3481,7 +3481,7 @@
    "slug": "netlify",
    "agent": "pi",
    "status": "pass",
-   "log": "up to date, audited 1 package in 346ms\nfound 0 vulnerabilities\nInstalled git:github.com/netlify/context-and-tools\n$ verify:\n  git:github.com/netlify/context-and-tools\n    /home/sbx/.pi/agent/git/github.com/netlify/context-and-tools\n/home/sbx/.pi/agent/git/github.com/netlify/context-and-tools/skills/netlify-access-control/SKILL.md\n/home/sbx/.pi/agent/git/github.com/netlify/context-and-tools/skills/netlify-agent-runner/SKILL.md"
+   "log": "up to date, audited 1 package in 394ms\nfound 0 vulnerabilities\nInstalled git:github.com/netlify/context-and-tools\n$ verify:\n  git:github.com/netlify/context-and-tools\n    /home/sbx/.pi/agent/git/github.com/netlify/context-and-tools\n/home/sbx/.pi/agent/git/github.com/netlify/context-and-tools/skills/netlify-access-control/SKILL.md\n/home/sbx/.pi/agent/git/github.com/netlify/context-and-tools/skills/netlify-agent-runner/SKILL.md"
   },
   {
    "slug": "netlify-skills",
@@ -3499,7 +3499,7 @@
    "slug": "netlify-skills",
    "agent": "pi",
    "status": "pass",
-   "log": "up to date, audited 1 package in 304ms\nfound 0 vulnerabilities\nInstalled git:github.com/netlify/context-and-tools\n$ verify:\n  git:github.com/netlify/context-and-tools\n    /home/sbx/.pi/agent/git/github.com/netlify/context-and-tools\n/home/sbx/.pi/agent/git/github.com/netlify/context-and-tools/skills/netlify-access-control/SKILL.md\n/home/sbx/.pi/agent/git/github.com/netlify/context-and-tools/skills/netlify-agent-runner/SKILL.md"
+   "log": "up to date, audited 1 package in 303ms\nfound 0 vulnerabilities\nInstalled git:github.com/netlify/context-and-tools\n$ verify:\n  git:github.com/netlify/context-and-tools\n    /home/sbx/.pi/agent/git/github.com/netlify/context-and-tools\n/home/sbx/.pi/agent/git/github.com/netlify/context-and-tools/skills/netlify-access-control/SKILL.md\n/home/sbx/.pi/agent/git/github.com/netlify/context-and-tools/skills/netlify-agent-runner/SKILL.md"
   },
   {
    "slug": "netsuite-ai-companion",
@@ -3960,8 +3960,8 @@
   {
    "slug": "postiz",
    "agent": "claude_code",
-   "status": "fail",
-   "log": "Installing plugin \"postiz@claude-plugins-official\"...\u2718 Failed to install plugin \"postiz@claude-plugins-official\": Failed to clone repository: Cloning into '/home/sbx/.claude/plugins/cache/temp_git_1792967457130_ispxf8'...\nfatal: unable to access 'https://github.com/gitroomhq/postiz-agent.git/': Failed to connect to github.com port 443 after 134927 ms: Could not connect to server\n$ verify:\nNo plugins installed. Use `claude plugin install` to install a plugin."
+   "status": "pass",
+   "log": "Installing plugin \"postiz@claude-plugins-official\"...\u2714 Successfully installed plugin: postiz@claude-plugins-official (scope: user)\n$ verify:\n  \u276f postiz@claude-plugins-official\n    Status: \u2714 enabled"
   },
   {
    "slug": "postiz",
@@ -3978,14 +3978,14 @@
   {
    "slug": "postman",
    "agent": "grok_build",
-   "status": "fail",
-   "log": "Error: Couldn't scan every marketplace while resolving \"postman\", so it can't be resolved safely. Unscanned source(s):\n  - claude-plugins-official\nRetry, or pin the source explicitly with `grok plugin install postman@<qualifier>`.\n$ verify:\nNo plugins installed. Run `grok plugin install --help` to get started."
+   "status": "pass",
+   "log": "Installed 1 plugin(s) from claude-plugins-official: postman\n$ verify:\n  postman-plugin-4ea4f185: postman [git: https://github.com/postmanlabs/postman-plugin.git] (claude-plugins-official)"
   },
   {
    "slug": "postman",
    "agent": "pi",
    "status": "pass",
-   "log": "up to date, audited 1 package in 281ms\nfound 0 vulnerabilities\nInstalled git:github.com/postmanlabs/postman-plugin\n$ verify:\n  git:github.com/postmanlabs/postman-plugin\n    /home/sbx/.pi/agent/git/github.com/postmanlabs/postman-plugin\n/home/sbx/.pi/agent/git/github.com/postmanlabs/postman-plugin/skills/ai-readiness/SKILL.md\n/home/sbx/.pi/agent/git/github.com/postmanlabs/postman-plugin/skills/api-discovery/SKILL.md"
+   "log": "up to date, audited 1 package in 301ms\nfound 0 vulnerabilities\nInstalled git:github.com/postmanlabs/postman-plugin\n$ verify:\n  git:github.com/postmanlabs/postman-plugin\n    /home/sbx/.pi/agent/git/github.com/postmanlabs/postman-plugin\n/home/sbx/.pi/agent/git/github.com/postmanlabs/postman-plugin/skills/ai-readiness/SKILL.md\n/home/sbx/.pi/agent/git/github.com/postmanlabs/postman-plugin/skills/api-discovery/SKILL.md"
   },
   {
    "slug": "pr-review-toolkit",
@@ -3996,8 +3996,8 @@
   {
    "slug": "pr-review-toolkit",
    "agent": "grok_build",
-   "status": "fail",
-   "log": "Error: Couldn't scan every marketplace while resolving \"pr-review-toolkit\", so it can't be resolved safely. Unscanned source(s):\n  - xAI Official\nRetry, or pin the source explicitly with `grok plugin install pr-review-toolkit@<qualifier>`.\n$ verify:\nNo plugins installed. Run `grok plugin install --help` to get started."
+   "status": "pass",
+   "log": "Installed 1 plugin(s) from claude-plugins-official: pr-review-toolkit\n$ verify:\n  pr-review-toolkit-e22ef949: pr-review-toolkit [local: /home/sbx/.grok/marketplace-cache/783232b622f8182e/plugins/pr-review-toolkit] (claude-plugins-official)"
   },
   {
    "slug": "preset-cli-skills",
@@ -4062,8 +4062,8 @@
   {
    "slug": "pydantic-ai",
    "agent": "grok_build",
-   "status": "pass",
-   "log": "Installed 1 plugin(s) from claude-plugins-official: ai\n$ verify:\n  ai-8ac48a59: ai [git: https://github.com/pydantic/skills.git] (claude-plugins-official)"
+   "status": "fail",
+   "log": "Error: Couldn't scan every marketplace while resolving \"pydantic-ai\", so it can't be resolved safely. Unscanned source(s):\n  - xAI Official\nRetry, or pin the source explicitly with `grok plugin install pydantic-ai@<qualifier>`.\n$ verify:\nNo plugins installed. Run `grok plugin install --help` to get started."
   },
   {
    "slug": "pyright-lsp",
@@ -4104,14 +4104,14 @@
   {
    "slug": "qodo",
    "agent": "grok_build",
-   "status": "pass",
-   "log": "Installed 1 plugin(s) from claude-plugins-official: qodo\n$ verify:\n  qodo-0cefb027: qodo [git: https://github.com/qodo-ai/qodo-skills.git] (claude-plugins-official)"
+   "status": "fail",
+   "log": "Error: Couldn't scan every marketplace while resolving \"qodo\", so it can't be resolved safely. Unscanned source(s):\n  - claude-plugins-official\nRetry, or pin the source explicitly with `grok plugin install qodo@<qualifier>`.\n$ verify:\nNo plugins installed. Run `grok plugin install --help` to get started."
   },
   {
    "slug": "qodo",
    "agent": "pi",
    "status": "pass",
-   "log": "up to date, audited 1 package in 260ms\nfound 0 vulnerabilities\nInstalled git:github.com/qodo-ai/qodo-skills\n$ verify:\n  git:github.com/qodo-ai/qodo-skills\n    /home/sbx/.pi/agent/git/github.com/qodo-ai/qodo-skills\n/home/sbx/.pi/agent/git/github.com/qodo-ai/qodo-skills/skills/qodo-codebase-wisdom/SKILL.md\n/home/sbx/.pi/agent/git/github.com/qodo-ai/qodo-skills/skills/qodo-get-rules/SKILL.md"
+   "log": "up to date, audited 1 package in 298ms\nfound 0 vulnerabilities\nInstalled git:github.com/qodo-ai/qodo-skills\n$ verify:\n  git:github.com/qodo-ai/qodo-skills\n    /home/sbx/.pi/agent/git/github.com/qodo-ai/qodo-skills\n/home/sbx/.pi/agent/git/github.com/qodo-ai/qodo-skills/skills/qodo-codebase-wisdom/SKILL.md\n/home/sbx/.pi/agent/git/github.com/qodo-ai/qodo-skills/skills/qodo-get-rules/SKILL.md"
   },
   {
    "slug": "qodo-standards",
@@ -4129,7 +4129,7 @@
    "slug": "qodo-standards",
    "agent": "pi",
    "status": "pass",
-   "log": "up to date, audited 1 package in 246ms\nfound 0 vulnerabilities\nInstalled git:github.com/qodo-ai/qodo-skills\n$ verify:\n/home/sbx/.pi/agent/git/github.com/qodo-ai/qodo-skills/skills/qodo-codebase-wisdom/SKILL.md\n/home/sbx/.pi/agent/git/github.com/qodo-ai/qodo-skills/skills/qodo-get-rules/SKILL.md\n/home/sbx/.pi/agent/git/github.com/qodo-ai/qodo-skills/skills/qodo-manage-standards/SKILL.md\n/home/sbx/.pi/agent/git/github.com/qodo-ai/qodo-skills/skills/qodo-review-notes/SKILL.md"
+   "log": "up to date, audited 1 package in 271ms\nfound 0 vulnerabilities\nInstalled git:github.com/qodo-ai/qodo-skills\n$ verify:\n/home/sbx/.pi/agent/git/github.com/qodo-ai/qodo-skills/skills/qodo-codebase-wisdom/SKILL.md\n/home/sbx/.pi/agent/git/github.com/qodo-ai/qodo-skills/skills/qodo-get-rules/SKILL.md\n/home/sbx/.pi/agent/git/github.com/qodo-ai/qodo-skills/skills/qodo-manage-standards/SKILL.md\n/home/sbx/.pi/agent/git/github.com/qodo-ai/qodo-skills/skills/qodo-review-notes/SKILL.md"
   },
   {
    "slug": "qt-development-skills",
@@ -4393,7 +4393,7 @@
    "slug": "salesforce-development",
    "agent": "claude_code",
    "status": "fail",
-   "log": "Installing plugin \"salesforce-development@claude-plugins-official\"...\u2718 Failed to install plugin \"salesforce-development@claude-plugins-official\": Plugin temp_subdir_1792967503592_llzucj has an invalid manifest file at /home/sbx/.claude/plugins/cache/temp_subdir_1792967503592_llzucj/.claude-plugin/plugin.json.\nValidation errors: userConfig.ui_mode: Unrecognized key: \"options\", userConfig.plugin_match_sensitivity: Unrecognized key: \"options\"\n$ verify:\nNo plugins installed. Use `claude plugin install` to install a plugin."
+   "log": "Installing plugin \"salesforce-development@claude-plugins-official\"...\u2718 Failed to install plugin \"salesforce-development@claude-plugins-official\": Plugin temp_subdir_1792979881258_gjkm5c has an invalid manifest file at /home/sbx/.claude/plugins/cache/temp_subdir_1792979881258_gjkm5c/.claude-plugin/plugin.json.\nValidation errors: userConfig.ui_mode: Unrecognized key: \"options\", userConfig.plugin_match_sensitivity: Unrecognized key: \"options\"\n$ verify:\nNo plugins installed. Use `claude plugin install` to install a plugin."
   },
   {
    "slug": "salesforce-development",
@@ -4909,7 +4909,7 @@
    "slug": "superpowers",
    "agent": "pi",
    "status": "pass",
-   "log": "up to date, audited 1 package in 272ms\nfound 0 vulnerabilities\nInstalled git:github.com/obra/superpowers\n$ verify:\n  git:github.com/obra/superpowers\n    /home/sbx/.pi/agent/git/github.com/obra/superpowers\n/home/sbx/.pi/agent/git/github.com/obra/superpowers/skills/brainstorming/SKILL.md\n/home/sbx/.pi/agent/git/github.com/obra/superpowers/skills/diagnosing-superpowers/SKILL.md"
+   "log": "up to date, audited 1 package in 307ms\nfound 0 vulnerabilities\nInstalled git:github.com/obra/superpowers\n$ verify:\n  git:github.com/obra/superpowers\n    /home/sbx/.pi/agent/git/github.com/obra/superpowers\n/home/sbx/.pi/agent/git/github.com/obra/superpowers/skills/brainstorming/SKILL.md\n/home/sbx/.pi/agent/git/github.com/obra/superpowers/skills/diagnosing-superpowers/SKILL.md"
   },
   {
    "slug": "swift-lsp",
@@ -5058,8 +5058,8 @@
   {
    "slug": "ui-theme-designer",
    "agent": "grok_build",
-   "status": "pass",
-   "log": "Installed 1 plugin(s) from claude-plugins-official: ui-theme-designer\n$ verify:\n  ui-theme-designer-556dbd8c: ui-theme-designer [git: https://github.com/SAP/ui-theme-designer-plugins-for-coding-agents.git] (claude-plugins-official)"
+   "status": "fail",
+   "log": "Error: Couldn't scan every marketplace while resolving \"ui-theme-designer\", so it can't be resolved safely. Unscanned source(s):\n  - claude-plugins-official\nRetry, or pin the source explicitly with `grok plugin install ui-theme-designer@<qualifier>`.\n$ verify:\nNo plugins installed. Run `grok plugin install --help` to get started."
   },
   {
    "slug": "ui-theme-designer",
@@ -5094,8 +5094,8 @@
   {
    "slug": "ui5-modernization",
    "agent": "grok_build",
-   "status": "pass",
-   "log": "Installed 1 plugin(s) from claude-plugins-official: ui5-modernization\n$ verify:\n  ui5-modernization-82a50ad1: ui5-modernization [git: https://github.com/UI5/plugins-coding-agents.git] (claude-plugins-official)"
+   "status": "fail",
+   "log": "Error: Couldn't scan every marketplace while resolving \"ui5-modernization\", so it can't be resolved safely. Unscanned source(s):\n  - xAI Official\nRetry, or pin the source explicitly with `grok plugin install ui5-modernization@<qualifier>`.\n$ verify:\nNo plugins installed. Run `grok plugin install --help` to get started."
   },
   {
    "slug": "ui5-modernization",
@@ -5154,8 +5154,8 @@
   {
    "slug": "valtown",
    "agent": "grok_build",
-   "status": "pass",
-   "log": "Installed 1 plugin(s) from claude-plugins-official: valtown\n$ verify:\n  plugins-git-plugin-487939b2: valtown [git: https://github.com/val-town/plugins.git] (claude-plugins-official)"
+   "status": "fail",
+   "log": "Error: Couldn't scan every marketplace while resolving \"valtown\", so it can't be resolved safely. Unscanned source(s):\n  - xAI Official\nRetry, or pin the source explicitly with `grok plugin install valtown@<qualifier>`.\n$ verify:\nNo plugins installed. Run `grok plugin install --help` to get started."
   },
   {
    "slug": "vanguard-advisor-tools",
