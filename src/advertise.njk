@@ -68,11 +68,11 @@ desc: "Sponsor the SkillMaxx newsletter or a featured slot in the directory of a
     </div>
     <button type="submit" class="btn" style="align-self:flex-start;padding:10px 24px;font-weight:600">Send inquiry</button>
   </form>
-  <div id="ad-success" hidden style="margin-top:14px;padding:14px;border-radius:9px;background:rgba(198,244,50,.08);border:1px solid rgba(198,244,50,.3)">
+  <div id="ad-success" role="status" hidden style="margin-top:14px;padding:14px;border-radius:9px;background:rgba(198,244,50,.08);border:1px solid rgba(198,244,50,.3)">
     <p style="margin:0;color:var(--a);font-weight:600">✓ Inquiry sent</p>
     <p class="muted" style="margin:6px 0 0">Thanks! Someone will get back to you by email, usually within a business day.</p>
   </div>
-  <p id="ad-error" hidden style="margin-top:10px;color:#e55;font-size:13px">Something went wrong. Please try again or email us directly at skillmaxx@gilventures.ai.</p>
+  <p id="ad-error" role="alert" hidden style="margin-top:10px;color:#e55;font-size:13px">Something went wrong. Please try again or email us directly at skillmaxx@gilventures.ai.</p>
 </div>
 
 <script>
@@ -86,18 +86,25 @@ desc: "Sponsor the SkillMaxx newsletter or a featured slot in the directory of a
   document.querySelectorAll('.tier').forEach(function(c){c.addEventListener('click',function(e){if(e.target.closest('a'))return;var b=c.querySelector('a.book');if(b)b.click()})});
   var m=location.search.match(/[?&]slot=([a-z]+)/);if(m)pick(m[1]);
 
+  var btn = form.querySelector('button[type=submit]'), busy = false;
+  var MAIL = 'mailto:skillmaxx@gilventures.ai?subject=Sponsor%20inquiry';
+  function fail(msg){ err.innerHTML = msg + ' You can also <a href="' + MAIL + '" style="color:inherit;text-decoration:underline">email skillmaxx@gilventures.ai</a> directly.'; err.hidden = false; btn.disabled = false; btn.textContent = 'Send inquiry'; busy = false }
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    err.hidden = true;
+    if (busy) return;
+    busy = true; err.hidden = true; btn.disabled = true; btn.textContent = 'Sending…';
     var fd = new FormData(form);
-    // Use formsubmit's AJAX endpoint: the plain endpoint returns 200 HTML even when
-    // the inbox isn't activated, so the old code showed "sent" while nothing was delivered.
-    fetch(form.action.replace('formsubmit.co/','formsubmit.co/ajax/'), {method:'POST',body:fd,headers:{'Accept':'application/json'}})
+    var ctl = window.AbortController ? new AbortController() : null;
+    var slow = setTimeout(function(){ if(busy){ btn.textContent = 'Still sending…' } }, 6000);
+    var kill = setTimeout(function(){ if(ctl) ctl.abort() }, 20000);
+    // FormSubmit AJAX endpoint: only {success:"true"} means it was accepted for delivery.
+    fetch(form.action.replace('formsubmit.co/','formsubmit.co/ajax/'), {method:'POST',body:fd,headers:{'Accept':'application/json'},signal:ctl?ctl.signal:undefined})
       .then(function(r){ return r.json() })
       .then(function(d){
-        if(d && (d.success===true || d.success==='true')){ form.hidden=true; ok.hidden=false }
-        else { err.hidden=false; if(d && d.message) console.warn('formsubmit:', d.message) }
-      }).catch(function(){ err.hidden=false });
+        clearTimeout(slow); clearTimeout(kill);
+        if(d && (d.success===true || d.success==='true')){ form.hidden=true; ok.hidden=false; busy=false }
+        else { fail('We couldn\'t confirm your inquiry was received.'); if(d && d.message) console.warn('formsubmit:', d.message) }
+      }).catch(function(x){ clearTimeout(slow); clearTimeout(kill); fail(x && x.name==='AbortError' ? 'This is taking too long (no reply after 20 seconds), so we stopped. Your inquiry may not have been sent. Please try again.' : 'Couldn\'t reach our form service. Check your connection and try again.') });
   });
 })();
 </script>
