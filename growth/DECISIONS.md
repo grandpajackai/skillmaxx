@@ -22,3 +22,8 @@
 13. **First post / pinned post:** Tue Oct 27 ~9:30 AM ET, after Brandon reviews the social assets.
 14. **Content strategy:** daily posting within Buffer's free limits on every channel, platform-specific formats, built on pillars (results, industry knowledge, report/newsletter CTAs, sponsorships, viral-news commentary, industry leaders, seasonal/Q4–Q1/BFCM), modelled on what similar popular accounts do. Never political.
 15. **Knowledge base:** everything is documented in the repo (HANDBOOK.md is the index) so any collaborator or agent can catch up.
+
+## 2026-10-26 (night) — content strategy v1 (PROPOSED, pending Brandon's review)
+16. **Cadence:** daily on X, Bluesky and LinkedIn, 1 Buffer post per channel per day, refilled each Sunday (Buffer Free = 10 queued per channel, refillable). Replaces the 3×/week Bluesky and 2×/week LinkedIn plan once approved.
+17. **Times (ET):** X weekdays 9:30 AM, Sat 11 AM, Sun 6 PM; Bluesky weekdays 7:30 PM, Sat 5 PM, Sun 6 PM; LinkedIn weekdays 12 PM (Wed 4 PM), weekends 10 AM. Launch posts all at 9:30 AM Tue Oct 27, then pinned.
+18. **Format:** one daily theme, three native posts; X keeps links out of the main post (thread post 2 on CTA days); 8 pillars with per-platform mix in CONTENT-STRATEGY.md.
