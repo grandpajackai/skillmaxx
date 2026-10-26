@@ -1,181 +1,184 @@
-[
- {
-  "slot": "day1-1",
-  "text": "We installed 902 agent skills/plugins/MCP servers in throwaway sandboxes across 5 coding agents. 803 worked. The other 99 have stories, and we're going to tell all of them.",
-  "link": "https://skillmaxx.gilventures.ai",
-  "image": "growth/x/img/pass-rates-2026-10-25.png"
- },
- {
-  "slot": "day1-2",
-  "text": "Codex went 65 for 65 on plugin installs this week. Perfect score. Codex, please stop, the other agents are watching.",
-  "link": null
- },
- {
-  "slot": "day1-3",
-  "text": "Grok Build quietly auto-loads your Claude Code plugins. 295 of the plugins we track rely on exactly that. Install once in Claude Code, get it in Grok for free. Underrated.",
-  "link": "https://skillmaxx.gilventures.ai/how-it-works/"
- },
- {
-  "slot": "day1-4",
-  "text": "Hot take: \"works with AI agents\" on a README means nothing until someone actually runs the install. So we did. In a sandbox. With no API keys. Like animals.",
-  "link": null
- },
- {
-  "slot": "day1-5",
-  "text": "11 skills passed in every agent we could test them in (4+): Cloudflare, CodeRabbit, Figma, Notion, Qodo, Sentry, Supabase, Superpowers, Vercel + 2 CrowdStrike ones. The overachievers club.",
-  "link": "https://skillmaxx.gilventures.ai"
- },
- {
-  "slot": "day2-1",
-  "text": "PSA for Grok Build users: auth0, grafana-mcp, postman and pr-review-toolkit started failing. Nothing broke. The names now exist in 2+ marketplaces, so grok asks which one. Fix: grok plugin install auth0@<marketplace>",
-  "link": null,
-  "image": "growth/x/img/grok-ambiguity-2026-10-25.png"
- },
- {
-  "slot": "day2-2",
-  "text": "Install tip: in Claude Code it's\n/plugin install sentry@claude-plugins-official\nThe @marketplace part isn't decoration. Leave it off and you're playing roulette.",
-  "link": "https://skillmaxx.gilventures.ai/skills/sentry/"
- },
- {
-  "slot": "day2-3",
-  "text": "MCP servers are harder than plugins. A plugin just has to install. An MCP server has to install AND connect. Cursor's MCP pass rate this week: 29/52. The other 23 said hi and then ghosted.",
-  "link": null
- },
- {
-  "slot": "day2-4",
-  "text": "Superpowers (~305k ★) and mattpocock-skills (~303k ★) are the most-starred things in our directory. Both are in the Claude Code marketplace. Stars aren't tests, though. We test.",
-  "link": "https://skillmaxx.gilventures.ai"
- },
- {
-  "slot": "day2-5",
-  "text": "We send one email a week: what broke, what's new, which installs to copy-paste. No hype, just logs. Issue #1 is coming.",
-  "link": "https://skillmaxxs-newsletter.beehiiv.com/subscribe"
- },
- {
-  "slot": "day3-1",
-  "text": "Works in X, not in Y: chrome-devtools-mcp installs fine in Claude Code and Grok Build, but fails our Pi install test. Same skill, different agent, different day.",
-  "link": "https://skillmaxx.gilventures.ai/skills/chrome-devtools-mcp/"
- },
- {
-  "slot": "day3-2",
-  "text": "Pi installs plugins straight from git repos. Cool, until the repo isn't shaped like Pi expects. 57/87 passed this week. Most failures are layout, not bugs.",
-  "link": null
- },
- {
-  "slot": "day3-3",
-  "text": "Agent tooling in 2026: 5 agents, 3 plugin marketplaces, 1 MCP spec, and 0 people who know which install command to type. Hi, we're the 1 person now.",
-  "link": "https://skillmaxx.gilventures.ai"
- },
- {
-  "slot": "day3-4",
-  "text": "New this week: videogen landed in the Grok Build marketplace. Text → video, script → MP4. It passed its install test first try. Showing off a little.",
-  "link": "https://skillmaxx.gilventures.ai/skills/videogen/"
- },
- {
-  "slot": "day3-5",
-  "text": "If you maintain an agent skill: want to know if it installs in Codex, Cursor, Grok Build and Pi too? Submit it. We'll run it through all five and show you the logs, good or bad.",
-  "link": "https://skillmaxx.gilventures.ai/submit/"
- },
- {
-  "slot": "day4-1",
-  "text": "Pick your agent on SkillMaxx and every install command on the site rewrites itself for it. Claude Code, Codex, Grok Build, Cursor, Pi. One click, zero translating READMEs.",
-  "link": "https://skillmaxx.gilventures.ai"
- },
- {
-  "slot": "day4-2",
-  "text": "The official MCP reference servers (fetch, filesystem, git, memory, sequential-thinking, time) are still the backbone of half the setups out there. Boring is a feature.",
-  "link": null
- },
- {
-  "slot": "day4-3",
-  "text": "How we test, in one breath: fresh sandbox, real agent CLI, no credentials. \"Pass\" = the agent itself lists it as installed/enabled (or connected, for MCP). Every result links its log.",
-  "link": "https://skillmaxx.gilventures.ai/how-it-works/"
- },
- {
-  "slot": "day4-4",
-  "text": "Overall install pass rate this week: 89% (803/902). Down from 90% on Oct 16. Not because skills got worse, mostly because marketplaces got crowded.",
-  "link": null,
-  "image": "growth/x/img/pass-rates-2026-10-25.png"
- },
- {
-  "slot": "day4-5",
-  "text": "cyanheads' PubMed MCP: connects in Cursor ✓, fails to connect in Claude Code ✗ (this week). Same server. If it's misbehaving for you, it might be your agent, not you.",
-  "link": "https://skillmaxx.gilventures.ai/skills/cyanheads-pubmed-mcp-server/"
- },
- {
-  "slot": "day5-1",
-  "text": "Codex: 100%\nGrok Build: 95%\nClaude Code: 92%\nPi: 66%\nCursor (MCP): 56%\nNot a ranking of the agents. It's a ranking of how well the ecosystem ships for each one.",
-  "link": null
- },
- {
-  "slot": "day5-2",
-  "text": "Unpopular opinion: a skill directory that hides its failures is just a vibes directory. Ours shows the red ✗ next to the green ✓, with logs.",
-  "link": "https://skillmaxx.gilventures.ai"
- },
- {
-  "slot": "day5-3",
-  "text": "Tool authors: one green ✓ in five agents is free distribution. Most skills are listed for one agent and quietly work in three. We'll tell people.",
-  "link": null
- },
- {
-  "slot": "day5-4",
-  "text": "Database skills are the 4th biggest category we track (39), right behind development, productivity and npm MCP packages. Everyone wants their agent near prod. Bold.",
-  "link": "https://skillmaxx.gilventures.ai/?cat=database"
- },
- {
-  "slot": "day5-5",
-  "text": "This week in agent skills: the Grok \"which auth0?\" saga, Codex's perfect week, and a video plugin with main-character energy. In your inbox, once a week.",
-  "link": "https://skillmaxxs-newsletter.beehiiv.com/subscribe"
- },
- {
-  "slot": "day6-1",
-  "text": "Install tip for Cursor MCP: drop the server in ~/.cursor/mcp.json under mcpServers and check it shows \"ready\". If it says anything else, it's not ready. Cursor is very literal.",
-  "link": null
- },
- {
-  "slot": "day6-2",
-  "text": "gdharness (the Godot MCP) passed on Oct 16 and failed to connect this week in Claude Code and Cursor. It also wants a Godot editor running. Fair. It's a Godot harness.",
-  "link": "https://skillmaxx.gilventures.ai/skills/gdharness/"
- },
- {
-  "slot": "day6-3",
-  "text": "Every night ~2 AM ET we pull the official marketplaces, re-run installs and rebuild the site. Every morning there's a new truth. Most mornings it's \"still fine\". We love those mornings.",
-  "link": null
- },
- {
-  "slot": "day6-4",
-  "text": "424 skills, plugins and MCP servers across Claude Code, Codex, Grok Build, Cursor and Pi. Search \"github\" and you get 3. Search \"database\" and you get a lot. Go poke it.",
-  "link": "https://skillmaxx.gilventures.ai"
- },
- {
-  "slot": "day6-5",
-  "text": "Question for the timeline: which skill do you install first in a fresh agent? We'll run the top answers through all 5 agents and post the results.",
-  "link": null
- },
- {
-  "slot": "day7-1",
-  "text": "Week 1 recap: 424 skills tracked, 902 sandboxed installs, 803 passes, 1 new Grok plugin, 4 ambiguous names, 0 API keys harmed.",
-  "link": "https://skillmaxx.gilventures.ai",
-  "image": "growth/x/img/pass-rates-2026-10-25.png"
- },
- {
-  "slot": "day7-2",
-  "text": "Gotcha: an MCP server can be \"installed\" and still useless. Always check your agent's MCP list for connected/ready. That's the line we grade on, not \"exit code 0\".",
-  "link": null
- },
- {
-  "slot": "day7-3",
-  "text": "Pinned-worthy truth: the best agent skill is the one that installs on the first try in the agent you actually use.",
-  "link": "https://skillmaxx.gilventures.ai"
- },
- {
-  "slot": "day7-4",
-  "text": "If you only read one email about agent tooling a week, make it the one with receipts. SkillMaxx Weekly: what broke, what's new, what to copy-paste.",
-  "link": "https://skillmaxxs-newsletter.beehiiv.com/subscribe"
- },
- {
-  "slot": "day7-5",
-  "text": "Shipping a plugin to the Claude Code marketplace? You're probably already in Grok Build too (it auto-loads Claude Code plugins). Check your listing and see where else you work.",
-  "link": "https://skillmaxx.gilventures.ai"
- }
-]
+{
+  "_status": "RETIRED 2026-10-26 (Brandon approved). Stale numbers and retired phrases. Active bank: growth/social/POST-BANK.md",
+  "posts": [
+    {
+      "slot": "day1-1",
+      "text": "We installed 902 agent skills/plugins/MCP servers in throwaway sandboxes across 5 coding agents. 803 worked. The other 99 have stories, and we're going to tell all of them.",
+      "link": "https://skillmaxx.gilventures.ai",
+      "image": "growth/x/img/pass-rates-2026-10-25.png"
+    },
+    {
+      "slot": "day1-2",
+      "text": "Codex went 65 for 65 on plugin installs this week. Perfect score. Codex, please stop, the other agents are watching.",
+      "link": null
+    },
+    {
+      "slot": "day1-3",
+      "text": "Grok Build quietly auto-loads your Claude Code plugins. 295 of the plugins we track rely on exactly that. Install once in Claude Code, get it in Grok for free. Underrated.",
+      "link": "https://skillmaxx.gilventures.ai/how-it-works/"
+    },
+    {
+      "slot": "day1-4",
+      "text": "Hot take: \"works with AI agents\" on a README means nothing until someone actually runs the install. So we did. In a sandbox. With no API keys. Like animals.",
+      "link": null
+    },
+    {
+      "slot": "day1-5",
+      "text": "11 skills passed in every agent we could test them in (4+): Cloudflare, CodeRabbit, Figma, Notion, Qodo, Sentry, Supabase, Superpowers, Vercel + 2 CrowdStrike ones. The overachievers club.",
+      "link": "https://skillmaxx.gilventures.ai"
+    },
+    {
+      "slot": "day2-1",
+      "text": "PSA for Grok Build users: auth0, grafana-mcp, postman and pr-review-toolkit started failing. Nothing broke. The names now exist in 2+ marketplaces, so grok asks which one. Fix: grok plugin install auth0@<marketplace>",
+      "link": null,
+      "image": "growth/x/img/grok-ambiguity-2026-10-25.png"
+    },
+    {
+      "slot": "day2-2",
+      "text": "Install tip: in Claude Code it's\n/plugin install sentry@claude-plugins-official\nThe @marketplace part isn't decoration. Leave it off and you're playing roulette.",
+      "link": "https://skillmaxx.gilventures.ai/skills/sentry/"
+    },
+    {
+      "slot": "day2-3",
+      "text": "MCP servers are harder than plugins. A plugin just has to install. An MCP server has to install AND connect. Cursor's MCP pass rate this week: 29/52. The other 23 said hi and then ghosted.",
+      "link": null
+    },
+    {
+      "slot": "day2-4",
+      "text": "Superpowers (~305k ★) and mattpocock-skills (~303k ★) are the most-starred things in our directory. Both are in the Claude Code marketplace. Stars aren't tests, though. We test.",
+      "link": "https://skillmaxx.gilventures.ai"
+    },
+    {
+      "slot": "day2-5",
+      "text": "We send one email a week: what broke, what's new, which installs to copy-paste. No hype, just logs. Issue #1 is coming.",
+      "link": "https://skillmaxxs-newsletter.beehiiv.com/subscribe"
+    },
+    {
+      "slot": "day3-1",
+      "text": "Works in X, not in Y: chrome-devtools-mcp installs fine in Claude Code and Grok Build, but fails our Pi install test. Same skill, different agent, different day.",
+      "link": "https://skillmaxx.gilventures.ai/skills/chrome-devtools-mcp/"
+    },
+    {
+      "slot": "day3-2",
+      "text": "Pi installs plugins straight from git repos. Cool, until the repo isn't shaped like Pi expects. 57/87 passed this week. Most failures are layout, not bugs.",
+      "link": null
+    },
+    {
+      "slot": "day3-3",
+      "text": "Agent tooling in 2026: 5 agents, 3 plugin marketplaces, 1 MCP spec, and 0 people who know which install command to type. Hi, we're the 1 person now.",
+      "link": "https://skillmaxx.gilventures.ai"
+    },
+    {
+      "slot": "day3-4",
+      "text": "New this week: videogen landed in the Grok Build marketplace. Text → video, script → MP4. It passed its install test first try. Showing off a little.",
+      "link": "https://skillmaxx.gilventures.ai/skills/videogen/"
+    },
+    {
+      "slot": "day3-5",
+      "text": "If you maintain an agent skill: want to know if it installs in Codex, Cursor, Grok Build and Pi too? Submit it. We'll run it through all five and show you the logs, good or bad.",
+      "link": "https://skillmaxx.gilventures.ai/submit/"
+    },
+    {
+      "slot": "day4-1",
+      "text": "Pick your agent on SkillMaxx and every install command on the site rewrites itself for it. Claude Code, Codex, Grok Build, Cursor, Pi. One click, zero translating READMEs.",
+      "link": "https://skillmaxx.gilventures.ai"
+    },
+    {
+      "slot": "day4-2",
+      "text": "The official MCP reference servers (fetch, filesystem, git, memory, sequential-thinking, time) are still the backbone of half the setups out there. Boring is a feature.",
+      "link": null
+    },
+    {
+      "slot": "day4-3",
+      "text": "How we test, in one breath: fresh sandbox, real agent CLI, no credentials. \"Pass\" = the agent itself lists it as installed/enabled (or connected, for MCP). Every result links its log.",
+      "link": "https://skillmaxx.gilventures.ai/how-it-works/"
+    },
+    {
+      "slot": "day4-4",
+      "text": "Overall install pass rate this week: 89% (803/902). Down from 90% on Oct 16. Not because skills got worse, mostly because marketplaces got crowded.",
+      "link": null,
+      "image": "growth/x/img/pass-rates-2026-10-25.png"
+    },
+    {
+      "slot": "day4-5",
+      "text": "cyanheads' PubMed MCP: connects in Cursor ✓, fails to connect in Claude Code ✗ (this week). Same server. If it's misbehaving for you, it might be your agent, not you.",
+      "link": "https://skillmaxx.gilventures.ai/skills/cyanheads-pubmed-mcp-server/"
+    },
+    {
+      "slot": "day5-1",
+      "text": "Codex: 100%\nGrok Build: 95%\nClaude Code: 92%\nPi: 66%\nCursor (MCP): 56%\nNot a ranking of the agents. It's a ranking of how well the ecosystem ships for each one.",
+      "link": null
+    },
+    {
+      "slot": "day5-2",
+      "text": "Unpopular opinion: a skill directory that hides its failures is just a vibes directory. Ours shows the red ✗ next to the green ✓, with logs.",
+      "link": "https://skillmaxx.gilventures.ai"
+    },
+    {
+      "slot": "day5-3",
+      "text": "Tool authors: one green ✓ in five agents is free distribution. Most skills are listed for one agent and quietly work in three. We'll tell people.",
+      "link": null
+    },
+    {
+      "slot": "day5-4",
+      "text": "Database skills are the 4th biggest category we track (39), right behind development, productivity and npm MCP packages. Everyone wants their agent near prod. Bold.",
+      "link": "https://skillmaxx.gilventures.ai/?cat=database"
+    },
+    {
+      "slot": "day5-5",
+      "text": "This week in agent skills: the Grok \"which auth0?\" saga, Codex's perfect week, and a video plugin with main-character energy. In your inbox, once a week.",
+      "link": "https://skillmaxxs-newsletter.beehiiv.com/subscribe"
+    },
+    {
+      "slot": "day6-1",
+      "text": "Install tip for Cursor MCP: drop the server in ~/.cursor/mcp.json under mcpServers and check it shows \"ready\". If it says anything else, it's not ready. Cursor is very literal.",
+      "link": null
+    },
+    {
+      "slot": "day6-2",
+      "text": "gdharness (the Godot MCP) passed on Oct 16 and failed to connect this week in Claude Code and Cursor. It also wants a Godot editor running. Fair. It's a Godot harness.",
+      "link": "https://skillmaxx.gilventures.ai/skills/gdharness/"
+    },
+    {
+      "slot": "day6-3",
+      "text": "Every night ~2 AM ET we pull the official marketplaces, re-run installs and rebuild the site. Every morning there's a new truth. Most mornings it's \"still fine\". We love those mornings.",
+      "link": null
+    },
+    {
+      "slot": "day6-4",
+      "text": "424 skills, plugins and MCP servers across Claude Code, Codex, Grok Build, Cursor and Pi. Search \"github\" and you get 3. Search \"database\" and you get a lot. Go poke it.",
+      "link": "https://skillmaxx.gilventures.ai"
+    },
+    {
+      "slot": "day6-5",
+      "text": "Question for the timeline: which skill do you install first in a fresh agent? We'll run the top answers through all 5 agents and post the results.",
+      "link": null
+    },
+    {
+      "slot": "day7-1",
+      "text": "Week 1 recap: 424 skills tracked, 902 sandboxed installs, 803 passes, 1 new Grok plugin, 4 ambiguous names, 0 API keys harmed.",
+      "link": "https://skillmaxx.gilventures.ai",
+      "image": "growth/x/img/pass-rates-2026-10-25.png"
+    },
+    {
+      "slot": "day7-2",
+      "text": "Gotcha: an MCP server can be \"installed\" and still useless. Always check your agent's MCP list for connected/ready. That's the line we grade on, not \"exit code 0\".",
+      "link": null
+    },
+    {
+      "slot": "day7-3",
+      "text": "Pinned-worthy truth: the best agent skill is the one that installs on the first try in the agent you actually use.",
+      "link": "https://skillmaxx.gilventures.ai"
+    },
+    {
+      "slot": "day7-4",
+      "text": "If you only read one email about agent tooling a week, make it the one with receipts. SkillMaxx Weekly: what broke, what's new, what to copy-paste.",
+      "link": "https://skillmaxxs-newsletter.beehiiv.com/subscribe"
+    },
+    {
+      "slot": "day7-5",
+      "text": "Shipping a plugin to the Claude Code marketplace? You're probably already in Grok Build too (it auto-loads Claude Code plugins). Check your listing and see where else you work.",
+      "link": "https://skillmaxx.gilventures.ai"
+    }
+  ]
+}

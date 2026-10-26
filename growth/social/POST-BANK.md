@@ -1,4 +1,5 @@
-# Post bank v2 (voice-checked, numbers from 2026-10-26 run). Drafts, nothing queued.
+# Post bank v2 — ACTIVE bank (approved 2026-10-26; old growth/x/posts.json retired). Each post still gets Brandon's text review before queuing.
+# (voice-checked, numbers from 2026-10-26 run). Drafts, nothing queued.
 X ≤280 / Bluesky ≤300. Same text works on both unless noted.
 
 1. **Tip** — In Claude Code it's `/plugin install sentry@claude-plugins-official`. The @marketplace bit isn't decoration: same names now live in 2+ marketplaces and agents will ask "which one?". Pin it and move on.
