@@ -1,16 +1,14 @@
-# Cold intro: Firecrawl (DRAFT, not sent)
-**To:** via https://www.firecrawl.dev/contact. **From:** skillmaxx@gilventures.ai
-**Subject:** Firecrawl × 5 coding agents: a tiny proposal
+# Cold intro: Firecrawl (DRAFT v2, not sent)
+**To:** via https://www.firecrawl.dev/contact · **From:** skillmaxx@gilventures.ai
+**Subject:** Firecrawl × 5 coding agents, tested nightly
 
 Hey Firecrawl folks,
 
-I built SkillMaxx, a directory that answers the question every dev asks right before installing a plugin: "will this actually work in *my* agent?" We test-install everything in sandboxes across Claude Code, Codex, Grok Build, Cursor and Pi, and we publish the receipts.
+I'm Brandon from SkillMaxx. We answer the question devs ask right before installing something: "will this actually work in my agent?" Every night we install skills, plugins and MCP servers across Claude Code, Codex, Grok Build, Cursor and Pi in keyless sandboxes and publish the results. Last night 802 of 890 judgeable installs were clean; the rest are listed with logs.
 
-You're one of the tools people reach for first, so here's a deliberately low-stakes ask: be a **founding sponsor**. That's a featured spot plus a blurb in our weekly "This week in agent skills" email for $49/mo, rate locked for six months.
+Low-stakes ask: be a founding sponsor. The bundle is a featured spot, a category logo and a line in our weekly email for $49/mo (or $42/mo subscribed, cancel anytime), locked for 6 months.
 
-The fine print, in large print: we're brand new and the audience is small. You'd be backing the thing early, and you'd get a monthly report with real numbers, even when they're adorable.
-
-Up for it? A reply with "tell me more" works fine.
+Full honesty, we're new and small. You'd be backing it early and you'd get real monthly numbers. And if you'd rather just tell us which Firecrawl setup we should be testing, that helps too.
 
 Brandon
 https://skillmaxx.gilventures.ai
