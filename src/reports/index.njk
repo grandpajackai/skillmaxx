@@ -4,14 +4,14 @@ title: "Daily install reports: what installed and what broke in AI agents"
 permalink: /reports/
 desc: "Free daily report from SkillMaxx's nightly sandbox run: how many agent skills, plugins and MCP servers installed in Claude Code, Codex, Grok Build, Cursor and Pi, what newly broke, what got fixed."
 ---
-{% set nlid = "newsletter-top" %}{% set nlh = "Get the weekly scoreboard" %}{% set nlp = "Daily reports live on the site only, we never email them. The free weekly email (Tuesdays) has the week's install scorecard plus new tools." %}
+{% set nlid = "newsletter-top" %}{% set nlh = "Get the weekly scorecard" %}{% set nlp = "Daily reports live on the site only, we never email them. The free weekly email (Tuesdays) has the week's install scorecard plus new tools." %}
 <div class="wrap prose"><h1 class="ph">Daily install reports</h1>
 <p class="answer">Every night we really install every listed agent add-on in each agent that supports it and publish the result here.{% if reports.length %} Latest: <a href="/reports/{{ reports[0].date }}/">{{ reports[0].date }}</a>, {{ reports[0].pass }}/{{ reports[0].total }} installs passed.{% endif %}</p></div>
 {% include "nlembed.njk" %}
 <div class="wrap prose"><div class="tw"><table class="matrix"><thead><tr><th>Date</th><th>Add-ons</th><th>Installs passed</th><th>Newly broke</th><th>Fixed</th><th>New</th></tr></thead><tbody>
 {% for r in reports %}<tr><th scope="row"><a href="/reports/{{ r.date }}/">{{ r.date }}</a></th><td>{{ r.addons }}</td><td class="tok">{{ r.pass }}/{{ r.total }}</td><td>{{ r.broke.length if r.broke else "–" }}</td><td>{{ r.fixed.length if r.fixed else "–" }}</td><td>{{ r.added.length if r.added else "–" }}</td></tr>{% endfor %}</tbody></table></div>
 <p class="muted">"–" means there was no earlier run to compare with. Missed nights are not backfilled. <a href="/how-we-test/">How we test</a></p></div>
-{% set nlid = "newsletter" %}{% set nlh = "Get the weekly scoreboard" %}{% set nlp = "" %}
+{% set nlid = "newsletter" %}{% set nlh = "Get the weekly scorecard" %}{% set nlp = "" %}
 {% include "nlembed.njk" %}
 {% set il = [] %}{% for r in reports %}{% set il = (il.push({"@type":"ListItem","position":loop.index,"url":site.url + "/reports/" + r.date + "/","name":"Daily install report " + r.date}), il) %}{% endfor %}
 {% set jsonld = {"@context":"https://schema.org","@type":"ItemList","name":"SkillMaxx daily install reports","itemListElement":il} %}
