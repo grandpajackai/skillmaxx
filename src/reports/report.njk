@@ -8,7 +8,7 @@ eleventyComputed:
   desc: "SkillMaxx nightly run {{ r.date }}: {{ r.addons }} skills, plugins and MCP servers really installed in Claude Code, Codex, Grok Build, Cursor and Pi. {{ r.pass }} of {{ r.total }} installs passed{% if r.broke %}, {{ r.broke.length }} newly broke, {{ r.fixed.length }} fixed{% endif %}."
   issueDate: "{{ r.date }}"
 ---
-{% set nlid = "newsletter-top" %}{% set nlh = "Get this in your inbox" %}{% set nlp = "Free daily report on the site, plus one short weekly email: what installed, what broke, what's new." %}
+{% set nlid = "newsletter-top" %}{% set nlh = "Get the weekly scorecard by email" %}{% set nlp = "Daily reports live on the site only, we never email them. The free weekly email (Tuesdays) has the week's install scorecard plus new tools." %}
 <div class="wrap prose"><p class="muted"><a href="/reports/">Daily reports</a> › {{ r.date }}</p>
 <h1 class="ph">Daily install report: {{ r.date }}</h1>
 <p class="answer">On {{ r.date }} we ran the real install of {{ r.addons }} agent add-ons across Claude Code, Codex, Grok Build, Cursor and Pi in a clean sandbox: <b>{{ r.pass }} of {{ r.total }} installs passed</b>, {{ r.fail }} failed.{% if r.prev_date %} Compared with the previous run ({{ r.prev_date }}, {{ r.prev_pass }}/{{ r.prev_total }}): {{ r.fixed.length }} fixed, {{ r.broke.length }} newly broke{% if r.added.length %}, {{ r.added.length }} new add-ons{% endif %}.{% endif %}</p></div>
