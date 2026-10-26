@@ -16,7 +16,7 @@
 ## Open issues
 - [ ] **Buffer posting schedules** need setting by hand in Buffer (API can't): X Mon–Fri 9:30 AM; Bluesky Mon/Wed/Fri 12:30 PM + Sun 6:15 PM; LinkedIn Tue 8:30 AM, Thu 12 PM ET. See growth/DECISIONS.md.
 - [ ] **Newsletter #2 = first send, Tue 2026-11-03** (draft, awaiting Brandon's text review). **Sponsor outreach held until 25+ subscribers.**
-- [ ] **formsubmit.co activation** for skillmaxx@gilventures.ai not confirmed — check the Zoho inbox for the one-time activation email, else /submit and /advertise entries are dropped.
+- [x] **formsubmit.co activation** confirmed by Brandon 2026-10-26 6:16 PM ET ('Form Activated' for skillmaxx.gilventures.ai). /submit, /advertise and /sponsor/thanks entries now deliver.
 - [ ] **Beehiiv: DROP TO FREE before 2026-11-02** (Brandon decided 10-26). Then check the embed form still works.
 - [ ] **Beehiiv form inner padding** is large; on 390 px the email field is cramped. Reduce padding/heading size in the Beehiiv form editor (can't style a cross-origin iframe from the site).
 - [ ] **Grok Build ambiguous installs:** auth0, grafana-mcp, postman, pr-review-toolkit now need `@<qualifier>`; update listed commands.
@@ -67,3 +67,4 @@
 
 - **2026-10-26 · Grok Bot**: Full audit + review pack (growth/REVIEW-PACK-2026-10-26.md, dashboard canvas). Brand voice growth/VOICE.md (cheeky friend + humble founder, feedback asks). Buffer read-only audit: 0 queued on X/Bluesky/LinkedIn, default schedules, X avatar still default. Drafts: schedules, pinned posts x3, 12-post bank v2 (old 35 flagged stale/'vibes'), newsletter #2 Beehiiv copy, ranked sponsor targets, outreach v2 + Context7/Tavily/follow-up, BFCM 'Founding 12', Reddit pack (4 subs), profile assets (Bluesky banner, LinkedIn cover, pin chart, LinkedIn About). Fixed /sponsor/thanks false success (PR #24, merged). Draft PR #25 (unmerged): flaky-vs-broken guide, guide feedback boxes, privacy/terms drafts. Nothing posted, queued or sent.
 - **2026-10-26 · Grok Bot**: Applied Brandon's 10 approvals (growth/DECISIONS.md). Old X bank retired, POST-BANK.md active; PR #25 merged (guide + privacy/terms live); Bluesky bio + banner set via API; Founding 12 approved as plan (no Stripe changes); Reddit via SkillMaxxHQ after r/mcp warm-up; Beehiiv → free before Nov 2. Buffer schedules NOT set: Buffer's API has no posting-schedule mutation, Brandon sets them in the UI. Nothing posted, pinned, queued or sent.
+- **2026-10-26 · Grok Bot**: FormSubmit activated by Brandon (6:16 PM ET); open issue closed, dashboard updated.
