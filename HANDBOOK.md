@@ -14,6 +14,7 @@ One page to catch up. Site: https://skillmaxx.gilventures.ai · Repo: grandpajac
 | Channels ranked | [growth/CHANNELS.md](growth/CHANNELS.md) |
 | Sponsors: pricing, playbook, pipeline, BFCM | [growth/SPONSORS.md](growth/SPONSORS.md), [growth/sponsors/](growth/sponsors/) |
 | Newsletter issues | [growth/newsletter/](growth/newsletter/) |
+| **Social content strategy + 2-week drafts** | [growth/strategy/CONTENT-STRATEGY.md](growth/strategy/CONTENT-STRATEGY.md), [growth/strategy/DRAFTS-2026-10-27.md](growth/strategy/DRAFTS-2026-10-27.md) (edit `drafts.py`, rerun) |
 | Social kits and post banks | [growth/x/](growth/x/), [growth/social/](growth/social/), [growth/profiles/](growth/profiles/), [growth/reddit/](growth/reddit/) |
 | Daily X radar | [growth/x-radar/](growth/x-radar/) |
 | Weekly scorecard drafts | [growth/weekly/](growth/weekly/) |

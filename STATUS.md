@@ -83,3 +83,8 @@
 - **Gaps:** (1) no sponsor-payment watcher; proposed read-only Stripe check every few hours → PIPELINE.md + alert (mine, needs go). (2) Stripe $59/mo product is named "1 issue" but sells 4 issues/mo; rename needs Brandon's OK. (3) BFCM has plan + copy only (growth/sponsors/BFCM.md); no banner PR yet.
 - **Pending, Brandon:** set Buffer schedules by hand; test /advertise/ autoresponse with own email; Beehiiv → free before Nov 2; review issue #2 text before Tue Nov 3; confirm BFCM offer, tracking method (manual vs tagged links), banner dates, final copy; OK the Stripe rename.
 - **Pending, Grok Bot:** build payment watcher + BFCM prep routine once approved; refresh scorecard Nov 2; queue posts only after approval; pin Bluesky post after approval; platform-specific content rebuild by pillars.
+
+## 2026-10-26 · Grok Bot: social content strategy v1 (grokbot/content-strategy)
+- growth/strategy/CONTENT-STRATEGY.md: Buffer free limits verified (10 queued/channel, 3 channels, no free first-comment), daily cadence on all 3 channels, research-backed times, 8 pillars with per-platform mix, weekly rhythm, platform playbooks, cited examples from @cursor_ai, @levelsio, @swyx, Simon Willison and small viral list accounts, seasonal calendar through Q1, keep/rework/retire table for old drafts.
+- growth/strategy/drafts.py → DRAFTS-2026-10-27.md + drafts-2026-10-27.json: 14 days (Oct 27–Nov 9) × 3 platforms, length-checked; Nov 8 scorecard has placeholders to fill from weekly_scorecard.py.
+- Review Page for Brandon written. Nothing queued in Buffer, nothing posted.
