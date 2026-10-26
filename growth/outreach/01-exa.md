@@ -1,16 +1,16 @@
-# Cold intro: Exa (DRAFT, not sent)
-**To:** via https://exa.ai/contact (partnerships). **From:** skillmaxx@gilventures.ai
-**Subject:** we installed your MCP in 5 agents (it behaved)
+# Cold intro: Exa (DRAFT v2, not sent)
+**To:** via https://exa.ai/contact (partnerships) · **From:** skillmaxx@gilventures.ai
+**Subject:** we install your MCP every night (it behaves)
 
 Hi Exa team,
 
-Quick one. I run SkillMaxx, a tiny directory with a weird hobby: it installs agent skills and MCP servers in throwaway sandboxes across Claude Code, Codex, Grok Build, Cursor and Pi, then publishes what actually happened, logs included.
+I'm Brandon, I run SkillMaxx. Every night it installs agent skills and MCP servers in fresh sandboxes across Claude Code, Codex, Grok Build, Cursor and Pi, then publishes what installed and what didn't, logs included: https://skillmaxx.gilventures.ai/reports/latest/
 
-Search MCPs are the thing everyone installs first, so I'd love Exa to be the founding sponsor of our Search category. It's $15/mo, locked for 6 months, and labeled "Sponsored" in big honest letters. Full honesty: we launched this month and traffic is roughly a rounding error. That's exactly why it's cheap, and why you'd get in before it isn't.
+Search MCPs are what people install first, so I'd love Exa to be the founding sponsor of our Search category: $15/mo, rate locked for 6 months, labeled "Sponsored". Honest bit: we launched this month and the audience is small. That's why it's cheap, and you'd get a monthly report with real numbers even when they're tiny.
 
-Paying gets you a spot, not a better test result. If something ever fails, you'll hear it from me first, along with the log.
+Paying gets a spot, never a better test result.
 
-Worth a 10-minute chat, or should I go away gracefully?
+Even if it's a no, I'd value one thing: is there an Exa skill or config you'd like us to test that we're missing?
 
 Brandon
 SkillMaxx · https://skillmaxx.gilventures.ai

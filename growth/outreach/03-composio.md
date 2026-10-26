@@ -1,18 +1,16 @@
-# Cold intro: Composio (DRAFT, not sent)
-**To:** via https://composio.dev/contact. **From:** skillmaxx@gilventures.ai
-**Subject:** your awesome-list is famous. Want a sandbox to match?
+# Cold intro: Composio (DRAFT v2, not sent)
+**To:** via https://composio.dev/contact · **From:** skillmaxx@gilventures.ai
+**Subject:** your skills list + our nightly installs?
 
 Hi Composio team,
 
-Your awesome-claude-skills list is basically required reading, so you already know the pain: half the skills out there have never been installed by anyone but their author.
+Your awesome-claude-skills list is required reading. The part nobody has time for is checking which of those skills install in which agent, so that's what SkillMaxx does every night across Claude Code, Codex, Grok Build, Cursor and Pi, with logs.
 
-SkillMaxx fixes the boring part. We install skills, plugins and MCP servers in fresh sandboxes across 5 coding agents every night and publish pass/fail with logs: 803 of 902 passing right now, and the 99 failures are shown too.
+Two ideas:
+1. **Free, no strings:** send us any Composio skills and we'll run them through all five agents and share the logs.
+2. **If it's useful:** founding sponsor of our Integrations category, $15/mo, locked six months, clearly labeled.
 
-Two ideas, both cheap:
-1. **Founding sponsor** of our Integrations category: $15/mo, locked six months, clearly labeled.
-2. **Free, no strings:** we'd love to link your list from ours, and run any Composio skill you want through all five agents.
-
-We're new and small. I'd rather say that up front than dress it up. Fancy a chat?
+We're early and small, and I'd rather say that up front. Would either be useful?
 
 Brandon
 https://skillmaxx.gilventures.ai
