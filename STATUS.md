@@ -76,3 +76,10 @@
 - /advertise/ and /submit/ now normal POST with reCAPTCHA + FormSubmit `_autoresponse` (FormSubmit does not send autoresponses over AJAX or with `_captcha=false`). /submit/ gained an optional email field. Sponsor thanks stays AJAX (Stripe receipt already confirms).
 - Perf: Beehiiv form embed lazy-loads via IntersectionObserver (it pulls ~30 third-party requests: PerimeterX, GTM, Google Fonts…); Beehiiv attribution.js loads 1.5 s after window load.
 - Autoresponse untested end-to-end (needs reCAPTCHA); Brandon to test with his own email.
+
+## 2026-10-26 · Grok Bot: infrastructure audit (6:55 PM ET) + handbook
+- Added HANDBOOK.md (index, routines, accounts without secrets). Folded PR #15's X radar file in; #15 closed as superseded (its newsletter-notes change was already overtaken on master).
+- **Confirmed working:** 8 live Stripe payment links, correct amounts (one-time $19/$29/$15/$49; monthly $59/$25/$13/$42), each redirecting to /sponsor/thanks/?slot=…; portal link on /advertise/. Key pages 200 in ~0.1–0.2 s; sitemap 442 URLs; robots ok. FormSubmit + `_autoresponse` live on /advertise/ and /submit/. Beehiiv embed on home, reports, advertise. Last 5 CI/deploy runs green.
+- **Gaps:** (1) no sponsor-payment watcher; proposed read-only Stripe check every few hours → PIPELINE.md + alert (mine, needs go). (2) Stripe $59/mo product is named "1 issue" but sells 4 issues/mo; rename needs Brandon's OK. (3) BFCM has plan + copy only (growth/sponsors/BFCM.md); no banner PR yet.
+- **Pending, Brandon:** set Buffer schedules by hand; test /advertise/ autoresponse with own email; Beehiiv → free before Nov 2; review issue #2 text before Tue Nov 3; confirm BFCM offer, tracking method (manual vs tagged links), banner dates, final copy; OK the Stripe rename.
+- **Pending, Grok Bot:** build payment watcher + BFCM prep routine once approved; refresh scorecard Nov 2; queue posts only after approval; pin Bluesky post after approval; platform-specific content rebuild by pillars.
