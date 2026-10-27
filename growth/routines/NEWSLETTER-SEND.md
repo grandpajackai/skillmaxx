@@ -8,23 +8,21 @@ Archive pages: `src/newsletter/issue-N.md` (collection tag `issues` → listed b
 ## Before send (Mon night / Tue morning)
 1. Regenerate the scorecard: `python3 testing/weekly_scorecard.py` and paste fresh numbers into the Beehiiv draft.
 2. Brandon reviews the Beehiiv copy.
-3. Confirm `src/newsletter/issue-N.md` exists and matches the email body (or create it from the beehiiv file, same structure as issue-1 / issue-2).
+3. **Do not add `src/newsletter/issue-N.md` until after send.** Keep the draft only under `growth/newsletter/` so `/newsletter/issue-N/` stays 404 (no client-side gate, no premature 200).
 
 ## After Beehiiv marks the issue Sent
 1. **Publish the archive page**
-   - Remove `eleventyExcludeFromCollections: true` (if set).
-   - Set `tags: [issues]` so `/newsletter/` lists it.
-   - Remove or leave the client date-gate; once the send day has passed the gate is open anyway.
-   - Sync body text to what actually went out (no silent edits after send).
+   - Create `src/newsletter/issue-N.md` from the beehiiv file (same front matter pattern as `issue-1.md`: `permalink: /newsletter/issue-N/`, `tags: [issues]`, `issueDate`, Article JSON-LD).
+   - Body must match what was emailed (no silent edits after send).
 2. Short branch → PR → CI green → squash-merge.
 3. Verify live:
-   - https://skillmaxx.gilventures.ai/newsletter/issue-N/ shows the issue
+   - https://skillmaxx.gilventures.ai/newsletter/issue-N/ shows the issue (was 404 before this PR)
    - https://skillmaxx.gilventures.ai/newsletter/ lists it
 4. Schedule the Buffer “newsletter is out” posts only after this confirm (see BUFFER-DAILY-TOPUP.md Nov 3 gate).
 5. Log one line in STATUS.md.
 
-## Date-gate pattern (pre-send)
-Same idea as the BFCM banner: a client-side `Date.parse` gate can hide the body until send morning (see `src/newsletter/issue-2.md`, unlocks `2026-11-03T14:00:00Z` = 9:00 AM ET). Prefer also excluding from collections until after send so the archive index does not link early.
+## Why no pre-send page
+Client-side date gates still return HTTP 200 and leak draft HTML. Unpublished issues stay out of `src/newsletter/` entirely until the send PR.
 
 ## Nightly refresh check
 The 2:00 AM nightly (testing/nightly.sh) does not send email. After any Tuesday send, the next nightly (or the send PR) should confirm the latest emailed issue is on `/newsletter/` and that the archive body matches Beehiiv. If it does not, fix in a follow-up PR the same day.

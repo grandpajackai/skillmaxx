@@ -110,3 +110,4 @@
 - **2026-10-27 · Grok Bot**: Sponsor pricing clarity (amounts unchanged). /advertise/, sponsorLinks, SPONSORS, SCALING, newsletter footers, Stripe product names/descriptions + payment-link custom text. Bundle = 1 NL issue + Featured + Category ($49 / $42/mo, worth $63). BFCM still unapproved.
 - **2026-10-27 · Grok Bot**: Newsletter archive rule: every Beehiiv send → src/newsletter/issue-N.md on /newsletter/. Added issue-2.md (date-gated until Nov 3 9 AM ET, excluded from collections until after send) + growth/routines/NEWSLETTER-SEND.md. DECISIONS #26.
 - **2026-10-27 · Grok Bot**: Removed struck-through “regular” prices ($49/$79/$29) from /advertise/, sponsorLinks, SPONSORS, SCALING. Replaced with “Founding price, locked for 6 months”. Stripe product copy aligned.
+- **2026-10-27 · Grok Bot**: Unpublished /newsletter/issue-2/ until after Nov 3 send (removed src page; draft stays in growth/newsletter/). Runbook updated — archive only after Beehiiv Sent.
