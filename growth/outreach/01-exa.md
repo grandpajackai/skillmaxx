@@ -1,4 +1,4 @@
-# Cold intro: Exa (DRAFT v2, not sent)
+# Cold intro: Exa (SENT 2026-10-27 — see sent/2026-10-27-batch1.json)
 **To:** via https://exa.ai/contact (partnerships) · **From:** skillmaxx@gilventures.ai
 **Subject:** we install your MCP every night (it behaves)
 

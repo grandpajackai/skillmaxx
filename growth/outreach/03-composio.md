@@ -1,4 +1,4 @@
-# Cold intro: Composio (DRAFT v2, not sent)
+# Cold intro: Composio (SENT 2026-10-27 — see sent/2026-10-27-batch1.json)
 **To:** via https://composio.dev/contact · **From:** skillmaxx@gilventures.ai
 **Subject:** your skills list + our nightly installs?
 

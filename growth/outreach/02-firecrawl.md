@@ -1,4 +1,4 @@
-# Cold intro: Firecrawl (DRAFT v2, not sent)
+# Cold intro: Firecrawl (SENT 2026-10-27 — see sent/2026-10-27-batch1.json)
 **To:** via https://www.firecrawl.dev/contact · **From:** skillmaxx@gilventures.ai
 **Subject:** Firecrawl × 5 coding agents, tested nightly
 

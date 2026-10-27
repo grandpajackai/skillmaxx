@@ -7,7 +7,7 @@
 
 Stages: **Target → Contacted → Replied → Booked → Live → Renewed / Lost**.
 
-**Standing gate:** no outbound until newsletter issue #2 is sent **and** ≥25 subscribers, then Brandon OK's each batch. Nothing has been contacted as of 2026-10-27.
+**Standing gate (updated 2026-10-27):** Brandon approved starting outreach today. Newsletter #2 still first-sends **Tue Nov 3**. Email ramp ~10/day week 1 (verified public addresses only). Contact forms can go faster. Day-1: **10 Contacted** by email.
 
 Founding sponsors booked: **0 / 10**. Payment: 8 live Stripe Payment Links (`src/_data/sponsorLinks.json`). Live view: owner dashboard → Sponsors / Sales pipeline.
 
@@ -23,8 +23,8 @@ Every booking gets a row here. Default founding lock = 6 months from first payme
 
 | Stage | Count |
 |---|---|
-| Target | 40 |
-| Contacted | 0 |
+| Target | 30 |
+| Contacted | 10 |
 | Replied | 0 |
 | Booked | 0 |
 | Live | 0 |
