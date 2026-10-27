@@ -34,7 +34,7 @@
   "theme": "News: Agent Skills moves to the AAIF",
   "x": [
    "Anthropic just gave away Agent Skills.\n\nOn Oct 22 it donated the open standard for teaching AI agents new tasks to the Agentic AI Foundation (Linux Foundation), the same home as MCP.\n\n1M skills published. ~280M installs. 70+ platforms.",
-   "What's a skill? A folder with a SKILL file file that teaches an agent one job, plus any scripts it needs.\n\nIt started inside Claude Code. Now ChatGPT, Cursor, Copilot and VS Code all load them.",
+   "What's a skill? A folder with a SKILL.md file that teaches an agent one job, plus any scripts it needs.\n\nIt started inside Claude Code. Now ChatGPT, Cursor, Copilot and VS Code all load them.",
    "What changes for devs:\n• one format across agents, less repackaging\n• a proposed roadmap: versioned releases + security guidance for people installing skills\n\nWhat doesn't change: a shared format ≠ \"installs in your agent today.\"",
    "In our nightly runs, the same add-on can install clean in one agent and fail in another. That gap is what we test.\n\nWhat should a skills security guide cover?\n\nSource: anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation"
   ],
