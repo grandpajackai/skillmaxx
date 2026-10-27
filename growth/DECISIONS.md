@@ -56,3 +56,7 @@
 
 ## 2026-10-27 — Founding 12 capacity
 28. **Founding 12 still NOT approved.** Capacity forecast in growth/sponsors/SCALING.md. Recommend: 12-month lock only on selected monthly subs (Featured cap 1, Category ≤5, Bundle cap 1); newsletter 4-pack and one-times not eligible. Free Dec newsletter line undecided. No BFCM social shoutouts. Banner must not say “money still never changes a test result.”
+
+## 2026-10-27 — simplified sponsor model (draft)
+29. **Draft only (not live):** Founding = first 10, 6-month lock. Featured excluded from long locks (monthly rotation, price rises with audience). BFCM Nov 27–30: 12-month lock on Category + Newsletter only. Free Dec line undecided. Premium/custom = contact us. No per-plan BFCM cap matrix.
+

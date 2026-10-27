@@ -112,3 +112,4 @@
 - **2026-10-27 · Grok Bot**: Removed struck-through “regular” prices ($49/$79/$29) from /advertise/, sponsorLinks, SPONSORS, SCALING. Replaced with “Founding price, locked for 6 months”. Stripe product copy aligned.
 - **2026-10-27 · Grok Bot**: Unpublished /newsletter/issue-2/ until after Nov 3 send (removed src page; draft stays in growth/newsletter/). Runbook updated — archive only after Beehiiv Sent.
 - **2026-10-27 · Grok Bot**: Sponsor capacity forecast (SCALING.md + dashboard). BFCM drafts: dropped money/test-result banner line and social shoutouts; free Dec newsletter line marked undecided. Nothing live.
+- **2026-10-27 · Grok Bot**: Simplified sponsor model draft (SCALING/BFCM/dashboard): Featured no long lock; BFCM 12-mo = Category+Newsletter only; Dec line undecided; Premium contact-us. Advertise “What you get” + mockups on open PR (not merged).
