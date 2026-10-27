@@ -33,3 +33,4 @@
 20. **No payment watcher:** Brandon uses the dashboard Sponsors section + Stripe emails.
 21. **BFCM Founding 12:** approved (12-month founding lock + free December newsletter shoutout for bookings Nov 27–30), tracked in PIPELINE.md, no Stripe changes; final banner copy to Brandon before Nov 27.
 22. **Beehiiv:** keep Pro trial features for now; Brandon re-opts/downgrades himself on the date (supersedes #10's "before Nov 2" action for Grok Bot).
+19. **Full context on every platform (Brandon):** LinkedIn is the bar; X and Bluesky carry the same who/what/when/what-it-means as threads (X 2–4 posts ≤280 each, Bluesky 1–3 posts ≤300 each), story-driven hook → open loop → receipt → payoff question/CTA, no overpromising. All 14 days rewritten. Buffer Free allows one scheduled thread per queue, so approved threads wait in Buffer Drafts and are queued one day at a time.

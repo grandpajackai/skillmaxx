@@ -96,3 +96,4 @@
 - BFCM Founding 12 approved: tracking table in growth/sponsors/PIPELINE.md, routine-ready note growth/routines/BFCM-FOUNDING-12.md, banner PR #35 open as draft (unmerged, date-gated Nov 27–30).
 - growth/sponsors/SCALING.md: current inventory, competitor patterns, cap/waitlist/rotation proposal. Gap: sponsor placements (homepage card, category pages) are not data-driven yet.
 - **2026-10-26 · Grok Bot**: Nov 7 build-in-public post (advertise-form story) rejected by Brandon; replaced on X/Bluesky/LinkedIn with the approved flaky-vs-broken "something we got wrong" post (links /guides/flaky-vs-broken/).
+- **2026-10-26 · Grok Bot**: Rewrote all 14 days of X and Bluesky drafts as full-context, story-driven threads (LinkedIn as source of truth); drafts.py checks per-post limits. Found Buffer Free allows only one scheduled thread per queue: threads go to Drafts and are queued daily. Strategy doc + DECISIONS #19 updated.

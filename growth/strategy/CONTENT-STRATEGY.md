@@ -7,8 +7,24 @@ Become the account devs check **before** they install an agent add-on. Growth (f
 
 ## Three key calls
 1. **Daily on all three channels, 1 Buffer post per channel per day, refilled weekly.** Buffer Free caps the *queue* at 10 scheduled posts per channel (refills as posts publish; 3 channels max) - not a monthly cap. 7 posts/week/channel fits under 10, so a Sunday approve-and-refill session keeps every channel daily for $0. Bluesky moves from 3×/week to daily: it has a chronological feed, no link penalty and a dev crowd, so frequency costs nothing there; what it punishes is copy-paste and engagement bait.
-2. **One daily theme, three native posts.** Same idea each day, written separately per platform: X = punchy hook, no link in the main post (link in a self-reply/thread post 2 only for CTA days); Bluesky = warmer, nerdier, lowercase, link inline (no penalty), alt text always; LinkedIn = founder voice, proper case, 600–1,300 chars, an image, link in post (company pages aren't penalized).
+2. **One daily theme, three native posts, full context everywhere.** Same idea and the same full story each day, formatted per platform: X = 2–4 post thread, link only in the last post; Bluesky = warmer, nerdier, lowercase, link inline (no penalty), alt text always; LinkedIn = founder voice, proper case, 600–1,300 chars, an image, link in post (company pages aren't penalized).
 3. **Replies are the growth engine on X; posts are the receipts.** The sniper routine's 3–5 one-tap replies a day to relevant posts (manual, Brandon taps) do more for a new account than any scheduled post. Bluesky replies stay approval-gated until Brandon says go autonomous.
+
+## Rule: full context on every platform (Brandon, 2026-10-26)
+LinkedIn is the quality bar. X and Bluesky carry the same full story (who, what, when, what it means for the reader), never a vague, edgy summary. Post 1 always names the company or tool in plain words and stands alone. Say what things are (e.g. "a skill is a folder with a SKILL.md file"). X = 2–4 post thread (each ≤280); Bluesky = 1–3 posts (each ≤300), link inline, alt text on images. Single posts only when the full message truly fits. No clickbait that overpromises; every hook is backed by a receipt in the thread.
+
+## The thread formula we apply
+Modelled on the researched accounts (@cursor_ai one-line claim + proof, @thedelost / @quangdigiaz numbered repo lists, @levelsio timely first-person tips, Simon Willison's sourced "what happened" posts).
+**X (2–4 posts)**
+1. Hook post: a surprising number, a bold-but-true claim, or a named news event, with the full point in plain words. Ends with an open loop ("here's why", "the other 88 are the interesting part", 👇/🧵).
+2. Context: what the thing is and who did what, when. One idea per post, short lines.
+3. Receipt: our own numbers, a log or a screenshot.
+4. Payoff: what it means for devs + one question or CTA, and the only link.
+**Bluesky (1–3 posts)**: same arc compressed. Post 1 = hook + who/what/when; post 2 = what it means + receipt; last = question + link inline (no link penalty). Warmer, lowercase-friendly, no bait phrases, alt text always.
+**LinkedIn (1 post)**: title-line hook → who/what/when → numbered "what it means for teams" → our receipt → one question → link → "Brandon".
+
+## Buffer thread support (checked 2026-10-26)
+Buffer schedules X and Bluesky threads (up to 25 posts, web composer; the Buffer MCP `create_post` takes `metadata.twitter.thread` / `metadata.bluesky.thread`). **But the Free plan allows only ONE scheduled thread per queue at a time**; unlimited threads can sit in Drafts (https://support.buffer.com/en-us/articles/using-xtwitter-with-buffer-nA84XnWtuU, https://support.buffer.com/en-us/articles/using-bluesky-with-buffer-7f6OcRnzIO). Operating model: Brandon approves the week on Sunday → all approved threads are saved as Buffer drafts → after each day's thread publishes, the next approved draft is moved into the queue (a daily step, no new approval needed). LinkedIn posts are single posts and queue normally. Alternative if that's too fiddly: Bluesky threads via the Bluesky API (needs Brandon's OK) or X Premium long posts.
 
 ## Buffer free limits (verified 2026-10-26)
 | Limit | Value | Source |
