@@ -16,6 +16,9 @@ Each draft not yet ready to schedule starts with one label line, followed by a b
 `[PLANNED <Day Mon D> <time> ET | <reason: REFRESH x / fill placeholders / newsletter gate / THREAD (n)> | remove this line ...]`
 Buffer keeps the draft's `dueAt` at the planned time.
 
+## Images
+Buffer only takes images from public URLs. To add an image: put the PNG/JPG in `src/assets/social/`, then open a PR, wait for CI to pass and squash-merge. Check it's live (`curl -I https://skillmaxx.gilventures.ai/assets/social/<file>` should return 200 with an image/* type). Then attach it with `assets: [{image: {url, metadata: {altText}}}]`. Alt text is always required. When editing a post that already has an image, carry its assets forward. Live now: `pin-chart.png` (Oct 27 X + LinkedIn).
+
 ## Steps
 1. `list_posts` for each channel (status scheduled and draft). Check for duplicates: if a scheduled post's text (with the label stripped) matches a draft's text, delete nothing and skip that draft. Log it.
 2. Pick the drafts whose planned time is within the next 48 hours.
@@ -25,7 +28,7 @@ Buffer keeps the draft's `dueAt` at the planned time.
    - **Newsletter gate (Nov 3):** schedule only after Beehiiv shows issue #2 as *sent*. If it's not sent, the Nov 3 posts stay drafts. Also edit the Nov 2 LinkedIn post ("issue #2 is out tomorrow") if the send moved.
    - **Thread limit:** a thread draft is scheduled only when no other thread is scheduled on that channel (e.g. Nov 4 X/Bluesky after the Oct 28 threads publish).
    - **Capacity:** the channel has fewer than 10 scheduled posts.
-4. Strip the label line, then `edit_post` the text (and every `metadata.<network>.thread` item, with item 1 equal to the outer text) and move it to the queue at its planned `dueAt`. If edit can't flip draft→scheduled, create a fresh post with the same text and `dueAt`, then delete the draft (it's our own draft, so that's fine).
+4. Strip the label line, write "SKILL file" (never "SKILL.md", which Buffer and the networks turn into a link), then `edit_post` the text (and every `metadata.<network>.thread` item, with item 1 equal to the outer text) and move it to the queue at its planned `dueAt`. If edit can't flip draft→scheduled, create a fresh post with the same text and `dueAt`, then delete the draft (it's our own draft, so that's fine).
 5. Check: `list_posts` again. Confirm the status is scheduled, the time is right, and there are no duplicates.
 6. Append one line to STATUS.md's Session log: what was scheduled, what was skipped and why. No daily report post unless something big happened.
 
