@@ -1,14 +1,14 @@
 # Sponsor inventory, rotation and scaling (2026-10-26)
 
 ## What sponsorship looks like today
-| Slot | Price (founding, one-time / monthly sub) | Where it shows | How many fit today |
+| Slot | Price (founding) | Where it shows | How many fit today |
 |---|---|---|---|
-| Newsletter sponsor | $19/issue · $59/mo (4 issues) | One ~50-word block + 1 link, labeled "Sponsor", in SkillMaxx Weekly (Tuesdays, 5 subscribers today) | **1 per issue** → 4–5 per month |
-| Featured slot | $29/mo · $25/mo sub | The one "Sponsored" card in the homepage Featured row (position 3) + top-of-category placement | **1 at a time** |
-| Category sponsor | $15/mo · $13/mo sub | Logo + link on one category page | **1 per category** (exclusive) |
-| Founding bundle | $49/mo · $42/mo sub | All three above + "Founding Sponsor" credit on /advertise/ | consumes 1 of each |
+| Newsletter sponsor | **$19 for 1 issue** · **$59/mo for 4 issues** (~$15 each, save $17) | One ~50-word block + 1 link, labeled "Sponsor", in SkillMaxx Weekly (Tuesdays) | **1 per issue** → 4–5 per month |
+| Featured slot | **$29 for 1 month** · **$25/mo** sub | The one "Sponsored" card in the homepage Featured row (position 3) + top-of-category placement | **1 at a time** |
+| Category sponsor | **$15 for 1 month** · **$13/mo** sub | Logo + link on one category page | **1 per category** (exclusive) |
+| Founding bundle | **$49 for 1 month** (1 NL issue + Featured + Category, worth $63) · **$42/mo** same mix | All three for that month + "Founding Sponsor" credit on /advertise/ | consumes 1 featured + 1 category + 1 newsletter issue |
 
-Founding prices: first 10 sponsors, locked 6 months (12 for Founding 12 / BFCM bookings).
+Founding prices: first 10 sponsors, locked 6 months. (BFCM "Founding 12" 12-month lock is drafted, not approved.)
 Rules that never change: always labeled "Sponsored", money never changes a test result or ranking.
 
 **Gap found:** the homepage card is a static "Your skill here" placeholder, and category pages do not render a sponsor block yet. Before the first booking we need a `src/_data/sponsors.json` (who, slot, category, start/end, creative) that the homepage Featured card, category pages and /advertise/ credits read from. Fulfilment is manual until then (edit + PR within 24 h of payment).

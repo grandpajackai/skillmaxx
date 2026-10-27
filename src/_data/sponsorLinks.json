@@ -1,16 +1,17 @@
 {
-  "_readme": "One entry per /advertise/ price card. When a Stripe Payment Link exists, paste it into `url` (and set its success URL to https://skillmaxx.gilventures.ai/sponsor/thanks/?slot=<key>). Empty url = the Book now button scrolls to the inquiry form with this slot preselected.",
+  "_readme": "One entry per /advertise/ price card. Amounts are founding rates (first 10 sponsors, locked 6 months). Labels must spell the unit so $59 never looks worse than $19. Empty url = Book now scrolls to the inquiry form.",
   "slots": [
     {
       "key": "newsletter",
       "name": "Newsletter sponsor",
       "price": 19,
       "was": 49,
-      "unit": "issue",
-      "desc": "One sponsor per issue: about 50 words and one link, labeled \"Sponsor\".",
+      "priceSuffix": "for 1 issue",
+      "desc": "About 50 words and one link in one SkillMaxx Weekly issue, labeled \"Sponsor\". One sponsor per issue.",
       "url": "https://buy.stripe.com/5kQ00jgPG7LCfRr8rn8g000",
+      "bookLabel": "$19 for 1 issue",
       "subPrice": 59,
-      "subUnit": "4 issues/mo",
+      "subBookLabel": "$59/mo for 4 issues (about $15 each, save $17)",
       "subUrl": "https://buy.stripe.com/eVq00jdDu9TK48J5fb8g008"
     },
     {
@@ -18,12 +19,13 @@
       "name": "Featured slot",
       "price": 29,
       "was": 79,
-      "unit": "month",
-      "desc": "The one Sponsored card in the Featured row, plus a top-of-category placement, clearly labeled.",
+      "priceSuffix": "for 1 month",
+      "desc": "The one Sponsored card in the homepage Featured row, plus a top-of-category placement, clearly labeled.",
       "url": "https://buy.stripe.com/eVq5kDdDuaXO8oZ0YV8g001",
       "highlight": true,
+      "bookLabel": "$29 for 1 month",
       "subPrice": 25,
-      "subUnit": "mo",
+      "subBookLabel": "$25/mo subscription (cancel anytime)",
       "subUrl": "https://buy.stripe.com/4gM14nczq7LCfRr3738g004"
     },
     {
@@ -31,11 +33,12 @@
       "name": "Category sponsor",
       "price": 15,
       "was": 29,
-      "unit": "month",
+      "priceSuffix": "for 1 month",
       "desc": "Your logo on one category page. One sponsor per category.",
       "url": "https://buy.stripe.com/3cI28rfLCgi8cFfgXT8g002",
+      "bookLabel": "$15 for 1 month",
       "subPrice": 13,
-      "subUnit": "mo",
+      "subBookLabel": "$13/mo subscription (cancel anytime)",
       "subUrl": "https://buy.stripe.com/3cI9AT42U9TKcFfgXT8g005"
     },
     {
@@ -43,14 +46,16 @@
       "name": "Founding bundle",
       "price": 49,
       "was": null,
-      "unit": "month",
-      "desc": "All three for a month, plus a \"Founding Sponsor\" credit on this page.",
+      "priceSuffix": "for 1 month",
+      "desc": "1 newsletter issue + Featured + Category for one month, plus a \"Founding Sponsor\" credit on this page. Bought separately those three cost $63 \u2014 the bundle saves $14.",
       "url": "https://buy.stripe.com/8x2cN52YQaXO8oZ8rn8g003",
+      "bookLabel": "$49 for 1 month (worth $63)",
       "subPrice": 42,
-      "subUnit": "mo",
+      "subBookLabel": "$42/mo for the same mix (worth $63 a la carte)",
       "subUrl": "https://buy.stripe.com/00w5kDari1ne6gR4b78g006"
     }
   ],
+  "compareNote": "Quick check: 1 newsletter ($19) + Featured ($29) + Category ($15) = $63. The Founding bundle is $49 for that same month ($42/mo if you subscribe). The $59/mo newsletter option is 4 issues, not 1 \u2014 about $15 each, $17 less than buying four $19 issues.",
   "subscribers": null,
   "portalUrl": "https://billing.stripe.com/p/login/5kQ00jgPG7LCfRr8rn8g000"
 }
