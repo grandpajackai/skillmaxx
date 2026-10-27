@@ -13,7 +13,8 @@ One page to catch up. Site: https://skillmaxx.gilventures.ai · Repo: grandpajac
 | Review pack (Oct 26) | [growth/REVIEW-PACK-2026-10-26.md](growth/REVIEW-PACK-2026-10-26.md) |
 | Channels ranked | [growth/CHANNELS.md](growth/CHANNELS.md) |
 | Sponsors: pricing, playbook, pipeline, BFCM | [growth/SPONSORS.md](growth/SPONSORS.md), [growth/sponsors/](growth/sponsors/) |
-| Newsletter issues | [growth/newsletter/](growth/newsletter/) |
+| Newsletter drafts (Beehiiv paste) | [growth/newsletter/](growth/newsletter/) |
+| Newsletter **site archive** | `src/newsletter/` → /newsletter/ and /newsletter/issue-N/ (publish after every Beehiiv send: [growth/routines/NEWSLETTER-SEND.md](growth/routines/NEWSLETTER-SEND.md)) |
 | **Social content strategy + 2-week drafts** | [growth/strategy/CONTENT-STRATEGY.md](growth/strategy/CONTENT-STRATEGY.md), [growth/strategy/DRAFTS-2026-10-27.md](growth/strategy/DRAFTS-2026-10-27.md) (edit `drafts.py`, rerun) |
 | Social kits and post banks | [growth/x/](growth/x/), [growth/social/](growth/social/), [growth/profiles/](growth/profiles/), [growth/reddit/](growth/reddit/) |
 | Daily X radar | [growth/x-radar/](growth/x-radar/) |
@@ -29,9 +30,10 @@ One page to catch up. Site: https://skillmaxx.gilventures.ai · Repo: grandpajac
 ## Routines (Grok Bot, times ET)
 | Routine | Schedule | Status (Oct 27, 2:30 AM ET) |
 |---|---|---|
-| Nightly refresh (fetch, test, report, deploy) | daily 2:00 AM | enabled; last run Oct 27 2:02 AM, ok (806/900) |
+| Nightly refresh (fetch, test, report, deploy) | daily 2:00 AM | enabled; after a Tuesday send, confirm /newsletter/ archive matches the emailed issue (see NEWSLETTER-SEND.md) |
 | X radar (log: growth/x-radar/) | daily 10:00 AM | enabled |
 | Buffer daily top-up ([growth/routines/BUFFER-DAILY-TOPUP.md](growth/routines/BUFFER-DAILY-TOPUP.md)) | daily 10:00 PM | enabled; last run Oct 26 10:06 PM, ok |
+| Newsletter send + archive ([growth/routines/NEWSLETTER-SEND.md](growth/routines/NEWSLETTER-SEND.md)) | Tue after Beehiiv send | runbook ready; first email = issue #2 on Nov 3 |
 | Sunday recap | Sun 6:00 PM | enabled, never run yet |
 | SkillMaxx reply sniper X/Bluesky/LinkedIn (log: growth/x/sniper-log.md) | — | **paused since Oct 26** at Brandon's request; picks saved, no replies sent |
 | Brandon personal-brand reply sniper | — | paused, never run |
