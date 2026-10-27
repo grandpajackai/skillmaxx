@@ -15,7 +15,7 @@
 
 ## Open issues
 - [x] ~~**Buffer posting schedules**~~ not needed: every post uses explicit custom times (2026-10-26). Old note: need setting by hand in Buffer (API can't): X Mon–Fri 9:30 AM; Bluesky Mon/Wed/Fri 12:30 PM + Sun 6:15 PM; LinkedIn Tue 8:30 AM, Thu 12 PM ET. See growth/DECISIONS.md.
-- [ ] **Newsletter #2 = first send, Tue 2026-11-03** (draft, awaiting Brandon's text review). **Sponsor outreach held until 25+ subscribers.**
+- [ ] **Newsletter #2 = first send, Tue 2026-11-03** (draft, awaiting Brandon's text review). Sponsor outreach started 2026-10-27 (gate lifted by Brandon).
 - [x] **formsubmit.co activation** confirmed by Brandon 2026-10-26 6:16 PM ET ('Form Activated' for skillmaxx.gilventures.ai). /submit, /advertise and /sponsor/thanks entries now deliver.
 - [ ] **Beehiiv:** Brandon keeps Pro features for now and downgrades himself around 2026-11-02 (or lets it lapse). Grok Bot: after that, check the embed form still works.
 - [ ] **Beehiiv form inner padding** is large; on 390 px the email field is cramped. Reduce padding/heading size in the Beehiiv form editor (can't style a cross-origin iframe from the site).
@@ -32,7 +32,7 @@
 ## In progress / claimed by
 | Task | Agent | Branch | Since |
 |---|---|---|---|
-| _(none)_ | | | |
+| Sponsor outreach day-1 | Grok Bot | grokbot/sponsor-outreach-day1 | 2026-10-27 |
 
 ## Next up
 0. Watch https://github.com/skillmatic-ai/awesome-agent-skills/pull/219 (opened 2026-10-25) and reply to review comments.
@@ -44,6 +44,7 @@
 5. Growth (see growth/): approve the skillmatic PR draft, paste newsletter #1 into Beehiiv, create a Cloudflare account for Web Analytics, approve the outreach drafts (growth/outreach/).
 
 ## Session log
+-- **2026-10-27 · Grok Bot**: Sponsor outreach day-1. Brandon approved start today (newsletter still Nov 3). Verified SPF (`v=spf1 include:zohomail.com ~all`) + DKIM (`zmail._domainkey`). Sent 10 plain-text cold emails from skillmaxx@gilventures.ai via Zoho SMTP to verified public addresses only (Exa, Firecrawl, Context7, Composio, Browser Use, CodeRabbit, Apify, Axiom, Semgrep, Parallel AI). 0 bounces at send time. Form queue of 10 prepared in growth/outreach/sent/2026-10-27-form-targets.md (not submitted in this PR). PIPELINE.csv: 10 Contacted / 30 Target. Gate language updated in OUTREACH.md + PIPELINE.md.
 -- **2026-10-27 · Grok Bot**: /advertise/ honesty pass (PR #54): audience stats line (423 add-ons from build; Beehiiv subscribers unpublished until verified), open-slot counter from `src/_data/sponsors.json`, Sponsors logo strip hidden until first `sponsors.live` booking. Launch posts confirmed sent on X/Bluesky/LinkedIn (Buffer sent, platform URLs live).
  **2026-10-25 · Grok Bot** — Catch-up refresh after Oct 17–24 missed nightlies: +videogen (424 skills), 803/902 tests pass (8 regressions, logged in testing/results/2026-10-25.json). Fixed /advertise mobile overflow and dishonest newsletter text. Swapped newsletter to Beehiiv embed + attribution with fallback link and styled wrapper (screenshots: review/beehiiv/). nightly.sh now builds for the custom domain. Added COLLABORATING.md, STATUS.md, PR CI workflow; enabled branch protection on master (landed via PR #1).
 - **2026-10-25 · Grok Bot** — SEO/AEO pass (PR grokbot/seo-aeo-review): robots meta, twitter/og tags, og:type article, unique titles/descriptions on all 438 pages (dup skill names/descs disambiguated, double-escaping fixed), JSON-LD: WebSite+Organization, ItemList (homepage), SoftwareApplication+BreadcrumbList per skill, Article+FAQPage on guides and Article on issue #1; question H2s with direct answers + FAQ blocks + internal links on both guides; /newsletter/ archive + /newsletter/issue-1/; /llms.txt; robots.txt welcomes AI crawlers; sitemap with lastmod, 404 noindexed. Owner dashboard got a Content review section.

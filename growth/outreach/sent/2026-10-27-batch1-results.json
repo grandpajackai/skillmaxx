@@ -1,0 +1,92 @@
+[
+  {
+    "company": "Exa",
+    "to": "partnerships@exa.ai",
+    "source_url": "https://exa.ai/partners",
+    "subject": "we install your MCP every night (it behaves)",
+    "status": "sent",
+    "error": "",
+    "sent_at_et": "2026-10-27 13:02:41 ET"
+  },
+  {
+    "company": "Upstash / Context7",
+    "to": "context7@upstash.com",
+    "source_url": "https://context7.com/contact",
+    "subject": "Context7 shows up a lot in agent setups \u2014 we check it nightly",
+    "status": "sent",
+    "error": "",
+    "sent_at_et": "2026-10-27 13:02:44 ET"
+  },
+  {
+    "company": "Browser Use",
+    "to": "sales@browser-use.com",
+    "source_url": "https://browser-use.com/enterprise",
+    "subject": "your browser plugin is in our nightly install tests",
+    "status": "sent",
+    "error": "",
+    "sent_at_et": "2026-10-27 13:02:47 ET"
+  },
+  {
+    "company": "CodeRabbit",
+    "to": "hello@coderabbit.ai",
+    "source_url": "https://kb.coderabbit.ai/articles/9001641380-contact-information-for-non-support-inquiries",
+    "subject": "CodeRabbit installs clean across our agents \u2014 founding Featured?",
+    "status": "sent",
+    "error": "",
+    "sent_at_et": "2026-10-27 13:02:50 ET"
+  },
+  {
+    "company": "Apify",
+    "to": "partners@apify.com",
+    "source_url": "https://apify.com/partners/join",
+    "subject": "directory of agent tools looking for a scraping founding sponsor",
+    "status": "sent",
+    "error": "",
+    "sent_at_et": "2026-10-27 13:02:53 ET"
+  },
+  {
+    "company": "Axiom",
+    "to": "partners@axiom.co",
+    "source_url": "https://axiom.co/partner-program",
+    "subject": "Axiom observability skills are in our nightly install tests",
+    "status": "sent",
+    "error": "",
+    "sent_at_et": "2026-10-27 13:02:56 ET"
+  },
+  {
+    "company": "Semgrep",
+    "to": "partnerships@semgrep.com",
+    "source_url": "https://docs.semgrep.dev/licensing",
+    "subject": "Semgrep's security plugin is in our nightly agent install tests",
+    "status": "sent",
+    "error": "",
+    "sent_at_et": "2026-10-27 13:02:59 ET"
+  },
+  {
+    "company": "Parallel AI",
+    "to": "partnerships@parallel.ai",
+    "source_url": "https://docs.parallel.ai/resources/faqs",
+    "subject": "a $19 test in front of people picking agent search tools",
+    "status": "sent",
+    "error": "",
+    "sent_at_et": "2026-10-27 13:03:02 ET"
+  },
+  {
+    "company": "Firecrawl",
+    "to": "partnerships@firecrawl.dev",
+    "source_url": "https://www.firecrawl.dev/firecrawl-for-platforms/partner-program",
+    "subject": "Firecrawl \u00d7 5 coding agents, tested nightly",
+    "status": "sent",
+    "error": "",
+    "sent_at_et": "2026-10-27 13:03:39 ET"
+  },
+  {
+    "company": "Composio",
+    "to": "partnerships@composio.dev",
+    "source_url": "https://composio.dev/partnerships",
+    "subject": "founding sponsor of our Integrations category?",
+    "status": "sent",
+    "error": "",
+    "sent_at_et": "2026-10-27 13:03:42 ET"
+  }
+]

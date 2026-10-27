@@ -1,7 +1,7 @@
 # Sponsor outreach templates + weekly cadence
 
-**Status:** nothing sent. Every email or DM to a new person needs Brandon's OK as a batch.  
-**Gate (standing):** wait until newsletter issue #2 is sent **and** there are **≥25 subscribers**, then propose a batch here for approval.  
+**Status:** outreach started 2026-10-27 (Brandon approved start today; newsletter still first-sends Nov 3).  
+**Gate (updated 2026-10-27):** Brandon OK'd outbound now. Ramp cold email ~10/day week 1 (verified public addresses only — never guess). Contact forms can go faster. Still log every send in PIPELINE.csv; follow-ups day 7 / day 14 then stop.  
 **Audience honesty (say this every time):** SkillMaxx launched Oct 2026. Traffic and the list are tiny. Founding prices exist because of that. We share real numbers every month, even when they're small.  
 **Source of prospects:** [PIPELINE.csv](PIPELINE.csv). Stages: Target → Contacted → Replied → Booked → Live → Renewed / Lost.
 
@@ -96,14 +96,14 @@ After follow-up 2: set status **Lost** (or **Nurture** with next_touch = after 5
 
 ## 4. Weekly cadence (autonomous; no daily work for Brandon)
 
-**Routine intent:** every Monday ~9:00 AM America/New_York, run the sponsor pipeline check and message Brandon **only** when something needs a decision or a batch OK. Nothing is emailed or DMed without an approved batch.
+**Routine intent:** every Monday ~9:00 AM America/New_York, run the sponsor pipeline check and message Brandon **only** when something needs a decision, a reply arrived, or a problem. Daily sends (email + forms) run autonomously under the ramp; still no invented addresses.
 
 **Each Monday run does:**
 1. Read `growth/sponsors/PIPELINE.csv` + Stripe (paid checkouts / active subs).
 2. Count stages: Target / Contacted / Replied / Booked / Live / Lost.
 3. Check Beehiiv subscriber count vs the 25-sub gate; note whether issue #2 has been sent.
 4. Advance follow-ups that are due (draft only — never send). Mark Contacted rows that hit day 7 / day 14.
-5. If the gate is open and fewer than 2 Contacted-this-week: draft the next batch of **5** Target emails from the CSV top, using OUTREACH.md, into `growth/outreach/batch-YYYY-MM-DD.md`, and ask Brandon for one OK on the whole batch.
+5. Advance the next Target rows: send verified-email cold notes (ramp) and queue contact-form submissions; archive copies under `growth/outreach/sent/`.
 6. If any Stripe payment arrived: log in PIPELINE.md bookings table, start PLAYBOOK fulfillment, ping Brandon.
 7. Refresh the Sales pipeline section on the owner dashboard Page.
 8. **Delivery:** Brandon in this chat. If nothing moved and no batch is ready: one short "pipeline quiet" line, or silence if the standing rule prefers no noise.
@@ -128,7 +128,7 @@ Do not build until Brandon says yes. Keep $0 and honest.
 
 ---
 
-## 6. First outreach batch (DRAFT for Brandon — do not send)
+## 6. First outreach batch (SENT 2026-10-27 — day-1 email)
 
 Propose when gate opens. Top of PIPELINE.csv:
 
@@ -144,3 +144,22 @@ Propose when gate opens. Top of PIPELINE.csv:
 | 8 | CodeRabbit | Featured | https://www.coderabbit.ai/contact-us |
 
 Personalized drafts already exist for 1–5 in `growth/outreach/01`–`05` (refresh numbers from latest `/reports/` before send; Featured copy must say **month-to-month**, not 6-month lock).
+
+
+### Day-1 email sent (2026-10-27 ET)
+From `skillmaxx@gilventures.ai` via Zoho SMTP. SPF + DKIM `zmail._domainkey` verified before send. Plain text, no tracking. Archive: [sent/2026-10-27-batch1.json](../outreach/sent/2026-10-27-batch1.json).
+
+| Company | To | Source |
+|---|---|---|
+| Exa | partnerships@exa.ai | https://exa.ai/partners |
+| Firecrawl | partnerships@firecrawl.dev | https://www.firecrawl.dev/firecrawl-for-platforms/partner-program |
+| Upstash / Context7 | context7@upstash.com | https://context7.com/contact |
+| Composio | partnerships@composio.dev | https://composio.dev/partnerships |
+| Browser Use | sales@browser-use.com | https://browser-use.com/enterprise |
+| CodeRabbit | hello@coderabbit.ai | CodeRabbit KB (Marketing & Partnerships) |
+| Apify | partners@apify.com | https://apify.com/partners/join |
+| Axiom | partners@axiom.co | https://axiom.co/partner-program |
+| Semgrep | partnerships@semgrep.com | https://docs.semgrep.dev/licensing |
+| Parallel AI | partnerships@parallel.ai | https://docs.parallel.ai/resources/faqs |
+
+Form queue (not submitted in this PR): [sent/2026-10-27-form-targets.md](../outreach/sent/2026-10-27-form-targets.md).
