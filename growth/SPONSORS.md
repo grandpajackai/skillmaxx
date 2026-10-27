@@ -13,7 +13,7 @@ Developers deciding which skill or MCP server to install in their coding agent. 
 
 ## Founding-sponsor menu (first 10 sponsors)
 
-**Founding price, locked for 6 months.** Units are spelled out so a monthly pack never looks worse than a single issue. No struck-through “regular” prices — what you see is what you pay.
+**Founding price, locked for 6 months** (first 10 sponsors). **Featured** is month-to-month (no long lock); its price can rise as the audience grows. Units are spelled out so a monthly pack never looks worse than a single issue. No struck-through “regular” prices — what you see is what you pay.
 
 | Slot | What you get | Pay once | Subscribe (cancel anytime) |
 |---|---|---|---|
@@ -26,8 +26,8 @@ Developers deciding which skill or MCP server to install in their coding agent. 
 
 Comparable directories elsewhere charge a wide range; we stay low because the audience is early. We'll share real numbers every month.
 
-## Planned: Black Friday / Cyber Monday promo (late Nov 2026)
-Run a BF/CM sponsor promo around Nov 27–30, 2026 (Black Friday Nov 27, Cyber Monday Nov 30): a limited-time push of the founding rates (e.g. lock founding pricing for 12 months instead of 6, or a free extra issue with any booking). Announce on X, Reddit and the newsletter; ends Cyber Monday 11:59 PM ET. Needs Brandon's review before it goes out.
+## Black Friday / Cyber Monday (APPROVED 2026-10-27)
+Nov 27–30 ET: Category and Newsletter founding bookings lock **12 months**. Featured is **$19 for December** (normally $29), one slot, first come first served. Free December newsletter line is **not** offered (undecided). Details: [sponsors/BFCM.md](sponsors/BFCM.md).
 
 Every sponsor gets a monthly report with pageviews, clicks to your listing, and newsletter subscribers. It's real data, even when the numbers are small.
 

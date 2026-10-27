@@ -6,11 +6,34 @@ desc: "Sponsor the SkillMaxx newsletter or a featured slot in the directory of a
 <div class="wrap"><h1 class="ph">Advertise</h1><p class="lead">Put your skill, plugin or MCP server in front of developers choosing what to install, across 5 agents. We're brand new with no traffic numbers yet, so we won't make any up.</p>
 <style>.mk{margin:10px 0;padding-left:18px;line-height:1.9}.mk b{color:var(--a)}.fbadge{display:inline-block;margin:4px 0 14px;padding:5px 11px;border-radius:999px;background:rgba(198,244,50,.12);border:1px solid rgba(198,244,50,.4);color:var(--a);font-size:13px;font-weight:600;max-width:100%}@media (min-width:961px){.tiers{grid-template-columns:repeat(4,1fr)}}.tier .book{align-self:flex-start;margin-top:auto}.tier{cursor:pointer}.price .was{color:var(--m);font-size:.6em;font-weight:500;margin-right:6px;text-decoration-thickness:2px}</style>
 <p class="fbadge">Founding price, locked for 6 months · first 10 sponsors</p>
+<p class="muted" id="bfcm-offer-note" style="font-size:13px;max-width:52rem">Black Friday / Cyber Monday (Nov 27–30 ET): Category and Newsletter founding bookings lock for <b>12 months</b>. Featured for December is <b>$19</b> (normally $29) — <b>one slot, first come first served</b>; use promo code <code>BFCM-FEATURED-DEC</code> on the Featured pay-once checkout. Free December newsletter shoutout is not part of this offer.</p>
+
 <div class="tiers">{% for t in sponsorLinks.slots %}<div class="card static tier{% if t.highlight %} hl2{% endif %}" id="slot-{{ t.key }}"><h2 class="h3">{{ t.name }}</h2><p class="price">${{ t.price }}<small> {{ t.priceSuffix }}</small></p><p class="muted" style="font-size:12px;margin:0 0 6px">Founding price, locked for 6 months</p><p class="muted">{{ t.desc }}</p>{% if t.url %}<a class="btn book" href="{{ t.url }}" rel="noopener" data-slot="{{ t.key }}">{{ t.bookLabel }}</a>{% if t.subUrl %}<a class="btn book sub" href="{{ t.subUrl }}" rel="noopener" data-slot="{{ t.key }}-monthly" style="margin-top:8px">{{ t.subBookLabel }}</a>{% endif %}{% else %}<a class="btn book" href="#inquiry-form" data-slot="{{ t.key }}" aria-label="Book {{ t.name }}: open the inquiry form">Book now</a>{% endif %}</div>
 {% endfor %}</div>
 {% if sponsorLinks.compareNote %}<p class="muted" style="font-size:13px;margin-top:12px;max-width:52rem">{{ sponsorLinks.compareNote }}</p>{% endif %}
 <p class="muted" style="font-size:13px;margin-top:8px">Subscriptions renew monthly and you can cancel anytime — {% if sponsorLinks.portalUrl %}<a href="{{ sponsorLinks.portalUrl }}" rel="noopener">Manage or cancel your subscription</a> (or email <a href="mailto:skillmaxx@gilventures.ai?subject=Cancel%20sponsorship">skillmaxx@gilventures.ai</a>){% else %}just email <a href="mailto:skillmaxx@gilventures.ai?subject=Cancel%20sponsorship">skillmaxx@gilventures.ai</a> and we cancel before the next charge{% endif %}. No contracts.</p>
 <p class="muted">These are founding prices for the first 10 sponsors, locked for 6 months. No higher “regular” price is shown — what you see is what you pay.</p>
+
+<section class="card static" id="what-you-get" style="margin:20px 0 8px">
+  <h2 class="h3">What you get</h2>
+  <p class="muted">Draft for Brandon's review — mockups use a labeled <b>Example</b> sponsor, not a real customer. No invented traffic numbers.</p>
+
+  <h3 class="h3" style="font-size:1.05rem;margin-top:18px">1. Newsletter sponsor</h3>
+  <p class="muted">Where: one labeled block in SkillMaxx Weekly (email + the public archive page after send). Includes: up to ~50 words, one link, “Sponsor” label. Duration: one issue ($19) or all ~4 issues that month ($59/mo). Audience: subscriber count is shared privately and in your monthly report once we have real numbers — we do not invent them here.</p>
+  <p><img src="/assets/social/placements/newsletter-sponsor-example.png" alt="Example newsletter sponsor block labeled EXAMPLE" width="560" style="max-width:100%;border-radius:10px;border:1px solid var(--b2)"></p>
+
+  <h3 class="h3" style="font-size:1.05rem;margin-top:18px">2. Featured slot (homepage)</h3>
+  <p class="muted">Where: the Sponsored card in the homepage Featured row (one per row). Includes: name, one-line pitch (max 90 characters), logo (square SVG/PNG, 256px+), link, always marked Sponsored. Duration: one calendar month (month-to-month; no long rate lock). Price for newcomers can rise as the audience grows. BFCM: $19 for December only (normally $29), one slot, first come first served.</p>
+  <p><img src="/assets/social/placements/featured-card-example.png" alt="Example homepage Featured Sponsored card labeled EXAMPLE" width="720" style="max-width:100%;border-radius:10px;border:1px solid var(--b2)"></p>
+
+  <h3 class="h3" style="font-size:1.05rem;margin-top:18px">3. Category sponsor</h3>
+  <p class="muted">Where: logo + link on one category browse page (e.g. Database). One sponsor per category. Duration: one month, or founding lock of 6 months (12 months if booked Nov 27–30 ET). No traffic claims until analytics are live.</p>
+  <p><img src="/assets/social/placements/category-slot-example.png" alt="Example category page sponsor strip labeled EXAMPLE" width="720" style="max-width:100%;border-radius:10px;border:1px solid var(--b2)"></p>
+
+  <h3 class="h3" style="font-size:1.05rem;margin-top:18px">4. Premium / custom partnership</h3>
+  <p class="muted">Need something outside these slots (multi-category, custom placement, longer partnership)? Email <a href="mailto:skillmaxx@gilventures.ai?subject=Premium%20partnership">skillmaxx@gilventures.ai</a> — we will not invent packages here. Money never changes a test result or ranking; every paid placement stays labeled.</p>
+</section>
+
 <div class="why"><div><h2>High-intent readers</h2><p>Visitors arrive searching for a specific capability and leave with an install command. That's the moment they pick a tool.</p></div><div><h2>Every agent at once</h2><p>One listing reaches Claude Code, Codex, Grok Build, Cursor and Pi users, not a single ecosystem.</p></div><div><h2>Labeled, never blended</h2><p>Sponsored cards are marked "Sponsored" and never alter compatibility statuses or sort order.</p></div></div>
 <p class="muted" style="margin-bottom:10px">Paid placements never change a status or a ranking.</p>
 
