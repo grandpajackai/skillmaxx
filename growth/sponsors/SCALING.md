@@ -8,7 +8,7 @@
 | Category sponsor | **$15 for 1 month** · **$13/mo** sub | Logo + link on one category page | **1 per category** (exclusive) |
 | Founding bundle | **$49 for 1 month** (1 NL issue + Featured + Category, worth $63) · **$42/mo** same mix | All three for that month + "Founding Sponsor" credit on /advertise/ | consumes 1 featured + 1 category + 1 newsletter issue |
 
-**Founding price, locked for 6 months** (first 10 sponsors). No struck-through regular prices on the site. (BFCM "Founding 12" 12-month lock is drafted, not approved.)
+**Founding price, locked for 6 months** (first 10 sponsors). No struck-through regular prices on the site. (BFCM "Founding 12" is drafted, **not approved**; free Dec newsletter line **undecided**. See capacity forecast below.)
 Rules that never change: always labeled "Sponsored", money never changes a test result or ranking.
 
 **Gap found:** the homepage card is a static "Your skill here" placeholder, and category pages do not render a sponsor block yet. Before the first booking we need a `src/_data/sponsors.json` (who, slot, category, start/end, creative) that the homepage Featured card, category pages and /advertise/ credits read from. Fulfilment is manual until then (edit + PR within 24 h of payment).
@@ -35,3 +35,55 @@ Pattern: **fixed scarce inventory + calendar booking + waitlist**, with rotation
 - `sponsors.json` + rendering on homepage card, category pages, newsletter block, /advertise/ credits.
 - Inventory counter + sold-out → waitlist switch on /advertise/.
 - Spotlight tier + Stripe price only if fixed slots sell out.
+
+## Sponsor capacity forecast (2026-10-27, draft — no demand invented)
+
+Honest baseline: **0 founding sponsors booked.** We have no traffic or sell-through history, so the scenarios below are **inventory math only**, not a sales forecast.
+
+### Slots per month (current rules)
+| Slot | Per month | Per 12 months | Notes |
+|---|---|---|---|
+| Newsletter | **~4** (1 per weekly issue) | ~48 issue-slots | The **$59/mo** product is “all 4 issues that month” → **one** such sub consumes **100%** of newsletter inventory every month it is active |
+| Featured | **1** | 12 | Single homepage Featured Sponsored card (+ top-of-category). Hard scarce. |
+| Category | **~30** (1 per category page; site has 30 categories today) | ~360 | Many categories are tiny (1–3 skills). Theoretical max ≠ sellable max; without traffic we cannot say how many are worth buying |
+| Bundle | consumes 1 Featured + 1 Category + **1** newsletter issue that month | — | Does not buy the other ~3 newsletter issues |
+
+One-time purchases fill a single month (or a single issue). **Monthly subscriptions** hold the slot until cancel; a rate **lock** (6 or 12 months) means we honour founding price for that term even if list prices rise later — and while the sub is active the slot stays taken.
+
+### What a lock ties up (scenarios, not predictions)
+
+Assume locks apply only while the subscription is active; one-time buys are not “12-month inventory holds.”
+
+| Scenario | What is locked | Featured left for newcomers (of 1) | Newsletter left | Category left (of ~30) |
+|---|---|---|---|---|
+| A. No BFCM / no founding yet | nothing | 1 | ~4/mo | ~30 |
+| B. One Featured Founding-12 monthly | Featured for up to 12 mo at founding $25/mo | **0** | ~4/mo | ~30 |
+| C. One Newsletter $59/mo Founding-12 | All 4 issues/mo for up to 12 mo | 1 | **0** | ~30 |
+| D. One Bundle $42/mo Founding-12 | Featured + 1 cat + 1 NL issue/mo for up to 12 mo | **0** | ~3/mo | ~29 |
+| E. Fill all **10** founding seats with Category monthly only | up to 10 categories for 6 or 12 mo | 1 | ~4/mo | ≥20 |
+| F. Worst mix for flexibility: 1× Featured-12 + 1× NL-4pack-12 + 8× Category-12 | Featured + all NL + 8 cats | **0** | **0** | ~22 |
+
+**Read of the table:** Featured and the newsletter 4-pack are the foot-guns. Giving either a 12-month founding lock can zero that whole channel for a year at the lowest price. Categories have headroom even with a founding cap of 10.
+
+Default **6-month** founding lock on all 10 seats is already a commitment; extending **every** product to 12 months multiplies the scarce-slot problem.
+
+### Inventory left for new / later-rate sponsors
+- After founding seats fill, newcomers pay whatever post-founding rates we set (not shown as fake “was” prices today).
+- If Featured is on a 12-month founding sub, **there is no Featured inventory** for a higher rate until that sub ends or we raise the Featured cap (SCALING proposal: up to 3 cards — not built, needs yes).
+- If newsletter 4-pack is locked 12 months, **there is no newsletter inventory** for issue-by-issue or a second pack buyer.
+- Categories: even with 10 founding category locks, ~20 category pages remain — enough room if demand appears.
+
+### Recommendation (draft for Brandon)
+1. **Keep total founding cap = 10** (people/companies, not “10 of each slot”).
+2. **12-month lock only for monthly subscriptions**, never for one-time checkouts.
+3. **Eligible for Founding 12 (recommended):** Featured monthly ($25/mo) **cap 1**; Category monthly ($13/mo) **cap ≤5** of the 10 founding seats; Bundle monthly ($42/mo) **cap 1** (because it eats Featured).
+4. **Not eligible for 12-month lock:** Newsletter $59/mo 4-pack (consumes all NL inventory); one-time $19/$29/$15/$49. Those stay at the normal **6-month** founding lock if they count as founding seats, or one-time with no lock length beyond the paid period.
+5. **Free December newsletter line:** **undecided** — revisit after caps above are approved; do not put it on the banner yet.
+6. **No BFCM social shoutouts** in the offer; shoutouts later only if paid or separately approved.
+7. Until this forecast is approved, **do not finalize Founding 12** or merge PR #35.
+
+### Open questions for Brandon
+- Accept the eligibility caps in (3)–(4)?
+- Raise Featured inventory later (2–3 cards) so a Founding-12 Featured buyer does not zero the channel?
+- Free December line: yes / no / only for certain products?
+
