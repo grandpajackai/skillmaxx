@@ -1,5 +1,5 @@
 {
-  "_readme": "One entry per /advertise/ price card. All amounts are founding prices, locked for 6 months (first 10 sponsors). Units spelled out so $59 never looks worse than $19. Empty url = Book now scrolls to the inquiry form.",
+  "_readme": "One entry per /advertise/ price card. All amounts are founding prices, locked for 6 months (first 10 sponsors; Featured is month-to-month). Units spelled out so $59 never looks worse than $19. Empty url = Book now scrolls to the inquiry form. subscribers: set to a verified Beehiiv count only (integer); leave null so the page says we have not published a number yet.",
   "slots": [
     {
       "key": "newsletter",

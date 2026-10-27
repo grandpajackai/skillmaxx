@@ -4,8 +4,14 @@ title: "Advertise on SkillMaxx: reach developers using coding agents"
 desc: "Sponsor the SkillMaxx newsletter or a featured slot in the directory of agent skills, plugins and MCP servers for Claude Code, Codex, Grok Build, Cursor and Pi."
 ---
 <div class="wrap"><h1 class="ph">Advertise</h1><p class="lead">Put your skill, plugin or MCP server in front of developers choosing what to install, across 5 agents. We're brand new with no traffic numbers yet, so we won't make any up.</p>
+<p class="muted" id="audience-stats" style="font-size:14px;max-width:52rem;margin:0 0 14px">Audience today (build-time, real numbers only): <b>{{ skills.length }}</b> add-ons in the directory · 5 agents · newsletter {% if sponsorLinks.subscribers %}<b>{{ sponsorLinks.subscribers }}</b> subscribers{% else %}just starting — we'll publish the Beehiiv subscriber count here once we have a verified number; until then it's shared privately with booked sponsors{% endif %}.</p>
 <style>.mk{margin:10px 0;padding-left:18px;line-height:1.9}.mk b{color:var(--a)}.fbadge{display:inline-block;margin:4px 0 14px;padding:5px 11px;border-radius:999px;background:rgba(198,244,50,.12);border:1px solid rgba(198,244,50,.4);color:var(--a);font-size:13px;font-weight:600;max-width:100%}@media (min-width:961px){.tiers{grid-template-columns:repeat(4,1fr)}}.tier .book{align-self:flex-start;margin-top:auto}.tier{cursor:pointer}.price .was{color:var(--m);font-size:.6em;font-weight:500;margin-right:6px;text-decoration-thickness:2px}</style>
 <p class="fbadge">Founding price, locked for 6 months · first 10 sponsors</p>
+{% set inv = sponsors.inventory %}
+{% set featOpen = inv.featured.capacity - inv.featured.booked %}
+{% set nlOpen = inv.newsletter.capacity - inv.newsletter.booked %}
+{% set catOpen = inv.category.capacity - inv.category.booked %}
+<p class="muted" id="open-slots" style="font-size:13px;max-width:52rem;margin:0 0 14px"><b>Open slots this month:</b> Featured <b>{{ featOpen }}</b> of {{ inv.featured.capacity }} · Newsletter <b>{{ nlOpen }}</b> of {{ inv.newsletter.capacity }} issue slots · Category <b>{{ catOpen }}</b> of {{ inv.category.capacity }} · Founding seats left <b>{{ sponsors.founding.cap - sponsors.founding.booked }}</b> of {{ sponsors.founding.cap }}.</p>
 <div id="bfcm" class="card static" hidden style="margin:0 0 16px;border-color:rgba(198,244,50,.5)"><p style="margin:0"><b>Black Friday, our way:</b> book a Category or Newsletter founding slot by Cyber Monday and lock your rate for 12 months (not 6). Featured: $19 for December — one slot.</p></div>
 <script>(function(){var n=Date.now();if(n>=Date.parse("2026-11-27T05:00:00Z")&&n<Date.parse("2026-12-01T05:00:00Z")){document.getElementById("bfcm").hidden=false}})()</script>
 <p class="muted" id="bfcm-offer-note" style="font-size:13px;max-width:52rem">Black Friday / Cyber Monday (Nov 27–30 ET): Category and Newsletter founding bookings lock for <b>12 months</b>. Featured for December is <b>$19</b> (normally $29) — <b>one slot, first come first served</b>; use promo code <code>BFCM-FEATURED-DEC</code> on the Featured pay-once checkout. Free December newsletter shoutout is not part of this offer.</p>
@@ -36,6 +42,22 @@ desc: "Sponsor the SkillMaxx newsletter or a featured slot in the directory of a
   <p class="muted">Need something outside these slots (multi-category, custom placement, longer partnership)? Email <a href="mailto:skillmaxx@gilventures.ai?subject=Premium%20partnership">skillmaxx@gilventures.ai</a> — we will not invent packages here. Money never changes a test result or ranking; every paid placement stays labeled.</p>
 </section>
 
+{% if sponsors.live and sponsors.live.length %}
+<section class="card static" id="sponsors" style="margin:20px 0 8px" aria-label="Current sponsors">
+  <h2 class="h3">Sponsors</h2>
+  <p class="muted" style="margin:0 0 12px">Current labeled placements. Money never changes a test result.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center">
+  {% for s in sponsors.live %}
+    <a href="{{ s.url }}" rel="noopener sponsored" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:inherit;border:1px solid var(--b2);border-radius:10px;padding:8px 12px">
+      {% if s.logo %}<img src="{{ s.logo }}" alt="" width="28" height="28" style="border-radius:6px">{% endif %}
+      <span style="font-weight:600">{{ s.name }}</span>
+      <span class="muted" style="font-size:12px">{{ s.slot }}</span>
+    </a>
+  {% endfor %}
+  </div>
+</section>
+{% endif %}
+
 <div class="why"><div><h2>High-intent readers</h2><p>Visitors arrive searching for a specific capability and leave with an install command. That's the moment they pick a tool.</p></div><div><h2>Every agent at once</h2><p>One listing reaches Claude Code, Codex, Grok Build, Cursor and Pi users, not a single ecosystem.</p></div><div><h2>Labeled, never blended</h2><p>Sponsored cards are marked "Sponsored" and never alter compatibility statuses or sort order.</p></div></div>
 <p class="muted" style="margin-bottom:10px">Paid placements never change a status or a ranking.</p>
 
@@ -47,7 +69,7 @@ desc: "Sponsor the SkillMaxx newsletter or a featured slot in the directory of a
 <li><b>5</b> agents covered: Claude Code, Codex, Grok Build, Cursor, Pi</li>
 {% if testing.total %}<li><b>{{ testing.total }}</b> sandboxed install tests in the latest run, <b>{{ testing.pass }}</b> passing ({{ testing.runAt | truncate(10, true, "") }})</li>{% endif %}
 <li>Test results refreshed nightly; failures are published, not hidden</li>
-<li>Newsletter: {% if sponsorLinks.subscribers %}<b>{{ sponsorLinks.subscribers }}</b> subscribers{% else %}just launched; subscriber count shared privately and in your monthly report{% endif %}</li>
+<li>Newsletter: {% if sponsorLinks.subscribers %}<b>{{ sponsorLinks.subscribers }}</b> Beehiiv subscribers{% else %}just launched; Beehiiv subscriber count published here once verified (shared privately with booked sponsors until then){% endif %}</li>
 <li>Site traffic: analytics are being set up, so no traffic numbers yet</li>
 </ul>
 {% if weeks.length %}{% set w = weeks[0] %}<h3>Why developers trust the numbers (week {{ w.key }})</h3>

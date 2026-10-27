@@ -1,0 +1,10 @@
+{
+  "_readme": "Live sponsor placements and inventory. The /advertise/ Sponsors logo strip stays hidden while live is empty. booked counts drive the open-slot counter. capacity.category should match unique merged categories on the site (~14 today).",
+  "live": [],
+  "inventory": {
+    "featured": { "capacity": 1, "booked": 0, "unit": "month" },
+    "newsletter": { "capacity": 4, "booked": 0, "unit": "issues this month" },
+    "category": { "capacity": 14, "booked": 0, "unit": "categories" }
+  },
+  "founding": { "cap": 10, "booked": 0 }
+}

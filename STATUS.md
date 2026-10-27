@@ -32,7 +32,7 @@
 ## In progress / claimed by
 | Task | Agent | Branch | Since |
 |---|---|---|---|
-| _(none)_ | | | |
+| Advertise audience line + open slots + sponsors strip | Grok Bot | grokbot/advertise-audience-slots | 2026-10-27 |
 
 ## Next up
 0. Watch https://github.com/skillmatic-ai/awesome-agent-skills/pull/219 (opened 2026-10-25) and reply to review comments.
