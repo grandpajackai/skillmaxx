@@ -25,7 +25,9 @@ step "daily report"; python3 testing/daily_report.py || die "daily_report.py"
 step "weekly pages"; python3 testing/weekly_scorecard.py --write > /dev/null || die "weekly_scorecard.py"
 step "build"; SITE_URL=https://skillmaxx.gilventures.ai PATH_PREFIX=/ npx @11ty/eleventy --quiet || die "eleventy build"
 step "commit data"
-git add testing/history.json testing/results data src/assets/logos src/_data/reports.json src/_data/latestRows.json src/_data/weeks.json growth/daily growth/weekly
+# only add paths that exist (git add aborts on a missing pathspec, e.g. growth/daily when there was no big event)
+ADD=(); for f in testing/history.json testing/results data src/assets/logos src/_data/reports.json src/_data/latestRows.json src/_data/weeks.json growth/daily growth/weekly; do [ -e "$f" ] && ADD+=("$f"); done
+git add -- "${ADD[@]}" || die "git add"
 if git diff --cached --quiet; then echo "no data changes"; else
   git -c user.name="SkillMaxx Grok Bot" -c user.email=skillmaxx@mail.grokbot.com commit -q -m "data: nightly refresh $D" || die "commit"
   [ -n "$NOPUSH" ] && echo "NOPUSH set, not pushing" || git push -q origin master || die "push (branch protection / auth?)"

@@ -22,30 +22,18 @@ Building production-ready AI agents is hard. You need observability to understan
 
 ## Available Skills
 
-### Tracing
-
 | Skill | Description |
 |-------|-------------|
-| **instrumenting-with-mlflow-tracing** | Instruments Python and TypeScript code with MLflow Tracing. Supports OpenAI, Anthropic, LangChain, LangGraph, LiteLLM, and more. |
-| **analyze-mlflow-trace** | Debugs issues by examining spans, assessments, and correlating with your codebase. |
-| **analyze-mlflow-chat-session** | Debugs multi-turn chat conversations by reconstructing session history and finding where things went wrong. |
-| **retrieving-mlflow-traces** | Powerful trace search and filtering by status, session, user, time range, or custom metadata. |
-| **debug-agent** | Root-causes agent failures from existing MLflow traces without requiring a code change or evaluation suite. |
-
-### Evaluation
-
-| Skill | Description |
-|-------|-------------|
-| **agent-evaluation** | End-to-end agent evaluation workflow — dataset creation, scorer selection, evaluation execution, and results analysis. |
-| **build-a-scorer** | Designs a small, cheap-to-run scorer suite from scratch — elicits quality criteria with you, routes each to code checks, built-in scorers, or LLM judges, then ships the implementation. |
-| **querying-mlflow-metrics** | Fetches aggregated metrics (token usage, latency, error rates) with time-series analysis and dimensional breakdowns. |
-
-### Setup
-
-| Skill | Description |
-|-------|-------------|
-| **mlflow-onboarding** | Guides new users through MLflow setup based on their use case (GenAI apps vs traditional ML). |
-| **searching-mlflow-docs** | Searches official MLflow documentation efficiently using the llms.txt index. |
+| **mlflow-agent** | Routes broad MLflow requests to the right skill. |
+| **mlflow-onboarding** | Configures MLflow for GenAI or traditional ML. |
+| **mlflow-docs** | Searches official MLflow documentation. |
+| **mlflow-sagemaker** | Connects to SageMaker Managed MLflow. |
+| **mlflow-trace-instrumentation** | Instruments Python and TypeScript applications. |
+| **mlflow-trace-retrieval** | Finds and filters traces. |
+| **mlflow-trace-analysis** | Analyzes traces, agent failures, and multi-turn sessions. |
+| **mlflow-trace-metrics** | Queries aggregate trace metrics. |
+| **mlflow-evaluation** | Designs scorers and runs GenAI evaluation. |
+| **mlflow-agent-improvement** | Fixes agent behavior with trace-grounded regression tests. |
 
 ---
 
@@ -109,7 +97,7 @@ cp hooks/mlflow-suggest-hook.py ~/.claude/hooks/mlflow-suggest-hook.py
 **Step 3:** Start a new session. When you ask something like *"Add tracing to my app"*, you'll see:
 
 ```
-💡 Use the `instrumenting-with-mlflow-tracing` skill to add MLflow tracing.
+💡 Use the `mlflow-trace-instrumentation` skill to add MLflow tracing.
 ```
 
 See [`hooks/README.md`](hooks/README.md) for the full keyword-to-skill mapping and troubleshooting.
@@ -237,4 +225,13 @@ Default timeouts, `keep_workdir: true`, and `test_runs_dir: /tmp` need not be re
 | Diagnosis versus repair | `diagnosis_only`, `agent_debug_trace_first` | Diagnosis preserves source; repair follows trace evidence and verifies refund/general routing |
 | Evaluation | `evaluation_nested`, `evaluation_precomputed`, `evaluation_dry_run` | Nested predictor kwargs; exact six-row scores and mean; reuse dataset/scorer; never rerun precomputed outputs; verify a scored dry run precedes full evaluation; stop after a failed three-row dry run |
 | Scorer design | `scorer_deterministic_suite`, `scorer_model_criteria` | Execute independent criteria on private malformed/near-miss cases; code, built-in and domain judges; preserve model selection |
-| Judge alignment | `scorer_label_alignment`, `scorer_memalign` | Criterion-specific human labels and train/holdout splits; missing-provider blocker; saved native MemAlign training IDs, participant holdout comparison, and 
+| Judge alignment | `scorer_label_alignment`, `scorer_memalign` | Criterion-specific human labels and train/holdout splits; missing-provider blocker; saved native MemAlign training IDs, participant holdout comparison, and separate verifier holdouts |
+
+Model-backed scenarios require working provider credentials. Set `TEST_JUDGE_MODEL` for `scorer_model_criteria`; for `scorer_memalign`, also set `TEST_EMBEDDING_MODEL` and add `--with dspy`. The repair scenario's existing LLM judge accepts `JUDGE_MODEL`. No credentials or private endpoint names belong in scenario files. Each run retains `environment.json`, `skill-inventory.json`, `verification.json`, participant transcripts, generated files, and the local MLflow store in its printed work directory. Setup failures and skill failures both return nonzero, with different exit codes.
+
+To run the local scenarios sequentially, excluding those needing a model provider:
+
+```sh
+for config in tests/configs/*/*.yaml; do
+  case "$config" in
+    *scorer_model_criteria*|*scorer_memalign*|*agent_debug_trace_f

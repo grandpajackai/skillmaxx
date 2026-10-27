@@ -205,11 +205,10 @@ the routing table when a prompt is Databricks-related, independent of an open
 Cursor bug that currently drops hook `additional_context`. Native skill
 selection also helps.
 
-> **Distribution parity (follow-up).** The plugin marketplace ships the whole
-> repo (`marketplace.json` `source: "./"`), so commands and hooks come with it.
-> `databricks aitools install` currently packages only `skills/`, so CLI-install
-> users don't yet get commands/hooks. Closing that gap is tracked as CLI-side
-> work.
+> **Distribution parity (follow-up).** Each plugin bundle includes its provider's
+> supported components. `databricks aitools install` currently packages only
+> `skills/`, so CLI-install users don't yet get commands/hooks. Closing that gap
+> is tracked as CLI-side work.
 
 ## Structure
 
@@ -240,4 +239,9 @@ parent: databricks-apps
 
 **FIRST**: Use the parent `databricks-apps` skill for app development basics.
 
-Then
+Then apply these patterns:
+- Pattern 1
+- Pattern 2
+```
+
+Th

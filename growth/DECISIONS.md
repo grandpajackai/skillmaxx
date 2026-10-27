@@ -37,3 +37,14 @@
 
 ## 2026-10-26 (late night, Buffer)
 20. **Singles by default + autonomous Buffer:** Brandon approved the drafts. X/Bluesky are single full-context posts, with threads at most ~2 per channel per week (Oct 28, Nov 4; Nov 8 scorecard). 24 posts scheduled with explicit times, 18 labeled drafts, daily top-up routine (growth/routines/BUFFER-DAILY-TOPUP.md) with no new approval needed for approved posts.
+
+## 2026-10-26/27 — recorded by the Oct 27 nightly
+23. **Sponsor pricing NOT approved.** Brandon finds the draft pricing iffy (the bundle can cost more than buying items separately). He wants one clear price sheet with consistent, matching prices everywhere (site, Stripe, docs, newsletter). Nothing new on pricing or promos goes live until he approves it.
+24. **BFCM / Founding 12 NOT approved** (supersedes #6 and #21). PR #35 stays draft. Open item: the BFCM banner on (Nov 27 9 AM) / off (Dec 1 9 AM) routines are still enabled; disable or get approval before Nov 27.
+25. **Beehiiv:** keep Pro features for now; Brandon downgrades himself around Nov 2 or lets it lapse (confirms #22).
+26. **Stripe:** Brandon prefers the dashboard Sponsors view + Stripe's own emails over a payment-watcher routine (confirms #20).
+27. **Social runs autonomously:** no daily manual work for Brandon; a weekly plan is queued in Buffer ahead of time so he can see everything there.
+28. **Full context everywhere, mostly singles:** every post on every platform carries LinkedIn-level context (hook, who/what/when, what it means for the reader); no vague one-liners, no cheesy self-deprecation, never overpromise. Single posts by default; threads only when the story needs one, story-driven with an ending question/CTA.
+29. **Reply sniper paused** (Oct 26) until Brandon turns it back on; picks stay in growth/x/sniper-log.md for a planned initiative.
+30. **Reddit names claimed (Oct 26):** r/SkillMaxxAI (mod u/SkillMaxxHQ) and backup u/SkillMaxxAI to block impersonators; u/SkillMaxxHQ stays the main posting account.
+
