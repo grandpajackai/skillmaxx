@@ -8,7 +8,7 @@
 | Category sponsor | **$15 for 1 month** · **$13/mo** sub | Logo + link on one category page | **1 per category** (exclusive) |
 | Founding bundle | **$49 for 1 month** (1 NL issue + Featured + Category, worth $63) · **$42/mo** same mix | All three for that month + "Founding Sponsor" credit on /advertise/ | consumes 1 featured + 1 category + 1 newsletter issue |
 
-Founding prices: first 10 sponsors, locked 6 months. (BFCM "Founding 12" 12-month lock is drafted, not approved.)
+**Founding price, locked for 6 months** (first 10 sponsors). No struck-through regular prices on the site. (BFCM "Founding 12" 12-month lock is drafted, not approved.)
 Rules that never change: always labeled "Sponsored", money never changes a test result or ranking.
 
 **Gap found:** the homepage card is a static "Your skill here" placeholder, and category pages do not render a sponsor block yet. Before the first booking we need a `src/_data/sponsors.json` (who, slot, category, start/end, creative) that the homepage Featured card, category pages and /advertise/ credits read from. Fulfilment is manual until then (edit + PR within 24 h of payment).
@@ -28,7 +28,7 @@ Pattern: **fixed scarce inventory + calendar booking + waitlist**, with rotation
 3. **Waitlist when sold out.** The Pay buttons turn into "Join waitlist" (same FormSubmit form, slot preselected). Waitlist is FIFO; next opening offered for 48 h.
 4. **Rotation only for a cheap "Spotlight" tier.** If demand exceeds fixed slots, add a lower-priced Spotlight pool (e.g. $9/mo): a small labeled sponsor strip on report pages and skill pages that rotates evenly by impressions (client-side round-robin, logged), max 12 in the pool so each gets ≥ 1/12 share. Report impressions/clicks monthly.
 5. **Category exclusivity is the premium.** One sponsor per category; competitors in the same category are not placed side by side in the same issue or row.
-6. **Price tiers follow demand.** After the first 10 founding sponsors, regular prices ($49 issue, $79 featured, $29 category). When a slot sells out 2 months running, raise its price ~20% for new bookings; existing locks are honoured.
+6. **Price tiers follow demand.** After the first 10 founding sponsors, set new rates for newcomers only (existing 6-month locks stay). When a slot sells out 2 months running, raise its price ~20% for new bookings. Do not show invented “was” prices on /advertise/.
 7. **Fairness log.** Every placement (who, where, dates, impressions) in PIPELINE.md / sponsors.json so anyone can audit it.
 
 ## Next build steps (need Brandon's OK, $0)
