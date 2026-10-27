@@ -47,6 +47,6 @@ Every sponsor gets a monthly report with pageviews, clicks to your listing, and 
 | CodeRabbit | Code-review plugin | https://www.coderabbit.ai/contact-us |
 | PostHog | Analytics MCP | https://posthog.com/talk-to-a-human |
 
-**No outreach until Brandon approves.** Drafts are in `growth/outreach/`.
+**No outreach until Brandon approves a batch.** Full pipeline: `growth/sponsors/PIPELINE.csv` (40). Templates: `growth/sponsors/OUTREACH.md`. Drafts for top 5: `growth/outreach/`.
 
 Contact: skillmaxx@gilventures.ai · https://skillmaxx.gilventures.ai/advertise/
