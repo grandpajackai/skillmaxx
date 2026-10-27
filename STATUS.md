@@ -14,7 +14,7 @@
 - **Cost:** $0.
 
 ## Open issues
-- [ ] **Buffer posting schedules** need setting by hand in Buffer (API can't): X Mon–Fri 9:30 AM; Bluesky Mon/Wed/Fri 12:30 PM + Sun 6:15 PM; LinkedIn Tue 8:30 AM, Thu 12 PM ET. See growth/DECISIONS.md.
+- [x] ~~**Buffer posting schedules**~~ not needed: every post uses explicit custom times (2026-10-26). Old note: need setting by hand in Buffer (API can't): X Mon–Fri 9:30 AM; Bluesky Mon/Wed/Fri 12:30 PM + Sun 6:15 PM; LinkedIn Tue 8:30 AM, Thu 12 PM ET. See growth/DECISIONS.md.
 - [ ] **Newsletter #2 = first send, Tue 2026-11-03** (draft, awaiting Brandon's text review). **Sponsor outreach held until 25+ subscribers.**
 - [x] **formsubmit.co activation** confirmed by Brandon 2026-10-26 6:16 PM ET ('Form Activated' for skillmaxx.gilventures.ai). /submit, /advertise and /sponsor/thanks entries now deliver.
 - [ ] **Beehiiv: DROP TO FREE before 2026-11-02** (Brandon decided 10-26). Then check the embed form still works.
@@ -97,3 +97,4 @@
 - growth/sponsors/SCALING.md: current inventory, competitor patterns, cap/waitlist/rotation proposal. Gap: sponsor placements (homepage card, category pages) are not data-driven yet.
 - **2026-10-26 · Grok Bot**: Nov 7 build-in-public post (advertise-form story) rejected by Brandon; replaced on X/Bluesky/LinkedIn with the approved flaky-vs-broken "something we got wrong" post (links /guides/flaky-vs-broken/).
 - **2026-10-26 · Grok Bot**: Rewrote all 14 days of X and Bluesky drafts as full-context, story-driven threads (LinkedIn as source of truth); drafts.py checks per-post limits. Found Buffer Free allows only one scheduled thread per queue: threads go to Drafts and are queued daily. Strategy doc + DECISIONS #19 updated.
+- **2026-10-26 · Grok Bot**: Switched X/Bluesky to single full-context posts (threads only on Oct 28, Nov 4, Nov 8). Buffer: 24 posts scheduled (Oct 27–Nov 9, 8 per channel, 1 thread per X/Bluesky), 18 labeled drafts (Oct 30, 31, Nov 1 REFRESH; Nov 3 newsletter gate; Nov 4 REFRESH+thread; Nov 8 placeholders). Added growth/routines/BUFFER-DAILY-TOPUP.md. Flags: Oct 28 Bluesky/LinkedIn 'SKILL.md' auto-linked by Buffer; no images attached.
