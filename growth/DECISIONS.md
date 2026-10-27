@@ -49,7 +49,7 @@
 30. **Reddit names claimed (Oct 26):** r/SkillMaxxAI (mod u/SkillMaxxHQ) and backup u/SkillMaxxAI to block impersonators; u/SkillMaxxHQ stays the main posting account.
 
 ## 2026-10-27 — newsletter archive
-26. **Every emailed newsletter issue is also published to the site archive** at `/newsletter/issue-N/` and linked from `/newsletter/`. Issue #1 stays archive-only (never emailed). Issue #2 is the first Beehiiv send (Tue Nov 3) and ships with a pre-send date gate + `eleventyExcludeFromCollections` until after send. Runbook: growth/routines/NEWSLETTER-SEND.md.
+26. **Every emailed newsletter issue is also published to the site archive** at `/newsletter/issue-N/` and linked from `/newsletter/`. Issue #1 stays archive-only (never emailed). Issue #2 is the first Beehiiv send (Tue Nov 3). Archive pages are **not built** until after send (no `src/newsletter/issue-N.md` → live 404); client-side gates alone are not enough. Runbook: growth/routines/NEWSLETTER-SEND.md.
 
 ## 2026-10-27 — pricing display
 27. **No struck-through “regular” prices.** Show only founding prices with the line “Founding price, locked for 6 months”. Amounts unchanged.
