@@ -11,22 +11,20 @@ Developers deciding which skill or MCP server to install in their coding agent. 
 ## The one rule
 **Money never changes a test result or a ranking.** Sponsored slots are labeled "Sponsored," always. If your plugin fails a test, the site says so, and we'll happily help you fix it.
 
-## Founding-sponsor menu (first 10 sponsors, rate locked 6 months)
+## Founding-sponsor menu (first 10 sponsors)
 
-Amounts have not changed. Units are spelled out so a monthly pack never looks worse than a single issue.
+**Founding price, locked for 6 months.** Units are spelled out so a monthly pack never looks worse than a single issue. No struck-through “regular” prices — what you see is what you pay.
 
-| Slot | What you get | Pay once | Subscribe (cancel anytime) | Regular later* |
-|---|---|---|---|---|
-| Newsletter sponsor | ~50 words + 1 link in SkillMaxx Weekly, labeled Sponsor | **$19 for 1 issue** | **$59/mo for 4 issues** (about $15 each, save $17 vs 4×$19) | $49 / issue |
-| Featured listing | Homepage Featured Sponsored card + top-of-category | **$29 for 1 month** | **$25/mo** | $79 / mo |
-| Category sponsor | Logo on one category page (1 per category) | **$15 for 1 month** | **$13/mo** | $29 / mo |
-| Founding bundle | **1 newsletter issue + Featured + Category** for one month, plus a "Founding Sponsor" credit on /advertise | **$49 for 1 month** (worth $63 separately) | **$42/mo** for the same mix | – |
+| Slot | What you get | Pay once | Subscribe (cancel anytime) |
+|---|---|---|---|
+| Newsletter sponsor | ~50 words + 1 link in SkillMaxx Weekly, labeled Sponsor | **$19 for 1 issue** | **$59/mo for 4 issues** (about $15 each, save $17 vs 4×$19) |
+| Featured listing | Homepage Featured Sponsored card + top-of-category | **$29 for 1 month** | **$25/mo** |
+| Category sponsor | Logo on one category page (1 per category) | **$15 for 1 month** | **$13/mo** |
+| Founding bundle | **1 newsletter issue + Featured + Category** for one month, plus a "Founding Sponsor" credit on /advertise | **$49 for 1 month** (worth $63 separately) | **$42/mo** for the same mix |
 
 **Value check:** $19 + $29 + $15 = **$63**. Bundle is $49 ($42/mo). The $59/mo option is **four** newsletter issues, not one.
 
-\*Comparable directories charge $49–$399 (CodexStacks $49/issue and $79/mo featured; AI Indigo $199 for 30 days; MCPHubz $399/mo). Founding prices are low because the audience is too. We'll share real numbers every month.
-
-On /advertise/ the regular prices are shown struck through next to the founding prices, under a "Founding sponsor pricing, first 10 sponsors" badge.
+Comparable directories elsewhere charge a wide range; we stay low because the audience is early. We'll share real numbers every month.
 
 ## Planned: Black Friday / Cyber Monday promo (late Nov 2026)
 Run a BF/CM sponsor promo around Nov 27–30, 2026 (Black Friday Nov 27, Cyber Monday Nov 30): a limited-time push of the founding rates (e.g. lock founding pricing for 12 months instead of 6, or a free extra issue with any booking). Announce on X, Reddit and the newsletter; ends Cyber Monday 11:59 PM ET. Needs Brandon's review before it goes out.

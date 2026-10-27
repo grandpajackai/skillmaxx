@@ -1,11 +1,10 @@
 {
-  "_readme": "One entry per /advertise/ price card. Amounts are founding rates (first 10 sponsors, locked 6 months). Labels must spell the unit so $59 never looks worse than $19. Empty url = Book now scrolls to the inquiry form.",
+  "_readme": "One entry per /advertise/ price card. All amounts are founding prices, locked for 6 months (first 10 sponsors). Units spelled out so $59 never looks worse than $19. Empty url = Book now scrolls to the inquiry form.",
   "slots": [
     {
       "key": "newsletter",
       "name": "Newsletter sponsor",
       "price": 19,
-      "was": 49,
       "priceSuffix": "for 1 issue",
       "desc": "About 50 words and one link in one SkillMaxx Weekly issue, labeled \"Sponsor\". One sponsor per issue.",
       "url": "https://buy.stripe.com/5kQ00jgPG7LCfRr8rn8g000",
@@ -18,7 +17,6 @@
       "key": "featured",
       "name": "Featured slot",
       "price": 29,
-      "was": 79,
       "priceSuffix": "for 1 month",
       "desc": "The one Sponsored card in the homepage Featured row, plus a top-of-category placement, clearly labeled.",
       "url": "https://buy.stripe.com/eVq5kDdDuaXO8oZ0YV8g001",
@@ -32,7 +30,6 @@
       "key": "category",
       "name": "Category sponsor",
       "price": 15,
-      "was": 29,
       "priceSuffix": "for 1 month",
       "desc": "Your logo on one category page. One sponsor per category.",
       "url": "https://buy.stripe.com/3cI28rfLCgi8cFfgXT8g002",
@@ -45,7 +42,6 @@
       "key": "bundle",
       "name": "Founding bundle",
       "price": 49,
-      "was": null,
       "priceSuffix": "for 1 month",
       "desc": "1 newsletter issue + Featured + Category for one month, plus a \"Founding Sponsor\" credit on this page. Bought separately those three cost $63 \u2014 the bundle saves $14.",
       "url": "https://buy.stripe.com/8x2cN52YQaXO8oZ8rn8g003",
