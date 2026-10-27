@@ -68,7 +68,7 @@ Fresh sandbox, no API keys, real agent CLI. Pass means the agent itself lists it
 
 Built a skill? We'll run it through all five agents: [https://skillmaxx.gilventures.ai/submit/](/submit/)
 
-**Want this spot?** Founding sponsors get a slot in this email for $19 an issue. Hit reply or see [https://skillmaxx.gilventures.ai/advertise/](/advertise/)
+**Want this spot?** Founding sponsors: **$19 for 1 issue** (or **$59/mo for 4 issues**, about $15 each). Hit reply or see [https://skillmaxx.gilventures.ai/advertise/](/advertise/)
 
 See you next week. Fewer ambiguous auth0s, hopefully.
 

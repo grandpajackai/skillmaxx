@@ -19,7 +19,7 @@ One page to catch up. Site: https://skillmaxx.gilventures.ai · Repo: grandpajac
 | Daily X radar | [growth/x-radar/](growth/x-radar/) |
 | Weekly scorecard drafts | [growth/weekly/](growth/weekly/) |
 | Test pipeline | `testing/` (nightly.sh, run_tests.py, daily_report.py, weekly_scorecard.py) |
-| Stripe payment links | `src/_data/sponsorLinks.json` |
+| Stripe payment links + clear unit labels | `src/_data/sponsorLinks.json` (amounts unchanged; units spelled out: $19 for 1 issue, $59/mo for 4 issues, bundle = 1 NL + Featured + Category) |
 | Sponsor inventory, rotation, scaling | [growth/sponsors/SCALING.md](growth/sponsors/SCALING.md) |
 | Sponsor rate locks + promo commitments | [growth/sponsors/PIPELINE.md](growth/sponsors/PIPELINE.md) (pricing + BFCM NOT approved yet) |
 | Routine runbooks | [growth/routines/](growth/routines/) |
