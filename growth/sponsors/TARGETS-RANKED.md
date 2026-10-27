@@ -22,7 +22,7 @@ Score = Fit (is their tool in our directory and tested?) ×3 + Budget signal (th
 ## What exists vs missing
 | Item | Status |
 |---|---|
-| Sponsor menu / pricing page | ✅ Live: /advertise/ (founding prices, struck-through regular prices, Pay once + Subscribe & save, media kit, reliability ranking) |
+| Sponsor menu / pricing page | ✅ Live: /advertise/ (founding prices locked 6 months (no struck-through regulars), Pay once + Subscribe, media kit, reliability ranking) |
 | Stripe links + portal | ✅ 8 Payment Links + customer portal, all return 200 (checked today, nothing changed) |
 | Thank-you / asset intake | ✅ /sponsor/thanks/ (false-success bug fixed today, PR #24) |
 | Playbook + pipeline | ✅ growth/sponsors/PLAYBOOK.md, PIPELINE.md |
