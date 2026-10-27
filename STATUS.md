@@ -32,7 +32,7 @@
 ## In progress / claimed by
 | Task | Agent | Branch | Since |
 |---|---|---|---|
-| Sponsor outreach day-1 | Grok Bot | grokbot/sponsor-outreach-day1 | 2026-10-27 |
+| _(none)_ | | | |
 
 ## Next up
 0. Watch https://github.com/skillmatic-ai/awesome-agent-skills/pull/219 (opened 2026-10-25) and reply to review comments.
