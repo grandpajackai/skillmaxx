@@ -1,0 +1,29 @@
+[
+  {
+    "company": "Skyvern",
+    "to": "founders@skyvern.com",
+    "source_url": "https://github.com/Skyvern-AI/skyvern",
+    "subject": "founding sponsor of our browser automation page?",
+    "status": "sent",
+    "error": "",
+    "sent_at_et": "2026-10-27 16:44:52 ET"
+  },
+  {
+    "company": "Bright Data",
+    "to": "sales@brightdata.com",
+    "source_url": "https://brightdata.com/contact",
+    "subject": "we install brightdata-plugin every night",
+    "status": "sent",
+    "error": "",
+    "sent_at_et": "2026-10-27 16:44:53 ET"
+  },
+  {
+    "company": "Mem0",
+    "to": "founders@mem0.ai",
+    "source_url": "https://github.com/mem0ai/mem0",
+    "subject": "a $19 test in front of people picking agent tools",
+    "status": "sent",
+    "error": "",
+    "sent_at_et": "2026-10-27 16:44:54 ET"
+  }
+]

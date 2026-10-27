@@ -19,12 +19,18 @@ Every booking gets a row here. Default founding lock = 6 months from first payme
 |---|---|---|---|---|---|---|---|---|
 | _(none yet)_ | | | | | | | | |
 
+## Lead log columns + routing (Brandon, 2026-10-27)
+
+PIPELINE.csv columns: company, who_they_are, website, contact_route (email/form/call-only/linkedin/x), contact_detail, status, date_contacted, outreach_sent, data_points, notes, next_follow_up.
+
+Routing: verified public email first (never guess) → contact form → if a site only offers call bookings, find a public email → if only a phone, log `call-only` with the number and tell Brandon → else `linkedin`/`x` with the URL and tell Brandon. Call-only and LinkedIn/X leads show in the dashboard "Needs Brandon" list.
+
 ## Snapshot (from PIPELINE.csv, 2026-10-27)
 
 | Stage | Count |
 |---|---|
-| Target | 30 |
-| Contacted | 10 |
+| Target | 20 |
+| Contacted | 20 (13 email, 7 form) |
 | Replied | 0 |
 | Booked | 0 |
 | Live | 0 |
