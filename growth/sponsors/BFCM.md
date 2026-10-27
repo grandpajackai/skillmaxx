@@ -1,21 +1,27 @@
-# Black Friday / Cyber Monday sponsor promo (DRAFT, needs your OK; no Stripe changes made)
+# Black Friday / Cyber Monday sponsor promo (DRAFT — NOT approved; no live changes)
 
-**Did one exist?** Only as a one-paragraph idea in SPONSORS.md ("lock founding pricing 12 months or a free extra issue"). Nothing built. Here's the full proposal.
+Work out **sponsor capacity** first (see [SCALING.md](SCALING.md) → Sponsor capacity forecast). Do not finalize Founding 12 until Brandon OKs the lock rules and caps.
 
-## Offer: "Founding 12"
+## Offer: "Founding 12" (draft)
 - **Window:** Fri Nov 27, 12:00 AM ET → Mon Nov 30, 11:59 PM ET.
-- **What:** book any founding slot during the window and your founding rate is locked for **12 months instead of 6**, plus **one free newsletter line** in December.
-- **Why this and not a discount:** prices are already founding-low; a longer lock costs $0 today, keeps the honest "first 10 sponsors" cap, and rewards early backers.
-- **Cap:** still counts toward the first 10 founding sponsors.
+- **What (core):** book an **eligible** founding slot during the window and your founding rate is locked for **12 months instead of 6**.
+- **Prices:** unchanged. No new Stripe prices. No discounts.
+- **Cap:** still counts toward the first **10** founding sponsors (see capacity forecast for which products can take the 12-month lock).
+- **Free December newsletter line:** **UNDECIDED.** Brandon likes the idea in principle; hold until capacity / offer shape is locked. Do not promise it in the banner or social until decided.
+- **Social shoutouts (X / Bluesky / LinkedIn / Buffer):** **out of the BFCM offer** for now. If we shout anyone out later, that is a separate, paid or explicitly approved add-on — not part of Founding 12.
 
-## What it needs (no new Stripe prices)
-1. Banner on /advertise/ during the window (small PR, scheduled to merge Nov 27, revert Dec 1).
-2. Fulfil the 12-month lock manually: note it in PIPELINE.md and the thank-you email. Existing Payment Links and subscription prices stay as they are.
-3. One line in the Nov 24 and Dec 1 newsletters.
+## Draft banner copy (needs OK; no money/test-result line)
+**Site banner:** "Black Friday, our way: book a founding slot by Cyber Monday and we lock your rate for 12 months, not 6."
 
-## Draft copy
-**Site banner:** "Black Friday, our way: book a founding slot by Cyber Monday and we lock your rate for 12 months, not 6. Plus a free newsletter line in December. Money still never changes a test result."
+(Optional second sentence only after the free Dec line is decided, e.g. "Plus a free newsletter line in December." — leave off until then.)
 
-**X / Bluesky (Nov 27):** "Black Friday, sponsor edition: book a founding SkillMaxx slot by Monday night and your rate is locked for 12 months instead of 6, plus a free newsletter line. Only 10 founding spots, ever. skillmaxx.gilventures.ai/advertise/"
+## Warm leads (draft, only if offer is approved)
+Email line to people who already replied: "Small heads-up: anything booked by Monday 11:59 PM ET gets the founding rate locked for 12 months."
 
-**Email line to warm leads (only those who already replied):** "Small heads-up: anything booked by Monday 11:59 PM ET gets the founding rate locked for 12 months."
+No BFCM social posts in Buffer until Brandon re-opens that question after capacity is set.
+
+## What it needs (still no new Stripe prices)
+1. Capacity rules written and approved (SCALING.md forecast).
+2. Banner on /advertise/ during the window (PR #35; merge only after copy + offer OK).
+3. Fulfil 12-month locks manually in PIPELINE.md + thank-you email.
+4. Dec newsletter line only if that perk is approved later.

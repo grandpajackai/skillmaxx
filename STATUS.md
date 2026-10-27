@@ -111,3 +111,4 @@
 - **2026-10-27 · Grok Bot**: Newsletter archive rule: every Beehiiv send → src/newsletter/issue-N.md on /newsletter/. Added issue-2.md (date-gated until Nov 3 9 AM ET, excluded from collections until after send) + growth/routines/NEWSLETTER-SEND.md. DECISIONS #26.
 - **2026-10-27 · Grok Bot**: Removed struck-through “regular” prices ($49/$79/$29) from /advertise/, sponsorLinks, SPONSORS, SCALING. Replaced with “Founding price, locked for 6 months”. Stripe product copy aligned.
 - **2026-10-27 · Grok Bot**: Unpublished /newsletter/issue-2/ until after Nov 3 send (removed src page; draft stays in growth/newsletter/). Runbook updated — archive only after Beehiiv Sent.
+- **2026-10-27 · Grok Bot**: Sponsor capacity forecast (SCALING.md + dashboard). BFCM drafts: dropped money/test-result banner line and social shoutouts; free Dec newsletter line marked undecided. Nothing live.
