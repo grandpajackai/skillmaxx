@@ -10,20 +10,15 @@
   "pillar": 1,
   "theme": "Launch + pinned post",
   "x": [
-   "Every night we install 424 agent skills, plugins and MCP servers into 5 AI coding agents: Claude Code, Codex, Grok, Cursor and Pi.\n\nLast night 802 of 890 installs worked.\n\nThe other 88 are the interesting part. 🧵",
-   "Why bother? Almost every add-on README says \"works with AI agents.\"\n\nThat's a hope, not a test. Nobody tells you if it installs in the agent *you* use.\n\nSo we check. Fresh sandbox, the real agent, no API keys, every night.",
-   "The 88 misses are public, with logs.\n\nAnd we're careful: a tool only counts as broken after it fails two nights in a row. One bad night isn't a verdict.",
-   "We launched this month and we're small, so tell us:\n\nWhat should we test next?\n\nEvery result, free, no signup: skillmaxx.gilventures.ai/reports/latest/"
+   "Every night we install 424 agent skills, plugins and MCP servers into Claude Code, Codex, Grok, Cursor and Pi, and publish what actually works.\n\nLast night: 802 of 890 installs clean. The 88 misses are public too, with logs.\n\nWhat should we test next?\nskillmaxx.gilventures.ai/reports/latest/"
   ],
   "bluesky": [
-   "hi bluesky 👋 we're SkillMaxx.\n\nevery night we install 424 agent skills, plugins and MCP servers into Claude Code, Codex, Grok, Cursor and Pi, in a fresh sandbox with no API keys, and publish what works.\n\nlast night: 802 of 890 installs clean.",
-   "why: most READMEs say \"works with AI agents.\" that's a hope, not a test.\n\nthe 88 misses are public too, with logs. and nothing counts as broken until it fails two nights in a row.",
-   "we're brand new and small. reply with a repo and we'll run it through all 5 agents.\n\nskillmaxx.gilventures.ai/reports/latest/"
+   "hi bluesky 👋 we're SkillMaxx. every night we install 424 agent skills, plugins and MCP servers into Claude Code, Codex, Grok, Cursor and Pi, with no API keys, and publish what works.\n\nlast night: 802 of 890 clean. reply with a repo and we'll test it.\nskillmaxx.gilventures.ai/reports/latest/"
   ],
   "linkedin": "Why SkillMaxx exists\n\nEvery AI coding agent now has skills, plugins and MCP servers. Almost none of them tell you whether a given one installs in the agent you actually use. A README that says \"works with AI agents\" is a hope, not a test.\n\nSo every night we install them for real: 424 add-ons, 902 installs across Claude Code, Codex, Grok, Cursor and Pi, in fresh sandboxes with no API keys. Last night 802 of the 890 we could judge installed cleanly. The failures are published too, with logs, and we only call something broken after it fails two nights in a row.\n\nHonest disclaimer: we launched this month and we're small. So I'm asking:\n• What should we test next?\n• Would a weekly install scorecard be useful for your team, or is it noise?\n\nFree daily report: https://skillmaxx.gilventures.ai/reports/latest/\nWeekly newsletter: https://skillmaxx.gilventures.ai/newsletter/\n\nBrandon, founder",
   "image": "growth/profiles/pin-chart.png (pass-rate chart) on X and LinkedIn; Bluesky text + link card",
   "refresh": false,
-  "xnote": "Pin post 1. Image (pass-rate chart) on post 1.",
+  "xnote": "Pin it. Image: pass-rate chart.",
   "alt": "Bar chart of last night's install pass rate per agent: Codex 65/65, Claude Code 340/367, Grok 313/331, Pi 57/87, Cursor 27/52.",
   "pname": "Results"
  },
@@ -66,12 +61,10 @@
   "pillar": 8,
   "theme": "Test request call-out",
   "x": [
-   "Got a skill, plugin or MCP server you almost installed but didn't trust?\n\nReply with it. Tonight we'll install it in Claude Code, Codex, Grok, Cursor and Pi, and reply with what happened. Free.",
-   "What you get back: a clean-sandbox install in each agent, pass or fail per agent, and the log.\n\nNo catch. We're a month old, and your requests decide what we test next. 👇"
+   "Got a skill, plugin or MCP server you almost installed but didn't trust? Reply with it.\n\nTonight we'll install it in Claude Code, Codex, Grok, Cursor and Pi in a clean sandbox and reply with pass/fail per agent and the logs. Free.\n\nYour requests decide what we test next."
   ],
   "bluesky": [
-   "open call: got a skill, plugin or MCP server you almost installed but didn't trust?\n\nreply with the repo. tonight we'll install it in Claude Code, Codex, Grok, Cursor and Pi in a clean sandbox, and reply here with pass/fail per agent and the logs. free.",
-   "no catch. we're a month old and your requests are how we decide what to test next."
+   "open call: got a skill, plugin or MCP server you almost installed but didn't trust?\n\nreply with the repo. tonight we'll install it in Claude Code, Codex, Grok, Cursor and Pi in a clean sandbox and reply with pass/fail per agent and the logs. free. we're new; this is how we pick tests."
   ],
   "linkedin": "A question for anyone rolling out AI coding agents to a team:\n\nWhat's the one skill, plugin or MCP server you'd want checked before it goes on everyone's machine?\n\nComment the name or repo. We'll install it tonight in Claude Code, Codex, Grok, Cursor and Pi, in a clean sandbox, and reply with the results and the logs. Free, no strings.\n\nWe're a month old, and this is how we decide what to test next.",
   "image": "none",
@@ -91,14 +84,10 @@
   "pillar": 2,
   "theme": "Myth: stars mean it works",
   "x": [
-   "305,000 GitHub stars won't tell you if a tool installs in your AI agent.\n\nSuperpowers has them, and it also installed clean in 4 agents with zero flaky runs this week.\n\nPlenty of popular repos can't say the second part.",
-   "Stars measure interest. They say nothing about whether a skill or MCP server works in Claude Code, Codex, Cursor, Grok or Pi.\n\nAfter a month of nightly installs, here's our 3-check rule 👇",
-   "1. It names your agent, not just \"works with AI agents\"\n2. It gives an exact install command per agent\n3. It has two clean nights in a row, not one viral week",
-   "Superpowers passes all three: skillmaxx.gilventures.ai/skills/superpowers/\n\nWhat's your own rule for trusting an add-on?"
+   "305,000 GitHub stars don't tell you if a tool installs in your AI agent. Superpowers has them and installed clean in 4 agents with zero flaky runs this week.\n\nOur 3 checks: names your agent, exact install command per agent, two clean nights in a row.\n\nYour rule?"
   ],
   "bluesky": [
-   "myth: lots of GitHub stars = it installs fine in your agent.\n\nstars measure interest, not installs. Superpowers has 305k stars *and* installed clean in 4 agents with zero flaky runs this week. plenty of popular repos only have the first part.",
-   "our 3 checks after a month of nightly installs:\n1. names your agent, not \"works with AI agents\"\n2. exact install command per agent\n3. two clean nights in a row beats one viral week\n\nskillmaxx.gilventures.ai/skills/superpowers/\n\nwhat's your rule?"
+   "myth: lots of GitHub stars = it installs fine in your agent.\n\nSuperpowers has 305k stars *and* installed clean in 4 agents with zero flaky runs this week. our 3 checks: names your agent, exact install command per agent, two clean nights in a row.\nskillmaxx.gilventures.ai/skills/superpowers/"
   ],
   "linkedin": "Myth vs. reality for teams choosing agent add-ons\n\nMyth: a repo with lots of GitHub stars will install cleanly in your agent.\nReality: stars measure interest. They say nothing about whether it installs in the agent your team uses.\n\nOur rule of thumb after a month of nightly tests:\n• Check that it lists your agent by name, not \"works with AI agents\".\n• Look for an exact install command per agent.\n• Prefer things with two clean nights in a row over things with one viral week.\n\nOne that passes all three this week: Superpowers, clean in 4 agents with zero flaky runs.\nhttps://skillmaxx.gilventures.ai/skills/superpowers/\n\nWhat's your own rule for trusting an add-on?",
   "image": "optional screenshot of the Superpowers skill page row",
@@ -118,13 +107,10 @@
   "pillar": 7,
   "theme": "Halloween: scariest install log",
   "x": [
-   "Happy Halloween 🎃 The scariest thing in our install logs this week wasn't a crash.\n\nIt was 13 tools that passed one night, failed the next, then passed again.",
-   "A crash is easy. You see it, you fix it.\n\nA flaky install is worse: it works on your laptop, fails in CI, and nobody can reproduce it.",
-   "So we stopped counting those either way. Flaky tools aren't in the pass column or the fail column, because calling something \"broken\" after one bad night isn't fair to the people who built it.\n\nWhat's the most haunted install you've dealt with?"
+   "Happy Halloween 🎃 The scariest thing in our install logs this week: 13 tools that passed one night, failed the next, then passed again.\n\nA crash you can fix. Flaky works on your laptop, fails in CI. So we leave flaky tools out of pass and fail.\n\nYour most haunted install?"
   ],
   "bluesky": [
-   "happy halloween 🎃 the scariest thing in our install logs this week wasn't a crash. it was 13 tools that passed one night, failed the next, then passed again.\n\na crash you can fix. a flaky install works on your laptop and fails in CI.",
-   "so we label those flaky and leave them out of both the pass and fail columns. one bad night shouldn't brand someone's tool as broken.\n\nwhat's the most haunted install you've lived through?"
+   "happy halloween 🎃 the scariest thing in our install logs this week: 13 tools that passed one night, failed the next, then passed again.\n\na crash you can fix. flaky works on your laptop and fails in CI. so we leave those out of both pass and fail.\n\nyour most haunted install?"
   ],
   "linkedin": "Happy Halloween from SkillMaxx.\n\nThe scariest thing we saw in our logs this week wasn't a hard failure. A crash is easy: you see it, you fix it.\n\nThe scary ones are flaky: an install that passes one night, fails the next, then passes again. We saw 13 of those this week. We now label them flaky and leave them out of both the pass and the fail column, because shouting \"broken!\" after one bad night isn't fair to the people who build these tools.\n\nWhat's the most haunted install you've dealt with?",
   "image": "optional: dark-mode screenshot of a flaky row",
@@ -144,14 +130,10 @@
   "pillar": 3,
   "theme": "Weekly scorecard (week 44) + DST",
   "x": [
-   "Week 44 install scorecard for AI coding agents:\n\n802 of 890 installs worked (90.1%) across Claude Code, Codex, Grok, Cursor and Pi.\n\nOne agent went perfect. 🧵",
-   "Codex: 65 of 65. Every add-on we tested installed.\n\nConfirmed broken (failed 2 nights running): 2 installs\nReally fixed: 0\nFlaky, not counted: 13",
-   "Read it as an ecosystem scorecard, not an agent ranking: it shows how well add-ons ship for each agent, in a sandbox with no API keys.\n\nClocks went back today. Our nightly run is on UTC, so it slept fine.",
-   "Full week with logs: skillmaxx.gilventures.ai/reports/week/2026-44/\n\nThe same scorecard lands in your inbox Tuesdays. What should we add next week?"
+   "Week 44 install scorecard for AI coding agents: 802 of 890 installs worked (90.1%) across Claude Code, Codex, Grok, Cursor and Pi.\n\nCodex went 65 for 65. Confirmed broken: 2. Really fixed: 0. Flaky, not counted: 13.\n\nFull week + logs: skillmaxx.gilventures.ai/reports/week/2026-44/"
   ],
   "bluesky": [
-   "week 44 install scorecard 📊\n\n802 of 890 add-on installs worked (90.1%) across Claude Code, Codex, Grok, Cursor and Pi.\n\nCodex went 65 for 65. 2 installs confirmed broken (2 failed nights). 0 really fixed. 13 flaky, not counted.",
-   "it's an ecosystem scorecard, not an agent ranking: how well add-ons ship for each agent, with no API keys.\n\nclocks went back today. our run is on UTC so it slept fine.\n\nskillmaxx.gilventures.ai/reports/week/2026-44/"
+   "week 44 install scorecard 📊 802 of 890 add-on installs worked (90.1%) across Claude Code, Codex, Grok, Cursor and Pi.\n\nCodex went 65 for 65. confirmed broken: 2. really fixed: 0. flaky, not counted: 13.\n\nskillmaxx.gilventures.ai/reports/week/2026-44/"
   ],
   "linkedin": "Week 44 agent install scorecard\n\n• 802 of 890 judgeable installs clean (90.1%)\n• Confirmed broken after two nights: 2 installs\n• Really fixed this week: 0\n• Flaky results we refused to count: 13\n• Most reliable agent: Codex, 65 of 65\n\nIt's an ecosystem scorecard, not an agent ranking: it shows how well add-ons ship for each agent, in a sandbox with no API keys.\n\nThe full week, with logs: https://skillmaxx.gilventures.ai/reports/week/2026-44/\nThe same scorecard lands in your inbox Tuesdays: https://skillmaxx.gilventures.ai/newsletter/\n\nWhat should we add to next week's scorecard?",
   "image": "scorecard card image (render from weekly_scorecard.py output)",
@@ -171,13 +153,10 @@
   "pillar": 2,
   "theme": "Install tip: pin the marketplace",
   "x": [
-   "Claude Code tip that saves teams a weird bug: always pin the marketplace when you install a plugin.\n\n/plugin install sentry@claude-plugins-official\n\nHere's why the @ part matters 👇",
-   "The same plugin names now exist in more than one marketplace.\n\nLeave off @marketplace and the agent stops to ask which one you meant. In a shared setup script, that's how two laptops end up with two different plugins.",
-   "Put the pinned form in your onboarding docs and you'll never debug that one.\n\nOne tip like this + the weekly install scorecard, free, every Tuesday. Issue #2 is out tomorrow: skillmaxx.gilventures.ai/newsletter/"
+   "Claude Code tip: pin the marketplace when you install a plugin.\n\n/plugin install sentry@claude-plugins-official\n\nThe same plugin names now exist in 2+ marketplaces. Skip the @ and the agent asks which one, or teammates end up with different plugins."
   ],
   "bluesky": [
-   "claude code tip for teams: pin the marketplace when you install a plugin.\n\n/plugin install sentry@claude-plugins-official\n\nthe same plugin names now exist in 2+ marketplaces. skip the @ part and the agent asks which one, and two laptops can end up with two different plugins.",
-   "put the pinned form in your onboarding docs and move on.\n\none tip like this plus the weekly scorecard, free on Tuesdays. issue #2 is out tomorrow: skillmaxx.gilventures.ai/newsletter/"
+   "claude code tip: pin the marketplace when you install a plugin.\n\n/plugin install sentry@claude-plugins-official\n\nsame plugin names now exist in 2+ marketplaces. skip the @ and the agent asks which one, or two laptops get different plugins.\n\nfree weekly tips: skillmaxx.gilventures.ai/newsletter/"
   ],
   "linkedin": "Monday tip for anyone standardizing Claude Code across a team:\n\nInstall plugins with the marketplace pinned:\n/plugin install sentry@claude-plugins-official\n\nWhy it matters: the same plugin names now exist in more than one marketplace. Without the @marketplace part, the agent stops and asks which one you meant, and in a shared setup script that's how two laptops end up with two different plugins.\n\nPut the pinned form in your onboarding docs and you'll never debug that one.\n\nWe test installs like this every night across 5 agents. Our free weekly newsletter (issue #2 is out tomorrow) has one tip like this plus the scorecard: https://skillmaxx.gilventures.ai/newsletter/",
   "image": "terminal screenshot of the pinned install command",
@@ -197,12 +176,10 @@
   "pillar": 3,
   "theme": "Newsletter #2 is out",
   "x": [
-   "SkillMaxx Weekly #2 just went out: a free 3-minute email on which AI agent add-ons actually install.\n\nInside: the scorecard for Claude Code, Codex, Grok, Cursor and Pi, what broke 2 nights running, and one tip you can paste today.",
-   "Hit reply and tell us if it's useful or noise. Every reply gets read.\n\nSubscribe: skillmaxx.gilventures.ai/newsletter/"
+   "SkillMaxx Weekly #2 is out: a free 3-minute email on which AI agent add-ons actually install.\n\nThe scorecard for Claude Code, Codex, Grok, Cursor and Pi, what broke 2 nights running, and one tip you can paste today. Useful or noise? Tell us.\n\nskillmaxx.gilventures.ai/newsletter/"
   ],
   "bluesky": [
-   "SkillMaxx Weekly #2 just went out 📬 a free 3-minute email on which AI agent add-ons actually install.\n\ninside: the scorecard for Claude Code, Codex, Grok, Cursor and Pi, what broke two nights running, and one install tip you can paste today.",
-   "reply to the email and tell us if it's useful or noise. we read every one.\n\nskillmaxx.gilventures.ai/newsletter/"
+   "SkillMaxx Weekly #2 just went out 📬 a free 3-minute email on which AI agent add-ons actually install: the scorecard for Claude Code, Codex, Grok, Cursor and Pi, what broke two nights running, and one tip.\n\nuseful or noise? reply and tell us.\nskillmaxx.gilventures.ai/newsletter/"
   ],
   "linkedin": "Issue #2 of SkillMaxx Weekly went out this morning.\n\nWhat's inside:\n• The weekly install scorecard across Claude Code, Codex, Grok, Cursor and Pi\n• What broke two nights in a row (and what we refused to call broken)\n• One install tip you can paste today\n\nIt's free, about a 3-minute read, and I'd genuinely like to hear if it's useful or noise. Every reply gets read.\n\nhttps://skillmaxx.gilventures.ai/newsletter/\n\nBrandon",
   "image": "newsletter header image",
@@ -249,13 +226,10 @@
   "pillar": 4,
   "theme": "Tool authors + how sponsorship works",
   "x": [
-   "Built a skill, plugin or MCP server? It probably works in more AI agents than your README says.\n\nWe install tools every night in Claude Code, Codex, Grok, Cursor and Pi. Most tools listed for one agent pass in two or three more.",
-   "Submit yours, free: you get the exact install command for each agent plus the logs, good or bad.\nskillmaxx.gilventures.ai/submit/",
-   "We also sell sponsor slots (featured listing, newsletter, category page), always labeled. Founding rate from $15 for the first 10 sponsors.\n\nThe one rule: money never changes a test result.\nskillmaxx.gilventures.ai/advertise/"
+   "Built a skill, plugin or MCP server? It likely works in more AI agents than your README says.\n\nSubmit it free: we install it nightly in Claude Code, Codex, Grok, Cursor and Pi, with logs per agent. Sponsor slots are labeled; money never changes a result.\n\nskillmaxx.gilventures.ai/submit/"
   ],
   "bluesky": [
-   "if you build a skill, plugin or MCP server: it probably works in more agents than your README says.\n\nsubmit it free and we'll install it nightly in Claude Code, Codex, Grok, Cursor and Pi, with the exact command per agent and the logs.\nskillmaxx.gilventures.ai/submit/",
-   "we also sell clearly labeled sponsor slots, founding rate from $15 for the first 10. the one rule: paying never changes a test result.\nskillmaxx.gilventures.ai/advertise/"
+   "build a skill, plugin or MCP server? it probably works in more agents than your README says.\n\nsubmit it free and we'll install it nightly in Claude Code, Codex, Grok, Cursor and Pi, with logs. labeled sponsor slots exist too; paying never changes a result.\nskillmaxx.gilventures.ai/submit/"
   ],
   "linkedin": "For teams who build agent skills, plugins or MCP servers\n\nTwo ways to work with SkillMaxx:\n\n1. Free: submit your tool and we'll install it every night in Claude Code, Codex, Grok, Cursor and Pi, with the exact install command for each and the logs, good or bad. Most tools listed for one agent turn out to work in two or three more.\nhttps://skillmaxx.gilventures.ai/submit/\n\n2. Paid, clearly labeled: founding sponsor slots (featured listing, newsletter, category page) from $15. The first 10 sponsors lock the founding rate for 6 months.\nhttps://skillmaxx.gilventures.ai/advertise/\n\nThe one rule: money never changes a test result or a ranking. If a sponsor's tool fails, the site says so, and we'll help fix it.\n\nAudience is small and early, and we share real numbers with every sponsor monthly.",
   "image": "none",
@@ -275,14 +249,10 @@
   "pillar": 1,
   "theme": "How we test (and our limits)",
   "x": [
-   "\"Passed\" on SkillMaxx means one specific thing, and it's not \"this tool is good.\"\n\nHere's exactly how we test AI agent add-ons every night, and what a pass can't tell you 👇",
-   "For every add-on, in every agent (Claude Code, Codex, Grok, Cursor, Pi):\n1. a fresh sandbox\n2. the real agent CLI\n3. zero credentials",
-   "Pass = the agent itself lists it as installed (or connected, for MCP servers).\nBroken = failed two nights in a row.\nOne bad night = pending. Pass/fail/pass = flaky.\nFails that only need an API key get their own label.",
-   "What a pass doesn't prove: that the tool does its job well. Only that it installs and connects today.\n\nThink we got yours wrong? Tell us, we'll rerun it.\nskillmaxx.gilventures.ai/how-we-test/"
+   "\"Passed\" on SkillMaxx means one thing, and it isn't \"this tool is good.\"\n\nFresh sandbox, real agent CLI, no keys. Pass = the agent itself lists it installed or connected. Broken = fails 2 nights running. Pass/fail/pass = flaky.\n\nWrong? We'll rerun it.\nskillmaxx.gilventures.ai/how-we-test/"
   ],
   "bluesky": [
-   "\"passed\" on SkillMaxx means one thing, and it isn't \"this tool is good.\"\n\nevery night, for each add-on in Claude Code, Codex, Grok, Cursor and Pi: fresh sandbox, real agent CLI, no credentials. pass = the agent itself says installed (or connected, for MCP).",
-   "broken = fails two nights running. one bad night = pending. pass/fail/pass = flaky. key-only failures get their own label.\n\na pass doesn't prove the tool does its job well. got one wrong? we'll rerun it.\nskillmaxx.gilventures.ai/how-we-test/"
+   "\"passed\" on SkillMaxx means one thing, and it isn't \"this tool is good.\"\n\nfresh sandbox, real agent CLI, no credentials. pass = the agent says installed/connected. broken = fails 2 nights running. pass/fail/pass = flaky.\n\ngot one wrong? we'll rerun it.\nskillmaxx.gilventures.ai/how-we-test/"
   ],
   "linkedin": "How we test, including what it can't tell you\n\nEvery night, for each add-on and each agent:\n1. A fresh sandbox, the real agent CLI, no credentials.\n2. Pass means the agent itself lists the add-on as installed, or connected for MCP servers.\n3. Broken means it failed two nights in a row. One bad night is \"pending\"; pass/fail/pass is \"flaky\".\n4. Failures that only need an API key get their own label, so nobody gets blamed for our missing keys.\n\nWhat a pass doesn't prove: that the tool does its job well. It proves it installs and connects in that agent today.\n\nIf you think we got your tool wrong, tell us and we'll rerun it.\nhttps://skillmaxx.gilventures.ai/how-we-test/",
   "image": "simple 4-step diagram",
@@ -302,17 +272,15 @@
   "pillar": 8,
   "theme": "What we got wrong: flaky vs broken",
   "x": [
-   "We used to call a tool \"broken\" after one failed install. But some fail at random: Qodo failed one night, passed the next. Now broken = fails two nights in a row. One-offs are flagged flaky. How do you tell flaky from broken?",
-   "Why installs fail at random: a slow network, a registry hiccup, a timing issue. None of that is the tool author's fault.\n\nThe rule for teams: one red result is a signal, not a verdict. Re-run before you rip a tool out.\n\nHow we decide: skillmaxx.gilventures.ai/guides/flaky-vs-broken/"
+   "We used to call a tool \"broken\" after one failed install. But some fail at random: Qodo failed one night, passed the next. Now broken = fails two nights in a row. One-offs are flagged flaky. How do you tell flaky from broken?"
   ],
   "bluesky": [
-   "something we got wrong early on: we called a tool \"broken\" after one failed install. but some installs just fail at random. Qodo failed one night, passed the next.\n\nnow broken = fails two nights in a row. one-offs get labeled flaky.",
-   "random failures come from slow networks, registry hiccups, timing. not the author's fault. one red result is a signal, not a verdict.\n\nhow do you tell flaky from broken? how we decide: skillmaxx.gilventures.ai/guides/flaky-vs-broken/"
+   "something we got wrong early on: we called a tool \"broken\" after one failed install. but some fail at random: Qodo failed one night, passed the next.\n\nnow broken = fails two nights in a row; one-offs are flaky.\n\nhow do you tell? skillmaxx.gilventures.ai/guides/flaky-vs-broken/"
   ],
   "linkedin": "One rule we changed in SkillMaxx's first month\n\nWe used to mark a tool \"broken\" the first time its install failed. That turned out to be wrong. Some installs fail at random: a slow network, a registry hiccup, a timing issue. Qodo failed one night and passed the next, and we had already called it broken.\n\nSo we changed the rule:\n• Broken means it failed two nights in a row.\n• One bad night is pending, not broken.\n• Pass, fail, pass is labeled flaky and left out of both columns.\n\nThe lesson for teams running AI agents: one red result is a signal, not a verdict. Re-run before you rip a tool out, and track flakiness separately so it doesn't hide real breakage or get blamed on the tool's author.\n\nHow does your team tell flaky from actually broken?\n\nThe full write-up: https://skillmaxx.gilventures.ai/guides/flaky-vs-broken/\n\nBrandon",
   "image": "simple flaky vs broken status card (two rows: pass/fail/pass = flaky, fail/fail = broken). Bluesky alt text: Status card. Flaky: pass, fail, pass across three nights, not counted. Broken: fail two nights in a row.",
   "refresh": false,
-  "xnote": "Post 1 is Brandon's trimmed opener, pending his final OK.",
+  "xnote": "Brandon's trimmed opener.",
   "alt": "Status card. Flaky: pass, fail, pass across three nights, not counted. Broken: fail two nights in a row.",
   "pname": "Community/BTS"
  },
@@ -353,13 +321,10 @@
   "pillar": 7,
   "theme": "Q4: audit your agent setup before code freeze",
   "x": [
-   "Before December code freezes, give your AI coding agent a Q4 cleanup. 20 minutes now saves a messy January.\n\nThe 5-step list we'd use 👇",
-   "1. List every MCP server and plugin each agent loads\n2. Remove what nobody used this quarter. Fewer tools in context, fewer surprises\n3. Pin marketplaces in install commands (name@marketplace)",
-   "4. Write down your agent versions, so you know what changed when something breaks\n5. Re-check installs after the next agent update\n\nWe do #5 nightly and publish it free: skillmaxx.gilventures.ai/reports/latest/\n\nWhat's on your Q4 tooling list?"
+   "Q4 cleanup for your AI coding agent before the December code freeze:\n\n1. List every MCP server and plugin\n2. Remove what nobody used\n3. Pin marketplaces in install commands\n4. Write down your agent versions\n5. Re-check installs after the next update\n\nWhat's on your list?"
   ],
   "bluesky": [
-   "q4 chore before december code freeze: open your AI agent's MCP config and remove every server nobody used this quarter.\n\nfewer servers = fewer tools in context and fewer things to break after the next agent update.",
-   "then: pin marketplaces in install commands, write down your agent versions, and re-check installs after the next update (we do that nightly, free: skillmaxx.gilventures.ai/reports/latest/).\n\nhow many MCP servers are you running right now?"
+   "q4 chore before december code freeze: open your AI agent's MCP config and remove every server nobody used this quarter. then pin marketplaces, note your agent versions, and re-check installs after the next update.\n\nhow many MCP servers are you running right now?"
   ],
   "linkedin": "A Q4 housekeeping list for teams using AI coding agents\n\nBefore December code freezes and holiday handoffs, 20 minutes on this saves a messy January:\n\n1. List every MCP server and plugin each agent loads.\n2. Remove what nobody used this quarter. Fewer tools in context, fewer surprises.\n3. Pin marketplaces in install commands (name@marketplace) so every laptop gets the same thing.\n4. Write down the agent versions you're on. When something breaks after an update, you'll know what changed.\n5. Re-check installs after the next agent update. We do that nightly and publish it free: https://skillmaxx.gilventures.ai/reports/latest/\n\nWhat's on your team's Q4 tooling list?",
   "image": "checklist card",

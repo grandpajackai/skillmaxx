@@ -7,11 +7,11 @@ Become the account devs check **before** they install an agent add-on. Growth (f
 
 ## Three key calls
 1. **Daily on all three channels, 1 Buffer post per channel per day, refilled weekly.** Buffer Free caps the *queue* at 10 scheduled posts per channel (refills as posts publish; 3 channels max) - not a monthly cap. 7 posts/week/channel fits under 10, so a Sunday approve-and-refill session keeps every channel daily for $0. Bluesky moves from 3×/week to daily: it has a chronological feed, no link penalty and a dev crowd, so frequency costs nothing there; what it punishes is copy-paste and engagement bait.
-2. **One daily theme, three native posts, full context everywhere.** Same idea and the same full story each day, formatted per platform: X = 2–4 post thread, link only in the last post; Bluesky = warmer, nerdier, lowercase, link inline (no penalty), alt text always; LinkedIn = founder voice, proper case, 600–1,300 chars, an image, link in post (company pages aren't penalized).
+2. **One daily theme, three native posts, full context everywhere.** Same idea and the same full story each day, formatted per platform: X = a single full-context post by default (≤280), threads only when the story truly needs one (≤2 per channel per week); Bluesky = warmer, nerdier, lowercase, link inline (no penalty), alt text always; LinkedIn = founder voice, proper case, 600–1,300 chars, an image, link in post (company pages aren't penalized).
 3. **Replies are the growth engine on X; posts are the receipts.** The sniper routine's 3–5 one-tap replies a day to relevant posts (manual, Brandon taps) do more for a new account than any scheduled post. Bluesky replies stay approval-gated until Brandon says go autonomous.
 
 ## Rule: full context on every platform (Brandon, 2026-10-26)
-LinkedIn is the quality bar. X and Bluesky carry the same full story (who, what, when, what it means for the reader), never a vague, edgy summary. Post 1 always names the company or tool in plain words and stands alone. Say what things are (e.g. "a skill is a folder with a SKILL.md file"). X = 2–4 post thread (each ≤280); Bluesky = 1–3 posts (each ≤300), link inline, alt text on images. Single posts only when the full message truly fits. No clickbait that overpromises; every hook is backed by a receipt in the thread.
+LinkedIn is the quality bar. X and Bluesky carry the same full story (who, what, when, what it means for the reader), never a vague, edgy summary. Post 1 always names the company or tool in plain words and stands alone. Say what things are (e.g. "a skill is a folder with a SKILL.md file"). X = 2–4 post thread (each ≤280); Bluesky = 1–3 posts (each ≤300), link inline, alt text on images. **Update 2026-10-26 (Brandon):** single posts are the default. Condense the LinkedIn message into one full-context post (X ≤280, Bluesky ≤300) and keep the hook. Threads only where the story needs one, at most ~2 per channel per week. No clickbait that overpromises; every hook is backed by a receipt in the thread.
 
 ## The thread formula we apply
 Modelled on the researched accounts (@cursor_ai one-line claim + proof, @thedelost / @quangdigiaz numbered repo lists, @levelsio timely first-person tips, Simon Willison's sourced "what happened" posts).
@@ -116,3 +116,7 @@ Big-event posts (≥1k★ tool confirmed broken 2 nights, or agent update breaki
 2. Daily: sniper replies (X), answer replies within a few hours, log test requests in `growth/x/sniper-log.md`.
 3. Mon: 15-min look at Buffer insights → adjust one thing (hook type, time, format). After 3 weeks, re-cut pillar mix on data.
 KPIs: followers per channel, replies per post, test requests received, newsletter subs (target 25 for sponsor outreach), /advertise/ inquiries.
+
+
+## Buffer operating model (2026-10-26, supersedes the manual daily step)
+Posts that are ready get scheduled up front with explicit times. Posts needing fresh numbers, placeholders, the newsletter gate, or a second thread sit in Buffer Drafts with a `[PLANNED …]` label. Grok Bot runs growth/routines/BUFFER-DAILY-TOPUP.md every morning, so Brandon has no daily manual steps.
