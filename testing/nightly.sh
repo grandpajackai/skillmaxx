@@ -1,5 +1,6 @@
 #!/bin/bash
 # SkillMaxx nightly refresh. Run by the "SkillMaxx nightly refresh" Grok Bot routine (~2 AM ET).
+# After a Tuesday Beehiiv send: confirm /newsletter/issue-N/ is live and matches what was emailed (growth/routines/NEWSLETTER-SEND.md). Nightly itself does not publish archive pages.
 # Every run logs to testing/logs/nightly-<date>.log (gitignored) and exits non-zero with the failing step named.
 # Failed installs are retried once (--retry 1); daily_report.py only calls something broken after 2 failing nights.
 # Steps: sync master -> refresh codex mirror -> sandboxed install tests -> metadata -> daily report + post drafts -> build -> data-only commit + push.
