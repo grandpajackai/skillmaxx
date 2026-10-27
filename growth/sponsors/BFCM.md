@@ -1,24 +1,25 @@
-# Black Friday / Cyber Monday — "Founding 12" (DRAFT — NOT approved; nothing live)
+# Black Friday / Cyber Monday — "Founding 12" (APPROVED 2026-10-27)
 
-Prices stay as they are. Do not change `/advertise/` or Stripe until Brandon approves.
+Prices unchanged. Free December newsletter line stays **undecided and is NOT offered**.
 
-## Simple rules (aligned with SCALING.md)
-- **Founding (always):** first **10** sponsors get the founding price, locked for **6 months**.
-- **Featured:** **not** eligible for long locks. Rotates monthly; price can rise as the audience grows.
-- **BFCM window:** Fri Nov 27, 12:00 AM ET → Mon Nov 30, 11:59 PM ET — book **Category** or **Newsletter** and the founding rate is locked for **12 months** instead of 6.
-- **Free December newsletter line:** **UNDECIDED** (do not put on the banner until decided).
+## Approved rules
+- **Founding (always):** first **10** sponsors → founding price locked **6 months**.
+- **Featured:** month-to-month, **no long lock**. Price can rise as audience grows.
+- **BFCM window:** Fri Nov 27, 12:00 AM ET → Mon Nov 30, 11:59 PM ET:
+  - **Category** and **Newsletter:** founding rate locked **12 months** (instead of 6).
+  - **Featured:** **$19 for December** (normally $29 for 1 month) — **one slot, first come first served**. Promo code on the Featured one-time Payment Link (see Stripe).
+- **Premium / custom:** contact skillmaxx@gilventures.ai.
 - **Social shoutouts:** not part of this offer.
-- **Premium / custom partnership:** contact skillmaxx@gilventures.ai (see /advertise/ draft).
 
-## Draft banner copy
-"Black Friday, our way: book a Category or Newsletter founding slot by Cyber Monday and we lock your rate for 12 months, not 6."
+## Approved banner copy (PR #35, date-gated Nov 27–Dec 1 ET)
+"Black Friday, our way: book a Category or Newsletter founding slot by Cyber Monday and lock your rate for 12 months (not 6). Featured: $19 for December — one slot."
 
-No “money still never changes a test result.” No Dec-line sentence until that perk is decided.
+No “money still never changes a test result.” No free December-line promise.
 
-## Warm leads (only if offer approved)
-"Small heads-up: Category or Newsletter bookings by Monday 11:59 PM ET get the founding rate locked for 12 months."
+## Warm leads (optional)
+"Category or Newsletter bookings by Monday 11:59 PM ET get a 12-month founding lock. Featured December is $19 (one slot)."
 
-## Ops (after approval)
-1. Merge banner PR #35 with approved copy.
-2. Note 12-month locks in PIPELINE.md + thank-you email (Category / Newsletter only).
-3. Featured stays on the normal 6-month founding lock if it counts as a founding seat, or month-to-month with rising price — no 12-month BFCM lock.
+## Ops
+1. Banner PR #35 merges when ready (date-gated; safe early).
+2. PIPELINE.md: tag BFCM Category/Newsletter locks as 12 months; Featured Dec $19 redemption once.
+3. When Featured Dec slot is taken, mark sold out on /advertise/ BFCM note (manual).

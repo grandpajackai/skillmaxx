@@ -48,6 +48,6 @@ I read every reply.
 
 ---
 
-**Sponsor:** This spot is open. Founding rate: **$19 for 1 issue** (or **$59/mo for 4 issues**, about $15 each). Money never changes a test result. https://skillmaxx.gilventures.ai/advertise/
+**Sponsor:** This spot is open. Founding rate: **$19 for 1 issue** (or **$59/mo for 4 issues**, about $15 each). Placements are always labeled; see https://skillmaxx.gilventures.ai/advertise/
 
 Built a skill? We'll run it through all five agents: https://skillmaxx.gilventures.ai/submit/

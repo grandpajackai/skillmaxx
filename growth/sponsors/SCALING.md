@@ -36,47 +36,21 @@ Pattern: **fixed scarce inventory + calendar booking + waitlist**, with rotation
 - Inventory counter + sold-out → waitlist switch on /advertise/.
 - Spotlight tier + Stripe price only if fixed slots sell out.
 
-## Simplified sponsor model (2026-10-27 draft — Brandon direction)
+## Simplified sponsor model (APPROVED 2026-10-27)
 
-**Prices unchanged.** Live sheet on /advertise/ (founding price, locked for 6 months; no struck-through regulars).
+**Prices unchanged.** Live sheet on /advertise/.
 
 | Rule | Detail |
 |---|---|
 | Founding | First **10** sponsors → founding price locked **6 months** |
-| Featured | **Excluded from long locks.** Rotates monthly. Price rises as audience grows (newcomers only; existing months already paid stay). |
-| BFCM Founding 12 | Nov 27–30 ET: **Category** and **Newsletter** only → founding rate locked **12 months** instead of 6 |
-| Free Dec newsletter line | **Undecided** |
+| Featured | Month-to-month, **no long lock**. Price can rise for newcomers as audience grows. |
+| BFCM Nov 27–30 ET | **Category + Newsletter:** 12-month founding lock. **Featured:** $19 for December (normally $29), **1 slot, first come first served** |
+| Free Dec newsletter line | **Undecided — NOT offered** |
 | Social shoutouts | Not in the BFCM offer |
-| Premium / custom | “Contact us” partnership lane (draft on /advertise/ What you get) |
+| Premium / custom | Contact us |
 
-No per-plan seat math beyond: total founding cap **10**, Featured never gets the 12-month BFCM lock.
+### Capacity notes (inventory only; 0 booked today)
+- Newsletter ~4 issue-slots/mo; Category ~30 pages (many tiny); Featured **1**/mo.
+- Featured stays flexible because it never takes a 12-month lock; the BFCM Featured deal is a one-month December sale only.
+- Benchmark takeaway applied: show clear placement specs + mockups (What you get), scarce “1 slot / first come” wording, and a custom contact lane — same pattern as Console.dev / Ben’s Bites / TLDR without inventing traffic.
 
-## Sponsor capacity forecast (simplified)
-
-Honest baseline: **0** founding sponsors booked. No traffic history — scenarios are inventory only.
-
-### Slots per month
-| Slot | Per month | Lock behavior |
-|---|---|---|
-| Newsletter | ~4 issue-slots (1/issue) | One-time = one issue. $59/mo pack = all 4 that month. BFCM can lock founding rate **12 months** on Newsletter. |
-| Featured | **1** | Monthly rotation. **No** 12-month BFCM lock. Price can step up for new months as audience grows. |
-| Category | ~30 pages (1 each; many tiny) | BFCM can lock founding rate **12 months**. Room remains even if several founding seats are Category. |
-| Bundle | Featured + Category + 1 NL issue | Featured piece follows Featured rules (no 12-mo BFCM lock on that piece). |
-
-### Why Featured is special
-One Featured card. A 12-month lock would freeze the only homepage Sponsored slot at founding price for a year and block raising the rate as traffic grows. Monthly rotation keeps inventory and pricing flexible.
-
-### Scenarios (not demand forecasts)
-| Scenario | Featured open next month? | Newsletter / Category |
-|---|---|---|
-| A. Nothing sold | Yes | Full |
-| B. One Featured buyer this month | Next month yes (rotates); rate may be higher for the next buyer | Full |
-| C. BFCM: 3 Category + 2 Newsletter 12-mo locks | Yes (Featured untouched) | Those products held at founding rate up to 12 mo; other categories / issue-slots still sellable |
-| D. Fill 10 founding seats mostly Category | Yes | Many categories still free |
-
-### Recommendation
-1. Ship the simplified rules above; drop per-plan BFCM eligibility matrices.
-2. Approve Featured = monthly, no long lock, rising price later.
-3. Approve BFCM 12-mo lock = Category + Newsletter only.
-4. Decide free December line separately.
-5. Add Premium / custom “contact us” on /advertise/ (draft PR).

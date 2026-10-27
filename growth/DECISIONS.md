@@ -60,3 +60,6 @@
 ## 2026-10-27 — simplified sponsor model (draft)
 29. **Draft only (not live):** Founding = first 10, 6-month lock. Featured excluded from long locks (monthly rotation, price rises with audience). BFCM Nov 27–30: 12-month lock on Category + Newsletter only. Free Dec line undecided. Premium/custom = contact us. No per-plan BFCM cap matrix.
 
+## 2026-10-27 — Brandon approved simplified sponsor model
+30. **Approved:** founding = first 10, 6-month lock; Featured month-to-month (no long lock, price may rise); BFCM Nov 27–30: Category+Newsletter 12-month lock; Featured $19 for December (normally $29), one slot FCFS; Premium = contact us; free December newsletter line undecided and **not offered**. Banner without “money still never changes a test result.”
+

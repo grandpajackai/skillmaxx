@@ -22,7 +22,7 @@ One page to catch up. Site: https://skillmaxx.gilventures.ai · Repo: grandpajac
 | Test pipeline | `testing/` (nightly.sh, run_tests.py, daily_report.py, weekly_scorecard.py) |
 | Stripe payment links + clear unit labels | `src/_data/sponsorLinks.json` (founding price, locked for 6 months; units spelled out; no struck-through regulars) |
 | Sponsor inventory, rotation, scaling | [growth/sponsors/SCALING.md](growth/sponsors/SCALING.md) |
-| Sponsor rate locks + promo commitments | [growth/sponsors/PIPELINE.md](growth/sponsors/PIPELINE.md) (pricing + BFCM NOT approved yet) |
+| Sponsor rate locks + promo commitments | [growth/sponsors/PIPELINE.md](growth/sponsors/PIPELINE.md) (BFCM Founding 12 approved 2026-10-27; see growth/sponsors/BFCM.md) |
 | Routine runbooks | [growth/routines/](growth/routines/) |
 | Reddit profile pack + posts | [growth/reddit/](growth/reddit/) |
 | Daily reports (site) | /reports/latest/, built by `testing/daily_report.py` |
@@ -37,7 +37,7 @@ One page to catch up. Site: https://skillmaxx.gilventures.ai · Repo: grandpajac
 | Sunday recap | Sun 6:00 PM | enabled, never run yet |
 | SkillMaxx reply sniper X/Bluesky/LinkedIn (log: growth/x/sniper-log.md) | — | **paused since Oct 26** at Brandon's request; picks saved, no replies sent |
 | Brandon personal-brand reply sniper | — | paused, never run |
-| BFCM banner on | Nov 27, 9:00 AM | enabled ⚠️ BFCM offer NOT approved: disable or get approval before Nov 27 ([growth/routines/BFCM-FOUNDING-12.md](growth/routines/BFCM-FOUNDING-12.md); PR #35 draft) |
+| BFCM banner on | Nov 27, 9:00 AM | enabled — offer approved; merge PR #35 / verify banner ([growth/routines/BFCM-FOUNDING-12.md](growth/routines/BFCM-FOUNDING-12.md)) |
 | BFCM banner off | Dec 1, 9:00 AM | enabled (same caveat) |
 | Sponsor-payment watcher | — | not built: Brandon uses the dashboard Sponsors section + Stripe's own emails |
 

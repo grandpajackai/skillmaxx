@@ -5,7 +5,7 @@ Targets come from [../SPONSORS.md](../SPONSORS.md). Stages: **Target → Contact
 Founding sponsors booked: **0 / 10**. Payment: 8 live Stripe Payment Links (see `src/_data/sponsorLinks.json`). Live view: owner dashboard canvas → Sponsors (pulled from Stripe at refresh).
 
 ## Rate locks and promo commitments
-Every booking gets a row here. Default founding lock = 6 months from first payment. **Founding 12 (BFCM, NOT approved):** Nov 27–30 ET bookings of **Category or Newsletter** get founding rate locked **12 months**. Featured excluded (monthly rotation, rising price). Free Dec line undecided. No social shoutouts. Honour locks in this table; no Stripe price changes until Brandon says so.
+Every booking gets a row here. Default founding lock = 6 months from first payment. **Founding 12 (APPROVED 2026-10-27):** Nov 27–30 ET — **Category/Newsletter** → 12-month founding lock; **Featured** → $19 for December (normally $29), 1 slot FCFS (Stripe promo). Free Dec line not offered. No social shoutouts.
 
 | Sponsor | Stripe customer | Slot | First paid | Rate | Locked until | Promo | Dec shoutout issue | Notes |
 |---|---|---|---|---|---|---|---|---|

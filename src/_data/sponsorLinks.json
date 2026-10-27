@@ -18,7 +18,7 @@
       "name": "Featured slot",
       "price": 29,
       "priceSuffix": "for 1 month",
-      "desc": "The one Sponsored card in the homepage Featured row, plus a top-of-category placement, clearly labeled.",
+      "desc": "The one Sponsored card in the homepage Featured row, plus a top-of-category placement, clearly labeled. Month-to-month (no long lock). BFCM: $19 for December (normally $29), one slot \u2014 code BFCM-FEATURED-DEC.",
       "url": "https://buy.stripe.com/eVq5kDdDuaXO8oZ0YV8g001",
       "highlight": true,
       "bookLabel": "$29 for 1 month",
@@ -53,5 +53,6 @@
   ],
   "compareNote": "Quick check: 1 newsletter ($19) + Featured ($29) + Category ($15) = $63. The Founding bundle is $49 for that same month ($42/mo if you subscribe). The $59/mo newsletter option is 4 issues, not 1 \u2014 about $15 each, $17 less than buying four $19 issues.",
   "subscribers": null,
-  "portalUrl": "https://billing.stripe.com/p/login/5kQ00jgPG7LCfRr8rn8g000"
+  "portalUrl": "https://billing.stripe.com/p/login/5kQ00jgPG7LCfRr8rn8g000",
+  "bfcmNote": "Nov 27\u201330 ET: Category/Newsletter \u2192 12-month founding lock. Featured December \u2192 $19 (code BFCM-FEATURED-DEC), 1 slot FCFS. Free Dec line not offered."
 }
