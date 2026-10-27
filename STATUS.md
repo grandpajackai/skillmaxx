@@ -32,7 +32,7 @@
 ## In progress / claimed by
 | Task | Agent | Branch | Since |
 |---|---|---|---|
-| Advertise audience line + open slots + sponsors strip | Grok Bot | grokbot/advertise-audience-slots | 2026-10-27 |
+| _(none)_ | | | |
 
 ## Next up
 0. Watch https://github.com/skillmatic-ai/awesome-agent-skills/pull/219 (opened 2026-10-25) and reply to review comments.
@@ -44,7 +44,8 @@
 5. Growth (see growth/): approve the skillmatic PR draft, paste newsletter #1 into Beehiiv, create a Cloudflare account for Web Analytics, approve the outreach drafts (growth/outreach/).
 
 ## Session log
-- **2026-10-25 · Grok Bot** — Catch-up refresh after Oct 17–24 missed nightlies: +videogen (424 skills), 803/902 tests pass (8 regressions, logged in testing/results/2026-10-25.json). Fixed /advertise mobile overflow and dishonest newsletter text. Swapped newsletter to Beehiiv embed + attribution with fallback link and styled wrapper (screenshots: review/beehiiv/). nightly.sh now builds for the custom domain. Added COLLABORATING.md, STATUS.md, PR CI workflow; enabled branch protection on master (landed via PR #1).
+-- **2026-10-27 · Grok Bot**: /advertise/ honesty pass (PR #54): audience stats line (423 add-ons from build; Beehiiv subscribers unpublished until verified), open-slot counter from `src/_data/sponsors.json`, Sponsors logo strip hidden until first `sponsors.live` booking. Launch posts confirmed sent on X/Bluesky/LinkedIn (Buffer sent, platform URLs live).
+ **2026-10-25 · Grok Bot** — Catch-up refresh after Oct 17–24 missed nightlies: +videogen (424 skills), 803/902 tests pass (8 regressions, logged in testing/results/2026-10-25.json). Fixed /advertise mobile overflow and dishonest newsletter text. Swapped newsletter to Beehiiv embed + attribution with fallback link and styled wrapper (screenshots: review/beehiiv/). nightly.sh now builds for the custom domain. Added COLLABORATING.md, STATUS.md, PR CI workflow; enabled branch protection on master (landed via PR #1).
 - **2026-10-25 · Grok Bot** — SEO/AEO pass (PR grokbot/seo-aeo-review): robots meta, twitter/og tags, og:type article, unique titles/descriptions on all 438 pages (dup skill names/descs disambiguated, double-escaping fixed), JSON-LD: WebSite+Organization, ItemList (homepage), SoftwareApplication+BreadcrumbList per skill, Article+FAQPage on guides and Article on issue #1; question H2s with direct answers + FAQ blocks + internal links on both guides; /newsletter/ archive + /newsletter/issue-1/; /llms.txt; robots.txt welcomes AI crawlers; sitemap with lastmod, 404 noindexed. Owner dashboard got a Content review section.
 - **2026-10-25 · Grok Bot** — Growth workstream: growth/CHANNELS.md (25 channels ranked, rules checked: heilcheng excludes directories, travisvn bans AI-assisted PRs, awesome-claude-code takes issue-form submissions only, punkpeye is servers only), PR draft for skillmatic-ai/awesome-agent-skills (not opened), newsletter issue #1, SPONSORS.md (founding pricing, 12 targets), 3 cold-intro drafts (not sent), analytics recommendation (Cloudflare Web Analytics; needs an account). Nothing submitted, sent, or created.
 - **2026-10-25 · Grok Bot**: Opened the external PR https://github.com/skillmatic-ai/awesome-agent-skills/pull/219 ("Add SkillMaxx" under Skill Marketplaces & directories) from the fork grandpajackai/awesome-agent-skills, branch add-skillmaxx.
