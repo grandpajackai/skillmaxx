@@ -2,7 +2,7 @@ import {chromium} from 'playwright';import fs from 'fs';
 const R=process.argv[2]||'r1';fs.mkdirSync(`review/${R}`,{recursive:true});
 const axe=fs.readFileSync('node_modules/axe-core/axe.min.js','utf8');
 const b=await chromium.launch();const base='http://localhost:8080';
-const P=[['/','home'],['/skills/sentry/','skill'],['/matrix/','matrix'],['/how-it-works/','how'],['/submit/','submit'],['/advertise/','advertise'],['/reports/','reports'],['/reports/2026-10-26/','report'],['/404.html','404']];
+const P=[['/','home'],['/skills/sentry/','skill'],['/matrix/','matrix'],['/how-it-works/','how'],['/submit/','submit'],['/advertise/','advertise'],['/reports/','reports'],['/reports/2026-10-27/','report'],['/404.html','404']];
 const errs=[],ax={};
 for(const [w,h,s] of [[1440,900,'d'],[390,844,'m']]){const c=await b.newContext({viewport:{width:w,height:h},deviceScaleFactor:1});const p=await c.newPage();
 p.on('console',m=>{if(m.type()==='error')errs.push(p.url()+' '+m.text())});p.on('pageerror',e=>errs.push(p.url()+' PAGEERR '+e.message));
@@ -16,5 +16,5 @@ await c.close();}
 const seen=new Set(['/']),q=['/'],bad=[];const c=await b.newContext();const p=await c.newPage();
 while(q.length){const u=q.shift();const r=await p.request.get(base+u);if(r.status()>=400){bad.push(u+' '+r.status());continue}
 if(!(r.headers()['content-type']||'').includes('html'))continue;const html=await r.text();
-for(const m of html.matchAll(/(?:href|src)="([^"#]+)/g)){let l=m[1];if(l.startsWith('http')&&!l.startsWith(base))continue;l=l.replace(base,'');if(!l.startsWith('/'))continue;if(!seen.has(l)){seen.add(l);q.push(l)}}}
+for(const m of html.matchAll(/(?:href|src)="([^"#]+)/g)){let l=m[1];if(l.startsWith('http')&&!l.startsWith(base))continue;l=l.replace(base,'');if(!l.startsWith('/')||/['+]/.test(l))continue;if(!seen.has(l)){seen.add(l);q.push(l)}}}
 console.log('crawled',seen.size,'broken',bad);console.log('console',errs.slice(0,20));console.log('axe',JSON.stringify(ax,null,1));await b.close();

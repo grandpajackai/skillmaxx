@@ -29,11 +29,6 @@ The install script also works on macOS. New installs use `~/.local/bin` without 
 winget install JetBrains.TeamCityCLI
 ```
 
-**npm:**
-```bash
-npm install -g @jetbrains/teamcity-cli
-```
-
 <details>
 <summary>More installation methods (deb, rpm, Chocolatey, Scoop, build from source)</summary>
 
@@ -184,4 +179,4 @@ TeamCity CLI is open source under the Apache-2.0 license. Bug reports and pull r
 
 `project settings status` reports the server’s runtime message and missing DSL context parameters. Its “Recorded” timestamp is when the status was recorded, not the last successful sync.
 
-Connections listed or selected with `--project` include parent projects, including `_Root`. Delete an inherited connection from its
+Connections listed or selected with `--project` include parent projects, including `_Root`. Delete an inherited connection from its owning project.
