@@ -1,0 +1,213 @@
+[
+  {
+    "company": "E2B",
+    "route": "email",
+    "to": "hello@e2b.dev",
+    "source_url": "https://e2b.dev/contact",
+    "subject": "E2B isn't in our agent install tests yet (want in?)",
+    "body": "Hi E2B team,\n\nI'm Brandon. I run SkillMaxx, a free directory that install-tests agent skills, plugins and MCP servers nightly across Claude Code, Codex, Grok Build, Cursor and Pi, with public logs: https://skillmaxx.gilventures.ai/reports/latest/\n\nE2B isn't listed yet, which is a gap: sandboxes are where many agents run code. Your MCP server would be a natural submit: https://skillmaxx.gilventures.ai/submit/\n\nHonest ask: would you take a founding Newsletter slot at $19 for 1 issue (or $59/mo for 4)? Rate locked 6 months for the first 10 sponsors. Always labeled Sponsored, and money never changes a test result.\n\nWe launched in Oct 2026 and track 423 add-ons across those 5 agents. Our newsletter first sends Nov 3. The audience is still tiny (that's why it's cheap), and you'd get a monthly report with real numbers, even small ones.\n\nA one-line \"not now\" or \"test this instead\" helps too.\n\nBrandon\nSkillMaxx · https://skillmaxx.gilventures.ai/advertise/",
+    "slot": "Newsletter $19/issue (or $59/mo for 4)",
+    "in_directory": "no — not listed (0 matches in data/skills.json); invite /submit/",
+    "notes": "hello@e2b.dev is in e2b.dev/contact JSON-LD (contactType 'customer service'); same page's visible text says 'email us at enterprise@e2b.dev' as the fallback for its call-booking widget (contactType 'sales'). Swap to enterprise@e2b.dev if you prefer the sales inbox. No partnerships address published."
+  },
+  {
+    "company": "Browserbase",
+    "route": "email",
+    "to": "hello@browserbase.com",
+    "source_url": "https://docs.browserbase.com/platform/identity/overview",
+    "subject": "Browserbase next to Browser Use in our Automation category?",
+    "body": "Hi Browserbase team,\n\nI'm Brandon. I run SkillMaxx, a free directory that install-tests agent skills, plugins and MCP servers nightly across Claude Code, Codex, Grok Build, Cursor and Pi, with public logs: https://skillmaxx.gilventures.ai/reports/latest/\n\nBrowserbase isn't listed yet, though Browser Use already sits in our Automation category. Your MCP server would be a natural submit: https://skillmaxx.gilventures.ai/submit/\n\nHonest ask: would you take a founding Category: Automation slot at $15/mo? Rate locked 6 months for the first 10 sponsors. Always labeled Sponsored, and money never changes a test result.\n\nWe launched in Oct 2026 and track 423 add-ons across those 5 agents. Our newsletter first sends Nov 3. The audience is still tiny (that's why it's cheap), and you'd get a monthly report with real numbers, even small ones.\n\nA one-line \"not now\" or \"test this instead\" helps too.\n\nBrandon\nSkillMaxx · https://skillmaxx.gilventures.ai/advertise/",
+    "slot": "Category: Automation $15/mo",
+    "in_directory": "no — not listed; Browser Use is (category automation); invite /submit/ for mcp-server-browserbase",
+    "notes": "hello@browserbase.com published in Browserbase docs ('Contact hello@browserbase.com to trial Verified or discuss an upgrade'). Alternatives: partner form https://www.browserbase.com/partner (200, has 'I want to partner, let's talk!' option); sales@browserbase.com in docs billing page. They're hiring a first Partnerships Lead (posted 2026-10-19) — no one may own this inbox yet."
+  },
+  {
+    "company": "Linear",
+    "route": "email",
+    "to": "hello@linear.app",
+    "source_url": "https://linear.app/contact",
+    "subject": "your Linear plugin passed in 3 agents last night",
+    "body": "Hi Linear team,\n\nI'm Brandon. I run SkillMaxx, a free directory that install-tests agent skills, plugins and MCP servers nightly across Claude Code, Codex, Grok Build, Cursor and Pi, with public logs: https://skillmaxx.gilventures.ai/reports/latest/\n\nYour Linear plugin installed clean in Claude Code, Codex and Grok Build in last night's run.\n\nHonest ask: would you take a founding Category: Productivity slot at $15/mo? Rate locked 6 months for the first 10 sponsors. Always labeled Sponsored, and money never changes a test result.\n\nWe launched in Oct 2026 and track 423 add-ons across those 5 agents. Our newsletter first sends Nov 3. The audience is still tiny (that's why it's cheap), and you'd get a monthly report with real numbers, even small ones.\n\nA one-line \"not now\" or \"test this instead\" helps too.\n\nBrandon\nSkillMaxx · https://skillmaxx.gilventures.ai/advertise/",
+    "slot": "Category: Productivity $15/mo",
+    "in_directory": "yes — linear (plugin, productivity); 2026-10-28 run: pass on claude_code, codex, grok_build",
+    "notes": "Contact page lists hello@linear.app under 'Other inquiries … press inquiries, partnerships, or other questions' — best-fit address of the batch."
+  },
+  {
+    "company": "Prisma",
+    "route": "email",
+    "to": "hello@prisma.io",
+    "source_url": "https://www.prisma.io/programs/partners",
+    "subject": "we install your Prisma MCP plugin every night (it behaves)",
+    "body": "Hi Prisma team,\n\nI'm Brandon. I run SkillMaxx, a free directory that install-tests agent skills, plugins and MCP servers nightly across Claude Code, Codex, Grok Build, Cursor and Pi, with public logs: https://skillmaxx.gilventures.ai/reports/latest/\n\nYour Prisma MCP plugin installed clean in Claude Code and Grok Build last night. Schema migrations from inside the agent is what TypeScript builders want.\n\nHonest ask: would you take a founding Newsletter slot at $19 for 1 issue (or $59/mo for 4)? Rate locked 6 months for the first 10 sponsors. Always labeled Sponsored, and money never changes a test result.\n\nWe launched in Oct 2026 and track 423 add-ons across those 5 agents. Our newsletter first sends Nov 3. The audience is still tiny (that's why it's cheap), and you'd get a monthly report with real numbers, even small ones.\n\nA one-line \"not now\" or \"test this instead\" helps too.\n\nBrandon\nSkillMaxx · https://skillmaxx.gilventures.ai/advertise/",
+    "slot": "Newsletter $19/issue (or $59/mo for 4)",
+    "in_directory": "yes — prisma (plugin, category 'other'); 2026-10-28: pass on claude_code, grok_build",
+    "notes": "hello@prisma.io is the mailto on the Partner network page (and site footer). Newsletter offered rather than Category: Databases because Neon/Supabase/Qdrant were already pitched Databases on 10-27."
+  },
+  {
+    "company": "Aikido",
+    "route": "email",
+    "to": "hello@aikido.dev",
+    "source_url": "https://www.aikido.dev/contact",
+    "subject": "Aikido's Claude plugin passed in 3 agents last night",
+    "body": "Hi Aikido team,\n\nI'm Brandon. I run SkillMaxx, a free directory that install-tests agent skills, plugins and MCP servers nightly across Claude Code, Codex, Grok Build, Cursor and Pi, with public logs: https://skillmaxx.gilventures.ai/reports/latest/\n\nYour Aikido plugin (SAST, secrets, IaC) installed clean in Claude Code, Grok Build and Pi last night.\n\nHonest ask: would you take a founding Category: Security slot at $15/mo? Rate locked 6 months for the first 10 sponsors. Always labeled Sponsored, and money never changes a test result.\n\nWe launched in Oct 2026 and track 423 add-ons across those 5 agents. Our newsletter first sends Nov 3. The audience is still tiny (that's why it's cheap), and you'd get a monthly report with real numbers, even small ones.\n\nA one-line \"not now\" or \"test this instead\" helps too.\n\nBrandon\nSkillMaxx · https://skillmaxx.gilventures.ai/advertise/",
+    "slot": "Category: Security $15/mo",
+    "in_directory": "yes — aikido (plugin, category 'other' in data); 2026-10-28: pass on claude_code, grok_build, pi",
+    "notes": "hello@aikido.dev = 'General Inquiries' in contact page JSON-LD and footer 'Connect'. Overlap: Semgrep was offered Category: Security on 10-27 (one sponsor per category, first come)."
+  },
+  {
+    "company": "Sourcegraph",
+    "route": "email",
+    "to": "hi@sourcegraph.com",
+    "source_url": "https://sourcegraph.com/contact",
+    "subject": "your Sourcegraph plugin is in our nightly install tests",
+    "body": "Hi Sourcegraph team,\n\nI'm Brandon. I run SkillMaxx, a free directory that install-tests agent skills, plugins and MCP servers nightly across Claude Code, Codex, Grok Build, Cursor and Pi, with public logs: https://skillmaxx.gilventures.ai/reports/latest/\n\nYour Sourcegraph plugin installed clean in Claude Code and Grok Build last night, and code search fits people tuning agent setups.\n\nHonest ask: would you take a founding Newsletter slot at $19 for 1 issue (or $59/mo for 4)? Rate locked 6 months for the first 10 sponsors. Always labeled Sponsored, and money never changes a test result.\n\nWe launched in Oct 2026 and track 423 add-ons across those 5 agents. Our newsletter first sends Nov 3. The audience is still tiny (that's why it's cheap), and you'd get a monthly report with real numbers, even small ones.\n\nA one-line \"not now\" or \"test this instead\" helps too.\n\nBrandon\nSkillMaxx · https://skillmaxx.gilventures.ai/advertise/",
+    "slot": "Newsletter $19/issue (or $59/mo for 4)",
+    "in_directory": "yes — sourcegraph (plugin, development); 2026-10-28: pass on claude_code, grok_build",
+    "notes": "Contact page: 'Everything else hi@sourcegraph.com' (sales goes to a form; support@ excluded)."
+  },
+  {
+    "company": "42Crunch",
+    "route": "email",
+    "to": "info@42crunch.com",
+    "source_url": "https://info.42crunch.com/owasp-api-security-top-10-cs-youtube",
+    "subject": "your API security plugin passes our nightly install tests",
+    "body": "Hi 42Crunch team,\n\nI'm Brandon. I run SkillMaxx, a free directory that install-tests agent skills, plugins and MCP servers nightly across Claude Code, Codex, Grok Build, Cursor and Pi, with public logs: https://skillmaxx.gilventures.ai/reports/latest/\n\nYour API Security Testing plugin installed clean in Claude Code and Grok Build last night, and MCP security is what people should check before adding servers.\n\nHonest ask: would you take a founding Newsletter slot at $19 for 1 issue (or $59/mo for 4)? Rate locked 6 months for the first 10 sponsors. Always labeled Sponsored, and money never changes a test result.\n\nWe launched in Oct 2026 and track 423 add-ons across those 5 agents. Our newsletter first sends Nov 3. The audience is still tiny (that's why it's cheap), and you'd get a monthly report with real numbers, even small ones.\n\nA one-line \"not now\" or \"test this instead\" helps too.\n\nBrandon\nSkillMaxx · https://skillmaxx.gilventures.ai/advertise/",
+    "slot": "Newsletter $19/issue (or $59/mo for 4)",
+    "in_directory": "yes — 42crunch-api-security-testing (plugin, security); 2026-10-28: pass on claude_code, grok_build",
+    "notes": "info@42crunch.com is in the 'Contact Us' footer on 42Crunch's own info.42crunch.com pages (with phone 415-250-3038) and in developers.42crunch.com/tos. Main contact page https://42crunch.com/contact-us.html lists only jobs@/dpo@ plus a sales form — fallback route if you'd rather use the form."
+  },
+  {
+    "company": "Zapier",
+    "route": "email",
+    "to": "partners@zapier.com",
+    "source_url": "https://zapier.com/l/solution-partner",
+    "subject": "your Zapier plugin is in our nightly agent install tests",
+    "body": "Hi Zapier partners team,\n\nI'm Brandon. I run SkillMaxx, a free directory that install-tests agent skills, plugins and MCP servers nightly across Claude Code, Codex, Grok Build, Cursor and Pi, with public logs: https://skillmaxx.gilventures.ai/reports/latest/\n\nYour Zapier plugin installed clean in Claude Code and Grok Build last night. Thousands of app actions inside the agent is a big draw.\n\nHonest ask: would you take a founding Newsletter slot at $19 for 1 issue (or $59/mo for 4)? Rate locked 6 months for the first 10 sponsors. Always labeled Sponsored, and money never changes a test result.\n\nWe launched in Oct 2026 and track 423 add-ons across those 5 agents. Our newsletter first sends Nov 3. The audience is still tiny (that's why it's cheap), and you'd get a monthly report with real numbers, even small ones.\n\nA one-line \"not now\" or \"test this instead\" helps too.\n\nBrandon\nSkillMaxx · https://skillmaxx.gilventures.ai/advertise/",
+    "slot": "Newsletter $19/issue (or $59/mo for 4)",
+    "in_directory": "yes — zapier (plugin, productivity); 2026-10-28: pass on claude_code, grok_build",
+    "notes": "UNCERTAIN FIT: partners@zapier.com is published on Zapier's own Solution Partner page, but as the follow-up inbox for Solution Partner applications (agencies). Pipeline URL zapier.com/l/partner now 404s. No marketing/sponsorship address found. Low priority; expect slow/no reply."
+  },
+  {
+    "company": "Hugging Face",
+    "route": "email",
+    "to": "press@huggingface.co",
+    "source_url": "https://huggingface.co/support",
+    "subject": "huggingface-skills passed in 3 agents last night",
+    "body": "Hi Hugging Face team,\n\nI'm Brandon. I run SkillMaxx, a free directory that install-tests agent skills, plugins and MCP servers nightly across Claude Code, Codex, Grok Build, Cursor and Pi, with public logs: https://skillmaxx.gilventures.ai/reports/latest/\n\nYour huggingface-skills plugin installed clean in Claude Code, Grok Build and Pi last night.\n\nHonest ask: would you take a founding Newsletter slot at $19 for 1 issue (or $59/mo for 4)? Rate locked 6 months for the first 10 sponsors. Always labeled Sponsored, and money never changes a test result.\n\nWe launched in Oct 2026 and track 423 add-ons across those 5 agents. Our newsletter first sends Nov 3. The audience is still tiny (that's why it's cheap), and you'd get a monthly report with real numbers, even small ones.\n\nA one-line \"not now\" or \"test this instead\" helps too.\n\nBrandon\nSkillMaxx · https://skillmaxx.gilventures.ai/advertise/",
+    "slot": "Newsletter $19/issue (or $59/mo for 4)",
+    "in_directory": "yes — huggingface-skills (plugin, development); 2026-10-28: pass on claude_code, grok_build, pi",
+    "notes": "UNCERTAIN FIT: press@huggingface.co is the site-footer 'Press' mailto (huggingface.co/support, /contact/sales). Only other route is the Enterprise sales form (https://huggingface.co/contact/sales) which forces an Enterprise plan choice — poor fit. website@huggingface.co only appears in a forum reply, not an official page — not used. Soft, community-first ask."
+  },
+  {
+    "company": "Amplitude",
+    "route": "email",
+    "to": "sales@amplitude.com",
+    "source_url": "https://amplitude.com/contact",
+    "subject": "your Amplitude plugin in our nightly install tests (+ a Pi log)",
+    "body": "Hi Amplitude team,\n\nI'm Brandon. I run SkillMaxx, a free directory that install-tests agent skills, plugins and MCP servers nightly across Claude Code, Codex, Grok Build, Cursor and Pi, with public logs: https://skillmaxx.gilventures.ai/reports/latest/\n\nYour Amplitude plugin installed clean in Claude Code and Grok Build last night; our Pi run flagged it as broken, and I'm happy to send the log.\n\nHonest ask: would you take a founding Category: Monitoring slot at $15/mo? Rate locked 6 months for the first 10 sponsors. Always labeled Sponsored, and money never changes a test result.\n\nWe launched in Oct 2026 and track 423 add-ons across those 5 agents. Our newsletter first sends Nov 3. The audience is still tiny (that's why it's cheap), and you'd get a monthly report with real numbers, even small ones.\n\nA one-line \"not now\" or \"test this instead\" helps too.\n\nBrandon\nSkillMaxx · https://skillmaxx.gilventures.ai/advertise/",
+    "slot": "Category: Monitoring $15/mo",
+    "in_directory": "yes — amplitude (plugin, monitoring); 2026-10-28: pass on claude_code, grok_build; BROKEN on pi",
+    "notes": "sales@amplitude.com is in amplitude.com/contact JSON-LD (labeled contactType 'Customer Support', with phone +1 650-988-5131). Fallback: Marketo form on https://amplitude.com/contact. Overlap: Axiom offered Category: Monitoring on 10-27. Double-check the Pi failure log before sending."
+  },
+  {
+    "company": "Cloudflare",
+    "route": "email",
+    "to": "press@cloudflare.com",
+    "source_url": "https://www.cloudflare.com/press/",
+    "subject": "cloudflare/skills passed in 4 agents last night",
+    "body": "Hi Cloudflare team,\n\nI'm Brandon. I run SkillMaxx, a free directory that install-tests agent skills, plugins and MCP servers nightly across Claude Code, Codex, Grok Build, Cursor and Pi, with public logs: https://skillmaxx.gilventures.ai/reports/latest/\n\nYour Cloudflare skills plugin is one of only 10 add-ons in our directory that passed on four agents last night (Claude Code, Codex, Grok Build, Pi).\n\nHonest ask: would you take a founding Category: Deployment slot at $15/mo? Rate locked 6 months for the first 10 sponsors. Always labeled Sponsored, and money never changes a test result.\n\nWe launched in Oct 2026 and track 423 add-ons across those 5 agents. Our newsletter first sends Nov 3. The audience is still tiny (that's why it's cheap), and you'd get a monthly report with real numbers, even small ones.\n\nA one-line \"not now\" or \"test this instead\" helps too.\n\nBrandon\nSkillMaxx · https://skillmaxx.gilventures.ai/advertise/",
+    "slot": "Category: Deployment $15/mo",
+    "in_directory": "yes — cloudflare (plugin, deployment) from github.com/cloudflare/skills; 2026-10-28: pass on claude_code, codex, grok_build, pi",
+    "notes": "UNCERTAIN FIT + CAP: press@cloudflare.com is the press page contact (Head of Global Communications, +1 650-741-3104). Enterprise contact form (cloudflare.com/plans/enterprise/contact/) is behind a bot wall (403 to curl) so I couldn't verify it; /partners/ is reseller/tech-partner programs. This is the 11th email — roll it to Thu Oct 29 to stay within today's ~10/day ramp."
+  },
+  {
+    "company": "Qodo",
+    "route": "form",
+    "to": "https://www.qodo.ai/contact/",
+    "source_url": "https://www.qodo.ai/contact/",
+    "body": "Hi Qodo team,\n\nI'm Brandon. I run SkillMaxx, a free directory that install-tests agent skills, plugins and MCP servers nightly across Claude Code, Codex, Grok Build, Cursor and Pi, with public logs: https://skillmaxx.gilventures.ai/reports/latest/\n\nqodo-skills is one of only 10 add-ons in our directory that passed on four agents last night (Claude Code, Codex, Grok Build, Pi).\n\nHonest ask: would you take a founding Category: Development slot at $15/mo? Rate locked 6 months for the first 10 sponsors. Always labeled Sponsored, and money never changes a test result.\n\nWe launched in Oct 2026 and track 423 add-ons across those 5 agents. Our newsletter first sends Nov 3. The audience is still tiny (that's why it's cheap), and you'd get a monthly report with real numbers, even small ones.\n\nA one-line \"not now\" or \"test this instead\" helps too.\n\nBrandon\nSkillMaxx · https://skillmaxx.gilventures.ai/advertise/\nEmail: skillmaxx@gilventures.ai",
+    "slot": "Category: Development $15/mo",
+    "in_directory": "yes — qodo + qodo-standards (plugins, development); 2026-10-28: qodo pass on claude_code, codex, grok_build, pi",
+    "notes": "HubSpot form, page 200. partnerships@qodo.ai is published on Qodo's Atlassian Marketplace vendor listing (marketplace.atlassian.com/vendors/1225599), not on qodo.ai — left as form per the own-site rule; Brandon may OK switching to that email."
+  },
+  {
+    "company": "Together AI",
+    "route": "form",
+    "to": "https://www.together.ai/contact-sales",
+    "source_url": "https://www.together.ai/contact-sales",
+    "body": "Hi Together AI team,\n\nI'm Brandon. I run SkillMaxx, a free directory that install-tests agent skills, plugins and MCP servers nightly across Claude Code, Codex, Grok Build, Cursor and Pi, with public logs: https://skillmaxx.gilventures.ai/reports/latest/\n\nYour togetherai-skills plugin installed clean in Claude Code and Grok Build last night.\n\nHonest ask: would you take a founding Newsletter slot at $19 for 1 issue (or $59/mo for 4)? Rate locked 6 months for the first 10 sponsors. Always labeled Sponsored, and money never changes a test result.\n\nWe launched in Oct 2026 and track 423 add-ons across those 5 agents. Our newsletter first sends Nov 3. The audience is still tiny (that's why it's cheap), and you'd get a monthly report with real numbers, even small ones.\n\nA one-line \"not now\" or \"test this instead\" helps too.\n\nBrandon\nSkillMaxx · https://skillmaxx.gilventures.ai/advertise/\nEmail: skillmaxx@gilventures.ai",
+    "slot": "Newsletter $19/issue (or $59/mo for 4)",
+    "in_directory": "yes — togetherai-skills (plugin, development); 2026-10-28: pass on claude_code, grok_build",
+    "notes": "Only route is the Contact Sales HubSpot form (/contact redirects there). No public partnerships email (only privacy@ in third-party data — not used)."
+  },
+  {
+    "company": "Pinecone",
+    "route": "form",
+    "to": "https://www.pinecone.io/contact/?contact_form_inquiry_type=Marketing+and+Press",
+    "source_url": "https://www.pinecone.io/contact/",
+    "body": "Hi Pinecone team,\n\nI'm Brandon. I run SkillMaxx, a free directory that install-tests agent skills, plugins and MCP servers nightly across Claude Code, Codex, Grok Build, Cursor and Pi, with public logs: https://skillmaxx.gilventures.ai/reports/latest/\n\nYour Pinecone plugin installed clean in Claude Code and Pi last night (Grok Build still pending).\n\nHonest ask: would you take a founding Category: Databases slot at $15/mo? Rate locked 6 months for the first 10 sponsors. Always labeled Sponsored, and money never changes a test result.\n\nWe launched in Oct 2026 and track 423 add-ons across those 5 agents. Our newsletter first sends Nov 3. The audience is still tiny (that's why it's cheap), and you'd get a monthly report with real numbers, even small ones.\n\nA one-line \"not now\" or \"test this instead\" helps too.\n\nBrandon\nSkillMaxx · https://skillmaxx.gilventures.ai/advertise/\nEmail: skillmaxx@gilventures.ai",
+    "slot": "Category: Databases $15/mo",
+    "in_directory": "yes — pinecone (plugin, database); 2026-10-28: pass on claude_code, pi; grok_build pending",
+    "notes": "Contact form with 'Marketing and Press' inquiry type preselected via URL (page 200; form is JS-rendered). Newsroom publishes press contact mike.s@pinecone.io (Sr. Director, Communications) — a named person's press address, so not used for a cold sponsor pitch. Overlap: Neon/Supabase/Qdrant pitched Databases on 10-27."
+  },
+  {
+    "company": "PlanetScale",
+    "route": "form",
+    "to": "https://planetscale.com/contact",
+    "source_url": "https://planetscale.com/contact",
+    "body": "Hi PlanetScale team,\n\nI'm Brandon. I run SkillMaxx, a free directory that install-tests agent skills, plugins and MCP servers nightly across Claude Code, Codex, Grok Build, Cursor and Pi, with public logs: https://skillmaxx.gilventures.ai/reports/latest/\n\nYour hosted PlanetScale MCP plugin installed clean in Claude Code and Grok Build last night.\n\nHonest ask: would you take a founding Newsletter slot at $19 for 1 issue (or $59/mo for 4)? Rate locked 6 months for the first 10 sponsors. Always labeled Sponsored, and money never changes a test result.\n\nWe launched in Oct 2026 and track 423 add-ons across those 5 agents. Our newsletter first sends Nov 3. The audience is still tiny (that's why it's cheap), and you'd get a monthly report with real numbers, even small ones.\n\nA one-line \"not now\" or \"test this instead\" helps too.\n\nBrandon\nSkillMaxx · https://skillmaxx.gilventures.ai/advertise/\nEmail: skillmaxx@gilventures.ai",
+    "slot": "Newsletter $19/issue (or $59/mo for 4)",
+    "in_directory": "yes — planetscale (plugin, database); 2026-10-28: pass on claude_code, grok_build",
+    "notes": "Sales form requires fields like 'Vitess/Neki/Postgres' and 'Database size' — pick 'Not sure' / 'N/A'. partners@planetscale.com appears only on comatch.org (third party) — NOT used. support@ excluded."
+  },
+  {
+    "company": "Vercel",
+    "route": "form",
+    "to": "https://vercel.com/contact/sales",
+    "source_url": "https://vercel.com/contact/sales",
+    "body": "Hi Vercel team,\n\nI'm Brandon. I run SkillMaxx, a free directory that install-tests agent skills, plugins and MCP servers nightly across Claude Code, Codex, Grok Build, Cursor and Pi, with public logs: https://skillmaxx.gilventures.ai/reports/latest/\n\nvercel-plugin is one of only 10 add-ons in our directory that passed on four agents last night (Claude Code, Codex, Grok Build, Pi).\n\nHonest ask: would you take a founding Newsletter slot at $19 for 1 issue (or $59/mo for 4)? Rate locked 6 months for the first 10 sponsors. Always labeled Sponsored, and money never changes a test result.\n\nWe launched in Oct 2026 and track 423 add-ons across those 5 agents. Our newsletter first sends Nov 3. The audience is still tiny (that's why it's cheap), and you'd get a monthly report with real numbers, even small ones.\n\nA one-line \"not now\" or \"test this instead\" helps too.\n\nBrandon\nSkillMaxx · https://skillmaxx.gilventures.ai/advertise/\nEmail: skillmaxx@gilventures.ai",
+    "slot": "Newsletter $19/issue (or $59/mo for 4)",
+    "in_directory": "yes — vercel (plugin, deployment) from github.com/vercel/vercel-plugin; 2026-10-28: pass on claude_code, codex, grok_build, pi",
+    "notes": "Sales form (page 200, has <form>). Alternative: https://vercel.com/contact/partnerships (partner-program application). sponsorships@vercel.com was suggested by search but not on the live KB page — NOT used. Enterprise; tiny ask, low odds. Newsletter (not Deployment) because Cloudflare gets the Deployment offer."
+  },
+  {
+    "company": "Figma",
+    "route": "form",
+    "to": "https://www.figma.com/contact/",
+    "source_url": "https://www.figma.com/contact/",
+    "body": "Hi Figma team,\n\nI'm Brandon. I run SkillMaxx, a free directory that install-tests agent skills, plugins and MCP servers nightly across Claude Code, Codex, Grok Build, Cursor and Pi, with public logs: https://skillmaxx.gilventures.ai/reports/latest/\n\nYour Figma MCP plugin is one of only 10 add-ons in our directory that passed on four agents last night, and Design is a small category, so a sponsor stands out.\n\nHonest ask: would you take a founding Category: Design slot at $15/mo? Rate locked 6 months for the first 10 sponsors. Always labeled Sponsored, and money never changes a test result.\n\nWe launched in Oct 2026 and track 423 add-ons across those 5 agents. Our newsletter first sends Nov 3. The audience is still tiny (that's why it's cheap), and you'd get a monthly report with real numbers, even small ones.\n\nA one-line \"not now\" or \"test this instead\" helps too.\n\nBrandon\nSkillMaxx · https://skillmaxx.gilventures.ai/advertise/\nEmail: skillmaxx@gilventures.ai",
+    "slot": "Category: Design $15/mo",
+    "in_directory": "yes — figma (plugin, design) from github.com/figma/mcp-server-guide; 2026-10-28: pass on claude_code, codex, grok_build, pi; design has 8 items",
+    "notes": "Contact Us = sales form (page 200). servicepartners@figma.com is for agency service partners; press@figma.com is scoped to 'Member of the press?' — neither used."
+  },
+  {
+    "company": "Notion",
+    "route": "form",
+    "to": "https://www.notion.com/contact-sales",
+    "source_url": "https://www.notion.com/contact-sales",
+    "body": "Hi Notion team,\n\nI'm Brandon. I run SkillMaxx, a free directory that install-tests agent skills, plugins and MCP servers nightly across Claude Code, Codex, Grok Build, Cursor and Pi, with public logs: https://skillmaxx.gilventures.ai/reports/latest/\n\nNotion's official plugin is one of only 10 add-ons in our directory that passed on four agents last night (Claude Code, Codex, Grok Build, Pi).\n\nHonest ask: would you take a founding Newsletter slot at $19 for 1 issue (or $59/mo for 4)? Rate locked 6 months for the first 10 sponsors. Always labeled Sponsored, and money never changes a test result.\n\nWe launched in Oct 2026 and track 423 add-ons across those 5 agents. Our newsletter first sends Nov 3. The audience is still tiny (that's why it's cheap), and you'd get a monthly report with real numbers, even small ones.\n\nA one-line \"not now\" or \"test this instead\" helps too.\n\nBrandon\nSkillMaxx · https://skillmaxx.gilventures.ai/advertise/\nEmail: skillmaxx@gilventures.ai",
+    "slot": "Newsletter $19/issue (or $59/mo for 4)",
+    "in_directory": "yes — notion (official plugin, productivity) + community notion-mcp-server (npm, not Notion's); 2026-10-28: notion pass on claude_code, codex, grok_build, pi",
+    "notes": "Contact-sales form (page 200). Tech-partner Typeform https://form.typeform.com/to/DWbNQjjE is for integration partners — not used. Newsletter (not Productivity) since Linear gets that offer."
+  },
+  {
+    "company": "Snyk",
+    "route": "form",
+    "to": "https://snyk.io/contact-us/",
+    "source_url": "https://snyk.io/contact-us/",
+    "body": "Hi Snyk team,\n\nI'm Brandon. I run SkillMaxx, a free directory that install-tests agent skills, plugins and MCP servers nightly across Claude Code, Codex, Grok Build, Cursor and Pi, with public logs: https://skillmaxx.gilventures.ai/reports/latest/\n\nSnyk isn't listed yet, and security is what builders should check before adding third-party MCP servers. I'd love you to submit: https://skillmaxx.gilventures.ai/submit/\n\nHonest ask: would you take a founding Newsletter slot at $19 for 1 issue (or $59/mo for 4)? Rate locked 6 months for the first 10 sponsors. Always labeled Sponsored, and money never changes a test result.\n\nWe launched in Oct 2026 and track 423 add-ons across those 5 agents. Our newsletter first sends Nov 3. The audience is still tiny (that's why it's cheap), and you'd get a monthly report with real numbers, even small ones.\n\nA one-line \"not now\" or \"test this instead\" helps too.\n\nBrandon\nSkillMaxx · https://skillmaxx.gilventures.ai/advertise/\nEmail: skillmaxx@gilventures.ai",
+    "slot": "Newsletter $19/issue (or $59/mo for 4)",
+    "in_directory": "no — not listed; invite /submit/",
+    "notes": "Marketo contact form (page 200). tapp@snyk.io (tech-alliance program) appears only in a Snyk PDF on Cloudinary — not used. partners.snyk.io is a partner-portal application. Enterprise; low odds."
+  },
+  {
+    "company": "ActiveCampaign",
+    "route": "form",
+    "to": "https://www.activecampaign.com/contact",
+    "source_url": "https://www.activecampaign.com/contact",
+    "body": "Hi ActiveCampaign team,\n\nI'm Brandon. I run SkillMaxx, a free directory that install-tests agent skills, plugins and MCP servers nightly across Claude Code, Codex, Grok Build, Cursor and Pi, with public logs: https://skillmaxx.gilventures.ai/reports/latest/\n\nActiveCampaign's official plugin installed clean in Claude Code and Grok Build last night, one of few CRM tools in a mostly-dev directory.\n\nHonest ask: would you take a founding Newsletter slot at $19 for 1 issue (or $59/mo for 4)? Rate locked 6 months for the first 10 sponsors. Always labeled Sponsored, and money never changes a test result.\n\nWe launched in Oct 2026 and track 423 add-ons across those 5 agents. Our newsletter first sends Nov 3. The audience is still tiny (that's why it's cheap), and you'd get a monthly report with real numbers, even small ones.\n\nA one-line \"not now\" or \"test this instead\" helps too.\n\nBrandon\nSkillMaxx · https://skillmaxx.gilventures.ai/advertise/\nEmail: skillmaxx@gilventures.ai",
+    "slot": "Newsletter $19/issue (or $59/mo for 4)",
+    "in_directory": "yes — activecampaign (plugin, productivity); 2026-10-28: pass on claude_code, grok_build",
+    "notes": "Contact form (page 200). press@activecampaign.com on same page is the media inbox — not used. /partner is the agency/consultant program. Least agent-native; lowest priority."
+  }
+]
