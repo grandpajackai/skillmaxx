@@ -3,6 +3,13 @@
 **Status:** outreach started 2026-10-27 (Brandon approved start today; newsletter still first-sends Nov 3).  
 **Gate (updated 2026-10-27):** Brandon OK'd outbound now. Ramp cold email ~10/day week 1 (verified public addresses only — never guess). Contact forms can go faster. Still log every send in PIPELINE.csv; follow-ups day 7 / day 14 then stop.  
 **Audience honesty (say this every time):** SkillMaxx launched Oct 2026. Traffic and the list are tiny. Founding prices exist because of that. We share real numbers every month, even when they're small.  
+**Pacing & replies (updated 2026-10-28, Brandon t198):**
+- **Email pacing:** never send in a burst. Spread the day's cold emails at *random* intervals (roughly 20–60 min apart, jittered) between ~9:00 AM and ~6:00 PM America/New_York, weekdays. Daily cap stays on the ramp: ~10/day week 1 → ~20/day week 2 → max 30/day, only if zero bounces/spam complaints. A steady every-5-minutes cadence (~120/day) is **not** used: volume, not spacing, is what hurts a new domain.
+- **Contact forms:** no fixed cap beyond the 15–30/day target; still one per company, honest, logged.
+- **Every reply gets a quick, personal response** (same day, same thread with In-Reply-To/References): thank them by name, mention something specific about their product, answer only inside the approved sponsor model (send the matching advertise-page payment link if interested). Discounts/custom terms → draft only and report to Brandon.
+- **Decliners:** warm note, zero pitch/pressure, door open for later as the audience grows; light invite to follow the journey on X (@SkillMaxxAI) or Bluesky (skillmaxx.bsky.social) and say we'll follow back. Set status `declined-warm`, next_follow_up ≈ +90 days, no day-7/14 follow-ups.
+- **Inbox check:** read the skillmaxx@gilventures.ai inbox at least twice a day (~noon and ~5 PM ET) and before each send batch; report every reply to Brandon.
+
 **Source of prospects:** [PIPELINE.csv](PIPELINE.csv). Stages: Target → Contacted → Replied → Booked → Live → Renewed / Lost.
 
 Approved model (2026-10-27): prices unchanged; founding price locked **6 months** for the first **10** sponsors; **Featured is month-to-month (no long lock)**; custom deals via contact us; BFCM Nov 27–30 (Cat/NL 12-mo lock; Featured $19 for December, 1 slot).
