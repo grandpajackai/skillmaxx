@@ -2,14 +2,14 @@
 
 **Every agent reads this before starting and appends to the Session log when done.** See [COLLABORATING.md](COLLABORATING.md).
 
-## Current state (as of 2026-10-27)
+## Current state (as of 2026-10-28)
 - **Live:** https://skillmaxx.gilventures.ai (GitHub Pages, HTTPS enforced; Let's Encrypt cert valid to 2027-01-14). Old `grandpajackai.github.io/skillmaxx` 301-redirects.
 - **Repo:** `grandpajackai/skillmaxx` (public), default branch `master`.
 - **Newsletter:** Beehiiv publication *SkillMaxx's Newsletter* — https://skillmaxxs-newsletter.beehiiv.com/subscribe. Embed form ID `2487fe2a-f3f4-4080-86de-b965ea008f48` (homepage `#newsletter`), plus `attribution.js` in every page head; fallback link shown under the form.
 - **Other forms:** `/submit/` and `/advertise/` post to formsubmit.co → skillmaxx@gilventures.ai.
 - **Data:** 423 skills (371 plugins, 45 npm MCP packages, 7 MCP reference servers). Docs-verified installs: Claude Code 322, Codex 72, Grok Build 330, Cursor 7, Pi 0. (bruin removed 2026-10-27: xai-org dropped it from the Grok marketplace.)
-- **Sandboxed install tests (2026-10-27):** 806 / 900 pass — Claude Code 340/367, Codex 65/65, Grok Build 316/330, Cursor 29/52, Pi 56/86. 12 need an API key, 15 flaky, 1 pending, 0 newly broken.
-- **QA (2026-10-27):** click tests pass, 833 pages crawled / 0 broken, axe clean except the known Beehiiv iframe frame-title on /reports/, no console errors or overflow at 1440 and 390 px.
+- **Sandboxed install tests (2026-10-28):** 792 / 900 pass — Claude Code 340/367, Codex 65/65, Grok Build 302/330, Cursor 29/52, Pi 56/86. 12 need an API key, 68 flaky (passed on retry or flipped vs last night), 15 pending (first-night fails, all Grok Build), 0 newly broken.
+- **QA (2026-10-28):** click tests pass, 839 pages crawled / 0 broken, axe clean except the known Beehiiv iframe frame-title on /reports/, no overflow at 1440 and 390 px; one transient console 404 on /reports/2026-10-27/ that did not reproduce on re-check.
 - **Email:** Zoho Mail Free on gilventures.ai (skillmaxx@, info@). MX/SPF/Zoho TXT verified via dns.google; DKIM `zmail._domainkey` was missing on 2026-10-25 and re-added that day.
 - **Cost:** $0.
 
@@ -23,11 +23,12 @@
 - [ ] **Re-verify DKIM** resolves (`dns.google/resolve?name=zmail._domainkey.gilventures.ai&type=TXT`).
 - [ ] **Nightly scheduling:** no cron on the box; the nightly relies on a Grok Bot routine (missed Oct 17–24 while usage was out). Since 2026-10-25 nightly.sh logs every run to testing/logs/nightly-<date>.log and names the failing step.
 - [x] ~~Stripe Payment Links pending~~ done 2026-10-26: 8 live links + portal on /advertise/ (audited active 2026-10-27).
-- [ ] **Sponsor pricing NOT approved by Brandon (2026-10-26).** He finds the draft pricing iffy (the bundle can cost more than buying items separately) and wants one clear, consistent price sheet used everywhere. Nothing new on pricing/promos goes live until he approves. Note: the founding prices + Stripe links already on /advertise/ predate this; ask Brandon whether to leave them up while the price sheet is redone.
-- [ ] **BFCM / Founding 12 offer NOT approved** (supersedes DECISIONS #21). Banner PR #35 stays draft/unmerged. **Open item:** the BFCM banner routines (on Nov 27 9 AM, off Dec 1 9 AM) are still enabled; disable them or get Brandon's approval before Nov 27.
+- [x] ~~**Sponsor pricing NOT approved**~~ resolved 2026-10-27: Brandon approved the simplified sponsor model, amounts unchanged (DECISIONS #30). Old note: **Sponsor pricing NOT approved by Brandon (2026-10-26).** He finds the draft pricing iffy (the bundle can cost more than buying items separately) and wants one clear, consistent price sheet used everywhere. Nothing new on pricing/promos goes live until he approves. Note: the founding prices + Stripe links already on /advertise/ predate this; ask Brandon whether to leave them up while the price sheet is redone.
+- [x] ~~**BFCM / Founding 12 offer NOT approved**~~ resolved 2026-10-27: BFCM approved (Category + Newsletter 12-month lock, Featured $19 for December, 1 slot; DECISIONS #30); banner routines Nov 27 9 AM / Dec 1 9 AM stay enabled. Old note: **BFCM / Founding 12 offer NOT approved** (supersedes DECISIONS #21). Banner PR #35 stays draft/unmerged. **Open item:** the BFCM banner routines (on Nov 27 9 AM, off Dec 1 9 AM) are still enabled; disable them or get Brandon's approval before Nov 27.
 - [x] **Nightly commit bug (fixed 2026-10-27):** nightly.sh's `git add` aborted because growth/daily no longer exists, so the data commit was silently skipped ("no data changes"). It now adds only existing paths and fails loudly.
 - [ ] **Grok Build fails rose 17 → 25** in the 2026-10-25 22:00 re-run (795/902 pass overall vs 803); check whether these are flaky or new upstream breakage. 2026-10-26 nightly: 18 fails, with 14 items flipping fail→pass and 7 pass→fail vs 10-25, so most Grok Build (and some Cursor) results look flaky; consider retrying fails once before recording.
 - [x] **Branch protection** on `master` enabled 2026-10-25: PR required, `build` check required (strict), no force-push/deletion, admins can bypass (for the nightly routine). Squash-merge + auto-delete branches on.
+- [ ] **Grok Build marketplace-scan errors (2026-10-28):** all 15 pending Grok Build fails are `Couldn't scan every marketplace while resolving "<name>"` (transient scan of claude-plugins-official / xAI Official), not plugin breakage. If they repeat tomorrow, daily_report.py would call them confirmed broken (discord shows 44,991★, the parent repo's stars) and could trigger a false big event: check the log before drafting any post; consider pinning `@<qualifier>` in tests.
 
 ## In progress / claimed by
 | Task | Agent | Branch | Since |
@@ -39,7 +40,7 @@
 1. Confirm formsubmit activation and DKIM.
 2. Fix the 4 ambiguous Grok Build install commands.
 3. Beehiiv: Brandon downgrades himself ~Nov 2; re-check embed after.
-3b. Brandon: approve a clear sponsor price sheet; decide BFCM (and the enabled banner routines) before Nov 27.
+3b. ~~Brandon: approve price sheet / BFCM~~ done Oct 27 (DECISIONS #30). Sponsor outreach follow-ups due Nov 3, then Nov 10 (PIPELINE.csv).
 4. Tune Beehiiv form for mobile.
 5. Growth (see growth/): approve the skillmatic PR draft, paste newsletter #1 into Beehiiv, create a Cloudflare account for Web Analytics, approve the outreach drafts (growth/outreach/).
 
@@ -120,3 +121,6 @@
 
 - **2026-10-27 · Grok Bot**: Sponsorship sales pipeline. No microbiz-sponsors skill in catalog (proceeded with existing playbook). Added growth/sponsors/PIPELINE.csv (40 prospects, public contact routes only, status=Target), OUTREACH.md (email + DM + 2-step follow-up + weekly cadence + proposed /advertise inbound improvements, not shipped), growth/routines/SPONSOR-PIPELINE-WEEKLY.md. Refreshed PIPELINE.md + TARGETS-RANKED.md. Nothing contacted or sent. Outreach still gated on issue #2 + 25+ subs + Brandon batch OK.
 - **2026-10-27 · Grok Bot · post check (10:37 AM ET)**: All 3 launch posts due 9:30 AM ET published, 0 errors in Buffer. Confirmed live: X https://x.com/SkillMaxxAI/status/2115073750504812580 (with chart), Bluesky at://did:plc:gif4sjvaop5e6bjosgty2cwd/app.bsky.feed.post/3myuduhyan522, LinkedIn sent per Buffer (13:31 UTC). Nothing retried or reposted. Pinned the Bluesky launch post via API (profile record updated, other profile fields kept; verified on public AppView). X pin NOT done: box browser isn't signed in to X. Stripe (live, Gil Ventures LLC): 0 charges and 0 checkout sessions in the last 24 h.
+- **2026-10-27 · Grok Bot (Buffer top-up, 10:10 PM ET)**: Checked all 3 channels: 7 scheduled + 6 labeled drafts each (21/18; Oct 27 posts sent), 0 errors, no duplicates, Oct 28 X/Bluesky threads still hold the thread slot. Nothing moved: next drafts (Oct 30 REFRESH Superpowers) are outside the 48-hour window; scheduled posts run through Nov 9.
+- **2026-10-28 · Grok Bot**: Nightly refresh (02:05–02:42 ET, PR grokbot/nightly-2026-10-28). Re-fetched Claude Code (315), Codex (65) and Grok Build (35) marketplaces: no adds/removals, only Grok pin bumps (pstack, stripe, wix). npm: all 45 listed MCP packages still published, none deprecated. 423 skills unchanged. Install tests 792/900 pass (vs 806/900): 0 newly broken, 0 fixed, 15 pending (all Grok Build, transient marketplace-scan errors), 68 flaky, 12 need keys; no agent version changes, so no big event and no social drafts. /reports/2026-10-28/ built. QA: click tests pass, 839 pages / 0 broken, axe clean except known Beehiiv frame-title. Docs: DECISIONS #31–37 (outreach start + limits, lead routing, Bluesky community, trend posts, advertise changes, newsletter #2); HANDBOOK routines/accounts refreshed; pricing/BFCM open issues closed as approved.
+- **2026-10-28 · Grok Bot · health audit (~2:15 AM ET)**: 14 key pages 200 (0.1–0.5 s; /reports/latest/ 5.6 s once, cold); all 8 Stripe Payment Links on /advertise/ active in Stripe (live API) with /sponsor/thanks/?slot=… redirects, portal 200; only the old superseded $59 link is inactive (expected, not on site); /advertise/, /submit/, /sponsor/thanks/ post to formsubmit.co/skillmaxx@gilventures.ai; last 6 CI/deploy runs green.

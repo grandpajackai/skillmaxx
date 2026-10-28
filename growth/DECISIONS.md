@@ -63,3 +63,12 @@
 ## 2026-10-27 — Brandon approved simplified sponsor model
 30. **Approved:** founding = first 10, 6-month lock; Featured month-to-month (no long lock, price may rise); BFCM Nov 27–30: Category+Newsletter 12-month lock; Featured $19 for December (normally $29), one slot FCFS; Premium = contact us; free December newsletter line undecided and **not offered**. Banner without “money still never changes a test result.”
 
+
+## 2026-10-27 — sponsor outreach, lead routing, social, advertise (recorded by the Oct 28 nightly)
+31. **Sponsor outreach starts now** (supersedes #5): Brandon approved outreach and sponsor replies from Oct 27, before newsletter #2 (Nov 3) and with no subscriber minimum. Grok Bot runs it and the follow-ups from skillmaxx@gilventures.ai, using growth/sponsors/PIPELINE.csv and OUTREACH.md, and updates Brandon as it goes.
+32. **Outreach volume and channel:** 15–30 contacts a day max. Direct email only to a real public address listed by the company; email ramps from ~10/day up to 30/day to protect the domain. Companies without a public email get the contact form, as many as possible each day. Email addresses are never guessed (bounces hurt domain health).
+33. **Lead routing:** booking-only company → find a public email and use that; phone only → log "call only" with the number and tell Brandon so he can call; no email or phone → log its LinkedIn or X and tell Brandon. Every lead is logged in PIPELINE.csv with who they are, contact route, outreach done, data points, notes and next follow-up date.
+34. **Bluesky community building:** genuine, no-pitch messages to builders on Bluesky are approved (separate from sponsor outreach).
+35. **Trend posts:** standing permission for Grok Bot to create and publish SkillMaxx trend posts on its own, in real time, through Buffer, in the agreed style (full context, no overpromising). Other new posts still follow the weekly-plan approval.
+36. **/advertise/ changes approved** (shipped in PR #54): honest audience line, sponsor logo strip (hidden until the first live booking), open-slot counter.
+37. **Newsletter:** issue #1 lives only on the site; issue #2 (Tue Nov 3, 2026) is the first emailed issue (confirms #4 and the archive rule).
