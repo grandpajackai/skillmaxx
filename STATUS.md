@@ -14,6 +14,7 @@
 - **Cost:** $0.
 
 ## Open issues
+- [ ] **Sponsor reply inbox unreadable from the box (2026-10-28):** IMAP 993/143 and POP 995 to Zoho time out from the box network (SMTP 465 works). Replies to Oct 27 outreach could not be read or answered. Fix options: Brandon turns on Zoho forwarding of skillmaxx@ to the bot inbox, or reads/forwards replies. OUTREACH.md now specifies random 9am–6pm ET email spacing and same-day personal replies (incl. warm decliner notes).
 - [x] ~~**Buffer posting schedules**~~ not needed: every post uses explicit custom times (2026-10-26). Old note: need setting by hand in Buffer (API can't): X Mon–Fri 9:30 AM; Bluesky Mon/Wed/Fri 12:30 PM + Sun 6:15 PM; LinkedIn Tue 8:30 AM, Thu 12 PM ET. See growth/DECISIONS.md.
 - [ ] **Newsletter #2 = first send, Tue 2026-11-03** (draft, awaiting Brandon's text review). Sponsor outreach started 2026-10-27 (gate lifted by Brandon).
 - [x] **formsubmit.co activation** confirmed by Brandon 2026-10-26 6:16 PM ET ('Form Activated' for skillmaxx.gilventures.ai). /submit, /advertise and /sponsor/thanks entries now deliver.
