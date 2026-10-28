@@ -15,6 +15,7 @@ AI coding assistant skills for building [CrowdStrike Falcon Fusion](https://www.
 
 - **CrowdStrike Account** with the **Workflow** API scope (plus **NGSIEM Lookup Files** for the lookup-files skill)
 - **AI Coding Assistant**: Claude Code, Codex, Copilot CLI, Cursor, Antigravity CLI, or any tool that can read local reference documentation
+- **[jq](https://jqlang.org/)** for the skill-routing hooks (without it, the hooks stay silent)
 
 ### Install
 
@@ -177,19 +178,17 @@ A workflow goes from idea to running in five steps. The orchestrator coordinates
 4. **Deploy** — check for duplicates, then import and release to your CID:
    ```bash
    python skills/deployment/scripts/query_workflows.py --search "My Workflow"
-   python skills/deployment/scripts/import_workflows.py --file my-workflow.yml
+   python skills/deployment/scripts/import_workflows.py my-workflow.yml
    python skills/deployment/scripts/release_workflow.py --id <definition_id>
    # Remove a test/duplicate workflow when you're done with it:
    python skills/deployment/scripts/delete_workflow.py --id <definition_id>
    ```
 5. **Execute** — trigger and monitor:
    ```bash
-   python skills/execution/scripts/trigger_workflow.py --name "My Workflow" --payload '{"device_id":"..."}'
-   python skills/execution/scripts/monitor_execution.py --id <execution_id>
+   python skills/execution/scripts/trigger_workflow.py --id <definition_id> --params '{"device_id":"..."}'
+   python skills/execution/scripts/monitor_execution.py --execution-id <execution_id>
    ```
 
 ### Use Cases
 
-The `use-cases/` directory contains pattern-matchable workflow scenarios. Some are drawn from [CrowdStrike Tech Hub](https://www.crowdstrike.com/tech-hub/ng-siem/) blog posts; others are grounded directly in the bundled example workflows and the community "Workflow Wednesday" series. Each names the sub-skills it needs and cites its source.
-
-Grounded in bundled e
+The `use-cases/` directory contains pattern-matchable workflow scenarios. Some are drawn from [CrowdStrike Tech Hub](https://www.crowdstrike.com/tech-hub/ng-siem/) blog posts; others are grounded directly in the bundled example workflows and the community "Workflow 
