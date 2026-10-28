@@ -1,0 +1,12 @@
+[
+  {
+    "company": "E2B",
+    "to": "hello@e2b.dev",
+    "source_url": "https://e2b.dev/contact",
+    "subject": "E2B isn't in our agent install tests yet (want in?)",
+    "status": "sent",
+    "error": "",
+    "message_id": "<179320045832.1249155.4802402990961966677@gilventures.ai>",
+    "sent_at_et": "2026-10-28 11:14:19 ET"
+  }
+]
