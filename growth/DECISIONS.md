@@ -72,3 +72,10 @@
 35. **Trend posts:** standing permission for Grok Bot to create and publish SkillMaxx trend posts on its own, in real time, through Buffer, in the agreed style (full context, no overpromising). Other new posts still follow the weekly-plan approval.
 36. **/advertise/ changes approved** (shipped in PR #54): honest audience line, sponsor logo strip (hidden until the first live booking), open-slot counter.
 37. **Newsletter:** issue #1 lives only on the site; issue #2 (Tue Nov 3, 2026) is the first emailed issue (confirms #4 and the archive rule).
+
+## 2026-10-28 — content, outreach and LinkedIn (recorded by the Oct 29 nightly)
+38. **Blog posts publish without approval** (Brandon, Oct 28) once checked for voice, tone, accuracy and SEO, and aimed at traffic. Blogs/guides are pillar content: social posts give a short take and link back to the full post on the site.
+39. **Outreach updates:** a one-line chat update to Brandon for every sponsor outreach email, contact form or reply sent (company, contact route, what was sent), plus a quick tally at the end of each outreach run.
+40. **Email pacing (refines #32):** outreach emails are spread naturally through the business day (about 8:30/9 AM–7 PM ET), not one every few minutes, and stay capped by the 10 → 20 → 30/day ramp to protect the 2-week-old domain. Contact-form outreach stays unlimited. (Oct 29 note: background senders must check the full window before every send; see STATUS open issues.)
+41. **Every sponsor reply gets a quick, very personal answer**, including "not interested". Decliners get a warm, no-pitch note inviting them to follow SkillMaxx on X (@SkillMaxxAI) and Bluesky (skillmaxx.bsky.social), SkillMaxx follows them back, and a friendly re-approach once SkillMaxx has a bigger following.
+42. **LinkedIn comment picks** are posted as the **SkillMaxx AI company page**, not Brandon's personal profile. Every pick reminds him to choose the page in the "Commenting as" picker in the LinkedIn app, or switch to the page first from the profile photo menu.

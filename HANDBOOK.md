@@ -27,23 +27,26 @@ One page to catch up. Site: https://skillmaxx.gilventures.ai · Repo: grandpajac
 | Routine runbooks | [growth/routines/](growth/routines/) |
 | Reddit profile pack + posts | [growth/reddit/](growth/reddit/) |
 | Daily reports (site) | /reports/latest/, built by `testing/daily_report.py` |
+| Daily X radar notes + newsletter idea log | [growth/x-radar/](growth/x-radar/), [growth/newsletter/issue-002-notes.md](growth/newsletter/issue-002-notes.md) |
 
 ## Routines (Grok Bot, times ET)
-| Routine | Schedule | Status (Oct 28, 2:45 AM ET) |
+| Routine | Schedule | Status (Oct 29, 2:40 AM ET) |
 |---|---|---|
-| Nightly refresh (fetch, test, report, deploy) | daily 2:00 AM | enabled; last run Oct 28 ok (792/900). After a Tuesday send, confirm /newsletter/ archive matches the emailed issue (see NEWSLETTER-SEND.md) |
-| X radar (log: growth/x-radar/) | daily 10:00 AM | enabled |
-| Post check (Buffer sent / errors) | daily 10:30 AM | enabled; last run Oct 27 10:37 AM, ok |
-| Daily sponsor outreach (PIPELINE.csv, OUTREACH.md; DECISIONS #31–33) | weekdays 11:00 AM | enabled; 15–30/day max, email ramp ~10→30/day, forms at full pace, never guess emails |
+| Nightly refresh (fetch, test, report, deploy) | daily 2:00 AM | enabled; last run Oct 29 ok (807/900). After a Tuesday send, confirm /newsletter/ archive matches the emailed issue (see NEWSLETTER-SEND.md) |
+| X radar (log: growth/x-radar/) | daily 10:00 AM | enabled; last run Oct 28 10:09 AM |
+| Post check (Buffer sent / errors) | daily 10:30 AM | enabled; last run Oct 28 10:35 AM, ok |
+| Daily sponsor outreach (PIPELINE.csv, OUTREACH.md; DECISIONS #31–33, #39–41) | weekdays 11:00 AM | enabled; 15–30/day max, emails spread ~8:30 AM–7 PM ET under the 10→20→30/day ramp, forms unlimited, never guess emails, one-line update per send + tally |
+| One-off outreach wrap-up | Oct 28, 5:45 PM | one-off (done/expired) |
 | Sponsor pipeline weekly ([growth/routines/SPONSOR-PIPELINE-WEEKLY.md](growth/routines/SPONSOR-PIPELINE-WEEKLY.md)) | Mon 9:00 AM | enabled |
-| Buffer daily top-up ([growth/routines/BUFFER-DAILY-TOPUP.md](growth/routines/BUFFER-DAILY-TOPUP.md)) | daily 10:00 PM | enabled; last run Oct 27 10:10 PM, ok |
+| Buffer daily top-up ([growth/routines/BUFFER-DAILY-TOPUP.md](growth/routines/BUFFER-DAILY-TOPUP.md)) | daily 10:00 PM | enabled; last run Oct 28 10:02 PM, ok |
 | Newsletter send + archive ([growth/routines/NEWSLETTER-SEND.md](growth/routines/NEWSLETTER-SEND.md)) | Tue after Beehiiv send | runbook ready; first email = issue #2 on Nov 3 |
-| Sunday recap | Sun 6:00 PM | enabled, never run yet |
-| SkillMaxx reply sniper X/Bluesky/LinkedIn (log: growth/x/sniper-log.md) | — | **paused since Oct 26** at Brandon's request; picks saved, no replies sent |
-| Brandon personal-brand reply sniper | — | paused, never run |
+| Sunday recap | Sun 6:00 PM | enabled, first run Nov 1 |
+| SkillMaxx reply sniper X/Bluesky/LinkedIn (log: growth/x/sniper-log.md) | — | **paused** at Brandon's request; LinkedIn picks go out as the SkillMaxx AI page (DECISIONS #42) |
+| Brandon personal-brand reply sniper | — | paused |
 | BFCM banner on | Nov 27, 9:00 AM | enabled; offer approved Oct 27 (DECISIONS #30) ([growth/routines/BFCM-FOUNDING-12.md](growth/routines/BFCM-FOUNDING-12.md)) |
 | BFCM banner off | Dec 1, 9:00 AM | enabled |
 | Trend posts (Buffer) | as news breaks | standing permission (DECISIONS #35) |
+| Blog/guide posts | as written | publish without approval after voice/tone/accuracy/SEO check; socials link back (DECISIONS #38) |
 | Sponsor-payment watcher | — | not built: Brandon uses the dashboard Sponsors section + Stripe's own emails |
 
 ## Accounts (no secrets here, ever; logins live in the vault)
@@ -51,7 +54,7 @@ One page to catch up. Site: https://skillmaxx.gilventures.ai · Repo: grandpajac
 |---|---|---|
 | GitHub | grandpajackai/skillmaxx | Pages deploy from master, branch protection on |
 | Domain | skillmaxx.gilventures.ai | |
-| Email | skillmaxx@gilventures.ai (Zoho) | on Brandon's phone; FormSubmit target; sponsor outreach sender (SPF + DKIM verified Oct 27) |
+| Email | skillmaxx@gilventures.ai (Zoho) | on Brandon's phone; FormSubmit target; sponsor outreach sender via SMTP (SPF + DKIM verified Oct 27); inbox read through box-browser webmail (IMAP/POP blocked from box) |
 | FormSubmit | skillmaxx@gilventures.ai | activated Oct 26; autoresponse on /advertise/, /submit/ |
 | Stripe | Gil Ventures LLC (live, acct …HnNCwlg7U0) | 8 payment links, portal bpc_1UUuTKHnNCwlg7U0D15J5OZG; no payouts/refunds/settings without Brandon |
 | Beehiiv | SkillMaxx Weekly | Pro features kept; Brandon downgrades himself ~Nov 2 |
@@ -60,7 +63,7 @@ One page to catch up. Site: https://skillmaxx.gilventures.ai · Repo: grandpajac
 | Bluesky | SkillMaxx AI | API; replies need Brandon's OK |
 | LinkedIn | company page "SkillMaxx AI" | via Buffer |
 | Reddit | u/SkillMaxxHQ (main posting account); r/SkillMaxxAI (created Oct 26, mod SkillMaxxHQ); u/SkillMaxxAI (backup, anti-impersonation) | logins in Brandon's vault; profile pack drafts in growth/reddit/ |
-| Owner dashboard | Grok Bot canvas d70f3b85-34d9-4642-b1a1-ff1f64a40b22 | has a Sponsors section (Stripe snapshot at refresh) |
+| Owner dashboard | Grok Bot canvas d70f3b85-34d9-4642-b1a1-ff1f64a40b22 | Sponsors section (Stripe snapshot at refresh), review queue, sales pipeline |
 
 ## Standing rules
 $0 budget · no secrets in chat or repo · Brandon approves posts once (weekly plan), then routines queue approved posts in Buffer without daily asks · nothing on pricing/promos goes live without Brandon's approval · only SkillMaxx accounts · log every session in STATUS.md.
