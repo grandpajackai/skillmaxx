@@ -8,5 +8,61 @@
     "error": "",
     "message_id": "<179320045832.1249155.4802402990961966677@gilventures.ai>",
     "sent_at_et": "2026-10-28 11:14:19 ET"
+  },
+  {
+    "company": "Browserbase",
+    "to": "hello@browserbase.com",
+    "source_url": "https://docs.browserbase.com/platform/identity/overview",
+    "subject": "Browserbase next to Browser Use in our Automation category?",
+    "status": "sent",
+    "error": "",
+    "message_id": "<179321589595.1249155.11756992950622912289@gilventures.ai>",
+    "sent_at_et": "2026-10-28 15:31:37 ET"
+  },
+  {
+    "company": "Linear",
+    "to": "hello@linear.app",
+    "source_url": "https://linear.app/contact",
+    "subject": "your Linear plugin passed in 3 agents last night",
+    "status": "sent",
+    "error": "",
+    "message_id": "<179325416293.1249155.9175860309064364009@gilventures.ai>",
+    "sent_at_et": "2026-10-29 02:09:24 ET"
+  },
+  {
+    "company": "Prisma",
+    "to": "hello@prisma.io",
+    "status": "not_sent",
+    "error": "sender stopped 2026-10-29 02:09 ET (off-hours time-guard bug); re-queue in business hours"
+  },
+  {
+    "company": "Aikido",
+    "to": "hello@aikido.dev",
+    "status": "not_sent",
+    "error": "sender stopped 2026-10-29 02:09 ET (off-hours time-guard bug); re-queue in business hours"
+  },
+  {
+    "company": "Sourcegraph",
+    "to": "hi@sourcegraph.com",
+    "status": "not_sent",
+    "error": "sender stopped 2026-10-29 02:09 ET (off-hours time-guard bug); re-queue in business hours"
+  },
+  {
+    "company": "42Crunch",
+    "to": "info@42crunch.com",
+    "status": "not_sent",
+    "error": "sender stopped 2026-10-29 02:09 ET (off-hours time-guard bug); re-queue in business hours"
+  },
+  {
+    "company": "Zapier",
+    "to": "partners@zapier.com",
+    "status": "not_sent",
+    "error": "sender stopped 2026-10-29 02:09 ET (off-hours time-guard bug); re-queue in business hours"
+  },
+  {
+    "company": "Amplitude",
+    "to": "sales@amplitude.com",
+    "status": "not_sent",
+    "error": "sender stopped 2026-10-29 02:09 ET (off-hours time-guard bug); re-queue in business hours"
   }
 ]

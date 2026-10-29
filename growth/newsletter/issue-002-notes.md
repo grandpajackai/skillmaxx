@@ -28,3 +28,10 @@ Every night's full results: https://skillmaxx.gilventures.ai/reports/
 
 ## Other sections (carry over from #1)
 - New this week, docs changes, one guide link, sponsor slot.
+
+## From X radar 2026-10-28
+- Claude Code official marketplace hit 315 entries; our Oct 28 nightly: 311/315 installed+enabled clean in Claude Code (report /reports/2026-10-28/).
+- Security-scanner wave: safemcp (MCP config audit), NVIDIA SkillSpector (31,132 skills analyzed, 26.1% with ≥1 vulnerability, 5.2% likely malicious per Liu et al. 2026), Forever Security writeup on a prompt-injected MCP server landing in Codex's machine-wide config. Angle: install-clean isn't the same as safe; pin versions.
+- Version bumps: Claude Code 2.1.311 (subagents can use late-connecting MCP servers), Grok Build 1.0.72 (50% context cut for FastMCP tools).
+- New official MCP servers: Tempo, Podbean, Ikiform, BugTape.
+- New skills to test: PGX DB Agent Skill, Hallmark, UI Craft Skills.
