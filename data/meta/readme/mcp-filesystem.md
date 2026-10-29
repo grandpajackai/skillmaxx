@@ -31,6 +31,8 @@ A client that connects with a 2025-era protocol version (the `initialize` handsh
 
 Roots notified by Client to Server, completely replace any server-side Allowed directories when provided.
 
+A Root reached through a symlink is allowed in both its advertised form and its resolved form, as a command-line directory is: a Root of `file:///tmp/project` on macOS allows `/tmp/project` and `/private/tmp/project`. Every requested path is still resolved and checked against the resolved directories, so a symlink inside a Root that points outside it is refused.
+
 **Important**: If server starts without command-line arguments AND a 2025-era client doesn't support roots protocol, the server fails at initialization: it logs the reason to stderr, closes the connection and exits with status 1. A client that supports roots but provides none (or none that are valid) keeps the connection, with no allowed directories until it sends `roots/list_changed` with valid roots.
 
 The 2026-07-28 protocol has no `initialize` handshake and no server-to-client `roots/list` request, so a 2026-07-28 client's roots are never asked for: the command-line directories are the whole allow-list. A server started with none answers every tool call on such a connection with an error saying so.
@@ -107,6 +109,14 @@ The server's directory access control follows this flow:
     time, hard links and permissions (`edit_file` writes the same way). The
     overwrite is not crash-atomic: a crash mid-write can leave the file partly
     written. A read-only file is refused rather than replaced
+  - Allowed-directory checks are path-based: they check the name you pass,
+    not every name the file has. A hard link is a real name of the same file,
+    so when a file inside an allowed directory is also hard-linked from
+    somewhere else (pnpm, for example, hard-links package files into
+    `node_modules` from its store), overwriting or editing it changes the
+    content at every name, inside the allowed directories or not.
+    `get_file_info` reports a file's `hardLinks` count; more than 1 means
+    the file has other names
 
 - **edit_file**
   - Make selective edits using advanced pattern matching and formatting
@@ -151,15 +161,24 @@ The server's directory access control follows this flow:
     - `source` (string)
     - `destination` (string)
   - Fails if destination exists
+  - Across filesystems (the source and destination on different mounts or
+    disks), a regular file is moved by copying it to a newly created
+    destination, with its permissions and modification time, and then removing
+    the source. If the copy fails, the partial destination is removed and the
+    source is left in place. A directory cannot be moved across filesystems
+    and fails with an error; move its files one at a time instead
 
 - **search_files**
   - Recursively search for files/directories that match or do not match patterns
   - Inputs:
     - `path` (string): Starting directory
     - `pattern` (string): Search pattern
-    - `excludePatterns` (string[]): Exclude any patterns.
+    - `excludePatterns` (string[]): Exclude any patterns. An excluded entry is
+      skipped before it is resolved or read, so excluding a slow folder keeps
+      the search out of it entirely.
   - Glob-style pattern matching
   - Returns full paths to matches
+  - Bounded: see [Slow and very large trees](#slow-and-very-large-trees)
 
 - **directory_tree**
   - Get recursive JSON tree structure of directory contents
@@ -174,6 +193,7 @@ The server's directory access control follows this flow:
         - Empty array for empty directories
         - Omitted for files
   - Output is formatted with 2-space indentation for readability
+  - Bounded: see [Slow and very large trees](#slow-and-very-large-trees)
     
 - **get_file_info**
   - Get detailed file/directory metadata
@@ -185,39 +205,30 @@ The server's directory access control follows this flow:
     - Access time
     - Type (file/directory)
     - Permissions
+    - Hard-link count (`hardLinks`): the number of names the file has. More
+      than 1 means a write through this name changes the file at its other
+      names too (see `write_file`)
 
 - **list_allowed_directories**
   - List all directories the server is allowed to access
   - No input required
   - Returns:
-    - Directories that this server can read/write from
+    - Directories that this server can read/write from. A directory reached through a symlink is listed twice, in the form it was given and in its resolved form
 
-### Tool annotations (MCP hints)
+### Slow and very large trees
 
-This server sets [MCP ToolAnnotations](https://modelcontextprotocol.io/specification/2025-03-26/server/tools#toolannotations)
-on each tool so clients can:
+A folder backed by a cloud-storage provider (macOS `~/Library/CloudStorage`,
+iCloud Drive) or a slow network mount can make a single filesystem call block
+for minutes while the provider fetches metadata. Two fixed limits keep one
+request from stalling the server:
 
-- Distinguish **read‑only** tools from write‑capable tools.
-- Understand which write operations are **idempotent** (safe to retry with the same arguments).
-- Highlight operations that may be **destructive** (overwriting or heavily mutating data).
-- Signal that a tool does **not** reach an open or external world (every filesystem tool sets `openWorldHint: false`).
+- **Resolving a path (in any tool), and each directory read in `search_files`
+  and `directory_tree`, waits at most 15 seconds.** A call that takes longer ends
+  the request with an error naming the path (`Filesystem call timed out after
+  15000 ms: ...`). A path whose real location cannot be read in time is
+  refused, never admitted.
+- **`search_files` and `directory_tree` visit at most 100,000 entries.** A walk
+  that reaches the cap ends with an error (`... stopped after visiting 100000
+  entries ...`) rather than a partial result. Excluded entries do not count.
 
-The mapping for filesystem tools is:
-
-| Tool                        | readOnlyHint | idempotentHint | destructiveHint | Notes                                            |
-|-----------------------------|--------------|----------------|-----------------|--------------------------------------------------|
-| `read_text_file`            | `true`       | –              | –               | Pure read                                       |
-| `read_media_file`           | `true`       | –              | –               | Pure read                                       |
-| `read_multiple_files`       | `true`       | –              | –               | Pure read                                       |
-| `list_directory`            | `true`       | –              | –               | Pure read                                       |
-| `list_directory_with_sizes` | `true`       | –              | –               | Pure read                                       |
-| `directory_tree`            | `true`       | –              | –               | Pure read                                       |
-| `search_files`              | `true`       | –              | –               | Pure read                                       |
-| `get_file_info`             | `true`       | –              | –               | Pure read                                       |
-| `list_allowed_directories`  | `true`       | –              | –               | Pure read                                       |
-| `create_directory`          | `false`      | `true`         | `false`         | Re‑creating the same dir is a no‑op             |
-| `write_file`                | `false`      | `true`         | `true`          | Overwrites existing files                       |
-| `edit_file`                 | `false`      | `false`        | `true`          | Re‑applying edits can fail or double‑apply      |
-| `move_file`                 | `false`      | `false`        | `true`          | Deletes source file                             |
-
-> Note: `idempotentHint` and `destructiveHint` are meaningful only when `readOnlyHint` is `false`, as defined by the MCP spec. Every tool also sets `openWorldHint: false` — this server only accesses the local filesyste
+Either e

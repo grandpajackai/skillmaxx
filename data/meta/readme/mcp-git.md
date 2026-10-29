@@ -76,8 +76,8 @@ Please note that mcp-server-git is currently in early development. The functiona
    - Inputs:
      - `repo_path` (string): Path to Git repository
      - `branch_name` (string): Name of the new branch
-     - `base_branch` (string, optional): Base branch to create from (defaults to current branch)
-   - Returns: Confirmation of branch creation
+     - `base_branch` (string, optional): Branch, tag or commit SHA to create from (defaults to the current branch, or to the current commit when HEAD is detached)
+   - Returns: Confirmation of branch creation, naming the base branch, or the short SHA when the base is a commit
 10. `git_checkout`
    - Switches branches
    - Inputs:
@@ -134,7 +134,12 @@ python -m mcp_server_git
 
 ## Configuration
 
+> [!IMPORTANT]
+> **Without `--repository`, the server reads and writes any Git repository the server process can reach.** Each tool call names its own `repo_path`, and that holds for the tools that change a repository too (`git_add`, `git_commit`, `git_reset`, `git_create_branch`, `git_checkout`). `--repository` is the only confinement the server offers: it never asks the client for Roots, in either protocol era. Set `--repository` whenever the server is used with prompts or content that are not fully trusted. It admits the whole enclosing repository, not only the directory you name, as the next paragraph describes.
+
 `--repository` (`-r`) accepts any path inside a Git working tree. At startup the server walks up to the enclosing repository root, the way `git rev-parse --show-toplevel` does, so `--repository .` works when a shared config is launched from any subdirectory of the repository. A path inside the repository therefore allows tool calls anywhere in that repository, not only under the subdirectory given. A path that does not exist, or is not inside a Git repository, is logged as a one-line error at startup.
+
+A tool call's `repo_path` must be inside that repository, and so must the directories Git then uses for it: a repository nested inside whose `.git` file, `commondir` or `core.worktree` points outside is refused. A linked worktree can still be the `--repository`, though its Git directory lives under the main repository's `.git`.
 
 ### Usage with Claude Desktop
 
@@ -232,63 +237,3 @@ For Docker installation:
 ```
 
 ### Usage with [Zed](https://github.com/zed-industries/zed)
-
-Add to your Zed settings.json:
-
-<details>
-<summary>Using uvx</summary>
-
-```json
-"context_servers": [
-  "mcp-server-git": {
-    "command": {
-      "path": "uvx",
-      "args": ["mcp-server-git"]
-    }
-  }
-],
-```
-</details>
-
-<details>
-<summary>Using pip installation</summary>
-
-```json
-"context_servers": {
-  "mcp-server-git": {
-    "command": {
-      "path": "python",
-      "args": ["-m", "mcp_server_git"]
-    }
-  }
-},
-```
-</details>
-
-### Usage with [Zencoder](https://zencoder.ai)
-
-1. Go to the Zencoder menu (...)
-2. From the dropdown menu, select `Agent Tools`
-3. Click on the `Add Custom MCP`
-4. Add the name (i.e. git) and server configuration from below, and make sure to hit the `Install` button
-
-<details>
-<summary>Using uvx</summary>
-
-```json
-{
-    "command": "uvx",
-    "args": ["mcp-server-git", "--repository", "path/to/git/repo"]
-}
-```
-</details>
-
-## Debugging
-
-You can use the MCP inspector to debug the server. For uvx installations:
-
-```
-npx @modelcontextprotocol/inspector uvx mcp-server-git
-```
-
-Or if you've installed the package in a specific directory or are develop

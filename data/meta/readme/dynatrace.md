@@ -55,6 +55,23 @@ The Dynatrace plugin is listed on the [Cursor Marketplace](https://cursor.com/ma
 
 Set the same `DT_ENVIRONMENT` and `DT_PLATFORM_TOKEN` environment variables shown above before starting Cursor.
 
+### Google Antigravity Plugin
+
+Install the plugin with the Antigravity CLI:
+
+```bash
+agy plugin install https://github.com/Dynatrace/dynatrace-for-ai
+```
+
+In the Antigravity CLI you can also run `/plugin install https://github.com/Dynatrace/dynatrace-for-ai`.
+
+The plugin includes all skills and the Dynatrace MCP server. It stays disabled until you configure the MCP server. Open `/plugin`, select **dynatrace**, and turn it on. Then enter:
+
+- `DT_ENVIRONMENT`: your environment URL, e.g. `https://abc12345.apps.dynatrace.com` (`https://` is required; leave off the trailing slash)
+- `DT_PLATFORM_TOKEN`: a platform token with the [MCP gateway scopes](https://docs.dynatrace.com/docs/shortlink/dynatrace-mcp-server)
+
+You can change these values later from **Configure MCP servers...** in `/plugin`. Antigravity does not read them from your shell environment.
+
 ### Manual
 
 Copy skill directories into your agent's skills path (`.agents/skills/`, `.claude/skills/`, `.cursor/skills/`, etc.).
@@ -157,13 +174,4 @@ Each prompt references the relevant skills above — load those skills first for
 
 | Prompt | Description |
 |--------|-------------|
-| [dt-daily-standup](prompts/dt-daily-standup.prompt.md) | Generate a daily standup report for one or more services. |
-| [dt-health-check](prompts/dt-health-check.prompt.md) | Check the health of a service in production. |
-| [dt-incident-response](prompts/dt-incident-response.prompt.md) | Respond to an active production incident with triage, root cause, and a shareable report. |
-| [dt-investigate-error](prompts/dt-investigate-error.prompt.md) | Investigate recent errors using Davis Problems as the entry point (problems → logs → traces). |
-| [dt-performance-regression](prompts/dt-performance-regression.prompt.md) | Analyze whether a recent deployment caused a performance regression. |
-| [dt-troubleshoot-problem](prompts/dt-troubleshoot-problem.prompt.md) | Troubleshoot an existing Dynatrace problem with structured log and trace investigation. |
-
-## How Skills Work
-
-Skills follow the [Agent Skills specification](https://agentskills.io/specification) and use progress
+| [dt-daily-standup](prompts/dt-daily-standup.prompt.md) | Generate a daily standup report for one or more services. 
