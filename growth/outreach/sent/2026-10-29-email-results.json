@@ -1,0 +1,92 @@
+[
+  {
+    "company": "Prisma",
+    "to": "hello@prisma.io",
+    "source_url": "https://www.prisma.io/programs/partners",
+    "subject": "we install your Prisma MCP plugin every night (it behaves)",
+    "status": "sent",
+    "error": "",
+    "message_id": "<179328692216.1436578.16543581211096280138@gilventures.ai>",
+    "sent_at_et": "2026-10-29 11:15:23 ET"
+  },
+  {
+    "company": "Pydantic",
+    "to": "hello@pydantic.dev",
+    "source_url": "https://pydantic.dev/contact",
+    "subject": "Logfire and Pydantic AI both installed clean last night",
+    "status": "sent",
+    "error": "",
+    "message_id": "<179328839891.1436578.589561220833116719@gilventures.ai>",
+    "sent_at_et": "2026-10-29 11:39:59 ET"
+  },
+  {
+    "company": "Aikido",
+    "to": "hello@aikido.dev",
+    "source_url": "https://www.aikido.dev/contact",
+    "subject": "Aikido's Claude plugin passed in 3 agents last night",
+    "status": "sent",
+    "error": "",
+    "message_id": "<179329043326.1436578.8147988940922365476@gilventures.ai>",
+    "sent_at_et": "2026-10-29 12:13:54 ET"
+  },
+  {
+    "company": "Dash0",
+    "to": "hi@dash0.com",
+    "source_url": "https://www.dash0.com/contact",
+    "subject": "your Dash0 plugin passes our nightly install tests",
+    "status": "sent",
+    "error": "",
+    "message_id": "<179329314534.1436578.11936501680882901448@gilventures.ai>",
+    "sent_at_et": "2026-10-29 12:59:06 ET"
+  },
+  {
+    "company": "Sourcegraph",
+    "to": "hi@sourcegraph.com",
+    "source_url": "https://sourcegraph.com/contact",
+    "subject": "your Sourcegraph plugin is in our nightly install tests",
+    "status": "sent",
+    "error": "",
+    "message_id": "<179329500376.1436578.3102385378539843673@gilventures.ai>",
+    "sent_at_et": "2026-10-29 13:30:05 ET"
+  },
+  {
+    "company": "Railway",
+    "to": "partners@railway.com",
+    "source_url": "https://railway.com/partners",
+    "subject": "your Railway plugin passes our nightly install tests",
+    "status": "sent",
+    "error": "",
+    "message_id": "<179329686104.1436578.8323821363551386422@gilventures.ai>",
+    "sent_at_et": "2026-10-29 14:01:02 ET"
+  },
+  {
+    "company": "42Crunch",
+    "to": "info@42crunch.com",
+    "source_url": "https://info.42crunch.com/owasp-api-security-top-10-cs-youtube",
+    "subject": "your API security plugin passes our nightly install tests",
+    "status": "sent",
+    "error": "",
+    "message_id": "<179329893949.1436578.8160421695847225661@gilventures.ai>",
+    "sent_at_et": "2026-10-29 14:35:41 ET"
+  },
+  {
+    "company": "Zapier",
+    "to": "partners@zapier.com",
+    "source_url": "https://zapier.com/l/solution-partner",
+    "subject": "your Zapier plugin is in our nightly agent install tests",
+    "status": "sent",
+    "error": "",
+    "message_id": "<179330017974.1436578.4649448326572852093@gilventures.ai>",
+    "sent_at_et": "2026-10-29 14:56:21 ET"
+  },
+  {
+    "company": "Amplitude",
+    "to": "sales@amplitude.com",
+    "source_url": "https://amplitude.com/contact",
+    "subject": "your Amplitude plugin in our nightly install tests (+ a Pi log)",
+    "status": "sent",
+    "error": "",
+    "message_id": "<179330726117.1436578.5554706977927449164@gilventures.ai>",
+    "sent_at_et": "2026-10-29 16:54:22 ET"
+  }
+]
