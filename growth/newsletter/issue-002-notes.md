@@ -35,3 +35,10 @@ Every night's full results: https://skillmaxx.gilventures.ai/reports/
 - Version bumps: Claude Code 2.1.311 (subagents can use late-connecting MCP servers), Grok Build 1.0.72 (50% context cut for FastMCP tools).
 - New official MCP servers: Tempo, Podbean, Ikiform, BugTape.
 - New skills to test: PGX DB Agent Skill, Hallmark, UI Craft Skills.
+
+## From X radar 2026-10-29
+- Pi is having a moment: JetBrains' ThinkRail (Apache-2.0, 5,720 GitHub stars on Oct 29) is an IDE built around Pi. Our Oct 29 nightly in Pi 0.73.1: 56/86 installs passed, 30 broken 2+ nights. Possible "moving to Pi? check these first" section. Also check pi-mcp-extension (reported download spike, unverified) vs our "Pi has no MCP" line.
+- Cursor Agent SDK GA ("agents as code"); reported npm package-name confusion (unverified).
+- Security: Forever Security AGENTS.md injection test (Codex >90% obeyed, Claude Code ~half), GitHub worm targeting repos opened in agent IDEs (npm ran the payload, pnpm/Bun didn't). Angle: clean install ≠ safe.
+- New official MCP servers: Radar (k8s), Rise, TaxDome, Bakkt, Erathos, Suno.
+- New skills to test: tstack, Cloudflare security-audit skill, ffmpeg-skill, Alpy, Baseline.
