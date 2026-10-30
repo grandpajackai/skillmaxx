@@ -122,6 +122,40 @@
    "listing_url": "https://www.npmjs.com/package/@benborla29/mcp-server-mysql"
   },
   {
+   "slug": "bitbonsai-mcpvault",
+   "name": "@bitbonsai/mcpvault",
+   "description": "Universal AI bridge for Obsidian vaults - connect any MCP-compatible assistant",
+   "source_url": "git+https://github.com/bitbonsai/mcpvault.git",
+   "category": "mcp (npm)",
+   "type": "npm-mcp-package",
+   "install": {
+    "claude_code": "claude mcp add mcpvault -- npx -y @bitbonsai/mcpvault",
+    "codex": "codex mcp add mcpvault -- npx -y @bitbonsai/mcpvault",
+    "grok_build": null,
+    "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"mcpvault\":{\"command\":\"npx\",\"args\":[\"-y\",\"@bitbonsai/mcpvault\"]}}}",
+    "pi": null
+   },
+   "compatibility": {
+    "claude_code": "unknown",
+    "codex": "unknown",
+    "grok_build": "unknown",
+    "cursor": "unknown",
+    "pi": "unknown"
+   },
+   "compat_sources": {
+    "claude_code": null,
+    "codex": null,
+    "grok_build": null,
+    "cursor": null,
+    "pi": null
+   },
+   "listings": [
+    "https://www.npmjs.com/package/@bitbonsai/mcpvault"
+   ],
+   "notes": "Commands use each client's generic MCP stdio syntax; this package's npx entrypoint is not verified, so status stays unknown. Check the README for required env vars/args.",
+   "listing_url": "https://www.npmjs.com/package/@bitbonsai/mcpvault"
+  },
+  {
    "slug": "currents-mcp",
    "name": "@currents/mcp",
    "description": "Currents MCP server",
@@ -392,40 +426,6 @@
    ],
    "notes": "Commands use each client's generic MCP stdio syntax; this package's npx entrypoint is not verified, so status stays unknown. Check the README for required env vars/args.",
    "listing_url": "https://www.npmjs.com/package/@ironbee-ai/devtools"
-  },
-  {
-   "slug": "lerianstudio-matcher-mcp",
-   "name": "@lerianstudio/matcher-mcp",
-   "description": "Model Context Protocol server for the Matcher reconciliation engine",
-   "source_url": "git+https://github.com/LerianStudio/matcher.git",
-   "category": "mcp (npm)",
-   "type": "npm-mcp-package",
-   "install": {
-    "claude_code": "claude mcp add mcp -- npx -y @lerianstudio/matcher-mcp",
-    "codex": "codex mcp add mcp -- npx -y @lerianstudio/matcher-mcp",
-    "grok_build": null,
-    "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"mcp\":{\"command\":\"npx\",\"args\":[\"-y\",\"@lerianstudio/matcher-mcp\"]}}}",
-    "pi": null
-   },
-   "compatibility": {
-    "claude_code": "unknown",
-    "codex": "unknown",
-    "grok_build": "unknown",
-    "cursor": "unknown",
-    "pi": "unknown"
-   },
-   "compat_sources": {
-    "claude_code": null,
-    "codex": null,
-    "grok_build": null,
-    "cursor": null,
-    "pi": null
-   },
-   "listings": [
-    "https://www.npmjs.com/package/@lerianstudio/matcher-mcp"
-   ],
-   "notes": "Commands use each client's generic MCP stdio syntax; this package's npx entrypoint is not verified, so status stays unknown. Check the README for required env vars/args.",
-   "listing_url": "https://www.npmjs.com/package/@lerianstudio/matcher-mcp"
   },
   {
    "slug": "microsoft-workiq",

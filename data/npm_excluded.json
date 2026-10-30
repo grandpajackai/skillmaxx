@@ -1,0 +1,4 @@
+{
+ "_note": "npm MCP packages dropped from the listing (deprecated/withdrawn/unpublished upstream). Checked nightly against registry.npmjs.org.",
+ "@lerianstudio/matcher-mcp": "2026-10-30: npm latest 5.0.3 deprecated by the author: 'Withdrawn: Matcher MCP is discontinued.'"
+}

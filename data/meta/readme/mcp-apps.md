@@ -97,7 +97,7 @@ it will guide you through the rest.
 > MCP Apps is an extension to the
 > [core MCP specification](https://modelcontextprotocol.io/specification). Host
 > support varies — see the
-> [clients page](https://modelcontextprotocol.io/clients) for the full list.
+> [clients page](https://modelcontextprotocol.io/extensions/client-matrix) for the full list.
 
 ## Why MCP Apps?
 
@@ -186,4 +186,4 @@ directory contains demo apps showcasing real-world use cases.
 |:---:|:---:|:---:|
 | [![Map](examples/map-server/grid-cell.png "Interactive 3D globe viewer using CesiumJS")](https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/map-server) | [![Three.js](examples/threejs-server/grid-cell.png "Interactive 3D scene renderer")](https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/threejs-server) | [![ShaderToy](examples/shadertoy-server/grid-cell.png "Real-time GLSL shader renderer")](https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/shadertoy-server) |
 | [**Map**](https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/map-server) | [**Three.js**](https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/threejs-server) | [**ShaderToy**](https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/shadertoy-server) |
-| [![Sheet Music](examples/sheet-music-server/grid-cell.png "ABC notation to sheet music")](https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/sheet-music-server) | [![Wiki Explorer](examples/wiki-explorer-server
+| [![Sheet Music](examples/sheet-music-server/grid-cell.png "ABC notation to sheet music")](https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/sheet-music-server) | [![Wiki Explorer](examples/wik
