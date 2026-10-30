@@ -7,7 +7,8 @@ permalink: /newsletter/
 <div class="wrap prose"><h1 class="ph">SkillMaxx Weekly archive</h1>
 <h2>What is SkillMaxx Weekly?</h2>
 <p class="answer">SkillMaxx Weekly is a free, short email with the latest results from our sandboxed install tests: which skills, plugins and MCP servers installed in Claude Code, Codex, Grok Build, Cursor and Pi, what broke since last week, and what's new in the directory. Every number comes from our test logs.</p>
+<p>Subscribe below to get it every Tuesday. Issue #2 is out Tue Nov 3, 2026 and lands here the same day.</p>
 <h2>All issues</h2>
 <ul>{% for i in collections.issues | reverse %}<li><a href="{{ i.url }}">{{ i.data.title }}</a> <span class="muted">· {{ i.data.issueDate }}</span><br><span class="muted">{{ i.data.desc }}</span></li>{% endfor %}</ul>
-<p class="related-links"><a href="/guides/best-mcp-servers-cursor/">MCP servers that work in Cursor →</a><a href="/guides/what-installs-in-grok-build/">What installs in Grok Build →</a></p></div>
+<p class="related-links"><a href="/blog/">Blog: deep dives from our test data →</a><a href="/guides/best-mcp-servers-cursor/">MCP servers that work in Cursor →</a><a href="/guides/what-installs-in-grok-build/">What installs in Grok Build →</a></p></div>
 {% include "nlembed.njk" %}

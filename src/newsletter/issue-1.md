@@ -14,6 +14,8 @@ jsonld: {"@context":"https://schema.org","@type":"Article","headline":"SkillMaxx
 <h1 class="ph">SkillMaxx #1: we installed 902 things so you don't have to</h1>
 <p class="lead">803 worked. The other 99 have stories. <span class="muted">Test data from Oct 25, 2026.</span></p>
 
+<p class="callout"><strong>Since this issue:</strong> MCP servers are now tested in all 5 agents (Codex, Grok Build and Pi too, not only Claude Code and Cursor), and "broken" now means failed two nights running. The newest numbers are always on <a href="/reports/latest/">last night's report</a>. Deep dives: <a href="/blog/mcp-servers-claude-code-vs-cursor/">MCP servers in Claude Code vs Cursor</a> and <a href="/blog/809-of-900-agent-addon-installs/">809 of 900 installs</a>.</p>
+
 ![SkillMaxx](/assets/newsletter/skillmaxx-banner-1200x300.png)
 
 ## ok so here's the deal 👋
