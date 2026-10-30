@@ -27,26 +27,28 @@ One page to catch up. Site: https://skillmaxx.gilventures.ai · Repo: grandpajac
 | Routine runbooks | [growth/routines/](growth/routines/) |
 | Reddit profile pack + posts | [growth/reddit/](growth/reddit/) |
 | Daily reports (site) | /reports/latest/, built by `testing/daily_report.py` |
+| "Brandon to reach out" list (call/social/press-only, blocked forms) | [growth/sponsors/PIPELINE.csv](growth/sponsors/PIPELINE.csv) (non-email/form routes + blocker in notes) and the owner dashboard Sales pipeline (DECISIONS #43) |
+| npm packages dropped as deprecated | `data/npm_excluded.json` (read by `build_data.py`) |
 | Daily X radar notes + newsletter idea log | [growth/x-radar/](growth/x-radar/), [growth/newsletter/issue-002-notes.md](growth/newsletter/issue-002-notes.md) |
 
 ## Routines (Grok Bot, times ET)
-| Routine | Schedule | Status (Oct 29, 2:40 AM ET) |
+| Routine | Schedule | Status (Oct 30, 2:40 AM ET) |
 |---|---|---|
-| Nightly refresh (fetch, test, report, deploy) | daily 2:00 AM | enabled; last run Oct 29 ok (807/900). After a Tuesday send, confirm /newsletter/ archive matches the emailed issue (see NEWSLETTER-SEND.md) |
-| X radar (log: growth/x-radar/) | daily 10:00 AM | enabled; last run Oct 28 10:09 AM |
-| Post check (Buffer sent / errors) | daily 10:30 AM | enabled; last run Oct 28 10:35 AM, ok |
-| Daily sponsor outreach (PIPELINE.csv, OUTREACH.md; DECISIONS #31–33, #39–41) | weekdays 11:00 AM | enabled; 15–30/day max, emails spread ~8:30 AM–7 PM ET under the 10→20→30/day ramp, forms unlimited, never guess emails, one-line update per send + tally |
-| One-off outreach wrap-up | Oct 28, 5:45 PM | one-off (done/expired) |
+| Nightly refresh (fetch, test, report, deploy) | daily 2:00 AM | enabled; last run Oct 30 ok (809/900). After a Tuesday send, confirm /newsletter/ archive matches the emailed issue (see NEWSLETTER-SEND.md) |
+| X radar (log: growth/x-radar/) | daily 10:00 AM | enabled; last run Oct 29 |
+| Post check (Buffer sent / errors) | daily 10:30 AM | enabled; last run Oct 29 10:36 AM, ok |
+| Daily sponsor outreach (PIPELINE.csv, OUTREACH.md; DECISIONS #31–33, #39–41, #43) | weekdays 11:00 AM | enabled; last run Oct 29 (10 emails, 5 forms). 15–30/day max, emails spread ~8:30 AM–7 PM ET under the 10→20→30/day ramp, forms unlimited, never guess emails, one-line update per send + tally; unreachable leads go on the "Brandon to reach out" list and never stall the run |
+| Outreach wrap-up | Oct 29, 5:45 PM | paused (one-off, done) |
 | Sponsor pipeline weekly ([growth/routines/SPONSOR-PIPELINE-WEEKLY.md](growth/routines/SPONSOR-PIPELINE-WEEKLY.md)) | Mon 9:00 AM | enabled |
-| Buffer daily top-up ([growth/routines/BUFFER-DAILY-TOPUP.md](growth/routines/BUFFER-DAILY-TOPUP.md)) | daily 10:00 PM | enabled; last run Oct 28 10:02 PM, ok |
-| Newsletter send + archive ([growth/routines/NEWSLETTER-SEND.md](growth/routines/NEWSLETTER-SEND.md)) | Tue after Beehiiv send | runbook ready; first email = issue #2 on Nov 3 |
+| Buffer daily top-up ([growth/routines/BUFFER-DAILY-TOPUP.md](growth/routines/BUFFER-DAILY-TOPUP.md)) | daily 10:00 PM | enabled; last run Oct 29 10:07 PM, ok |
+| Newsletter send + archive ([growth/routines/NEWSLETTER-SEND.md](growth/routines/NEWSLETTER-SEND.md)) | Tue after Beehiiv send | runbook ready; first email = issue #2 on Tue Nov 3 (issue #1 is site-only) |
 | Sunday recap | Sun 6:00 PM | enabled, first run Nov 1 |
 | SkillMaxx reply sniper X/Bluesky/LinkedIn (log: growth/x/sniper-log.md) | — | **paused** at Brandon's request; LinkedIn picks go out as the SkillMaxx AI page (DECISIONS #42) |
 | Brandon personal-brand reply sniper | — | paused |
 | BFCM banner on | Nov 27, 9:00 AM | enabled; offer approved Oct 27 (DECISIONS #30) ([growth/routines/BFCM-FOUNDING-12.md](growth/routines/BFCM-FOUNDING-12.md)) |
 | BFCM banner off | Dec 1, 9:00 AM | enabled |
 | Trend posts (Buffer) | as news breaks | standing permission (DECISIONS #35) |
-| Blog/guide posts | as written | publish without approval after voice/tone/accuracy/SEO check; socials link back (DECISIONS #38) |
+| Blog/guide posts | as written | publish without approval after voice/tone/accuracy/SEO check; socials give a short take and link back (DECISIONS #38) |
 | Sponsor-payment watcher | — | not built: Brandon uses the dashboard Sponsors section + Stripe's own emails |
 
 ## Accounts (no secrets here, ever; logins live in the vault)
