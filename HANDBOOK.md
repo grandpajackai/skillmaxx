@@ -37,8 +37,8 @@ One page to catch up. Site: https://skillmaxx.gilventures.ai · Repo: grandpajac
 | Nightly refresh (fetch, test, report, deploy) | daily 2:00 AM | enabled; last run Oct 30 ok (809/900). After a Tuesday send, confirm /newsletter/ archive matches the emailed issue (see NEWSLETTER-SEND.md) |
 | X radar (log: growth/x-radar/) | daily 10:00 AM | enabled; last run Oct 29 |
 | Post check (Buffer sent / errors) | daily 10:30 AM | enabled; last run Oct 29 10:36 AM, ok |
-| Daily sponsor outreach (PIPELINE.csv, OUTREACH.md; DECISIONS #31–33, #39–41, #43) | weekdays 11:00 AM | enabled; last run Oct 29 (10 emails, 5 forms). 15–30/day max, emails spread ~8:30 AM–7 PM ET under the 10→20→30/day ramp, forms unlimited, never guess emails, one-line update per send + tally; unreachable leads go on the "Brandon to reach out" list and never stall the run |
-| Outreach wrap-up | Oct 29, 5:45 PM | paused (one-off, done) |
+| Daily sponsor outreach (PIPELINE.csv, OUTREACH.md; DECISIONS #31–33, #39–41, #43) | weekdays 11:00 AM | enabled; last run Oct 30 (8 emails, 11 forms; sender died after the 8th, Nimble + Carbone roll to Mon Nov 2). 15–30/day max, emails spread ~8:30 AM–7 PM ET under the 10→20→30/day ramp, forms unlimited, never guess emails, one-line update per send + tally; unreachable leads go on the "Brandon to reach out" list and never stall the run |
+| Outreach wrap-up | Oct 29, 5:45 PM; Oct 30, ~5 PM | paused (one-off, done) |
 | Sponsor pipeline weekly ([growth/routines/SPONSOR-PIPELINE-WEEKLY.md](growth/routines/SPONSOR-PIPELINE-WEEKLY.md)) | Mon 9:00 AM | enabled |
 | Buffer daily top-up ([growth/routines/BUFFER-DAILY-TOPUP.md](growth/routines/BUFFER-DAILY-TOPUP.md)) | daily 10:00 PM | enabled; last run Oct 29 10:07 PM, ok |
 | Newsletter send + archive ([growth/routines/NEWSLETTER-SEND.md](growth/routines/NEWSLETTER-SEND.md)) | Tue after Beehiiv send | runbook ready; first email = issue #2 on Tue Nov 3 (issue #1 is site-only) |
@@ -69,3 +69,5 @@ One page to catch up. Site: https://skillmaxx.gilventures.ai · Repo: grandpajac
 
 ## Standing rules
 $0 budget · no secrets in chat or repo · Brandon approves posts once (weekly plan), then routines queue approved posts in Buffer without daily asks · nothing on pricing/promos goes live without Brandon's approval · only SkillMaxx accounts · log every session in STATUS.md.
+
+**Outreach sender lesson (Oct 30):** the background email sender died silently mid-batch (after 8 of 10, log ended on "next in 28m20s", no process left), and its per-send PIPELINE.csv writes were lost from the working copy. So: (1) check the sender is still alive mid-afternoon (`pgrep -f send_MMDD.py` + tail the log) and again before 5 PM ET; if it's dead, don't re-run it (it refuses once results have 'sent' entries anyway), roll the unsent to the next weekday batch; (2) commit PIPELINE.csv + the results JSON the same day, and treat `growth/outreach/sent/*-email-results.json` as the source of truth for what went out.
