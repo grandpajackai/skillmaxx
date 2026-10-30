@@ -57,8 +57,10 @@ for o in old:
     for a,src in [("claude_code",CC_MCP),("codex",CX_MCP),("cursor",CU_MCP)]: setc(it,a,o["install"][a],src)
 # npm MCP packages: commands shown, status unknown (per-package not verified)
 npm=json.load(open("npm.json"))["objects"];added=0
+EXCL=json.load(open("data/npm_excluded.json"))  # deprecated/withdrawn npm packages, never listed
 for o in npm:
   pk=o["package"];n=pk["name"]
+  if n in EXCL: continue
   if added>=45 or not pk.get("description") or not pk.get("links",{}).get("repository"): continue
   if not re.search(r"mcp",n+pk["description"],re.I) or re.search(r"sdk|transport|core|react|framework|library|types",n+" "+pk["description"],re.I): continue
   slug=n.replace("@","").replace("/","-");
