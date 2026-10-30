@@ -71,6 +71,11 @@ for o in npm:
   it["install"].update(claude_code=f"claude mcp add {short} -- {run}",codex=f"codex mcp add {short} -- {run}",cursor=f'~/.cursor/mcp.json → {{"mcpServers":{{"{short}":{{"command":"npx","args":["-y","{n}"]}}}}}}')
   it["notes"]="Commands use each client's generic MCP stdio syntax; this package's npx entrypoint is not verified, so status stays unknown. Check the README for required env vars/args."
   added+=1
+for it in items.values():  # Grok Build (grok mcp add) and Pi >= 0.99 (pi mcp add) take the same stdio syntax
+  c=it["install"].get("claude_code") or ""
+  if it["type"] in ("mcp-server","npm-mcp-package") and " -- " in c:
+    n,run=c.split("claude mcp add ",1)[1].split(" -- ",1);it["install"].setdefault("grok_build",None);it["install"].setdefault("pi",None)
+    it["install"]["grok_build"]=it["install"]["grok_build"] or f"grok mcp add {n} -- {run}";it["install"]["pi"]=it["install"]["pi"] or f"pi mcp add {n} -- {run}"
 for it in items.values():
   it["listing_url"]=it["listings"][0];it.setdefault("notes","")
   if it["compatibility"]["grok_build"]=="documented" and it["compat_sources"]["grok_build"]==GK_AUTO: it["notes"]=(it["notes"]+" Grok Build status relies on xAI docs saying Grok reads Claude Code plugins automatically.").strip()

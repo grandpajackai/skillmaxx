@@ -63,9 +63,9 @@
    "install": {
     "claude_code": "claude mcp add kit -- npx -y @4sh/ui-kit",
     "codex": "codex mcp add kit -- npx -y @4sh/ui-kit",
-    "grok_build": null,
+    "grok_build": "grok mcp add kit -- npx -y @4sh/ui-kit",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"kit\":{\"command\":\"npx\",\"args\":[\"-y\",\"@4sh/ui-kit\"]}}}",
-    "pi": null
+    "pi": "pi mcp add kit -- npx -y @4sh/ui-kit"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -97,9 +97,9 @@
    "install": {
     "claude_code": "claude mcp add mysql -- npx -y @benborla29/mcp-server-mysql",
     "codex": "codex mcp add mysql -- npx -y @benborla29/mcp-server-mysql",
-    "grok_build": null,
+    "grok_build": "grok mcp add mysql -- npx -y @benborla29/mcp-server-mysql",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"mysql\":{\"command\":\"npx\",\"args\":[\"-y\",\"@benborla29/mcp-server-mysql\"]}}}",
-    "pi": null
+    "pi": "pi mcp add mysql -- npx -y @benborla29/mcp-server-mysql"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -131,9 +131,9 @@
    "install": {
     "claude_code": "claude mcp add mcpvault -- npx -y @bitbonsai/mcpvault",
     "codex": "codex mcp add mcpvault -- npx -y @bitbonsai/mcpvault",
-    "grok_build": null,
+    "grok_build": "grok mcp add mcpvault -- npx -y @bitbonsai/mcpvault",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"mcpvault\":{\"command\":\"npx\",\"args\":[\"-y\",\"@bitbonsai/mcpvault\"]}}}",
-    "pi": null
+    "pi": "pi mcp add mcpvault -- npx -y @bitbonsai/mcpvault"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -165,9 +165,9 @@
    "install": {
     "claude_code": "claude mcp add mcp -- npx -y @currents/mcp",
     "codex": "codex mcp add mcp -- npx -y @currents/mcp",
-    "grok_build": null,
+    "grok_build": "grok mcp add mcp -- npx -y @currents/mcp",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"mcp\":{\"command\":\"npx\",\"args\":[\"-y\",\"@currents/mcp\"]}}}",
-    "pi": null
+    "pi": "pi mcp add mcp -- npx -y @currents/mcp"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -199,9 +199,9 @@
    "install": {
     "claude_code": "claude mcp add server -- npx -y @cyanheads/git-mcp-server",
     "codex": "codex mcp add server -- npx -y @cyanheads/git-mcp-server",
-    "grok_build": null,
+    "grok_build": "grok mcp add server -- npx -y @cyanheads/git-mcp-server",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"server\":{\"command\":\"npx\",\"args\":[\"-y\",\"@cyanheads/git-mcp-server\"]}}}",
-    "pi": null
+    "pi": "pi mcp add server -- npx -y @cyanheads/git-mcp-server"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -233,9 +233,9 @@
    "install": {
     "claude_code": "claude mcp add server -- npx -y @cyanheads/pubmed-mcp-server",
     "codex": "codex mcp add server -- npx -y @cyanheads/pubmed-mcp-server",
-    "grok_build": null,
+    "grok_build": "grok mcp add server -- npx -y @cyanheads/pubmed-mcp-server",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"server\":{\"command\":\"npx\",\"args\":[\"-y\",\"@cyanheads/pubmed-mcp-server\"]}}}",
-    "pi": null
+    "pi": "pi mcp add server -- npx -y @cyanheads/pubmed-mcp-server"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -267,9 +267,9 @@
    "install": {
     "claude_code": "claude mcp add agentsync -- npx -y @dallay/agentsync",
     "codex": "codex mcp add agentsync -- npx -y @dallay/agentsync",
-    "grok_build": null,
+    "grok_build": "grok mcp add agentsync -- npx -y @dallay/agentsync",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"agentsync\":{\"command\":\"npx\",\"args\":[\"-y\",\"@dallay/agentsync\"]}}}",
-    "pi": null
+    "pi": "pi mcp add agentsync -- npx -y @dallay/agentsync"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -301,9 +301,9 @@
    "install": {
     "claude_code": "claude mcp add mcp -- npx -y @dangahagan/weather-mcp",
     "codex": "codex mcp add mcp -- npx -y @dangahagan/weather-mcp",
-    "grok_build": null,
+    "grok_build": "grok mcp add mcp -- npx -y @dangahagan/weather-mcp",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"mcp\":{\"command\":\"npx\",\"args\":[\"-y\",\"@dangahagan/weather-mcp\"]}}}",
-    "pi": null
+    "pi": "pi mcp add mcp -- npx -y @dangahagan/weather-mcp"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -335,9 +335,9 @@
    "install": {
     "claude_code": "claude mcp add mcp -- npx -y @haven_ai/mcp",
     "codex": "codex mcp add mcp -- npx -y @haven_ai/mcp",
-    "grok_build": null,
+    "grok_build": "grok mcp add mcp -- npx -y @haven_ai/mcp",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"mcp\":{\"command\":\"npx\",\"args\":[\"-y\",\"@haven_ai/mcp\"]}}}",
-    "pi": null
+    "pi": "pi mcp add mcp -- npx -y @haven_ai/mcp"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -369,9 +369,9 @@
    "install": {
     "claude_code": "claude mcp add mcp -- npx -y @imgly/codesign-mcp",
     "codex": "codex mcp add mcp -- npx -y @imgly/codesign-mcp",
-    "grok_build": null,
+    "grok_build": "grok mcp add mcp -- npx -y @imgly/codesign-mcp",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"mcp\":{\"command\":\"npx\",\"args\":[\"-y\",\"@imgly/codesign-mcp\"]}}}",
-    "pi": null
+    "pi": "pi mcp add mcp -- npx -y @imgly/codesign-mcp"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -403,9 +403,9 @@
    "install": {
     "claude_code": "claude mcp add devtools -- npx -y @ironbee-ai/devtools",
     "codex": "codex mcp add devtools -- npx -y @ironbee-ai/devtools",
-    "grok_build": null,
+    "grok_build": "grok mcp add devtools -- npx -y @ironbee-ai/devtools",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"devtools\":{\"command\":\"npx\",\"args\":[\"-y\",\"@ironbee-ai/devtools\"]}}}",
-    "pi": null
+    "pi": "pi mcp add devtools -- npx -y @ironbee-ai/devtools"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -437,9 +437,9 @@
    "install": {
     "claude_code": "claude mcp add workiq -- npx -y @microsoft/workiq",
     "codex": "codex mcp add workiq -- npx -y @microsoft/workiq",
-    "grok_build": null,
+    "grok_build": "grok mcp add workiq -- npx -y @microsoft/workiq",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"workiq\":{\"command\":\"npx\",\"args\":[\"-y\",\"@microsoft/workiq\"]}}}",
-    "pi": null
+    "pi": "pi mcp add workiq -- npx -y @microsoft/workiq"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -471,9 +471,9 @@
    "install": {
     "claude_code": "claude mcp add mcp -- npx -y @mozilla/firefox-devtools-mcp",
     "codex": "codex mcp add mcp -- npx -y @mozilla/firefox-devtools-mcp",
-    "grok_build": null,
+    "grok_build": "grok mcp add mcp -- npx -y @mozilla/firefox-devtools-mcp",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"mcp\":{\"command\":\"npx\",\"args\":[\"-y\",\"@mozilla/firefox-devtools-mcp\"]}}}",
-    "pi": null
+    "pi": "pi mcp add mcp -- npx -y @mozilla/firefox-devtools-mcp"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -505,9 +505,9 @@
    "install": {
     "claude_code": "claude mcp add moz -- npx -y @mozilla/firefox-devtools-mcp-moz",
     "codex": "codex mcp add moz -- npx -y @mozilla/firefox-devtools-mcp-moz",
-    "grok_build": null,
+    "grok_build": "grok mcp add moz -- npx -y @mozilla/firefox-devtools-mcp-moz",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"moz\":{\"command\":\"npx\",\"args\":[\"-y\",\"@mozilla/firefox-devtools-mcp-moz\"]}}}",
-    "pi": null
+    "pi": "pi mcp add moz -- npx -y @mozilla/firefox-devtools-mcp-moz"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -539,9 +539,9 @@
    "install": {
     "claude_code": "claude mcp add server -- npx -y @next-ai-drawio/mcp-server",
     "codex": "codex mcp add server -- npx -y @next-ai-drawio/mcp-server",
-    "grok_build": null,
+    "grok_build": "grok mcp add server -- npx -y @next-ai-drawio/mcp-server",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"server\":{\"command\":\"npx\",\"args\":[\"-y\",\"@next-ai-drawio/mcp-server\"]}}}",
-    "pi": null
+    "pi": "pi mcp add server -- npx -y @next-ai-drawio/mcp-server"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -573,9 +573,9 @@
    "install": {
     "claude_code": "claude mcp add server -- npx -y @postman/postman-mcp-server",
     "codex": "codex mcp add server -- npx -y @postman/postman-mcp-server",
-    "grok_build": null,
+    "grok_build": "grok mcp add server -- npx -y @postman/postman-mcp-server",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"server\":{\"command\":\"npx\",\"args\":[\"-y\",\"@postman/postman-mcp-server\"]}}}",
-    "pi": null
+    "pi": "pi mcp add server -- npx -y @postman/postman-mcp-server"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -607,9 +607,9 @@
    "install": {
     "claude_code": "claude mcp add mcp -- npx -y @putervision/state-memory-mcp",
     "codex": "codex mcp add mcp -- npx -y @putervision/state-memory-mcp",
-    "grok_build": null,
+    "grok_build": "grok mcp add mcp -- npx -y @putervision/state-memory-mcp",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"mcp\":{\"command\":\"npx\",\"args\":[\"-y\",\"@putervision/state-memory-mcp\"]}}}",
-    "pi": null
+    "pi": "pi mcp add mcp -- npx -y @putervision/state-memory-mcp"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -641,9 +641,9 @@
    "install": {
     "claude_code": "claude mcp add mcp -- npx -y @putervision/vision-memory-mcp",
     "codex": "codex mcp add mcp -- npx -y @putervision/vision-memory-mcp",
-    "grok_build": null,
+    "grok_build": "grok mcp add mcp -- npx -y @putervision/vision-memory-mcp",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"mcp\":{\"command\":\"npx\",\"args\":[\"-y\",\"@putervision/vision-memory-mcp\"]}}}",
-    "pi": null
+    "pi": "pi mcp add mcp -- npx -y @putervision/vision-memory-mcp"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -675,9 +675,9 @@
    "install": {
     "claude_code": "claude mcp add mcp -- npx -y @putervision/world-model-mcp",
     "codex": "codex mcp add mcp -- npx -y @putervision/world-model-mcp",
-    "grok_build": null,
+    "grok_build": "grok mcp add mcp -- npx -y @putervision/world-model-mcp",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"mcp\":{\"command\":\"npx\",\"args\":[\"-y\",\"@putervision/world-model-mcp\"]}}}",
-    "pi": null
+    "pi": "pi mcp add mcp -- npx -y @putervision/world-model-mcp"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -709,9 +709,9 @@
    "install": {
     "claude_code": "claude mcp add mcp -- npx -y @rate-api/mcp",
     "codex": "codex mcp add mcp -- npx -y @rate-api/mcp",
-    "grok_build": null,
+    "grok_build": "grok mcp add mcp -- npx -y @rate-api/mcp",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"mcp\":{\"command\":\"npx\",\"args\":[\"-y\",\"@rate-api/mcp\"]}}}",
-    "pi": null
+    "pi": "pi mcp add mcp -- npx -y @rate-api/mcp"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -743,9 +743,9 @@
    "install": {
     "claude_code": "claude mcp add server -- npx -y @respira/wordpress-mcp-server",
     "codex": "codex mcp add server -- npx -y @respira/wordpress-mcp-server",
-    "grok_build": null,
+    "grok_build": "grok mcp add server -- npx -y @respira/wordpress-mcp-server",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"server\":{\"command\":\"npx\",\"args\":[\"-y\",\"@respira/wordpress-mcp-server\"]}}}",
-    "pi": null
+    "pi": "pi mcp add server -- npx -y @respira/wordpress-mcp-server"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -777,9 +777,9 @@
    "install": {
     "claude_code": "claude mcp add mcp -- npx -y @rigour-labs/mcp",
     "codex": "codex mcp add mcp -- npx -y @rigour-labs/mcp",
-    "grok_build": null,
+    "grok_build": "grok mcp add mcp -- npx -y @rigour-labs/mcp",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"mcp\":{\"command\":\"npx\",\"args\":[\"-y\",\"@rigour-labs/mcp\"]}}}",
-    "pi": null
+    "pi": "pi mcp add mcp -- npx -y @rigour-labs/mcp"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -811,9 +811,9 @@
    "install": {
     "claude_code": "claude mcp add server -- npx -y @taazkareem/clickup-mcp-server",
     "codex": "codex mcp add server -- npx -y @taazkareem/clickup-mcp-server",
-    "grok_build": null,
+    "grok_build": "grok mcp add server -- npx -y @taazkareem/clickup-mcp-server",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"server\":{\"command\":\"npx\",\"args\":[\"-y\",\"@taazkareem/clickup-mcp-server\"]}}}",
-    "pi": null
+    "pi": "pi mcp add server -- npx -y @taazkareem/clickup-mcp-server"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -845,9 +845,9 @@
    "install": {
     "claude_code": "claude mcp add ctxlint -- npx -y @yawlabs/ctxlint",
     "codex": "codex mcp add ctxlint -- npx -y @yawlabs/ctxlint",
-    "grok_build": null,
+    "grok_build": "grok mcp add ctxlint -- npx -y @yawlabs/ctxlint",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"ctxlint\":{\"command\":\"npx\",\"args\":[\"-y\",\"@yawlabs/ctxlint\"]}}}",
-    "pi": null
+    "pi": "pi mcp add ctxlint -- npx -y @yawlabs/ctxlint"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -879,9 +879,9 @@
    "install": {
     "claude_code": "claude mcp add mcp -- npx -y @yawlabs/postgres-mcp",
     "codex": "codex mcp add mcp -- npx -y @yawlabs/postgres-mcp",
-    "grok_build": null,
+    "grok_build": "grok mcp add mcp -- npx -y @yawlabs/postgres-mcp",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"mcp\":{\"command\":\"npx\",\"args\":[\"-y\",\"@yawlabs/postgres-mcp\"]}}}",
-    "pi": null
+    "pi": "pi mcp add mcp -- npx -y @yawlabs/postgres-mcp"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -913,9 +913,9 @@
    "install": {
     "claude_code": "claude mcp add gitlab -- npx -y @zereight/mcp-gitlab",
     "codex": "codex mcp add gitlab -- npx -y @zereight/mcp-gitlab",
-    "grok_build": null,
+    "grok_build": "grok mcp add gitlab -- npx -y @zereight/mcp-gitlab",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"gitlab\":{\"command\":\"npx\",\"args\":[\"-y\",\"@zereight/mcp-gitlab\"]}}}",
-    "pi": null
+    "pi": "pi mcp add gitlab -- npx -y @zereight/mcp-gitlab"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -1083,9 +1083,9 @@
    "install": {
     "claude_code": "claude mcp add device -- npx -y agent-device",
     "codex": "codex mcp add device -- npx -y agent-device",
-    "grok_build": null,
+    "grok_build": "grok mcp add device -- npx -y agent-device",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"device\":{\"command\":\"npx\",\"args\":[\"-y\",\"agent-device\"]}}}",
-    "pi": null
+    "pi": "pi mcp add device -- npx -y agent-device"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -1322,9 +1322,9 @@
    "install": {
     "claude_code": "claude mcp add mcp -- npx -y aiterm-mcp",
     "codex": "codex mcp add mcp -- npx -y aiterm-mcp",
-    "grok_build": null,
+    "grok_build": "grok mcp add mcp -- npx -y aiterm-mcp",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"mcp\":{\"command\":\"npx\",\"args\":[\"-y\",\"aiterm-mcp\"]}}}",
-    "pi": null
+    "pi": "pi mcp add mcp -- npx -y aiterm-mcp"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -1696,9 +1696,9 @@
    "install": {
     "claude_code": "claude mcp add mcp -- npx -y apple-notes-mcp",
     "codex": "codex mcp add mcp -- npx -y apple-notes-mcp",
-    "grok_build": null,
+    "grok_build": "grok mcp add mcp -- npx -y apple-notes-mcp",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"mcp\":{\"command\":\"npx\",\"args\":[\"-y\",\"apple-notes-mcp\"]}}}",
-    "pi": null
+    "pi": "pi mcp add mcp -- npx -y apple-notes-mcp"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -2581,9 +2581,9 @@
    "install": {
     "claude_code": "claude mcp add blitzstrike -- npx -y blitzstrike",
     "codex": "codex mcp add blitzstrike -- npx -y blitzstrike",
-    "grok_build": null,
+    "grok_build": "grok mcp add blitzstrike -- npx -y blitzstrike",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"blitzstrike\":{\"command\":\"npx\",\"args\":[\"-y\",\"blitzstrike\"]}}}",
-    "pi": null
+    "pi": "pi mcp add blitzstrike -- npx -y blitzstrike"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -2751,9 +2751,9 @@
    "install": {
     "claude_code": "claude mcp add server -- npx -y brightspace-mcp-server",
     "codex": "codex mcp add server -- npx -y brightspace-mcp-server",
-    "grok_build": null,
+    "grok_build": "grok mcp add server -- npx -y brightspace-mcp-server",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"server\":{\"command\":\"npx\",\"args\":[\"-y\",\"brightspace-mcp-server\"]}}}",
-    "pi": null
+    "pi": "pi mcp add server -- npx -y brightspace-mcp-server"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -2820,9 +2820,9 @@
    "install": {
     "claude_code": "claude mcp add mcp -- npx -y browser-devtools-mcp",
     "codex": "codex mcp add mcp -- npx -y browser-devtools-mcp",
-    "grok_build": null,
+    "grok_build": "grok mcp add mcp -- npx -y browser-devtools-mcp",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"mcp\":{\"command\":\"npx\",\"args\":[\"-y\",\"browser-devtools-mcp\"]}}}",
-    "pi": null
+    "pi": "pi mcp add mcp -- npx -y browser-devtools-mcp"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -3637,9 +3637,9 @@
    "install": {
     "claude_code": "claude mcp add claimidx -- uvx --from claimidx[server] claimidx-mcp",
     "codex": "codex mcp add claimidx -- uvx --from claimidx[server] claimidx-mcp",
-    "grok_build": null,
+    "grok_build": "grok mcp add claimidx -- uvx --from claimidx[server] claimidx-mcp",
     "cursor": "~/.cursor/mcp.json: {\"mcpServers\":{\"claimidx\":{\"command\":\"uvx\",\"args\":[\"--from\",\"claimidx[server]\",\"claimidx-mcp\"]}}}",
-    "pi": null
+    "pi": "pi mcp add claimidx -- uvx --from claimidx[server] claimidx-mcp"
    },
    "compatibility": {
     "claude_code": "documented",
@@ -4388,9 +4388,9 @@
    "install": {
     "claude_code": "claude mcp add mcp -- npx -y comfyui-mcp",
     "codex": "codex mcp add mcp -- npx -y comfyui-mcp",
-    "grok_build": null,
+    "grok_build": "grok mcp add mcp -- npx -y comfyui-mcp",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"mcp\":{\"command\":\"npx\",\"args\":[\"-y\",\"comfyui-mcp\"]}}}",
-    "pi": null
+    "pi": "pi mcp add mcp -- npx -y comfyui-mcp"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -5413,9 +5413,9 @@
    "install": {
     "claude_code": "claude mcp add connector -- npx -y dsh-mcp-connector",
     "codex": "codex mcp add connector -- npx -y dsh-mcp-connector",
-    "grok_build": null,
+    "grok_build": "grok mcp add connector -- npx -y dsh-mcp-connector",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"connector\":{\"command\":\"npx\",\"args\":[\"-y\",\"dsh-mcp-connector\"]}}}",
-    "pi": null
+    "pi": "pi mcp add connector -- npx -y dsh-mcp-connector"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -5755,9 +5755,9 @@
    "install": {
     "claude_code": "claude mcp add skill -- npx -y ffmpeg-skill",
     "codex": "codex mcp add skill -- npx -y ffmpeg-skill",
-    "grok_build": null,
+    "grok_build": "grok mcp add skill -- npx -y ffmpeg-skill",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"skill\":{\"command\":\"npx\",\"args\":[\"-y\",\"ffmpeg-skill\"]}}}",
-    "pi": null
+    "pi": "pi mcp add skill -- npx -y ffmpeg-skill"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -6132,9 +6132,9 @@
    "install": {
     "claude_code": "claude mcp add gdharness -- npx -y gdharness",
     "codex": "codex mcp add gdharness -- npx -y gdharness",
-    "grok_build": null,
+    "grok_build": "grok mcp add gdharness -- npx -y gdharness",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"gdharness\":{\"command\":\"npx\",\"args\":[\"-y\",\"gdharness\"]}}}",
-    "pi": null
+    "pi": "pi mcp add gdharness -- npx -y gdharness"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -7324,9 +7324,9 @@
    "install": {
     "claude_code": "claude mcp add kordoc -- npx -y kordoc",
     "codex": "codex mcp add kordoc -- npx -y kordoc",
-    "grok_build": null,
+    "grok_build": "grok mcp add kordoc -- npx -y kordoc",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"kordoc\":{\"command\":\"npx\",\"args\":[\"-y\",\"kordoc\"]}}}",
-    "pi": null
+    "pi": "pi mcp add kordoc -- npx -y kordoc"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -7358,9 +7358,9 @@
    "install": {
     "claude_code": "claude mcp add mcp -- npx -y korean-law-mcp",
     "codex": "codex mcp add mcp -- npx -y korean-law-mcp",
-    "grok_build": null,
+    "grok_build": "grok mcp add mcp -- npx -y korean-law-mcp",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"mcp\":{\"command\":\"npx\",\"args\":[\"-y\",\"korean-law-mcp\"]}}}",
-    "pi": null
+    "pi": "pi mcp add mcp -- npx -y korean-law-mcp"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -8278,9 +8278,9 @@
    "install": {
     "claude_code": "claude mcp add mcp -- npx -y mbox-mcp",
     "codex": "codex mcp add mcp -- npx -y mbox-mcp",
-    "grok_build": null,
+    "grok_build": "grok mcp add mcp -- npx -y mbox-mcp",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"mcp\":{\"command\":\"npx\",\"args\":[\"-y\",\"mbox-mcp\"]}}}",
-    "pi": null
+    "pi": "pi mcp add mcp -- npx -y mbox-mcp"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -8346,9 +8346,9 @@
    "install": {
     "claude_code": "claude mcp add everything -- npx -y @modelcontextprotocol/server-everything",
     "codex": "codex mcp add everything -- npx -y @modelcontextprotocol/server-everything",
-    "grok_build": null,
+    "grok_build": "grok mcp add everything -- npx -y @modelcontextprotocol/server-everything",
     "cursor": "~/.cursor/mcp.json: {\"mcpServers\":{\"everything\":{\"command\":\"npx\",\"args\":[\"-y\", \"@modelcontextprotocol/server-everything\"]}}}",
-    "pi": null
+    "pi": "pi mcp add everything -- npx -y @modelcontextprotocol/server-everything"
    },
    "compatibility": {
     "claude_code": "documented",
@@ -8380,9 +8380,9 @@
    "install": {
     "claude_code": "claude mcp add fetch -- uvx mcp-server-fetch",
     "codex": "codex mcp add fetch -- uvx mcp-server-fetch",
-    "grok_build": null,
+    "grok_build": "grok mcp add fetch -- uvx mcp-server-fetch",
     "cursor": "~/.cursor/mcp.json: {\"mcpServers\":{\"fetch\":{\"command\":\"uvx\",\"args\":[\"mcp-server-fetch\"]}}}",
-    "pi": null
+    "pi": "pi mcp add fetch -- uvx mcp-server-fetch"
    },
    "compatibility": {
     "claude_code": "documented",
@@ -8414,9 +8414,9 @@
    "install": {
     "claude_code": "claude mcp add filesystem -- npx -y @modelcontextprotocol/server-filesystem",
     "codex": "codex mcp add filesystem -- npx -y @modelcontextprotocol/server-filesystem",
-    "grok_build": null,
+    "grok_build": "grok mcp add filesystem -- npx -y @modelcontextprotocol/server-filesystem",
     "cursor": "~/.cursor/mcp.json: {\"mcpServers\":{\"filesystem\":{\"command\":\"npx\",\"args\":[\"-y\", \"@modelcontextprotocol/server-filesystem\"]}}}",
-    "pi": null
+    "pi": "pi mcp add filesystem -- npx -y @modelcontextprotocol/server-filesystem"
    },
    "compatibility": {
     "claude_code": "documented",
@@ -8448,9 +8448,9 @@
    "install": {
     "claude_code": "claude mcp add git -- uvx mcp-server-git",
     "codex": "codex mcp add git -- uvx mcp-server-git",
-    "grok_build": null,
+    "grok_build": "grok mcp add git -- uvx mcp-server-git",
     "cursor": "~/.cursor/mcp.json: {\"mcpServers\":{\"git\":{\"command\":\"uvx\",\"args\":[\"mcp-server-git\"]}}}",
-    "pi": null
+    "pi": "pi mcp add git -- uvx mcp-server-git"
    },
    "compatibility": {
     "claude_code": "documented",
@@ -8482,9 +8482,9 @@
    "install": {
     "claude_code": "claude mcp add memory -- npx -y @modelcontextprotocol/server-memory",
     "codex": "codex mcp add memory -- npx -y @modelcontextprotocol/server-memory",
-    "grok_build": null,
+    "grok_build": "grok mcp add memory -- npx -y @modelcontextprotocol/server-memory",
     "cursor": "~/.cursor/mcp.json: {\"mcpServers\":{\"memory\":{\"command\":\"npx\",\"args\":[\"-y\", \"@modelcontextprotocol/server-memory\"]}}}",
-    "pi": null
+    "pi": "pi mcp add memory -- npx -y @modelcontextprotocol/server-memory"
    },
    "compatibility": {
     "claude_code": "documented",
@@ -8516,9 +8516,9 @@
    "install": {
     "claude_code": "claude mcp add sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking",
     "codex": "codex mcp add sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking",
-    "grok_build": null,
+    "grok_build": "grok mcp add sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking",
     "cursor": "~/.cursor/mcp.json: {\"mcpServers\":{\"sequential-thinking\":{\"command\":\"npx\",\"args\":[\"-y\", \"@modelcontextprotocol/server-sequential-thinking\"]}}}",
-    "pi": null
+    "pi": "pi mcp add sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking"
    },
    "compatibility": {
     "claude_code": "documented",
@@ -8584,9 +8584,9 @@
    "install": {
     "claude_code": "claude mcp add time -- uvx mcp-server-time",
     "codex": "codex mcp add time -- uvx mcp-server-time",
-    "grok_build": null,
+    "grok_build": "grok mcp add time -- uvx mcp-server-time",
     "cursor": "~/.cursor/mcp.json: {\"mcpServers\":{\"time\":{\"command\":\"uvx\",\"args\":[\"mcp-server-time\"]}}}",
-    "pi": null
+    "pi": "pi mcp add time -- uvx mcp-server-time"
    },
    "compatibility": {
     "claude_code": "documented",
@@ -8652,9 +8652,9 @@
    "install": {
     "claude_code": "claude mcp add rag -- npx -y mcp-local-rag",
     "codex": "codex mcp add rag -- npx -y mcp-local-rag",
-    "grok_build": null,
+    "grok_build": "grok mcp add rag -- npx -y mcp-local-rag",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"rag\":{\"command\":\"npx\",\"args\":[\"-y\",\"mcp-local-rag\"]}}}",
-    "pi": null
+    "pi": "pi mcp add rag -- npx -y mcp-local-rag"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -8686,9 +8686,9 @@
    "install": {
     "claude_code": "claude mcp add isolation -- npx -y mcp-tenant-isolation",
     "codex": "codex mcp add isolation -- npx -y mcp-tenant-isolation",
-    "grok_build": null,
+    "grok_build": "grok mcp add isolation -- npx -y mcp-tenant-isolation",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"isolation\":{\"command\":\"npx\",\"args\":[\"-y\",\"mcp-tenant-isolation\"]}}}",
-    "pi": null
+    "pi": "pi mcp add isolation -- npx -y mcp-tenant-isolation"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -9541,9 +9541,9 @@
    "install": {
     "claude_code": "claude mcp add server -- npx -y notion-mcp-server",
     "codex": "codex mcp add server -- npx -y notion-mcp-server",
-    "grok_build": null,
+    "grok_build": "grok mcp add server -- npx -y notion-mcp-server",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"server\":{\"command\":\"npx\",\"args\":[\"-y\",\"notion-mcp-server\"]}}}",
-    "pi": null
+    "pi": "pi mcp add server -- npx -y notion-mcp-server"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -9643,9 +9643,9 @@
    "install": {
     "claude_code": "claude mcp add server -- npx -y obsidian-mcp-server",
     "codex": "codex mcp add server -- npx -y obsidian-mcp-server",
-    "grok_build": null,
+    "grok_build": "grok mcp add server -- npx -y obsidian-mcp-server",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"server\":{\"command\":\"npx\",\"args\":[\"-y\",\"obsidian-mcp-server\"]}}}",
-    "pi": null
+    "pi": "pi mcp add server -- npx -y obsidian-mcp-server"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -11278,9 +11278,9 @@
    "install": {
     "claude_code": "claude mcp add agents -- npx -y rea-agents",
     "codex": "codex mcp add agents -- npx -y rea-agents",
-    "grok_build": null,
+    "grok_build": "grok mcp add agents -- npx -y rea-agents",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"agents\":{\"command\":\"npx\",\"args\":[\"-y\",\"rea-agents\"]}}}",
-    "pi": null
+    "pi": "pi mcp add agents -- npx -y rea-agents"
    },
    "compatibility": {
     "claude_code": "unknown",
@@ -11720,9 +11720,9 @@
    "install": {
     "claude_code": "claude mcp add mcp -- npx -y safari-mcp",
     "codex": "codex mcp add mcp -- npx -y safari-mcp",
-    "grok_build": null,
+    "grok_build": "grok mcp add mcp -- npx -y safari-mcp",
     "cursor": "~/.cursor/mcp.json \u2192 {\"mcpServers\":{\"mcp\":{\"command\":\"npx\",\"args\":[\"-y\",\"safari-mcp\"]}}}",
-    "pi": null
+    "pi": "pi mcp add mcp -- npx -y safari-mcp"
    },
    "compatibility": {
     "claude_code": "unknown",

@@ -1,0 +1,13 @@
+---
+layout: base.njk
+title: "SkillMaxx blog: data from nightly installs of agent add-ons"
+permalink: /blog/
+issueDate: "2026-10-30"
+desc: "Analysis from SkillMaxx's nightly real-install tests of skills, plugins and MCP servers in Claude Code, Codex, Grok Build, Cursor and Pi. Real numbers, dated, with methods."
+---
+<div class="wrap prose"><h1 class="ph">Blog</h1>
+<p class="lead">Every night we install hundreds of agent add-ons in five coding agents and log what happens. These posts are what that data says. Every number is from a dated run, and the raw results live on each <a href="/reports/">daily report</a>.</p>
+{% for p in collections.blog | reverse %}<article class="card static" style="margin:16px 0"><p class="muted">{{ p.data.issueDate }}</p><h2 class="h3"><a href="{{ p.url }}">{{ p.data.title }}</a></h2><p>{{ p.data.desc }}</p></article>{% endfor %}
+<h2>Guides</h2><ul><li><a href="/guides/best-mcp-servers-cursor/">Best MCP servers that actually work in Cursor (live)</a></li><li><a href="/guides/what-installs-in-grok-build/">What installs in Grok Build (live)</a></li><li><a href="/guides/flaky-vs-broken/">Flaky vs broken installs</a></li></ul>
+<p>Method: <a href="/how-we-test/">How we test</a>.</p></div>
+{% include "nlembed.njk" %}

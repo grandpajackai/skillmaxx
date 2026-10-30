@@ -7,8 +7,8 @@ if [ -n "$SBX_KEEP" ]; then H="$SBX_KEEP"; mkdir -p "$H"; else H=$(mktemp -d /tm
 [ -n "$T" ] && [ -d "$T" ] && cp -a "$T/." "$H/"
 AG=/workspace/agents
 exec_bwrap(){ bwrap --ro-bind / / --tmpfs /home --tmpfs /root --tmpfs /workspace --tmpfs /cursor --tmpfs /tmp \
- --ro-bind $AG/node_modules $AG/node_modules --ro-bind $AG/cursorhome/.local $AG/cursorhome/.local --ro-bind-try $AG/codex-mirror $AG/codex-mirror \
- --bind "$H" /home/sbx --setenv HOME /home/sbx --setenv PATH "$AG/node_modules/.bin:$AG/cursorhome/.local/bin:/usr/local/bin:/usr/bin:/bin" \
+ --ro-bind $AG/node_modules $AG/node_modules --ro-bind $AG/cursorhome/.local $AG/cursorhome/.local --ro-bind-try $AG/codex-mirror $AG/codex-mirror --ro-bind-try $AG/node22 $AG/node22 --ro-bind "$(dirname "$(readlink -f "$0")")" /tmp/smx-testing \
+ --bind "$H" /home/sbx --setenv HOME /home/sbx --setenv PATH "$AG/node22/bin:$AG/node_modules/.bin:$AG/cursorhome/.local/bin:/usr/local/bin:/usr/bin:/bin" \
  --unsetenv GH_TOKEN --unsetenv GITHUB_TOKEN --unsetenv ANTHROPIC_API_KEY --unsetenv OPENAI_API_KEY --unsetenv XAI_API_KEY \
  --chdir /home/sbx --dev /dev --proc /proc --unshare-pid --unshare-ipc --die-with-parent "$@"; }
 exec_bwrap bash -c "$*"

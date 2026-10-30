@@ -1,0 +1,36 @@
+---
+layout: base.njk
+title: "Which MCP servers work in Claude Code vs Cursor? 6 nightly runs, 614 installs"
+permalink: /blog/mcp-servers-claude-code-vs-cursor/
+tags: blog
+issueDate: "2026-10-30"
+ogType: article
+desc: "We installed the same 51–52 MCP servers in Claude Code and Cursor six times, Oct 25–30, 2026. On the latest run 30 connected in both, 22 failed in both, and the two agents never disagreed."
+jsonld: {"@context":"https://schema.org","@type":"BlogPosting","headline":"Which MCP servers work in Claude Code vs Cursor? 6 nightly runs, 614 installs","datePublished":"2026-10-30","author":{"@type":"Organization","name":"SkillMaxx"},"publisher":{"@type":"Organization","name":"SkillMaxx"}}
+---
+<div class="wrap prose"><p class="muted">Oct 30, 2026 · Data from runs Oct 25–30, 2026</p>
+<h1 class="ph">Which MCP servers work in Claude Code vs Cursor?</h1>
+<p class="answer">Short answer: if an MCP server connects in one, it connects in the other. Across six runs (Oct 25–30, 2026) we did 614 MCP installs in the two agents. On the Oct 30 run, 30 of 52 servers connected in both Claude Code and Cursor, 22 failed in both, and none passed in one but not the other.</p>
+<h2>How we tested</h2>
+<p>Each server gets its real install in a throwaway sandbox with an empty home folder and no accounts or API keys. In Claude Code we run <code>claude mcp add</code>, then <code>claude mcp list</code> has to say <b>Connected</b>. In Cursor we write <code>~/.cursor/mcp.json</code>, then <code>cursor-agent mcp list</code> has to say <b>ready</b> and list the tools. Both use the same command line for the server, so the agent is the only thing that changes. Full method: <a href="/how-we-test/">How we test</a>.</p>
+<h2>The numbers</h2>
+<div class="tw"><table class="matrix"><thead><tr><th>Run</th><th>Servers</th><th>Claude Code connected</th><th>Cursor connected</th></tr></thead><tbody>
+<tr><th scope="row">Oct 25</th><td>51</td><td>28</td><td>29</td></tr>
+<tr><th scope="row">Oct 26</th><td>51</td><td>29</td><td>27</td></tr>
+<tr><th scope="row">Oct 27</th><td>51</td><td>29</td><td>29</td></tr>
+<tr><th scope="row">Oct 28</th><td>51</td><td>29</td><td>29</td></tr>
+<tr><th scope="row">Oct 29</th><td>51</td><td>29</td><td>29</td></tr>
+<tr><th scope="row">Oct 30</th><td>52</td><td>30</td><td>30</td></tr></tbody></table></div>
+<p>The small gaps on Oct 25 and 26 were one-night failures that passed again the next night: <a href="/skills/cyanheads-pubmed-mcp-server/">cyanheads PubMed</a> in Claude Code, and <a href="/skills/mcp-git/">Git</a> and <a href="/skills/putervision-vision-memory-mcp/">vision-memory</a> in Cursor. That's 3 flips in 614 installs. The other 49 servers gave the same result in both agents every night.</p>
+<h2>Official reference servers vs npm packages</h2>
+<p class="answer">All 7 official reference servers connected in both agents on Oct 30: Everything, Fetch, Filesystem, Git, Memory, Sequential Thinking and Time. Of the 45 community MCP packages from npm, 23 connected and 22 didn't.</p>
+<p>Every one of the 22 failures was "Failed to connect" in both agents. Our sandbox has no keys and runs on Linux, so this list includes servers that need an account or token (for example <a href="/skills/postman-postman-mcp-server/">Postman</a>, <a href="/skills/taazkareem-clickup-mcp-server/">ClickUp</a> and <a href="/skills/zereight-mcp-gitlab/">GitLab</a>) and macOS-only ones (<a href="/skills/apple-notes-mcp/">Apple Notes</a>, <a href="/skills/safari-mcp/">Safari</a>). A fail here means "won't start with zero setup," not "broken." Each server page has the log line from our run.</p>
+<h2>What this means for you</h2>
+<ul><li><b>Switching between Claude Code and Cursor?</b> Your MCP servers will very likely come with you. Agent choice made no difference in our data.</li>
+<li><b>A server fails in both?</b> It's almost always the server's setup (keys, arguments, OS), not your agent. Check its README for env vars.</li>
+<li><b>One failure isn't a verdict.</b> 3 one-night flips over six nights is why we rerun nightly. See <a href="/guides/flaky-vs-broken/">flaky vs broken installs</a>.</li></ul>
+<h2>What's next</h2>
+<p>Starting with the Oct 31 run, the same MCP servers are also tested in Codex, Grok Build and Pi. A trial on Oct 30 with 3 servers (ClaimIDX, cyanheads Git and a weather server) passed in all 5 agents, 15 of 15. We'll publish the five-agent comparison once a few nights of data are in.</p>
+<p class="related-links"><a href="/guides/best-mcp-servers-cursor/">Live list: MCP servers that work in Cursor →</a><a href="/matrix/">Compatibility matrix →</a><a href="/blog/809-of-900-agent-addon-installs/">809 of 900: six nights of tests →</a></p>
+<p class="muted">"Connected" means the server installed, started and passed the agent's health check. We don't call its tools or run prompts.</p></div>
+{% include "nlembed.njk" %}
