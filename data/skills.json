@@ -3628,6 +3628,40 @@
    "notes": "Grok Build status relies on xAI docs saying Grok reads Claude Code plugins automatically."
   },
   {
+   "slug": "claimidx",
+   "name": "Claimidx",
+   "description": "MCP server and CLI: replay-gated index of software failures other agents already solved (ask before retrying, share fixes). Community request via Bluesky, Oct 30 2026.",
+   "source_url": "https://github.com/claimidx/claimidx",
+   "category": "developer tools",
+   "type": "mcp-server",
+   "install": {
+    "claude_code": "claude mcp add claimidx -- uvx --from claimidx[server] claimidx-mcp",
+    "codex": "codex mcp add claimidx -- uvx --from claimidx[server] claimidx-mcp",
+    "grok_build": null,
+    "cursor": "~/.cursor/mcp.json: {\"mcpServers\":{\"claimidx\":{\"command\":\"uvx\",\"args\":[\"--from\",\"claimidx[server]\",\"claimidx-mcp\"]}}}",
+    "pi": null
+   },
+   "compatibility": {
+    "claude_code": "documented",
+    "codex": "documented",
+    "grok_build": "unknown",
+    "cursor": "documented",
+    "pi": "unknown"
+   },
+   "compat_sources": {
+    "claude_code": "https://docs.anthropic.com/en/docs/claude-code/mcp",
+    "codex": "https://developers.openai.com/codex/mcp",
+    "grok_build": null,
+    "cursor": "https://cursor.com/docs/context/mcp",
+    "pi": null
+   },
+   "listings": [
+    "https://github.com/claimidx/claimidx"
+   ],
+   "listing_url": "https://github.com/claimidx/claimidx",
+   "notes": "Community-requested (Bluesky @claimidx.bsky.social). PyPI package claimidx, run via uvx; MCP entrypoint claimidx-mcp."
+  },
+  {
    "slug": "clangd-lsp",
    "name": "Clangd LSP",
    "description": "C/C++ language server (clangd) for code intelligence",
