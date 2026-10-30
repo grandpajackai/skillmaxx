@@ -29,13 +29,17 @@ def cases():
         elif ismcp and mcp_cmd(it): n=mcp_name(it);out.append((it,ag,"",f"claude mcp add {n} -- {mcp_cmd(it)} 2>&1; echo ---LIST; claude mcp list 2>&1",lambda o,n=n: re.search(rf"^{n}:.*Connected",o.split('---LIST')[-1],re.M) is not None))
       elif ag=="grok_build":
         if "plugin-marketplace" in L or "claude-plugins-official" in L: out.append((it,ag,"grok",f"grok plugin install {s} --trust 2>&1; echo ---LIST; grok plugin list 2>&1",grok_ok))
+        elif ismcp and mcp_cmd(it): n=mcp_name(it);out.append((it,ag,"",f"grok mcp add {n} -- {mcp_cmd(it)} 2>&1; echo ---LIST; grok mcp list 2>&1; grok mcp doctor 2>&1",lambda o,n=n: re.search(rf"^\s*{n} \(stdio[\s\S]*?handshake OK",o.split('---LIST')[-1],re.M) is not None and "0 healthy" not in o))
       elif ag=="codex":
         if "openai/plugins" in L: out.append((it,ag,"codex",f"codex plugin add {s}@openai-plugins-mirror 2>&1; echo ---LIST; codex plugin list 2>&1",lambda o,s=s: re.search(rf"^{re.escape(s)}@openai-plugins-mirror\s+(installed|enabled)",o.split('---LIST')[-1],re.M) is not None))
+        elif ismcp and mcp_cmd(it):  # Codex CLI has no MCP health check: verify Codex registers it enabled, then handshake the exact command it would launch
+          n=mcp_name(it);out.append((it,ag,"",f"codex mcp add {n} -- {mcp_cmd(it)} 2>&1; echo ---LIST; codex mcp list 2>&1; python3 /tmp/smx-testing/mcp_probe.py {mcp_cmd(it)} 2>&1",lambda o,n=n: re.search(rf"^{n}\s+.*\benabled\b",o.split('---LIST')[-1],re.M) is not None and "PROBE OK" in o))
       elif ag=="cursor":
         if ismcp and mcp_cmd(it):
           n=mcp_name(it);parts=shlex.split(mcp_cmd(it));cfg=json.dumps({"mcpServers":{n:{"command":parts[0],"args":parts[1:]}}})
           out.append((it,ag,"",f"mkdir -p ~/.cursor && echo {shlex.quote(cfg)} > ~/.cursor/mcp.json && cursor-agent mcp enable {n} 2>&1; echo ---LIST; cursor-agent mcp list 2>&1; cursor-agent mcp list-tools {n} 2>&1 | head -8",lambda o,n=n: re.search(rf"^{n}: ready",o.split('---LIST')[-1],re.M) is not None))
       elif ag=="pi":
+        if ismcp and mcp_cmd(it): n=mcp_name(it);out.append((it,ag,"",f"pi mcp add {n} -- {mcp_cmd(it)} 2>&1; echo ---LIST; pi mcp list 2>&1",lambda o,n=n: re.search(rf"^{n}: connected",o.split('---LIST')[-1],re.M) is not None));continue
         m=re.match(r"https://github\.com/([^/]+)/([^/#?]+?)(?:\.git)?/?$",it.get("source_url") or "")
         if m and it["type"]=="plugin":
           repo=f"github.com/{m[1]}/{m[2]}"
@@ -59,7 +63,7 @@ def run1(c):
   if "---LIST" in o:
     pre=[l for l in o.split("---LIST")[0].splitlines() if l.strip() and not l.startswith("WARNING")][-3:]
     post=[l for l in o.split("---LIST",1)[1].splitlines() if l.strip()]
-    hit=[l for l in post if it["slug"].lower() in l.lower() or mcp_name(it) in l or "SKILL.md" in l or "Status" in l or "ready" in l or "tools" in l.lower()][:4]
+    hit=[l for l in post if it["slug"].lower() in l.lower() or mcp_name(it) in l or "SKILL.md" in l or "Status" in l or "ready" in l or "tools" in l.lower() or "PROBE" in l or "handshake" in l or "enabled" in l][:4]
     lines=pre+["$ verify:"]+(hit or post[-3:])
   return {"slug":it["slug"],"agent":ag,"status":"pass" if ok else "fail","log":"\n".join(lines[-9:])[-700:]}
 if __name__=="__main__":

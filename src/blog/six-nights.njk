@@ -1,0 +1,36 @@
+---
+layout: base.njk
+title: "809 of 900: what 5,404 agent add-on installs in 5 coding agents taught us"
+permalink: /blog/809-of-900-agent-addon-installs/
+tags: blog
+issueDate: "2026-10-30"
+ogType: article
+desc: "Six nightly runs, Oct 25–30, 2026: 5,404 real installs of skills, plugins and MCP servers in Claude Code, Codex, Grok Build, Cursor and Pi. 89% passed. Here's where they fail and how often a failure is just a bad night."
+jsonld: {"@context":"https://schema.org","@type":"BlogPosting","headline":"809 of 900: what 5,404 agent add-on installs in 5 coding agents taught us","datePublished":"2026-10-30","author":{"@type":"Organization","name":"SkillMaxx"},"publisher":{"@type":"Organization","name":"SkillMaxx"}}
+---
+<div class="wrap prose"><p class="muted">Oct 30, 2026 · Data from runs Oct 25–30, 2026</p>
+<h1 class="ph">809 of 900: what 5,404 add-on installs taught us</h1>
+<p class="answer">Over six runs from Oct 25 to Oct 30, 2026, we did 5,404 real installs of agent plugins, skills and MCP servers across Claude Code, Codex, Grok Build, Cursor and Pi. 4,811 passed (89%). The latest run, Oct 30, passed 809 of 900.</p>
+<h2>Pass rate by agent (Oct 30 run)</h2>
+<div class="tw"><table class="matrix"><thead><tr><th>Agent</th><th>Installs</th><th>Passed</th><th>Rate</th><th>What we test there</th></tr></thead><tbody>
+<tr><th scope="row">Codex</th><td>65</td><td>65</td><td>100%</td><td style="white-space:normal">Plugins from the official openai/plugins marketplace</td></tr>
+<tr><th scope="row">Grok Build</th><td>330</td><td>317</td><td>96.1%</td><td style="white-space:normal">xAI and Claude Code marketplace plugins</td></tr>
+<tr><th scope="row">Claude Code</th><td>367</td><td>341</td><td>92.9%</td><td style="white-space:normal">Official marketplace plugins and MCP servers</td></tr>
+<tr><th scope="row">Pi</th><td>86</td><td>56</td><td>65.1%</td><td style="white-space:normal">Plugins with their own GitHub repo, installed as a Pi package</td></tr>
+<tr><th scope="row">Cursor</th><td>52</td><td>30</td><td>57.7%</td><td style="white-space:normal">MCP servers only</td></tr></tbody></table></div>
+<p>Don't read this as a ranking of the agents. Each agent is tested on different add-ons (we only test where an agent supports that kind of add-on), so the rate mostly shows how ready those add-ons are. Cursor's number is low because it only gets MCP servers, and many of those need a key our sandbox doesn't have. Claude Code fails on the <a href="/blog/mcp-servers-claude-code-vs-cursor/">same MCP servers</a>.</p>
+<h2>Where Pi falls short</h2>
+<p>Pi has no plugin installer, so we install each plugin's GitHub repo as a Pi package and check that Pi finds its skills. In 28 of the 30 Pi failures on Oct 30, the repo installed fine but Pi found no skills where it looks for them. Those plugins were built for another agent's layout, not for Pi. The other 2 installed with skills but didn't show up in <code>pi list</code> under the expected name.</p>
+<h2>How stable are results night to night?</h2>
+<p class="answer">Very stable. Of 904 add-on and agent pairs, 770 passed all six nights and 91 failed all six. Only 37 changed result at least once, and 33 of those were in Grok Build.</p>
+<div class="tw"><table class="matrix"><thead><tr><th>Run</th><th>Installs</th><th>Passed</th></tr></thead><tbody>
+<tr><th scope="row">Oct 25</th><td>902</td><td>795</td></tr><tr><th scope="row">Oct 26</th><td>902</td><td>802</td></tr><tr><th scope="row">Oct 27</th><td>900</td><td>806</td></tr><tr><th scope="row">Oct 28</th><td>900</td><td>792</td></tr><tr><th scope="row">Oct 29</th><td>900</td><td>807</td></tr><tr><th scope="row">Oct 30</th><td>900</td><td>809</td></tr></tbody></table></div>
+<p>The dip on Oct 28 was Grok Build: 28 failures that night against 13 the next. Most of the extra ones, such as <a href="/skills/pinecone/">Pinecone</a>, <a href="/skills/discord/">Discord</a> and <a href="/skills/cockroachdb/">CockroachDB</a>, passed again on Oct 29. That's a bad night, not a broken plugin, and it's why a single failed install shouldn't be the final word. More on that in <a href="/guides/flaky-vs-broken/">flaky vs broken installs</a>.</p>
+<h2>Three takeaways</h2>
+<ol><li><b>Most add-ons install fine.</b> 89% across 5,404 installs, with no accounts or keys.</li>
+<li><b>Check where it was built for.</b> The biggest gap is plugins that skip the layout an agent expects (Pi) and MCP servers that need setup before they start (Cursor and Claude Code).</li>
+<li><b>Rerun before you give up.</b> 37 of 904 pairs flipped at least once in six nights.</li></ol>
+<p>Every result above is on that night's <a href="/reports/">daily report</a>, with a log excerpt on each <a href="/#browse">skill page</a>.</p>
+<p class="related-links"><a href="/blog/mcp-servers-claude-code-vs-cursor/">MCP servers: Claude Code vs Cursor →</a><a href="/guides/what-installs-in-grok-build/">What installs in Grok Build →</a><a href="/how-we-test/">How we test →</a></p>
+<p class="muted">"Pass" means installed and loaded (or connected, for MCP). We don't run prompts.</p></div>
+{% include "nlembed.njk" %}

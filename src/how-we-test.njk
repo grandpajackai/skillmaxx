@@ -15,7 +15,8 @@ desc: "SkillMaxx runs the real install of every skill, plugin and MCP server in 
 <div class="tw"><table class="matrix"><thead><tr><th>Agent</th><th>Installs</th><th>Passed</th><th>Failed</th></tr></thead><tbody>
 {% for a in site.agents %}{% set b = testing.by[a] or {} %}<tr><th scope="row">{{ a|agentName }}</th><td>{{ (b.pass or 0) + (b.fail or 0) }}</td><td class="tok">{{ b.pass or 0 }}</td><td>{{ b.fail or 0 }}</td></tr>{% endfor %}</tbody></table></div>
 <h2>Honest limits</h2><ul>
-<li><b>Tested only where supported.</b> An add-on is only tested in agents that support that kind of add-on. That's why it's {{ testing.total }} tests across {{ testing.addons }} add-ons, not 5 × everything. Cursor's CLI has no plugin installer, so Cursor only gets MCP servers; Pi has no MCP.</li>
+<li><b>Tested only where supported.</b> An add-on is only tested in agents that support that kind of add-on. That's why it's {{ testing.total }} tests across {{ testing.addons }} add-ons, not 5 × everything. Cursor's CLI has no plugin installer, so Cursor only gets MCP servers. MCP servers are tested in all 5 agents.</li>
+<li><b>How each agent checks an MCP server.</b> Claude Code: <code>claude mcp list</code> must say Connected. Cursor: <code>cursor-agent mcp list</code> must say ready. Grok Build: <code>grok mcp doctor</code> must complete the handshake. Pi (0.99+ has built-in MCP): <code>pi mcp list</code> must say connected. Codex is the exception: its CLI has no MCP health check without signing in, so Codex must list the server as enabled, and then our harness does the MCP handshake (initialize + tools/list) with the exact command Codex would launch.</li>
 <li><b>"Pass" means it installs and loads.</b> We don't run your prompts or poke every feature. A pass means you won't get stuck at step one.</li>
 <li><b>No keys, no accounts.</b> Add-ons that need a login or API key often fail in our sandbox and may work fine once you add yours. The log tells you which.</li>
 <li><b>Nights can get missed.</b> If a run fails or is skipped, the dates on the site say so. We never backfill a result we didn't run.</li></ul>
@@ -28,7 +29,7 @@ desc: "SkillMaxx runs the real install of every skill, plugin and MCP server in 
  {q:"How often are SkillMaxx results updated?", a:"The tests re-run nightly, around 2 AM ET. Each skill page shows the date it was last tested, so you always know how fresh a result is."},
  {q:"What does a pass mean?", a:"The agent's real CLI installed the add-on in a clean sandbox with no accounts or API keys and then listed it as installed, enabled or loaded. For MCP servers the health check had to connect. It does not mean every feature was exercised."},
  {q:"Why did an add-on fail?", a:"Usually because it needs an account, API key or extra setup our keyless sandbox doesn't have. The log excerpt on the skill page shows the exact error."},
- {q:"Why isn't every add-on tested in all 5 agents?", a:"We only test where an agent supports that type of add-on. For example, Cursor's CLI only takes MCP servers and Pi has no MCP support."}
+ {q:"Why isn't every add-on tested in all 5 agents?", a:"We only test where an agent supports that type of add-on. For example, Cursor's CLI only takes MCP servers, so plugins aren't tested there. MCP servers are tested in all five."}
 ] %}{% set art = {headline:"How SkillMaxx tests agent skills, plugins and MCP servers", description:"Nightly real-install tests in Claude Code, Codex, Grok Build, Cursor and Pi."} %}
 {% include "faq.njk" %}
 </div>
