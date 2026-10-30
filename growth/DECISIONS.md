@@ -79,3 +79,8 @@
 40. **Email pacing (refines #32):** outreach emails are spread naturally through the business day (about 8:30/9 AM–7 PM ET), not one every few minutes, and stay capped by the 10 → 20 → 30/day ramp to protect the 2-week-old domain. Contact-form outreach stays unlimited. (Oct 29 note: background senders must check the full window before every send; see STATUS open issues.)
 41. **Every sponsor reply gets a quick, very personal answer**, including "not interested". Decliners get a warm, no-pitch note inviting them to follow SkillMaxx on X (@SkillMaxxAI) and Bluesky (skillmaxx.bsky.social), SkillMaxx follows them back, and a friendly re-approach once SkillMaxx has a bigger following.
 42. **LinkedIn comment picks** are posted as the **SkillMaxx AI company page**, not Brandon's personal profile. Every pick reminds him to choose the page in the "Commenting as" picker in the LinkedIn app, or switch to the page first from the profile photo menu.
+
+## 2026-10-29 — unreachable leads (recorded by the Oct 30 nightly)
+43. **"Brandon to reach out" list:** every SkillMaxx lead that can't be emailed or reached by form (call-only, social-only, press-only, blocked/unanswerable forms) goes on a running list for Brandon with its route and blocker. It lives in growth/sponsors/PIPELINE.csv (contact_route call-only / x / linkedin, or a blocker in notes) and the owner dashboard Sales pipeline. These leads never stall outreach: Grok Bot keeps sourcing new leads to hit the daily email and form quotas without waiting on Brandon.
+44. **Outreach wrap-up routine (Oct 29)** was a one-off; it ran 5:35–5:45 PM ET and is now paused/done.
+
