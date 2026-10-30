@@ -1,0 +1,82 @@
+[
+  {
+    "company": "Val Town",
+    "to": "hi@val.town",
+    "source_url": "https://docs.val.town/contact-us/contact-us/",
+    "subject": "your Val Town plugin passes our nightly install tests",
+    "status": "sent",
+    "error": "",
+    "message_id": "<179337416343.1899396.12227420478833686200@gilventures.ai>",
+    "sent_at_et": "2026-10-30 11:29:24 ET"
+  },
+  {
+    "company": "CodSpeed",
+    "to": "contact@codspeed.io",
+    "source_url": "https://codspeed.io/",
+    "subject": "your CodSpeed plugin passes our nightly install tests",
+    "status": "sent",
+    "error": "",
+    "message_id": "<179337602887.1899396.14674478025395990517@gilventures.ai>",
+    "sent_at_et": "2026-10-30 12:00:30 ET"
+  },
+  {
+    "company": "GrowthBook",
+    "to": "hello@growthbook.io",
+    "source_url": "https://docs.growthbook.io/faq",
+    "subject": "GrowthBook in our Testing category?",
+    "status": "sent",
+    "error": "",
+    "message_id": "<179337735739.1899396.10082618200497652860@gilventures.ai>",
+    "sent_at_et": "2026-10-30 12:22:38 ET"
+  },
+  {
+    "company": "Mergify",
+    "to": "sales@mergify.com",
+    "source_url": "https://mergify.com/contact",
+    "subject": "flaky tests: your Mergify plugin and our nightly runs",
+    "status": "sent",
+    "error": "",
+    "message_id": "<179337956753.1899396.11584026133123479089@gilventures.ai>",
+    "sent_at_et": "2026-10-30 12:59:29 ET"
+  },
+  {
+    "company": "Desktop Commander",
+    "to": "team@desktopcommander.app",
+    "source_url": "https://desktopcommander.app/",
+    "subject": "Desktop Commander passes our nightly install tests",
+    "status": "sent",
+    "error": "",
+    "message_id": "<179338457653.1899396.12797005852108200691@gilventures.ai>",
+    "sent_at_et": "2026-10-30 14:22:58 ET"
+  },
+  {
+    "company": "Postman",
+    "to": "info@postman.com",
+    "source_url": "https://www.postman.com/company/contact-us/",
+    "subject": "your Postman plugin passed in 3 agents last night",
+    "status": "sent",
+    "error": "",
+    "message_id": "<179338640144.1899396.7037785474100679119@gilventures.ai>",
+    "sent_at_et": "2026-10-30 14:53:22 ET"
+  },
+  {
+    "company": "Pixeltable",
+    "to": "contact@pixeltable.com",
+    "source_url": "https://www.pixeltable.com/",
+    "subject": "your Pixeltable plugin passes our nightly install tests",
+    "status": "sent",
+    "error": "",
+    "message_id": "<179338770683.1899396.2776559640742744709@gilventures.ai>",
+    "sent_at_et": "2026-10-30 15:15:08 ET"
+  },
+  {
+    "company": "StackHawk",
+    "to": "info@stackhawk.com",
+    "source_url": "https://www.stackhawk.com/contact-us/",
+    "subject": "both StackHawk plugins passed our nightly install tests",
+    "status": "sent",
+    "error": "",
+    "message_id": "<179338953622.1899396.1629137654760836977@gilventures.ai>",
+    "sent_at_et": "2026-10-30 15:45:37 ET"
+  }
+]
