@@ -1,27 +1,27 @@
 [
  {
   "date": "2026-10-31",
-  "run_at": "2026-10-31T02:07-04:00",
+  "run_at": "2026-10-31T02:30-04:00",
   "versions": {
    "claude_code": "2.1.197 (Claude Code)",
    "codex": "codex-cli 0.163.0",
    "grok_build": "grok 1.0.62 (1474f9cbdd91)",
-   "cursor": "Node.js v24.5.0",
+   "cursor": "2026.10.16-e3cb207",
    "pi": "pi 1.4.0"
   },
   "total": 1061,
-  "pass": 861,
+  "pass": 891,
   "addons": 424,
-  "needs_key": 30,
-  "broken": 77,
-  "pending": 93,
+  "needs_key": 35,
+  "broken": 75,
+  "pending": 60,
   "flaky": 2,
-  "retried": 202,
+  "retried": 172,
   "by": {
    "claude_code": {
     "pass": 339,
-    "needs_key": 6,
-    "broken": 20,
+    "needs_key": 7,
+    "broken": 19,
     "pending": 3,
     "total": 368,
     "fail": 29,
@@ -29,43 +29,43 @@
    },
    "codex": {
     "pass": 93,
-    "needs_key": 6,
+    "needs_key": 7,
     "broken": 0,
-    "pending": 19,
+    "pending": 18,
     "total": 118,
     "fail": 25,
     "flaky": 0
    },
    "grok_build": {
     "pass": 342,
-    "needs_key": 6,
+    "needs_key": 7,
     "broken": 13,
-    "pending": 22,
+    "pending": 21,
     "total": 383,
     "fail": 41,
     "flaky": 1
    },
    "cursor": {
-    "pass": 0,
-    "needs_key": 6,
-    "broken": 16,
-    "pending": 31,
+    "pass": 30,
+    "needs_key": 7,
+    "broken": 15,
+    "pending": 1,
     "total": 53,
-    "fail": 53,
+    "fail": 23,
     "flaky": 0
    },
    "pi": {
     "pass": 87,
-    "needs_key": 6,
+    "needs_key": 7,
     "broken": 28,
-    "pending": 18,
+    "pending": 17,
     "total": 139,
     "fail": 52,
     "flaky": 0
    }
   },
-  "fail": 200,
-  "tested": 1031,
+  "fail": 170,
+  "tested": 1026,
   "prev_date": "2026-10-30",
   "prev_pass": 809,
   "prev_total": 900,
@@ -88,12 +88,6 @@
    {
     "slug": "4sh-ui-kit",
     "name": "@4sh/ui-kit",
-    "agent": "cursor",
-    "stars": null
-   },
-   {
-    "slug": "4sh-ui-kit",
-    "name": "@4sh/ui-kit",
     "agent": "grok_build",
     "stars": null
    },
@@ -101,12 +95,6 @@
     "slug": "benborla29-mcp-server-mysql",
     "name": "@benborla29/mcp-server-mysql",
     "agent": "codex",
-    "stars": null
-   },
-   {
-    "slug": "benborla29-mcp-server-mysql",
-    "name": "@benborla29/mcp-server-mysql",
-    "agent": "cursor",
     "stars": null
    },
    {
@@ -122,24 +110,6 @@
     "stars": null
    },
    {
-    "slug": "bitbonsai-mcpvault",
-    "name": "@bitbonsai/mcpvault",
-    "agent": "cursor",
-    "stars": null
-   },
-   {
-    "slug": "cyanheads-git-mcp-server",
-    "name": "@cyanheads/git-mcp-server",
-    "agent": "cursor",
-    "stars": null
-   },
-   {
-    "slug": "cyanheads-pubmed-mcp-server",
-    "name": "@cyanheads/pubmed-mcp-server",
-    "agent": "cursor",
-    "stars": null
-   },
-   {
     "slug": "dallay-agentsync",
     "name": "@dallay/agentsync",
     "agent": "codex",
@@ -154,30 +124,6 @@
    {
     "slug": "dallay-agentsync",
     "name": "@dallay/agentsync",
-    "agent": "pi",
-    "stars": null
-   },
-   {
-    "slug": "dangahagan-weather-mcp",
-    "name": "@dangahagan/weather-mcp",
-    "agent": "cursor",
-    "stars": null
-   },
-   {
-    "slug": "haven_ai-mcp",
-    "name": "@haven_ai/mcp",
-    "agent": "codex",
-    "stars": null
-   },
-   {
-    "slug": "haven_ai-mcp",
-    "name": "@haven_ai/mcp",
-    "agent": "grok_build",
-    "stars": null
-   },
-   {
-    "slug": "haven_ai-mcp",
-    "name": "@haven_ai/mcp",
     "agent": "pi",
     "stars": null
    },
@@ -236,54 +182,6 @@
     "stars": null
    },
    {
-    "slug": "mozilla-firefox-devtools-mcp",
-    "name": "@mozilla/firefox-devtools-mcp",
-    "agent": "cursor",
-    "stars": null
-   },
-   {
-    "slug": "mozilla-firefox-devtools-mcp-moz",
-    "name": "@mozilla/firefox-devtools-mcp-moz",
-    "agent": "cursor",
-    "stars": null
-   },
-   {
-    "slug": "next-ai-drawio-mcp-server",
-    "name": "@next-ai-drawio/mcp-server",
-    "agent": "cursor",
-    "stars": null
-   },
-   {
-    "slug": "putervision-state-memory-mcp",
-    "name": "@putervision/state-memory-mcp",
-    "agent": "cursor",
-    "stars": null
-   },
-   {
-    "slug": "putervision-vision-memory-mcp",
-    "name": "@putervision/vision-memory-mcp",
-    "agent": "cursor",
-    "stars": null
-   },
-   {
-    "slug": "putervision-world-model-mcp",
-    "name": "@putervision/world-model-mcp",
-    "agent": "cursor",
-    "stars": null
-   },
-   {
-    "slug": "rate-api-mcp",
-    "name": "@rate-api/mcp",
-    "agent": "cursor",
-    "stars": null
-   },
-   {
-    "slug": "rigour-labs-mcp",
-    "name": "@rigour-labs/mcp",
-    "agent": "cursor",
-    "stars": null
-   },
-   {
     "slug": "yawlabs-ctxlint",
     "name": "@yawlabs/ctxlint",
     "agent": "codex",
@@ -302,12 +200,6 @@
     "stars": null
    },
    {
-    "slug": "yawlabs-postgres-mcp",
-    "name": "@yawlabs/postgres-mcp",
-    "agent": "cursor",
-    "stars": null
-   },
-   {
     "slug": "agent-device",
     "name": "agent-device",
     "agent": "codex",
@@ -323,12 +215,6 @@
     "slug": "agent-device",
     "name": "agent-device",
     "agent": "pi",
-    "stars": null
-   },
-   {
-    "slug": "aiterm-mcp",
-    "name": "aiterm-mcp",
-    "agent": "cursor",
     "stars": null
    },
    {
@@ -365,30 +251,6 @@
     "slug": "blitzstrike",
     "name": "blitzstrike",
     "agent": "pi",
-    "stars": null
-   },
-   {
-    "slug": "brightspace-mcp-server",
-    "name": "brightspace-mcp-server",
-    "agent": "cursor",
-    "stars": null
-   },
-   {
-    "slug": "browser-devtools-mcp",
-    "name": "browser-devtools-mcp",
-    "agent": "cursor",
-    "stars": null
-   },
-   {
-    "slug": "claimidx",
-    "name": "Claimidx",
-    "agent": "cursor",
-    "stars": 3
-   },
-   {
-    "slug": "comfyui-mcp",
-    "name": "comfyui-mcp",
-    "agent": "cursor",
     "stars": null
    },
    {
@@ -472,32 +334,8 @@
    {
     "slug": "korean-law-mcp",
     "name": "korean-law-mcp",
-    "agent": "cursor",
-    "stars": null
-   },
-   {
-    "slug": "korean-law-mcp",
-    "name": "korean-law-mcp",
     "agent": "grok_build",
     "stars": null
-   },
-   {
-    "slug": "mbox-mcp",
-    "name": "mbox-mcp",
-    "agent": "cursor",
-    "stars": null
-   },
-   {
-    "slug": "mcp-everything",
-    "name": "MCP everything (reference)",
-    "agent": "cursor",
-    "stars": 91709
-   },
-   {
-    "slug": "mcp-fetch",
-    "name": "MCP fetch (reference)",
-    "agent": "cursor",
-    "stars": 91709
    },
    {
     "slug": "mcp-filesystem",
@@ -508,49 +346,13 @@
    {
     "slug": "mcp-filesystem",
     "name": "MCP filesystem (reference)",
-    "agent": "cursor",
-    "stars": 91709
-   },
-   {
-    "slug": "mcp-filesystem",
-    "name": "MCP filesystem (reference)",
     "agent": "grok_build",
-    "stars": 91709
-   },
-   {
-    "slug": "mcp-git",
-    "name": "MCP git (reference)",
-    "agent": "cursor",
-    "stars": 91709
-   },
-   {
-    "slug": "mcp-memory",
-    "name": "MCP memory (reference)",
-    "agent": "cursor",
-    "stars": 91709
-   },
-   {
-    "slug": "mcp-sequential-thinking",
-    "name": "MCP sequential-thinking (reference)",
-    "agent": "cursor",
-    "stars": 91709
-   },
-   {
-    "slug": "mcp-time",
-    "name": "MCP time (reference)",
-    "agent": "cursor",
     "stars": 91709
    },
    {
     "slug": "mcp-local-rag",
     "name": "mcp-local-rag",
     "agent": "claude_code",
-    "stars": null
-   },
-   {
-    "slug": "mcp-local-rag",
-    "name": "mcp-local-rag",
-    "agent": "cursor",
     "stars": null
    },
    {
@@ -667,74 +469,6 @@
   "removed": [],
   "version_changes": [
    {
-    "agent": "cursor",
-    "from": "2026.10.16-e3cb207",
-    "to": "Node.js v24.5.0",
-    "broke": 30,
-    "items": [
-     {
-      "slug": "4sh-ui-kit",
-      "name": "@4sh/ui-kit",
-      "agent": "cursor",
-      "stars": null
-     },
-     {
-      "slug": "benborla29-mcp-server-mysql",
-      "name": "@benborla29/mcp-server-mysql",
-      "agent": "cursor",
-      "stars": null
-     },
-     {
-      "slug": "bitbonsai-mcpvault",
-      "name": "@bitbonsai/mcpvault",
-      "agent": "cursor",
-      "stars": null
-     },
-     {
-      "slug": "cyanheads-git-mcp-server",
-      "name": "@cyanheads/git-mcp-server",
-      "agent": "cursor",
-      "stars": null
-     },
-     {
-      "slug": "cyanheads-pubmed-mcp-server",
-      "name": "@cyanheads/pubmed-mcp-server",
-      "agent": "cursor",
-      "stars": null
-     },
-     {
-      "slug": "dangahagan-weather-mcp",
-      "name": "@dangahagan/weather-mcp",
-      "agent": "cursor",
-      "stars": null
-     },
-     {
-      "slug": "mozilla-firefox-devtools-mcp",
-      "name": "@mozilla/firefox-devtools-mcp",
-      "agent": "cursor",
-      "stars": null
-     },
-     {
-      "slug": "mozilla-firefox-devtools-mcp-moz",
-      "name": "@mozilla/firefox-devtools-mcp-moz",
-      "agent": "cursor",
-      "stars": null
-     },
-     {
-      "slug": "next-ai-drawio-mcp-server",
-      "name": "@next-ai-drawio/mcp-server",
-      "agent": "cursor",
-      "stars": null
-     },
-     {
-      "slug": "putervision-state-memory-mcp",
-      "name": "@putervision/state-memory-mcp",
-      "agent": "cursor",
-      "stars": null
-     }
-    ]
-   },
-   {
     "agent": "pi",
     "from": "pi 0.73.1",
     "to": "pi 1.4.0",
@@ -770,6 +504,36 @@
    {
     "slug": "currents-mcp",
     "name": "@currents/mcp",
+    "agent": "pi",
+    "stars": null
+   },
+   {
+    "slug": "haven_ai-mcp",
+    "name": "@haven_ai/mcp",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "haven_ai-mcp",
+    "name": "@haven_ai/mcp",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "haven_ai-mcp",
+    "name": "@haven_ai/mcp",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "haven_ai-mcp",
+    "name": "@haven_ai/mcp",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "haven_ai-mcp",
+    "name": "@haven_ai/mcp",
     "agent": "pi",
     "stars": null
    },
@@ -934,18 +698,6 @@
    {
     "slug": "dallay-agentsync",
     "name": "@dallay/agentsync",
-    "agent": "cursor",
-    "stars": null
-   },
-   {
-    "slug": "haven_ai-mcp",
-    "name": "@haven_ai/mcp",
-    "agent": "claude_code",
-    "stars": null
-   },
-   {
-    "slug": "haven_ai-mcp",
-    "name": "@haven_ai/mcp",
     "agent": "cursor",
     "stars": null
    },
@@ -1389,16 +1141,18 @@
    }
   ],
   "standout": {
-   "slug": "chrome-devtools-mcp",
-   "name": "Chrome DevTools MCP",
-   "desc": "Control and inspect a live Chrome browser from your coding agent. Record performance traces, analyze network requests, check console messages with source-mapped stack traces, and automate browser acti",
+   "slug": "claimidx",
+   "name": "Claimidx",
+   "desc": "MCP server and CLI: replay-gated index of software failures other agents already solved (ask before retrying, share fixes). Community request via Bluesky, Oct 30 2026.",
    "agents": [
     "claude_code",
+    "codex",
     "grok_build",
+    "cursor",
     "pi"
    ],
-   "why": "fixed after failing 2+ nights",
-   "stars": 54519
+   "why": "new tonight",
+   "stars": 3
   }
  },
  {

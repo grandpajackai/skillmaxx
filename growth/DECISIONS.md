@@ -84,3 +84,15 @@
 43. **"Brandon to reach out" list:** every SkillMaxx lead that can't be emailed or reached by form (call-only, social-only, press-only, blocked/unanswerable forms) goes on a running list for Brandon with its route and blocker. It lives in growth/sponsors/PIPELINE.csv (contact_route call-only / x / linkedin, or a blocker in notes) and the owner dashboard Sales pipeline. These leads never stall outreach: Grok Bot keeps sourcing new leads to hit the daily email and form quotas without waiting on Brandon.
 44. **Outreach wrap-up routine (Oct 29)** was a one-off; it ran 5:35–5:45 PM ET and is now paused/done.
 
+
+## 2026-10-30 — Brandon's calls (recorded by the Oct 31 nightly)
+45. **Newsletters no longer need Brandon's review.** He approved issues #1 and #2 and trusts Grok Bot to finalize future issues, as long as each adds real developer value with fresh stats. X and Reddit post drafts still need his approval before anything is queued in Buffer; trend posts (#35) and blogs (#38) keep their standing approvals.
+46. **Reddit, Hacker News and Product Hunt are Brandon's.** He posts and comments himself from drafts Grok Bot writes, starting with useful comments in subreddits like r/ClaudeAI and r/LocalLLaMA before sharing any links.
+47. **Tag the companies and tools we test** in Bluesky and Buffer posts wherever possible.
+48. **Bluesky runs fully autonomously:** answer replies (jokes answered wittily, like a person, never mentioning AI), like and reply to relevant builders' posts, follow likely follow-backs and unfollow non-followers after a while, and tag companies we mention. Daily routine "SkillMaxx Bluesky community", 1 PM ET.
+49. **Vendor onboarding / "what are you building" emails** that land in the SkillMaxx inbox (e.g. Tavily, WorkOS) get an autonomous reply: a short SkillMaxx intro plus a soft sponsor mention.
+50. **"Brandon's queue"** goes at the top of the owner dashboard, refreshed daily, with everything for his human time block: X reply links, LinkedIn picks, Reddit comment drafts, reach-out DMs, weekly video scripts and pending reviews. He plans the cadence with the COO bot.
+51. **Real /blog** with in-depth, SEO-friendly posts that carry weight with developers, separate from guides and daily reports (shipped Oct 30, PR #70).
+52. **No Google My Business.** SkillMaxx has no physical address or LLC of its own; it operates under Gil Ventures (registered in Florida; use FL in form state fields).
+53. **Leads:** skip CockroachDB's support-labeled info@ address; reach Cloudflare and Hugging Face by X DM after Brandon engages a post (drafts in BRANDON-OUTREACH.md), not press@.
+54. **Free December newsletter line approved** for the BFCM offer (updates #30). Brandon pinned the X launch post, downgrades Beehiiv himself, and blocks time for human-only tasks (reply sniper links, reach-out list).
