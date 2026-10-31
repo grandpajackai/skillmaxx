@@ -30,6 +30,13 @@
   <img src="https://github.com/user-attachments/assets/f6ff9fae-f33d-4f68-bd54-f3ed4ba6473b" alt="HyperFrames app opening from the Dock: native Mac and Linux app now available" width="800">
 </p>
 
+<p align="center">
+  <b>Download the desktop app:</b>
+  <a href="https://hyperframes.studio/studio/download?os=mac&src=github-readme&utm_source=github&utm_medium=readme">macOS</a> ·
+  <a href="https://hyperframes.studio/studio/download?os=windows&src=github-readme&utm_source=github&utm_medium=readme">Windows</a> ·
+  <a href="https://hyperframes.studio/studio/download?os=deb&src=github-readme&utm_source=github&utm_medium=readme">Linux (.deb)</a>
+</p>
+
 HyperFrames is an open-source framework for turning HTML, CSS, media, and seekable animations into deterministic MP4 videos. Use it locally with the CLI, from AI coding agents with skills, or as the rendering core behind hosted authoring workflows.
 
 Using Claude Code, Codex, Cursor, or another coding agent? Run `npx hyperframes skills update` once, then ask your agent to make a video.
@@ -158,9 +165,4 @@ The output is a `DESIGN.md` superset your whole toolchain can read. Atoms stay s
   </tr>
   <tr>
     <td width="50%" align="center">
-      <a href="https://hyperframes.studio/design/blue-professional"><img src="https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/blue-professional.png" alt="Blue Professional" width="100%"></a>
-      <br><b><a href="https://hyperframes.studio/design/blue-professional">Blue Professional</a></b>
-    </td>
-    <td width="50%" align="center">
-      <a href="https://hyperframes.studio/design/bold-poster"><img src="https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/bold-poster.png" alt="Bold Poster" width="100%"></a>
-      <br><b><a href=
+      <a href="https://hyperframes.studio/design/blue-professional"><img src="https://static.heygen.ai/hyperframes-oss/do

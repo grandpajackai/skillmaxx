@@ -252,6 +252,7 @@ postiz posts:create --json post.json
 - `-s, --date` - Schedule date in ISO 8601 format (REQUIRED)
 - `-t, --type` - Post type: "schedule" or "draft" (default: "schedule")
 - `-m, --media` - Comma-separated media URLs for corresponding `-c`
+- `--alt` - Comma-separated alt texts for the media of the corresponding `-m`, same order (use `--json` with `image[].alt` for alt texts containing commas)
 - `-i, --integrations` - Comma-separated integration IDs (required)
 - `-d, --delay` - Delay between comments in minutes (default: 0)
 - `--settings` - Platform-specific settings as JSON string
@@ -336,6 +337,4 @@ Some platforms (e.g. TikTok) don't return a post ID immediately after publishing
 postiz posts:missing <post-id>
 ```
 
-Returns an array of `{id, url}` items representing recent content from the provider. Returns an empty array if the provider doesn't support this feature.
-
-**Connect a post to its publis
+Returns an array of `{id, url

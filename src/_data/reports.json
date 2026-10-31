@@ -1,5 +1,1407 @@
 [
  {
+  "date": "2026-10-31",
+  "run_at": "2026-10-31T02:07-04:00",
+  "versions": {
+   "claude_code": "2.1.197 (Claude Code)",
+   "codex": "codex-cli 0.163.0",
+   "grok_build": "grok 1.0.62 (1474f9cbdd91)",
+   "cursor": "Node.js v24.5.0",
+   "pi": "pi 1.4.0"
+  },
+  "total": 1061,
+  "pass": 861,
+  "addons": 424,
+  "needs_key": 30,
+  "broken": 77,
+  "pending": 93,
+  "flaky": 2,
+  "retried": 202,
+  "by": {
+   "claude_code": {
+    "pass": 339,
+    "needs_key": 6,
+    "broken": 20,
+    "pending": 3,
+    "total": 368,
+    "fail": 29,
+    "flaky": 1
+   },
+   "codex": {
+    "pass": 93,
+    "needs_key": 6,
+    "broken": 0,
+    "pending": 19,
+    "total": 118,
+    "fail": 25,
+    "flaky": 0
+   },
+   "grok_build": {
+    "pass": 342,
+    "needs_key": 6,
+    "broken": 13,
+    "pending": 22,
+    "total": 383,
+    "fail": 41,
+    "flaky": 1
+   },
+   "cursor": {
+    "pass": 0,
+    "needs_key": 6,
+    "broken": 16,
+    "pending": 31,
+    "total": 53,
+    "fail": 53,
+    "flaky": 0
+   },
+   "pi": {
+    "pass": 87,
+    "needs_key": 6,
+    "broken": 28,
+    "pending": 18,
+    "total": 139,
+    "fail": 52,
+    "flaky": 0
+   }
+  },
+  "fail": 200,
+  "tested": 1031,
+  "prev_date": "2026-10-30",
+  "prev_pass": 809,
+  "prev_total": 900,
+  "broke": [],
+  "fixed": [
+   {
+    "slug": "chrome-devtools",
+    "name": "Chrome DevTools",
+    "agent": "pi",
+    "stars": 54519
+   },
+   {
+    "slug": "chrome-devtools-mcp",
+    "name": "Chrome DevTools MCP",
+    "agent": "pi",
+    "stars": 54519
+   }
+  ],
+  "pending_list": [
+   {
+    "slug": "4sh-ui-kit",
+    "name": "@4sh/ui-kit",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "4sh-ui-kit",
+    "name": "@4sh/ui-kit",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "benborla29-mcp-server-mysql",
+    "name": "@benborla29/mcp-server-mysql",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "benborla29-mcp-server-mysql",
+    "name": "@benborla29/mcp-server-mysql",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "benborla29-mcp-server-mysql",
+    "name": "@benborla29/mcp-server-mysql",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "benborla29-mcp-server-mysql",
+    "name": "@benborla29/mcp-server-mysql",
+    "agent": "pi",
+    "stars": null
+   },
+   {
+    "slug": "bitbonsai-mcpvault",
+    "name": "@bitbonsai/mcpvault",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "cyanheads-git-mcp-server",
+    "name": "@cyanheads/git-mcp-server",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "cyanheads-pubmed-mcp-server",
+    "name": "@cyanheads/pubmed-mcp-server",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "dallay-agentsync",
+    "name": "@dallay/agentsync",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "dallay-agentsync",
+    "name": "@dallay/agentsync",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "dallay-agentsync",
+    "name": "@dallay/agentsync",
+    "agent": "pi",
+    "stars": null
+   },
+   {
+    "slug": "dangahagan-weather-mcp",
+    "name": "@dangahagan/weather-mcp",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "haven_ai-mcp",
+    "name": "@haven_ai/mcp",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "haven_ai-mcp",
+    "name": "@haven_ai/mcp",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "haven_ai-mcp",
+    "name": "@haven_ai/mcp",
+    "agent": "pi",
+    "stars": null
+   },
+   {
+    "slug": "imgly-codesign-mcp",
+    "name": "@imgly/codesign-mcp",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "imgly-codesign-mcp",
+    "name": "@imgly/codesign-mcp",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "imgly-codesign-mcp",
+    "name": "@imgly/codesign-mcp",
+    "agent": "pi",
+    "stars": null
+   },
+   {
+    "slug": "ironbee-ai-devtools",
+    "name": "@ironbee-ai/devtools",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "ironbee-ai-devtools",
+    "name": "@ironbee-ai/devtools",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "ironbee-ai-devtools",
+    "name": "@ironbee-ai/devtools",
+    "agent": "pi",
+    "stars": null
+   },
+   {
+    "slug": "microsoft-workiq",
+    "name": "@microsoft/workiq",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "microsoft-workiq",
+    "name": "@microsoft/workiq",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "microsoft-workiq",
+    "name": "@microsoft/workiq",
+    "agent": "pi",
+    "stars": null
+   },
+   {
+    "slug": "mozilla-firefox-devtools-mcp",
+    "name": "@mozilla/firefox-devtools-mcp",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "mozilla-firefox-devtools-mcp-moz",
+    "name": "@mozilla/firefox-devtools-mcp-moz",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "next-ai-drawio-mcp-server",
+    "name": "@next-ai-drawio/mcp-server",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "putervision-state-memory-mcp",
+    "name": "@putervision/state-memory-mcp",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "putervision-vision-memory-mcp",
+    "name": "@putervision/vision-memory-mcp",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "putervision-world-model-mcp",
+    "name": "@putervision/world-model-mcp",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "rate-api-mcp",
+    "name": "@rate-api/mcp",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "rigour-labs-mcp",
+    "name": "@rigour-labs/mcp",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "yawlabs-ctxlint",
+    "name": "@yawlabs/ctxlint",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "yawlabs-ctxlint",
+    "name": "@yawlabs/ctxlint",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "yawlabs-ctxlint",
+    "name": "@yawlabs/ctxlint",
+    "agent": "pi",
+    "stars": null
+   },
+   {
+    "slug": "yawlabs-postgres-mcp",
+    "name": "@yawlabs/postgres-mcp",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "agent-device",
+    "name": "agent-device",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "agent-device",
+    "name": "agent-device",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "agent-device",
+    "name": "agent-device",
+    "agent": "pi",
+    "stars": null
+   },
+   {
+    "slug": "aiterm-mcp",
+    "name": "aiterm-mcp",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "apple-notes-mcp",
+    "name": "apple-notes-mcp",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "apple-notes-mcp",
+    "name": "apple-notes-mcp",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "apple-notes-mcp",
+    "name": "apple-notes-mcp",
+    "agent": "pi",
+    "stars": null
+   },
+   {
+    "slug": "blitzstrike",
+    "name": "blitzstrike",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "blitzstrike",
+    "name": "blitzstrike",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "blitzstrike",
+    "name": "blitzstrike",
+    "agent": "pi",
+    "stars": null
+   },
+   {
+    "slug": "brightspace-mcp-server",
+    "name": "brightspace-mcp-server",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "browser-devtools-mcp",
+    "name": "browser-devtools-mcp",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "claimidx",
+    "name": "Claimidx",
+    "agent": "cursor",
+    "stars": 3
+   },
+   {
+    "slug": "comfyui-mcp",
+    "name": "comfyui-mcp",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "dsh-mcp-connector",
+    "name": "dsh-mcp-connector",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "dsh-mcp-connector",
+    "name": "dsh-mcp-connector",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "dsh-mcp-connector",
+    "name": "dsh-mcp-connector",
+    "agent": "pi",
+    "stars": null
+   },
+   {
+    "slug": "ffmpeg-skill",
+    "name": "ffmpeg-skill",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "ffmpeg-skill",
+    "name": "ffmpeg-skill",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "ffmpeg-skill",
+    "name": "ffmpeg-skill",
+    "agent": "pi",
+    "stars": null
+   },
+   {
+    "slug": "gdharness",
+    "name": "gdharness",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "gdharness",
+    "name": "gdharness",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "gdharness",
+    "name": "gdharness",
+    "agent": "pi",
+    "stars": null
+   },
+   {
+    "slug": "kordoc",
+    "name": "kordoc",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "kordoc",
+    "name": "kordoc",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "kordoc",
+    "name": "kordoc",
+    "agent": "pi",
+    "stars": null
+   },
+   {
+    "slug": "korean-law-mcp",
+    "name": "korean-law-mcp",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "korean-law-mcp",
+    "name": "korean-law-mcp",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "korean-law-mcp",
+    "name": "korean-law-mcp",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "mbox-mcp",
+    "name": "mbox-mcp",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "mcp-everything",
+    "name": "MCP everything (reference)",
+    "agent": "cursor",
+    "stars": 91709
+   },
+   {
+    "slug": "mcp-fetch",
+    "name": "MCP fetch (reference)",
+    "agent": "cursor",
+    "stars": 91709
+   },
+   {
+    "slug": "mcp-filesystem",
+    "name": "MCP filesystem (reference)",
+    "agent": "codex",
+    "stars": 91709
+   },
+   {
+    "slug": "mcp-filesystem",
+    "name": "MCP filesystem (reference)",
+    "agent": "cursor",
+    "stars": 91709
+   },
+   {
+    "slug": "mcp-filesystem",
+    "name": "MCP filesystem (reference)",
+    "agent": "grok_build",
+    "stars": 91709
+   },
+   {
+    "slug": "mcp-git",
+    "name": "MCP git (reference)",
+    "agent": "cursor",
+    "stars": 91709
+   },
+   {
+    "slug": "mcp-memory",
+    "name": "MCP memory (reference)",
+    "agent": "cursor",
+    "stars": 91709
+   },
+   {
+    "slug": "mcp-sequential-thinking",
+    "name": "MCP sequential-thinking (reference)",
+    "agent": "cursor",
+    "stars": 91709
+   },
+   {
+    "slug": "mcp-time",
+    "name": "MCP time (reference)",
+    "agent": "cursor",
+    "stars": 91709
+   },
+   {
+    "slug": "mcp-local-rag",
+    "name": "mcp-local-rag",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "mcp-local-rag",
+    "name": "mcp-local-rag",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "mcp-local-rag",
+    "name": "mcp-local-rag",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "mcp-tenant-isolation",
+    "name": "mcp-tenant-isolation",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "mcp-tenant-isolation",
+    "name": "mcp-tenant-isolation",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "mcp-tenant-isolation",
+    "name": "mcp-tenant-isolation",
+    "agent": "pi",
+    "stars": null
+   },
+   {
+    "slug": "notion-mcp-server",
+    "name": "notion-mcp-server",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "notion-mcp-server",
+    "name": "notion-mcp-server",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "notion-mcp-server",
+    "name": "notion-mcp-server",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "notion-mcp-server",
+    "name": "notion-mcp-server",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "notion-mcp-server",
+    "name": "notion-mcp-server",
+    "agent": "pi",
+    "stars": null
+   },
+   {
+    "slug": "rea-agents",
+    "name": "rea-agents",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "rea-agents",
+    "name": "rea-agents",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "rea-agents",
+    "name": "rea-agents",
+    "agent": "pi",
+    "stars": null
+   },
+   {
+    "slug": "safari-mcp",
+    "name": "safari-mcp",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "safari-mcp",
+    "name": "safari-mcp",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "safari-mcp",
+    "name": "safari-mcp",
+    "agent": "pi",
+    "stars": null
+   }
+  ],
+  "flaky_list": [
+   {
+    "slug": "putervision-state-memory-mcp",
+    "name": "@putervision/state-memory-mcp",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "putervision-vision-memory-mcp",
+    "name": "@putervision/vision-memory-mcp",
+    "agent": "claude_code",
+    "stars": null
+   }
+  ],
+  "added": [
+   {
+    "slug": "claimidx",
+    "name": "Claimidx"
+   }
+  ],
+  "removed": [],
+  "version_changes": [
+   {
+    "agent": "cursor",
+    "from": "2026.10.16-e3cb207",
+    "to": "Node.js v24.5.0",
+    "broke": 30,
+    "items": [
+     {
+      "slug": "4sh-ui-kit",
+      "name": "@4sh/ui-kit",
+      "agent": "cursor",
+      "stars": null
+     },
+     {
+      "slug": "benborla29-mcp-server-mysql",
+      "name": "@benborla29/mcp-server-mysql",
+      "agent": "cursor",
+      "stars": null
+     },
+     {
+      "slug": "bitbonsai-mcpvault",
+      "name": "@bitbonsai/mcpvault",
+      "agent": "cursor",
+      "stars": null
+     },
+     {
+      "slug": "cyanheads-git-mcp-server",
+      "name": "@cyanheads/git-mcp-server",
+      "agent": "cursor",
+      "stars": null
+     },
+     {
+      "slug": "cyanheads-pubmed-mcp-server",
+      "name": "@cyanheads/pubmed-mcp-server",
+      "agent": "cursor",
+      "stars": null
+     },
+     {
+      "slug": "dangahagan-weather-mcp",
+      "name": "@dangahagan/weather-mcp",
+      "agent": "cursor",
+      "stars": null
+     },
+     {
+      "slug": "mozilla-firefox-devtools-mcp",
+      "name": "@mozilla/firefox-devtools-mcp",
+      "agent": "cursor",
+      "stars": null
+     },
+     {
+      "slug": "mozilla-firefox-devtools-mcp-moz",
+      "name": "@mozilla/firefox-devtools-mcp-moz",
+      "agent": "cursor",
+      "stars": null
+     },
+     {
+      "slug": "next-ai-drawio-mcp-server",
+      "name": "@next-ai-drawio/mcp-server",
+      "agent": "cursor",
+      "stars": null
+     },
+     {
+      "slug": "putervision-state-memory-mcp",
+      "name": "@putervision/state-memory-mcp",
+      "agent": "cursor",
+      "stars": null
+     }
+    ]
+   },
+   {
+    "agent": "pi",
+    "from": "pi 0.73.1",
+    "to": "pi 1.4.0",
+    "broke": 0,
+    "items": []
+   }
+  ],
+  "needs_key_list": [
+   {
+    "slug": "currents-mcp",
+    "name": "@currents/mcp",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "currents-mcp",
+    "name": "@currents/mcp",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "currents-mcp",
+    "name": "@currents/mcp",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "currents-mcp",
+    "name": "@currents/mcp",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "currents-mcp",
+    "name": "@currents/mcp",
+    "agent": "pi",
+    "stars": null
+   },
+   {
+    "slug": "postman-postman-mcp-server",
+    "name": "@postman/postman-mcp-server",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "postman-postman-mcp-server",
+    "name": "@postman/postman-mcp-server",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "postman-postman-mcp-server",
+    "name": "@postman/postman-mcp-server",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "postman-postman-mcp-server",
+    "name": "@postman/postman-mcp-server",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "postman-postman-mcp-server",
+    "name": "@postman/postman-mcp-server",
+    "agent": "pi",
+    "stars": null
+   },
+   {
+    "slug": "respira-wordpress-mcp-server",
+    "name": "@respira/wordpress-mcp-server",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "respira-wordpress-mcp-server",
+    "name": "@respira/wordpress-mcp-server",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "respira-wordpress-mcp-server",
+    "name": "@respira/wordpress-mcp-server",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "respira-wordpress-mcp-server",
+    "name": "@respira/wordpress-mcp-server",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "respira-wordpress-mcp-server",
+    "name": "@respira/wordpress-mcp-server",
+    "agent": "pi",
+    "stars": null
+   },
+   {
+    "slug": "taazkareem-clickup-mcp-server",
+    "name": "@taazkareem/clickup-mcp-server",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "taazkareem-clickup-mcp-server",
+    "name": "@taazkareem/clickup-mcp-server",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "taazkareem-clickup-mcp-server",
+    "name": "@taazkareem/clickup-mcp-server",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "taazkareem-clickup-mcp-server",
+    "name": "@taazkareem/clickup-mcp-server",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "taazkareem-clickup-mcp-server",
+    "name": "@taazkareem/clickup-mcp-server",
+    "agent": "pi",
+    "stars": null
+   },
+   {
+    "slug": "zereight-mcp-gitlab",
+    "name": "@zereight/mcp-gitlab",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "zereight-mcp-gitlab",
+    "name": "@zereight/mcp-gitlab",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "zereight-mcp-gitlab",
+    "name": "@zereight/mcp-gitlab",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "zereight-mcp-gitlab",
+    "name": "@zereight/mcp-gitlab",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "zereight-mcp-gitlab",
+    "name": "@zereight/mcp-gitlab",
+    "agent": "pi",
+    "stars": null
+   },
+   {
+    "slug": "obsidian-mcp-server",
+    "name": "obsidian-mcp-server",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "obsidian-mcp-server",
+    "name": "obsidian-mcp-server",
+    "agent": "codex",
+    "stars": null
+   },
+   {
+    "slug": "obsidian-mcp-server",
+    "name": "obsidian-mcp-server",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "obsidian-mcp-server",
+    "name": "obsidian-mcp-server",
+    "agent": "grok_build",
+    "stars": null
+   },
+   {
+    "slug": "obsidian-mcp-server",
+    "name": "obsidian-mcp-server",
+    "agent": "pi",
+    "stars": null
+   }
+  ],
+  "broken_list": [
+   {
+    "slug": "dallay-agentsync",
+    "name": "@dallay/agentsync",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "dallay-agentsync",
+    "name": "@dallay/agentsync",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "haven_ai-mcp",
+    "name": "@haven_ai/mcp",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "haven_ai-mcp",
+    "name": "@haven_ai/mcp",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "imgly-codesign-mcp",
+    "name": "@imgly/codesign-mcp",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "imgly-codesign-mcp",
+    "name": "@imgly/codesign-mcp",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "ironbee-ai-devtools",
+    "name": "@ironbee-ai/devtools",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "ironbee-ai-devtools",
+    "name": "@ironbee-ai/devtools",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "microsoft-workiq",
+    "name": "@microsoft/workiq",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "microsoft-workiq",
+    "name": "@microsoft/workiq",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "yawlabs-ctxlint",
+    "name": "@yawlabs/ctxlint",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "yawlabs-ctxlint",
+    "name": "@yawlabs/ctxlint",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "agent-device",
+    "name": "agent-device",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "agent-device",
+    "name": "agent-device",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "amazon-location-service",
+    "name": "Amazon Location Service",
+    "agent": "pi",
+    "stars": 932
+   },
+   {
+    "slug": "amplitude",
+    "name": "Amplitude",
+    "agent": "pi",
+    "stars": 46
+   },
+   {
+    "slug": "apple-notes-mcp",
+    "name": "apple-notes-mcp",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "apple-notes-mcp",
+    "name": "apple-notes-mcp",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "atomic-agents",
+    "name": "Atomic Agents",
+    "agent": "pi",
+    "stars": 6314
+   },
+   {
+    "slug": "aws-amplify",
+    "name": "AWS Amplify",
+    "agent": "pi",
+    "stars": 932
+   },
+   {
+    "slug": "aws-serverless",
+    "name": "AWS Serverless",
+    "agent": "pi",
+    "stars": 932
+   },
+   {
+    "slug": "aws-transform",
+    "name": "AWS Transform",
+    "agent": "pi",
+    "stars": 932
+   },
+   {
+    "slug": "blitzstrike",
+    "name": "blitzstrike",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "blitzstrike",
+    "name": "blitzstrike",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "circleback",
+    "name": "Circleback",
+    "agent": "pi",
+    "stars": 3
+   },
+   {
+    "slug": "clangd-lsp",
+    "name": "Clangd LSP",
+    "agent": "grok_build",
+    "stars": 45472
+   },
+   {
+    "slug": "cloud-sql-mysql",
+    "name": "Cloud SQL Mysql",
+    "agent": "pi",
+    "stars": 12
+   },
+   {
+    "slug": "cloud-sql-sqlserver",
+    "name": "Cloud SQL Sqlserver",
+    "agent": "pi",
+    "stars": 10
+   },
+   {
+    "slug": "code-modernization",
+    "name": "Code Modernization",
+    "agent": "claude_code",
+    "stars": 45472
+   },
+   {
+    "slug": "csharp-lsp",
+    "name": "Csharp LSP",
+    "agent": "grok_build",
+    "stars": 45472
+   },
+   {
+    "slug": "databases-on-aws",
+    "name": "Databases On AWS",
+    "agent": "pi",
+    "stars": 932
+   },
+   {
+    "slug": "dataproc",
+    "name": "Dataproc",
+    "agent": "pi",
+    "stars": 1
+   },
+   {
+    "slug": "dataverse",
+    "name": "Dataverse",
+    "agent": "pi",
+    "stars": 249
+   },
+   {
+    "slug": "deploy-on-aws",
+    "name": "Deploy On AWS",
+    "agent": "pi",
+    "stars": 932
+   },
+   {
+    "slug": "dsh-mcp-connector",
+    "name": "dsh-mcp-connector",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "dsh-mcp-connector",
+    "name": "dsh-mcp-connector",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "ffmpeg-skill",
+    "name": "ffmpeg-skill",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "ffmpeg-skill",
+    "name": "ffmpeg-skill",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "firestore-native",
+    "name": "Firestore Native",
+    "agent": "pi",
+    "stars": 30
+   },
+   {
+    "slug": "gdharness",
+    "name": "gdharness",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "gdharness",
+    "name": "gdharness",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "gopls-lsp",
+    "name": "Gopls LSP",
+    "agent": "grok_build",
+    "stars": 45472
+   },
+   {
+    "slug": "jdtls-lsp",
+    "name": "Jdtls LSP",
+    "agent": "grok_build",
+    "stars": 45472
+   },
+   {
+    "slug": "knowledge-catalog",
+    "name": "Knowledge Catalog",
+    "agent": "pi",
+    "stars": 34
+   },
+   {
+    "slug": "kordoc",
+    "name": "kordoc",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "kordoc",
+    "name": "kordoc",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "kotlin-lsp",
+    "name": "Kotlin LSP",
+    "agent": "grok_build",
+    "stars": 45472
+   },
+   {
+    "slug": "learn-with-coursera",
+    "name": "Learn With Coursera",
+    "agent": "grok_build",
+    "stars": 1
+   },
+   {
+    "slug": "looker",
+    "name": "Looker",
+    "agent": "pi",
+    "stars": 58
+   },
+   {
+    "slug": "lua-lsp",
+    "name": "Lua LSP",
+    "agent": "grok_build",
+    "stars": 45472
+   },
+   {
+    "slug": "mcp-tenant-isolation",
+    "name": "mcp-tenant-isolation",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "mcp-tenant-isolation",
+    "name": "mcp-tenant-isolation",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "migration-to-aws",
+    "name": "Migration To AWS",
+    "agent": "pi",
+    "stars": 25
+   },
+   {
+    "slug": "mlflow",
+    "name": "Mlflow",
+    "agent": "claude_code",
+    "stars": 84
+   },
+   {
+    "slug": "monday-crm",
+    "name": "Monday Crm",
+    "agent": "claude_code",
+    "stars": 436
+   },
+   {
+    "slug": "oracledb",
+    "name": "Oracledb",
+    "agent": "pi",
+    "stars": 12
+   },
+   {
+    "slug": "pagerduty",
+    "name": "Pagerduty",
+    "agent": "pi",
+    "stars": 7
+   },
+   {
+    "slug": "php-lsp",
+    "name": "Php LSP",
+    "agent": "grok_build",
+    "stars": 45472
+   },
+   {
+    "slug": "pyright-lsp",
+    "name": "Pyright LSP",
+    "agent": "grok_build",
+    "stars": 45472
+   },
+   {
+    "slug": "rea-agents",
+    "name": "rea-agents",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "rea-agents",
+    "name": "rea-agents",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "ruby-lsp",
+    "name": "Ruby LSP",
+    "agent": "grok_build",
+    "stars": 45472
+   },
+   {
+    "slug": "rust-analyzer-lsp",
+    "name": "Rust Analyzer LSP",
+    "agent": "grok_build",
+    "stars": 45472
+   },
+   {
+    "slug": "safari-mcp",
+    "name": "safari-mcp",
+    "agent": "claude_code",
+    "stars": null
+   },
+   {
+    "slug": "safari-mcp",
+    "name": "safari-mcp",
+    "agent": "cursor",
+    "stars": null
+   },
+   {
+    "slug": "sagemaker-ai",
+    "name": "Sagemaker AI",
+    "agent": "pi",
+    "stars": 932
+   },
+   {
+    "slug": "salesforce-development",
+    "name": "Salesforce Development",
+    "agent": "claude_code",
+    "stars": 1133
+   },
+   {
+    "slug": "sap-hana-cli",
+    "name": "Sap Hana CLI",
+    "agent": "pi",
+    "stars": 5
+   },
+   {
+    "slug": "save-to-spotify",
+    "name": "Save To Spotify",
+    "agent": "pi",
+    "stars": 407
+   },
+   {
+    "slug": "semgrep",
+    "name": "Semgrep",
+    "agent": "pi",
+    "stars": 19
+   },
+   {
+    "slug": "spanner",
+    "name": "Spanner",
+    "agent": "pi",
+    "stars": 19
+   },
+   {
+    "slug": "swift-lsp",
+    "name": "Swift LSP",
+    "agent": "grok_build",
+    "stars": 45472
+   },
+   {
+    "slug": "typescript-lsp",
+    "name": "TypeScript LSP",
+    "agent": "grok_build",
+    "stars": 45472
+   },
+   {
+    "slug": "ui-theme-designer",
+    "name": "UI Theme Designer",
+    "agent": "pi",
+    "stars": 8
+   },
+   {
+    "slug": "ui5",
+    "name": "Ui5",
+    "agent": "pi",
+    "stars": 45
+   },
+   {
+    "slug": "ui5-modernization",
+    "name": "Ui5 Modernization",
+    "agent": "pi",
+    "stars": 45
+   },
+   {
+    "slug": "ui5-typescript-conversion",
+    "name": "Ui5 Typescript Conversion",
+    "agent": "pi",
+    "stars": 45
+   }
+  ],
+  "standout": {
+   "slug": "chrome-devtools-mcp",
+   "name": "Chrome DevTools MCP",
+   "desc": "Control and inspect a live Chrome browser from your coding agent. Record performance traces, analyze network requests, check console messages with source-mapped stack traces, and automate browser acti",
+   "agents": [
+    "claude_code",
+    "grok_build",
+    "pi"
+   ],
+   "why": "fixed after failing 2+ nights",
+   "stars": 54519
+  }
+ },
+ {
   "date": "2026-10-30",
   "run_at": "2026-10-30T02:08-04:00",
   "versions": {
@@ -89,13 +1491,13 @@
     "slug": "exa",
     "name": "Exa",
     "agent": "claude_code",
-    "stars": 5201
+    "stars": 5204
    },
    {
     "slug": "expo",
     "name": "Expo",
     "agent": "claude_code",
-    "stars": 3762
+    "stars": 3930
    },
    {
     "slug": "monday-crm",
@@ -119,7 +1521,7 @@
     "slug": "postman",
     "name": "Postman",
     "agent": "grok_build",
-    "stars": 27
+    "stars": 28
    },
    {
     "slug": "sap-mdk-server",
@@ -131,7 +1533,7 @@
     "slug": "streaming-skills-plugin",
     "name": "Streaming Skills Plugin",
     "agent": "grok_build",
-    "stars": 59
+    "stars": 60
    }
   ],
   "added": [
@@ -334,7 +1736,7 @@
     "slug": "atomic-agents",
     "name": "Atomic Agents",
     "agent": "pi",
-    "stars": 6313
+    "stars": 6314
    },
    {
     "slug": "aws-amplify",
@@ -370,13 +1772,13 @@
     "slug": "chrome-devtools",
     "name": "Chrome DevTools",
     "agent": "pi",
-    "stars": 54467
+    "stars": 54519
    },
    {
     "slug": "chrome-devtools-mcp",
     "name": "Chrome DevTools MCP",
     "agent": "pi",
-    "stars": 54467
+    "stars": 54519
    },
    {
     "slug": "circleback",
@@ -388,7 +1790,7 @@
     "slug": "clangd-lsp",
     "name": "Clangd LSP",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "cloud-sql-mysql",
@@ -406,13 +1808,13 @@
     "slug": "code-modernization",
     "name": "Code Modernization",
     "agent": "claude_code",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "csharp-lsp",
     "name": "Csharp LSP",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "databases-on-aws",
@@ -484,13 +1886,13 @@
     "slug": "gopls-lsp",
     "name": "Gopls LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "jdtls-lsp",
     "name": "Jdtls LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "knowledge-catalog",
@@ -514,7 +1916,7 @@
     "slug": "kotlin-lsp",
     "name": "Kotlin LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "learn-with-coursera",
@@ -526,13 +1928,13 @@
     "slug": "looker",
     "name": "Looker",
     "agent": "pi",
-    "stars": 57
+    "stars": 58
    },
    {
     "slug": "lua-lsp",
     "name": "Lua LSP",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "mcp-tenant-isolation",
@@ -580,13 +1982,13 @@
     "slug": "php-lsp",
     "name": "Php LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "pyright-lsp",
     "name": "Pyright LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "rea-agents",
@@ -604,13 +2006,13 @@
     "slug": "ruby-lsp",
     "name": "Ruby LSP",
     "agent": "grok_build",
-    "stars": 45342
+    "stars": 45472
    },
    {
     "slug": "rust-analyzer-lsp",
     "name": "Rust Analyzer LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "safari-mcp",
@@ -634,13 +2036,13 @@
     "slug": "salesforce-development",
     "name": "Salesforce Development",
     "agent": "claude_code",
-    "stars": 1132
+    "stars": 1133
    },
    {
     "slug": "sap-hana-cli",
     "name": "Sap Hana CLI",
     "agent": "pi",
-    "stars": 4
+    "stars": 5
    },
    {
     "slug": "save-to-spotify",
@@ -664,19 +2066,19 @@
     "slug": "swift-lsp",
     "name": "Swift LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "typescript-lsp",
     "name": "TypeScript LSP",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "ui-theme-designer",
     "name": "UI Theme Designer",
     "agent": "pi",
-    "stars": 7
+    "stars": 8
    },
    {
     "slug": "ui5",
@@ -799,7 +2201,7 @@
     "slug": "amd-skills",
     "name": "Amd Skills",
     "agent": "grok_build",
-    "stars": 470
+    "stars": 471
    },
    {
     "slug": "amplitude",
@@ -817,7 +2219,7 @@
     "slug": "aws-agents-for-devsecops",
     "name": "AWS Agents For Devsecops",
     "agent": "grok_build",
-    "stars": 3346
+    "stars": 3355
    },
    {
     "slug": "cockroachdb",
@@ -847,7 +2249,7 @@
     "slug": "deepeval",
     "name": "Deepeval",
     "agent": "grok_build",
-    "stars": 19191
+    "stars": 19209
    },
    {
     "slug": "deploy-on-aws",
@@ -859,7 +2261,7 @@
     "slug": "discord",
     "name": "Discord",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "korean-law-mcp",
@@ -919,7 +2321,7 @@
     "slug": "youdotcom-agent-skills",
     "name": "Youdotcom Agent Skills",
     "agent": "grok_build",
-    "stars": 97
+    "stars": 98
    },
    {
     "slug": "zilliz",
@@ -1118,7 +2520,7 @@
     "slug": "atomic-agents",
     "name": "Atomic Agents",
     "agent": "pi",
-    "stars": 6313
+    "stars": 6314
    },
    {
     "slug": "aws-amplify",
@@ -1154,13 +2556,13 @@
     "slug": "chrome-devtools",
     "name": "Chrome DevTools",
     "agent": "pi",
-    "stars": 54467
+    "stars": 54519
    },
    {
     "slug": "chrome-devtools-mcp",
     "name": "Chrome DevTools MCP",
     "agent": "pi",
-    "stars": 54467
+    "stars": 54519
    },
    {
     "slug": "circleback",
@@ -1172,7 +2574,7 @@
     "slug": "clangd-lsp",
     "name": "Clangd LSP",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "cloud-sql-mysql",
@@ -1190,13 +2592,13 @@
     "slug": "code-modernization",
     "name": "Code Modernization",
     "agent": "claude_code",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "csharp-lsp",
     "name": "Csharp LSP",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "databases-on-aws",
@@ -1268,13 +2670,13 @@
     "slug": "gopls-lsp",
     "name": "Gopls LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "jdtls-lsp",
     "name": "Jdtls LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "knowledge-catalog",
@@ -1298,7 +2700,7 @@
     "slug": "kotlin-lsp",
     "name": "Kotlin LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "learn-with-coursera",
@@ -1322,13 +2724,13 @@
     "slug": "looker",
     "name": "Looker",
     "agent": "pi",
-    "stars": 57
+    "stars": 58
    },
    {
     "slug": "lua-lsp",
     "name": "Lua LSP",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "mcp-tenant-isolation",
@@ -1376,13 +2778,13 @@
     "slug": "php-lsp",
     "name": "Php LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "pyright-lsp",
     "name": "Pyright LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "rea-agents",
@@ -1400,13 +2802,13 @@
     "slug": "ruby-lsp",
     "name": "Ruby LSP",
     "agent": "grok_build",
-    "stars": 45342
+    "stars": 45472
    },
    {
     "slug": "rust-analyzer-lsp",
     "name": "Rust Analyzer LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "safari-mcp",
@@ -1430,13 +2832,13 @@
     "slug": "salesforce-development",
     "name": "Salesforce Development",
     "agent": "claude_code",
-    "stars": 1132
+    "stars": 1133
    },
    {
     "slug": "sap-hana-cli",
     "name": "Sap Hana CLI",
     "agent": "pi",
-    "stars": 4
+    "stars": 5
    },
    {
     "slug": "save-to-spotify",
@@ -1460,19 +2862,19 @@
     "slug": "swift-lsp",
     "name": "Swift LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "typescript-lsp",
     "name": "TypeScript LSP",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "ui-theme-designer",
     "name": "UI Theme Designer",
     "agent": "pi",
-    "stars": 7
+    "stars": 8
    },
    {
     "slug": "ui5",
@@ -1504,7 +2906,7 @@
     "pi"
    ],
    "why": null,
-   "stars": 308819
+   "stars": 309563
   }
  },
  {
@@ -1596,7 +2998,7 @@
     "slug": "aws-agents-for-devsecops",
     "name": "AWS Agents For Devsecops",
     "agent": "grok_build",
-    "stars": 3346
+    "stars": 3355
    },
    {
     "slug": "cockroachdb",
@@ -1626,7 +3028,7 @@
     "slug": "discord",
     "name": "Discord",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "leadfeeder",
@@ -1662,7 +3064,7 @@
     "slug": "youdotcom-agent-skills",
     "name": "Youdotcom Agent Skills",
     "agent": "grok_build",
-    "stars": 97
+    "stars": 98
    },
    {
     "slug": "zilliz",
@@ -1712,19 +3114,19 @@
     "slug": "aws-core",
     "name": "AWS Core",
     "agent": "claude_code",
-    "stars": 3346
+    "stars": 3355
    },
    {
     "slug": "aws-startup-advisor",
     "name": "AWS Startup Advisor",
     "agent": "grok_build",
-    "stars": 3346
+    "stars": 3355
    },
    {
     "slug": "azure-sql-developer",
     "name": "Azure SQL Developer",
     "agent": "claude_code",
-    "stars": 22
+    "stars": 23
    },
    {
     "slug": "box",
@@ -1736,7 +3138,7 @@
     "slug": "brightdata-plugin",
     "name": "Brightdata Plugin",
     "agent": "grok_build",
-    "stars": 268
+    "stars": 269
    },
    {
     "slug": "carbone-skill",
@@ -1748,13 +3150,13 @@
     "slug": "chrome-devtools",
     "name": "Chrome DevTools",
     "agent": "grok_build",
-    "stars": 54467
+    "stars": 54519
    },
    {
     "slug": "chrome-devtools-mcp",
     "name": "Chrome DevTools MCP",
     "agent": "grok_build",
-    "stars": 54467
+    "stars": 54519
    },
    {
     "slug": "cloud-sql-mysql",
@@ -1772,7 +3174,7 @@
     "slug": "code-modernization",
     "name": "Code Modernization",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "comfyui-mcp",
@@ -1784,7 +3186,7 @@
     "slug": "commit-commands",
     "name": "Commit Commands",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "crowdstrike-falcon-fusion",
@@ -1802,7 +3204,7 @@
     "slug": "data-engineering",
     "name": "Data Engineering",
     "agent": "grok_build",
-    "stars": 458
+    "stars": 459
    },
    {
     "slug": "dataproc",
@@ -1820,19 +3222,19 @@
     "slug": "deepeval",
     "name": "Deepeval",
     "agent": "claude_code",
-    "stars": 19191
+    "stars": 19209
    },
    {
     "slug": "desktop-commander",
     "name": "Desktop Commander",
     "agent": "claude_code",
-    "stars": 10169
+    "stars": 10176
    },
    {
     "slug": "desktop-commander",
     "name": "Desktop Commander",
     "agent": "grok_build",
-    "stars": 10169
+    "stars": 10176
    },
    {
     "slug": "dominodatalab",
@@ -1850,7 +3252,7 @@
     "slug": "figma",
     "name": "Figma",
     "agent": "grok_build",
-    "stars": 2129
+    "stars": 2131
    },
    {
     "slug": "grafana-assistant",
@@ -1862,19 +3264,19 @@
     "slug": "huggingface-skills",
     "name": "Hugging Face Skills",
     "agent": "grok_build",
-    "stars": 11237
+    "stars": 11240
    },
    {
     "slug": "hyperframes",
     "name": "Hyperframes",
     "agent": "claude_code",
-    "stars": 75593
+    "stars": 76157
    },
    {
     "slug": "imessage",
     "name": "Imessage",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "jfrog",
@@ -1886,7 +3288,7 @@
     "slug": "langfuse",
     "name": "Langfuse",
     "agent": "grok_build",
-    "stars": 321
+    "stars": 322
    },
    {
     "slug": "legalzoom",
@@ -1898,7 +3300,7 @@
     "slug": "lumen",
     "name": "Lumen",
     "agent": "claude_code",
-    "stars": 313
+    "stars": 312
    },
    {
     "slug": "mercadopago",
@@ -1928,13 +3330,13 @@
     "slug": "modern-web-guidance",
     "name": "Modern Web Guidance",
     "agent": "grok_build",
-    "stars": 2581
+    "stars": 2585
    },
    {
     "slug": "netlify",
     "name": "Netlify",
     "agent": "grok_build",
-    "stars": 48
+    "stars": 49
    },
    {
     "slug": "nightvision",
@@ -1976,7 +3378,7 @@
     "slug": "remember",
     "name": "Remember",
     "agent": "grok_build",
-    "stars": 207
+    "stars": 206
    },
    {
     "slug": "sanity",
@@ -1994,7 +3396,7 @@
     "slug": "sap-hana-cli",
     "name": "Sap Hana CLI",
     "agent": "grok_build",
-    "stars": 4
+    "stars": 5
    },
    {
     "slug": "save-to-spotify",
@@ -2012,7 +3414,7 @@
     "slug": "servicenow-sdk",
     "name": "Servicenow SDK",
     "agent": "grok_build",
-    "stars": 138
+    "stars": 139
    },
    {
     "slug": "setup-mcp-agent-analytics",
@@ -2024,7 +3426,7 @@
     "slug": "shopify-ai-toolkit",
     "name": "Shopify AI Toolkit",
     "agent": "grok_build",
-    "stars": 620
+    "stars": 621
    },
    {
     "slug": "sonatype-guide",
@@ -2054,25 +3456,25 @@
     "slug": "telegram",
     "name": "Telegram",
     "agent": "grok_build",
-    "stars": 45342
+    "stars": 45472
    },
    {
     "slug": "unity",
     "name": "Unity",
     "agent": "grok_build",
-    "stars": 582
+    "stars": null
    },
    {
     "slug": "vercel",
     "name": "Vercel",
     "agent": "grok_build",
-    "stars": 319
+    "stars": null
    },
    {
     "slug": "vercel",
     "name": "Vercel",
     "agent": "pi",
-    "stars": 319
+    "stars": null
    },
    {
     "slug": "windsor-ai",
@@ -2271,7 +3673,7 @@
     "slug": "atomic-agents",
     "name": "Atomic Agents",
     "agent": "pi",
-    "stars": 6313
+    "stars": 6314
    },
    {
     "slug": "aws-amplify",
@@ -2307,13 +3709,13 @@
     "slug": "chrome-devtools",
     "name": "Chrome DevTools",
     "agent": "pi",
-    "stars": 54467
+    "stars": 54519
    },
    {
     "slug": "chrome-devtools-mcp",
     "name": "Chrome DevTools MCP",
     "agent": "pi",
-    "stars": 54467
+    "stars": 54519
    },
    {
     "slug": "circleback",
@@ -2325,7 +3727,7 @@
     "slug": "clangd-lsp",
     "name": "Clangd LSP",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "cloud-sql-mysql",
@@ -2343,13 +3745,13 @@
     "slug": "code-modernization",
     "name": "Code Modernization",
     "agent": "claude_code",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "csharp-lsp",
     "name": "Csharp LSP",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "databases-on-aws",
@@ -2421,13 +3823,13 @@
     "slug": "gopls-lsp",
     "name": "Gopls LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "jdtls-lsp",
     "name": "Jdtls LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "knowledge-catalog",
@@ -2451,7 +3853,7 @@
     "slug": "kotlin-lsp",
     "name": "Kotlin LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "learn-with-coursera",
@@ -2475,13 +3877,13 @@
     "slug": "looker",
     "name": "Looker",
     "agent": "pi",
-    "stars": 57
+    "stars": 58
    },
    {
     "slug": "lua-lsp",
     "name": "Lua LSP",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "mcp-tenant-isolation",
@@ -2529,13 +3931,13 @@
     "slug": "php-lsp",
     "name": "Php LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "pyright-lsp",
     "name": "Pyright LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "rea-agents",
@@ -2553,13 +3955,13 @@
     "slug": "ruby-lsp",
     "name": "Ruby LSP",
     "agent": "grok_build",
-    "stars": 45342
+    "stars": 45472
    },
    {
     "slug": "rust-analyzer-lsp",
     "name": "Rust Analyzer LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "safari-mcp",
@@ -2583,13 +3985,13 @@
     "slug": "salesforce-development",
     "name": "Salesforce Development",
     "agent": "claude_code",
-    "stars": 1132
+    "stars": 1133
    },
    {
     "slug": "sap-hana-cli",
     "name": "Sap Hana CLI",
     "agent": "pi",
-    "stars": 4
+    "stars": 5
    },
    {
     "slug": "save-to-spotify",
@@ -2613,19 +4015,19 @@
     "slug": "swift-lsp",
     "name": "Swift LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "typescript-lsp",
     "name": "TypeScript LSP",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "ui-theme-designer",
     "name": "UI Theme Designer",
     "agent": "pi",
-    "stars": 7
+    "stars": 8
    },
    {
     "slug": "ui5",
@@ -2657,7 +4059,7 @@
     "pi"
    ],
    "why": null,
-   "stars": 308819
+   "stars": 309563
   }
  },
  {
@@ -2763,19 +4165,19 @@
     "slug": "expo",
     "name": "Expo",
     "agent": "grok_build",
-    "stars": 3762
+    "stars": 3930
    },
    {
     "slug": "looker",
     "name": "Looker",
     "agent": "grok_build",
-    "stars": 57
+    "stars": 58
    },
    {
     "slug": "mcp-git",
     "name": "MCP git (reference)",
     "agent": "cursor",
-    "stars": 91685
+    "stars": 91709
    },
    {
     "slug": "mergify",
@@ -2805,7 +4207,7 @@
     "slug": "railway",
     "name": "Railway",
     "agent": "grok_build",
-    "stars": 339
+    "stars": 340
    },
    {
     "slug": "slack",
@@ -2829,7 +4231,7 @@
     "slug": "zscaler",
     "name": "Zscaler",
     "agent": "grok_build",
-    "stars": 53
+    "stars": 54
    }
   ],
   "added": [],
@@ -3027,7 +4429,7 @@
     "slug": "atomic-agents",
     "name": "Atomic Agents",
     "agent": "pi",
-    "stars": 6313
+    "stars": 6314
    },
    {
     "slug": "aws-amplify",
@@ -3063,13 +4465,13 @@
     "slug": "chrome-devtools",
     "name": "Chrome DevTools",
     "agent": "pi",
-    "stars": 54467
+    "stars": 54519
    },
    {
     "slug": "chrome-devtools-mcp",
     "name": "Chrome DevTools MCP",
     "agent": "pi",
-    "stars": 54467
+    "stars": 54519
    },
    {
     "slug": "circleback",
@@ -3081,7 +4483,7 @@
     "slug": "clangd-lsp",
     "name": "Clangd LSP",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "cloud-sql-mysql",
@@ -3099,13 +4501,13 @@
     "slug": "code-modernization",
     "name": "Code Modernization",
     "agent": "claude_code",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "csharp-lsp",
     "name": "Csharp LSP",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "databases-on-aws",
@@ -3177,13 +4579,13 @@
     "slug": "gopls-lsp",
     "name": "Gopls LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "jdtls-lsp",
     "name": "Jdtls LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "knowledge-catalog",
@@ -3207,7 +4609,7 @@
     "slug": "kotlin-lsp",
     "name": "Kotlin LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "learn-with-coursera",
@@ -3231,13 +4633,13 @@
     "slug": "looker",
     "name": "Looker",
     "agent": "pi",
-    "stars": 57
+    "stars": 58
    },
    {
     "slug": "lua-lsp",
     "name": "Lua LSP",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "mcp-tenant-isolation",
@@ -3285,13 +4687,13 @@
     "slug": "php-lsp",
     "name": "Php LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "pyright-lsp",
     "name": "Pyright LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "rea-agents",
@@ -3309,13 +4711,13 @@
     "slug": "ruby-lsp",
     "name": "Ruby LSP",
     "agent": "grok_build",
-    "stars": 45342
+    "stars": 45472
    },
    {
     "slug": "rust-analyzer-lsp",
     "name": "Rust Analyzer LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "safari-mcp",
@@ -3339,13 +4741,13 @@
     "slug": "salesforce-development",
     "name": "Salesforce Development",
     "agent": "claude_code",
-    "stars": 1132
+    "stars": 1133
    },
    {
     "slug": "sap-hana-cli",
     "name": "Sap Hana CLI",
     "agent": "pi",
-    "stars": 4
+    "stars": 5
    },
    {
     "slug": "save-to-spotify",
@@ -3369,19 +4771,19 @@
     "slug": "swift-lsp",
     "name": "Swift LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "typescript-lsp",
     "name": "TypeScript LSP",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "ui-theme-designer",
     "name": "UI Theme Designer",
     "agent": "pi",
-    "stars": 7
+    "stars": 8
    },
    {
     "slug": "ui5",
@@ -3413,7 +4815,7 @@
     "pi"
    ],
    "why": null,
-   "stars": 308819
+   "stars": 309563
   }
  },
  {
@@ -3512,13 +4914,13 @@
     "slug": "expo",
     "name": "Expo",
     "agent": "grok_build",
-    "stars": 3762
+    "stars": 3930
    },
    {
     "slug": "mcp-git",
     "name": "MCP git (reference)",
     "agent": "cursor",
-    "stars": 91685
+    "stars": 91709
    },
    {
     "slug": "mergify",
@@ -3574,13 +4976,13 @@
     "slug": "claude-code-setup",
     "name": "Claude Code Setup",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "claude-security",
     "name": "Claude Security",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "clay",
@@ -3598,7 +5000,7 @@
     "slug": "data-engineering",
     "name": "Data Engineering",
     "agent": "grok_build",
-    "stars": 458
+    "stars": 459
    },
    {
     "slug": "pydantic-ai",
@@ -3616,7 +5018,7 @@
     "slug": "ui-theme-designer",
     "name": "UI Theme Designer",
     "agent": "grok_build",
-    "stars": 7
+    "stars": 8
    },
    {
     "slug": "ui5-modernization",
@@ -3821,7 +5223,7 @@
     "slug": "atomic-agents",
     "name": "Atomic Agents",
     "agent": "pi",
-    "stars": 6313
+    "stars": 6314
    },
    {
     "slug": "aws-amplify",
@@ -3857,13 +5259,13 @@
     "slug": "chrome-devtools",
     "name": "Chrome DevTools",
     "agent": "pi",
-    "stars": 54467
+    "stars": 54519
    },
    {
     "slug": "chrome-devtools-mcp",
     "name": "Chrome DevTools MCP",
     "agent": "pi",
-    "stars": 54467
+    "stars": 54519
    },
    {
     "slug": "circleback",
@@ -3875,7 +5277,7 @@
     "slug": "clangd-lsp",
     "name": "Clangd LSP",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "cloud-sql-mysql",
@@ -3893,13 +5295,13 @@
     "slug": "code-modernization",
     "name": "Code Modernization",
     "agent": "claude_code",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "csharp-lsp",
     "name": "Csharp LSP",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "databases-on-aws",
@@ -3971,13 +5373,13 @@
     "slug": "gopls-lsp",
     "name": "Gopls LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "jdtls-lsp",
     "name": "Jdtls LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "knowledge-catalog",
@@ -4001,7 +5403,7 @@
     "slug": "kotlin-lsp",
     "name": "Kotlin LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "learn-with-coursera",
@@ -4025,13 +5427,13 @@
     "slug": "looker",
     "name": "Looker",
     "agent": "pi",
-    "stars": 57
+    "stars": 58
    },
    {
     "slug": "lua-lsp",
     "name": "Lua LSP",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "mcp-tenant-isolation",
@@ -4079,13 +5481,13 @@
     "slug": "php-lsp",
     "name": "Php LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "pyright-lsp",
     "name": "Pyright LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "rea-agents",
@@ -4103,13 +5505,13 @@
     "slug": "ruby-lsp",
     "name": "Ruby LSP",
     "agent": "grok_build",
-    "stars": 45342
+    "stars": 45472
    },
    {
     "slug": "rust-analyzer-lsp",
     "name": "Rust Analyzer LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "safari-mcp",
@@ -4133,13 +5535,13 @@
     "slug": "salesforce-development",
     "name": "Salesforce Development",
     "agent": "claude_code",
-    "stars": 1132
+    "stars": 1133
    },
    {
     "slug": "sap-hana-cli",
     "name": "Sap Hana CLI",
     "agent": "pi",
-    "stars": 4
+    "stars": 5
    },
    {
     "slug": "save-to-spotify",
@@ -4163,19 +5565,19 @@
     "slug": "swift-lsp",
     "name": "Swift LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "typescript-lsp",
     "name": "TypeScript LSP",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "ui-theme-designer",
     "name": "UI Theme Designer",
     "agent": "pi",
-    "stars": 7
+    "stars": 8
    },
    {
     "slug": "ui5",
@@ -4207,7 +5609,7 @@
     "pi"
    ],
    "why": null,
-   "stars": 308819
+   "stars": 309563
   }
  },
  {
@@ -4311,13 +5713,13 @@
     "slug": "claude-code-setup",
     "name": "Claude Code Setup",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "claude-security",
     "name": "Claude Security",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "clay",
@@ -4335,7 +5737,7 @@
     "slug": "data-engineering",
     "name": "Data Engineering",
     "agent": "grok_build",
-    "stars": 458
+    "stars": 459
    },
    {
     "slug": "gdharness",
@@ -4365,7 +5767,7 @@
     "slug": "ui-theme-designer",
     "name": "UI Theme Designer",
     "agent": "grok_build",
-    "stars": 7
+    "stars": 8
    },
    {
     "slug": "ui5-modernization",
@@ -4576,7 +5978,7 @@
     "slug": "atomic-agents",
     "name": "Atomic Agents",
     "agent": "pi",
-    "stars": 6313
+    "stars": 6314
    },
    {
     "slug": "aws-amplify",
@@ -4612,13 +6014,13 @@
     "slug": "chrome-devtools",
     "name": "Chrome DevTools",
     "agent": "pi",
-    "stars": 54467
+    "stars": 54519
    },
    {
     "slug": "chrome-devtools-mcp",
     "name": "Chrome DevTools MCP",
     "agent": "pi",
-    "stars": 54467
+    "stars": 54519
    },
    {
     "slug": "circleback",
@@ -4630,7 +6032,7 @@
     "slug": "clangd-lsp",
     "name": "Clangd LSP",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "cloud-sql-mysql",
@@ -4648,13 +6050,13 @@
     "slug": "code-modernization",
     "name": "Code Modernization",
     "agent": "claude_code",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "csharp-lsp",
     "name": "Csharp LSP",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "databases-on-aws",
@@ -4714,13 +6116,13 @@
     "slug": "gopls-lsp",
     "name": "Gopls LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "jdtls-lsp",
     "name": "Jdtls LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "knowledge-catalog",
@@ -4744,7 +6146,7 @@
     "slug": "kotlin-lsp",
     "name": "Kotlin LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "learn-with-coursera",
@@ -4768,13 +6170,13 @@
     "slug": "looker",
     "name": "Looker",
     "agent": "pi",
-    "stars": 57
+    "stars": 58
    },
    {
     "slug": "lua-lsp",
     "name": "Lua LSP",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "mcp-tenant-isolation",
@@ -4822,13 +6224,13 @@
     "slug": "php-lsp",
     "name": "Php LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "pyright-lsp",
     "name": "Pyright LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "rea-agents",
@@ -4846,13 +6248,13 @@
     "slug": "ruby-lsp",
     "name": "Ruby LSP",
     "agent": "grok_build",
-    "stars": 45342
+    "stars": 45472
    },
    {
     "slug": "rust-analyzer-lsp",
     "name": "Rust Analyzer LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "safari-mcp",
@@ -4876,13 +6278,13 @@
     "slug": "salesforce-development",
     "name": "Salesforce Development",
     "agent": "claude_code",
-    "stars": 1132
+    "stars": 1133
    },
    {
     "slug": "sap-hana-cli",
     "name": "Sap Hana CLI",
     "agent": "pi",
-    "stars": 4
+    "stars": 5
    },
    {
     "slug": "save-to-spotify",
@@ -4906,19 +6308,19 @@
     "slug": "swift-lsp",
     "name": "Swift LSP",
     "agent": "grok_build",
-    "stars": 45341
+    "stars": 45472
    },
    {
     "slug": "typescript-lsp",
     "name": "TypeScript LSP",
     "agent": "grok_build",
-    "stars": 45340
+    "stars": 45472
    },
    {
     "slug": "ui-theme-designer",
     "name": "UI Theme Designer",
     "agent": "pi",
-    "stars": 7
+    "stars": 8
    },
    {
     "slug": "ui5",
@@ -5103,7 +6505,7 @@
     "pi"
    ],
    "why": null,
-   "stars": 308819
+   "stars": 309563
   }
  }
 ]
