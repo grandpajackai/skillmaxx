@@ -162,9 +162,9 @@
 "log": "\u2713 Enabled and approved MCP server: 4shuikit\n$ verify:\n4shuikit: ready\nTools for 4shuikit (4):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: 4shuikit\n$ verify:\n4shuikit: ready\nTools for 4shuikit (4):"
 }
 ],
 "benborla29-mcp-server-mysql|claude_code": [
@@ -246,9 +246,9 @@
 "log": "\u2713 Enabled and approved MCP server: orla29mcpservermysql\n$ verify:\norla29mcpservermysql: ready\nFailed to list tools: Failed to load MCP 'orla29mcpservermysql': MCP error -32000: Connection closed"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: orla29mcpservermysql\n$ verify:\norla29mcpservermysql: ready\nFailed to list tools: Failed to load MCP 'orla29mcpservermysql': MCP error -32000: Connection closed"
 }
 ],
 "currents-mcp|claude_code": [
@@ -330,9 +330,9 @@
 "log": "\u2713 Enabled and approved MCP server: currentsmcp\n$ verify:\ncurrentsmcp: Error: Connection failed\nFailed to list tools: Failed to load MCP 'currentsmcp': MCP error -32000: Connection closed; stderr: [02:09:13.107] ERROR (139): CURRENTS_API_KEY is not set. Add your Currents API key to the environment (for example: export CURRENTS_API_KEY=<your-key>)."
 },
 {
-"at": "2026-10-31T02:07-04:00",
+"at": "2026-10-31T02:30-04:00",
 "status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"log": "\u2713 Enabled and approved MCP server: currentsmcp\n$ verify:\ncurrentsmcp: Error: Connection failed\nFailed to list tools: Failed to load MCP 'currentsmcp': MCP error -32000: Connection closed; stderr: [02:30:40.380] ERROR (141): CURRENTS_API_KEY is not set. Add your Currents API key to the environment (for example: export CURRENTS_API_KEY=<your-key>)."
 }
 ],
 "cyanheads-git-mcp-server|claude_code": [
@@ -414,9 +414,9 @@
 "log": "\u2713 Enabled and approved MCP server: yanheadsgitmcpserver\n$ verify:\nyanheadsgitmcpserver: ready\nTools for yanheadsgitmcpserver (28):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: yanheadsgitmcpserver\n$ verify:\nyanheadsgitmcpserver: ready\nTools for yanheadsgitmcpserver (28):"
 }
 ],
 "cyanheads-pubmed-mcp-server|claude_code": [
@@ -498,9 +498,9 @@
 "log": "\u2713 Enabled and approved MCP server: headspubmedmcpserver\n$ verify:\nheadspubmedmcpserver: ready\nTools for headspubmedmcpserver (5):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: headspubmedmcpserver\n$ verify:\nheadspubmedmcpserver: ready\nTools for headspubmedmcpserver (9):"
 }
 ],
 "dallay-agentsync|claude_code": [
@@ -582,9 +582,9 @@
 "log": "\u2713 Enabled and approved MCP server: dallayagentsync\n$ verify:\ndallayagentsync: Error: Connection failed\nFailed to list tools: Failed to load MCP 'dallayagentsync': MCP error -32000: Connection closed; stderr: Sync AI agent configurations using symbolic links Usage: agentsync [OPTIONS] <COMMAND> Commands: skill Manage installable AI agent skills from skills.sh/other providers plugin Manage repository-owned, vendor-..."
 },
 {
-"at": "2026-10-31T02:07-04:00",
+"at": "2026-10-31T02:30-04:00",
 "status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"log": "\u2713 Enabled and approved MCP server: dallayagentsync\n$ verify:\ndallayagentsync: Error: Connection failed\nFailed to list tools: Failed to load MCP 'dallayagentsync': MCP error -32000: Connection closed; stderr: Sync AI agent configurations using symbolic links Usage: agentsync [OPTIONS] <COMMAND> Commands: skill Manage installable AI agent skills from skills.sh/other providers plugin Manage repository-owned, vendor-..."
 }
 ],
 "dangahagan-weather-mcp|claude_code": [
@@ -666,9 +666,9 @@
 "log": "\u2713 Enabled and approved MCP server: dangahaganweathermcp\n$ verify:\ndangahaganweathermcp: ready\nTools for dangahaganweathermcp (6):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: dangahaganweathermcp\n$ verify:\ndangahaganweathermcp: ready\nTools for dangahaganweathermcp (6):"
 }
 ],
 "haven_ai-mcp|claude_code": [
@@ -750,9 +750,9 @@
 "log": "\u2713 Enabled and approved MCP server: havenaimcp\n$ verify:\nhavenaimcp: Error: Connection failed\nFailed to list tools: Failed to load MCP 'havenaimcp': MCP error -32000: Connection closed; stderr: npm error code ETARGET npm error notarget No matching version found for @haven_ai/mcp@*. npm error notarget In most cases you or one of your dependencies are requesting a package version that doesn't exist. n..."
 },
 {
-"at": "2026-10-31T02:07-04:00",
+"at": "2026-10-31T02:30-04:00",
 "status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"log": "\u2713 Enabled and approved MCP server: havenaimcp\n$ verify:\nhavenaimcp: Error: Connection failed\nFailed to list tools: Failed to load MCP 'havenaimcp': MCP error -32000: Connection closed; stderr: No Haven credentials found. Set HAVEN_CREDENTIALS to a Haven agent credential JSON file, pass --credentials <path>, or set HAVEN_API_KEY and HAVEN_DELEGATE_KEY environment variables."
 }
 ],
 "imgly-codesign-mcp|claude_code": [
@@ -834,9 +834,9 @@
 "log": "\u2713 Enabled and approved MCP server: imglycodesignmcp\n$ verify:\nimglycodesignmcp: Error: Connection failed\nFailed to list tools: Failed to load MCP 'imglycodesignmcp': MCP error -32000: Connection closed; stderr: codesign-mcp: [REDACTED] subcommand. Usage: codesign-mcp <stdio|http|diagnose|login|logout> [flags] Subcommands: stdio MCP server over stdin/stdout. Spawned by hosts like Claude Desktop / Claude Code via thei..."
 },
 {
-"at": "2026-10-31T02:07-04:00",
+"at": "2026-10-31T02:30-04:00",
 "status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"log": "\u2713 Enabled and approved MCP server: imglycodesignmcp\n$ verify:\nimglycodesignmcp: Error: Connection failed\nFailed to list tools: Failed to load MCP 'imglycodesignmcp': MCP error -32000: Connection closed; stderr: codesign-mcp: [REDACTED] subcommand. Usage: codesign-mcp <stdio|system-prompt|diagnose> Subcommands: stdio MCP server over stdin/stdout. Spawned by hosts like Claude Desktop / Claude Code via their `command` ..."
 }
 ],
 "ironbee-ai-devtools|claude_code": [
@@ -918,9 +918,9 @@
 "log": "\u2713 Enabled and approved MCP server: ironbeeaidevtools\n$ verify:\nironbeeaidevtools: Error: Connection failed\nFailed to list tools: Failed to load MCP 'ironbeeaidevtools': MCP error -32000: Connection closed; stderr: npm warn deprecated prebuild-install@7.1.3: No longer maintained. Please contact the author of the relevant native addon; alternatives are available."
 },
 {
-"at": "2026-10-31T02:07-04:00",
+"at": "2026-10-31T02:30-04:00",
 "status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"log": "\u2713 Enabled and approved MCP server: ironbeeaidevtools\n$ verify:\nironbeeaidevtools: Error: Connection failed\nFailed to list tools: Failed to load MCP 'ironbeeaidevtools': MCP error -32000: Connection closed; stderr: npm warn deprecated prebuild-install@7.1.3: No longer maintained. Please contact the author of the relevant native addon; alternatives are available."
 }
 ],
 "lerianstudio-matcher-mcp|claude_code": [
@@ -1066,9 +1066,9 @@
 "log": "\u2713 Enabled and approved MCP server: microsoftworkiq\n$ verify:\nmicrosoftworkiq: Error: Connection failed\nFailed to list tools: Failed to load MCP 'microsoftworkiq': MCP error -32000: Connection closed; stderr: Required command was not provided."
 },
 {
-"at": "2026-10-31T02:07-04:00",
+"at": "2026-10-31T02:30-04:00",
 "status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"log": "\u2713 Enabled and approved MCP server: microsoftworkiq\n$ verify:\nmicrosoftworkiq: Error: Connection failed\nFailed to list tools: Failed to load MCP 'microsoftworkiq': MCP error -32000: Connection closed; stderr: Required command was not provided."
 }
 ],
 "mozilla-firefox-devtools-mcp|claude_code": [
@@ -1150,9 +1150,9 @@
 "log": "\u2713 Enabled and approved MCP server: lafirefoxdevtoolsmcp\n$ verify:\nlafirefoxdevtoolsmcp: ready\nTools for lafirefoxdevtoolsmcp (35):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: lafirefoxdevtoolsmcp\n$ verify:\nlafirefoxdevtoolsmcp: ready\nTools for lafirefoxdevtoolsmcp (35):"
 }
 ],
 "mozilla-firefox-devtools-mcp-moz|claude_code": [
@@ -1234,9 +1234,9 @@
 "log": "\u2713 Enabled and approved MCP server: irefoxdevtoolsmcpmoz\n$ verify:\nirefoxdevtoolsmcpmoz: ready\nTools for irefoxdevtoolsmcpmoz (35):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: irefoxdevtoolsmcpmoz\n$ verify:\nirefoxdevtoolsmcpmoz: ready\nTools for irefoxdevtoolsmcpmoz (35):"
 }
 ],
 "next-ai-drawio-mcp-server|claude_code": [
@@ -1318,9 +1318,9 @@
 "log": "\u2713 Enabled and approved MCP server: extaidrawiomcpserver\n$ verify:\nextaidrawiomcpserver: ready\nTools for extaidrawiomcpserver (16):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: extaidrawiomcpserver\n$ verify:\nextaidrawiomcpserver: ready\nTools for extaidrawiomcpserver (16):"
 }
 ],
 "postman-postman-mcp-server|claude_code": [
@@ -1402,9 +1402,9 @@
 "log": "\u2713 Enabled and approved MCP server: tmanpostmanmcpserver\n$ verify:\ntmanpostmanmcpserver: Error: Connection failed\nFailed to list tools: Failed to load MCP 'tmanpostmanmcpserver': MCP error -32000: Connection closed; stderr: Invalid environment variables for Postman MCP server: { _errors: [], POSTMAN_API_KEY: { _errors: [ 'Required' ] } }"
 },
 {
-"at": "2026-10-31T02:07-04:00",
+"at": "2026-10-31T02:30-04:00",
 "status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"log": "\u2713 Enabled and approved MCP server: tmanpostmanmcpserver\n$ verify:\ntmanpostmanmcpserver: Error: Connection failed\nFailed to list tools: Failed to load MCP 'tmanpostmanmcpserver': MCP error -32000: Connection closed; stderr: Invalid environment variables for Postman MCP server: { _errors: [], POSTMAN_API_KEY: { _errors: [ 'Required' ] } }"
 }
 ],
 "putervision-state-memory-mcp|claude_code": [
@@ -1486,9 +1486,9 @@
 "log": "\u2713 Enabled and approved MCP server: visionstatememorymcp\n$ verify:\nvisionstatememorymcp: ready\nTools for visionstatememorymcp (13):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: visionstatememorymcp\n$ verify:\nvisionstatememorymcp: ready\nTools for visionstatememorymcp (13):"
 }
 ],
 "putervision-vision-memory-mcp|claude_code": [
@@ -1570,9 +1570,9 @@
 "log": "\u2713 Enabled and approved MCP server: isionvisionmemorymcp\n$ verify:\nisionvisionmemorymcp: ready\nTools for isionvisionmemorymcp (15):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: isionvisionmemorymcp\n$ verify:\nisionvisionmemorymcp: ready\nTools for isionvisionmemorymcp (15):"
 }
 ],
 "putervision-world-model-mcp|claude_code": [
@@ -1654,9 +1654,9 @@
 "log": "\u2713 Enabled and approved MCP server: rvisionworldmodelmcp\n$ verify:\nrvisionworldmodelmcp: ready\nTools for rvisionworldmodelmcp (15):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: rvisionworldmodelmcp\n$ verify:\nrvisionworldmodelmcp: ready\nTools for rvisionworldmodelmcp (15):"
 }
 ],
 "rate-api-mcp|claude_code": [
@@ -1738,9 +1738,9 @@
 "log": "\u2713 Enabled and approved MCP server: rateapimcp\n$ verify:\nrateapimcp: ready\nTools for rateapimcp (17):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: rateapimcp\n$ verify:\nrateapimcp: ready\nTools for rateapimcp (17):"
 }
 ],
 "respira-wordpress-mcp-server|claude_code": [
@@ -1822,9 +1822,9 @@
 "log": "\u2713 Enabled and approved MCP server: rawordpressmcpserver\n$ verify:\nrawordpressmcpserver: Error: Connection failed\nFailed to list tools: Failed to load MCP 'rawordpressmcpserver': MCP error -32000: Connection closed; stderr: Warning: the API key for \"My WordPress Site\" is 25 characters. A real one is 44. This looks truncated or partially masked, and calls will fail with respira_invalid_key. No configuration file found. Creating d..."
 },
 {
-"at": "2026-10-31T02:07-04:00",
+"at": "2026-10-31T02:30-04:00",
 "status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"log": "\u2713 Enabled and approved MCP server: rawordpressmcpserver\n$ verify:\nrawordpressmcpserver: Error: Connection failed\nFailed to list tools: Failed to load MCP 'rawordpressmcpserver': MCP error -32000: Connection closed; stderr: Warning: the API key for \"My WordPress Site\" is 25 characters. A real one is 44. This looks truncated or partially masked, and calls will fail with respira_invalid_key. No configuration file found. Creating d..."
 }
 ],
 "rigour-labs-mcp|claude_code": [
@@ -1906,9 +1906,9 @@
 "log": "\u2713 Enabled and approved MCP server: rigourlabsmcp\n$ verify:\nrigourlabsmcp: ready\nTools for rigourlabsmcp (8):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: rigourlabsmcp\n$ verify:\nrigourlabsmcp: ready\nTools for rigourlabsmcp (11):"
 }
 ],
 "taazkareem-clickup-mcp-server|claude_code": [
@@ -1990,9 +1990,9 @@
 "log": "\u2713 Enabled and approved MCP server: reemclickupmcpserver\n$ verify:\nreemclickupmcpserver: Error: Connection failed\nFailed to list tools: Failed to load MCP 'reemclickupmcpserver': MCP error -32000: Connection closed; stderr: FATAL STARTUP ERROR: Missing required environment variables: clickupApiKey, clickupTeamId Error: Missing required environment variables: clickupApiKey, clickupTeamId at validateConfiguration (file:///home/sbx..."
 },
 {
-"at": "2026-10-31T02:07-04:00",
+"at": "2026-10-31T02:30-04:00",
 "status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"log": "\u2713 Enabled and approved MCP server: reemclickupmcpserver\n$ verify:\nreemclickupmcpserver: Error: Connection failed\nFailed to list tools: Failed to load MCP 'reemclickupmcpserver': MCP error -32000: Connection closed; stderr: FATAL STARTUP ERROR: Missing required environment variables: clickupApiKey, clickupTeamId Error: Missing required environment variables: clickupApiKey, clickupTeamId at validateConfiguration (file:///home/sbx..."
 }
 ],
 "yawlabs-ctxlint|claude_code": [
@@ -2074,9 +2074,9 @@
 "log": "\u2713 Enabled and approved MCP server: yawlabsctxlint\n$ verify:\nyawlabsctxlint: Error: Connection failed\nFailed to list tools: Failed to load MCP 'yawlabsctxlint': MCP error -32000: Connection closed; stderr: - Scanning for context files..."
 },
 {
-"at": "2026-10-31T02:07-04:00",
+"at": "2026-10-31T02:30-04:00",
 "status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"log": "\u2713 Enabled and approved MCP server: yawlabsctxlint\n$ verify:\nyawlabsctxlint: Error: Connection failed\nFailed to list tools: Failed to load MCP 'yawlabsctxlint': MCP error -32000: Connection closed; stderr: - Scanning for context files..."
 }
 ],
 "yawlabs-postgres-mcp|claude_code": [
@@ -2158,9 +2158,9 @@
 "log": "\u2713 Enabled and approved MCP server: yawlabspostgresmcp\n$ verify:\nyawlabspostgresmcp: ready\nTools for yawlabspostgresmcp (21):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: yawlabspostgresmcp\n$ verify:\nyawlabspostgresmcp: ready\nTools for yawlabspostgresmcp (23):"
 }
 ],
 "zereight-mcp-gitlab|claude_code": [
@@ -2242,9 +2242,9 @@
 "log": "\u2713 Enabled and approved MCP server: zereightmcpgitlab\n$ verify:\nzereightmcpgitlab: Error: Connection failed\nFailed to list tools: Failed to load MCP 'zereightmcpgitlab': MCP error -32000: Connection closed; stderr: ERROR [02:10:53.189] (138): GITLAB_PERSONAL_ACCESS_TOKEN environment variable is not set INFO [02:10:53.191] (138): Either set GITLAB_PERSONAL_ACCESS_TOKEN (or --token, or G..."
 },
 {
-"at": "2026-10-31T02:07-04:00",
+"at": "2026-10-31T02:30-04:00",
 "status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"log": "\u2713 Enabled and approved MCP server: zereightmcpgitlab\n$ verify:\nzereightmcpgitlab: Error: Connection failed\nFailed to list tools: Failed to load MCP 'zereightmcpgitlab': MCP error -32000: Connection closed; stderr: ERROR [02:31:30.653] (137): GITLAB_PERSONAL_ACCESS_TOKEN environment variable is not set INFO [02:31:30.655] (137): Either set GITLAB_PERSONAL_ACCESS_TOKEN (or --token, or G..."
 }
 ],
 "activecampaign|claude_code": [
@@ -2620,9 +2620,9 @@
 "log": "\u2713 Enabled and approved MCP server: agentdevice\n$ verify:\nagentdevice: Error: Connection failed\nFailed to list tools: Failed to load MCP 'agentdevice': MCP error -32000: Connection closed"
 },
 {
-"at": "2026-10-31T02:07-04:00",
+"at": "2026-10-31T02:30-04:00",
 "status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"log": "\u2713 Enabled and approved MCP server: agentdevice\n$ verify:\nagentdevice: Error: Connection failed\nFailed to list tools: Failed to load MCP 'agentdevice': MCP error -32000: Connection closed"
 }
 ],
 "agentforce-adlc|claude_code": [
@@ -3334,9 +3334,9 @@
 "log": "\u2713 Enabled and approved MCP server: aitermmcp\n$ verify:\naitermmcp: ready\nTools for aitermmcp (19):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: aitermmcp\n$ verify:\naitermmcp: ready\nTools for aitermmcp (19):"
 }
 ],
 "aiven|claude_code": [
@@ -4426,9 +4426,9 @@
 "log": "\u2713 Enabled and approved MCP server: applenotesmcp\n$ verify:\napplenotesmcp: Error: Connection failed\nFailed to list tools: Failed to load MCP 'applenotesmcp': MCP error -32000: Connection closed; stderr: npm error code EBADPLATFORM npm error notsup Unsupported platform for apple-notes-mcp@2.15.16: wanted {\"os\":\"darwin\"} (current: {\"os\":\"linux\"}) npm error notsup Valid os: darwin npm error notsup Actual os: li..."
 },
 {
-"at": "2026-10-31T02:07-04:00",
+"at": "2026-10-31T02:30-04:00",
 "status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"log": "\u2713 Enabled and approved MCP server: applenotesmcp\n$ verify:\napplenotesmcp: Error: Connection failed\nFailed to list tools: Failed to load MCP 'applenotesmcp': MCP error -32000: Connection closed; stderr: npm error code EBADPLATFORM npm error notsup Unsupported platform for apple-notes-mcp@2.15.16: wanted {\"os\":\"darwin\"} (current: {\"os\":\"linux\"}) npm error notsup Valid os: darwin npm error notsup Actual os: li..."
 }
 ],
 "appwrite|claude_code": [
@@ -7240,9 +7240,9 @@
 "log": "\u2713 Enabled and approved MCP server: blitzstrike\n$ verify:\nblitzstrike: Error: Connection failed\nFailed to list tools: Failed to load MCP 'blitzstrike': MCP error -32000: Connection closed"
 },
 {
-"at": "2026-10-31T02:07-04:00",
+"at": "2026-10-31T02:30-04:00",
 "status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"log": "\u2713 Enabled and approved MCP server: blitzstrike\n$ verify:\nblitzstrike: Error: Connection failed\nFailed to list tools: Failed to load MCP 'blitzstrike': MCP error -32000: Connection closed"
 }
 ],
 "boltz|claude_code": [
@@ -7660,9 +7660,9 @@
 "log": "\u2713 Enabled and approved MCP server: brightspacemcpserver\n$ verify:\nbrightspacemcpserver: ready\nTools for brightspacemcpserver (26):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: brightspacemcpserver\n$ verify:\nbrightspacemcpserver: ready\nTools for brightspacemcpserver (27):"
 }
 ],
 "browser-use|claude_code": [
@@ -7828,9 +7828,9 @@
 "log": "\u2713 Enabled and approved MCP server: browserdevtoolsmcp\n$ verify:\nbrowserdevtoolsmcp: ready\nTools for browserdevtoolsmcp (51):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: browserdevtoolsmcp\n$ verify:\nbrowserdevtoolsmcp: ready\nTools for browserdevtoolsmcp (51):"
 }
 ],
 "bruin|grok_build": [
@@ -11684,9 +11684,9 @@
 "log": "\u2713 Enabled and approved MCP server: comfyuimcp\n$ verify:\ncomfyuimcp: ready\nTools for comfyuimcp (41):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: comfyuimcp\n$ verify:\ncomfyuimcp: ready\nTools for comfyuimcp (41):"
 }
 ],
 "commit-commands|claude_code": [
@@ -14666,9 +14666,9 @@
 "log": "\u2713 Enabled and approved MCP server: dshmcpconnector\n$ verify:\ndshmcpconnector: Error: Connection failed\nFailed to list tools: Failed to load MCP 'dshmcpconnector': MCP error -32000: Connection closed; stderr: npm error could not determine executable to run npm error A complete log of this run can be found in: /home/sbx/.npm/_logs/2026-10-30T06_12_36_987Z-debug-0.log"
 },
 {
-"at": "2026-10-31T02:07-04:00",
+"at": "2026-10-31T02:30-04:00",
 "status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"log": "\u2713 Enabled and approved MCP server: dshmcpconnector\n$ verify:\ndshmcpconnector: Error: Connection failed\nFailed to list tools: Failed to load MCP 'dshmcpconnector': MCP error -32000: Connection closed; stderr: npm error could not determine executable to run npm error A complete log of this run can be found in: /home/sbx/.npm/_logs/2026-10-31T06_31_47_131Z-debug-0.log"
 }
 ],
 "duckdb-skills|claude_code": [
@@ -15548,9 +15548,9 @@
 "log": "\u2713 Enabled and approved MCP server: ffmpegskill\n$ verify:\nffmpegskill: Error: Connection failed\nFailed to list tools: Failed to load MCP 'ffmpegskill': MCP error -32000: Connection closed"
 },
 {
-"at": "2026-10-31T02:07-04:00",
+"at": "2026-10-31T02:30-04:00",
 "status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"log": "\u2713 Enabled and approved MCP server: ffmpegskill\n$ verify:\nffmpegskill: Error: Connection failed\nFailed to list tools: Failed to load MCP 'ffmpegskill': MCP error -32000: Connection closed"
 }
 ],
 "fiftyone|claude_code": [
@@ -16598,9 +16598,9 @@
 "log": "\u2713 Enabled and approved MCP server: gdharness\n$ verify:\ngdharness: Error: Connection failed\nFailed to list tools: Failed to load MCP 'gdharness': MCP error -32022: Unsupported protocol version: 2025-11-25; stderr: [SERVER] No Godot executable found. Until that is fixed every tool that runs the engine will say so. gdharness running on stdio [2026-10-30T06:13:03.173Z] [GodotBridge:INFO] Editor brid..."
 },
 {
-"at": "2026-10-31T02:07-04:00",
+"at": "2026-10-31T02:30-04:00",
 "status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"log": "\u2713 Enabled and approved MCP server: gdharness\n$ verify:\ngdharness: Error: Connection failed\nFailed to list tools: Failed to load MCP 'gdharness': MCP error -32022: Unsupported protocol version: 2025-11-25; stderr: [SERVER] No Godot executable found. Until that is fixed every tool that runs the engine will say so. gdharness running on stdio [2026-10-31T06:31:53.340Z] [GodotBridge:INFO] Editor brid..."
 }
 ],
 "github|claude_code": [
@@ -19538,9 +19538,9 @@
 "log": "\u2713 Enabled and approved MCP server: kordoc\n$ verify:\nkordoc: Error: Connection failed\nFailed to list tools: Failed to load MCP 'kordoc': MCP error -32000: Connection closed; stderr: error: missing required argument 'files'"
 },
 {
-"at": "2026-10-31T02:07-04:00",
+"at": "2026-10-31T02:30-04:00",
 "status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"log": "\u2713 Enabled and approved MCP server: kordoc\n$ verify:\nkordoc: Error: Connection failed\nFailed to list tools: Failed to load MCP 'kordoc': MCP error -32000: Connection closed; stderr: error: missing required argument 'files'"
 }
 ],
 "korean-law-mcp|claude_code": [
@@ -19622,9 +19622,9 @@
 "log": "\u2713 Enabled and approved MCP server: koreanlawmcp\n$ verify:\nkoreanlawmcp: ready\nTools for koreanlawmcp (10):\n- discover_tools (intent)"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: koreanlawmcp\n$ verify:\nkoreanlawmcp: ready\nTools for koreanlawmcp (10):\n- discover_tools (intent)"
 }
 ],
 "kotlin-lsp|claude_code": [
@@ -21974,9 +21974,9 @@
 "log": "\u2713 Enabled and approved MCP server: mboxmcp\n$ verify:\nmboxmcp: ready\nTools for mboxmcp (3):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: mboxmcp\n$ verify:\nmboxmcp: ready\nTools for mboxmcp (3):"
 }
 ],
 "mcp-apps|claude_code": [
@@ -22142,9 +22142,9 @@
 "log": "\u2713 Enabled and approved MCP server: mcpeverything\n$ verify:\nmcpeverything: ready\nTools for mcpeverything (14):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: mcpeverything\n$ verify:\nmcpeverything: ready\nTools for mcpeverything (14):"
 }
 ],
 "mcp-fetch|claude_code": [
@@ -22226,9 +22226,9 @@
 "log": "\u2713 Enabled and approved MCP server: mcpfetch\n$ verify:\nmcpfetch: ready\nTools for mcpfetch (1):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: mcpfetch\n$ verify:\nmcpfetch: ready\nTools for mcpfetch (1):"
 }
 ],
 "mcp-filesystem|claude_code": [
@@ -22310,9 +22310,9 @@
 "log": "\u2713 Enabled and approved MCP server: mcpfilesystem\n$ verify:\nmcpfilesystem: ready\nFailed to list tools: Failed to load MCP 'mcpfilesystem': MCP error -32000: Connection closed"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: mcpfilesystem\n$ verify:\nmcpfilesystem: ready\nFailed to list tools: Failed to load MCP 'mcpfilesystem': MCP error -32000: Connection closed"
 }
 ],
 "mcp-git|claude_code": [
@@ -22394,9 +22394,9 @@
 "log": "\u2713 Enabled and approved MCP server: mcpgit\n$ verify:\nmcpgit: ready\nTools for mcpgit (12):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: mcpgit\n$ verify:\nmcpgit: ready\nTools for mcpgit (12):"
 }
 ],
 "mcp-memory|claude_code": [
@@ -22478,9 +22478,9 @@
 "log": "\u2713 Enabled and approved MCP server: mcpmemory\n$ verify:\nmcpmemory: ready\nTools for mcpmemory (9):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: mcpmemory\n$ verify:\nmcpmemory: ready\nTools for mcpmemory (9):"
 }
 ],
 "mcp-sequential-thinking|claude_code": [
@@ -22562,9 +22562,9 @@
 "log": "\u2713 Enabled and approved MCP server: cpsequentialthinking\n$ verify:\ncpsequentialthinking: ready\nTools for cpsequentialthinking (1):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: cpsequentialthinking\n$ verify:\ncpsequentialthinking: ready\nTools for cpsequentialthinking (1):"
 }
 ],
 "mcp-server-dev|claude_code": [
@@ -22730,9 +22730,9 @@
 "log": "\u2713 Enabled and approved MCP server: mcptime\n$ verify:\nmcptime: ready\nTools for mcptime (2):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: mcptime\n$ verify:\nmcptime: ready\nTools for mcptime (2):"
 }
 ],
 "mcp-tunnels|claude_code": [
@@ -22898,9 +22898,9 @@
 "log": "\u2713 Enabled and approved MCP server: mcplocalrag\n$ verify:\nmcplocalrag: ready\nTools for mcplocalrag (6):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: mcplocalrag\n$ verify:\nmcplocalrag: ready\nTools for mcplocalrag (9):"
 }
 ],
 "mcp-tenant-isolation|claude_code": [
@@ -22982,9 +22982,9 @@
 "log": "\u2713 Enabled and approved MCP server: mcptenantisolation\n$ verify:\nmcptenantisolation: Error: Connection failed\nFailed to list tools: Failed to load MCP 'mcptenantisolation': MCP error -32000: Connection closed; stderr: /home/sbx/.npm/_npx/b4351e4aa299ba42/node_modules/.bin/mti: 1: use strict: not found /home/sbx/.npm/_npx/b4351e4aa299ba42/node_modules/.bin/mti: 2: /bin: Permission denied /home/sbx/.npm/_npx/b4351e4aa299ba42..."
 },
 {
-"at": "2026-10-31T02:07-04:00",
+"at": "2026-10-31T02:30-04:00",
 "status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"log": "\u2713 Enabled and approved MCP server: mcptenantisolation\n$ verify:\nmcptenantisolation: Error: Connection failed\nFailed to list tools: Failed to load MCP 'mcptenantisolation': MCP error -32000: Connection closed; stderr: /home/sbx/.npm/_npx/b4351e4aa299ba42/node_modules/.bin/mti: 1: use strict: not found /home/sbx/.npm/_npx/b4351e4aa299ba42/node_modules/.bin/mti: 2: /bin: Permission denied /home/sbx/.npm/_npx/b4351e4aa299ba42..."
 }
 ],
 "mercadopago|claude_code": [
@@ -25250,9 +25250,9 @@
 "log": "\u2713 Enabled and approved MCP server: notionmcpserver\n$ verify:\nnotionmcpserver: ready\nTools for notionmcpserver (3):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
+"at": "2026-10-31T02:30-04:00",
 "status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"log": "\u2713 Enabled and approved MCP server: notionmcpserver\n$ verify:\nnotionmcpserver: Error: Connection failed\nFailed to list tools: Failed to load MCP 'notionmcpserver': MCP error -32000: Connection closed; stderr: file:///home/sbx/.npm/_npx/ffcbb15b366314dd/node_modules/notion-mcp-server/build/services/notion.js:1 import { Client } from \"@notionhq/client\"; ^^^^^^ SyntaxError: Named export 'Client' not found. The reques..."
 }
 ],
 "nvidia|codex": [
@@ -25460,9 +25460,9 @@
 "log": "\u2713 Enabled and approved MCP server: obsidianmcpserver\n$ verify:\nobsidianmcpserver: Error: Connection failed\nFailed to list tools: Failed to load MCP 'obsidianmcpserver': MCP error -32000: Connection closed; stderr: file:///home/sbx/.npm/_npx/f36605d6814ff2b0/node_modules/obsidian-mcp-server/dist/config/index.js:100 throw new Error(`Invalid environment configuration. Please check your .env file or environment variables. ..."
 },
 {
-"at": "2026-10-31T02:07-04:00",
+"at": "2026-10-31T02:30-04:00",
 "status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"log": "\u2713 Enabled and approved MCP server: obsidianmcpserver\n$ verify:\nobsidianmcpserver: Error: Connection failed\nFailed to list tools: Failed to load MCP 'obsidianmcpserver': MCP error -32000: Connection closed; stderr: file:///home/sbx/.npm/_npx/f36605d6814ff2b0/node_modules/@cyanheads/mcp-ts-core/dist/types-global/errors.js:98 export const configurationError = (message, data, options) => new McpError(JsonRpcErrorCode.Confi..."
 }
 ],
 "octen|grok_build": [
@@ -29366,9 +29366,9 @@
 "log": "\u2713 Enabled and approved MCP server: reaagents\n$ verify:\nreaagents: Error: Connection failed\nFailed to list tools: Failed to load MCP 'reaagents': MCP error -32000: Connection closed; stderr: file:///home/sbx/.npm/_npx/9b9809298fe40d2c/node_modules/rea-agents/dist/cli-runtime/cli.js:95 import { constants as constants$3, crc32, inflate, inflateRawSync, inflateSync, zstdDecompress, zstdDecompressSyn..."
 },
 {
-"at": "2026-10-31T02:07-04:00",
+"at": "2026-10-31T02:30-04:00",
 "status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"log": "\u2713 Enabled and approved MCP server: reaagents\n$ verify:\nreaagents: Error: Connection failed\nFailed to list tools: Failed to load MCP 'reaagents': MCP error -32000: Connection closed"
 }
 ],
 "receipts|claude_code": [
@@ -30458,9 +30458,9 @@
 "log": "\u2713 Enabled and approved MCP server: safarimcp\n$ verify:\nsafarimcp: Error: Connection failed\nFailed to list tools: Failed to load MCP 'safarimcp': MCP error -32000: Connection closed; stderr: npm error code EBADPLATFORM npm error notsup Unsupported platform for safari-mcp@2.23.0: wanted {\"os\":\"darwin\"} (current: {\"os\":\"linux\"}) npm error notsup Valid os: darwin npm error notsup Actual os: linux np..."
 },
 {
-"at": "2026-10-31T02:07-04:00",
+"at": "2026-10-31T02:30-04:00",
 "status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"log": "\u2713 Enabled and approved MCP server: safarimcp\n$ verify:\nsafarimcp: Error: Connection failed\nFailed to list tools: Failed to load MCP 'safarimcp': MCP error -32000: Connection closed; stderr: npm error code EBADPLATFORM npm error notsup Unsupported platform for safari-mcp@2.23.0: wanted {\"os\":\"darwin\"} (current: {\"os\":\"linux\"}) npm error notsup Valid os: darwin npm error notsup Actual os: linux np..."
 }
 ],
 "sagemaker-ai|claude_code": [
@@ -37827,9 +37827,9 @@
 "log": "\u2713 Enabled and approved MCP server: bitbonsaimcpvault\n$ verify:\nbitbonsaimcpvault: ready\nTools for bitbonsaimcpvault (18):"
 },
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: bitbonsaimcpvault\n$ verify:\nbitbonsaimcpvault: ready\nTools for bitbonsaimcpvault (18):"
 }
 ],
 "4sh-ui-kit|codex": [
@@ -38527,9 +38527,9 @@
 ],
 "claimidx|cursor": [
 {
-"at": "2026-10-31T02:07-04:00",
-"status": "fail",
-"log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
+"at": "2026-10-31T02:30-04:00",
+"status": "pass",
+"log": "\u2713 Enabled and approved MCP server: claimidx\n$ verify:\nclaimidx: ready\nTools for claimidx (29):\n- claimidx_alternatives (target)\n- claimidx_apply (id, cwd, own, yes, trust_eval)"
 }
 ],
 "claimidx|pi": [

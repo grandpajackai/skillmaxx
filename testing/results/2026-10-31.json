@@ -1,10 +1,10 @@
 {
- "run_at": "2026-10-31T02:07-04:00",
+ "run_at": "2026-10-31T02:30-04:00",
  "versions": {
   "claude_code": "2.1.197 (Claude Code)",
   "codex": "codex-cli 0.163.0",
   "grok_build": "grok 1.0.62 (1474f9cbdd91)",
-  "cursor": "Node.js v24.5.0",
+  "cursor": "2026.10.16-e3cb207",
   "pi": "pi 1.4.0"
  },
  "sandbox": "bubblewrap, fresh HOME, no credentials/API keys",
@@ -43,14 +43,6 @@
   },
   {
    "slug": "4sh-ui-kit",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
-  },
-  {
-   "slug": "4sh-ui-kit",
    "agent": "pi",
    "status": "pass",
    "log": "Added global MCP server \"4shuikit\" in /home/sbx/.pi/agent/mcp.json.\nCheck it with: pi mcp list\n$ verify:\n4shuikit: connected, 4 tools (codemode, global)\n  tools: list_components, get_component_doc, search_docs, get_shared_config"
@@ -79,14 +71,6 @@
   },
   {
    "slug": "benborla29-mcp-server-mysql",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
-  },
-  {
-   "slug": "benborla29-mcp-server-mysql",
    "agent": "pi",
    "status": "fail",
    "log": "Added global MCP server \"orla29mcpservermysql\" in /home/sbx/.pi/agent/mcp.json.\nCheck it with: pi mcp list\n$ verify:\norla29mcpservermysql: failed (codemode, global)",
@@ -110,14 +94,6 @@
    "agent": "grok_build",
    "status": "pass",
    "log": "Added stdio MCP server 'bitbonsaimcpvault' with command: npx -y @bitbonsai/mcpvault to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  bitbonsaimcpvault: npx -y @bitbonsai/mcpvault\n  bitbonsaimcpvault (stdio: npx -y @bitbonsai/mcpvault)\n    \u2713 handshake OK (protocol 2025-11-25)\n    \u2713 18 tools discovered"
-  },
-  {
-   "slug": "bitbonsai-mcpvault",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "bitbonsai-mcpvault",
@@ -151,14 +127,6 @@
   },
   {
    "slug": "currents-mcp",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
-  },
-  {
-   "slug": "currents-mcp",
    "agent": "pi",
    "status": "fail",
    "log": "Added global MCP server \"currentsmcp\" in /home/sbx/.pi/agent/mcp.json.\nCheck it with: pi mcp list\n$ verify:\ncurrentsmcp: failed (codemode, global)",
@@ -185,14 +153,6 @@
   },
   {
    "slug": "cyanheads-git-mcp-server",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
-  },
-  {
-   "slug": "cyanheads-git-mcp-server",
    "agent": "pi",
    "status": "pass",
    "log": "Added global MCP server \"yanheadsgitmcpserver\" in /home/sbx/.pi/agent/mcp.json.\nCheck it with: pi mcp list\n$ verify:\nyanheadsgitmcpserver: connected, 28 tools (codemode, global)\n  tools: git_add, git_blame, git_branch, git_changelog_analyze, git_checkout, git_cherry_pick, git_clean, git_clear_working_dir, git_clone, git_commit, git_diff, git_fetch, git_init, git_log, git_merge, git_pull, git_push, git_rebase, git_reflog, git_remote, git_reset, git_set_working_dir, git_show, git_stash, git_status, git_tag, git_worktree, git_wrapup_instructions"
@@ -214,14 +174,6 @@
    "agent": "grok_build",
    "status": "pass",
    "log": "Added stdio MCP server 'headspubmedmcpserver' with command: npx -y @cyanheads/pubmed-mcp-server to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  headspubmedmcpserver: npx -y @cyanheads/pubmed-mcp-server\n  headspubmedmcpserver (stdio: npx -y @cyanheads/pubmed-mcp-server)\n    \u2713 handshake OK (protocol 2025-11-25)\n    \u2713 9 tools discovered"
-  },
-  {
-   "slug": "cyanheads-pubmed-mcp-server",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "cyanheads-pubmed-mcp-server",
@@ -255,14 +207,6 @@
   },
   {
    "slug": "dallay-agentsync",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
-  },
-  {
-   "slug": "dallay-agentsync",
    "agent": "pi",
    "status": "fail",
    "log": "Added global MCP server \"dallayagentsync\" in /home/sbx/.pi/agent/mcp.json.\nCheck it with: pi mcp list\n$ verify:\ndallayagentsync: failed (codemode, global)",
@@ -286,14 +230,6 @@
    "agent": "grok_build",
    "status": "pass",
    "log": "Added stdio MCP server 'dangahaganweathermcp' with command: npx -y @dangahagan/weather-mcp to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  dangahaganweathermcp: npx -y @dangahagan/weather-mcp\n  dangahaganweathermcp (stdio: npx -y @dangahagan/weather-mcp)\n    \u2713 handshake OK (protocol 2025-11-25)\n    \u2713 6 tools discovered"
-  },
-  {
-   "slug": "dangahagan-weather-mcp",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "dangahagan-weather-mcp",
@@ -324,14 +260,6 @@
    "log": "Added stdio MCP server 'havenaimcp' with command: npx -y @haven_ai/mcp to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  havenaimcp: npx -y @haven_ai/mcp\n  havenaimcp (stdio: npx -y @haven_ai/mcp)\n    \u2717 handshake failed (connection closed: initialize response)",
    "retry": "fail",
    "first_log": "Added stdio MCP server 'havenaimcp' with command: npx -y @haven_ai/mcp to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  havenaimcp: npx -y @haven_ai/mcp\n  havenaimcp (stdio: npx -y @haven_ai/mcp)"
-  },
-  {
-   "slug": "haven_ai-mcp",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "haven_ai-mcp",
@@ -367,14 +295,6 @@
   },
   {
    "slug": "imgly-codesign-mcp",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
-  },
-  {
-   "slug": "imgly-codesign-mcp",
    "agent": "pi",
    "status": "fail",
    "log": "Added global MCP server \"imglycodesignmcp\" in /home/sbx/.pi/agent/mcp.json.\nCheck it with: pi mcp list\n$ verify:\nimglycodesignmcp: failed (codemode, global)",
@@ -404,14 +324,6 @@
    "log": "Added stdio MCP server 'ironbeeaidevtools' with command: npx -y @ironbee-ai/devtools to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  ironbeeaidevtools: npx -y @ironbee-ai/devtools\n  ironbeeaidevtools (stdio: npx -y @ironbee-ai/devtools)\n    \u2717 handshake failed (connection closed: initialize response)",
    "retry": "fail",
    "first_log": "P server 'ironbeeaidevtools' with command: npx -y @ironbee-ai/devtools to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  ironbeeaidevtools: npx -y @ironbee-ai/devtools\n  ironbeeaidevtools (stdio: npx -y @ironbee-ai/devtools)\n    \u2717 handshake failed (connection closed: initialize response)"
-  },
-  {
-   "slug": "ironbee-ai-devtools",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "ironbee-ai-devtools",
@@ -447,14 +359,6 @@
   },
   {
    "slug": "microsoft-workiq",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
-  },
-  {
-   "slug": "microsoft-workiq",
    "agent": "pi",
    "status": "fail",
    "log": "Added global MCP server \"microsoftworkiq\" in /home/sbx/.pi/agent/mcp.json.\nCheck it with: pi mcp list\n$ verify:\nmicrosoftworkiq: failed (codemode, global)",
@@ -478,14 +382,6 @@
    "agent": "grok_build",
    "status": "pass",
    "log": "Added stdio MCP server 'lafirefoxdevtoolsmcp' with command: npx -y @mozilla/firefox-devtools-mcp to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  lafirefoxdevtoolsmcp: npx -y @mozilla/firefox-devtools-mcp\n  lafirefoxdevtoolsmcp (stdio: npx -y @mozilla/firefox-devtools-mcp)\n    \u2713 handshake OK (protocol 2025-11-25)\n    \u2713 35 tools discovered"
-  },
-  {
-   "slug": "mozilla-firefox-devtools-mcp",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "mozilla-firefox-devtools-mcp",
@@ -513,14 +409,6 @@
   },
   {
    "slug": "mozilla-firefox-devtools-mcp-moz",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
-  },
-  {
-   "slug": "mozilla-firefox-devtools-mcp-moz",
    "agent": "pi",
    "status": "pass",
    "log": "$ verify:\nirefoxdevtoolsmcpmoz: connected, 35 tools (codemode, global)\n  npx -y @mozilla/firefox-devtools-mcp-moz\n  tools: list_pages, new_page, navigate_page, select_page, close_page, get_page_text, take_snapshot, resolve_uid_to_selector, clear_snapshot, click_by_uid, hover_by_uid, fill_by_uid, drag_by_uid_to_uid, fill_form_by_uid, upload_file_by_uid, press_key, type_text, screenshot_page, screenshot_by_uid, print_page, list_downloads, clear_downloads, set_download_behavior, accept_dialog, dismiss_dialog, navigate_history, set_viewport_size, get_firefox_output, get_firefox_info, close_firefox_session, install_extension, uninstall_extension, screencast_start, screencast_stop, evaluate_script"
@@ -542,14 +430,6 @@
    "agent": "grok_build",
    "status": "pass",
    "log": "Added stdio MCP server 'extaidrawiomcpserver' with command: npx -y @next-ai-drawio/mcp-server to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  extaidrawiomcpserver: npx -y @next-ai-drawio/mcp-server\n  extaidrawiomcpserver (stdio: npx -y @next-ai-drawio/mcp-server)\n    \u2713 handshake OK (protocol 2025-11-25)\n    \u2713 16 tools discovered"
-  },
-  {
-   "slug": "next-ai-drawio-mcp-server",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "next-ai-drawio-mcp-server",
@@ -583,14 +463,6 @@
   },
   {
    "slug": "postman-postman-mcp-server",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
-  },
-  {
-   "slug": "postman-postman-mcp-server",
    "agent": "pi",
    "status": "fail",
    "log": "Added global MCP server \"tmanpostmanmcpserver\" in /home/sbx/.pi/agent/mcp.json.\nCheck it with: pi mcp list\n$ verify:\ntmanpostmanmcpserver: failed (codemode, global)",
@@ -616,14 +488,6 @@
    "log": "Added stdio MCP server 'visionstatememorymcp' with command: npx -y @putervision/state-memory-mcp to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  visionstatememorymcp: npx -y @putervision/state-memory-mcp\n  visionstatememorymcp (stdio: npx -y @putervision/state-memory-mcp)\n    \u2713 handshake OK (protocol 2024-11-05)\n    \u2713 13 tools discovered",
    "retry": "pass",
    "first_log": " command: npx -y @putervision/state-memory-mcp to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  visionstatememorymcp: npx -y @putervision/state-memory-mcp\n  visionstatememorymcp (stdio: npx -y @putervision/state-memory-mcp)\n    \u2717 handshake failed (connection closed: initialize response)"
-  },
-  {
-   "slug": "putervision-state-memory-mcp",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "putervision-state-memory-mcp",
@@ -653,14 +517,6 @@
   },
   {
    "slug": "putervision-vision-memory-mcp",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
-  },
-  {
-   "slug": "putervision-vision-memory-mcp",
    "agent": "pi",
    "status": "pass",
    "log": "Added global MCP server \"isionvisionmemorymcp\" in /home/sbx/.pi/agent/mcp.json.\nCheck it with: pi mcp list\n$ verify:\nisionvisionmemorymcp: connected, 15 tools (codemode, global)\n  tools: analyze_screenshot, recall_memory, record_outcome, get_navigation_paths, compare_states, get_session_context, manage_snapshot, undo_visual_mutation, predict_next_action, manage_visual_spec, export_trajectories, manage_video, create_evidence_pack, forget_state, wait_for_visual_state"
@@ -685,14 +541,6 @@
   },
   {
    "slug": "putervision-world-model-mcp",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
-  },
-  {
-   "slug": "putervision-world-model-mcp",
    "agent": "pi",
    "status": "pass",
    "log": "Added global MCP server \"rvisionworldmodelmcp\" in /home/sbx/.pi/agent/mcp.json.\nCheck it with: pi mcp list\n$ verify:\nrvisionworldmodelmcp: connected, 15 tools (codemode, global)\n  tools: update_entity, query_entities, set_relation, get_spatial_map, simulate_movement, ingest_observation, get_expected_view, link_to_goal, record_outcome, manage_spatial_spec, create_evidence_pack, use_spatial_blackboard, manage_snapshot, generate_game_inputs, wait_for_spatial_state"
@@ -714,14 +562,6 @@
    "agent": "grok_build",
    "status": "pass",
    "log": "Added stdio MCP server 'rateapimcp' with command: npx -y @rate-api/mcp to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  rateapimcp: npx -y @rate-api/mcp\n  rateapimcp (stdio: npx -y @rate-api/mcp)\n    \u2713 handshake OK (protocol 2025-11-25)\n    \u2713 17 tools discovered"
-  },
-  {
-   "slug": "rate-api-mcp",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "rate-api-mcp",
@@ -755,14 +595,6 @@
   },
   {
    "slug": "respira-wordpress-mcp-server",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
-  },
-  {
-   "slug": "respira-wordpress-mcp-server",
    "agent": "pi",
    "status": "fail",
    "log": "Added global MCP server \"rawordpressmcpserver\" in /home/sbx/.pi/agent/mcp.json.\nCheck it with: pi mcp list\n$ verify:\nrawordpressmcpserver: failed (codemode, global)",
@@ -786,14 +618,6 @@
    "agent": "grok_build",
    "status": "pass",
    "log": "Added stdio MCP server 'rigourlabsmcp' with command: npx -y @rigour-labs/mcp to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  rigourlabsmcp: npx -y @rigour-labs/mcp\n  rigourlabsmcp (stdio: npx -y @rigour-labs/mcp)\n    \u2713 handshake OK (protocol 2025-11-25)\n    \u2713 11 tools discovered"
-  },
-  {
-   "slug": "rigour-labs-mcp",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "rigour-labs-mcp",
@@ -824,14 +648,6 @@
    "log": "Added stdio MCP server 'reemclickupmcpserver' with command: npx -y @taazkareem/clickup-mcp-server to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  reemclickupmcpserver: npx -y @taazkareem/clickup-mcp-server\n  reemclickupmcpserver (stdio: npx -y @taazkareem/clickup-mcp-server)\n    \u2717 handshake failed (connection closed: initialize response)",
    "retry": "fail",
    "first_log": "mmand: npx -y @taazkareem/clickup-mcp-server to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  reemclickupmcpserver: npx -y @taazkareem/clickup-mcp-server\n  reemclickupmcpserver (stdio: npx -y @taazkareem/clickup-mcp-server)\n    \u2717 handshake failed (connection closed: initialize response)"
-  },
-  {
-   "slug": "taazkareem-clickup-mcp-server",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "taazkareem-clickup-mcp-server",
@@ -867,14 +683,6 @@
   },
   {
    "slug": "yawlabs-ctxlint",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
-  },
-  {
-   "slug": "yawlabs-ctxlint",
    "agent": "pi",
    "status": "fail",
    "log": "Added global MCP server \"yawlabsctxlint\" in /home/sbx/.pi/agent/mcp.json.\nCheck it with: pi mcp list\n$ verify:\nyawlabsctxlint: failed (codemode, global)",
@@ -898,14 +706,6 @@
    "agent": "grok_build",
    "status": "pass",
    "log": "Added stdio MCP server 'yawlabspostgresmcp' with command: npx -y @yawlabs/postgres-mcp to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  yawlabspostgresmcp: npx -y @yawlabs/postgres-mcp\n  yawlabspostgresmcp (stdio: npx -y @yawlabs/postgres-mcp)\n    \u2713 handshake OK (protocol 2025-11-25)\n    \u2713 23 tools discovered"
-  },
-  {
-   "slug": "yawlabs-postgres-mcp",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "yawlabs-postgres-mcp",
@@ -936,14 +736,6 @@
    "log": "Added stdio MCP server 'zereightmcpgitlab' with command: npx -y @zereight/mcp-gitlab to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  zereightmcpgitlab: npx -y @zereight/mcp-gitlab\n  zereightmcpgitlab (stdio: npx -y @zereight/mcp-gitlab)\n    \u2717 handshake failed (connection closed: initialize response)",
    "retry": "fail",
    "first_log": "P server 'zereightmcpgitlab' with command: npx -y @zereight/mcp-gitlab to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  zereightmcpgitlab: npx -y @zereight/mcp-gitlab\n  zereightmcpgitlab (stdio: npx -y @zereight/mcp-gitlab)\n    \u2717 handshake failed (connection closed: initialize response)"
-  },
-  {
-   "slug": "zereight-mcp-gitlab",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "zereight-mcp-gitlab",
@@ -1018,14 +810,6 @@
    "log": "Added stdio MCP server 'agentdevice' with command: npx -y agent-device to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  agentdevice: npx -y agent-device\n  agentdevice (stdio: npx -y agent-device)\n    \u2717 handshake failed (connection closed: initialize response)",
    "retry": "fail",
    "first_log": "Added stdio MCP server 'agentdevice' with command: npx -y agent-device to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  agentdevice: npx -y agent-device\n  agentdevice (stdio: npx -y agent-device)\n    \u2717 handshake failed (connection closed: initialize response)"
-  },
-  {
-   "slug": "agent-device",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "agent-device",
@@ -1142,14 +926,6 @@
    "agent": "grok_build",
    "status": "pass",
    "log": "Added stdio MCP server 'aitermmcp' with command: npx -y aiterm-mcp to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  aitermmcp: npx -y aiterm-mcp\n  aitermmcp (stdio: npx -y aiterm-mcp)\n    \u2713 handshake OK (protocol 2025-11-25)\n    \u2713 19 tools discovered"
-  },
-  {
-   "slug": "aiterm-mcp",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "aiterm-mcp",
@@ -1328,14 +1104,6 @@
    "log": "Added stdio MCP server 'applenotesmcp' with command: npx -y apple-notes-mcp to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  applenotesmcp: npx -y apple-notes-mcp\n  applenotesmcp (stdio: npx -y apple-notes-mcp)\n    \u2717 handshake failed (connection closed: initialize response)",
    "retry": "fail",
    "first_log": "Added stdio MCP server 'applenotesmcp' with command: npx -y apple-notes-mcp to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  applenotesmcp: npx -y apple-notes-mcp\n  applenotesmcp (stdio: npx -y apple-notes-mcp)\n    \u2717 handshake failed (connection closed: initialize response)"
-  },
-  {
-   "slug": "apple-notes-mcp",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "apple-notes-mcp",
@@ -1769,14 +1537,6 @@
   },
   {
    "slug": "blitzstrike",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
-  },
-  {
-   "slug": "blitzstrike",
    "agent": "pi",
    "status": "fail",
    "log": "Added global MCP server \"blitzstrike\" in /home/sbx/.pi/agent/mcp.json.\nCheck it with: pi mcp list\n$ verify:\nblitzstrike: failed (codemode, global)\n  npx -y blitzstrike",
@@ -1851,14 +1611,6 @@
   },
   {
    "slug": "brightspace-mcp-server",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
-  },
-  {
-   "slug": "brightspace-mcp-server",
    "agent": "pi",
    "status": "pass",
    "log": "ver\" in /home/sbx/.pi/agent/mcp.json.\nCheck it with: pi mcp list\n$ verify:\nbrightspacemcpserver: connected, 27 tools (codemode, global)\n  npx -y brightspace-mcp-server\n  tools: get_my_courses, get_upcoming_due_dates, get_calendar_events, get_my_grades, get_announcements, get_assignments, get_assignment_rubric, get_assignment_files, get_announcement_files, get_course_content, download_file, get_classlist_emails, get_roster, get_my_groups, get_syllabus, get_discussions, get_video_transcript, get_server_info, search_course, sign_out, sign_in, get_dropbox_folders, get_dropbox_submissions, get_dropbox_user_submissions, get_dropbox_feedback, get_rubrics_for_object, download_dropbox_submission_file"
@@ -1892,14 +1644,6 @@
    "agent": "grok_build",
    "status": "pass",
    "log": "Added stdio MCP server 'browserdevtoolsmcp' with command: npx -y browser-devtools-mcp to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  browserdevtoolsmcp: npx -y browser-devtools-mcp\n  browserdevtoolsmcp (stdio: npx -y browser-devtools-mcp)\n    \u2713 handshake OK (protocol 2025-11-25)\n    \u2713 51 tools discovered"
-  },
-  {
-   "slug": "browser-devtools-mcp",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "browser-devtools-mcp",
@@ -2178,14 +1922,6 @@
    "agent": "grok_build",
    "status": "pass",
    "log": "Added stdio MCP server 'claimidx' with command: uvx --from claimidx[server] claimidx-mcp to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  claimidx: uvx --from claimidx[server] claimidx-mcp\n  claimidx (stdio: uvx --from claimidx[server] claimidx-mcp)\n    \u2713 handshake OK (protocol 2025-06-18)\n    \u2713 29 tools discovered"
-  },
-  {
-   "slug": "claimidx",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "claimidx",
@@ -2500,14 +2236,6 @@
    "agent": "grok_build",
    "status": "pass",
    "log": "Added stdio MCP server 'comfyuimcp' with command: npx -y comfyui-mcp to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  comfyuimcp: npx -y comfyui-mcp\n  comfyuimcp (stdio: npx -y comfyui-mcp)\n    \u2713 handshake OK (protocol 2025-11-25)\n    \u2713 41 tools discovered"
-  },
-  {
-   "slug": "comfyui-mcp",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "comfyui-mcp",
@@ -2965,14 +2693,6 @@
   },
   {
    "slug": "dsh-mcp-connector",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
-  },
-  {
-   "slug": "dsh-mcp-connector",
    "agent": "pi",
    "status": "fail",
    "log": "Added global MCP server \"dshmcpconnector\" in /home/sbx/.pi/agent/mcp.json.\nCheck it with: pi mcp list\n$ verify:\ndshmcpconnector: failed (codemode, global)\n  npx -y dsh-mcp-connector",
@@ -3116,14 +2836,6 @@
    "log": "Added stdio MCP server 'ffmpegskill' with command: npx -y ffmpeg-skill to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  ffmpegskill: npx -y ffmpeg-skill\n  ffmpegskill (stdio: npx -y ffmpeg-skill)\n    \u2717 handshake failed (connection closed: initialize response)",
    "retry": "fail",
    "first_log": "Added stdio MCP server 'ffmpegskill' with command: npx -y ffmpeg-skill to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  ffmpegskill: npx -y ffmpeg-skill\n  ffmpegskill (stdio: npx -y ffmpeg-skill)\n    \u2717 handshake failed (connection closed: initialize response)"
-  },
-  {
-   "slug": "ffmpeg-skill",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "ffmpeg-skill",
@@ -3296,14 +3008,6 @@
    "log": "Added stdio MCP server 'gdharness' with command: npx -y gdharness to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  gdharness: npx -y gdharness\n  gdharness (stdio: npx -y gdharness)\n    \u2717 handshake failed (JSON-RPC error: -32022: Unsupported protocol version: 2025-11-25({\"supported\":[\"2026-07-28\"],\"requested\":\"2025-11-25\"}))",
    "retry": "fail",
    "first_log": "h command: npx -y gdharness to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  gdharness: npx -y gdharness\n  gdharness (stdio: npx -y gdharness)\n    \u2717 handshake failed (JSON-RPC error: -32022: Unsupported protocol version: 2025-11-25({\"supported\":[\"2026-07-28\"],\"requested\":\"2025-11-25\"}))"
-  },
-  {
-   "slug": "gdharness",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "gdharness",
@@ -3753,14 +3457,6 @@
   },
   {
    "slug": "kordoc",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
-  },
-  {
-   "slug": "kordoc",
    "agent": "pi",
    "status": "fail",
    "log": "Added global MCP server \"kordoc\" in /home/sbx/.pi/agent/mcp.json.\nCheck it with: pi mcp list\n$ verify:\nkordoc: failed (codemode, global)\n  npx -y kordoc",
@@ -3788,14 +3484,6 @@
    "log": "Added stdio MCP server 'koreanlawmcp' with command: npx -y korean-law-mcp to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  koreanlawmcp: npx -y korean-law-mcp\n  koreanlawmcp (stdio: npx -y korean-law-mcp)",
    "retry": "fail",
    "first_log": "Added stdio MCP server 'koreanlawmcp' with command: npx -y korean-law-mcp to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  koreanlawmcp: npx -y korean-law-mcp\n  koreanlawmcp (stdio: npx -y korean-law-mcp)"
-  },
-  {
-   "slug": "korean-law-mcp",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "korean-law-mcp",
@@ -4155,14 +3843,6 @@
   },
   {
    "slug": "mbox-mcp",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
-  },
-  {
-   "slug": "mbox-mcp",
    "agent": "pi",
    "status": "pass",
    "log": "Added global MCP server \"mboxmcp\" in /home/sbx/.pi/agent/mcp.json.\nCheck it with: pi mcp list\n$ verify:\nmboxmcp: connected, 3 tools (codemode, global)\n  npx -y mbox-mcp\n  tools: open_archive, search_messages, get_message"
@@ -4199,14 +3879,6 @@
   },
   {
    "slug": "mcp-everything",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
-  },
-  {
-   "slug": "mcp-everything",
    "agent": "pi",
    "status": "pass",
    "log": "Added global MCP server \"mcpeverything\" in /home/sbx/.pi/agent/mcp.json.\nCheck it with: pi mcp list\n$ verify:\nmcpeverything: connected, 14 tools (codemode, global)\n  tools: echo, get-annotated-message, get-env, get-resource-links, get-resource-reference, get-structured-content, get-sum, get-tiny-image, gzip-file-as-resource, toggle-simulated-logging, toggle-subscriber-updates, trigger-long-running-operation, get-roots-list, simulate-research-query"
@@ -4228,14 +3900,6 @@
    "agent": "grok_build",
    "status": "pass",
    "log": "Added stdio MCP server 'mcpfetch' with command: uvx mcp-server-fetch to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  mcpfetch: uvx mcp-server-fetch\n  mcpfetch (stdio: uvx mcp-server-fetch)\n    \u2713 handshake OK (protocol 2025-11-25)\n    \u2713 1 tools discovered"
-  },
-  {
-   "slug": "mcp-fetch",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "mcp-fetch",
@@ -4267,14 +3931,6 @@
   },
   {
    "slug": "mcp-filesystem",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
-  },
-  {
-   "slug": "mcp-filesystem",
    "agent": "pi",
    "status": "pass",
    "log": "Added global MCP server \"mcpfilesystem\" in /home/sbx/.pi/agent/mcp.json.\nCheck it with: pi mcp list\n$ verify:\nmcpfilesystem: connected, 14 tools (codemode, global)\n  tools: read_file, read_text_file, read_media_file, read_multiple_files, write_file, edit_file, create_directory, list_directory, list_directory_with_sizes, directory_tree, move_file, search_files, get_file_info, list_allowed_directories"
@@ -4296,14 +3952,6 @@
    "agent": "grok_build",
    "status": "pass",
    "log": "Added stdio MCP server 'mcpgit' with command: uvx mcp-server-git to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  mcpgit: uvx mcp-server-git\n  mcpgit (stdio: uvx mcp-server-git)\n    \u2713 handshake OK (protocol 2025-11-25)\n    \u2713 12 tools discovered"
-  },
-  {
-   "slug": "mcp-git",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "mcp-git",
@@ -4331,14 +3979,6 @@
   },
   {
    "slug": "mcp-memory",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
-  },
-  {
-   "slug": "mcp-memory",
    "agent": "pi",
    "status": "pass",
    "log": "Added global MCP server \"mcpmemory\" in /home/sbx/.pi/agent/mcp.json.\nCheck it with: pi mcp list\n$ verify:\nmcpmemory: connected, 9 tools (codemode, global)\n  tools: create_entities, create_relations, add_observations, delete_entities, delete_observations, delete_relations, read_graph, search_nodes, open_nodes"
@@ -4360,14 +4000,6 @@
    "agent": "grok_build",
    "status": "pass",
    "log": "Added stdio MCP server 'cpsequentialthinking' with command: npx -y @modelcontextprotocol/server-sequential-thinking to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  cpsequentialthinking: npx -y @modelcontextprotocol/server-sequential-thinking\n  cpsequentialthinking (stdio: npx -y @modelcontextprotocol/server-sequential-thinking)\n    \u2713 handshake OK (protocol 2025-11-25)\n    \u2713 1 tools discovered"
-  },
-  {
-   "slug": "mcp-sequential-thinking",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "mcp-sequential-thinking",
@@ -4404,14 +4036,6 @@
    "agent": "grok_build",
    "status": "pass",
    "log": "Added stdio MCP server 'mcptime' with command: uvx mcp-server-time to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  mcptime: uvx mcp-server-time\n  mcptime (stdio: uvx mcp-server-time)\n    \u2713 handshake OK (protocol 2025-11-25)\n    \u2713 2 tools discovered"
-  },
-  {
-   "slug": "mcp-time",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "mcp-time",
@@ -4455,14 +4079,6 @@
   },
   {
    "slug": "mcp-local-rag",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
-  },
-  {
-   "slug": "mcp-local-rag",
    "agent": "pi",
    "status": "pass",
    "log": "Added global MCP server \"mcplocalrag\" in /home/sbx/.pi/agent/mcp.json.\nCheck it with: pi mcp list\n$ verify:\nmcplocalrag: connected, 9 tools (codemode, global)\n  npx -y mcp-local-rag\n  tools: query_documents, ingest_file, ingest_data, delete_file, list_files, status, read_chunk_neighbors, sync_start, sync_status"
@@ -4490,14 +4106,6 @@
    "log": "Added stdio MCP server 'mcptenantisolation' with command: npx -y mcp-tenant-isolation to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  mcptenantisolation: npx -y mcp-tenant-isolation\n  mcptenantisolation (stdio: npx -y mcp-tenant-isolation)\n    \u2717 handshake failed (connection closed: initialize response)",
    "retry": "fail",
    "first_log": "erver 'mcptenantisolation' with command: npx -y mcp-tenant-isolation to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  mcptenantisolation: npx -y mcp-tenant-isolation\n  mcptenantisolation (stdio: npx -y mcp-tenant-isolation)\n    \u2717 handshake failed (connection closed: initialize response)"
-  },
-  {
-   "slug": "mcp-tenant-isolation",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "mcp-tenant-isolation",
@@ -4851,14 +4459,6 @@
   },
   {
    "slug": "notion-mcp-server",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
-  },
-  {
-   "slug": "notion-mcp-server",
    "agent": "pi",
    "status": "fail",
    "log": "Added global MCP server \"notionmcpserver\" in /home/sbx/.pi/agent/mcp.json.\nCheck it with: pi mcp list\n$ verify:\nnotionmcpserver: failed (codemode, global)\n  npx -y notion-mcp-server\n  file:///home/sbx/.npm/_npx/ffcbb15b366314dd/node_modules/notion-mcp-server/build/services/notion.js:1",
@@ -4906,14 +4506,6 @@
    "log": "Added stdio MCP server 'obsidianmcpserver' with command: npx -y obsidian-mcp-server to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  obsidianmcpserver: npx -y obsidian-mcp-server\n  obsidianmcpserver (stdio: npx -y obsidian-mcp-server)\n    \u2717 handshake failed (connection closed: initialize response)",
    "retry": "fail",
    "first_log": " MCP server 'obsidianmcpserver' with command: npx -y obsidian-mcp-server to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  obsidianmcpserver: npx -y obsidian-mcp-server\n  obsidianmcpserver (stdio: npx -y obsidian-mcp-server)\n    \u2717 handshake failed (connection closed: initialize response)"
-  },
-  {
-   "slug": "obsidian-mcp-server",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "obsidian-mcp-server",
@@ -5503,14 +5095,6 @@
   },
   {
    "slug": "rea-agents",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
-  },
-  {
-   "slug": "rea-agents",
    "agent": "pi",
    "status": "fail",
    "log": "Added global MCP server \"reaagents\" in /home/sbx/.pi/agent/mcp.json.\nCheck it with: pi mcp list\n$ verify:\nreaagents: failed (codemode, global)\n  npx -y rea-agents",
@@ -5688,14 +5272,6 @@
    "log": "Added stdio MCP server 'safarimcp' with command: npx -y safari-mcp to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  safarimcp: npx -y safari-mcp\n  safarimcp (stdio: npx -y safari-mcp)\n    \u2717 handshake failed (connection closed: initialize response)",
    "retry": "fail",
    "first_log": "Added stdio MCP server 'safarimcp' with command: npx -y safari-mcp to user config\nFile modified: ~/.grok/config.toml\n$ verify:\n  safarimcp: npx -y safari-mcp\n  safarimcp (stdio: npx -y safari-mcp)\n    \u2717 handshake failed (connection closed: initialize response)"
-  },
-  {
-   "slug": "safari-mcp",
-   "agent": "cursor",
-   "status": "fail",
-   "log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)",
-   "retry": "fail",
-   "first_log": "  ]\n}\nNode.js v24.5.0\n$ verify:\nRequire stack:\n- /workspace/agents/cursorhome/.local/share/cursor-agent/versions/2026.10.16-e3cb207/index.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1410:15)"
   },
   {
    "slug": "safari-mcp",
@@ -6778,6 +6354,370 @@
    "agent": "grok_build",
    "status": "pass",
    "log": "Installed 1 plugin(s) from claude-plugins-official: zyte-web-data\n$ verify:\n  claude-skills-04e48bb0: zyte-web-data [git: https://github.com/zytedata/claude-skills.git] (claude-plugins-official)"
+  },
+  {
+   "slug": "4sh-ui-kit",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: 4shuikit\n$ verify:\n4shuikit: ready\nTools for 4shuikit (4):"
+  },
+  {
+   "slug": "benborla29-mcp-server-mysql",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: orla29mcpservermysql\n$ verify:\norla29mcpservermysql: ready\nFailed to list tools: Failed to load MCP 'orla29mcpservermysql': MCP error -32000: Connection closed"
+  },
+  {
+   "slug": "bitbonsai-mcpvault",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: bitbonsaimcpvault\n$ verify:\nbitbonsaimcpvault: ready\nTools for bitbonsaimcpvault (18):"
+  },
+  {
+   "slug": "currents-mcp",
+   "agent": "cursor",
+   "status": "fail",
+   "log": "\u2713 Enabled and approved MCP server: currentsmcp\n$ verify:\ncurrentsmcp: Error: Connection failed\nFailed to list tools: Failed to load MCP 'currentsmcp': MCP error -32000: Connection closed; stderr: [02:30:40.380] ERROR (141): CURRENTS_API_KEY is not set. Add your Currents API key to the environment (for example: export CURRENTS_API_KEY=<your-key>).",
+   "retry": "fail",
+   "first_log": " verify:\ncurrentsmcp: Error: Connection failed\nFailed to list tools: Failed to load MCP 'currentsmcp': MCP error -32000: Connection closed; stderr: [02:30:30.578] ERROR (141): CURRENTS_API_KEY is not set. Add your Currents API key to the environment (for example: export CURRENTS_API_KEY=<your-key>)."
+  },
+  {
+   "slug": "cyanheads-git-mcp-server",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: yanheadsgitmcpserver\n$ verify:\nyanheadsgitmcpserver: ready\nTools for yanheadsgitmcpserver (28):"
+  },
+  {
+   "slug": "cyanheads-pubmed-mcp-server",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: headspubmedmcpserver\n$ verify:\nheadspubmedmcpserver: ready\nTools for headspubmedmcpserver (9):"
+  },
+  {
+   "slug": "dallay-agentsync",
+   "agent": "cursor",
+   "status": "fail",
+   "log": "\u2713 Enabled and approved MCP server: dallayagentsync\n$ verify:\ndallayagentsync: Error: Connection failed\nFailed to list tools: Failed to load MCP 'dallayagentsync': MCP error -32000: Connection closed; stderr: Sync AI agent configurations using symbolic links Usage: agentsync [OPTIONS] <COMMAND> Commands: skill Manage installable AI agent skills from skills.sh/other providers plugin Manage repository-owned, vendor-...",
+   "retry": "fail",
+   "first_log": "ools: Failed to load MCP 'dallayagentsync': MCP error -32000: Connection closed; stderr: Sync AI agent configurations using symbolic links Usage: agentsync [OPTIONS] <COMMAND> Commands: skill Manage installable AI agent skills from skills.sh/other providers plugin Manage repository-owned, vendor-..."
+  },
+  {
+   "slug": "dangahagan-weather-mcp",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: dangahaganweathermcp\n$ verify:\ndangahaganweathermcp: ready\nTools for dangahaganweathermcp (6):"
+  },
+  {
+   "slug": "haven_ai-mcp",
+   "agent": "cursor",
+   "status": "fail",
+   "log": "\u2713 Enabled and approved MCP server: havenaimcp\n$ verify:\nhavenaimcp: Error: Connection failed\nFailed to list tools: Failed to load MCP 'havenaimcp': MCP error -32000: Connection closed; stderr: No Haven credentials found. Set HAVEN_CREDENTIALS to a Haven agent credential JSON file, pass --credentials <path>, or set HAVEN_API_KEY and HAVEN_DELEGATE_KEY environment variables.",
+   "retry": "fail",
+   "first_log": "Connection failed\nFailed to list tools: Failed to load MCP 'havenaimcp': MCP error -32000: Connection closed; stderr: No Haven credentials found. Set HAVEN_CREDENTIALS to a Haven agent credential JSON file, pass --credentials <path>, or set HAVEN_API_KEY and HAVEN_DELEGATE_KEY environment variables."
+  },
+  {
+   "slug": "imgly-codesign-mcp",
+   "agent": "cursor",
+   "status": "fail",
+   "log": "\u2713 Enabled and approved MCP server: imglycodesignmcp\n$ verify:\nimglycodesignmcp: Error: Connection failed\nFailed to list tools: Failed to load MCP 'imglycodesignmcp': MCP error -32000: Connection closed; stderr: codesign-mcp: [REDACTED] subcommand. Usage: codesign-mcp <stdio|system-prompt|diagnose> Subcommands: stdio MCP server over stdin/stdout. Spawned by hosts like Claude Desktop / Claude Code via their `command` ...",
+   "retry": "fail",
+   "first_log": "ols: Failed to load MCP 'imglycodesignmcp': MCP error -32000: Connection closed; stderr: codesign-mcp: [REDACTED] subcommand. Usage: codesign-mcp <stdio|system-prompt|diagnose> Subcommands: stdio MCP server over stdin/stdout. Spawned by hosts like Claude Desktop / Claude Code via their `command` ..."
+  },
+  {
+   "slug": "ironbee-ai-devtools",
+   "agent": "cursor",
+   "status": "fail",
+   "log": "\u2713 Enabled and approved MCP server: ironbeeaidevtools\n$ verify:\nironbeeaidevtools: Error: Connection failed\nFailed to list tools: Failed to load MCP 'ironbeeaidevtools': MCP error -32000: Connection closed; stderr: npm warn deprecated prebuild-install@7.1.3: No longer maintained. Please contact the author of the relevant native addon; alternatives are available.",
+   "retry": "fail",
+   "first_log": "ironbeeaidevtools: Error: Connection failed\nFailed to list tools: Failed to load MCP 'ironbeeaidevtools': MCP error -32000: Connection closed; stderr: npm warn deprecated prebuild-install@7.1.3: No longer maintained. Please contact the author of the relevant native addon; alternatives are available."
+  },
+  {
+   "slug": "microsoft-workiq",
+   "agent": "cursor",
+   "status": "fail",
+   "log": "\u2713 Enabled and approved MCP server: microsoftworkiq\n$ verify:\nmicrosoftworkiq: Error: Connection failed\nFailed to list tools: Failed to load MCP 'microsoftworkiq': MCP error -32000: Connection closed; stderr: Required command was not provided.",
+   "retry": "fail",
+   "first_log": "\u2713 Enabled and approved MCP server: microsoftworkiq\n$ verify:\nmicrosoftworkiq: Error: Connection failed\nFailed to list tools: Failed to load MCP 'microsoftworkiq': MCP error -32000: Connection closed; stderr: Required command was not provided."
+  },
+  {
+   "slug": "mozilla-firefox-devtools-mcp",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: lafirefoxdevtoolsmcp\n$ verify:\nlafirefoxdevtoolsmcp: ready\nTools for lafirefoxdevtoolsmcp (35):"
+  },
+  {
+   "slug": "mozilla-firefox-devtools-mcp-moz",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: irefoxdevtoolsmcpmoz\n$ verify:\nirefoxdevtoolsmcpmoz: ready\nTools for irefoxdevtoolsmcpmoz (35):"
+  },
+  {
+   "slug": "next-ai-drawio-mcp-server",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: extaidrawiomcpserver\n$ verify:\nextaidrawiomcpserver: ready\nTools for extaidrawiomcpserver (16):"
+  },
+  {
+   "slug": "postman-postman-mcp-server",
+   "agent": "cursor",
+   "status": "fail",
+   "log": "\u2713 Enabled and approved MCP server: tmanpostmanmcpserver\n$ verify:\ntmanpostmanmcpserver: Error: Connection failed\nFailed to list tools: Failed to load MCP 'tmanpostmanmcpserver': MCP error -32000: Connection closed; stderr: Invalid environment variables for Postman MCP server: { _errors: [], POSTMAN_API_KEY: { _errors: [ 'Required' ] } }",
+   "retry": "fail",
+   "first_log": "npostmanmcpserver\n$ verify:\ntmanpostmanmcpserver: Error: Connection failed\nFailed to list tools: Failed to load MCP 'tmanpostmanmcpserver': MCP error -32000: Connection closed; stderr: Invalid environment variables for Postman MCP server: { _errors: [], POSTMAN_API_KEY: { _errors: [ 'Required' ] } }"
+  },
+  {
+   "slug": "putervision-state-memory-mcp",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: visionstatememorymcp\n$ verify:\nvisionstatememorymcp: ready\nTools for visionstatememorymcp (13):"
+  },
+  {
+   "slug": "putervision-vision-memory-mcp",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: isionvisionmemorymcp\n$ verify:\nisionvisionmemorymcp: ready\nTools for isionvisionmemorymcp (15):"
+  },
+  {
+   "slug": "putervision-world-model-mcp",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: rvisionworldmodelmcp\n$ verify:\nrvisionworldmodelmcp: ready\nTools for rvisionworldmodelmcp (15):"
+  },
+  {
+   "slug": "rate-api-mcp",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: rateapimcp\n$ verify:\nrateapimcp: ready\nTools for rateapimcp (17):"
+  },
+  {
+   "slug": "respira-wordpress-mcp-server",
+   "agent": "cursor",
+   "status": "fail",
+   "log": "\u2713 Enabled and approved MCP server: rawordpressmcpserver\n$ verify:\nrawordpressmcpserver: Error: Connection failed\nFailed to list tools: Failed to load MCP 'rawordpressmcpserver': MCP error -32000: Connection closed; stderr: Warning: the API key for \"My WordPress Site\" is 25 characters. A real one is 44. This looks truncated or partially masked, and calls will fail with respira_invalid_key. No configuration file found. Creating d...",
+   "retry": "fail",
+   "first_log": " Failed to load MCP 'rawordpressmcpserver': MCP error -32000: Connection closed; stderr: Warning: the API key for \"My WordPress Site\" is 25 characters. A real one is 44. This looks truncated or partially masked, and calls will fail with respira_invalid_key. No configuration file found. Creating d..."
+  },
+  {
+   "slug": "rigour-labs-mcp",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: rigourlabsmcp\n$ verify:\nrigourlabsmcp: ready\nTools for rigourlabsmcp (11):"
+  },
+  {
+   "slug": "taazkareem-clickup-mcp-server",
+   "agent": "cursor",
+   "status": "fail",
+   "log": "\u2713 Enabled and approved MCP server: reemclickupmcpserver\n$ verify:\nreemclickupmcpserver: Error: Connection failed\nFailed to list tools: Failed to load MCP 'reemclickupmcpserver': MCP error -32000: Connection closed; stderr: FATAL STARTUP ERROR: Missing required environment variables: clickupApiKey, clickupTeamId Error: Missing required environment variables: clickupApiKey, clickupTeamId at validateConfiguration (file:///home/sbx...",
+   "retry": "fail",
+   "first_log": " Failed to load MCP 'reemclickupmcpserver': MCP error -32000: Connection closed; stderr: FATAL STARTUP ERROR: Missing required environment variables: clickupApiKey, clickupTeamId Error: Missing required environment variables: clickupApiKey, clickupTeamId at validateConfiguration (file:///home/sbx..."
+  },
+  {
+   "slug": "yawlabs-ctxlint",
+   "agent": "cursor",
+   "status": "fail",
+   "log": "\u2713 Enabled and approved MCP server: yawlabsctxlint\n$ verify:\nyawlabsctxlint: Error: Connection failed\nFailed to list tools: Failed to load MCP 'yawlabsctxlint': MCP error -32000: Connection closed; stderr: - Scanning for context files...",
+   "retry": "fail",
+   "first_log": "\u2713 Enabled and approved MCP server: yawlabsctxlint\n$ verify:\nyawlabsctxlint: Error: Connection failed\nFailed to list tools: Failed to load MCP 'yawlabsctxlint': MCP error -32000: Connection closed; stderr: - Scanning for context files..."
+  },
+  {
+   "slug": "yawlabs-postgres-mcp",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: yawlabspostgresmcp\n$ verify:\nyawlabspostgresmcp: ready\nTools for yawlabspostgresmcp (23):"
+  },
+  {
+   "slug": "zereight-mcp-gitlab",
+   "agent": "cursor",
+   "status": "fail",
+   "log": "\u2713 Enabled and approved MCP server: zereightmcpgitlab\n$ verify:\nzereightmcpgitlab: Error: Connection failed\nFailed to list tools: Failed to load MCP 'zereightmcpgitlab': MCP error -32000: Connection closed; stderr: ERROR [02:31:30.653] (137): GITLAB_PERSONAL_ACCESS_TOKEN environment variable is not set INFO [02:31:30.655] (137): Either set GITLAB_PERSONAL_ACCESS_TOKEN (or --token, or G...",
+   "retry": "fail",
+   "first_log": "onnection failed\nFailed to list tools: Failed to load MCP 'zereightmcpgitlab': MCP error -32000: Connection closed; stderr: ERROR [02:31:18.128] (137): GITLAB_PERSONAL_ACCESS_TOKEN environment variable is not set INFO [02:31:18.130] (137): Either set GITLAB_PERSONAL_ACCESS_TOKEN (or --token, or G..."
+  },
+  {
+   "slug": "agent-device",
+   "agent": "cursor",
+   "status": "fail",
+   "log": "\u2713 Enabled and approved MCP server: agentdevice\n$ verify:\nagentdevice: Error: Connection failed\nFailed to list tools: Failed to load MCP 'agentdevice': MCP error -32000: Connection closed",
+   "retry": "fail",
+   "first_log": "\u2713 Enabled and approved MCP server: agentdevice\n$ verify:\nagentdevice: Error: Connection failed\nFailed to list tools: Failed to load MCP 'agentdevice': MCP error -32000: Connection closed"
+  },
+  {
+   "slug": "aiterm-mcp",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: aitermmcp\n$ verify:\naitermmcp: ready\nTools for aitermmcp (19):"
+  },
+  {
+   "slug": "apple-notes-mcp",
+   "agent": "cursor",
+   "status": "fail",
+   "log": "\u2713 Enabled and approved MCP server: applenotesmcp\n$ verify:\napplenotesmcp: Error: Connection failed\nFailed to list tools: Failed to load MCP 'applenotesmcp': MCP error -32000: Connection closed; stderr: npm error code EBADPLATFORM npm error notsup Unsupported platform for apple-notes-mcp@2.15.16: wanted {\"os\":\"darwin\"} (current: {\"os\":\"linux\"}) npm error notsup Valid os: darwin npm error notsup Actual os: li...",
+   "retry": "fail",
+   "first_log": " tools: Failed to load MCP 'applenotesmcp': MCP error -32000: Connection closed; stderr: npm error code EBADPLATFORM npm error notsup Unsupported platform for apple-notes-mcp@2.15.16: wanted {\"os\":\"darwin\"} (current: {\"os\":\"linux\"}) npm error notsup Valid os: darwin npm error notsup Actual os: li..."
+  },
+  {
+   "slug": "blitzstrike",
+   "agent": "cursor",
+   "status": "fail",
+   "log": "\u2713 Enabled and approved MCP server: blitzstrike\n$ verify:\nblitzstrike: Error: Connection failed\nFailed to list tools: Failed to load MCP 'blitzstrike': MCP error -32000: Connection closed",
+   "retry": "fail",
+   "first_log": "\u2713 Enabled and approved MCP server: blitzstrike\n$ verify:\nblitzstrike: Error: Connection failed\nFailed to list tools: Failed to load MCP 'blitzstrike': MCP error -32000: Connection closed"
+  },
+  {
+   "slug": "brightspace-mcp-server",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: brightspacemcpserver\n$ verify:\nbrightspacemcpserver: ready\nTools for brightspacemcpserver (27):"
+  },
+  {
+   "slug": "browser-devtools-mcp",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: browserdevtoolsmcp\n$ verify:\nbrowserdevtoolsmcp: ready\nTools for browserdevtoolsmcp (51):"
+  },
+  {
+   "slug": "claimidx",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: claimidx\n$ verify:\nclaimidx: ready\nTools for claimidx (29):\n- claimidx_alternatives (target)\n- claimidx_apply (id, cwd, own, yes, trust_eval)"
+  },
+  {
+   "slug": "comfyui-mcp",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: comfyuimcp\n$ verify:\ncomfyuimcp: ready\nTools for comfyuimcp (41):"
+  },
+  {
+   "slug": "dsh-mcp-connector",
+   "agent": "cursor",
+   "status": "fail",
+   "log": "\u2713 Enabled and approved MCP server: dshmcpconnector\n$ verify:\ndshmcpconnector: Error: Connection failed\nFailed to list tools: Failed to load MCP 'dshmcpconnector': MCP error -32000: Connection closed; stderr: npm error could not determine executable to run npm error A complete log of this run can be found in: /home/sbx/.npm/_logs/2026-10-31T06_31_47_131Z-debug-0.log",
+   "retry": "fail",
+   "first_log": "connector: Error: Connection failed\nFailed to list tools: Failed to load MCP 'dshmcpconnector': MCP error -32000: Connection closed; stderr: npm error could not determine executable to run npm error A complete log of this run can be found in: /home/sbx/.npm/_logs/2026-10-31T06_31_37_150Z-debug-0.log"
+  },
+  {
+   "slug": "ffmpeg-skill",
+   "agent": "cursor",
+   "status": "fail",
+   "log": "\u2713 Enabled and approved MCP server: ffmpegskill\n$ verify:\nffmpegskill: Error: Connection failed\nFailed to list tools: Failed to load MCP 'ffmpegskill': MCP error -32000: Connection closed",
+   "retry": "fail",
+   "first_log": "\u2713 Enabled and approved MCP server: ffmpegskill\n$ verify:\nffmpegskill: Error: Connection failed\nFailed to list tools: Failed to load MCP 'ffmpegskill': MCP error -32000: Connection closed"
+  },
+  {
+   "slug": "gdharness",
+   "agent": "cursor",
+   "status": "fail",
+   "log": "\u2713 Enabled and approved MCP server: gdharness\n$ verify:\ngdharness: Error: Connection failed\nFailed to list tools: Failed to load MCP 'gdharness': MCP error -32022: Unsupported protocol version: 2025-11-25; stderr: [SERVER] No Godot executable found. Until that is fixed every tool that runs the engine will say so. gdharness running on stdio [2026-10-31T06:31:53.340Z] [GodotBridge:INFO] Editor brid...",
+   "retry": "fail",
+   "first_log": "list tools: Failed to load MCP 'gdharness': MCP error -32022: Unsupported protocol version: 2025-11-25; stderr: [SERVER] No Godot executable found. Until that is fixed every tool that runs the engine will say so. gdharness running on stdio [2026-10-31T06:31:46.376Z] [GodotBridge:INFO] Editor brid..."
+  },
+  {
+   "slug": "kordoc",
+   "agent": "cursor",
+   "status": "fail",
+   "log": "\u2713 Enabled and approved MCP server: kordoc\n$ verify:\nkordoc: Error: Connection failed\nFailed to list tools: Failed to load MCP 'kordoc': MCP error -32000: Connection closed; stderr: error: missing required argument 'files'",
+   "retry": "fail",
+   "first_log": "\u2713 Enabled and approved MCP server: kordoc\n$ verify:\nkordoc: Error: Connection failed\nFailed to list tools: Failed to load MCP 'kordoc': MCP error -32000: Connection closed; stderr: error: missing required argument 'files'"
+  },
+  {
+   "slug": "korean-law-mcp",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: koreanlawmcp\n$ verify:\nkoreanlawmcp: ready\nTools for koreanlawmcp (10):\n- discover_tools (intent)"
+  },
+  {
+   "slug": "mbox-mcp",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: mboxmcp\n$ verify:\nmboxmcp: ready\nTools for mboxmcp (3):"
+  },
+  {
+   "slug": "mcp-everything",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: mcpeverything\n$ verify:\nmcpeverything: ready\nTools for mcpeverything (14):"
+  },
+  {
+   "slug": "mcp-fetch",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: mcpfetch\n$ verify:\nmcpfetch: ready\nTools for mcpfetch (1):"
+  },
+  {
+   "slug": "mcp-filesystem",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: mcpfilesystem\n$ verify:\nmcpfilesystem: ready\nFailed to list tools: Failed to load MCP 'mcpfilesystem': MCP error -32000: Connection closed"
+  },
+  {
+   "slug": "mcp-git",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: mcpgit\n$ verify:\nmcpgit: ready\nTools for mcpgit (12):"
+  },
+  {
+   "slug": "mcp-memory",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: mcpmemory\n$ verify:\nmcpmemory: ready\nTools for mcpmemory (9):"
+  },
+  {
+   "slug": "mcp-sequential-thinking",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: cpsequentialthinking\n$ verify:\ncpsequentialthinking: ready\nTools for cpsequentialthinking (1):"
+  },
+  {
+   "slug": "mcp-time",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: mcptime\n$ verify:\nmcptime: ready\nTools for mcptime (2):"
+  },
+  {
+   "slug": "mcp-local-rag",
+   "agent": "cursor",
+   "status": "pass",
+   "log": "\u2713 Enabled and approved MCP server: mcplocalrag\n$ verify:\nmcplocalrag: ready\nTools for mcplocalrag (9):"
+  },
+  {
+   "slug": "mcp-tenant-isolation",
+   "agent": "cursor",
+   "status": "fail",
+   "log": "\u2713 Enabled and approved MCP server: mcptenantisolation\n$ verify:\nmcptenantisolation: Error: Connection failed\nFailed to list tools: Failed to load MCP 'mcptenantisolation': MCP error -32000: Connection closed; stderr: /home/sbx/.npm/_npx/b4351e4aa299ba42/node_modules/.bin/mti: 1: use strict: not found /home/sbx/.npm/_npx/b4351e4aa299ba42/node_modules/.bin/mti: 2: /bin: Permission denied /home/sbx/.npm/_npx/b4351e4aa299ba42...",
+   "retry": "fail",
+   "first_log": "s: Failed to load MCP 'mcptenantisolation': MCP error -32000: Connection closed; stderr: /home/sbx/.npm/_npx/b4351e4aa299ba42/node_modules/.bin/mti: 1: use strict: not found /home/sbx/.npm/_npx/b4351e4aa299ba42/node_modules/.bin/mti: 2: /bin: Permission denied /home/sbx/.npm/_npx/b4351e4aa299ba42..."
+  },
+  {
+   "slug": "notion-mcp-server",
+   "agent": "cursor",
+   "status": "fail",
+   "log": "\u2713 Enabled and approved MCP server: notionmcpserver\n$ verify:\nnotionmcpserver: Error: Connection failed\nFailed to list tools: Failed to load MCP 'notionmcpserver': MCP error -32000: Connection closed; stderr: file:///home/sbx/.npm/_npx/ffcbb15b366314dd/node_modules/notion-mcp-server/build/services/notion.js:1 import { Client } from \"@notionhq/client\"; ^^^^^^ SyntaxError: Named export 'Client' not found. The reques...",
+   "retry": "fail",
+   "first_log": "ools: Failed to load MCP 'notionmcpserver': MCP error -32000: Connection closed; stderr: file:///home/sbx/.npm/_npx/ffcbb15b366314dd/node_modules/notion-mcp-server/build/services/notion.js:1 import { Client } from \"@notionhq/client\"; ^^^^^^ SyntaxError: Named export 'Client' not found. The reques..."
+  },
+  {
+   "slug": "obsidian-mcp-server",
+   "agent": "cursor",
+   "status": "fail",
+   "log": "\u2713 Enabled and approved MCP server: obsidianmcpserver\n$ verify:\nobsidianmcpserver: Error: Connection failed\nFailed to list tools: Failed to load MCP 'obsidianmcpserver': MCP error -32000: Connection closed; stderr: file:///home/sbx/.npm/_npx/f36605d6814ff2b0/node_modules/@cyanheads/mcp-ts-core/dist/types-global/errors.js:98 export const configurationError = (message, data, options) => new McpError(JsonRpcErrorCode.Confi...",
+   "retry": "fail",
+   "first_log": "ls: Failed to load MCP 'obsidianmcpserver': MCP error -32000: Connection closed; stderr: file:///home/sbx/.npm/_npx/f36605d6814ff2b0/node_modules/@cyanheads/mcp-ts-core/dist/types-global/errors.js:98 export const configurationError = (message, data, options) => new McpError(JsonRpcErrorCode.Confi..."
+  },
+  {
+   "slug": "rea-agents",
+   "agent": "cursor",
+   "status": "fail",
+   "log": "\u2713 Enabled and approved MCP server: reaagents\n$ verify:\nreaagents: Error: Connection failed\nFailed to list tools: Failed to load MCP 'reaagents': MCP error -32000: Connection closed",
+   "retry": "fail",
+   "first_log": "\u2713 Enabled and approved MCP server: reaagents\n$ verify:\nreaagents: Error: Connection failed\nFailed to list tools: Failed to load MCP 'reaagents': MCP error -32000: Connection closed"
+  },
+  {
+   "slug": "safari-mcp",
+   "agent": "cursor",
+   "status": "fail",
+   "log": "\u2713 Enabled and approved MCP server: safarimcp\n$ verify:\nsafarimcp: Error: Connection failed\nFailed to list tools: Failed to load MCP 'safarimcp': MCP error -32000: Connection closed; stderr: npm error code EBADPLATFORM npm error notsup Unsupported platform for safari-mcp@2.23.0: wanted {\"os\":\"darwin\"} (current: {\"os\":\"linux\"}) npm error notsup Valid os: darwin npm error notsup Actual os: linux np...",
+   "retry": "fail",
+   "first_log": "list tools: Failed to load MCP 'safarimcp': MCP error -32000: Connection closed; stderr: npm error code EBADPLATFORM npm error notsup Unsupported platform for safari-mcp@2.23.0: wanted {\"os\":\"darwin\"} (current: {\"os\":\"linux\"}) npm error notsup Valid os: darwin npm error notsup Actual os: linux np..."
   }
  ]
 }
