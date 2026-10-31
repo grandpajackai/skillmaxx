@@ -3656,10 +3656,10 @@
     "pi": null
    },
    "listings": [
-    "https://github.com/claimidx/claimidx"
+    "https://github.com/modelcontextprotocol/servers"
    ],
-   "listing_url": "https://github.com/claimidx/claimidx",
-   "notes": "Community-requested (Bluesky @claimidx.bsky.social). PyPI package claimidx, run via uvx; MCP entrypoint claimidx-mcp."
+   "listing_url": "https://github.com/modelcontextprotocol/servers",
+   "notes": ""
   },
   {
    "slug": "clangd-lsp",
@@ -5618,7 +5618,7 @@
    "install": {
     "claude_code": "/plugin install expo@claude-plugins-official",
     "codex": "codex plugin add expo@openai-curated",
-    "grok_build": "Auto-loaded from your Claude Code plugins (no extra setup per xAI docs)",
+    "grok_build": "grok plugin install expo --trust",
     "cursor": null,
     "pi": null
    },
@@ -5632,16 +5632,17 @@
    "compat_sources": {
     "claude_code": "https://code.claude.com/docs/en/discover-plugins",
     "codex": "https://developers.openai.com/codex/plugins",
-    "grok_build": "https://docs.x.ai/build/features/skills-plugins-marketplaces",
+    "grok_build": "https://x.ai/news/grok-plugin-marketplace",
     "cursor": null,
     "pi": null
    },
    "listings": [
     "https://github.com/anthropics/claude-plugins-official",
+    "https://github.com/xai-org/plugin-marketplace",
     "https://github.com/openai/plugins"
    ],
    "listing_url": "https://github.com/anthropics/claude-plugins-official",
-   "notes": "Grok Build status relies on xAI docs saying Grok reads Claude Code plugins automatically."
+   "notes": ""
   },
   {
    "slug": "fakechat",
@@ -11644,8 +11645,8 @@
   },
   {
    "slug": "runway-api",
-   "name": "Runway API",
-   "description": "Video generation at scale. Generate videos, images, and audio with Runway's API \u2014 batch ad campaigns, product videos, multishot stories, and creative iteration. Supports seedance2, gen4.5, veo3, Nano, Banana Pro, and more.",
+   "name": "Runway Dev",
+   "description": "Get guidance for integrating video, image and audio generation with the Runway API and official SDKs. Connect to your Runway Dev account to inspect available models and task errors, manage Model Routers and existing real-time avatars, and inspect recorded routing decisions.",
    "source_url": "https://runwayml.com",
    "category": "design",
    "type": "plugin",
