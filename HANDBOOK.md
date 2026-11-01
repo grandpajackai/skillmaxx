@@ -73,6 +73,7 @@ One page to catch up. Site: https://skillmaxx.gilventures.ai · Repo: grandpajac
 | Owner dashboard | Grok Bot canvas d70f3b85-34d9-4642-b1a1-ff1f64a40b22 | Sponsors section (Stripe snapshot at refresh), review queue, sales pipeline |
 
 ## Standing rules
+- **Newsletter CTA (X radar, Bluesky community, Buffer top-up):** roughly 1 in 3 new trend/Bluesky posts end with the newsletter link https://skillmaxxs-newsletter.beehiiv.com/subscribe. New posts only; never edit approved X copy; never in replies. Full rule: growth/NEWSLETTER-CTA-RULE.md.
 $0 budget · no secrets in chat or repo · Brandon approves posts once (weekly plan), then routines queue approved posts in Buffer without daily asks · nothing on pricing/promos goes live without Brandon's approval · only SkillMaxx accounts · log every session in STATUS.md.
 
 **Outreach sender lesson (Oct 30):** the background email sender died silently mid-batch (after 8 of 10, log ended on "next in 28m20s", no process left), and its per-send PIPELINE.csv writes were lost from the working copy. So: (1) check the sender is still alive mid-afternoon (`pgrep -f send_MMDD.py` + tail the log) and again before 5 PM ET; if it's dead, don't re-run it (it refuses once results have 'sent' entries anyway), roll the unsent to the next weekday batch; (2) commit PIPELINE.csv + the results JSON the same day, and treat `growth/outreach/sent/*-email-results.json` as the source of truth for what went out.

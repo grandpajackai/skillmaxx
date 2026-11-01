@@ -36,3 +36,5 @@ eleventyComputed:
 {% if s.readme %}<section class="readme"><div class="rowh"><h2 class="sh">README</h2><a href="{{ s.meta.repo }}" rel="nofollow noopener">View on GitHub ↗</a></div><div class="md">{{ s.readme.html | safe }}</div>{% if s.readme.truncated %}<a class="btn ghost" href="{{ s.meta.repo }}" rel="nofollow noopener">Read the full README on GitHub →</a>{% endif %}<p class="muted">Preview from the source repo. Images are removed.</p></section>{% endif %}
 {% set rel = skills | related(s) %}{% if rel.length %}<h2 class="sh">Similar alternatives</h2><div class="grid g4">{% for r in rel %}{{ card(r) }}{% endfor %}</div>{% endif %}
 </div>
+{% set nlh = "Get the weekly install scorecard" %}{% set nlp = "What broke, what's flaky, what's safe to install across Claude Code, Codex, Grok Build, Cursor and Pi. Free, every Tuesday." %}
+{% include "nlembed.njk" %}
