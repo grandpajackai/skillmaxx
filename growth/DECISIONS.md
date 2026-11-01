@@ -96,3 +96,9 @@
 52. **No Google My Business.** SkillMaxx has no physical address or LLC of its own; it operates under Gil Ventures (registered in Florida; use FL in form state fields).
 53. **Leads:** skip CockroachDB's support-labeled info@ address; reach Cloudflare and Hugging Face by X DM after Brandon engages a post (drafts in BRANDON-OUTREACH.md), not press@.
 54. **Free December newsletter line approved** for the BFCM offer (updates #30). Brandon pinned the X launch post, downgrades Beehiiv himself, and blocks time for human-only tasks (reply sniper links, reach-out list).
+
+## 2026-10-31 — operating notes (recorded by the Nov 1 nightly)
+No new owner decisions came in on Oct 31. Operating rules adopted after that day's incidents:
+55. **Disk cleanups never touch test deps:** any box cleanup must exclude /workspace/agents (agent CLIs, Node 22, Cursor install) and /workspace/skillmaxx/node_modules + ~/.cache/ms-playwright; the Oct 31 wipe broke every install test and the build.
+56. **A pass must mean the check passed:** if an agent's own health check and a follow-up check disagree (e.g. Cursor says `ready` but `list-tools` fails), don't count it as a pass. Fix tracked in STATUS open issues (Cursor MCP pass check); until it ships, site numbers keep the documented `ready` criterion.
+
