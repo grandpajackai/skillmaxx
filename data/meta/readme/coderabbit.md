@@ -275,6 +275,5 @@ and chat doesn't run subagents.
 
 ### Antigravity CLI
 
-- Native plugin manifest: `plugin.json`
-- Skills source: `skills/`
-- Review command: `/coderabbit:review` from
+For sandboxed CLI sessions that cannot find or execute an installed CodeRabbit
+CLI, follow the [scoped executa

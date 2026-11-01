@@ -70,7 +70,7 @@ Once in a while, `SessionStart` names whichever of `claude-supertool` / `claude-
 /plugin install remember@dpt-plugins
 ```
 
-Restart Claude Code afterwards; hooks are read at session start ([#200](https://github.com/Digital-Process-Tools/claude-remember/issues/200)). Updating, the official Anthropic marketplace and its lag, manual install, checking your version: [docs/install-claude-code.md](docs/install-claude-code.md).
+Restart Claude Code afterwards; hooks are read at session start ([#200](https://github.com/Digital-Process-Tools/claude-remember/issues/200)). Updating, the official Anthropic marketplace and its lag, manual install, checking your version, and how to switch here from the official marketplace: [docs/install-claude-code.md](docs/install-claude-code.md).
 
 **Codex**
 
@@ -164,4 +164,4 @@ This plugin runs with your full shell privileges, like any other hook your codin
 
 **Summarization** shells out to a CLI you already have installed and authenticated — never a bundled binary, never a third-party service beyond the one that CLI already talks to:
 
-- `REMEMBER_SUMMARIZER` selects the provider: `claude` (the nested `claude -p`), `codex` (the nested `codex exec`), or `auto` (the default — reads the transcript the host actually wrote to pick one). `REMEMBER_SUMMARIZER_FALLBACK=claude` (opt-in, unset by default) retries a failed `codex` call via `claude -p` instead of raising, and logs every time it fir
+- `REMEMBER_SUMMARIZER` selects the provider: `claude` (the nested `claude -p`), `codex` (the nested `codex exec`), or `auto` (the default — reads the transcript the host actually wrote to pick one). `REMEMBER_SUMMARIZER_FALLBACK=claude` (opt-in, unset by default) retries a failed `codex` call via `cla

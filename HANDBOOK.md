@@ -29,21 +29,25 @@ One page to catch up. Site: https://skillmaxx.gilventures.ai · Repo: grandpajac
 | Daily reports (site) | /reports/latest/, built by `testing/daily_report.py` |
 | "Brandon to reach out" list (call/social/press-only, blocked forms) | [growth/sponsors/PIPELINE.csv](growth/sponsors/PIPELINE.csv) (non-email/form routes + blocker in notes) and the owner dashboard Sales pipeline (DECISIONS #43) |
 | npm packages dropped as deprecated | `data/npm_excluded.json` (read by `build_data.py`) |
-| Daily X radar notes + newsletter idea log | [growth/x-radar/](growth/x-radar/), [growth/newsletter/issue-002-notes.md](growth/newsletter/issue-002-notes.md) |
+| Daily X radar notes + newsletter idea log | [growth/x-radar/](growth/x-radar/) (incl. `*-brandons-queue.md` fallback when the dashboard canvas can't be edited), [growth/newsletter/issue-002-notes.md](growth/newsletter/issue-002-notes.md), [growth/newsletter/issue-003-notes.md](growth/newsletter/issue-003-notes.md) |
+| Brandon's reach-out list (X DMs, calls, blocked forms) | [growth/sponsors/BRANDON-OUTREACH.md](growth/sponsors/BRANDON-OUTREACH.md) |
+| Bluesky community log (pending replies, follows) | [growth/bluesky/](growth/bluesky/) |
+| Show HN / Product Hunt launch drafts (Brandon posts) | [growth/launch/LAUNCH-DRAFTS.md](growth/launch/LAUNCH-DRAFTS.md) |
+| Blog (in-depth posts) | `src/blog/` → /blog/ |
 
 ## Routines (Grok Bot, times ET)
-| Routine | Schedule | Status (Oct 31, 3:10 AM ET) |
+| Routine | Schedule | Status (Nov 1, 2:45 AM ET) |
 |---|---|---|
-| Nightly refresh (fetch, test, report, deploy) | daily 2:00 AM | enabled; last run Oct 31 ok after a box-deps repair (891/1,061; MCP now tested in all 5 agents). After a Tuesday send, confirm /newsletter/ archive matches the emailed issue (see NEWSLETTER-SEND.md) |
-| X radar (log: growth/x-radar/) | daily 10:00 AM | enabled; last run Oct 30 |
-| Post check (Buffer sent / errors) | daily 10:30 AM | enabled; last run Oct 30 10:34 AM |
+| Nightly refresh (fetch, test, report, deploy) | daily 2:00 AM | enabled; last run Nov 1 ok (895/1,061; no marketplace/npm changes; no big event). After a Tuesday send, confirm /newsletter/ archive matches the emailed issue (see NEWSLETTER-SEND.md) |
+| X radar (log: growth/x-radar/) | daily 10:00 AM | enabled; last run Oct 31 (Expo trend post; Brandon's queue saved to growth/x-radar/ because canvas tools were unavailable) |
+| Post check (Buffer sent / errors) | daily 10:30 AM | enabled; last run Oct 31 10:33 AM, all published |
 | Daily sponsor outreach (PIPELINE.csv, OUTREACH.md; DECISIONS #31–33, #39–41, #43) | weekdays 11:00 AM | enabled; last run Oct 30 (8 emails, 11 forms; sender died after the 8th, Nimble + Carbone roll to Mon Nov 2). 15–30/day max, emails spread ~8:30 AM–7 PM ET under the 10→20→30/day ramp, forms unlimited, never guess emails, one-line update per send + tally; unreachable leads go on the "Brandon to reach out" list and never stall the run |
 | Outreach wrap-up | Oct 29, 5:45 PM; Oct 30, ~5 PM | paused (one-off, done) |
 | Sponsor pipeline weekly ([growth/routines/SPONSOR-PIPELINE-WEEKLY.md](growth/routines/SPONSOR-PIPELINE-WEEKLY.md)) | Mon 9:00 AM | enabled |
-| Buffer daily top-up ([growth/routines/BUFFER-DAILY-TOPUP.md](growth/routines/BUFFER-DAILY-TOPUP.md)) | daily 10:00 PM | enabled; last run Oct 30 10:05 PM, ok (week-44 scorecard posts scheduled Sun Nov 1) |
+| Buffer daily top-up ([growth/routines/BUFFER-DAILY-TOPUP.md](growth/routines/BUFFER-DAILY-TOPUP.md)) | daily 10:00 PM | enabled; last run Oct 31 10:05 PM, ok (6 scheduled per channel, nothing in the 48 h window to move) |
 | Newsletter send + archive ([growth/routines/NEWSLETTER-SEND.md](growth/routines/NEWSLETTER-SEND.md)) | Tue after Beehiiv send | runbook ready; first email = issue #2 on Tue Nov 3 (issue #1 is site-only) |
-| Bluesky community (replies, likes, follows, tagging; DECISIONS #48) | daily 1:00 PM | enabled, first run pending |
-| Sunday recap | Sun 6:00 PM | enabled, first run Nov 1 |
+| Bluesky community (replies, likes, follows, tagging; DECISIONS #48) | daily 1:00 PM | enabled; ran Oct 31 (claimidx reply sent ~1:08 PM; follows logged in growth/bluesky/FOLLOWS.md) |
+| Sunday recap | Sun 6:00 PM | enabled, never run yet; first run tonight Nov 1 |
 | SkillMaxx reply sniper X/Bluesky/LinkedIn (log: growth/x/sniper-log.md) | — | **paused** at Brandon's request; LinkedIn picks go out as the SkillMaxx AI page (DECISIONS #42) |
 | Brandon personal-brand reply sniper | — | paused |
 | BFCM banner on | Nov 27, 9:00 AM | enabled; offer approved Oct 27 (DECISIONS #30) ([growth/routines/BFCM-FOUNDING-12.md](growth/routines/BFCM-FOUNDING-12.md)) |
