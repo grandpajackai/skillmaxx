@@ -1,6 +1,6 @@
 # Sponsor pipeline
 
-**Machine-readable list:** [PIPELINE.csv](PIPELINE.csv) — 40 prospects, status column, public contact routes only (no guessed emails).  
+**Machine-readable list:** [PIPELINE.csv](PIPELINE.csv) — 127 prospects (as of 2026-11-02), status column, public contact routes only (no guessed emails).  
 **Templates + weekly cadence:** [OUTREACH.md](OUTREACH.md).  
 **Pricing / caps:** [../SPONSORS.md](../SPONSORS.md) · [SCALING.md](SCALING.md).  
 **Playbook:** [PLAYBOOK.md](PLAYBOOK.md).
@@ -25,8 +25,26 @@ PIPELINE.csv columns: company, who_they_are, website, contact_route (email/form/
 
 Routing: verified public email first (never guess) → contact form → if a site only offers call bookings, find a public email → if only a phone, log `call-only` with the number and tell Brandon → else `linkedin`/`x` with the URL and tell Brandon. Call-only and LinkedIn/X leads show in the dashboard "Needs Brandon" list.
 
-## Snapshot (from PIPELINE.csv, 2026-10-28 11:50 AM ET)
+## Snapshot (from PIPELINE.csv, 2026-11-02 ~9:15 AM ET, weekly pipeline run)
 
+| Stage | Count |
+|---|---|
+| Target | 47 (Nimble + Carbone carried over; **45 new** added Nov 2: 38 email + 7 form, best fit first) |
+| Contacted | 66 |
+| Form-scheduled | 2 (Vercel + CockroachDB, 10:30 AM ET today) |
+| Replied | 1 (WorkOS, nudge due 2026-11-05) |
+| dm-closed (X DMs closed; LinkedIn-note route) | 7 |
+| Call-only (needs Brandon) | 2 |
+| X-only (needs Brandon) | 1 |
+| Declined-warm | 1 (Upstash/Context7, check back 2027-01-26) |
+| Booked | 0 |
+| Live | 0 |
+| Lost | 0 |
+
+Before this run: 82 rows (Target 2). Stripe live (Gil Ventures LLC, read-only) since Oct 26: 0 charges, 0 Checkout sessions, 0 subscriptions → no bookings. Beehiiv: 5 active subs (outreach gate was 25); issue #2 still DRAFT for Tue Nov 3.
+Next follow-ups: Oct 27 batch 2026-11-03 · Oct 28 batch 2026-11-04 · WorkOS nudge 2026-11-05 · X DMs 2026-11-08.
+
+### Previous snapshot (2026-10-28 11:50 AM ET)
 | Stage | Count |
 |---|---|
 | Target | 4 (Vercel + Snyk blocked by form fields; Hugging Face + Cloudflare deferred to Oct 29) |
