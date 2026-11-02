@@ -41,7 +41,7 @@ One page to catch up. Site: https://skillmaxx.gilventures.ai · Repo: grandpajac
 ## Routines (Grok Bot, times ET)
 | Routine | Schedule | Status (Nov 2, ~2:45 AM ET) |
 |---|---|---|
-| Nightly refresh (fetch, test, report, deploy) | daily 2:00 AM | enabled; last run Nov 2: NIGHTLY_SUMMARY. After a Tuesday send, confirm /newsletter/ archive matches the emailed issue (see NEWSLETTER-SEND.md) |
+| Nightly refresh (fetch, test, report, deploy) | daily 2:00 AM | enabled; last run Nov 2: ok (895/1,061, same as Nov 1; no marketplace/npm changes; no big event). After a Tuesday send, confirm /newsletter/ archive matches the emailed issue (see NEWSLETTER-SEND.md) |
 | **Brandon's daily SkillMaxx queue** (X replies, Reddit comments/posts, LinkedIn picks, DMs due that day; direct link or exact search text per item; DECISIONS #57–63) | daily 8:00 AM | enabled (new Nov 1); first run Mon Nov 2 |
 | X radar (log: growth/x-radar/) | daily 10:00 AM | enabled; last run Nov 1 (5 reply drafts, no trend post) |
 | Post check (Buffer sent / errors) | daily 10:30 AM | enabled; last run Nov 1 10:38 AM, all published |
