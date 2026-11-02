@@ -1,0 +1,12 @@
+[
+  {
+    "company": "Nimble",
+    "to": "hello@nimbleway.com",
+    "source_url": "https://www.nimbleway.com/contact",
+    "subject": "your Nimble plugin passes our nightly install tests",
+    "status": "error",
+    "error": "SSLEOFError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1029)",
+    "message_id": "",
+    "sent_at_et": "2026-11-02 11:10:59 ET"
+  }
+]

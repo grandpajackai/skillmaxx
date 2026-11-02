@@ -1,0 +1,20 @@
+# Chroma
+
+To: hello@trychroma.com
+Source: https://www.trychroma.com/company
+Subject: Package Search MCP and the people picking agent tools
+
+Hi Chroma team,
+
+I'm Brandon. I run SkillMaxx, a free directory that install-tests 424 agent skills, plugins and MCP servers nightly in Claude Code, Codex, Grok Build, Cursor and Pi (public logs: https://skillmaxx.gilventures.ai/reports/latest/).
+
+Package Search MCP is aimed straight at coding agents, but as a hosted server it hasn't come in through the npm and marketplace feeds we test from. Is it mostly coding agents calling it today, or people wiring it into their own agents?
+
+Honest ask: would you take a founding Newsletter slot at $19/issue ($59/mo for 4)? Locked 6 months for the first 10 sponsors. Always labeled Sponsored; money never changes a test result.
+
+We launched in Oct 2026 and the newsletter first sends Tue Nov 3, so the audience is tiny (hence the price). You'd get a monthly report with real numbers, even small ones.
+
+A one-line "not now" helps too.
+
+Brandon
+SkillMaxx · https://skillmaxx.gilventures.ai/advertise/

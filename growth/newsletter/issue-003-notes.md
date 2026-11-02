@@ -16,3 +16,12 @@ Sends Tue 2026-11-10. Issue #2 (Nov 3) is final; anything below that's urgent ca
 - **MCP goes mainstream:** Roblox's Q3 shareholder letter charts daily users of its MCP server (via @AndrewCurran_).
 - Nov 1 nightly: 895 of 1,061 installs passed (30 of the 166 failures only need an API key).
 - New to test: xdock, deskstats, text-to-cad, linkedin-mcp-server plugins, Open Design Agent Kit, K-Dense scientific-agent-skills.
+
+## From X radar 2026-11-02
+- **Stageshow (benjitaylor/skills)**: a faux-UI and cursor-demo skill from Benji Taylor (head of design at X), released Oct 31. His launch post has 1.33M views. Our sandbox check this morning: `npx skills add benjitaylor/skills` installed it for Claude Code, Codex, Cursor and Pi in one command. That was an install check only, not an output check. Trend post went out Nov 2.
+- **TokenEconomizer follow-up**: the README installs register in Claude Code 2.1.197, Codex 0.163.0 and Pi 1.4.0 (box sandbox, Nov 2, ~10:10 AM ET). Its release notes pin tested ranges (Claude Code 2.1.300–2.1.310, Codex 0.153.1–0.164.0, Pi 1.2.0–1.3.0), so only our Codex falls inside one. Our sandbox Claude Code (2.1.197) is well behind current releases and is worth bumping before #3. No savings were measured.
+- **second-read on Grok Build**: the marketplace adds, then install says "No marketplace plugin named second-read". Installing from a local clone works. The likely cause is the root `"source": "./"` in .claude-plugin/marketplace.json. Brandon is filing the issue. Angle: marketplace.json patterns that Claude Code accepts but Grok Build doesn't.
+- **Gotcha**: a stray `.mcp.json` in a parent folder loads MCP servers into every session below it (via @giorgiafontane's thread).
+- **Reddit API (unverified)**: jordanburke/reddit-mcp-server's README says Reddit stopped accepting new public Data API requests Oct 31, ends RSS Nov 13, and starts removal Jan 12 2027. Verify with Reddit before using.
+- X news trends, headlines only: harness engineering, Anthropic blocking game recreations, invisible watermarks on older Claude models.
+- New to test: Stageshow, deed-page-skill (author OK'd), second-read, TokenEconomizer (in nightly?), claude-workflow-recorder, Weasel icons skill, shadcn 100 charts MCP, Immersive Fusion observability MCP, REA (`npx rea-agents setup`). Gap: skills-CLI (`npx skills add`) installs aren't a run_tests.py test type yet.
