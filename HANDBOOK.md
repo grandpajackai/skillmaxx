@@ -34,21 +34,29 @@ One page to catch up. Site: https://skillmaxx.gilventures.ai · Repo: grandpajac
 | Bluesky community log (pending replies, follows) | [growth/bluesky/](growth/bluesky/) |
 | Show HN / Product Hunt launch drafts (Brandon posts) | [growth/launch/LAUNCH-DRAFTS.md](growth/launch/LAUNCH-DRAFTS.md) |
 | Blog (in-depth posts) | `src/blog/` → /blog/ |
+| LinkedIn connection notes + Sales Navigator lead-gen (Brandon's trial) | [growth/sponsors/LINKEDIN-NOTES-2026-11-01.md](growth/sponsors/LINKEDIN-NOTES-2026-11-01.md), [growth/sponsors/SALES-NAV-PLAYBOOK.md](growth/sponsors/SALES-NAV-PLAYBOOK.md), [growth/sponsors/SALES-NAV-LEADS.csv](growth/sponsors/SALES-NAV-LEADS.csv) |
+| Outreach rules (verify named contacts, smart questions, DM-open column) | [growth/sponsors/OUTREACH.md](growth/sponsors/OUTREACH.md) §0/§0b, DECISIONS #57–68 |
+| Newsletter subscribe CTA rule | [growth/NEWSLETTER-CTA-RULE.md](growth/NEWSLETTER-CTA-RULE.md) |
 
 ## Routines (Grok Bot, times ET)
-| Routine | Schedule | Status (Nov 1, 2:45 AM ET) |
+| Routine | Schedule | Status (Nov 2, ~2:45 AM ET) |
 |---|---|---|
-| Nightly refresh (fetch, test, report, deploy) | daily 2:00 AM | enabled; last run Nov 1 ok (895/1,061; no marketplace/npm changes; no big event). After a Tuesday send, confirm /newsletter/ archive matches the emailed issue (see NEWSLETTER-SEND.md) |
-| X radar (log: growth/x-radar/) | daily 10:00 AM | enabled; last run Oct 31 (Expo trend post; Brandon's queue saved to growth/x-radar/ because canvas tools were unavailable) |
-| Post check (Buffer sent / errors) | daily 10:30 AM | enabled; last run Oct 31 10:33 AM, all published |
-| Daily sponsor outreach (PIPELINE.csv, OUTREACH.md; DECISIONS #31–33, #39–41, #43) | weekdays 11:00 AM | enabled; last run Oct 30 (8 emails, 11 forms; sender died after the 8th, Nimble + Carbone roll to Mon Nov 2). 15–30/day max, emails spread ~8:30 AM–7 PM ET under the 10→20→30/day ramp, forms unlimited, never guess emails, one-line update per send + tally; unreachable leads go on the "Brandon to reach out" list and never stall the run |
-| Outreach wrap-up | Oct 29, 5:45 PM; Oct 30, ~5 PM | paused (one-off, done) |
+| Nightly refresh (fetch, test, report, deploy) | daily 2:00 AM | enabled; last run Nov 2: NIGHTLY_SUMMARY. After a Tuesday send, confirm /newsletter/ archive matches the emailed issue (see NEWSLETTER-SEND.md) |
+| **Brandon's daily SkillMaxx queue** (X replies, Reddit comments/posts, LinkedIn picks, DMs due that day; direct link or exact search text per item; DECISIONS #57–63) | daily 8:00 AM | enabled (new Nov 1); first run Mon Nov 2 |
+| X radar (log: growth/x-radar/) | daily 10:00 AM | enabled; last run Nov 1 (5 reply drafts, no trend post) |
+| Post check (Buffer sent / errors) | daily 10:30 AM | enabled; last run Nov 1 10:38 AM, all published |
+| Daily sponsor outreach (PIPELINE.csv, OUTREACH.md; DECISIONS #31–33, #39–41, #43, #61–66) | weekdays 11:00 AM | enabled; Nimble + Carbone go first Mon Nov 2. 15–30/day max, emails spread ~8:30 AM–7 PM ET under the 10→20→30/day ramp, forms unlimited, never guess emails, one-line update per send + tally; unreachable leads go on the "Brandon to reach out" list and never stall the run |
+| SkillMaxx Vercel + CockroachDB forms (DECISIONS #68) | Mon Nov 2, 10:30 AM | one-off, enabled |
 | Sponsor pipeline weekly ([growth/routines/SPONSOR-PIPELINE-WEEKLY.md](growth/routines/SPONSOR-PIPELINE-WEEKLY.md)) | Mon 9:00 AM | enabled |
-| Buffer daily top-up ([growth/routines/BUFFER-DAILY-TOPUP.md](growth/routines/BUFFER-DAILY-TOPUP.md)) | daily 10:00 PM | enabled; last run Oct 31 10:05 PM, ok (6 scheduled per channel, nothing in the 48 h window to move) |
+| Newsletter #2 finalize + schedule (refresh scorecard, swap "(refresh)" parts, schedule in Beehiiv) | Tue Nov 3, ~2:45 AM | one-off, enabled; draft post_d4f7cc7e in Beehiiv |
 | Newsletter send + archive ([growth/routines/NEWSLETTER-SEND.md](growth/routines/NEWSLETTER-SEND.md)) | Tue after Beehiiv send | runbook ready; first email = issue #2 on Tue Nov 3 (issue #1 is site-only) |
-| Bluesky community (replies, likes, follows, tagging; DECISIONS #48) | daily 1:00 PM | enabled; ran Oct 31 (claimidx reply sent ~1:08 PM; follows logged in growth/bluesky/FOLLOWS.md) |
-| Sunday recap | Sun 6:00 PM | enabled, never run yet; first run tonight Nov 1 |
-| SkillMaxx reply sniper X/Bluesky/LinkedIn (log: growth/x/sniper-log.md) | — | **paused** at Brandon's request; LinkedIn picks go out as the SkillMaxx AI page (DECISIONS #42) |
+| SkillMaxx Reddit post reminders (Nov 4 r/SideProject, Nov 5 r/mcp, Nov 6 r/cursor, Nov 9 r/ClaudeAI) | Nov 4/5/6/9, 9:00 AM | enabled; Brandon posts (DECISIONS #46) |
+| SkillMaxx HN + Product Hunt launch reminder ([growth/launch/LAUNCH-DRAFTS.md](growth/launch/LAUNCH-DRAFTS.md)) | Tue Nov 10, 9:00 AM | one-off, enabled; Brandon posts |
+| Buffer daily top-up ([growth/routines/BUFFER-DAILY-TOPUP.md](growth/routines/BUFFER-DAILY-TOPUP.md)) | daily 10:00 PM | enabled; last run Nov 1 10:10 PM, ok (6 scheduled per channel; Nov 3 newsletter posts held by the send gate) |
+| Bluesky community (replies, likes, follows, tagging; DECISIONS #48) | daily 1:00 PM | enabled; follows logged in growth/bluesky/FOLLOWS.md |
+| Sunday recap | Sun 6:00 PM | enabled; first run Nov 1 |
+| Outreach wrap-up | Oct 29, 5:45 PM; Oct 30, ~5 PM | paused (one-off, done) |
+| SkillMaxx reply sniper X/Bluesky/LinkedIn (log: growth/x/sniper-log.md) | — | **paused** at Brandon's request (his daily queue covers replies now); LinkedIn picks go out as the SkillMaxx AI page (DECISIONS #42) |
 | Brandon personal-brand reply sniper | — | paused |
 | BFCM banner on | Nov 27, 9:00 AM | enabled; offer approved Oct 27 (DECISIONS #30) ([growth/routines/BFCM-FOUNDING-12.md](growth/routines/BFCM-FOUNDING-12.md)) |
 | BFCM banner off | Dec 1, 9:00 AM | enabled |
@@ -64,12 +72,13 @@ One page to catch up. Site: https://skillmaxx.gilventures.ai · Repo: grandpajac
 | Email | skillmaxx@gilventures.ai (Zoho) | on Brandon's phone; FormSubmit target; sponsor outreach sender via SMTP (SPF + DKIM verified Oct 27); inbox read through box-browser webmail (IMAP/POP blocked from box) |
 | FormSubmit | skillmaxx@gilventures.ai | activated Oct 26; autoresponse on /advertise/, /submit/ |
 | Stripe | Gil Ventures LLC (live, acct …HnNCwlg7U0) | 8 payment links, portal bpc_1UUuTKHnNCwlg7U0D15J5OZG; no payouts/refunds/settings without Brandon |
-| Beehiiv | SkillMaxx Weekly | Pro features kept; Brandon downgrades himself ~Nov 2 |
+| Beehiiv | SkillMaxx Weekly | issue #2 loaded as draft (connector); Brandon downgrades Pro himself ~Nov 2; re-check embed after |
 | Buffer | org 6adfb3f8d2cea8f4b234c15b | X 6adfb5c92f1f5ed648deaa83, Bluesky 6adfbe402f1f5ed648def519, LinkedIn page 6adfc4f12f1f5ed648df8e37; posts use explicit times, 2-week plan queued, daily top-up |
-| X | SkillMaxx account | posts via Buffer, replies via one-tap links |
+| X | SkillMaxx account (@SkillMaxxAI) | posts via Buffer; replies + DMs by Brandon from his daily queue; DMs only to open inboxes; ≤15 follows/hour (DECISIONS #64, #67) |
 | Bluesky | SkillMaxx AI | API; replies need Brandon's OK |
 | LinkedIn | company page "SkillMaxx AI" | via Buffer |
-| Reddit | u/SkillMaxxHQ (main posting account); r/SkillMaxxAI (created Oct 26, mod SkillMaxxHQ); u/SkillMaxxAI (backup, anti-impersonation) | logins in Brandon's vault; profile pack drafts in growth/reddit/ |
+| LinkedIn (Brandon personal) + Sales Navigator free trial | Brandon's own profile | connection notes/messages sent by Brandon only; Sales Nav used for SkillMaxx lead lists (DECISIONS #60, #65) |
+| Reddit | u/SkillMaxxHQ (main posting account); r/SkillMaxxAI (created Oct 26, mod SkillMaxxHQ); u/SkillMaxxAI (backup, anti-impersonation) | logins in Brandon's vault; profile pack drafts in growth/reddit/; new account is rate-limited, so comments are spaced out (DECISIONS #58) |
 | Owner dashboard | Grok Bot canvas d70f3b85-34d9-4642-b1a1-ff1f64a40b22 | Sponsors section (Stripe snapshot at refresh), review queue, sales pipeline |
 
 ## Standing rules
