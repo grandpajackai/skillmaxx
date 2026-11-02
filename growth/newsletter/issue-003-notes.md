@@ -9,3 +9,10 @@ Sends Tue 2026-11-10. Issue #2 (Nov 3) is final; anything below that's urgent ca
 - Claude Code "mods" (small in-terminal plugins: panels, commands) are a new add-on type; consider whether to list them.
 - LiteLLM CVE-2026-114612 (GHSA-7hp6-4w63-5g45, CVSS 9.9): internal_user could become proxy_admin via the MCP stdio endpoint. Verify against the advisory before using.
 - New to test: Renoise (Codex marketplace), Android skills (30+), Paweł Huryn's 43 product skills, Airbyte MCP, Vercel agent-desktop, Mollie plugins + MCP.
+
+## From X radar 2026-11-01
+- **Token cost tools are the week's theme:** Microsoft Research + UC Berkeley's TokenEconomizer (github.com/microsoft/TokenEconomizer) claims 18.4–30.9% cheaper agent runs in Claude Code, Codex, Copilot CLI and Pi (their benchmark, unverified by us). Add it to the nightly so we can report whether it installs in each.
+- **Skill safety:** NVIDIA SkillSpector (github.com/NVIDIA/SkillSpector) scans skills for prompt injection and exfil before install; plus explainers on invisible Unicode Tag characters in skill files and the AGENTS.md trick that adds an MCP server to ~/.codex/config.toml. Possible "scan, then install-test" angle.
+- **MCP goes mainstream:** Roblox's Q3 shareholder letter charts daily users of its MCP server (via @AndrewCurran_).
+- Nov 1 nightly: 895 of 1,061 installs passed (30 of the 166 failures only need an API key).
+- New to test: xdock, deskstats, text-to-cad, linkedin-mcp-server plugins, Open Design Agent Kit, K-Dense scientific-agent-skills.

@@ -16,6 +16,19 @@ Approved model (2026-10-27): prices unchanged; founding price locked **6 months*
 
 ---
 
+## 0. Person-lead verification rule (MANDATORY for every LinkedIn/person lead, added 2026-11-01)
+
+Why: Quentin Le Gland (Hugging Face) was marked "confirmed" from a search-index LinkedIn snippet + The Org, but he left in May 2026. Search-index and data-broker copies of LinkedIn (incl. "Present" dates in snippets), The Org, RocketReach, ZoomInfo, Apollo and Crunchbase lag by months and **never count as evidence**.
+
+A contact is **VERIFIED** only if ALL are true:
+1. **>=2 independent sources** (different publishers; two LinkedIn items = one source) explicitly show the person at the company in that role/team.
+2. **>=1 of them is dated within the last 90 days** of the send date (record the date).
+3. The sources show them there **now** (live company team/author/event page, or dated activity as the company, e.g. talk, blog post, paper affiliation, webinar, press release, their own X/Bluesky/GitHub/site saying "at <company>").
+4. **No evidence of a newer role elsewhere** (search "<name> joined", "<name> new role", and "<name>" + current year).
+
+Best sources, in order: company team/about/author/office-hours pages; company blog, press, webinar or event pages dated <=90 days; conference speaker pages (e.g. ODSC, KubeCon) <=90 days; paper affiliations (arXiv); the person's own site/X/Bluesky/GitHub bio; the public LinkedIn profile via a live WebFetch of linkedin.com/in/<slug> (only if it renders; check the top job and "Present").
+Otherwise mark **UNVERIFIED** and say why (e.g. "newest source 177 days old", "LinkedIn-only"). Record every source URL + date in the lead file. Re-verify if a lead is >30 days old at send time. Final gate: Brandon glances at the top job in the app (company + "Present", nothing newer above it) before sending; any mismatch = don't send.
+
 ## 1. Cold email (LinkedIn-level context, plain)
 
 **From:** skillmaxx@gilventures.ai  
@@ -170,3 +183,9 @@ From `skillmaxx@gilventures.ai` via Zoho SMTP. SPF + DKIM `zmail._domainkey` ver
 | Parallel AI | partnerships@parallel.ai | https://docs.parallel.ai/resources/faqs |
 
 Form queue (not submitted in this PR): [sent/2026-10-27-form-targets.md](../outreach/sent/2026-10-27-form-targets.md).
+
+## §0b Smart-question rule (all platforms, since 2026-11-01)
+Before drafting any DM, connection note, email or reply: read the target's README/docs and our test results.
+- Never ask something their own docs already answer (e.g. "is Cursor support coming?" when the README says it works in Cursor).
+- Never offer to test something we could just test ourselves; test it first, then share the result.
+- Ask one specific question drawn from what we observed (a gap, a manual step, a failing agent, a pending official listing).
