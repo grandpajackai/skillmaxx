@@ -1,4 +1,4 @@
-<!-- Beehiiv paste-ready DRAFT, not sent. Sends Tue Nov 3. Final pass Oct 30 (stats through the Oct 30 nightly). Monday night: rerun `python3 testing/weekly_scorecard.py` and replace ONLY the scorecard block + the numbers marked (refresh) with the new output; keep the rest. Publish to /newsletter/issue-2/ only after the send (growth/routines/NEWSLETTER-SEND.md). -->
+<!-- Beehiiv paste-ready FINAL, not yet sent. Sends Tue Nov 3. Refreshed 2026-11-03 ~3 AM ET from `python3 testing/weekly_scorecard.py` (Oct 28 to Nov 3, 7 runs). Beehiiv draft post_d4f7cc7e still holds the Oct 30 text: the connector's edit_post_content is blocked on the free plan, so paste these blocks in the Beehiiv editor. Publish to /newsletter/issue-2/ only after the send (growth/routines/NEWSLETTER-SEND.md). -->
 **Title:** SkillMaxx #2: we stopped crying wolf
 **Subtitle:** A two-night rule for "broken", MCP tested in all 5 agents, and a question for you.
 **Preview text:** 100+ add-ons flip-flopped this week. We refused to call any of them broken.
@@ -14,23 +14,23 @@ So we changed the rules:
 - **Flaky** means it flip-flopped (or only passed on a retry). We label it and move on.
 - **Needs your key** means it only failed because our sandbox has no API keys. Not the tool's fault.
 
-Good thing we did: over six nights, **117 add-ons flip-flopped** at least once (refresh). Under the old rules that would've been 117 scary headlines. Under the new rules, exactly one thing is confirmed broken.
+Good thing we did: over the last seven nights, **104 add-ons flip-flopped** at least once. Under the old rules that would've been 104 scary headlines. Under the new rules, exactly one thing is confirmed broken.
 
-## 📊 Weekly install scorecard (Oct 25 to Oct 30, 6 nightly runs) (refresh)
+## 📊 Weekly install scorecard (Oct 28 to Nov 3, 7 nightly runs)
 
-**Pass rate trend** (installs we can judge without an API key): 89.3% → 90.1% → 90.8% → 89.2% → 90.9% → **91.1%** (809/888 on Oct 30)
-**Confirmed broke (failed 2 nights running):** [gdharness](https://skillmaxx.gilventures.ai/skills/gdharness/) (2 installs). It also wants a running Godot editor, so test it in your own setup before writing it off.
-**Really fixed (passing after 2+ bad nights):** nothing yet.
-**Flaky, retry before you blame:** 117 add-ons flip-flopped (e.g. Alloydb Omni, @cyanheads/pubmed-mcp-server, Airwallex Dev, Data Engineering, Expo).
-**Needs your API key:** 12 installs only failed because our sandbox has no keys.
-**Standout of the week:** [Superpowers](https://skillmaxx.gilventures.ai/skills/superpowers/), clean in 4 agents, zero flakes. It teaches your agent brainstorming, subagent-driven development with code review, systematic debugging and red/green TDD.
-**Most reliable agents:** 1. Codex 100% · 2. Grok Build 94.4% · 3. Claude Code 94.1% · 4. Pi 65.3% · 5. Cursor 62.7%
+**Pass rate trend** (installs we can judge without an API key): 89.2% → 90.9% → 91.1% → 86.8% → 86.8% → 86.8% → **86.9%** (900/1,036 on Nov 3). The Oct 31 dip isn't a wave of breakage: that's the night MCP servers started running in Codex, Grok Build and Pi too, so 138 new installs joined the count, and some servers don't connect in those agents yet.
+**Confirmed broke (failed 2 nights running):** [notion-mcp-server](https://skillmaxx.gilventures.ai/skills/notion-mcp-server/) (2 installs, Claude Code and Cursor). It's an upstream import error with `@notionhq/client` 5.x, not your setup.
+**Really fixed (passing after 2+ bad nights):** [Chrome DevTools](https://skillmaxx.gilventures.ai/skills/chrome-devtools/) and [Chrome DevTools MCP](https://skillmaxx.gilventures.ai/skills/chrome-devtools-mcp/) (2 installs).
+**Flaky, retry before you blame:** 104 add-ons flip-flopped (e.g. mcp-local-rag, Azure SQL Developer, korean-law-mcp, @mozilla/firefox-devtools-mcp, Amplitude).
+**Needs your API key:** 30 installs only failed because our sandbox has no keys.
+**Standout of the week:** [MCP time (reference)](https://skillmaxx.gilventures.ai/skills/mcp-time/), clean in all 5 agents, zero flakes. It gives your agent time and timezone conversion.
+**Most reliable agents:** 1. Claude Code 94.2% · 2. Grok Build 92.5% · 3. Codex 88.3% · 4. Pi 65.4% · 5. Cursor 64.1%
 
-Chart + full week: https://skillmaxx.gilventures.ai/reports/week/2026-44/ · Is your tool safe today? https://skillmaxx.gilventures.ai/reports/latest/
+This week's chart: https://skillmaxx.gilventures.ai/reports/week/2026-45/ · Last full week: https://skillmaxx.gilventures.ai/reports/week/2026-44/ · Is your tool safe today? https://skillmaxx.gilventures.ai/reports/latest/
 
 ## 🧪 New: MCP servers now tested in all 5 agents
 
-Until this week we only tested MCP servers in Claude Code and Cursor. Now they also run in **Codex, Grok Build and Pi**, starting with the Oct 31 nightly. Pass means the agent's own health check says the server connected (for Codex, which has no keyless health check, we run the MCP handshake ourselves and say so). What "pass" means, exactly: https://skillmaxx.gilventures.ai/how-we-test/
+Until Oct 31 we only tested MCP servers in Claude Code and Cursor. Since the Oct 31 nightly they also run in **Codex, Grok Build and Pi**. Pass means the agent's own health check says the server connected (for Codex, which has no keyless health check, we run the MCP handshake ourselves and say so). What "pass" means, exactly: https://skillmaxx.gilventures.ai/how-we-test/
 
 ## 📖 Two deep dives from our test logs
 
@@ -52,7 +52,7 @@ Until this week we only tested MCP servers in Claude Code and Cursor. Now they a
 ## 🙏 I need your help (seriously)
 
 We're tiny and early, and I'd rather build what you'll use than guess. Hit reply with any of these:
-1. **One tool you want tested** before you install it. (Someone on Bluesky did this week; it's in tonight's run.)
+1. **One tool you want tested** before you install it. (Two people on Bluesky did. Both tools are in our nightly runs now, and agent-postbox passed in all 5 agents on its first night.)
 2. **Is this scorecard useful or noise?** One word is fine.
 3. **Did we get your tool wrong?** Send the link, we'll rerun it and fix the page.
 
