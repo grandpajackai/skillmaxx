@@ -25,6 +25,7 @@ This repository packages [MCP Toolbox](https://github.com/googleapis/mcp-toolbox
 - [Installing via a compatible Agent Plugins client](#installing-via-a-compatible-agent-plugins-client)
 - [Usage Examples](#usage-examples)
 - [Available Tools](#available-tools)
+- [Included Skills](#included-skills)
 - [Generating Skills Instead](#generating-skills-instead)
 - [Additional Agent Skills](#additional-agent-skills)
 - [Troubleshooting](#troubleshooting)
@@ -224,6 +225,18 @@ The tools come from MCP Toolbox's prebuilt `alloydb-postgres` server, grouped in
 For the full, up-to-date list, see the [`alloydb-postgres` prebuilt config](https://github.com/googleapis/mcp-toolbox/blob/main/internal/prebuiltconfigs/tools/alloydb-postgres.yaml)
 in the MCP Toolbox repository.
 
+## Included Skills
+
+This plugin ships the following agent skill in [`skills/`](./skills):
+
+- **[alloydb-agent-mode-quickstart](./skills/alloydb-agent-mode-quickstart/SKILL.md)** - Provision an AlloyDB agent pool over Private Service Connect, then deploy a data agent or a multi-agent swarm on Vertex AI Agent Engine that queries the pool over MCP, and optionally publish it to Gemini Enterprise.
+
+For example, prompt your agent:
+
+```text
+Use the alloydb-agent-mode-quickstart skill to create a new AlloyDB cluster with PostgreSQL for agents and an agent pool in my project PROJECT_ID in region REGION_NAME.
+```
+
 ## Generating Skills Instead
 
 The tool-backed skills this plugin used to ship were generated from the same prebuilt
@@ -251,14 +264,4 @@ in the MCP Toolbox repository.
 ## Additional Agent Skills
 
 Find additional skills to support your entire software development lifecycle at [github.com/gemini-cli-extensions](https://github.com/gemini-cli-extensions), including:
-* [Generic PostgreSQL extension](https://github.com/gemini-cli-extensions/postgres)
-* [AlloyDB Observability extension](https://github.com/gemini-cli-extensions/alloydb-observability)
-
-## Troubleshooting
-
-Use the debug mode of your agent (e.g., `gemini --debug`) to enable debugging.
-
-Common issues:
-
-- "failed to find default credentials: google: could not find default credentials.": Ensure [Application Default Credentials](https://cloud.google.com/docs/authentication/gcloud) are available in your environment. See [Set up Application Default Credentials](https://cloud.google.com/docs/authentication/external/set-up-adc) for more information.
-- "✖ Error during discovery for server: MCP err
+* [Generic PostgreSQL extension](https://gith

@@ -61,7 +61,7 @@
 
 **DeepEval** is a simple-to-use, open-source LLM evaluation framework, for evaluating large-language model systems. It is similar to Pytest but specialized for unit testing LLM apps. DeepEval incorporates the latest research to run evals via metrics such as G-Eval, task completion, answer relevancy, hallucination, etc., which use LLM-as-a-judge and other NLP models that run **locally on your machine**.
 
-Whether you're building AI agents, multi-turn chatbots, voice agents, RAG pipelines, or anything else, implemented via LangChain or OpenAI, DeepEval has you covered. With it, you can easily evaluate:
+Whether you're building AI agents, voice agents, multi-turn chatbots, RAG pipelines, or anything else, implemented via LangChain or OpenAI, DeepEval has you covered. With it, you can easily evaluate:
 
 - **LLM apps end-to-end** as black boxes
 - **Complete AI agent trajectories** across every decision and action
@@ -103,17 +103,6 @@ Use these evaluations to determine the optimal models, prompts, and architecture
     </details>
 
   - <details>
-    <summary><b>Multi-Turn Metrics</b></summary>
-
-    - [Knowledge Retention](https://deepeval.com/docs/metrics-knowledge-retention) — evaluate whether the chatbot retains factual information throughout a conversation
-    - [Conversation Completeness](https://deepeval.com/docs/metrics-conversation-completeness) — measure whether the chatbot satisfies user needs throughout a conversation
-    - [Turn Relevancy](https://deepeval.com/docs/metrics-turn-relevancy) — evaluate whether the chatbot generates consistently relevant responses throughout a conversation
-    - [Turn Faithfulness](https://deepeval.com/docs/metrics-turn-faithfulness) — check if the chatbot's responses are factually grounded in retrieval context across turns
-    - [Role Adherence](https://deepeval.com/docs/metrics-role-adherence) — evaluate whether the chatbot adheres to its assigned role throughout a conversation
-
-    </details>
-
-  - <details>
     <summary><b>Voice Agent Metrics</b></summary>
 
     - [Agent Responsiveness](https://deepeval.com/docs/metrics-agent-responsiveness) — check whether the voice agent answered when it was spoken to
@@ -121,6 +110,17 @@ Use these evaluations to determine the optimal models, prompts, and architecture
     - [Voice Naturalness](https://deepeval.com/docs/metrics-voice-naturalness) — evaluate how natural the voice agent sounds
     - [Transcription Accuracy](https://deepeval.com/docs/metrics-transcription-accuracy) — check whether the voice agent's speech-to-text heard the caller correctly
     - [Audio Glitch](https://deepeval.com/docs/metrics-audio-glitch) — detect audio artifacts in the voice agent's speech
+
+    </details>
+
+  - <details>
+    <summary><b>Multi-Turn Metrics</b></summary>
+
+    - [Knowledge Retention](https://deepeval.com/docs/metrics-knowledge-retention) — evaluate whether the chatbot retains factual information throughout a conversation
+    - [Conversation Completeness](https://deepeval.com/docs/metrics-conversation-completeness) — measure whether the chatbot satisfies user needs throughout a conversation
+    - [Turn Relevancy](https://deepeval.com/docs/metrics-turn-relevancy) — evaluate whether the chatbot generates consistently relevant responses throughout a conversation
+    - [Turn Faithfulness](https://deepeval.com/docs/metrics-turn-faithfulness) — check if the chatbot's responses are factually grounded in retrieval context across turns
+    - [Role Adherence](https://deepeval.com/docs/metrics-role-adherence) — evaluate whether the chatbot adheres to its assigned role throughout a conversation
 
     </details>
 
@@ -170,7 +170,7 @@ Use these evaluations to determine the optimal models, prompts, and architecture
 
 - 🎯 Supports both end-to-end and component-level LLM evaluation.
 - 🧩 Build your own custom metrics that are automatically integrated with DeepEval's ecosystem.
-- 🔮 Generate both single and multi-turn synthetic datasets for evaluation.
+- 🔮 Generate single and multi-turn synthetic datasets, and simulate live voice calls against your voice agent.
 - 🔗 Integrates seamlessly with **ANY** CI/CD environment.
 - 🧬 Optimize prompts automatically based on evaluation results.
 - 🏆 Easily benchmark **ANY** LLM on popular LLM benchmarks in [under 10 lines of code.](https://deepeval.com/docs/benchmarks-introduction?utm_source=GitHub), including MMLU, HellaSwag, DROP, BIG-Bench Hard, TruthfulQA, HumanEval, GSM8K.
@@ -179,4 +179,4 @@ Use these evaluations to determine the optimal models, prompts, and architecture
 
 # 🔌 Integrations
 
-DeepEval plugs into any LLM framework — OpenAI Agents, LangChain, CrewAI, and more
+DeepEval plugs into any LLM framework — OpenAI

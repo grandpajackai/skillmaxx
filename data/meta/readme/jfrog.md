@@ -147,6 +147,42 @@ The hook soft-fails (never breaks the session): missing project key, Agent Guard
 
 ---
 
+## Local Shadow AI scan
+
+The plugin can report which AI assets (skills, plugins, MCP servers) are installed
+on a developer's workstation, so the organization can see what its developers'
+Claude Code environments run and spot unapproved or risky assets.
+
+**Who controls it.** The scan is off by default. It runs only when your JFrog Platform
+administrator has enabled it for your account. The plugin checks this on every new session
+(`GET /aisec/api/v1/local-shadow/scanning-enabled`). There is no per-user setting
+in the plugin: like other endpoint security controls, it is managed by the organization.
+
+**When it runs.** Once per new Claude Code session (not on resume, `/clear` or
+compaction), in the background, and only if you are logged in to the JFrog CLI with an
+access token over HTTPS.
+
+**What it sends.** One report per session to your organization's own JFrog Platform
+(`<your-platform>/aisec/api/v1/local-shadow/reports`). No scan data is sent to JFrog or
+any third party. The report contains:
+
+- A random workstation ID, generated once and stored in `~/.jfrog/shadow/workstation-id`
+- The Claude Code session ID, scan time and duration, plugin and scanner versions
+- For each skill: a content fingerprint, name and description
+- For each plugin: name, version, marketplace, source URL and git commit
+- For each MCP server: its URL (remote) or package name, version and registry (local)
+- The file path where each asset was found
+
+**What it scans.** `~/.claude`, `~/.claude.json`, and the `.claude/` folder and
+`.mcp.json` of each project listed in `~/.claude.json`. It reads these config files and
+sends only the fields listed above; it does not send source code, prompts, conversations
+or credentials.
+
+**Logs.** `~/.jfrog/shadow/local-shadow-hook.log` (whether the scan started and why not)
+and `~/.jfrog/shadow/local-shadow.log` (scan results).
+
+---
+
 ## Agent Package Resolution (Preview)
 
 > **Preview Notice:** This feature is in preview and licensed under the Apache License 2.0. For clarity: This software is provided "as-is" without warranty of any kind, and without support obligations or service level commitments. Behavior, APIs, conventions, and structure may change without notice between releases. JFrog makes no guarantees of backward compatibility during the preview release cycle. Use in production environments is at your own risk.
@@ -162,32 +198,4 @@ Agent Package Resolution is in preview. The shipped template enables it with emp
 
 ## Usage
 
-Once configured, interact with the JFrog plugin through natural language. Examples are grouped by capability.
-
-### JFrog Platform skill
-
-| Ask the agent… | What happens |
-| --- | --- |
-| "List my Artifactory repositories." | Returns repositories via the JFrog CLI. |
-| "Upload this build to Artifactory." | Publishes build artifacts and metadata. |
-| "Run a security audit on this project." | Runs an Xray / Advanced Security audit and summarizes findings. |
-| "Show me details on CVE-2021-23337." | Looks up CVE details in JFrog Advanced Security. |
-| "Create a scoped access token for CI." | Creates an access token with the requested scope. |
-| "Promote this release bundle to production." | Uses Lifecycle / Distribution APIs to promote the bundle. |
-
-### Package curation skill
-
-| Ask the agent… | What happens |
-| --- | --- |
-| "Is `lodash@4.17.21` safe to install?" | Checks JFrog Public Catalog signals and curation policy for the package. |
-| "Is this Maven package approved for use?" | Checks curation entitlement and policy for the requested package. |
-| "Download `requests` via JFrog." | Resolves the package through an Artifactory remote cache or curation-aware package manager. |
-
-### Agent Package Resolution
-
-When Agent Package Resolution is enabled and configured, no special prompt syntax is required. Ask the agent to install or use a package as you normally would, and the plugin routes supported package operations through your organization's Artifactory.
-
-| Ask the agent…                         | What happens                                                             |
-| -------------------------------------- | ------------------------------------------------------------------------ |
-| "Add `lodash` to this project."        | Resolves the npm package through the configured Artifactory repository.  |
-| "Add Excel file import to this app."   | The agent selects a suitable package 
+Once configured, interact with the JFrog plugi

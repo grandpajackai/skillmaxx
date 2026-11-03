@@ -64,7 +64,7 @@ A text-form relational graph covering:
 - Common cross-product workflows
 - Migration awareness for sunset products
 
-### Skills (37 skills)
+### Skills (38 skills)
 
 | Skill                   | Covers                                                                                                                               |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
@@ -100,6 +100,7 @@ A text-form relational graph covering:
 | `vercel-flags`          | Vercel Flags — plan flags, choose an integration, `vercel flags` CLI, rollouts, A/B tests, `@vercel/flags-core`, safe retirement       |
 | `vercel-functions`      | Node.js, Bun, Python, and Rust runtimes on Fluid Compute, streaming, WebSockets, Cron Jobs, configuration                         |
 | `vercel-sandbox`        | Ephemeral Firecracker microVMs for running untrusted/AI-generated code safely                                                        |
+| `vercel-schedules`      | Vercel Schedules — static `schedules` in vercel.json, private `schedule/v1beta` functions, dynamic `@vercel/schedules`, one-time runs, Cron Jobs migration |
 | `vercel-services`       | Multiple frontends and backends in one project, with public rewrites and private service bindings                                    |
 | `vercel-storage`        | Blob, Global Config (formerly Edge Config), Neon Postgres, Upstash Redis, migration from sunset packages                             |
 | `verification`          | Full-story verification — infers user story, verifies end-to-end browser → API → data → response                                     |
@@ -150,6 +151,4 @@ What is collected:
 - `dau:active_today`: sent at most once per UTC day when the plugin runs.
 - `plugin:first_use`: sent once per local user profile the first time the plugin successfully reports telemetry.
 - `plugin:version`: sent with telemetry batches so usage can be grouped by plugin version.
-- `plugin:install_id`: the locally stored random installation UUID.
-- `plugin:agent_harness`: each distinct detected agent harness category observed per installation per UTC day.
-- `skill:invoked`: the name of a skill or command that ships wit
+- `plugin:install_id`: the locally stored random installat
