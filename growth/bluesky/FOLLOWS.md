@@ -24,7 +24,18 @@ Rule: unfollow accounts we followed more than 7 days ago that haven't followed b
 | 2026-11-01 | @only-mcp.com | MCP and skills sync tool | no |
 | 2026-11-01 | @apievangelist.com | API and agent-skills commentator | no |
 | 2026-11-01 | @xwikisas.bsky.social | open-source company that shipped an MCP server | no |
+| 2026-11-02 | @alexosautonom.bsky.social | follow-back (he follows us); building an AI-work audit layer | yes |
+| 2026-11-02 | @hipstersmoothie.com | builds Sesh, devtools.fm co-host | no |
+| 2026-11-02 | @evansims.com | security architect, agent-security posts | no |
+| 2026-11-02 | @k33gorg.bsky.social | Docker principal architect building Sidekicks | no |
+| 2026-11-02 | @lucasjosh.bsky.social | posts about Bear CLI + MCP | no |
+| 2026-11-02 | @passagemath.org | shipped macaulay2-mcp server | no |
+| 2026-11-02 | @ds-fafa.bsky.social | posts on MCP server design | no |
+| 2026-11-02 | @heartpunk.com | dev posting about Codex CLI | no |
+| 2026-11-02 | @aperisa.bsky.social | building an MCP-served data tool | no |
+| 2026-11-02 | @aivoyage.bsky.social | indie builder tracking skill-pack trends | no |
 
 ## Run log
 - 2026-10-31: +11 follows, 0 unfollows (no log entries older than 7 days yet). Counts after run: 3 followers / 43 following. Liked 9 builder posts, 5 no-pitch replies (gracefullight, adegoodyer, aethelgardshuman, mailfully, jonasnguyen). Replied to claimidx with nightly 5/5 results. Tagged @anthropic.com and @mariozechner.at in the Nov 1 Buffer scorecard post (no Bluesky accounts found for OpenAI, Cursor or xAI).
 - 2026-11-01: +9 follows, 0 unfollows (nothing older than 7 days). Counts after run: 6 followers / 52 following. Replied to jonasnguyen (idempotency keys) and claimidx (tool-call pass on wishlist). Liked 10 builder posts, 4 no-pitch replies (apievangelist, only-mcp, karanluthra, michaelho02). No new repos shared. Did not follow back gleephoenix (self-disclosed AI-operated) or watermlonmusk (spammy). Tagged @anthropic.com and @sentry.io in the Nov 2 Buffer Bluesky tip post. Browser flagged hidden AI-agent instructions on our own profile page (bsky.app/profile/skillmaxx.bsky.social); not followed — worth checking our bio/pinned post.
+- 2026-11-02: +10 follows, 0 unfollows (nothing older than 7 days). Counts after run: 8 followers / 62 following. Replied to only-mcp (tool prefixes), claimidx (claimidx_ask tip, tool-call pass on wishlist) and aethelgardshuman (agent-postbox added to nightly queue, results promised). Liked ~10 builder posts, 6 no-pitch replies (lucasjosh, passagemath, hipstersmoothie, evansims, k33gorg, plus one more). Skipped tuperops, bossanova, moneyprinterops (AI-run/spammy). No Buffer posts for Nov 3 to tag. Note: our Bluesky display name is "SkillMaxx AI", which reads as an AI account.

@@ -14479,6 +14479,40 @@
    ],
    "listing_url": "https://github.com/anthropics/claude-plugins-official",
    "notes": "Grok Build status relies on xAI docs saying Grok reads Claude Code plugins automatically."
+  },
+  {
+   "slug": "agent-postbox",
+   "name": "agent-postbox",
+   "description": "MCP server and CLI for verifiable agent handoffs over GitHub Issues and PRs: read-back on every write, receipts, no self-review, signed evidence log. Community request via Bluesky (@aethelgardshuman), Nov 2 2026.",
+   "source_url": "https://github.com/Aethelgard-Systems/agent-postbox",
+   "category": "developer tools",
+   "type": "mcp-server",
+   "install": {
+    "claude_code": "claude mcp add agent-postbox -- npx -y github:Aethelgard-Systems/agent-postbox serve",
+    "codex": "codex mcp add agent-postbox -- npx -y github:Aethelgard-Systems/agent-postbox serve",
+    "grok_build": "grok mcp add agent-postbox -- npx -y github:Aethelgard-Systems/agent-postbox serve",
+    "cursor": "~/.cursor/mcp.json: {\"mcpServers\":{\"agent-postbox\":{\"command\":\"npx\",\"args\":[\"-y\",\"github:Aethelgard-Systems/agent-postbox\",\"serve\"]}}}",
+    "pi": "pi mcp add agent-postbox -- npx -y github:Aethelgard-Systems/agent-postbox serve"
+   },
+   "compatibility": {
+    "claude_code": "documented",
+    "codex": "documented",
+    "grok_build": "unknown",
+    "cursor": "documented",
+    "pi": "unknown"
+   },
+   "compat_sources": {
+    "claude_code": "https://docs.anthropic.com/en/docs/claude-code/mcp",
+    "codex": "https://developers.openai.com/codex/mcp",
+    "grok_build": null,
+    "cursor": "https://cursor.com/docs/context/mcp",
+    "pi": null
+   },
+   "listings": [
+    "https://github.com/Aethelgard-Systems/agent-postbox"
+   ],
+   "listing_url": "https://github.com/Aethelgard-Systems/agent-postbox",
+   "notes": "Real use needs a config file (agent-postbox.config.json) and a fine-grained GitHub token; our keyless sandbox will likely show a needs-key/config result. Author asked for client versions, transport and first failing step (compat list is repo Issue #14). Node >= 20."
   }
  ]
 }

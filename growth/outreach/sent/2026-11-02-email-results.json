@@ -1,0 +1,47 @@
+[
+  {
+    "company": "Nimble",
+    "to": "hello@nimbleway.com",
+    "subject": "your Nimble plugin passes our nightly install tests",
+    "status": "sent",
+    "error": "",
+    "route": "zoho-webmail",
+    "sent_at_et": "2026-11-02 11:22 AM ET"
+  },
+  {
+    "company": "Carbone",
+    "to": "contact@carbone.io",
+    "subject": "the Carbone skill passes our nightly install tests",
+    "status": "sent",
+    "error": "",
+    "route": "zoho-webmail",
+    "sent_at_et": "2026-11-02 11:27 AM ET"
+  },
+  {
+    "company": "NightVision",
+    "to": "sales@nightviz.ai",
+    "subject": "your NightVision skills install clean in 3 agents",
+    "status": "sent",
+    "error": "",
+    "route": "zoho-webmail",
+    "sent_at_et": "2026-11-02 11:32 AM ET"
+  },
+  {
+    "company": "Currents",
+    "to": "hello@currents.dev",
+    "subject": "@currents/mcp in our nightly MCP tests",
+    "status": "sent",
+    "error": "",
+    "route": "zoho-webmail",
+    "sent_at_et": "2026-11-02 11:37 AM ET"
+  },
+  {
+    "company": "Windsor.ai",
+    "to": "hello@windsor.ai",
+    "subject": "your Windsor.ai plugin passes our nightly install tests",
+    "status": "sent",
+    "error": "",
+    "route": "zoho-webmail",
+    "sent_at_et": "2026-11-02 11:42 AM ET"
+  }
+]

@@ -1,0 +1,17 @@
+TO: partners@n8n.io
+SUBJECT: n8n workflows as tools for coding agents
+----- BODY BELOW -----
+Hi n8n partners team,
+
+I'm Brandon. I run SkillMaxx, a free directory that install-tests 424 agent skills, plugins and MCP servers nightly in Claude Code, Codex, Grok Build, Cursor and Pi (public logs: https://skillmaxx.gilventures.ai/reports/latest/).
+
+Our readers are mostly picking tools for Claude Code, Codex, Cursor and friends. Are many n8n users exposing workflows to coding agents through the MCP Server Trigger, or is it mostly the other way round (n8n agents calling MCP tools)?
+
+Honest ask: would you take a founding Newsletter slot at $19/issue ($59/mo for 4)? Locked 6 months for the first 10 sponsors. Always labeled Sponsored; money never changes a test result.
+
+We launched in Oct 2026 and the newsletter first sends Tue Nov 3, so the audience is tiny (hence the price). You'd get a monthly report with real numbers, even small ones.
+
+A one-line "not now" helps too.
+
+Brandon
+SkillMaxx · https://skillmaxx.gilventures.ai/advertise/
