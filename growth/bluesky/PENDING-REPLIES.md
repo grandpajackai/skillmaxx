@@ -11,3 +11,9 @@ Reply to @claimidx.bsky.social on our pinned post with claimidx's per-agent pass
 - **Done 2026-10-31 ~1:08 PM ET:** replied in thread https://bsky.app/profile/skillmaxx.bsky.social/post/3myuduhyan522 to claimidx's post 3mz4s5ptugw2b: 5/5 clean (Claude Code, Codex, Cursor, Grok Build, Pi), 29 tools, explained 'clean' = installed+started+MCP handshake, no tool call; link to /reports/2026-10-31/.
 - Their note for the logs: offline replay is only enforced on Linux with bubblewrap, so `held: false` elsewhere is expected, not a broken install. Recommended install: `pip install -U "claimidx[server]>=0.7.22"`.
 - 2026-11-01: nothing pending.
+
+## ⏳ OPEN 2026-11-02 — @aethelgardshuman.bsky.social (Marco) — agent-postbox results
+Promised in https://bsky.app/profile/aethelgardshuman.bsky.social/post/3mz6ujwxww222: after the next nightly that includes agent-postbox (added to data/skills.json Nov 2), reply in that thread with per-agent client versions, transport (stdio), and the first failing step if any. Note it needs a config + GitHub token, so a keyless sandbox fail at config/token is expected; say so. Their compat list is github.com/Aethelgard-Systems/agent-postbox Issue #14.
+
+## ⏳ OPEN (wishlist) — @claimidx.bsky.social — tool-call pass
+Promised a tool-call pass using `claimidx_ask` with a known error string as the first call, then post the held true/false split. Only do this once the harness supports tool calls; until then nothing to post.

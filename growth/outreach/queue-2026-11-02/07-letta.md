@@ -1,0 +1,20 @@
+# Letta
+
+To: contact@letta.com
+Source: https://www.letta.com/contact/
+Subject: agent memory, from the install-test side
+
+Hi Letta team,
+
+I'm Brandon. I run SkillMaxx, a free directory that install-tests 424 agent skills, plugins and MCP servers nightly in Claude Code, Codex, Grok Build, Cursor and Pi (public logs: https://skillmaxx.gilventures.ai/reports/latest/).
+
+The memory add-ons in our directory are mostly Claude Code plugins that summarize past sessions; Letta comes at it from the stateful-agent side. Do you see coding-agent users wanting Letta-style memory inside Claude Code or Codex, or is that a different crowd?
+
+Honest ask: would you take a founding Newsletter slot at $19/issue ($59/mo for 4)? Locked 6 months for the first 10 sponsors. Always labeled Sponsored; money never changes a test result.
+
+We launched in Oct 2026 and the newsletter first sends Tue Nov 3, so the audience is tiny (hence the price). You'd get a monthly report with real numbers, even small ones.
+
+A one-line "not now" helps too.
+
+Brandon
+SkillMaxx · https://skillmaxx.gilventures.ai/advertise/
