@@ -116,3 +116,9 @@ No new owner decisions came in on Oct 31. Operating rules adopted after that day
 66. **Lead routing update (replaces the phone step of #33):** booking-only → find a public email and send there; phone only (usually a general sales line) → find a named partnerships/marketing contact on LinkedIn for Brandon to message instead of calling; neither → log the company's LinkedIn or X for Brandon. Every lead stays logged where he can see it.
 67. **X follows ≤15/hour:** Brandon's X got follow-restricted after mass-following. No follow needed before a DM.
 68. **CockroachDB + Vercel sales forms approved** for Mon Nov 2 business hours (CockroachDB with Brandon's phone as given in chat, never stored in the repo; Vercel with state FL). One-off routine Nov 2 10:30 AM ET.
+
+## 2026-11-02 — Brandon's calls (recorded by the Nov 3 nightly)
+69. **GitHub stays on grandpajackai, anonymously.** grandpajackai is Brandon's personal pseudonymous account and must stay anonymous; the SkillMaxx repo, builds and nightly routines stay there with no migration. A separate free GitHub account for SkillMaxx (signed up with the SkillMaxx business email) is planned for public activity such as opening issues and starring repos.
+70. **Grok Bot does the GitHub-side outreach itself** (starring repos, opening issues on projects we tested); Brandon only approves. Non-GitHub platforms still get paste-ready replies for him.
+71. **X replies in Brandon's queue are the original post link plus the reply text in a copy block**, never an intent link alone (intent links open as new posts in his X app).
+72. **CockroachDB: skip the contact-sales form** (no honest Use Case option); reach them only through X and LinkedIn. Updates #68.
