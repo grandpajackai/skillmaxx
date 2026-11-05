@@ -169,7 +169,9 @@ agy plugin install ./context-and-tools
 
 The Claude Code, VS Code, Antigravity, and Grok Build plugins (and the Gemini CLI extension) also register the [official Netlify MCP server](https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/), giving the agent tools to create and manage Netlify projects, deploys, and environment variables — not just the reference skills.
 
-It connects to Netlify's hosted server over HTTP (`https://netlify-mcp.netlify.app/mcp`) and authorizes via OAuth on first use — no token or local install required. The rules-based integrations (Cursor, Codex, Copilot) don't bundle the MCP server — add it to those clients manually using the [Netlify MCP docs](https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/).
+It connects to Netlify's hosted server over HTTP (`https://mcp.netlify.com/mcp`) and authorizes via OAuth on first use — no token or local install required. The rules-based integrations (Cursor, Codex, Copilot) don't bundle the MCP server — add it to those clients manually using the [Netlify MCP docs](https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/).
+
+If you added the Netlify MCP server before it moved to `mcp.netlify.com`, remove it and add it again: the old host does not redirect to the new one.
 
 #### Other AI agents
 
@@ -184,4 +186,4 @@ Every release publishes the skills to two places you can consume without cloning
 
 Skill files under `v/<version>/` are exact `git archive` bytes of the tag and never change. Each `v/<version>/manifest.json` is regenerated on publish, but its `tree_hash` formula is frozen for `schema_version: 1`, so a pinned hash stays valid.
 
-The manifest is the contract every client syncs against. It lists each skill's name, status (`active` or `deprecated`), its own `version`, prior names, description, a per-file SHA-256, and a `tree_hash` over path, executable bit, and content that changes whenever any file in th
+The manifest is the contract every client syncs against. It lists each skill's name, status (`active` or `deprecated`), its own `version

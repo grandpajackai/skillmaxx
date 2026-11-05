@@ -82,8 +82,6 @@ For the latest version, check the [releases page][releases].
 
 [releases]: https://github.com/gemini-cli-extensions/alloydb/releases
 
-<!-- {x-release-please-start-version} -->
-
 <details open>
 <summary id="antigravity">Antigravity</summary>
 
@@ -193,8 +191,6 @@ Beyond harnesses covered by the native install above, compatible clients include
 **Set env vars:**
 Set your environment vars as described in the [configuration section](#configuration).
 
-<!-- {x-release-please-end} -->
-
 
 ## Usage Examples
 
@@ -264,4 +260,5 @@ in the MCP Toolbox repository.
 ## Additional Agent Skills
 
 Find additional skills to support your entire software development lifecycle at [github.com/gemini-cli-extensions](https://github.com/gemini-cli-extensions), including:
-* [Generic PostgreSQL extension](https://gith
+* [Generic PostgreSQL extension](https://github.com/gemini-cli-extensions/postgres)
+* [AlloyDB Observability extension](h

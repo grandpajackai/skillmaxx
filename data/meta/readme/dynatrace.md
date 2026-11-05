@@ -72,6 +72,18 @@ The plugin includes all skills and the Dynatrace MCP server. It stays disabled u
 
 You can change these values later from **Configure MCP servers...** in `/plugin`. Antigravity does not read them from your shell environment.
 
+### Devin Plugin
+
+The Dynatrace plugin is listed on the [Devin Marketplace](https://github.com/CognitionAI/devin-marketplace/tree/main/plugins/dynatrace). Install via the Devin CLI:
+
+```bash
+devin plugins install CognitionAI/devin-marketplace#plugins/dynatrace
+```
+
+Or from the Devin web app: **Customize → Plugins → Add plugin → From repository**.
+
+Enter your Dynatrace environment host and a platform token with the [MCP gateway scopes](https://docs.dynatrace.com/docs/shortlink/dynatrace-mcp-server) when prompted. Skills ship bundled with the plugin; the listing is maintained directly in Cognition's repo, synced from this one.
+
 ### Manual
 
 Copy skill directories into your agent's skills path (`.agents/skills/`, `.claude/skills/`, `.cursor/skills/`, etc.).
@@ -159,11 +171,4 @@ The MCP server is remote — Dynatrace hosts it, so there is nothing to install.
 | Skill | Description |
 |-------|-------------|
 | [dt-app-dashboards](skills/dt-app-dashboards/SKILL.md) | Create, modify, and analyze Dynatrace dashboards: tiles, layouts, variables, and visualizations. |
-| [dt-app-notebooks](skills/dt-app-notebooks/SKILL.md) | Create, modify, and analyze Dynatrace notebooks: sections, DQL queries, and analytics workflows. |
-| [dt-js-runtime](skills/dt-js-runtime/SKILL.md) | Dynatrace server-side JavaScript runtime: function contract, runtime limits, Web APIs, Node.js modules, and the `@dynatrace-sdk/*` catalog. |
-| [dt-platform-costs](skills/dt-platform-costs/SKILL.md) | Query and analyze a Dynatrace tenant's actual billing and usage data with DQL: DPS consumption breakdown, cost-normalized spend ranking, chargeback/showback, cost drivers, and entity-level cost drill-down. |
-
-### Migration
-
-| Skill | Description |
-|-------|-------------|
+| [dt-app-notebooks](skills/dt-app-notebooks/

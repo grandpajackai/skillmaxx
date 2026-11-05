@@ -94,6 +94,9 @@ Run and optimize on AMD Instinct.
 | [`magpie-kernel-evaluator`](https://github.com/amd/skills/blob/main/skills/magpie-kernel-evaluator/SKILL.md) | Evaluate GPU kernel correctness and performance, compare kernel implementations, and benchmark vLLM or SGLang inference with profiling, TraceLens, and torch-trace gap analysis. | [Magpie](https://github.com/AMD-AGI/Magpie) |
 | [`tracelens-analysis-orchestrator`](https://github.com/amd/skills/blob/main/skills/tracelens-analysis-orchestrator/SKILL.md) | Orchestrate modular PyTorch profiler trace analysis with TraceLens: generate perf reports, run system-level and compute-kernel subagents in parallel, and write a prioritized stakeholder report. | [TraceLens](https://github.com/AMD-AGI/TraceLens) |
 | [`rocprofiler-pc-sampling`](https://github.com/amd/skills/blob/main/skills/rocprofiler-pc-sampling/SKILL.md) | Profile a GPU application with rocprofv3 program counter (PC) sampling, then analyze the samples to surface hotspots and stall reasons. | [rocprofiler-sdk](https://github.com/ROCm/rocm-systems/tree/develop/projects/rocprofiler-sdk) |
+| [`rocprofiler-systems-choosing-a-profiling-preset`](https://github.com/amd/skills/blob/main/skills/rocprofiler-systems-choosing-a-profiling-preset/SKILL.md) | Pick the right rocprofiler-systems profiling preset for a workload and goal (GPU kernels, MPI, OpenMP, AI/ML training, and more), and return a ready-to-run command. | [rocprofiler-systems](https://github.com/ROCm/rocm-systems/tree/develop/projects/rocprofiler-systems) |
+| [`rocprofiler-systems-discovering-profiling-options`](https://github.com/amd/skills/blob/main/skills/rocprofiler-systems-discovering-profiling-options/SKILL.md) | Discover rocprofiler-systems settings, hardware counters, ROCm API tracing domains, and GPU metrics, and how to configure them. | [rocprofiler-systems](https://github.com/ROCm/rocm-systems/tree/develop/projects/rocprofiler-systems) |
+| [`rocprofiler-systems-instrumenting-binaries`](https://github.com/amd/skills/blob/main/skills/rocprofiler-systems-instrumenting-binaries/SKILL.md) | Instrument programs and libraries with `rocprof-sys-instrument`: choose runtime instrumentation or binary rewrite, filter functions and modules, preview with a dry run, and debug missing or noisy trace entries. | [rocprofiler-systems](https://github.com/ROCm/rocm-systems/tree/develop/projects/rocprofiler-systems) |
 | [`flydsl-kernel-authoring`](https://github.com/amd/skills/blob/main/skills/flydsl-kernel-authoring/SKILL.md) | Write, review, and understand FlyDSL GPU kernels for AMD GPUs: layout algebra, tiled copy and MMA, LDS allocation, and autotuning. | [FlyDSL](https://github.com/ROCm/FlyDSL) |
 | [`flydsl-kernel-trace-analysis`](https://github.com/amd/skills/blob/main/skills/flydsl-kernel-trace-analysis/SKILL.md) | Collect rocprofv3 instruction-level traces and counters for a GPU kernel, map the top stall hotspots back to source lines, and produce an optimization plan. | [FlyDSL](https://github.com/ROCm/FlyDSL) |
 
@@ -112,24 +115,4 @@ skills/
 
 When an agent decides a skill is relevant (or you invoke it explicitly), it loads that `SKILL.md` and follows the instructions inside. Descriptions stay in context cheaply; the full body of a skill only loads when the task actually matches.
 
-Every skill also ships a `skill-card.md`: a short, human-facing governance card (Description, Owner, License) that tells a reviewer what the skill is and who stands behind it without reading the source. See [docs/skill-requirements.md](https://github.com/amd/skills/blob/main/docs/skill-requirements.md#skill-cardmd).
-
-## Why a skill, not a doc?
-
-Documentation describes an API surface: every flag, every option, neutral by design. A skill encodes the opinionated path: which flags, which container image, which `gfx` target, which environment variables, in what order. It captures the decisions a senior AMD engineer makes without thinking, in a form the agent can apply consistently across teams and repositories.
-
-Skills earn their keep on repeated, opinionated workflows, exactly where the AMD stack lives.
-
-
-## Catalog federation
-
-The AMD stack is large and moves fast. ROCm, HIP, Ryzen AI, and framework integrations each have their own team, release cadence, and validation matrix. So skills here are **federated**: each skill is owned and versioned by the team that owns the product it describes, and this repository is the catalog that brings them together.
-
-```
-                ┌─────────────────────────────────────────────────────┐
-                │                amd/skills (this repo)               │
-                │                                                     │
-                │   skills/         .github/         .*-plugin/       │
-                │   vendored copies federation.json  agent manifests  │
-                └──────────────────────┬──────────────────────────────┘
-  
+Every skill also ships a `skill-card.md`: a short, human-facing governance card (Description, Owner, License) that tells a reviewer what the skill is and who stands behind it without reading the source. See [docs/skill-requirements.md](https://github.com/amd/skills/blob/main/docs/skill-requirements.md#skil
