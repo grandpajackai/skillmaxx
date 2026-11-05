@@ -11,23 +11,23 @@
   <a href="https://www.npmjs.com/package/hyperframes"><img src="https://img.shields.io/npm/dm/hyperframes.svg?style=flat" alt="npm downloads"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue.svg" alt="License"></a>
   <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%3E%3D22-brightgreen" alt="Node.js"></a>
-  <a href="https://discord.gg/EbK98HBPdk"><img src="https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white" alt="Discord"></a>
+  <a href="https://discord.gg/fzbdWyjphr"><img src="https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white" alt="Discord"></a>
 </p>
 
 <p align="center"><b>Write HTML. Render video. Built for agents.</b></p>
 
 <p align="center">
-  <a href="https://hyperframes.studio/studio">Studio</a> |
-  <a href="https://hyperframes.heygen.com/quickstart">Quickstart</a> |
-  <a href="https://hyperframes.heygen.com/showcase">Showcase</a> |
-  <a href="https://hyperframes.studio/">Playground</a> |
-  <a href="https://hyperframes.heygen.com/catalog/blocks/data-chart">Catalog</a> |
-  <a href="https://hyperframes.heygen.com/introduction">Docs</a> |
-  <a href="https://discord.gg/EbK98HBPdk">Discord</a>
+  <a href="https://hyperframes.studio/studio?utm_source=github&utm_medium=readme">Studio</a> |
+  <a href="https://hyperframes.heygen.com/quickstart?utm_source=github&utm_medium=readme">Quickstart</a> |
+  <a href="https://hyperframes.heygen.com/examples?utm_source=github&utm_medium=readme">Showcase</a> |
+  <a href="https://hyperframes.studio/?utm_source=github&utm_medium=readme">Playground</a> |
+  <a href="https://hyperframes.heygen.com/catalog/blocks/data-chart?utm_source=github&utm_medium=readme">Catalog</a> |
+  <a href="https://hyperframes.heygen.com/introduction?utm_source=github&utm_medium=readme">Docs</a> |
+  <a href="https://discord.gg/fzbdWyjphr">Discord</a>
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/f6ff9fae-f33d-4f68-bd54-f3ed4ba6473b" alt="HyperFrames app opening from the Dock: native Mac and Linux app now available" width="800">
+  <img src="https://github.com/user-attachments/assets/f6ff9fae-f33d-4f68-bd54-f3ed4ba6473b" alt="The HyperFrames Studio app opening from the Dock: free for Mac, Windows and Linux" width="800">
 </p>
 
 <p align="center">
@@ -37,7 +37,9 @@
   <a href="https://hyperframes.studio/studio/download?os=deb&src=github-readme&utm_source=github&utm_medium=readme">Linux (.deb)</a>
 </p>
 
-HyperFrames is an open-source framework for turning HTML, CSS, media, and seekable animations into deterministic MP4 videos. Use it locally with the CLI, from AI coding agents with skills, or as the rendering core behind hosted authoring workflows.
+HyperFrames is a free, open-source framework for turning HTML, CSS, media, and seekable animations into deterministic MP4 videos. Use it locally with the CLI, from AI coding agents with skills, or as the rendering core behind hosted authoring workflows.
+
+The [HyperFrames Studio app](https://hyperframes.heygen.com/studio-app) is free to use as well; its [Pro plan](https://hyperframes.studio/pricing) adds HeyGen's top video, image, voice and music models.
 
 Using Claude Code, Codex, Cursor, or another coding agent? Run `npx hyperframes skills update` once, then ask your agent to make a video.
 
@@ -64,9 +66,9 @@ For standalone skills (including OpenCode), use:
 npx skills add heygen-com/hyperframes
 ```
 
-> The picker opens with nothing pre-selected — the **Core Skills** group is all you need; `/slideshow`, `/remotion-to-hyperframes`, `/reverse-any-video` and `/figma` install on demand. Agents and non-interactive runs should use `npx hyperframes skills update` instead — it installs exactly the core set, whereas `skills add --all` installs all 8 published skills. The six repo-internal skills under `.claude/skills` / `.agents/skills` are excluded by default. For the full published set use `npx hyperframes skills`.
+> The picker opens with nothing pre-selected — the **Core Skills** group is all you need; `/slideshow`, `/remotion-to-hyperframes`, `/reverse-any-video`, `/style-sampling` and `/figma` install on demand. Without the picker (a script or a CI job), `npx hyperframes skills update` installs exactly the core set, whereas `skills add --all` installs all 9 published skills. The six repo-internal skills under `.claude/skills` / `.agents/skills` are excluded by default. For the full published set use `npx hyperframes skills`.
 >
-> `skills add` resolves the skills.sh registry blob, which can lag `main` by hours. `npx hyperframes skills update` installs from the current `main`, so reach for it when you need the newest copy of a skill.
+> `skills add` resolves the skills.sh registry blob, which can lag `main` by hours. `npx hyperframes skills update` installs the skills from the release tag that matches your CLI version, so they match the CLI that runs them.
 
 Run project-local installs from your video project's directory. From a HyperFrames
 checkout, use `npx hyperframes skills update` for a global install instead: a
@@ -81,9 +83,9 @@ The skills teach agents the HyperFrames production loop: plan the video, write v
 
 ## Skills
 
-HyperFrames ships 8 skills. Make any video by asking for it; the `/hyperframes` skill carries the contract and the references (film, captions, overlays, motion, look). Read it first.
+HyperFrames ships 9 skills. Make any video by asking for it; the `/hyperframes` skill carries the contract and the references (film, captions, overlays, motion, look). Read it first.
 
-For standalone installation, default to the **core set** (`/hyperframes`, `/hyperframes-cli`, `/hyperframes-registry`, `/media-use`). `npx hyperframes skills update` installs exactly that from anywhere; the interactive picker (`npx skills add heygen-com/hyperframes`) lists it as the "Core Skills" group, nothing pre-selected. The picker is interactive-only — a non-interactive or agent run without `--skill` installs all 8. Use `npx skills add heygen-com/hyperframes --all` to install the complete published set deliberately (skips the picker), or `npx skills add heygen-com/hyperframes --skill <name>` for just one (bare name, no leading `/`).
+For standalone installation, default to the **core set** (`/hyperframes`, `/hyperframes-cli`, `/hyperframes-registry`, `/media-use`). `npx hyperframes skills update` installs exactly that from anywhere; the interactive picker (`npx skills add heygen-com/hyperframes`) lists it as the "Core Skills" group, nothing pre-selected. The picker is interactive-only — a non-interactive or agent run without `--skill` installs all 9. Use `npx skills add heygen-com/hyperframes --all` to install the complete published set deliberately (skips the picker), or `npx skills add heygen-com/hyperframes --skill <name>` for just one (bare name, no leading `/`).
 
 Standalone installs stay lean after that: `npx hyperframes init` installs the **core set** only when it is missing and never touches a skill you already have (`npx hyperframes skills update` refreshes them, and never removes one); `/figma`, `/slideshow`, `/remotion-to-hyperframes` and `/reverse-any-video` install **on demand** with `npx hyperframes skills update <name>`. Nothing re-pulls the full set behind your back.
 
@@ -120,8 +122,9 @@ This writes `dist/hyperframes-plugin.zip` with a `hyperframes/` root folder and 
 | `/slideshow`               | A presentation, pitch deck or interactive deck — discrete slides, fragment reveals, branching, hotspot navigation, presenter mode with speaker notes. Output is a navigable deck, not a rendered MP4. |
 | `/remotion-to-hyperframes` | Bringing existing video code or footage into HyperFrames (Remotion first; also Motion Canvas, Lottie, Three.js, canvas, other tools' renders), verified frame by frame.                               |
 | `/reverse-any-video`       | Rebuilding any video file as an editable HyperFrames project (motion graphics, talking heads, live action, AI-generated footage), checked frame by frame against the original. HyperFrames Pro.       |
+| `/style-sampling`          | Making a new episode on your topic in one of five proven styles: Collage Explainer, Finance Explainer, Animated Science Explainer, 3D Brand Explainer, 3D True Crime. HyperFrames Pro.                |
 
-For visual design handoff workflows, see the [Claude Design guide](https://hyperframes.heygen.com/guides/claude-design) and [Open Design guide](https://hyperframes.heygen.com/guides/open-design).
+For visual design handoff workflows, see the [Claude Design guide](https://hyperframes.heygen.com/guides/design-tools?utm_source=github&utm_medium=readme#start-from-claude-design-or-open-design) and [Open Design guide](https://hyperframes.heygen.com/guides/design-tools?utm_source=github&utm_medium=readme#start-from-claude-design-or-open-design).
 
 ### Manually with the CLI
 
@@ -136,7 +139,7 @@ npx hyperframes render       # render to MP4
 
 ## What You Can Build
 
-Need ideas? Browse the [Showcase](https://hyperframes.heygen.com/showcase) for finished videos you can watch, read, run, and remix.
+Need ideas? Browse the [Showcase](https://hyperframes.heygen.com/examples?utm_source=github&utm_medium=readme) for finished videos you can watch, read, run, and remix.
 
 - Product launch videos and feature announcements
 - PR walkthroughs with animated code diffs, narration, and captions
@@ -149,15 +152,4 @@ Need ideas? Browse the [Showcase](https://hyperframes.heygen.com/showcase) for f
 
 **frame.md — your design system, ready for video.**
 
-Every brand has a `design.md`. None of them were written for a camera. `frame.md` is the missing translation layer: it takes your web-context design spec and inverts it for the frame — the same tokens, the same rules, but rewritten so an AI agent can compose a promo video without guessing at scale or reaching for web chrome.
-
-The output is a `DESIGN.md` superset your whole toolchain can read. Atoms stay sacred. Composition stays free. Numbers come from the script.
-
-<table>
-  <tr>
-    <td width="50%" align="center">
-      <a href="https://hyperframes.studio/design/biennale-yellow"><img src="https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/biennale-yellow.png" alt="Biennale Yellow" width="100%"></a>
-      <br><b><a href="https://hyperframes.studio/design/biennale-yellow">Biennale Yellow</a></b>
-    </td>
-    <td width="50%" align="center">
-      <a href="https://hyperframes.studio/design/blockframe"><img src="https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/blockframe.png" alt="BlockFrame" width="100%"
+Every brand has a `design.md`. None of them were written for a camera. `frame.md` is the missing translation layer: it takes your web-context design spec and inverts it for the frame — 

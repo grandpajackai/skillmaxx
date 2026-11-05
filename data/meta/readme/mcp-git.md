@@ -35,12 +35,12 @@ Please note that mcp-server-git is currently in early development. The functiona
    - Returns: Diff output of staged changes
 
 4. `git_diff`
-   - Shows differences between branches or commits
+   - Shows differences between branches or commits, or across a revision range
    - Inputs:
      - `repo_path` (string): Path to Git repository
-     - `target` (string): Target branch or commit to compare with
+     - `target` (string): Target branch or commit to compare with, or a revision range: `a..b` (from `a` to `b`) or `a...b` (from the merge base of `a` and `b` to `b`). An omitted endpoint means `HEAD`; each endpoint must resolve and cannot start with `-`
      - `context_lines` (number, optional): Number of context lines to show (default: 3)
-   - Returns: Diff output comparing current state with target
+   - Returns: Diff output comparing the working tree with target, or the two endpoints of a range with each other
 
 5. `git_commit`
    - Records changes to the repository
@@ -84,14 +84,22 @@ Please note that mcp-server-git is currently in early development. The functiona
      - `repo_path` (string): Path to Git repository
      - `branch_name` (string): Name of branch to checkout
    - Returns: Confirmation of branch switch, or `HEAD is now detached at <short sha>` when `branch_name` is not a branch (a sha, tag or other revision)
-11. `git_show`
+11. `git_merge`
+   - Merges a branch into the current branch, or changes nothing
+   - Inputs:
+     - `repo_path` (string): Path to Git repository
+     - `source_branch` (string): Branch, tag or commit to merge into the current branch (check out the branch to merge into first with `git_checkout`)
+     - `fast_forward_only` (boolean, optional): Only fast-forward, failing if the branches have diverged (default `true`). `false` lets Git create a merge commit when they have
+   - Returns: `Fast-forwarded`, `Merged ... with merge commit <short sha>`, or `Already up to date`
+   - Refuses a detached HEAD, a working tree with uncommitted changes, a merge already in progress, and a merge that would overwrite an ignored local file. A merge that stops on conflicts is aborted (`git merge --abort`) and the error names the conflicting files, so the repository is left as it was
+12. `git_show`
    - Shows the contents of a commit, or of a file or directory at a revision
    - Inputs:
      - `repo_path` (string): Path to Git repository
      - `revision` (string): The revision (commit hash, branch name, tag) or object spec (`HEAD:path/to/file`) to show
    - Returns: Contents of the specified commit, file content, or directory listing
 
-12. `git_branch`
+13. `git_branch`
    - List Git branches
    - Inputs:
      - `repo_path` (string): Path to the Git repository.
@@ -99,6 +107,13 @@ Please note that mcp-server-git is currently in early development. The functiona
      - `contains` (string, optional): The commit sha that branch should contain. Do not pass anything to this param if no commit sha is specified
      - `not_contains` (string, optional): The commit sha that branch should NOT contain. Do not pass anything to this param if no commit sha is specified
    - Returns: List of branches
+
+14. `git_remote`
+   - Lists the repository's remotes with their fetch and push URLs, like `git remote -v`
+   - Inputs:
+     - `repo_path` (string): Path to the Git repository.
+   - Returns: One line per remote and direction, `<name>\t<url> (fetch)` or `(push)` (a partial clone's fetch line ends with its filter, such as ` [blob:none]`), or `No remotes configured`
+   - A credential embedded in a URL is never returned: the whole userinfo of a URL such as `https://user:token@host/...` or `https://token@host/...` is shown as `<redacted>`. An SSH username (`ssh://git@host/...`) is kept, since it names an account rather than authenticating one; a password after it is redacted. A remote-helper address (`https::https://user:token@host/...`) has its inner URL redacted the same way. scp-style addresses (`git@host:path`) and local paths are shown as configured. A line that cannot be parsed is shown as `<redacted>`, and if a configured remote URL (or `insteadOf` rewrite) contains a newline, which git itself refuses, the tool returns an error instead of a listing.
 
 ### Protocol versions
 
@@ -110,6 +125,25 @@ Roots is deprecated in 2026-07-28, and this server never asks a client for Roots
 
 - **A tool that fails** returns a result with `isError: true` whose text is `Error executing tool <name>: <message>`, so the model can read it and correct the call. This covers git errors (an unknown revision, a failed command), a `repo_path` that is not a repository or is outside `--repository`, the flag-injection guards, and arguments that do not match the tool's input schema.
 - **An unknown tool name** is a protocol error, JSON-RPC `-32602` (`Unknown tool: <name>`), as the specification requires in both eras. Before 2.0.0 it was an `isError` result.
+
+### Prompts
+
+Beside its tools, the server offers two prompts, which a client typically shows the user as slash commands. Each reads the repository when it is requested and returns one user message that embeds the changes, ready to send to the model. They open the repository the way the tools do, so `--repository` confines them too, and the same flag-injection guards apply. They behave the same in both protocol eras.
+
+1. `git_commit_message`
+   - Asks the model for a commit message for the staged changes
+   - Arguments:
+     - `repo_path` (string, required): Path to the Git repository
+   - Returns: A message embedding the staged diff and asking for a commit message, or one saying nothing is staged
+
+2. `git_summarize_changes`
+   - Asks the model to summarize the working tree's changes, or the diff against a branch or commit
+   - Arguments:
+     - `repo_path` (string, required): Path to the Git repository
+     - `target` (string, optional): Branch or commit to diff against. Without it, the working tree's status and its staged and unstaged diffs are summarized
+   - Returns: A message embedding those changes and asking for a summary, or one saying there are none
+
+A prompt request that fails (a `repo_path` that is not a repository or is outside `--repository`, an unknown `target`, a `target` starting with `-`) is a JSON-RPC `-32602` error carrying the message a tool would report, since `prompts/get` has no `isError` result.
 
 ## Installation
 
@@ -135,105 +169,8 @@ python -m mcp_server_git
 ## Configuration
 
 > [!IMPORTANT]
-> **Without `--repository`, the server reads and writes any Git repository the server process can reach.** Each tool call names its own `repo_path`, and that holds for the tools that change a repository too (`git_add`, `git_commit`, `git_reset`, `git_create_branch`, `git_checkout`). `--repository` is the only confinement the server offers: it never asks the client for Roots, in either protocol era. Set `--repository` whenever the server is used with prompts or content that are not fully trusted. It admits the whole enclosing repository, not only the directory you name, as the next paragraph describes.
+> **Without `--repository`, the server reads and writes any Git repository the server process can reach.** Each tool call names its own `repo_path`, and that holds for the tools that change a repository too (`git_add`, `git_commit`, `git_reset`, `git_create_branch`, `git_checkout`, `git_merge`). `--repository` is the only confinement the server offers: it never asks the client for Roots, in either protocol era. Set `--repository` whenever the server is used with prompts or content that are not fully trusted. It admits the whole enclosing repository, not only the directory you name, as the next paragraph describes.
 
 `--repository` (`-r`) accepts any path inside a Git working tree. At startup the server walks up to the enclosing repository root, the way `git rev-parse --show-toplevel` does, so `--repository .` works when a shared config is launched from any subdirectory of the repository. A path inside the repository therefore allows tool calls anywhere in that repository, not only under the subdirectory given. A path that does not exist, or is not inside a Git repository, is logged as a one-line error at startup.
 
-A tool call's `repo_path` must be inside that repository, and so must the directories Git then uses for it: a repository nested inside whose `.git` file, `commondir` or `core.worktree` points outside is refused. A linked worktree can still be the `--repository`, though its Git directory lives under the main repository's `.git`.
-
-### Usage with Claude Desktop
-
-Add this to your `claude_desktop_config.json`:
-
-<details>
-<summary>Using uvx</summary>
-
-```json
-"mcpServers": {
-  "git": {
-    "command": "uvx",
-    "args": ["mcp-server-git", "--repository", "path/to/git/repo"]
-  }
-}
-```
-</details>
-
-<details>
-<summary>Using docker</summary>
-
-* Note: replace '/Users/username' with a path that you want to be accessible by this tool
-
-```json
-"mcpServers": {
-  "git": {
-    "command": "docker",
-    "args": ["run", "--rm", "-i", "--mount", "type=bind,src=/Users/username,dst=/Users/username", "mcp/git"]
-  }
-}
-```
-</details>
-
-<details>
-<summary>Using pip installation</summary>
-
-```json
-"mcpServers": {
-  "git": {
-    "command": "python",
-    "args": ["-m", "mcp_server_git", "--repository", "path/to/git/repo"]
-  }
-}
-```
-</details>
-
-### Usage with VS Code
-
-For quick installation, use one of the one-click install buttons below...
-
-[![Install with UV in VS Code](https://img.shields.io/badge/VS_Code-UV-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=git&config=%7B%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22mcp-server-git%22%5D%7D) [![Install with UV in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-UV-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=git&config=%7B%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22mcp-server-git%22%5D%7D&quality=insiders)
-
-[![Install with Docker in VS Code](https://img.shields.io/badge/VS_Code-Docker-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=git&config=%7B%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22--rm%22%2C%22-i%22%2C%22--mount%22%2C%22type%3Dbind%2Csrc%3D%24%7BworkspaceFolder%7D%2Cdst%3D%2Fworkspace%22%2C%22mcp%2Fgit%22%5D%7D) [![Install with Docker in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-Docker-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=git&config=%7B%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22--rm%22%2C%22-i%22%2C%22--mount%22%2C%22type%3Dbind%2Csrc%3D%24%7BworkspaceFolder%7D%2Cdst%3D%2Fworkspace%22%2C%22mcp%2Fgit%22%5D%7D&quality=insiders)
-
-For manual installation, you can configure the MCP server using one of these methods:
-
-**Method 1: User Configuration (Recommended)**
-Add the configuration to your user-level MCP configuration file. Open the Command Palette (`Ctrl + Shift + P`) and run `MCP: Open User Configuration`. This will open your user `mcp.json` file where you can add the server configuration.
-
-**Method 2: Workspace Configuration**
-Alternatively, you can add the configuration to a file called `.vscode/mcp.json` in your workspace. This will allow you to share the configuration with others.
-
-> For more details about MCP configuration in VS Code, see the [official VS Code MCP documentation](https://code.visualstudio.com/docs/copilot/customization/mcp-servers).
-
-```json
-{
-  "servers": {
-    "git": {
-      "command": "uvx",
-      "args": ["mcp-server-git"]
-    }
-  }
-}
-```
-
-For Docker installation:
-
-```json
-{
-  "mcp": {
-    "servers": {
-      "git": {
-        "command": "docker",
-        "args": [
-          "run",
-          "--rm",
-          "-i",
-          "--mount", "type=bind,src=${workspaceFolder},dst=/workspace",
-          "mcp/git"
-        ]
-      }
-    }
-  }
-}
-```
-
-### Usage with [Zed](https://github.com/zed-industries/zed)
+A tool call's `repo_path` must be inside that repository, and so must the directories Git then uses for it: a repository nested inside whose `.git` file, `commondir` or `core.worktree` points outside is refused. A lin
