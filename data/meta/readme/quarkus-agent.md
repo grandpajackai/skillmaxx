@@ -147,7 +147,7 @@ The [SmallRye ACP client](https://github.com/smallrye/smallrye-acp-client) can r
 Install the ACP CLI:
 
 ```bash
-jbang app install --name acp io.smallrye.ai:acp-java-client:0.2.1:runner
+jbang app install --name acp io.smallrye.ai:acp-java-client:0.2.2:runner
 ```
 
 Install an ACP agent from the registry (for example Claude Code):
@@ -156,6 +156,27 @@ Install an ACP agent from the registry (for example Claude Code):
 acp registry install claude-acp
 ```
 
+##### Using a JSON configuration file
+
+Create an `mcp-server.json` file:
+
+```json
+{
+  "type": "stdio",
+  "name": "quarkus-agent",
+  "command": "jbang",
+  "args": ["quarkus-agent-mcp@quarkusio"]
+}
+```
+
+Run an ACP-compatible agent:
+
+```bash
+acp run -a claude-acp \
+  --mcp-server-config mcp-server.json \
+  --backup no \
+  -p "Explore the tools available in my Quarkus application."
+```
 Then run the agent with Quarkus Agent MCP over stdio:
 
 ```bash
@@ -239,7 +260,7 @@ cd quarkus-agent-mcp
 This produces the uber-jar at `target/quarkus-agent-mcp-1.0.0-SNAPSHOT-runner.jar` (version may vary).
 
 ```bash
-claude mcp add -s user quarkus-agent -- java -jar /path/to/quarkus-agent-mcp/target/quarkus-agent-mcp-1.2.12-runner.jar
+claude mcp add -s user quarkus-agent -- java -jar /path/to/quarkus-agent-mcp/target/quarkus-agent-mcp-1.2.13-runner.jar
 ```
 
 #### Verify
@@ -315,8 +336,4 @@ Once a Quarkus app is running in dev mode, the agent can discover and use all De
 | Capability | How to discover | Example |
 |-----------|----------------|---------|
 | Testing | `quarkus_searchTools` query: `test` | Run all tests, run a specific test class |
-| Configuration | `quarkus_searchTools` query: `config` | View and change config properties |
-| Extensions | `quarkus_searchTools` query: `extension` | Add or remove extensions at runtime |
-| Endpoints | `quarkus_searchTools` query: `endpoint` | List all REST endpoints and their URLs |
-| Dev Services | `quarkus_searchTools` query: `dev-services` | View database URLs, container info |
-| Log levels | `quarkus_searchTools` query: `log` | Change log levels at runtime |
+| Configuration | `quarkus_searchTools` query: `config` | View and change config prop

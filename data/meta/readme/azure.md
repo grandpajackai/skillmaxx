@@ -84,6 +84,28 @@ apm install microsoft/azure-skills
 /plugin update azure@azure-skills
 ```
 
+**Automatic updates (optional, enterprise administrators)**:
+
+Add or merge the following into your enterprise-managed `managed-settings.json`, **not your personal Copilot CLI configuration**:
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "azure-skills": {
+      "source": {
+        "source": "github",
+        "repo": "microsoft/azure-skills"
+      },
+      "autoUpdate": true
+    }
+  }
+}
+```
+
+`autoUpdate: true` requires clients to periodically refresh this marketplace and update installed plugins sourced from it; it does not install the plugin for you. Set it to `false` to disable automatic updates for this marketplace, or omit it to retain the existing default or user-configured behavior. A defined managed value takes precedence over user preferences, and `strictKnownMarketplaces` restrictions still apply.
+
+See [Getting started with enterprise-managed settings](https://docs.github.com/en/enterprise-cloud@latest/copilot/how-tos/administer-copilot/manage-for-enterprise/use-managed-settings/get-started) for setup and the [`extraKnownMarketplaces` reference](https://docs.github.com/en/enterprise-cloud@latest/copilot/reference/enterprise-administrators/enterprise-managed-settings#extraknownmarketplaces) for details.
+
 ### VS Code
 
 Install the **Azure MCP** extension from the Visual Studio Marketplace:
@@ -257,63 +279,4 @@ After install, try three quick checks.
 Ask:
 
 > What Azure services would I need to deploy this project?
-
-You should get structured Azure guidance, not just a generic cloud answer.
-
-### 2. Verify Azure MCP
-
-Ask:
-
-> List my Azure resource groups.
-
-You should see a real tool-backed response from your Azure account.
-
-### 3. Verify Foundry MCP
-
-Ask:
-
-> What AI models are available in Microsoft Foundry?
-
-You should get a Foundry-backed response rather than a generic summary.
-
-## Authentication
-
-The recommended authentication path is Azure CLI:
-
-```bash
-az login
-```
-
-If you plan to deploy with `azd`, also run:
-
-```bash
-azd auth login
-```
-
-You can also authenticate with service principal credentials:
-
-**Bash/Zsh**
-
-```bash
-export AZURE_TENANT_ID="your-tenant-id"
-export AZURE_CLIENT_ID="your-client-id"
-export AZURE_CLIENT_SECRET="your-client-secret"
-```
-
-**PowerShell**
-
-```powershell
-$env:AZURE_TENANT_ID = "your-tenant-id"
-$env:AZURE_CLIENT_ID = "your-client-id"
-$env:AZURE_CLIENT_SECRET = "your-client-secret"
-```
-
-When the agent runs inside Azure, the Azure MCP Server can also use managed identity.
-
-## Prompts to try
-
-Once the plugin is installed, try prompts like these:
-
-- `Prepare this app for Azure.`
-- `Validate my Azure deployment files before I run azd up.`
-- 
+

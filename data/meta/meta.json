@@ -17,231 +17,6 @@
 "updated": null,
 "readme": false
 },
-"benborla29-mcp-server-mysql": {
-"slug": "benborla29-mcp-server-mysql",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
-"bitbonsai-mcpvault": {
-"slug": "bitbonsai-mcpvault",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
-"currents-mcp": {
-"slug": "currents-mcp",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
-"cyanheads-git-mcp-server": {
-"slug": "cyanheads-git-mcp-server",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
-"cyanheads-pubmed-mcp-server": {
-"slug": "cyanheads-pubmed-mcp-server",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
-"dallay-agentsync": {
-"slug": "dallay-agentsync",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
-"dangahagan-weather-mcp": {
-"slug": "dangahagan-weather-mcp",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
-"haven_ai-mcp": {
-"slug": "haven_ai-mcp",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
-"imgly-codesign-mcp": {
-"slug": "imgly-codesign-mcp",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
-"ironbee-ai-devtools": {
-"slug": "ironbee-ai-devtools",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
-"microsoft-workiq": {
-"slug": "microsoft-workiq",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
-"mozilla-firefox-devtools-mcp": {
-"slug": "mozilla-firefox-devtools-mcp",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
-"mozilla-firefox-devtools-mcp-moz": {
-"slug": "mozilla-firefox-devtools-mcp-moz",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
-"next-ai-drawio-mcp-server": {
-"slug": "next-ai-drawio-mcp-server",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
-"postman-postman-mcp-server": {
-"slug": "postman-postman-mcp-server",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
-"putervision-state-memory-mcp": {
-"slug": "putervision-state-memory-mcp",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
-"putervision-vision-memory-mcp": {
-"slug": "putervision-vision-memory-mcp",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
-"putervision-world-model-mcp": {
-"slug": "putervision-world-model-mcp",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
-"rate-api-mcp": {
-"slug": "rate-api-mcp",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
-"respira-wordpress-mcp-server": {
-"slug": "respira-wordpress-mcp-server",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
-"rigour-labs-mcp": {
-"slug": "rigour-labs-mcp",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
-"taazkareem-clickup-mcp-server": {
-"slug": "taazkareem-clickup-mcp-server",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
-"yawlabs-ctxlint": {
-"slug": "yawlabs-ctxlint",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
-"yawlabs-postgres-mcp": {
-"slug": "yawlabs-postgres-mcp",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
-"zereight-mcp-gitlab": {
-"slug": "zereight-mcp-gitlab",
-"logo": null,
-"logo_src": null,
-"repo": null,
-"stars": null,
-"updated": null,
-"readme": false
-},
 "activecampaign": {
 "slug": "activecampaign",
 "logo": "activecampaign.webp",
@@ -256,7 +31,7 @@
 "logo": null,
 "logo_src": null,
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/adobe",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-27T13:29:11.000-07:00",
 "readme": false
 },
@@ -269,15 +44,6 @@
 "updated": "2026-10-23T13:52:58.000-07:00",
 "readme": false
 },
-"agent-sdk-dev": {
-"slug": "agent-sdk-dev",
-"logo": "agent-sdk-dev.webp",
-"logo_src": "GitHub org avatar",
-"repo": "https://github.com/anthropics/claude-plugins-public/tree/HEAD/plugins/agent-sdk-dev",
-"stars": 46208,
-"updated": "2026-10-26T22:42:29.000Z",
-"readme": true
-},
 "agent-device": {
 "slug": "agent-device",
 "logo": null,
@@ -286,6 +52,24 @@
 "stars": null,
 "updated": null,
 "readme": false
+},
+"agent-postbox": {
+"slug": "agent-postbox",
+"logo": "agent-postbox.webp",
+"logo_src": "GitHub org avatar",
+"repo": "https://github.com/Aethelgard-Systems/agent-postbox",
+"stars": 0,
+"updated": "2026-11-05T00:49:31.000+01:00",
+"readme": true
+},
+"agent-sdk-dev": {
+"slug": "agent-sdk-dev",
+"logo": "agent-sdk-dev.webp",
+"logo_src": "GitHub org avatar",
+"repo": "https://github.com/anthropics/claude-plugins-public/tree/HEAD/plugins/agent-sdk-dev",
+"stars": 46295,
+"updated": "2026-10-26T22:42:29.000Z",
+"readme": true
 },
 "agentforce-adlc": {
 "slug": "agentforce-adlc",
@@ -383,7 +167,7 @@
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/AltimateAI/altimate-claude-plugin",
 "stars": 4,
-"updated": "2026-11-04T00:11:15.000+05:30",
+"updated": "2026-11-06T22:14:31.000+08:00",
 "readme": true
 },
 "amazon-location-service": {
@@ -391,7 +175,7 @@
 "logo": "amazon-location-service.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/awslabs/agent-plugins",
-"stars": 936,
+"stars": 937,
 "updated": "2026-10-09T20:59:12.000Z",
 "readme": true
 },
@@ -410,7 +194,7 @@
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/amd/skills",
 "stars": 481,
-"updated": "2026-11-05T11:35:48.000-07:00",
+"updated": "2026-11-06T08:43:44.000-07:00",
 "readme": true
 },
 "amplitude": {
@@ -427,7 +211,7 @@
 "logo": "apollo.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/apolloio/apollo-mcp-plugin",
-"stars": 34,
+"stars": 36,
 "updated": "2026-09-16T22:15:19.000+05:30",
 "readme": true
 },
@@ -463,7 +247,7 @@
 "logo": null,
 "logo_src": null,
 "repo": "https://github.com/anthropics/claude-plugins-public/tree/HEAD/external_plugins/asana",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-08-06T13:50:27.000-07:00",
 "readme": true
 },
@@ -490,7 +274,7 @@
 "logo": "atlassian.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/atlassian/atlassian-mcp-server",
-"stars": 1148,
+"stars": 1149,
 "updated": "2026-10-29T11:23:30.000-07:00",
 "readme": true
 },
@@ -499,7 +283,7 @@
 "logo": "atlassian-rovo.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/atlassian-rovo",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-26T13:49:26.000-07:00",
 "readme": false
 },
@@ -535,8 +319,8 @@
 "logo": "aws-agents.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/aws/agent-toolkit-for-aws",
-"stars": 3409,
-"updated": "2026-11-05T10:33:39.000Z",
+"stars": 3419,
+"updated": "2026-11-06T20:34:09.000Z",
 "readme": true
 },
 "aws-agents-for-devsecops": {
@@ -544,8 +328,8 @@
 "logo": "aws-agents-for-devsecops.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/aws/agent-toolkit-for-aws",
-"stars": 3409,
-"updated": "2026-11-05T10:33:39.000Z",
+"stars": 3419,
+"updated": "2026-11-06T20:34:09.000Z",
 "readme": true
 },
 "aws-amplify": {
@@ -553,7 +337,7 @@
 "logo": "aws-amplify.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/awslabs/agent-plugins",
-"stars": 936,
+"stars": 937,
 "updated": "2026-10-09T20:59:12.000Z",
 "readme": true
 },
@@ -562,8 +346,8 @@
 "logo": "aws-core.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/aws/agent-toolkit-for-aws",
-"stars": 3409,
-"updated": "2026-11-05T10:33:39.000Z",
+"stars": 3419,
+"updated": "2026-11-06T20:34:09.000Z",
 "readme": true
 },
 "aws-data-analytics": {
@@ -571,8 +355,8 @@
 "logo": "aws-data-analytics.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/aws/agent-toolkit-for-aws",
-"stars": 3409,
-"updated": "2026-11-05T10:33:39.000Z",
+"stars": 3419,
+"updated": "2026-11-06T20:34:09.000Z",
 "readme": true
 },
 "aws-serverless": {
@@ -580,7 +364,7 @@
 "logo": "aws-serverless.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/awslabs/agent-plugins",
-"stars": 936,
+"stars": 937,
 "updated": "2026-10-09T20:59:12.000Z",
 "readme": true
 },
@@ -589,8 +373,8 @@
 "logo": "aws-startup-advisor.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/aws/agent-toolkit-for-aws",
-"stars": 3409,
-"updated": "2026-11-05T10:33:39.000Z",
+"stars": 3419,
+"updated": "2026-11-06T20:34:09.000Z",
 "readme": true
 },
 "aws-transform": {
@@ -598,7 +382,7 @@
 "logo": "aws-transform.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/awslabs/agent-plugins",
-"stars": 936,
+"stars": 937,
 "updated": "2026-10-09T20:59:12.000Z",
 "readme": true
 },
@@ -616,8 +400,8 @@
 "logo": "azure.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/microsoft/azure-skills",
-"stars": 1621,
-"updated": "2026-11-05T09:52:27.000-08:00",
+"stars": 1623,
+"updated": "2026-11-06T09:55:05.000-08:00",
 "readme": true
 },
 "azure-cosmos-db-assistant": {
@@ -647,6 +431,15 @@
 "updated": "2026-11-05T10:00:53.000+02:00",
 "readme": true
 },
+"benborla29-mcp-server-mysql": {
+"slug": "benborla29-mcp-server-mysql",
+"logo": null,
+"logo_src": null,
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
+},
 "bigdata-com": {
 "slug": "bigdata-com",
 "logo": "bigdata-com.webp",
@@ -662,8 +455,17 @@
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/gemini-cli-extensions/bigquery-data-analytics",
 "stars": 51,
-"updated": "2026-11-05T09:12:42.000Z",
+"updated": "2026-11-05T14:38:56.000-08:00",
 "readme": true
+},
+"bitbonsai-mcpvault": {
+"slug": "bitbonsai-mcpvault",
+"logo": null,
+"logo_src": null,
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
 },
 "blackrock-advisor-center-plugin": {
 "slug": "blackrock-advisor-center-plugin",
@@ -697,7 +499,7 @@
 "logo": "boltz-api-cli.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/boltz-api-cli",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-27T13:29:11.000-07:00",
 "readme": false
 },
@@ -728,15 +530,6 @@
 "updated": null,
 "readme": false
 },
-"browser-use": {
-"slug": "browser-use",
-"logo": "browser-use.webp",
-"logo_src": "GitHub org avatar",
-"repo": "https://github.com/browser-use/plugins",
-"stars": 28,
-"updated": "2026-10-17T10:47:17.000-07:00",
-"readme": true
-},
 "browser-devtools-mcp": {
 "slug": "browser-devtools-mcp",
 "logo": null,
@@ -746,12 +539,21 @@
 "updated": null,
 "readme": false
 },
+"browser-use": {
+"slug": "browser-use",
+"logo": "browser-use.webp",
+"logo_src": "GitHub org avatar",
+"repo": "https://github.com/browser-use/plugins",
+"stars": 29,
+"updated": "2026-10-17T10:47:17.000-07:00",
+"readme": true
+},
 "build-ios-apps": {
 "slug": "build-ios-apps",
 "logo": "build-ios-apps.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/build-ios-apps",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-06-08T14:01:52.000-07:00",
 "readme": true
 },
@@ -760,7 +562,7 @@
 "logo": "build-macos-apps.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/build-macos-apps",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-06-08T14:01:52.000-07:00",
 "readme": true
 },
@@ -769,7 +571,7 @@
 "logo": "build-web-apps.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/build-web-apps",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-06-08T14:01:52.000-07:00",
 "readme": true
 },
@@ -778,7 +580,7 @@
 "logo": "build-web-data-visualization.svg",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/build-web-data-visualization",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-06-08T14:01:52.000-07:00",
 "readme": false
 },
@@ -814,8 +616,8 @@
 "logo": "canva.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/canva-sdks/canva-skills",
-"stars": 150,
-"updated": "2026-10-23T11:21:49.000-07:00",
+"stars": 155,
+"updated": "2026-11-05T11:04:16.000-08:00",
 "readme": true
 },
 "carbone-skill": {
@@ -824,7 +626,7 @@
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/carboneio/carbone-skill",
 "stars": 6,
-"updated": "2026-11-05T10:24:58.000+04:00",
+"updated": "2026-11-06T17:54:19.000+04:00",
 "readme": true
 },
 "carta-cap-table": {
@@ -833,7 +635,7 @@
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/carta/plugins",
 "stars": 15,
-"updated": "2026-11-05T18:52:34.000Z",
+"updated": "2026-11-06T21:22:44.000Z",
 "readme": true
 },
 "carta-crm": {
@@ -842,7 +644,7 @@
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/carta/plugins",
 "stars": 15,
-"updated": "2026-11-05T18:52:34.000Z",
+"updated": "2026-11-06T21:22:44.000Z",
 "readme": true
 },
 "carta-investors": {
@@ -851,7 +653,7 @@
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/carta/plugins",
 "stars": 15,
-"updated": "2026-11-05T18:52:34.000Z",
+"updated": "2026-11-06T21:22:44.000Z",
 "readme": true
 },
 "catalyst-by-zoho": {
@@ -877,7 +679,7 @@
 "logo": "chatcut.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/chatcut",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-27T13:29:11.000-07:00",
 "readme": true
 },
@@ -886,8 +688,8 @@
 "logo": "chrome-devtools.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
-"stars": 54841,
-"updated": "2026-11-05T11:44:13.000Z",
+"stars": 54887,
+"updated": "2026-11-06T14:23:55.000Z",
 "readme": true
 },
 "chrome-devtools-mcp": {
@@ -895,8 +697,8 @@
 "logo": "chrome-devtools-mcp.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
-"stars": 54841,
-"updated": "2026-11-05T11:44:13.000Z",
+"stars": 54887,
+"updated": "2026-11-06T14:23:55.000Z",
 "readme": true
 },
 "chronograph-gp": {
@@ -922,8 +724,8 @@
 "logo": "circle-skills.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/circlefin/skills",
-"stars": 163,
-"updated": "2026-10-16T13:04:42.000-07:00",
+"stars": 164,
+"updated": "2026-11-06T12:44:17.000-08:00",
 "readme": true
 },
 "circleback": {
@@ -940,7 +742,7 @@
 "logo": "circleci.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/circleci",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-06-17T13:40:30.000-07:00",
 "readme": false
 },
@@ -967,8 +769,8 @@
 "logo": "clangd-lsp.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/clangd-lsp",
-"stars": 46208,
-"updated": "2026-02-20T01:06:49.000Z",
+"stars": 46295,
+"updated": "2026-11-05T22:29:08.000-08:00",
 "readme": true
 },
 "claude-code-setup": {
@@ -976,7 +778,7 @@
 "logo": "claude-code-setup.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/claude-code-setup",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-05-28T07:59:33.000-05:00",
 "readme": true
 },
@@ -985,7 +787,7 @@
 "logo": "claude-md-management.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/claude-md-management",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-02-20T01:06:49.000Z",
 "readme": true
 },
@@ -994,7 +796,7 @@
 "logo": "claude-security.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/claude-security",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-09-25T12:33:24.000-07:00",
 "readme": true
 },
@@ -1013,7 +815,7 @@
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/clerk/skills",
 "stars": 92,
-"updated": "2026-11-05T14:42:19.000Z",
+"updated": "2026-11-06T12:03:45.000-06:00",
 "readme": true
 },
 "clickhouse": {
@@ -1039,7 +841,7 @@
 "logo": "clickup.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/clickup",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-27T13:29:11.000-07:00",
 "readme": false
 },
@@ -1075,8 +877,8 @@
 "logo": "cloudflare.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/cloudflare/skills",
-"stars": 3283,
-"updated": "2026-11-03T10:35:35.000-05:00",
+"stars": 3293,
+"updated": "2026-11-06T11:50:32.000-08:00",
 "readme": true
 },
 "cloudinary": {
@@ -1102,7 +904,7 @@
 "logo": "code-modernization.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/code-modernization",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-09-25T12:06:43.000-07:00",
 "readme": true
 },
@@ -1111,7 +913,7 @@
 "logo": "code-review.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-public/tree/HEAD/plugins/code-review",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-10-26T22:42:44.000Z",
 "readme": true
 },
@@ -1120,7 +922,7 @@
 "logo": "code-simplifier.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/code-simplifier",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-02-20T01:06:49.000Z",
 "readme": false
 },
@@ -1129,7 +931,7 @@
 "logo": "coderabbit.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/coderabbitai/skills",
-"stars": 209,
+"stars": 210,
 "updated": "2026-10-31T14:31:24.000+05:30",
 "readme": true
 },
@@ -1138,7 +940,7 @@
 "logo": "codex-security.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/codex-security",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-10-08T01:21:32.000-04:00",
 "readme": false
 },
@@ -1147,7 +949,7 @@
 "logo": "codspeed.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/CodSpeedHQ/codspeed",
-"stars": 385,
+"stars": 387,
 "updated": "2026-11-05T11:04:13.000+01:00",
 "readme": true
 },
@@ -1165,7 +967,7 @@
 "logo": "commit-commands.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-public/tree/HEAD/plugins/commit-commands",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-10-26T22:42:29.000Z",
 "readme": true
 },
@@ -1183,7 +985,7 @@
 "logo": "consensus.webp",
 "logo_src": "site favicon",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/consensus",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-27T13:29:11.000-07:00",
 "readme": false
 },
@@ -1192,7 +994,7 @@
 "logo": null,
 "logo_src": null,
 "repo": "https://github.com/anthropics/claude-plugins-public/tree/HEAD/external_plugins/context7",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-09-30T16:11:48.000-04:00",
 "readme": true
 },
@@ -1210,7 +1012,7 @@
 "logo": "creative-production.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/creative-production",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-27T13:29:11.000-07:00",
 "readme": true
 },
@@ -1229,7 +1031,7 @@
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/CrowdStrike/foundry-skills",
 "stars": 36,
-"updated": "2026-11-03T14:59:45.000-07:00",
+"updated": "2026-11-05T10:59:19.000-08:00",
 "readme": true
 },
 "crowdstrike-falcon-fusion": {
@@ -1238,7 +1040,7 @@
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/CrowdStrike/fusion-skills",
 "stars": 29,
-"updated": "2026-11-03T15:00:28.000-07:00",
+"updated": "2026-11-05T10:59:14.000-08:00",
 "readme": true
 },
 "csharp-lsp": {
@@ -1246,14 +1048,59 @@
 "logo": "csharp-lsp.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/csharp-lsp",
-"stars": 46208,
-"updated": "2026-02-20T01:06:49.000Z",
+"stars": 46295,
+"updated": "2026-11-05T22:29:08.000-08:00",
 "readme": true
+},
+"currents-mcp": {
+"slug": "currents-mcp",
+"logo": null,
+"logo_src": null,
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
 },
 "cwc-makers": {
 "slug": "cwc-makers",
 "logo": "cwc-makers.webp",
 "logo_src": "site favicon",
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
+},
+"cyanheads-git-mcp-server": {
+"slug": "cyanheads-git-mcp-server",
+"logo": null,
+"logo_src": null,
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
+},
+"cyanheads-pubmed-mcp-server": {
+"slug": "cyanheads-pubmed-mcp-server",
+"logo": null,
+"logo_src": null,
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
+},
+"dallay-agentsync": {
+"slug": "dallay-agentsync",
+"logo": null,
+"logo_src": null,
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
+},
+"dangahagan-weather-mcp": {
+"slug": "dangahagan-weather-mcp",
+"logo": null,
+"logo_src": null,
 "repo": null,
 "stars": null,
 "updated": null,
@@ -1282,7 +1129,7 @@
 "logo": "data-agent-kit.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/GoogleCloudPlatform/data-agent-kit-plugin",
-"stars": 244,
+"stars": 248,
 "updated": "2026-10-29T19:49:40.000-07:00",
 "readme": true
 },
@@ -1291,7 +1138,7 @@
 "logo": "data-analytics.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/data-analytics",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-27T13:29:11.000-07:00",
 "readme": true
 },
@@ -1309,7 +1156,7 @@
 "logo": "databases-on-aws.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/awslabs/agent-plugins",
-"stars": 936,
+"stars": 937,
 "updated": "2026-10-09T20:59:12.000Z",
 "readme": true
 },
@@ -1318,8 +1165,8 @@
 "logo": "databricks.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/databricks/databricks-agent-skills",
-"stars": 383,
-"updated": "2026-11-04T08:23:41.000Z",
+"stars": 386,
+"updated": "2026-11-06T08:23:29.000Z",
 "readme": true
 },
 "datadog": {
@@ -1346,7 +1193,7 @@
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/gemini-cli-extensions/dataproc",
 "stars": 1,
-"updated": "2026-09-23T12:26:44.000-04:00",
+"updated": "2026-11-06T13:07:33.000-08:00",
 "readme": true
 },
 "datarobot-agent-skills": {
@@ -1363,8 +1210,8 @@
 "logo": "dataverse.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/microsoft/Dataverse-skills",
-"stars": 254,
-"updated": "2026-11-03T19:11:25.000Z",
+"stars": 255,
+"updated": "2026-11-06T11:17:04.000-08:00",
 "readme": true
 },
 "deepeval": {
@@ -1372,8 +1219,8 @@
 "logo": "deepeval.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/confident-ai/deepeval",
-"stars": 19319,
-"updated": "2026-11-05T19:26:11.000+05:30",
+"stars": 19339,
+"updated": "2026-11-05T14:28:06.000-08:00",
 "readme": true
 },
 "deploy-on-aws": {
@@ -1381,7 +1228,7 @@
 "logo": "deploy-on-aws.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/awslabs/agent-plugins",
-"stars": 936,
+"stars": 937,
 "updated": "2026-10-09T20:59:12.000Z",
 "readme": true
 },
@@ -1390,8 +1237,8 @@
 "logo": "desktop-commander.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/wonderwhy-er/DesktopCommanderMCP",
-"stars": 10228,
-"updated": "2026-11-05T10:41:40.000+02:00",
+"stars": 10235,
+"updated": "2026-11-06T19:57:38.000+02:00",
 "readme": true
 },
 "discord": {
@@ -1399,7 +1246,7 @@
 "logo": null,
 "logo_src": null,
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/external_plugins/discord",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-08-12T15:57:07.000-07:00",
 "readme": true
 },
@@ -1453,7 +1300,7 @@
 "logo": "dynatrace.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/Dynatrace/dynatrace-for-ai",
-"stars": 175,
+"stars": 176,
 "updated": "2026-11-03T16:39:41.000+01:00",
 "readme": true
 },
@@ -1462,7 +1309,7 @@
 "logo": "exa.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/exa-labs/exa-mcp-server",
-"stars": 5213,
+"stars": 5217,
 "updated": "2026-11-03T01:15:42.000Z",
 "readme": true
 },
@@ -1471,7 +1318,7 @@
 "logo": "explanatory-output-style.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-public/tree/HEAD/plugins/explanatory-output-style",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-10-26T22:42:29.000Z",
 "readme": true
 },
@@ -1480,7 +1327,7 @@
 "logo": "expo.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/expo/skills",
-"stars": 4060,
+"stars": 4073,
 "updated": "2026-11-01T22:54:18.000+01:00",
 "readme": true
 },
@@ -1489,7 +1336,7 @@
 "logo": null,
 "logo_src": null,
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/external_plugins/fakechat",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-03-19T13:59:14.000-07:00",
 "readme": true
 },
@@ -1507,7 +1354,7 @@
 "logo": "feature-dev.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-public/tree/HEAD/plugins/feature-dev",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-10-26T22:42:29.000Z",
 "readme": true
 },
@@ -1534,7 +1381,7 @@
 "logo": "figma.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/figma/mcp-server-guide",
-"stars": 2153,
+"stars": 2158,
 "updated": "2026-11-02T22:28:44.000-08:00",
 "readme": true
 },
@@ -1543,7 +1390,7 @@
 "logo": null,
 "logo_src": null,
 "repo": "https://github.com/anthropics/claude-plugins-public/tree/HEAD/external_plugins/firebase",
-"stars": 46208,
+"stars": 46295,
 "updated": "2025-12-01T16:03:02.000-08:00",
 "readme": false
 },
@@ -1553,7 +1400,7 @@
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/firecrawl/firecrawl-claude-plugin",
 "stars": 255,
-"updated": "2026-11-02T20:01:26.000-06:00",
+"updated": "2026-11-06T18:08:41.000Z",
 "readme": true
 },
 "firestore-native": {
@@ -1579,7 +1426,7 @@
 "logo": "frontend-design.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-public/tree/HEAD/plugins/frontend-design",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-10-26T22:42:29.000Z",
 "readme": true
 },
@@ -1597,7 +1444,7 @@
 "logo": "game-studio.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/game-studio",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-06-08T14:01:52.000-07:00",
 "readme": false
 },
@@ -1624,7 +1471,7 @@
 "logo": "github.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/anthropics/claude-plugins-public/tree/HEAD/external_plugins/github",
-"stars": 46208,
+"stars": 46295,
 "updated": "2025-12-01T16:03:02.000-08:00",
 "readme": false
 },
@@ -1642,7 +1489,7 @@
 "logo": null,
 "logo_src": null,
 "repo": "https://github.com/anthropics/claude-plugins-public/tree/HEAD/external_plugins/gitlab",
-"stars": 46208,
+"stars": 46295,
 "updated": "2025-12-01T16:03:02.000-08:00",
 "readme": false
 },
@@ -1651,7 +1498,7 @@
 "logo": "gmail.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/gmail",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-26T13:49:26.000-07:00",
 "readme": true
 },
@@ -1660,7 +1507,7 @@
 "logo": "google-calendar.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/google-calendar",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-26T13:49:26.000-07:00",
 "readme": false
 },
@@ -1678,7 +1525,7 @@
 "logo": "google-drive.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/google-drive",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-27T10:01:29.000-07:00",
 "readme": false
 },
@@ -1687,8 +1534,8 @@
 "logo": "gopls-lsp.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/gopls-lsp",
-"stars": 46208,
-"updated": "2026-02-20T01:06:49.000Z",
+"stars": 46295,
+"updated": "2026-11-05T22:29:08.000-08:00",
 "readme": true
 },
 "govtribe": {
@@ -1732,7 +1579,7 @@
 "logo": "granola.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/granola",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-26T13:49:26.000-07:00",
 "readme": false
 },
@@ -1754,6 +1601,15 @@
 "updated": "2026-09-30T09:12:12.000-04:00",
 "readme": true
 },
+"haven_ai-mcp": {
+"slug": "haven_ai-mcp",
+"logo": null,
+"logo_src": null,
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
+},
 "helena": {
 "slug": "helena",
 "logo": "helena.webp",
@@ -1768,7 +1624,7 @@
 "logo": "higgsfield.webp",
 "logo_src": "site favicon",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/higgsfield",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-27T13:29:11.000-07:00",
 "readme": false
 },
@@ -1786,7 +1642,7 @@
 "logo": "hookify.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-public/tree/HEAD/plugins/hookify",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-10-26T22:42:29.000Z",
 "readme": true
 },
@@ -1822,7 +1678,7 @@
 "logo": "huggingface-skills.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/huggingface/skills",
-"stars": 11283,
+"stars": 11288,
 "updated": "2026-10-29T16:32:11.000+01:00",
 "readme": true
 },
@@ -1832,7 +1688,7 @@
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/hunter-io/claude-plugin",
 "stars": 8,
-"updated": "2026-11-05T15:00:37.000Z",
+"updated": "2026-11-06T13:55:33.000Z",
 "readme": true
 },
 "hyperframes": {
@@ -1840,8 +1696,8 @@
 "logo": "hyperframes.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/heygen-com/hyperframes",
-"stars": 79435,
-"updated": "2026-11-05T10:53:17.000-08:00",
+"stars": 80062,
+"updated": "2026-11-06T20:45:36.000Z",
 "readme": true
 },
 "idmp-plugin": {
@@ -1858,9 +1714,18 @@
 "logo": null,
 "logo_src": null,
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/external_plugins/imessage",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-09-30T15:34:53.000-04:00",
 "readme": true
+},
+"imgly-codesign-mcp": {
+"slug": "imgly-codesign-mcp",
+"logo": null,
+"logo_src": null,
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
 },
 "incident-io": {
 "slug": "incident-io",
@@ -1898,13 +1763,22 @@
 "updated": "2026-09-16T12:26:05.000-07:00",
 "readme": true
 },
+"ironbee-ai-devtools": {
+"slug": "ironbee-ai-devtools",
+"logo": null,
+"logo_src": null,
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
+},
 "jdtls-lsp": {
 "slug": "jdtls-lsp",
 "logo": "jdtls-lsp.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/jdtls-lsp",
-"stars": 46208,
-"updated": "2026-02-20T01:06:49.000Z",
+"stars": 46295,
+"updated": "2026-11-05T22:29:08.000-08:00",
 "readme": true
 },
 "jfrog": {
@@ -1948,8 +1822,8 @@
 "logo": "kotlin-lsp.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/kotlin-lsp",
-"stars": 46208,
-"updated": "2026-02-20T01:06:49.000Z",
+"stars": 46295,
+"updated": "2026-11-05T22:29:08.000-08:00",
 "readme": true
 },
 "langfuse": {
@@ -1957,8 +1831,8 @@
 "logo": "langfuse.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/langfuse/skills",
-"stars": 332,
-"updated": "2026-11-03T12:02:08.000+01:00",
+"stars": 334,
+"updated": "2026-11-06T13:18:42.000+01:00",
 "readme": true
 },
 "langfuse-observability": {
@@ -1975,7 +1849,7 @@
 "logo": null,
 "logo_src": null,
 "repo": "https://github.com/anthropics/claude-plugins-public/tree/HEAD/external_plugins/laravel-boost",
-"stars": 46208,
+"stars": 46295,
 "updated": "2025-12-01T16:03:02.000-08:00",
 "readme": false
 },
@@ -2002,7 +1876,7 @@
 "logo": "learning-output-style.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-public/tree/HEAD/plugins/learning-output-style",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-10-26T22:42:29.000Z",
 "readme": true
 },
@@ -2020,17 +1894,8 @@
 "logo": "life-science-research.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/life-science-research",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-06-16T11:34:13.000-04:00",
-"readme": true
-},
-"ngs-analysis": {
-"slug": "ngs-analysis",
-"logo": "ngs-analysis.webp",
-"logo_src": "Codex marketplace manifest",
-"repo": "https://github.com/openai/plugins/tree/HEAD/plugins/ngs-analysis",
-"stars": 7773,
-"updated": "2026-06-08T14:01:52.000-07:00",
 "readme": true
 },
 "linear": {
@@ -2038,7 +1903,7 @@
 "logo": "linear.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/anthropics/claude-plugins-public/tree/HEAD/external_plugins/linear",
-"stars": 46208,
+"stars": 46295,
 "updated": "2025-12-16T15:13:40.000-08:00",
 "readme": false
 },
@@ -2056,7 +1921,7 @@
 "logo": "liquid-lsp.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/Shopify/liquid-skills/tree/HEAD/plugins/liquid-lsp",
-"stars": 37,
+"stars": 36,
 "updated": "2026-03-16T18:00:06.000-07:00",
 "readme": true
 },
@@ -2065,7 +1930,7 @@
 "logo": "liquid-skills.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/Shopify/liquid-skills/tree/HEAD/plugins/liquid-skills",
-"stars": 37,
+"stars": 36,
 "updated": "2026-03-17T16:43:04.000-07:00",
 "readme": false
 },
@@ -2110,8 +1975,8 @@
 "logo": "lua-lsp.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/lua-lsp",
-"stars": 46208,
-"updated": "2026-02-20T01:06:49.000Z",
+"stars": 46295,
+"updated": "2026-11-05T22:29:08.000-08:00",
 "readme": true
 },
 "lumen": {
@@ -2119,7 +1984,7 @@
 "logo": "lumen.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/ory/lumen",
-"stars": 315,
+"stars": 316,
 "updated": "2026-08-11T18:14:17.000+02:00",
 "readme": true
 },
@@ -2137,7 +2002,7 @@
 "logo": "magicpath.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/magicpath",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-26T13:49:26.000-07:00",
 "readme": true
 },
@@ -2146,7 +2011,7 @@
 "logo": "mapbox.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/mapbox/mapbox-agent-skills",
-"stars": 84,
+"stars": 85,
 "updated": "2026-10-01T10:57:43.000-04:00",
 "readme": true
 },
@@ -2155,7 +2020,7 @@
 "logo": "math-olympiad.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/math-olympiad",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-03-30T20:56:21.000+01:00",
 "readme": true
 },
@@ -2164,7 +2029,7 @@
 "logo": "math-proof.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/math-proof",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-09-30T11:31:58.000-07:00",
 "readme": true
 },
@@ -2173,7 +2038,7 @@
 "logo": "mattpocock-skills.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/mattpocock/skills",
-"stars": 314855,
+"stars": 316600,
 "updated": "2026-10-31T14:23:30.000Z",
 "readme": true
 },
@@ -2191,7 +2056,7 @@
 "logo": "mcp-apps.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/modelcontextprotocol/ext-apps",
-"stars": 3050,
+"stars": 3055,
 "updated": "2026-11-04T20:07:49.000+02:00",
 "readme": true
 },
@@ -2200,7 +2065,7 @@
 "logo": "mcp-everything.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/modelcontextprotocol/servers/tree/HEAD/src/everything",
-"stars": 91814,
+"stars": 91835,
 "updated": "2026-11-04T18:28:05.000Z",
 "readme": true
 },
@@ -2209,7 +2074,7 @@
 "logo": "mcp-fetch.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/modelcontextprotocol/servers/tree/HEAD/src/fetch",
-"stars": 91814,
+"stars": 91835,
 "updated": "2026-11-04T15:50:59.000Z",
 "readme": true
 },
@@ -2218,7 +2083,7 @@
 "logo": "mcp-filesystem.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/modelcontextprotocol/servers/tree/HEAD/src/filesystem",
-"stars": 91814,
+"stars": 91835,
 "updated": "2026-11-04T15:45:38.000Z",
 "readme": true
 },
@@ -2227,53 +2092,8 @@
 "logo": "mcp-git.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/modelcontextprotocol/servers/tree/HEAD/src/git",
-"stars": 91814,
+"stars": 91835,
 "updated": "2026-11-04T15:50:59.000Z",
-"readme": true
-},
-"mcp-memory": {
-"slug": "mcp-memory",
-"logo": "mcp-memory.webp",
-"logo_src": "GitHub org avatar",
-"repo": "https://github.com/modelcontextprotocol/servers/tree/HEAD/src/memory",
-"stars": 91814,
-"updated": "2026-11-04T15:45:38.000Z",
-"readme": true
-},
-"mcp-sequential-thinking": {
-"slug": "mcp-sequential-thinking",
-"logo": "mcp-sequential-thinking.webp",
-"logo_src": "GitHub org avatar",
-"repo": "https://github.com/modelcontextprotocol/servers/tree/HEAD/src/sequentialthinking",
-"stars": 91814,
-"updated": "2026-11-04T18:28:05.000Z",
-"readme": true
-},
-"mcp-server-dev": {
-"slug": "mcp-server-dev",
-"logo": "mcp-server-dev.webp",
-"logo_src": "GitHub org avatar",
-"repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/mcp-server-dev",
-"stars": 46208,
-"updated": "2026-04-28T04:46:23.000+01:00",
-"readme": true
-},
-"mcp-time": {
-"slug": "mcp-time",
-"logo": "mcp-time.webp",
-"logo_src": "GitHub org avatar",
-"repo": "https://github.com/modelcontextprotocol/servers/tree/HEAD/src/time",
-"stars": 91814,
-"updated": "2026-11-04T15:50:59.000Z",
-"readme": true
-},
-"mcp-tunnels": {
-"slug": "mcp-tunnels",
-"logo": "mcp-tunnels.webp",
-"logo_src": "GitHub org avatar",
-"repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/mcp-tunnels",
-"stars": 46208,
-"updated": "2026-05-21T06:06:15.000Z",
 "readme": true
 },
 "mcp-local-rag": {
@@ -2285,6 +2105,33 @@
 "updated": null,
 "readme": false
 },
+"mcp-memory": {
+"slug": "mcp-memory",
+"logo": "mcp-memory.webp",
+"logo_src": "GitHub org avatar",
+"repo": "https://github.com/modelcontextprotocol/servers/tree/HEAD/src/memory",
+"stars": 91835,
+"updated": "2026-11-04T15:45:38.000Z",
+"readme": true
+},
+"mcp-sequential-thinking": {
+"slug": "mcp-sequential-thinking",
+"logo": "mcp-sequential-thinking.webp",
+"logo_src": "GitHub org avatar",
+"repo": "https://github.com/modelcontextprotocol/servers/tree/HEAD/src/sequentialthinking",
+"stars": 91835,
+"updated": "2026-11-04T18:28:05.000Z",
+"readme": true
+},
+"mcp-server-dev": {
+"slug": "mcp-server-dev",
+"logo": "mcp-server-dev.webp",
+"logo_src": "GitHub org avatar",
+"repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/mcp-server-dev",
+"stars": 46295,
+"updated": "2026-04-28T04:46:23.000+01:00",
+"readme": true
+},
 "mcp-tenant-isolation": {
 "slug": "mcp-tenant-isolation",
 "logo": null,
@@ -2293,6 +2140,24 @@
 "stars": null,
 "updated": null,
 "readme": false
+},
+"mcp-time": {
+"slug": "mcp-time",
+"logo": "mcp-time.webp",
+"logo_src": "GitHub org avatar",
+"repo": "https://github.com/modelcontextprotocol/servers/tree/HEAD/src/time",
+"stars": 91835,
+"updated": "2026-11-04T15:50:59.000Z",
+"readme": true
+},
+"mcp-tunnels": {
+"slug": "mcp-tunnels",
+"logo": "mcp-tunnels.webp",
+"logo_src": "GitHub org avatar",
+"repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/mcp-tunnels",
+"stars": 46295,
+"updated": "2026-05-21T06:06:15.000Z",
+"readme": true
 },
 "mercadopago": {
 "slug": "mercadopago",
@@ -2309,7 +2174,7 @@
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/mergifyio/mergify-cli",
 "stars": 32,
-"updated": "2026-11-02T17:06:08.000Z",
+"updated": "2026-11-06T13:48:58.000Z",
 "readme": true
 },
 "microsoft-docs": {
@@ -2317,9 +2182,18 @@
 "logo": "microsoft-docs.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/microsoftdocs/mcp",
-"stars": 1975,
+"stars": 1976,
 "updated": "2026-10-30T12:02:36.000+08:00",
 "readme": true
+},
+"microsoft-workiq": {
+"slug": "microsoft-workiq",
+"logo": null,
+"logo_src": null,
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
 },
 "migration-to-aws": {
 "slug": "migration-to-aws",
@@ -2353,7 +2227,7 @@
 "logo": "mixpanel-headless.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/mixpanel-headless",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-06-08T14:01:52.000-07:00",
 "readme": true
 },
@@ -2371,7 +2245,7 @@
 "logo": "modern-web-guidance.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/GoogleChrome/modern-web-guidance",
-"stars": 2625,
+"stars": 2631,
 "updated": "2026-11-02T14:56:14.000Z",
 "readme": true
 },
@@ -2380,7 +2254,7 @@
 "logo": "monday-com.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/monday-com",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-27T10:01:29.000-07:00",
 "readme": false
 },
@@ -2411,13 +2285,31 @@
 "updated": "2026-10-19T23:01:33.000+02:00",
 "readme": true
 },
+"mozilla-firefox-devtools-mcp": {
+"slug": "mozilla-firefox-devtools-mcp",
+"logo": null,
+"logo_src": null,
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
+},
+"mozilla-firefox-devtools-mcp-moz": {
+"slug": "mozilla-firefox-devtools-mcp-moz",
+"logo": null,
+"logo_src": null,
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
+},
 "neon": {
 "slug": "neon",
 "logo": "neon.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/neondatabase/agent-skills/tree/HEAD/plugins/neon-postgres",
-"stars": 112,
-"updated": "2026-11-04T22:11:49.000-08:00",
+"stars": 111,
+"updated": "2026-11-06T12:48:35.000-08:00",
 "readme": false
 },
 "netlify": {
@@ -2443,7 +2335,7 @@
 "logo": "netsuite-ai-companion.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/oracle/netsuite-suitecloud-sdk/tree/HEAD/anthropic/netsuite-ai-companion",
-"stars": 370,
+"stars": 373,
 "updated": null,
 "readme": false
 },
@@ -2452,7 +2344,7 @@
 "logo": "netsuite-finance-analyst.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/oracle/netsuite-suitecloud-sdk/tree/HEAD/anthropic/netsuite-finance-analyst",
-"stars": 370,
+"stars": 373,
 "updated": null,
 "readme": false
 },
@@ -2461,7 +2353,7 @@
 "logo": "netsuite-suitecloud.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/oracle/netsuite-suitecloud-sdk/tree/HEAD/anthropic/netsuite-suitecloud",
-"stars": 370,
+"stars": 373,
 "updated": null,
 "readme": false
 },
@@ -2472,6 +2364,24 @@
 "repo": "https://github.com/newrelic/claude-code-plugin",
 "stars": 4,
 "updated": "2026-06-17T03:11:00.000+05:30",
+"readme": true
+},
+"next-ai-drawio-mcp-server": {
+"slug": "next-ai-drawio-mcp-server",
+"logo": null,
+"logo_src": null,
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
+},
+"ngs-analysis": {
+"slug": "ngs-analysis",
+"logo": "ngs-analysis.webp",
+"logo_src": "Codex marketplace manifest",
+"repo": "https://github.com/openai/plugins/tree/HEAD/plugins/ngs-analysis",
+"stars": 7787,
+"updated": "2026-06-08T14:01:52.000-07:00",
 "readme": true
 },
 "nightvision": {
@@ -2506,7 +2416,7 @@
 "logo": "notion.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/makenotion/claude-code-notion-plugin",
-"stars": 503,
+"stars": 502,
 "updated": "2026-11-04T17:55:02.000-05:00",
 "readme": true
 },
@@ -2524,7 +2434,7 @@
 "logo": "nvidia.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/nvidia",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-26T13:49:26.000-07:00",
 "readme": true
 },
@@ -2533,8 +2443,8 @@
 "logo": "nvidia-skills.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/NVIDIA/skills",
-"stars": 3870,
-"updated": "2026-11-05T12:29:09.000-06:00",
+"stars": 3878,
+"updated": "2026-11-06T14:49:16.000-06:00",
 "readme": true
 },
 "obsidian-mcp-server": {
@@ -2569,7 +2479,7 @@
 "logo": "openai-ads-conversions.svg",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/openai-ads-conversions",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-26T13:49:26.000-07:00",
 "readme": true
 },
@@ -2578,7 +2488,7 @@
 "logo": "openai-developers.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/openai-developers",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-11-03T15:23:35.000-08:00",
 "readme": true
 },
@@ -2623,7 +2533,7 @@
 "logo": "outlook-calendar.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/outlook-calendar",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-26T13:49:26.000-07:00",
 "readme": false
 },
@@ -2632,7 +2542,7 @@
 "logo": "outlook-email.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/outlook-email",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-26T13:49:26.000-07:00",
 "readme": false
 },
@@ -2659,7 +2569,7 @@
 "logo": "paypal.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/paypal/AI-Toolkit",
-"stars": 44,
+"stars": 46,
 "updated": "2026-11-03T15:04:17.000-07:00",
 "readme": true
 },
@@ -2695,8 +2605,8 @@
 "logo": "php-lsp.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/php-lsp",
-"stars": 46208,
-"updated": "2026-02-20T01:06:49.000Z",
+"stars": 46295,
+"updated": "2026-11-05T22:29:08.000-08:00",
 "readme": true
 },
 "pi-security": {
@@ -2714,7 +2624,7 @@
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/gopigment/ai-plugins",
 "stars": 23,
-"updated": "2026-11-04T15:40:44.000+01:00",
+"updated": "2026-11-06T14:56:06.000+01:00",
 "readme": true
 },
 "pinecone": {
@@ -2749,7 +2659,7 @@
 "logo": "playground.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/playground",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-02-20T01:06:49.000Z",
 "readme": true
 },
@@ -2758,7 +2668,7 @@
 "logo": null,
 "logo_src": null,
 "repo": "https://github.com/anthropics/claude-plugins-public/tree/HEAD/external_plugins/playwright",
-"stars": 46208,
+"stars": 46295,
 "updated": "2025-12-01T16:03:02.000-08:00",
 "readme": false
 },
@@ -2767,7 +2677,7 @@
 "logo": "plugin-dev.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-public/tree/HEAD/plugins/plugin-dev",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-10-26T22:42:29.000Z",
 "readme": true
 },
@@ -2776,7 +2686,7 @@
 "logo": "plugin-eval.svg",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/plugin-eval",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-06-08T14:01:52.000-07:00",
 "readme": true
 },
@@ -2786,7 +2696,7 @@
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/PostHog/ai-plugin",
 "stars": 98,
-"updated": "2026-11-05T09:35:29.000-05:00",
+"updated": "2026-11-06T12:05:59.000Z",
 "readme": true
 },
 "postiz": {
@@ -2794,7 +2704,7 @@
 "logo": "postiz.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/gitroomhq/postiz-agent",
-"stars": 564,
+"stars": 565,
 "updated": "2026-10-30T09:47:38.000Z",
 "readme": true
 },
@@ -2803,16 +2713,25 @@
 "logo": "postman.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/postmanlabs/postman-plugin",
-"stars": 31,
-"updated": "2026-11-05T18:19:07.000+01:00",
+"stars": 32,
+"updated": "2026-11-06T16:25:12.000+01:00",
 "readme": true
+},
+"postman-postman-mcp-server": {
+"slug": "postman-postman-mcp-server",
+"logo": null,
+"logo_src": null,
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
 },
 "pr-review-toolkit": {
 "slug": "pr-review-toolkit",
 "logo": "pr-review-toolkit.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-public/tree/HEAD/plugins/pr-review-toolkit",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-10-26T22:42:29.000Z",
 "readme": true
 },
@@ -2839,7 +2758,7 @@
 "logo": "product-design.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/product-design",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-26T13:49:26.000-07:00",
 "readme": true
 },
@@ -2848,7 +2767,7 @@
 "logo": "project-artifact.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-public/tree/HEAD/plugins/project-artifact",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-08-12T20:15:43.000-05:00",
 "readme": true
 },
@@ -2857,7 +2776,7 @@
 "logo": "pstack.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/cursor/plugins/tree/HEAD/pstack",
-"stars": 15472,
+"stars": 15582,
 "updated": "2026-10-27T16:12:40.000-07:00",
 "readme": true
 },
@@ -2866,9 +2785,36 @@
 "logo": "public-equity-investing.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/public-equity-investing",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-27T13:29:11.000-07:00",
 "readme": true
+},
+"putervision-state-memory-mcp": {
+"slug": "putervision-state-memory-mcp",
+"logo": null,
+"logo_src": null,
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
+},
+"putervision-vision-memory-mcp": {
+"slug": "putervision-vision-memory-mcp",
+"logo": null,
+"logo_src": null,
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
+},
+"putervision-world-model-mcp": {
+"slug": "putervision-world-model-mcp",
+"logo": null,
+"logo_src": null,
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
 },
 "pydantic-ai": {
 "slug": "pydantic-ai",
@@ -2884,8 +2830,8 @@
 "logo": "pyright-lsp.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/pyright-lsp",
-"stars": 46208,
-"updated": "2026-02-20T01:06:49.000Z",
+"stars": 46295,
+"updated": "2026-11-05T22:29:08.000-08:00",
 "readme": true
 },
 "qdrant-skills": {
@@ -2915,12 +2861,21 @@
 "updated": "2026-11-05T17:15:55.000+02:00",
 "readme": true
 },
+"qovia": {
+"slug": "qovia",
+"logo": "qovia.webp",
+"logo_src": "site favicon",
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
+},
 "qt-development-skills": {
 "slug": "qt-development-skills",
 "logo": "qt-development-skills.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/TheQtCompanyRnD/agent-skills",
-"stars": 523,
+"stars": 525,
 "updated": "2026-10-20T13:29:45.000+03:00",
 "readme": true
 },
@@ -2930,7 +2885,7 @@
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/quarkusio/quarkus-agent-mcp",
 "stars": 56,
-"updated": "2026-10-26T14:58:56.000+11:00",
+"updated": "2026-11-06T04:24:05.000Z",
 "readme": true
 },
 "quo": {
@@ -2956,9 +2911,18 @@
 "logo": "ralph-loop.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-public/tree/HEAD/plugins/ralph-loop",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-10-26T22:42:29.000Z",
 "readme": true
+},
+"rate-api-mcp": {
+"slug": "rate-api-mcp",
+"logo": null,
+"logo_src": null,
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
 },
 "rc": {
 "slug": "rc",
@@ -2983,8 +2947,8 @@
 "logo": "receipts.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/receipts",
-"stars": 46208,
-"updated": "2026-10-08T16:33:07.000Z",
+"stars": 46295,
+"updated": "2026-11-05T22:29:08.000-08:00",
 "readme": true
 },
 "redis-development": {
@@ -3001,8 +2965,8 @@
 "logo": "remember.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/Digital-Process-Tools/claude-remember",
-"stars": 208,
-"updated": "2026-11-01T23:29:47.000+01:00",
+"stars": 209,
+"updated": "2026-11-06T20:46:52.000+01:00",
 "readme": true
 },
 "remotion": {
@@ -3010,7 +2974,7 @@
 "logo": "remotion.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/remotion",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-26T13:49:26.000-07:00",
 "readme": true
 },
@@ -3028,9 +2992,18 @@
 "logo": "resend.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/resend/resend-skills",
-"stars": 212,
-"updated": "2026-11-05T14:55:35.000-03:00",
+"stars": 211,
+"updated": "2026-11-06T11:09:16.000-03:00",
 "readme": true
+},
+"respira-wordpress-mcp-server": {
+"slug": "respira-wordpress-mcp-server",
+"logo": null,
+"logo_src": null,
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
 },
 "revenuecat": {
 "slug": "revenuecat",
@@ -3040,6 +3013,15 @@
 "stars": 79,
 "updated": "2026-11-05T09:46:11.000+09:00",
 "readme": true
+},
+"rigour-labs-mcp": {
+"slug": "rigour-labs-mcp",
+"logo": null,
+"logo_src": null,
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
 },
 "rill": {
 "slug": "rill",
@@ -3064,8 +3046,8 @@
 "logo": "ruby-lsp.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/ruby-lsp",
-"stars": 46208,
-"updated": "2026-03-13T17:06:01.000Z",
+"stars": 46295,
+"updated": "2026-11-05T22:29:08.000-08:00",
 "readme": true
 },
 "runway-api": {
@@ -3082,8 +3064,8 @@
 "logo": "rust-analyzer-lsp.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/rust-analyzer-lsp",
-"stars": 46208,
-"updated": "2026-02-20T01:06:49.000Z",
+"stars": 46295,
+"updated": "2026-11-05T22:29:08.000-08:00",
 "readme": true
 },
 "safari-mcp": {
@@ -3100,7 +3082,7 @@
 "logo": "sagemaker-ai.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/awslabs/agent-plugins",
-"stars": 936,
+"stars": 937,
 "updated": "2026-10-09T20:59:12.000Z",
 "readme": true
 },
@@ -3109,8 +3091,8 @@
 "logo": "salesforce-development.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/forcedotcom/sf-skills/tree/HEAD/plugins/builder/salesforce-development",
-"stars": 1149,
-"updated": "2026-11-04T21:13:18.000Z",
+"stars": 1151,
+"updated": "2026-11-06T21:23:32.000Z",
 "readme": true
 },
 "sanity": {
@@ -3137,7 +3119,7 @@
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/SAP/open-ux-tools/tree/HEAD/packages/fiori-mcp-server",
 "stars": 162,
-"updated": "2026-11-04T14:53:08.000Z",
+"updated": "2026-11-06T11:33:51.000Z",
 "readme": true
 },
 "sap-hana-cli": {
@@ -3181,8 +3163,8 @@
 "logo": "security-guidance.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/security-guidance",
-"stars": 46208,
-"updated": "2026-10-26T17:23:46.000-07:00",
+"stars": 46295,
+"updated": "2026-11-06T11:43:07.000-08:00",
 "readme": true
 },
 "semgrep": {
@@ -3191,7 +3173,7 @@
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/semgrep/mcp-marketplace",
 "stars": 19,
-"updated": "2026-11-04T14:07:28.000-08:00",
+"updated": "2026-11-05T13:45:16.000-08:00",
 "readme": true
 },
 "sentry": {
@@ -3217,7 +3199,7 @@
 "logo": null,
 "logo_src": null,
 "repo": "https://github.com/anthropics/claude-plugins-public/tree/HEAD/external_plugins/serena",
-"stars": 46208,
+"stars": 46295,
 "updated": "2025-12-01T16:03:02.000-08:00",
 "readme": false
 },
@@ -3226,7 +3208,7 @@
 "logo": "servicenow-sdk.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/ServiceNow/sdk",
-"stars": 140,
+"stars": 142,
 "updated": "2026-11-04T13:15:23.000-08:00",
 "readme": true
 },
@@ -3235,8 +3217,8 @@
 "logo": "session-report.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/session-report",
-"stars": 46208,
-"updated": "2026-04-10T20:46:37.000+01:00",
+"stars": 46295,
+"updated": "2026-11-05T22:29:08.000-08:00",
 "readme": false
 },
 "setup-agent-analytics": {
@@ -3262,7 +3244,7 @@
 "logo": "sharepoint.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/sharepoint",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-26T13:49:26.000-07:00",
 "readme": false
 },
@@ -3280,7 +3262,7 @@
 "logo": "shopify.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/shopify",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-27T10:01:29.000-07:00",
 "readme": false
 },
@@ -3289,7 +3271,7 @@
 "logo": "shopify-ai-toolkit.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/Shopify/Shopify-AI-Toolkit",
-"stars": 628,
+"stars": 630,
 "updated": "2026-10-27T12:13:29.000-04:00",
 "readme": true
 },
@@ -3298,7 +3280,7 @@
 "logo": "skill-creator.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/skill-creator",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-04-23T12:02:26.000-07:00",
 "readme": true
 },
@@ -3317,7 +3299,7 @@
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/slackapi/slack-mcp-plugin",
 "stars": 165,
-"updated": "2026-11-05T12:34:20.000-06:00",
+"updated": "2026-11-06T13:53:16.000-06:00",
 "readme": true
 },
 "snowflake-cortex-code": {
@@ -3380,7 +3362,7 @@
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/stackhawk/agent-skills",
 "stars": 16,
-"updated": "2026-10-29T14:25:40.000-06:00",
+"updated": "2026-11-06T09:09:00.000-07:00",
 "readme": true
 },
 "stackhawk-hawkscan": {
@@ -3389,7 +3371,7 @@
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/stackhawk/agent-skills",
 "stars": 16,
-"updated": "2026-10-29T14:25:40.000-06:00",
+"updated": "2026-11-06T09:09:00.000-07:00",
 "readme": true
 },
 "streaming-skills-plugin": {
@@ -3406,8 +3388,8 @@
 "logo": "stripe.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/stripe/ai/tree/HEAD/providers/claude/plugin",
-"stars": 2043,
-"updated": "2026-11-05T00:30:48.000Z",
+"stars": 2045,
+"updated": "2026-11-06T00:30:42.000Z",
 "readme": true
 },
 "sumup": {
@@ -3433,7 +3415,7 @@
 "logo": "superdesign.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/superdesigndev/superdesign-skill",
-"stars": 947,
+"stars": 953,
 "updated": "2026-08-21T11:23:23.000+06:00",
 "readme": true
 },
@@ -3442,7 +3424,7 @@
 "logo": "superpowers.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/obra/superpowers",
-"stars": 312909,
+"stars": 313561,
 "updated": "2026-11-03T14:17:07.000-08:00",
 "readme": true
 },
@@ -3451,8 +3433,8 @@
 "logo": "swift-lsp.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/swift-lsp",
-"stars": 46208,
-"updated": "2026-02-20T01:06:49.000Z",
+"stars": 46295,
+"updated": "2026-11-05T22:29:08.000-08:00",
 "readme": true
 },
 "synthflow": {
@@ -3464,13 +3446,22 @@
 "updated": "2026-07-30T08:56:33.000+01:00",
 "readme": true
 },
+"taazkareem-clickup-mcp-server": {
+"slug": "taazkareem-clickup-mcp-server",
+"logo": null,
+"logo_src": null,
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
+},
 "tavily": {
 "slug": "tavily",
 "logo": "tavily.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/tavily-ai/skills",
 "stars": 490,
-"updated": "2026-11-02T15:26:41.000-05:00",
+"updated": "2026-11-06T16:20:47.000-05:00",
 "readme": true
 },
 "teamcity-cli": {
@@ -3479,7 +3470,7 @@
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/JetBrains/teamcity-cli",
 "stars": 130,
-"updated": "2026-11-05T18:35:22.000+01:00",
+"updated": "2026-11-06T14:39:02.000+01:00",
 "readme": true
 },
 "teams": {
@@ -3487,7 +3478,7 @@
 "logo": "teams.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/teams",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-26T13:49:26.000-07:00",
 "readme": false
 },
@@ -3496,7 +3487,7 @@
 "logo": null,
 "logo_src": null,
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/external_plugins/telegram",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-08-12T20:03:09.000-05:00",
 "readme": true
 },
@@ -3505,7 +3496,7 @@
 "logo": "temporal.svg",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/temporal",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-26T13:49:26.000-07:00",
 "readme": false
 },
@@ -3514,7 +3505,7 @@
 "logo": null,
 "logo_src": null,
 "repo": "https://github.com/anthropics/claude-plugins-public/tree/HEAD/external_plugins/terraform",
-"stars": 46208,
+"stars": 46295,
 "updated": "2026-03-26T12:33:36.000-07:00",
 "readme": false
 },
@@ -3523,7 +3514,7 @@
 "logo": "test-android-apps.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/test-android-apps",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-06-08T14:01:52.000-07:00",
 "readme": false
 },
@@ -3532,7 +3523,7 @@
 "logo": "tinyfish.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/tinyfish-io/tinyfish-web-agent-integrations",
-"stars": 47,
+"stars": 49,
 "updated": "2026-11-04T19:12:36.000-05:00",
 "readme": true
 },
@@ -3550,7 +3541,7 @@
 "logo": "twilio-developer-kit.svg",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/twilio/ai",
-"stars": 39,
+"stars": 40,
 "updated": "2026-10-22T15:50:54.000-07:00",
 "readme": true
 },
@@ -3559,8 +3550,8 @@
 "logo": "typescript-lsp.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/anthropics/claude-plugins-official/tree/HEAD/plugins/typescript-lsp",
-"stars": 46208,
-"updated": "2026-02-20T01:06:49.000Z",
+"stars": 46295,
+"updated": "2026-11-05T22:29:08.000-08:00",
 "readme": true
 },
 "ui-theme-designer": {
@@ -3577,7 +3568,7 @@
 "logo": "ui5.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/UI5/plugins-coding-agents",
-"stars": 45,
+"stars": 46,
 "updated": "2026-10-20T13:27:00.000+02:00",
 "readme": true
 },
@@ -3586,7 +3577,7 @@
 "logo": "ui5-modernization.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/UI5/plugins-coding-agents",
-"stars": 45,
+"stars": 46,
 "updated": "2026-10-20T13:27:00.000+02:00",
 "readme": true
 },
@@ -3595,7 +3586,7 @@
 "logo": "ui5-typescript-conversion.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/UI5/plugins-coding-agents",
-"stars": 45,
+"stars": 46,
 "updated": "2026-10-20T13:27:00.000+02:00",
 "readme": true
 },
@@ -3604,16 +3595,16 @@
 "logo": "unity.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/Unity-Technologies/unity-agent-plugin",
-"stars": 612,
-"updated": "2026-11-05T15:56:41.000Z",
-"readme": true
+"stars": 616,
+"updated": "2026-11-06T11:35:28.000-05:00",
+"readme": false
 },
 "unreal-engine-skills-for-claude-code": {
 "slug": "unreal-engine-skills-for-claude-code",
 "logo": "unreal-engine-skills-for-claude-code.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/EpicGames/unreal-engine-skills-for-claude-code-plugin",
-"stars": 1902,
+"stars": 1914,
 "updated": "2026-10-23T13:54:46.000-04:00",
 "readme": true
 },
@@ -3658,7 +3649,7 @@
 "logo": "vercel.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/vercel/vercel-plugin",
-"stars": 326,
+"stars": 327,
 "updated": "2026-11-05T10:49:12.000-08:00",
 "readme": true
 },
@@ -3667,7 +3658,7 @@
 "logo": "vibe-prospecting.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/explorium-ai/vibeprospecting-plugin",
-"stars": 296,
+"stars": 297,
 "updated": "2026-11-01T16:35:19.000+02:00",
 "readme": true
 },
@@ -3686,7 +3677,7 @@
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/villagesql/villagesql-skills",
 "stars": 5,
-"updated": "2026-11-03T16:29:28.000-08:00",
+"updated": "2026-11-06T09:39:06.000-08:00",
 "readme": true
 },
 "windsor-ai": {
@@ -3713,7 +3704,7 @@
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/wix/skills",
 "stars": 38,
-"updated": "2026-11-05T16:40:20.000Z",
+"updated": "2026-11-06T12:53:59.000Z",
 "readme": true
 },
 "workos": {
@@ -3725,12 +3716,30 @@
 "updated": "2026-11-02T08:43:53.000-08:00",
 "readme": true
 },
+"yawlabs-ctxlint": {
+"slug": "yawlabs-ctxlint",
+"logo": null,
+"logo_src": null,
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
+},
+"yawlabs-postgres-mcp": {
+"slug": "yawlabs-postgres-mcp",
+"logo": null,
+"logo_src": null,
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
+},
 "youdotcom-agent-skills": {
 "slug": "youdotcom-agent-skills",
 "logo": "youdotcom-agent-skills.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/youdotcom-oss/agent-skills",
-"stars": 98,
+"stars": 99,
 "updated": "2026-11-03T15:17:28.000-08:00",
 "readme": true
 },
@@ -3739,9 +3748,18 @@
 "logo": "zapier.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/zapier/zapier-mcp/tree/HEAD/plugins/zapier",
-"stars": 452,
+"stars": 453,
 "updated": "2026-10-22T16:28:17.000-07:00",
 "readme": true
+},
+"zereight-mcp-gitlab": {
+"slug": "zereight-mcp-gitlab",
+"logo": null,
+"logo_src": null,
+"repo": null,
+"stars": null,
+"updated": null,
+"readme": false
 },
 "zilliz": {
 "slug": "zilliz",
@@ -3766,7 +3784,7 @@
 "logo": "zoom.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/zoom",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-08-26T13:49:26.000-07:00",
 "readme": true
 },
@@ -3775,7 +3793,7 @@
 "logo": "zoom-plugin.webp",
 "logo_src": "GitHub org avatar",
 "repo": "https://github.com/zoom/zoom-plugin",
-"stars": 7,
+"stars": 8,
 "updated": "2026-09-29T07:45:09.000Z",
 "readme": true
 },
@@ -3793,7 +3811,7 @@
 "logo": "zotero.webp",
 "logo_src": "Codex marketplace manifest",
 "repo": "https://github.com/openai/plugins/tree/HEAD/plugins/zotero",
-"stars": 7773,
+"stars": 7787,
 "updated": "2026-06-08T14:01:52.000-07:00",
 "readme": false
 },
@@ -3813,15 +3831,6 @@
 "repo": "https://github.com/zytedata/claude-skills",
 "stars": 33,
 "updated": "2026-10-26T14:30:44.000Z",
-"readme": true
-},
-"agent-postbox": {
-"slug": "agent-postbox",
-"logo": "agent-postbox.webp",
-"logo_src": "GitHub org avatar",
-"repo": "https://github.com/Aethelgard-Systems/agent-postbox",
-"stars": 0,
-"updated": "2026-11-05T00:49:31.000+01:00",
 "readme": true
 }
 }
