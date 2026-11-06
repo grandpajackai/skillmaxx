@@ -25,12 +25,20 @@
       var ctl = window.AbortController ? new AbortController() : null;
       var kill = setTimeout(function(){ if (ctl) ctl.abort() }, 20000);
       fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {method:'POST', body:new FormData(form), headers:{'Accept':'application/json'}, signal: ctl ? ctl.signal : undefined})
-        .then(function(r){ return r.json() })
+        .then(function(r){
+          if (!r.ok) throw new Error('form-http-' + r.status);
+          var ct = (r.headers.get('content-type') || '');
+          if (ct.indexOf('application/json') === -1) throw new Error('form-not-json');
+          return r.json();
+        })
         .then(function(d){ clearTimeout(slow); clearTimeout(kill);
           if (d && (d.success === true || d.success === 'true')) { form.hidden = true; if (ok) ok.hidden = false; busy = false }
           else fail('We couldn\'t confirm it was received.') })
         .catch(function(x){ clearTimeout(slow); clearTimeout(kill);
-          fail(x && x.name === 'AbortError' ? 'No reply after 20 seconds, so we stopped. It may not have been sent. Please try again.' : 'Couldn\'t reach our form service. Check your connection and try again.') });
+          var msg = (x && x.name === 'AbortError')
+            ? 'No reply after 20 seconds, so we stopped. It may not have been sent. Please try again.'
+            : 'Our form service is down right now (FormSubmit outage). Please email skillmaxx@gilventures.ai instead.';
+          fail(msg); });
     });
   });
 })();
