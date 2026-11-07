@@ -92,13 +92,13 @@ def parse_log(text):
         m = STEP_RE.match(line)
         if m:
             step = m.group(4).strip()
-            if step == "sync master" and cur:
+            if step in ("sync master", "trial branch") and cur:
                 flush()
             stamp = {"date": m.group(1), "time": m.group(2), "tz": m.group(3),
                      "raw": f"{m.group(1)} {m.group(2)} {m.group(3)}"}
             cur.append(("step", step, stamp))
             continue
-        if "NOPUSH set, not pushing" in line:
+        if "NOPUSH set, not pushing" in line or (line.startswith("TRIAL:") and ("not pushing" in line or "Push disabled" in line)):
             cur.append(("nopush",))
         elif "NIGHTLY FAILED" in line:
             fm = FAIL_RE.search(line)
@@ -236,7 +236,9 @@ def summary_text(s):
     elif state == "ok":
         bits.append("A local nightly log reached done within the freshness window.")
     if s["nopush"] is True:
-        bits.append("That log says NOPUSH, so this run did not push.")
+        bits.append("That log says this run did not push.")
+    if s.get("tests_total") is not None:
+        bits.append("Install score %s/%s pass is separate from whether the pipeline finished." % (s["tests_pass"], s["tests_total"]))
     if s["local_build_completed"]:
         bits.append("The log got through the local build. That is not a public deploy.")
     if not s["checked_public"]:
@@ -301,7 +303,7 @@ def assess(root, now=None, stale_hours=STALE_HOURS, public=None):
     if last and last["done"]:
         evidence.append("%s reached done at %s." % (last["source"], last["done"]["raw"]))
         if last["nopush"]:
-            evidence.append("%s says NOPUSH set, not pushing." % last["source"])
+            evidence.append("%s says this run did not push." % last["source"])
     nopush = None
     build = False
     failed_step = None
@@ -322,7 +324,7 @@ def assess(root, now=None, stale_hours=STALE_HOURS, public=None):
         evidence.append("Git commit %s at %s (%s). Commit time is not published_at."
                         % (commit["sha"][:12], commit["committed_at"], commit["subject"]))
     if nopush is False:
-        notes.append("Log has no NOPUSH line. git push -q is silent on success, so this is not proof of a push or of GitHub Pages.")
+        notes.append("Log has no NOPUSH line and no TRIAL not-pushing line. git push -q is silent on success, so this is not proof of a push or of GitHub Pages.")
     status = {
         "schema_version": 1,
         "generated_at": _iso(now.astimezone(timezone.utc)),

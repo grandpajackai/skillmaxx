@@ -56,6 +56,7 @@
 5. Growth (see growth/): approve the skillmatic PR draft, paste newsletter #1 into Beehiiv, create a Cloudflare account for Web Analytics, approve the outreach drafts (growth/outreach/).
 
 ## Session log
+- **2026-11-07 · freshness no-push:** A finished trial log with `TRIAL: not pushing` and `Push disabled` is `nopush` true and `published_at` null. The install score stays separate from pipeline `done`.
 - **2026-11-07 · trial branch:** `SKILLMAXX_TRIAL=1` stays on the current branch and does not fetch, checkout, pull, or push. `testing/mac_nightly.sh run` sets it. Production `testing/nightly.sh` still checks out master. Both `SKILLMAXX_PRODUCTION=yes` and `SKILLMAXX_ALLOW_PUSH=yes` are required before the Mac entry will sync master.
 - **2026-11-07 · sandbox on a Mac:** `testing/sbx.sh` keeps bubblewrap on Linux. With no bwrap it uses a local non-privileged image `skillmaxx-sandbox:local` and refuses to run the case on the host. The cloud VM has neither bwrap nor Docker, so no container was started. The Mac Docker daemon was down at the 10:25 ET check and was not started from here.
 - **2026-11-07 · Mac nightly entry:** `testing/mac_nightly.sh` is the local operator entry for the existing mechanical nightly (preflight, NOPUSH trial, per-machine lock, launchd install/uninstall). It does not disable the Grok 2 AM routine, does not install the job from Linux, and does not push unless `SKILLMAXX_ALLOW_PUSH=yes`. Install tests still need Linux bubblewrap. Marketplace rebuild, QA, health audit, and sends stay outside nightly.sh.

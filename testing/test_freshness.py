@@ -38,9 +38,26 @@ class FreshnessTest(unittest.TestCase):
         self.assertEqual(st["report_run_at"], "2026-11-07T02:07-05:00")
         self.assertEqual(st["tests_pass"], 1)
         self.assertEqual(st["tests_total"], 2)
-        self.assertIn("NOPUSH", st["summary"])
+        self.assertIn("did not push", st["summary"])
         self.assertIn("not a public deploy", st["summary"])
         self.assertIsNone(st["repo_nightly_commit"])
+
+    def test_trial_log_is_not_a_push_and_failures_still_finish(self):
+        st = freshness.assess(os.path.join(FIXTURES, "trial"), now=datetime(2026, 11, 7, 18, 0, tzinfo=ET))
+        self.assertEqual(st["local_state"], "ok")
+        self.assertEqual(st["last_success"], "2026-11-07T16:28:27-05:00")
+        self.assertTrue(st["nopush"])
+        self.assertEqual(st["publish_state"], "not_pushed")
+        self.assertIsNone(st["published_at"])
+        self.assertFalse(st["local_build_is_public_deploy"])
+        self.assertEqual(st["tests_pass"], 1)
+        self.assertEqual(st["tests_total"], 2)
+        self.assertNotEqual(st["tests_pass"], 775)
+        self.assertIn("did not push", st["summary"])
+        self.assertIn("reached done", st["summary"])
+        self.assertIn("separate from whether the pipeline finished", st["summary"])
+        self.assertNotIn("Log has no NOPUSH line", " ".join(st["notes"]))
+        self.assertNotIn("all pass", st["summary"].lower())
 
     def test_trailing_lock_skip_does_not_erase_success(self):
         root = tempfile.mkdtemp()
