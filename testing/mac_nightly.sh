@@ -38,7 +38,7 @@ say_dependencies() {
 Mechanical steps inside testing/nightly.sh (same behavior as the Grok routine's script):
   1. git fetch, checkout master, fast-forward pull. Needs the git credentials this machine already has. This script does not create or change credentials.
   2. Update the local Codex marketplace mirror when SKILLMAXX_AGENTS/codex-mirror exists, then rename it to openai-plugins-mirror.
-  3. Sandboxed install tests (testing/run_tests.py). Requires Linux bubblewrap (bwrap), the agent CLIs, and templates under SKILLMAXX_AGENTS. macOS does not ship bwrap. This script does not install bwrap, Docker, or Claude/Codex/Grok/Cursor/Pi.
+  3. Sandboxed install tests (testing/run_tests.py via testing/sbx.sh). Every case still runs. On Linux, bubblewrap. On a Mac, the same cases run inside local image skillmaxx-sandbox:local (Docker, not privileged, not the Mac binaries). If neither sandbox is ready, sbx.sh exits and does not run the case on the host. This script does not start Docker, pull images, or install CLIs.
   4. fetch_meta.py. Public HTTP only (no token). Requires Pillow (PIL) and the codex mirror for Codex paths.
   5. testing/daily_report.py. Writes report JSON and, only for a big event, a local draft file. It does not send or queue posts.
   6. testing/weekly_scorecard.py --write. Local weekly pages data.
@@ -65,11 +65,18 @@ This file is the operator artifact. Run it from the existing checkout. Nothing h
 Cutover (do this before install). This script cannot see or disable the Grok routine.
   1. Pause the Grok Bot routine named "SkillMaxx nightly refresh" (about 2:00 AM ET). Confirm the next fire is off and no run is in progress.
   2. Leave it paused. Do not assume this repository change paused it.
-  3. On the Mac, from this repo: bash testing/mac_nightly.sh preflight
-  4. Trial with no push: bash testing/mac_nightly.sh run
+  3. One-time Linux sandbox, only after you start Docker yourself (the 2026-11-07 10:25 ET check found the CLI but the daemon was down; this repo does not start it):
+     docker build -t skillmaxx-sandbox:local -f testing/sandbox/Dockerfile testing/sandbox
+     Copy testing/local.env.example to testing/local.env and set SKILLMAXX_AGENTS to a directory under your home, for example $HOME/skillmaxx-agents.
+     SKILLMAXX_AGENTS must be under /Users so Docker Desktop can mount it.
+     bash testing/setup_agents.sh
+     That clones the codex mirror and writes templates. It does not npm-install Mac copies of the CLIs.
+  4. bash testing/mac_nightly.sh preflight
+  5. Trial with no push: bash testing/mac_nightly.sh run
      That sets NOPUSH=1 until testing/local.env contains SKILLMAXX_ALLOW_PUSH=yes.
-  5. Read testing/logs/nightly-<date>.log and run: python3 testing/freshness.py
-  6. Only after that trial, and only after the Grok routine is still paused, copy testing/local.env.example to testing/local.env, set SKILLMAXX_ALLOW_PUSH=yes if you want the existing git push, then install.
+     Do this before any launchd install. The trial is the no-Grok check.
+  6. Read testing/logs/nightly-<date>.log and run: python3 testing/freshness.py
+  7. Only after that trial reaches done, and only while the Grok routine is still paused, set SKILLMAXX_ALLOW_PUSH=yes if you want the existing git push, then install.
 
 Install (macOS only, does not run from this cloud VM):
   SKILLMAXX_INSTALL_SCHEDULE=yes SKILLMAXX_GROK_ROUTINE_PAUSED=yes bash testing/mac_nightly.sh install
@@ -125,10 +132,17 @@ cmd_preflight() {
   else
     check 0 "codex mirror" "missing; nightly.sh already continues without it and says so"
   fi
+  img=${SKILLMAXX_SANDBOX_IMAGE:-skillmaxx-sandbox:local}
   if command -v bwrap >/dev/null 2>&1; then
-    check 0 "bubblewrap" "bwrap is on PATH. Install tests can start."
+    check 0 "sandbox" "bubblewrap is on PATH. Install tests use bwrap."
+  elif ! command -v docker >/dev/null 2>&1; then
+    check 1 "sandbox" "no bubblewrap and no docker CLI. sbx.sh will refuse an unsandboxed run." || blocked=1
+  elif ! docker info >/dev/null 2>&1; then
+    check 1 "sandbox" "docker CLI is present but the daemon is not running. This script does not start it. bubblewrap is absent." || blocked=1
+  elif ! docker image inspect "$img" >/dev/null 2>&1; then
+    check 1 "sandbox" "Docker is up but local image $img is missing. Build: docker build -t $img -f testing/sandbox/Dockerfile testing/sandbox" || blocked=1
   else
-    check 1 "bubblewrap" "testing/sbx.sh needs Linux bwrap. Not on macOS. Not installed by this script." || blocked=1
+    check 0 "sandbox" "local image $img. Tests run in that Linux container as your uid, without --privileged."
   fi
   [ -f "$ROOT/data/skills.json" ]
   check $? "skills.json" "catalog the tests read" || blocked=1

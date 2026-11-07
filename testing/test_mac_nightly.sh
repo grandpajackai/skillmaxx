@@ -67,6 +67,7 @@ before=$(git rev-parse HEAD)
 dirty=$(git status --porcelain | grep -v '__pycache__' || true)
 bash testing/mac_nightly.sh dry-run >/tmp/smx-dry.txt || fail dry_run
 grep -q 'bubblewrap' /tmp/smx-dry.txt || fail dry_bwrap
+grep -q 'unsandboxed' /tmp/smx-dry.txt || fail dry_no_host_fallback
 grep -q 'does not send' /tmp/smx-dry.txt || fail dry_send
 grep -q 'build_data.py' /tmp/smx-dry.txt || fail dry_build_data
 if SKILLMAXX_ENV_FILE=/dev/null bash testing/mac_nightly.sh run >/tmp/smx-run.txt 2>&1; then fail run_should_block; fi
