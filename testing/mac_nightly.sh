@@ -19,17 +19,27 @@ load_env() {
   export SKILLMAXX_AGENTS="${SKILLMAXX_AGENTS:-/workspace/agents}"
 }
 
-apply_push_gate() {
-  # Only the Mac entry uses this gate. Direct testing/nightly.sh is unchanged.
-  if [ "${SKILLMAXX_ALLOW_PUSH:-}" != "yes" ]; then
-    if [ "${1:-apply}" = "apply" ]; then
-      export NOPUSH=1
-      echo "NOPUSH=1 because SKILLMAXX_ALLOW_PUSH is not yes. nightly.sh will still commit data; it will not git push."
+apply_mode() {
+  # Mac entry only. Direct testing/nightly.sh still checks out master unless SKILLMAXX_TRIAL=1.
+  dry=${1:-apply}
+  if [ "${SKILLMAXX_PRODUCTION:-}" = "yes" ] && [ "${SKILLMAXX_ALLOW_PUSH:-}" = "yes" ]; then
+    if [ "$dry" = "dry" ]; then
+      echo "Would checkout master and git push. That is production sync, not a trial."
     else
-      echo "Would set NOPUSH=1 because SKILLMAXX_ALLOW_PUSH is not yes."
+      unset SKILLMAXX_TRIAL
+      echo "PRODUCTION=yes and ALLOW_PUSH=yes: nightly.sh will checkout master and may push."
     fi
+    return
+  fi
+  if [ "${SKILLMAXX_PRODUCTION:-}" = "yes" ]; then
+    echo "PRODUCTION=yes ignored because ALLOW_PUSH is not yes."
+  fi
+  if [ "$dry" = "dry" ]; then
+    echo "Would set SKILLMAXX_TRIAL=1 and NOPUSH=1. The current branch stays. No fetch, checkout, pull, or push."
   else
-    echo "SKILLMAXX_ALLOW_PUSH=yes, so this entry does not force NOPUSH."
+    export SKILLMAXX_TRIAL=1
+    export NOPUSH=1
+    echo "TRIAL=1: stay on the current branch. No fetch, checkout, pull, or push."
   fi
 }
 
@@ -65,18 +75,21 @@ This file is the operator artifact. Run it from the existing checkout. Nothing h
 Cutover (do this before install). This script cannot see or disable the Grok routine.
   1. Pause the Grok Bot routine named "SkillMaxx nightly refresh" (about 2:00 AM ET). Confirm the next fire is off and no run is in progress.
   2. Leave it paused. Do not assume this repository change paused it.
-  3. One-time Linux sandbox, only after you start Docker yourself (the 2026-11-07 10:25 ET check found the CLI but the daemon was down; this repo does not start it):
-     docker build -t skillmaxx-sandbox:local -f testing/sandbox/Dockerfile testing/sandbox
-     Copy testing/local.env.example to testing/local.env and set SKILLMAXX_AGENTS to a directory under your home, for example $HOME/skillmaxx-agents.
-     SKILLMAXX_AGENTS must be under /Users so Docker Desktop can mount it.
+  3. From the trial checkout (stay on this branch; do not checkout master):
+     git fetch origin cursor/local-freshness-status-74c8
+     git merge --ff-only origin/cursor/local-freshness-status-74c8
+     python3 -m venv .venv && .venv/bin/pip install pillow && npm ci
+     export PATH="$PWD/.venv/bin:$PATH"
+     docker build --platform linux/arm64 -t skillmaxx-sandbox:local -f testing/sandbox/Dockerfile testing/sandbox
+     Copy testing/local.env.example to testing/local.env and set SKILLMAXX_AGENTS to a directory under your home.
+     Do not set SKILLMAXX_PRODUCTION or SKILLMAXX_ALLOW_PUSH for the trial.
      bash testing/setup_agents.sh
-     That clones the codex mirror and writes templates. It does not npm-install Mac copies of the CLIs.
   4. bash testing/mac_nightly.sh preflight
-  5. Trial with no push: bash testing/mac_nightly.sh run
-     That sets NOPUSH=1 until testing/local.env contains SKILLMAXX_ALLOW_PUSH=yes.
-     Do this before any launchd install. The trial is the no-Grok check.
+  5. Trial: bash testing/mac_nightly.sh run
+     That sets SKILLMAXX_TRIAL=1. The branch is kept. There is no fetch, checkout, pull, or push.
+     A data commit, if any, stays on this branch. master is not updated.
   6. Read testing/logs/nightly-<date>.log and run: python3 testing/freshness.py
-  7. Only after that trial reaches done, and only while the Grok routine is still paused, set SKILLMAXX_ALLOW_PUSH=yes if you want the existing git push, then install.
+  7. Only after that log reaches done, and only while the Grok routine is still paused, cut over by setting both SKILLMAXX_PRODUCTION=yes and SKILLMAXX_ALLOW_PUSH=yes. Either flag alone stays in trial. Then install.
 
 Install (macOS only, does not run from this cloud VM):
   SKILLMAXX_INSTALL_SCHEDULE=yes SKILLMAXX_GROK_ROUTINE_PAUSED=yes bash testing/mac_nightly.sh install
@@ -94,8 +107,9 @@ Rollback on the Mac:
   Uninstall removes the launchd job only. It does not re-enable or disable the Grok routine. Turn that routine back on yourself if you still want it.
 
 Non-secret config: testing/local.env (see testing/local.env.example).
-  SKILLMAXX_AGENTS   directory of agent CLIs and templates. Default /workspace/agents.
-  SKILLMAXX_ALLOW_PUSH=yes   lets the Mac entry git push. Without it, NOPUSH=1.
+  SKILLMAXX_AGENTS   templates and codex mirror, under your home on a Mac. Default /workspace/agents.
+  SKILLMAXX_TRIAL=1   mac_nightly.sh run sets this unless both production flags are yes.
+  SKILLMAXX_PRODUCTION=yes and SKILLMAXX_ALLOW_PUSH=yes   together: checkout master and push. Do not set these for the trial.
 
 EOF
   say_dependencies
@@ -164,13 +178,13 @@ cmd_dry_run() {
   cmd_preflight || true
   echo
   echo "Would execute, only if preflight is ready: bash $ROOT/testing/nightly.sh"
-  apply_push_gate dry
+  apply_mode dry
   echo "Dry run finished. Nothing was executed."
 }
 
 cmd_run() {
   load_env
-  apply_push_gate
+  apply_mode
   if [ "${SKILLMAXX_SKIP_PREFLIGHT:-}" != "1" ]; then
     if ! cmd_preflight; then
       mkdir -p "$ROOT/testing/logs"
@@ -196,7 +210,7 @@ cmd_print_plist() {
   <key>Label</key>
   <string>$LABEL</string>
   <key>Comment</key>
-  <string>SkillMaxx mechanical nightly at 02:00 in this Mac local timezone. Does not disable the Grok Bot routine. Operator must pause that routine first. Push stays off unless testing/local.env sets SKILLMAXX_ALLOW_PUSH=yes.</string>
+  <string>SkillMaxx mechanical nightly at 02:00 in this Mac local timezone. Does not disable the Grok Bot routine. Operator must pause that routine first. Stays in trial (no master checkout, no push) unless testing/local.env sets both SKILLMAXX_PRODUCTION=yes and SKILLMAXX_ALLOW_PUSH=yes.</string>
   <key>WorkingDirectory</key>
   <string>$ROOT</string>
   <key>ProgramArguments</key>

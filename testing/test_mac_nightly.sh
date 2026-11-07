@@ -53,13 +53,19 @@ unset SKILLMAXX_LOCKDIR
 stub=$(mktemp)
 cat > "$stub" << 'EOF'
 #!/bin/bash
+printf 'TRIAL=%s\n' "${SKILLMAXX_TRIAL-unset}"
 printf 'NOPUSH=%s\n' "${NOPUSH-unset}"
 EOF
 chmod +x "$stub"
 out=$(SKILLMAXX_ENV_FILE=/dev/null SKILLMAXX_SKIP_PREFLIGHT=1 SKILLMAXX_NIGHTLY="$stub" bash testing/mac_nightly.sh run)
+echo "$out" | grep -q 'TRIAL=1' || fail trial_default
 echo "$out" | grep -q 'NOPUSH=1' || fail push_gate
 out=$(SKILLMAXX_ENV_FILE=/dev/null SKILLMAXX_ALLOW_PUSH=yes SKILLMAXX_SKIP_PREFLIGHT=1 SKILLMAXX_NIGHTLY="$stub" bash testing/mac_nightly.sh run)
-echo "$out" | grep -q 'NOPUSH=unset' || fail allow_push
+echo "$out" | grep -q 'TRIAL=1' || fail allow_push_still_trial
+echo "$out" | grep -q 'NOPUSH=1' || fail allow_push_still_nopush
+out=$(SKILLMAXX_ENV_FILE=/dev/null SKILLMAXX_PRODUCTION=yes SKILLMAXX_ALLOW_PUSH=yes SKILLMAXX_SKIP_PREFLIGHT=1 SKILLMAXX_NIGHTLY="$stub" bash testing/mac_nightly.sh run)
+echo "$out" | grep -q 'TRIAL=unset' || fail production_clears_trial
+echo "$out" | grep -q 'NOPUSH=unset' || fail production_allows_push
 rm -f "$stub"
 
 # Live on this machine: dry-run and a refused run must not move HEAD.

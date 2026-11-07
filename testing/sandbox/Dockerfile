@@ -1,6 +1,6 @@
 # Linux image for testing/sbx.sh when the host has no bubblewrap (a Mac).
 # Build once, yourself, after Docker is already running. This repo does not build it.
-#   docker build -t skillmaxx-sandbox:local -f testing/sandbox/Dockerfile testing/sandbox
+#   docker build --platform linux/arm64 -t skillmaxx-sandbox:local -f testing/sandbox/Dockerfile testing/sandbox
 # Free public base image and free npm CLIs. No model API key is used.
 # Packages match testing/setup_agents.sh. Pi is @earendil-works/pi-coding-agent
 # (the package the nightly sandbox actually runs; the old @mariozechner package is 0.73.1).

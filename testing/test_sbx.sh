@@ -62,6 +62,8 @@ grep -q -- '--network=host' "$SBX_RECORD" && fail docker_hostnet
 grep -q -- '--pid=host' "$SBX_RECORD" && fail docker_hostpid
 grep -q supersecret "$SBX_RECORD" && fail docker_leaked_secret
 grep -q 'skillmaxx-sandbox:local' "$SBX_RECORD" || fail docker_image
+grep -q '/smx-testing:ro' "$SBX_RECORD" || fail docker_probe_mount
+grep -q 'ln -sfn /smx-testing /tmp/smx-testing' "$SBX_RECORD" || fail docker_probe_link
 
 # Daemon down: refuse, do not touch the host.
 export FAKE_DOCKER=down

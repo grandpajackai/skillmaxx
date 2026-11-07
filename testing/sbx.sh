@@ -34,12 +34,13 @@ run_docker() {
   testing_dir=$(cd "$(dirname "$0")" && pwd)
   args=(docker run --rm --read-only --cap-drop ALL --security-opt no-new-privileges --network bridge --init
     --tmpfs /tmp:rw,exec,nosuid,nodev --tmpfs /root:rw,nosuid,nodev --tmpfs /workspace:rw,nosuid,nodev --tmpfs /cursor:rw,nosuid,nodev
-    -v "$H:/home/sbx" -v "${testing_dir}:/tmp/smx-testing:ro"
+    -v "$H:/home/sbx" -v "${testing_dir}:/smx-testing:ro"
     -e HOME=/home/sbx
     -e PATH=/opt/skillmaxx/node_modules/.bin:/opt/cursorhome/.local/bin:/usr/local/bin:/usr/bin:/bin
     -u "$(id -u):$(id -g)" -w /home/sbx)
   [ -d "$AG/codex-mirror" ] && args+=(-v "$AG/codex-mirror:$AG/codex-mirror:ro")
-  args+=("$IMAGE" bash -c "$*")
+  # /tmp is a tmpfs, so the probe path is a symlink made after that mount, not a bind under it.
+  args+=("$IMAGE" bash -c "ln -sfn /smx-testing /tmp/smx-testing && $*")
   "${args[@]}"
 }
 
