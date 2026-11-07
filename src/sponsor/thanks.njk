@@ -11,8 +11,7 @@ noindex: true
 <div class="card static" id="intake" style="margin-top:20px">
 <h2 class="h3">Your ad assets</h2>
 <p class="muted">Specs: logo as a square SVG or PNG (256px or larger), one link, and ad copy up to 50 words (newsletter) or a 90-character pitch (featured card). Everything is labeled "Sponsored".</p>
-<form id="sp-form" data-smx-form data-ajax data-err="#sp-err" data-ok="#sp-ok" data-mail="mailto:skillmaxx@gilventures.ai?subject=Sponsor%20assets" action="https://formsubmit.co/skillmaxx@gilventures.ai" method="POST" style="display:flex;flex-direction:column;gap:14px;margin-top:12px">
-<input type="hidden" name="_captcha" value="false"><input type="hidden" name="_template" value="table"><input type="hidden" name="_subject" value="Sponsor assets - SkillMaxx">
+<form id="sp-form" data-smx-form data-err="#sp-err" data-ok="#sp-ok" data-mail="mailto:skillmaxx@gilventures.ai?subject=Sponsor%20assets" data-subject="Sponsor assets" style="display:flex;flex-direction:column;gap:14px;margin-top:12px">
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px">
 <label style="display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--m)">Name *<input name="name" required style="{{ fs }}"></label>
 <label style="display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--m)">Email *<input type="email" name="email" required style="{{ fs }}"></label>
