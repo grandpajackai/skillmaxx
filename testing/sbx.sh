@@ -5,7 +5,7 @@
 set -e; T="$1"; shift
 if [ -n "$SBX_KEEP" ]; then H="$SBX_KEEP"; mkdir -p "$H"; else H=$(mktemp -d /tmp/smx-sbx.XXXXXX); trap 'rm -rf "$H"' EXIT; fi
 [ -n "$T" ] && [ -d "$T" ] && cp -a "$T/." "$H/"
-AG=/workspace/agents
+AG=${SKILLMAXX_AGENTS:-/workspace/agents}
 exec_bwrap(){ bwrap --ro-bind / / --tmpfs /home --tmpfs /root --tmpfs /workspace --tmpfs /cursor --tmpfs /tmp \
  --ro-bind $AG/node_modules $AG/node_modules --ro-bind $AG/cursorhome/.local $AG/cursorhome/.local --ro-bind-try $AG/codex-mirror $AG/codex-mirror --ro-bind-try $AG/node22 $AG/node22 --ro-bind "$(dirname "$(readlink -f "$0")")" /tmp/smx-testing \
  --bind "$H" /home/sbx --setenv HOME /home/sbx --setenv PATH "$AG/node22/bin:$AG/node_modules/.bin:$AG/cursorhome/.local/bin:/usr/local/bin:/usr/bin:/bin" \

@@ -22,12 +22,10 @@ From the repo root (Mac or anywhere else with Python 3):
   open testing/status/freshness.html          # Mac
 
 Existing scheduler: the Grok Bot routine "SkillMaxx nightly refresh" (~2:00 AM ET)
-runs testing/nightly.sh. That script calls this one on exit (no --check-public)
-and does not git-add testing/status/. No new cron, launchd job, or Pages
-workflow is installed. A Mac schedule is pending until someone installs it on
-that Mac. Example only, not installed by this repo:
-
-  15 7 * * * cd /ABSOLUTE/PATH/TO/skillmaxx && /usr/bin/python3 testing/freshness.py --check-public >> testing/logs/freshness.log 2>&1
+runs testing/nightly.sh until someone pauses that routine. This script does not
+pause it. Mac launchd is installed only by testing/mac_nightly.sh install on
+the Mac, after SKILLMAXX_GROK_ROUTINE_PAUSED=yes. That variable is an operator
+attestation, not a check.
 
 Logs live in testing/logs/ on the machine that ran nightly.sh. They are
 gitignored, so another clone cannot see NOPUSH until it has those files.
@@ -54,8 +52,8 @@ HOW_TO = [
     "python3 testing/freshness.py",
     "python3 testing/freshness.py --check-public",
     "Mac: open testing/status/freshness.html",
-    "The existing Grok Bot routine \"SkillMaxx nightly refresh\" (~2:00 AM ET) runs testing/nightly.sh, which writes this status on exit and does not push it. That is the only hooked scheduler.",
-    "A Mac cron or launchd job is not installed. Installing one needs the owner's Mac. Documentation example only: 15 7 * * * cd /ABSOLUTE/PATH/TO/skillmaxx && /usr/bin/python3 testing/freshness.py --check-public >> testing/logs/freshness.log 2>&1",
+    "The Grok Bot routine \"SkillMaxx nightly refresh\" (~2:00 AM ET) still runs testing/nightly.sh until you pause it. This file does not pause it.",
+    "Mac launchd, only on the Mac after you pause that routine: SKILLMAXX_INSTALL_SCHEDULE=yes SKILLMAXX_GROK_ROUTINE_PAUSED=yes bash testing/mac_nightly.sh install",
     "Nightly logs are gitignored under testing/logs/ on the machine that ran nightly.sh. This file does not claim a public deploy from a local build.",
 ]
 

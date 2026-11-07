@@ -6,7 +6,7 @@ servers, that the agent's own health check connects). Writes testing/results/<da
 Usage: run_tests.py [--agents claude_code,grok_build,...] [--limit N] [--jobs 6] [--only slug,slug]
 """
 import json,re,subprocess,sys,os,datetime,argparse,concurrent.futures as cf,shlex
-HERE=os.path.dirname(os.path.abspath(__file__));ROOT=os.path.dirname(HERE);T="/workspace/agents/templates"
+HERE=os.path.dirname(os.path.abspath(__file__));ROOT=os.path.dirname(HERE);T=os.path.join(os.environ.get("SKILLMAXX_AGENTS","/workspace/agents"),"templates")
 SBX=os.path.join(HERE,"sbx.sh");ANSI=re.compile(r"\x1b\[[0-9;?]*[A-Za-z]")
 ap=argparse.ArgumentParser();ap.add_argument("--agents",default="claude_code,codex,grok_build,cursor,pi");ap.add_argument("--limit",type=int,default=0);ap.add_argument("--jobs",type=int,default=6);ap.add_argument("--only",default="");ap.add_argument("--timeout",type=int,default=150);ap.add_argument("--retry",type=int,default=0)
 a=ap.parse_args();AG=a.agents.split(",")

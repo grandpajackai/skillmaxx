@@ -1,6 +1,6 @@
 #!/bin/bash
 # One-time: install the agent CLIs (no logins) + marketplace templates used by run_tests.py
-set -e; AG=/workspace/agents; mkdir -p $AG && cd $AG; [ -f package.json ] || npm init -y >/dev/null
+set -e; AG=${SKILLMAXX_AGENTS:-/workspace/agents}; mkdir -p "$AG" && cd "$AG"; [ -f package.json ] || npm init -y >/dev/null
 npm i @anthropic-ai/claude-code @openai/codex @xai-official/grok @mariozechner/pi-coding-agent
 mkdir -p cursorhome && HOME=$AG/cursorhome bash -c 'curl -fsSL https://cursor.com/install | bash'
 [ -d codex-mirror ] || git clone -q --depth 1 https://github.com/openai/plugins codex-mirror

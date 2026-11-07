@@ -5,7 +5,12 @@
 # Failed installs are retried once (--retry 1); daily_report.py only calls something broken after 2 failing nights.
 # Steps: sync master -> refresh codex mirror -> sandboxed install tests -> metadata -> daily report + post drafts -> build -> data-only commit + push.
 # On exit, testing/freshness.py writes gitignored local status (no network, not added to the data commit).
+# Mac entry, preflight, and launchd: testing/mac_nightly.sh. This file stays the mechanical nightly.
+# Lock is per machine (testing/lock.sh). It does not stop the Grok box from running too.
 set -uo pipefail; cd "$(dirname "$0")/.."; ROOT=$PWD
+export SKILLMAXX_AGENTS="${SKILLMAXX_AGENTS:-/workspace/agents}"
+# shellcheck source=testing/lock.sh
+. testing/lock.sh
 D=$(date +%F); LOG=testing/logs/nightly-$D.log; mkdir -p testing/logs
 exec 7>&1 8>&2
 exec > >(tee -a "$LOG") 2>&1
@@ -15,20 +20,26 @@ freshness_status() {
   wait || true
   python3 testing/freshness.py --quiet || echo "warn: local freshness status was not written"
 }
-trap 'ec=$?; freshness_status; exit "$ec"' EXIT
-exec 9>/tmp/skillmaxx-nightly.lock; flock -n 9 || { echo "another nightly is running"; exit 3; }
+finish() {
+  ec=$?
+  freshness_status
+  skillmaxx_unlock
+  exit "$ec"
+}
+trap finish EXIT
+skillmaxx_lock || exit 3
 step(){ echo "== $(date '+%F %T %Z') $1"; }
 die(){ echo "!! NIGHTLY FAILED at step: $1 (see $ROOT/$LOG)"; exit 1; }
 NOPUSH=${NOPUSH:-}
 step "sync master"
 git fetch -q origin && git checkout -q master && git pull -q --ff-only origin master || die "git sync (dirty tree or diverged master?)"
 step "codex mirror"   # setup_agents.sh renames the marketplace locally; reset it so pull never aborts on a dirty file
-M=/workspace/agents/codex-mirror
-if [ -d $M ]; then
-  git -C $M checkout -q -- .agents/plugins/marketplace.json; git -C $M pull -q --ff-only || echo "warn: mirror pull failed, using cached copy"
-  python3 -c "import json;p='$M/.agents/plugins/marketplace.json';d=json.load(open(p));d['name']='openai-plugins-mirror';json.dump(d,open(p,'w'))"
+M="$SKILLMAXX_AGENTS/codex-mirror"
+if [ -d "$M" ]; then
+  git -C "$M" checkout -q -- .agents/plugins/marketplace.json; git -C "$M" pull -q --ff-only || echo "warn: mirror pull failed, using cached copy"
+  SKILLMAXX_MIRROR="$M" python3 -c 'import json,os;p=os.environ["SKILLMAXX_MIRROR"]+"/.agents/plugins/marketplace.json";d=json.load(open(p));d["name"]="openai-plugins-mirror";json.dump(d,open(p,"w"))'
 fi
-[ -d /workspace/agents/templates/claude ] || die "agent templates missing (run testing/setup_agents.sh)"
+[ -d "$SKILLMAXX_AGENTS/templates/claude" ] || die "agent templates missing (run testing/setup_agents.sh)"
 step "install tests"; python3 testing/run_tests.py --jobs 8 --retry 1 || die "run_tests.py"
 step "metadata"; for i in 1 2; do python3 fetch_meta.py && break; [ $i = 2 ] && die "fetch_meta.py"; echo "retrying fetch_meta in 60s"; sleep 60; done
 step "daily report"; python3 testing/daily_report.py || die "daily_report.py"

@@ -19,7 +19,7 @@ One page to catch up. Site: https://skillmaxx.gilventures.ai · Repo: grandpajac
 | Social kits and post banks | [growth/x/](growth/x/), [growth/social/](growth/social/), [growth/profiles/](growth/profiles/), [growth/reddit/](growth/reddit/) |
 | Daily X radar | [growth/x-radar/](growth/x-radar/) |
 | Weekly scorecard drafts | [growth/weekly/](growth/weekly/) |
-| Test pipeline | `testing/` (nightly.sh, run_tests.py, daily_report.py, weekly_scorecard.py, freshness.py) |
+| Test pipeline | `testing/` (nightly.sh, mac_nightly.sh, run_tests.py, daily_report.py, weekly_scorecard.py, freshness.py) |
 | Stripe payment links + clear unit labels | `src/_data/sponsorLinks.json` (founding price, locked for 6 months; units spelled out; no struck-through regulars) |
 | Sponsor inventory, rotation, scaling | [growth/sponsors/SCALING.md](growth/sponsors/SCALING.md) |
 | Sponsor leads log (who, route, outreach, follow-up) | [growth/sponsors/PIPELINE.csv](growth/sponsors/PIPELINE.csv), templates [growth/sponsors/OUTREACH.md](growth/sponsors/OUTREACH.md), sent logs `growth/outreach/sent/` |

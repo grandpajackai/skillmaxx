@@ -7,3 +7,4 @@ npm.json
 .env*
 testing/logs/
 testing/status/
+testing/local.env
