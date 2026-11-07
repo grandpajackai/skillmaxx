@@ -122,3 +122,10 @@ No new owner decisions came in on Oct 31. Operating rules adopted after that day
 70. **Grok Bot does the GitHub-side outreach itself** (starring repos, opening issues on projects we tested); Brandon only approves. Non-GitHub platforms still get paste-ready replies for him.
 71. **X replies in Brandon's queue are the original post link plus the reply text in a copy block**, never an intent link alone (intent links open as new posts in his X app).
 72. **CockroachDB: skip the contact-sales form** (no honest Use Case option); reach them only through X and LinkedIn. Updates #68.
+
+## 2026-11-03 — Brandon's calls (recorded by the Nov 7 nightly)
+73. **Grok Bot fully runs Beehiiv**: edits, schedules and publishes newsletters when ready, no approval from Brandon needed (extends #26 and the Oct 30 newsletter trust).
+74. **Grok Bot manages both GitHub accounts**: grandpajackai (repo, builds, routines; stays anonymous per #69) and a new free **SkillMaxx GitHub account** (business email; links and description set, no logo avatar yet) used for public activity like opening issues and starring repos. Steps Grok Bot can't do itself go to Brandon as instructions. His first grandpajackai issue comment was blanked to "." and gets redone from the SkillMaxx account.
+75. **Bluesky display name is "SkillMaxx AI"** to match X (confirms #9).
+76. **Brandon's goal: no pending setup on his side, focus on content.** Grok Bot alerts him whenever sponsor email outreach or another initiative needs his reply.
+
