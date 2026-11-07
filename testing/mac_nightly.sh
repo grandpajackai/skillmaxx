@@ -2,7 +2,8 @@
 # Mac/local entry for the existing mechanical nightly. Does not install a schedule
 # unless you run "install" on macOS with the two confirmation variables set.
 # Does not disable the Grok Bot routine. Does not send mail, posts, or newsletters.
-# Usage: testing/mac_nightly.sh {steps|preflight|dry-run|test|run|print-plist|install|uninstall|status}
+# Usage: testing/mac_nightly.sh {steps|preflight|dry-run|test|run|local|print-plist|install|uninstall|status}
+# install loads a local-only 02:00 America/New_York job. It does not push and does not disable the Grok routine.
 set -uo pipefail
 ROOT=$(cd "$(dirname "$0")/.." && pwd)
 LABEL=com.gilventures.skillmaxx.nightly
@@ -72,10 +73,8 @@ Repo: $ROOT
 
 This file is the operator artifact. Run it from the existing checkout. Nothing here merges, pushes, or loads a schedule unless you pass install on the Mac itself.
 
-Cutover (do this before install). This script cannot see or disable the Grok routine.
-  1. Pause the Grok Bot routine named "SkillMaxx nightly refresh" (about 2:00 AM ET). Confirm the next fire is off and no run is in progress.
-  2. Leave it paused. Do not assume this repository change paused it.
-  3. From the trial checkout (stay on this branch; do not checkout master):
+The Grok routine keeps assistant work and publishing. This schedule does not turn it off and does not push.
+  1. From the trial checkout (stay on this branch; do not checkout master):
      git fetch origin cursor/local-freshness-status-74c8
      git merge --ff-only origin/cursor/local-freshness-status-74c8
      python3 -m venv .venv && .venv/bin/pip install pillow && npm ci
@@ -89,12 +88,17 @@ Cutover (do this before install). This script cannot see or disable the Grok rou
      That sets SKILLMAXX_TRIAL=1. The branch is kept. There is no fetch, checkout, pull, or push.
      A data commit, if any, stays on this branch. master is not updated.
   6. Read testing/logs/nightly-<date>.log and run: python3 testing/freshness.py
-  7. Only after that log reaches done, and only while the Grok routine is still paused, cut over by setting both SKILLMAXX_PRODUCTION=yes and SKILLMAXX_ALLOW_PUSH=yes. Either flag alone stays in trial. Then install.
+  7. One immediate local run, then the 02:00 America/New_York job. Neither pushes or checks out master:
+     bash testing/mac_nightly.sh local
+     SKILLMAXX_INSTALL_SCHEDULE=yes bash testing/mac_nightly.sh install
+     Do not set SKILLMAXX_PRODUCTION or SKILLMAXX_ALLOW_PUSH.
+     Each run fast-forwards a disposable worktree to origin/$SKILLMAXX_SOURCE_REF (default: this branch). After this PR is on master, set SKILLMAXX_SOURCE_REF=master in testing/local.env so the catalog is not stuck on the PR branch. That fetch does not push.
+     Durable files: ~/.local/share/skillmaxx/ (logs, results, status, source.json).
+     The trial checkout and its data commit are not reset.
 
-Install (macOS only, does not run from this cloud VM):
-  SKILLMAXX_INSTALL_SCHEDULE=yes SKILLMAXX_GROK_ROUTINE_PAUSED=yes bash testing/mac_nightly.sh install
-  SKILLMAXX_GROK_ROUTINE_PAUSED=yes means you attest you paused it. The script does not check Grok and does not disable it.
-  The job is launchd $LABEL at 02:00 in the Mac's local timezone. Set the Mac to America/New_York if you want 2:00 AM ET. If the Mac is asleep at 2:00, launchd runs it after wake. The job does not use RunAtLoad, so install does not start a nightly immediately.
+Install (macOS only. This cloud VM cannot load launchd):
+  SKILLMAXX_INSTALL_SCHEDULE=yes bash testing/mac_nightly.sh install
+  Launchd wakes hourly and the script runs only when America/New_York hour is 02. It does not use RunAtLoad. Assistant catalog, QA, and publishing stay on the Grok routine.
 
 Verify the morning after the first scheduled run:
   - One testing/logs/nightly-<date>.log, with a done line or a NIGHTLY FAILED line.
@@ -210,26 +214,24 @@ cmd_print_plist() {
   <key>Label</key>
   <string>$LABEL</string>
   <key>Comment</key>
-  <string>SkillMaxx mechanical nightly at 02:00 in this Mac local timezone. Does not disable the Grok Bot routine. Operator must pause that routine first. Stays in trial (no master checkout, no push) unless testing/local.env sets both SKILLMAXX_PRODUCTION=yes and SKILLMAXX_ALLOW_PUSH=yes.</string>
+  <string>Local SkillMaxx tests, metadata, reports, build, and freshness at 02:00 America/New_York. No git push and no master checkout. Does not disable the Grok Bot routine. Assistant catalog, QA, and publishing stay with that routine.</string>
   <key>WorkingDirectory</key>
   <string>$ROOT</string>
   <key>ProgramArguments</key>
   <array>
     <string>/bin/bash</string>
     <string>$ROOT/testing/mac_nightly.sh</string>
-    <string>run</string>
+    <string>local</string>
+    <string>--launchd</string>
   </array>
   <key>StartCalendarInterval</key>
-  <dict>
-    <key>Hour</key>
-    <integer>2</integer>
-    <key>Minute</key>
-    <integer>0</integer>
-  </dict>
+  <array>
+$(h=0; while [ "$h" -lt 24 ]; do printf '    <dict><key>Hour</key><integer>%s</integer><key>Minute</key><integer>0</integer></dict>\n' "$h"; h=$((h + 1)); done)
+  </array>
   <key>StandardOutPath</key>
-  <string>$ROOT/testing/logs/launchd-nightly.log</string>
+  <string>$HOME/.local/share/skillmaxx/logs/launchd.log</string>
   <key>StandardErrorPath</key>
-  <string>$ROOT/testing/logs/launchd-nightly.log</string>
+  <string>$HOME/.local/share/skillmaxx/logs/launchd.log</string>
 </dict>
 </plist>
 EOF
@@ -242,24 +244,19 @@ cmd_install() {
     return 2
   fi
   if [ "${SKILLMAXX_INSTALL_SCHEDULE:-}" != "yes" ]; then
-    echo "Not installed. Set SKILLMAXX_INSTALL_SCHEDULE=yes to load the launchd job."
+    echo "Not installed. Set SKILLMAXX_INSTALL_SCHEDULE=yes to load the local-only launchd job."
     return 2
   fi
-  if [ "${SKILLMAXX_GROK_ROUTINE_PAUSED:-}" != "yes" ]; then
-    echo "Not installed. Pause the Grok Bot routine \"SkillMaxx nightly refresh\" yourself, then set SKILLMAXX_GROK_ROUTINE_PAUSED=yes."
-    echo "This script cannot disable that routine and does not claim it is off."
-    return 2
-  fi
-  if ! cmd_preflight; then
-    echo "Not installed. Preflight is blocked, so a 2:00 job would fail."
+  if ! bash "$ROOT/testing/local_nightly.sh" --docker-check; then
+    echo "Not installed. Docker is not ready, so the 02:00 Eastern job would fail."
     return 1
   fi
-  mkdir -p "${HOME}/Library/LaunchAgents" "$ROOT/testing/logs"
+  mkdir -p "${HOME}/Library/LaunchAgents" "$HOME/.local/share/skillmaxx/logs"
   cmd_print_plist > "$PLIST"
   uid=$(id -u)
   launchctl bootout "gui/${uid}/${LABEL}" 2>/dev/null || true
   launchctl bootstrap "gui/${uid}" "$PLIST"
-  echo "Installed $PLIST at 02:00 local time. The Grok routine was not disabled by this command."
+  echo "Installed $PLIST. It runs at 02:00 America/New_York and does not push. The Grok routine was not disabled."
 }
 
 cmd_uninstall() {
@@ -325,7 +322,7 @@ cmd_test() {
 }
 
 usage() {
-  echo "Usage: testing/mac_nightly.sh {steps|preflight|dry-run|test|run|print-plist|install|uninstall|status}" >&2
+  echo "Usage: testing/mac_nightly.sh {steps|preflight|dry-run|test|run|local|print-plist|install|uninstall|status}" >&2
   return 2
 }
 
@@ -336,6 +333,7 @@ case "$cmd" in
   dry-run) cmd_dry_run ;;
   test) cmd_test ;;
   run) cmd_run ;;
+  local) shift; exec bash "$ROOT/testing/local_nightly.sh" "$@" ;;
   print-plist) cmd_print_plist ;;
   install) cmd_install ;;
   uninstall) cmd_uninstall ;;

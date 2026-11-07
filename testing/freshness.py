@@ -92,13 +92,13 @@ def parse_log(text):
         m = STEP_RE.match(line)
         if m:
             step = m.group(4).strip()
-            if step in ("sync master", "trial branch") and cur:
+            if step in ("sync master", "trial branch", "local source") and cur:
                 flush()
             stamp = {"date": m.group(1), "time": m.group(2), "tz": m.group(3),
                      "raw": f"{m.group(1)} {m.group(2)} {m.group(3)}"}
             cur.append(("step", step, stamp))
             continue
-        if "NOPUSH set, not pushing" in line or (line.startswith("TRIAL:") and ("not pushing" in line or "Push disabled" in line)):
+        if "NOPUSH set, not pushing" in line or (line.startswith("TRIAL:") and ("not pushing" in line or "Push disabled" in line)) or (line.startswith("LOCAL:") and "not pushing" in line):
             cur.append(("nopush",))
         elif "NIGHTLY FAILED" in line:
             fm = FAIL_RE.search(line)
@@ -237,6 +237,8 @@ def summary_text(s):
         bits.append("A local nightly log reached done within the freshness window.")
     if s["nopush"] is True:
         bits.append("That log says this run did not push.")
+    if s.get("source_sync"):
+        bits.append("Source sync %s for %s at %s." % (s["source_sync"], s.get("source_ref"), (s.get("source_sha") or "")[:12]))
     if s.get("tests_total") is not None:
         bits.append("Install score %s/%s pass is separate from whether the pipeline finished." % (s["tests_pass"], s["tests_total"]))
     if s["local_build_completed"]:
@@ -323,6 +325,17 @@ def assess(root, now=None, stale_hours=STALE_HOURS, public=None):
     if commit:
         evidence.append("Git commit %s at %s (%s). Commit time is not published_at."
                         % (commit["sha"][:12], commit["committed_at"], commit["subject"]))
+    source = None
+    source_path = os.path.join(root, "testing", "source.json")
+    if os.path.exists(source_path):
+        try:
+            loaded = json.load(open(source_path, encoding="utf-8"))
+            source = loaded if isinstance(loaded, dict) else None
+        except (OSError, json.JSONDecodeError):
+            source = None
+    if source:
+        evidence.append("Source %s %s sync %s. This is the checkout that was tested, not a deploy."
+                        % (source.get("source_ref"), source.get("source_sha"), source.get("source_sync")))
     if nopush is False:
         notes.append("Log has no NOPUSH line and no TRIAL not-pushing line. git push -q is silent on success, so this is not proof of a push or of GitHub Pages.")
     status = {
@@ -347,6 +360,9 @@ def assess(root, now=None, stale_hours=STALE_HOURS, public=None):
         "public_report_run_at": None,
         "public_report_source": None,
         "stale_after_hours": stale_hours,
+        "source_ref": source.get("source_ref") if source else None,
+        "source_sha": source.get("source_sha") if source else None,
+        "source_sync": source.get("source_sync") if source else None,
         "repo_nightly_commit": commit,
         "published_sha": None,
         "sources": {"last_success": last["source"] if last else None, "published_at": None},

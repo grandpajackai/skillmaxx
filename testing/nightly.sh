@@ -29,12 +29,20 @@ finish() {
   exit "$ec"
 }
 trap finish EXIT
-skillmaxx_lock || exit 3
+if [ "${SKILLMAXX_EXTERNAL_LOCK:-}" = "1" ]; then
+  :
+else
+  skillmaxx_lock || exit 3
+fi
 step(){ echo "== $(date '+%F %T %Z') $1"; }
 die(){ echo "!! NIGHTLY FAILED at step: $1 (see $ROOT/$LOG)"; exit 1; }
 NOPUSH=${NOPUSH:-}
-if [ "${SKILLMAXX_TRIAL:-}" = "1" ]; then step "trial branch"; else step "sync master"; fi
-skillmaxx_sync || die "git sync (trial branch, dirty tree, or diverged master?)"
+if [ "${SKILLMAXX_LOCAL:-}" = "1" ]; then
+  step "local source"
+  echo "LOCAL: sha $(git rev-parse HEAD) ref ${SKILLMAXX_SOURCE_REF:-unset} sync ${SKILLMAXX_SOURCE_SYNC:-unset}"
+  echo "LOCAL: not pushing"
+elif [ "${SKILLMAXX_TRIAL:-}" = "1" ]; then step "trial branch"; skillmaxx_sync || die "git sync (trial branch, dirty tree, or diverged master?)"
+else step "sync master"; skillmaxx_sync || die "git sync (trial branch, dirty tree, or diverged master?)"; fi
 step "codex mirror"   # setup_agents.sh renames the marketplace locally; reset it so pull never aborts on a dirty file
 M="$SKILLMAXX_AGENTS/codex-mirror"
 if [ -d "$M" ]; then
@@ -47,6 +55,11 @@ step "metadata"; for i in 1 2; do python3 fetch_meta.py && break; [ $i = 2 ] && 
 step "daily report"; python3 testing/daily_report.py || die "daily_report.py"
 step "weekly pages"; python3 testing/weekly_scorecard.py --write > /dev/null || die "weekly_scorecard.py"
 step "build"; SITE_URL=https://skillmaxx.gilventures.ai PATH_PREFIX=/ npx @11ty/eleventy --quiet || die "eleventy build"
+if [ "${SKILLMAXX_LOCAL:-}" = "1" ]; then
+  echo "LOCAL: not committing"
+  step "done"; python3 -c "import json,os; p='testing/results/$D.json'; r=json.load(open(p))['results'] if os.path.exists(p) else []; print(sum(x['status']=='pass' for x in r),'/',len(r),'pass')"
+  exit 0
+fi
 step "commit data"
 skillmaxx_trial_commit_ok || die "trial commit"
 # only add paths that exist (git add aborts on a missing pathspec, e.g. growth/daily when there was no big event)
