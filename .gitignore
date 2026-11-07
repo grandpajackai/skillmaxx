@@ -3,6 +3,7 @@ _site/
 review/*/*-full.png
 npm.json
 *.log
+!testing/fixtures/**/*.log
 .env*
 testing/logs/
 testing/status/
