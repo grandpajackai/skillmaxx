@@ -1,46 +1,48 @@
-/* Shared form UX for every SkillMaxx form that posts to FormSubmit.
-   <form data-smx-form [data-ajax] data-label="Send" data-err="#id" data-ok="#id" data-mail="mailto:...">
-   - instant "Sending…" + disabled button, no double submit
-   - "Still sending…" after 6 s; after 20 s stop/flag with a mailto fallback
-   - data-ajax: POST to formsubmit.co/ajax, success only on {success:"true"}
-   - otherwise: normal POST (reCAPTCHA + _autoresponse + _next), FormSubmit redirects back on success */
+/* Shared form UX for every SkillMaxx form. No third-party form backend (FormSubmit kept returning 522).
+   <form data-smx-form data-subject="..." [data-issue] data-mail="mailto:...">
+   On submit we validate, then show a "send it" panel with:
+   - Send by email: mailto:skillmaxx@gilventures.ai with subject + every field prefilled (primary, always works)
+   - Copy details: clipboard copy, for webmail users
+   - data-issue: Open a prefilled GitHub issue on grandpajackai/skillmaxx (public, needs a GitHub login) */
 (function(){
+  var TO = 'skillmaxx@gilventures.ai', REPO = 'https://github.com/grandpajackai/skillmaxx/issues/new';
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c] }) }
   document.querySelectorAll('form[data-smx-form]').forEach(function(form){
-    var btn = form.querySelector('button[type=submit]'), label = btn.textContent, busy = false; btn.dataset.label = label;
-    var err = document.querySelector(form.dataset.err), ok = form.dataset.ok && document.querySelector(form.dataset.ok);
-    var mail = form.dataset.mail || 'mailto:skillmaxx@gilventures.ai';
-    function reset(){ busy = false; btn.disabled = false; btn.textContent = label }
-    function fail(msg){ err.innerHTML = msg + ' You can also <a href="' + mail + '" style="color:inherit;text-decoration:underline">email skillmaxx@gilventures.ai</a> directly.'; err.hidden = false; reset() }
+    var err = form.dataset.err && document.querySelector(form.dataset.err);
+    form.removeAttribute('action');
     form.addEventListener('submit', function(e){
-      if (busy) { e.preventDefault(); return }
-      if (!form.checkValidity()) { e.preventDefault(); form.reportValidity(); return }
-      busy = true; err.hidden = true; btn.disabled = true; btn.textContent = 'Sending…';
-      var slow = setTimeout(function(){ if (busy) btn.textContent = 'Still sending…' }, 6000);
-      if (!('ajax' in form.dataset)) {
-        // Normal POST: the browser navigates to FormSubmit (spam check), then back to our success page.
-        setTimeout(function(){ if (busy) fail('This is taking longer than usual. If nothing happens soon, check your connection and try again.') }, 20000);
-        return;
-      }
       e.preventDefault();
-      var ctl = window.AbortController ? new AbortController() : null;
-      var kill = setTimeout(function(){ if (ctl) ctl.abort() }, 20000);
-      fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {method:'POST', body:new FormData(form), headers:{'Accept':'application/json'}, signal: ctl ? ctl.signal : undefined})
-        .then(function(r){
-          if (!r.ok) throw new Error('form-http-' + r.status);
-          var ct = (r.headers.get('content-type') || '');
-          if (ct.indexOf('application/json') === -1) throw new Error('form-not-json');
-          return r.json();
-        })
-        .then(function(d){ clearTimeout(slow); clearTimeout(kill);
-          if (d && (d.success === true || d.success === 'true')) { form.hidden = true; if (ok) ok.hidden = false; busy = false }
-          else fail('We couldn\'t confirm it was received.') })
-        .catch(function(x){ clearTimeout(slow); clearTimeout(kill);
-          var msg = (x && x.name === 'AbortError')
-            ? 'No reply after 20 seconds, so we stopped. It may not have been sent. Please try again.'
-            : 'Our form service is down right now (FormSubmit outage). Please email skillmaxx@gilventures.ai instead.';
-          fail(msg); });
+      if (!form.checkValidity()) { form.reportValidity(); return }
+      if (err) err.hidden = true;
+      var lines = [], title = '';
+      Array.prototype.forEach.call(form.elements, function(el){
+        if (!el.name || el.name.charAt(0) === '_' || el.type === 'submit' || !el.value.trim()) return;
+        if (!title && el.name === 'name') title = el.value.trim();
+        lines.push(el.name.replace(/_/g, ' ') + ': ' + el.value.trim());
+      });
+      var subject = (form.dataset.subject || 'SkillMaxx form') + (title ? ': ' + title : '');
+      var body = lines.join('\n') + '\n\nSent from ' + location.href.split('?')[0];
+      var mail = 'mailto:' + TO + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      var issue = REPO + '?labels=submission&title=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      var p = document.createElement('div');
+      p.className = 'smx-send'; p.setAttribute('role', 'status');
+      p.style.cssText = 'margin-top:14px;padding:16px;border-radius:9px;background:rgba(198,244,50,.08);border:1px solid rgba(198,244,50,.3)';
+      p.innerHTML = '<p style="margin:0;color:var(--a);font-weight:600">Almost done: send it to us</p>' +
+        '<p class="muted" style="margin:6px 0 12px">Your details are filled in. Pick one way to send them. A human reads every one.</p>' +
+        '<div style="display:flex;flex-wrap:wrap;gap:10px">' +
+        '<a class="btn" href="' + esc(mail) + '">Send by email</a>' +
+        ('issue' in form.dataset ? '<a class="btn ghost" target="_blank" rel="noopener" href="' + esc(issue) + '">Open a GitHub issue</a>' : '') +
+        '<button type="button" class="btn ghost" data-copy>Copy details</button>' +
+        '<button type="button" class="btn ghost" data-edit>Edit</button></div>' +
+        '<p class="muted" data-note style="margin:10px 0 0;font-size:13px">Email app didn\'t open? Copy the details and email them to <a href="mailto:' + TO + '">' + TO + '</a>.</p>';
+      p.querySelector('[data-copy]').addEventListener('click', function(){
+        var t = 'To: ' + TO + '\nSubject: ' + subject + '\n\n' + body, b = this;
+        (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function(){ b.textContent = 'Copied ✓' }, function(){ window.prompt('Copy this and email it to ' + TO, t) });
+      });
+      p.querySelector('[data-edit]').addEventListener('click', function(){ p.remove(); form.hidden = false });
+      var old = form.parentNode.querySelector('.smx-send'); if (old) old.remove();
+      form.hidden = true; form.parentNode.insertBefore(p, form.nextSibling);
+      p.scrollIntoView({behavior:'smooth', block:'center'});
     });
   });
 })();
-// Back/forward cache: never leave a button stuck on "Sending…".
-window.addEventListener('pageshow', function(){ document.querySelectorAll('form[data-smx-form] button[type=submit][disabled]').forEach(function(b){ b.disabled = false; b.textContent = b.dataset.label || 'Send' }) });

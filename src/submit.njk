@@ -6,22 +6,13 @@ desc: "Submit your skill, plugin or MCP server to SkillMaxx — free listing on 
 <div class="wrap prose">
   <h1 class="ph">Submit a skill</h1>
   <p class="lead">Built a skill, plugin or MCP server for a coding agent? Submit it here for a free listing. We verify install methods against official docs and, where possible, sandbox-test the install.</p>
-  <p class="muted" style="margin-top:-4px">If the form errors out, email the same fields to <a href="mailto:skillmaxx@gilventures.ai?subject=Skill%20submission">skillmaxx@gilventures.ai</a> (our free form backend has had intermittent outages).</p>
+  <p class="muted" style="margin-top:-4px">Fill in the form, then send it by email or as a GitHub issue. Or just email the same fields to <a href="mailto:skillmaxx@gilventures.ai?subject=Skill%20submission">skillmaxx@gilventures.ai</a>.</p>
 
   <div class="card static" id="form-card">
     <form
-      action="https://formsubmit.co/skillmaxx@gilventures.ai"
-      method="POST"
       id="submit-form"
-      data-smx-form data-err="#submit-err" data-mail="mailto:skillmaxx@gilventures.ai?subject=Skill%20submission"
+      data-smx-form data-issue data-subject="Skill submission" data-err="#submit-err" data-mail="mailto:skillmaxx@gilventures.ai?subject=Skill%20submission"
     >
-      {# Hidden formsubmit.co config #}
-      <input type="hidden" name="_subject" value="New SkillMaxx submission">
-      <input type="hidden" name="_next" value="{{ site.url }}{{ site.base }}/submit/?sent=true">
-      <input type="hidden" name="_autoresponse" value="Thanks for sending a tool to SkillMaxx!&#10;&#10;It&#x27;s in the review queue. A human (me, Brandon) looks at every submission, usually within a few days. If the install docs check out, it gets listed and joins the nightly install tests in Claude Code, Codex, Grok Build, Cursor and Pi, so you&#x27;ll see real pass/fail results with logs, good or bad.&#10;&#10;Got install notes for a specific agent, or think we&#x27;ll get something wrong? Email skillmaxx@gilventures.ai and we&#x27;ll sort it out.&#10;&#10;Brandon&#10;SkillMaxx · https://skillmaxx.gilventures.ai">
-      <input type="hidden" name="_template" value="table">
-      {# Honeypot #}
-      <input type="text" name="_honey" style="display:none" aria-hidden="true" tabindex="-1" autocomplete="off">
 
       <fieldset>
         <legend>Skill info</legend>
