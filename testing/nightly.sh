@@ -4,9 +4,18 @@
 # Every run logs to testing/logs/nightly-<date>.log (gitignored) and exits non-zero with the failing step named.
 # Failed installs are retried once (--retry 1); daily_report.py only calls something broken after 2 failing nights.
 # Steps: sync master -> refresh codex mirror -> sandboxed install tests -> metadata -> daily report + post drafts -> build -> data-only commit + push.
+# On exit, testing/freshness.py writes gitignored local status (no network, not added to the data commit).
 set -uo pipefail; cd "$(dirname "$0")/.."; ROOT=$PWD
 D=$(date +%F); LOG=testing/logs/nightly-$D.log; mkdir -p testing/logs
+exec 7>&1 8>&2
 exec > >(tee -a "$LOG") 2>&1
+freshness_status() {
+  # Close the tee pipe and wait so the log contains this run's done/fail line before it is read.
+  exec 1>&7 2>&8 || true
+  wait || true
+  python3 testing/freshness.py --quiet || echo "warn: local freshness status was not written"
+}
+trap 'ec=$?; freshness_status; exit "$ec"' EXIT
 exec 9>/tmp/skillmaxx-nightly.lock; flock -n 9 || { echo "another nightly is running"; exit 3; }
 step(){ echo "== $(date '+%F %T %Z') $1"; }
 die(){ echo "!! NIGHTLY FAILED at step: $1 (see $ROOT/$LOG)"; exit 1; }

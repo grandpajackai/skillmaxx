@@ -5,3 +5,4 @@ npm.json
 *.log
 .env*
 testing/logs/
+testing/status/
