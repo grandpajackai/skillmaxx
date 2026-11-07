@@ -21,13 +21,13 @@ Skills are portable instruction sets that teach AI agents how to use NVIDIA soft
 
 ## Quickstart
 
-Install NVIDIA skills with the default [`skills` CLI](https://github.com/vercel-labs/skills) flow:
+Install NVIDIA skills with the default [`skills` CLI](https://github.com/vercel-labs/skills) flow. The NVIDIA Skill Finder skill will search this catalog and help you discover the right skill for your use case.
 
 ```bash
-npx skills add nvidia/skills
+npx skills add nvidia/skills --skill nvidia-skill-finder --yes
 ```
 
-The CLI runs through `npx` and prompts you to choose a skill and install destination. You do not need to clone this repo or copy skill folders by hand.
+This installs the skill finder, which can then find and install other skills for you. To browse the full catalog instead, run `npx skills add nvidia/skills`. You do not need to clone this repo or copy skill folders by hand.
 
 > **Requires a current `skills` CLI (v1.5.16 or newer).** Installing via `npx skills@latest add nvidia/skills` always uses the latest. On older CLIs (v1.5.15 and earlier), skills may install but not appear in Claude Code — see [Troubleshooting](docs/advanced-install.mdx#troubleshooting).
 
@@ -130,6 +130,4 @@ For non-interactive installs, global installs, agent-specific installs, updates,
 | **cuML** | Official NVIDIA-authored guidance for cuML GPU machine learning, scikit-learn acceleration with cuml.accel, API compatibility, multi-GPU process execution, and model export. | [`cuml`](skills/cuml) |
 | **cuOpt** | GPU-accelerated optimization — vehicle routing, linear programming, quadratic programming, installation, server deployment, and developer tools. | [`cuopt-install`](skills/cuopt-install), [`cuopt-multi-objective-exploration`](skills/cuopt-multi-objective-exploration), [`cuopt-numerical-optimization-api`](skills/cuopt-numerical-optimization-api), [`cuopt-numerical-optimization-formulation`](skills/cuopt-numerical-optimization-formulation), [`cuopt-routing-api-python`](skills/cuopt-routing-api-python), [`cuopt-server-api-python`](skills/cuopt-server-api-python) |
 | **DALI** | GPU-accelerated data loading and processing with NVIDIA DALI. | [`dali-dynamic-mode`](skills/dali-dynamic-mode) |
-| **Data Designer** | Build declarative synthetic dataset generation pipelines with NeMo Data Designer. | [`data-designer`](skills/data-designer) |
-| **DeepStream** | Agentic skills for guided DeepStream development. | [`amc-run-rtsp-calibration`](skills/amc-run-rtsp-calibration), [`amc-run-sample-calibration`](skills/amc-run-sample-calibration), [`amc-run-video-calibration`](skills/amc-run-video-calibration), [`amc-setup-calibration-stack`](skills/amc-setup-calibration-stack), [`deepstream-dev`](skills/deepstream-dev), [`deepstream-generate-pipeline`](skills/deepstream-generate-pipeline), [`deepstream-import-vision-model`](skills/deepstream-import-vision-model), [`deepstream-profile-pipeline`](skills/deepstream-profile-pipeline), [`deepstream-run-mv3dt`](skills/deepstream-run-mv3dt), [`deepstream-sop`](skills/deepstream-sop), [`rtvi-cv-customize-model`](skills/rtvi-cv-customize-model), [`rtvi-cv-scaffold-vss-service`](skills/rtvi-cv-scaffold-vss-service), [`rtvi-vlm-customize-model`](skills/rtvi-vlm-customize-model) |
-| **DGX Spark Skills** | Agent guidance for DGX Spark and related 
+| **DeepStream** | Agentic skills for guided DeepStream development. | [`amc-run-rtsp-calibration`](skills/amc-run-rtsp-calibration), [`amc-run-sample-calibration`](skills/amc-run-sample-calibration), [`amc-run-video-calibration`](skills/amc-run-video-calibration), [`amc-setup-calibration-stack`](skills/amc-setup-calibration-stack), [`deepstream-dev`](skills/deepstream-dev), [`deepstream-generate-pipeline`](skills/deepstream-generate-pipeline), [`deepstream-import-vision-model`](skills/deepstream-import-vision-model), [`deepstream-profile-pipeline`](skills/deepstream-profile-pipeline), [`deepstream-run-mv3dt`](skills/deepstream-run-mv3dt), [`deepstream-sop`](skills/deepstream-sop), [`rtvi-cv-customize-model`](skills/rtvi-cv-customize-model), [`rtvi-cv-scaffold-vss-service`](skills/rtvi-cv-scaffold-vss-service), [`rtvi-vlm-customize-model`](skills/rtvi-vlm-customize-model

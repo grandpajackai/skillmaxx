@@ -6,7 +6,7 @@ The Carbone agent plugin: the Carbone skill and MCP server for any AI agent that
 
 ## What it does
 
-- **The Carbone MCP server** (`https://mcp.carbone.io`) generates documents from your templates and data, converts files between formats, and manages your Carbone template library. It is hosted by Carbone, so there is nothing to run locally. Documentation: [carbone.io/documentation/developer/ai/mcp.html](https://carbone.io/documentation/developer/ai/mcp.html).
+- **The Carbone MCP server** (`https://mcp.carbone.io`) generates documents from your templates and data, one document or a whole batch, converts files between formats, and manages your Carbone template library. It is hosted by Carbone, so there is nothing to run locally. Documentation: [carbone.io/documentation/developer/ai/mcp.html](https://carbone.io/documentation/developer/ai/mcp.html).
 - **The Carbone skill** (`skills/carbone/`) teaches the assistant the Carbone templating syntax, so it can write, check and fix templates, or add Carbone tags to the DOCX, XLSX and PPTX files it generates. It follows the open [Agent Skills](https://agentskills.io) standard and works without the server.
 
 ### What the skill covers
@@ -102,7 +102,7 @@ unzip carbone.skill -d ~/.claude/skills/
 
 ### ChatGPT
 
-- **Marketplace**: open [the Carbone plugin](https://chatgpt.com/plugins/plugin_asdk_app_6ad79c4295308191a2b0eb7e68535c44) in ChatGPT, click **Add**, then sign in with your Carbone account. The plugin includes the MCP server and the skill.
+- **Marketplace**: open [the Carbone plugin](https://chatgpt.com/plugins/plugin_asdk_app_6ad79c4295308191a2b0eb7e68535c44) in ChatGPT, click **Add**, then sign in with your Carbone account. The plugin includes the MCP server and the skill. Attach your template or data file in the conversation and ChatGPT passes it to Carbone.
 
 Manual alternative, without the marketplace:
 
@@ -282,17 +282,11 @@ You sign in with your Carbone account when the assistant first calls Carbone. No
 ## What data it sends
 
 - Templates and data go to the Carbone API only when a tool is called.
-- Generated documents are returned to the assistant.
+- Generated documents come back as a download link, valid once and for 1 hour. Carbone deletes them after download.
 - The skill is a set of instructions read by the assistant. It sends nothing on its own.
 
 Read the [privacy policy](https://carbone.io/company/privacy-policy.html).
 
 ## Files in and out
 
-- Templates and data are passed as public links, as text, or from your template library.
-- The hosted server can't read local files.
-
-## Support
-
-- Help center: [help.carbone.io](https://help.carbone.io)
-- Email: [support@carbone.io](mailto:
+- Give a template or data as a public link, as text, from y
