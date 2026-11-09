@@ -128,4 +128,4 @@ No new owner decisions came in on Oct 31. Operating rules adopted after that day
 74. **Grok Bot manages both GitHub accounts**: grandpajackai (repo, builds, routines; stays anonymous per #69) and a new free **SkillMaxx GitHub account** (business email; links and description set, no logo avatar yet) used for public activity like opening issues and starring repos. Steps Grok Bot can't do itself go to Brandon as instructions. His first grandpajackai issue comment was blanked to "." and gets redone from the SkillMaxx account.
 75. **Bluesky display name is "SkillMaxx AI"** to match X (confirms #9).
 76. **Brandon's goal: no pending setup on his side, focus on content.** Grok Bot alerts him whenever sponsor email outreach or another initiative needs his reply.
-
+77. **Nightly refresh moves to ~4 AM ET and consumes the Mac pipeline's outputs** (Brandon, 2026-11-08): no duplicate box installs/report/build; validate freshness, provenance, source SHA, catalog identity and versions before publishing; catalog refresh, QA, publishing and health audit stay with Grok Bot; forms audit checks mailto/GitHub issue, not FormSubmit.
