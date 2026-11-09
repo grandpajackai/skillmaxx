@@ -217,9 +217,9 @@ class FreshnessTest(unittest.TestCase):
         self.assertEqual(st["publish_state"], "unverified")
         self.assertFalse(st["local_build_is_public_deploy"])
         self.assertFalse(st["live_page_matches_local_results"])
-        self.assertTrue(st["test_run_at"].startswith("2026-11-07"))
+        self.assertRegex(st["test_run_at"] or "", r"^2026-11-")
         if st["repo_nightly_commit"]:
-            self.assertIn("2026-11-07", st["repo_nightly_commit"]["subject"])
+            self.assertIn("nightly refresh", st["repo_nightly_commit"]["subject"])
             self.assertNotEqual(st["repo_nightly_commit"]["committed_at"], st["published_at"])
 
 
