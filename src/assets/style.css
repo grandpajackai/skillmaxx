@@ -148,3 +148,32 @@ h2.h3{font-size:17px;margin:0 0 8px}
 .callout{border-left:4px solid #f97316}
 .rank{width:100%;border-collapse:collapse;font-size:14px}.rank th,.rank td{padding:8px 6px;text-align:left;border-bottom:1px solid rgba(255,255,255,.08)}.rank .tok{color:#22c55e}
 .nlcard .news{margin:40px 0}.nlcard .news h2{font-size:24px;margin:0 0 8px}.nlcard .news p{margin:0;color:var(--m)}
+/* short intake forms */
+.intake{display:flex;flex-direction:column;gap:14px;margin-top:12px}
+.intake[hidden]{display:none !important}
+.intake .fg{display:flex;flex-direction:column;gap:12px}
+.intake .fl{display:flex;flex-direction:column;gap:6px}
+.intake .fl>span{font-size:14px;font-weight:600;color:var(--t)}
+.intake .fl em{font-style:normal;font-weight:500;color:var(--m);font-size:13px}
+.intake .alabel{display:flex;align-items:center;gap:6px}
+.intake input,.intake select,.intake textarea{width:100%;max-width:100%;background:var(--s2);color:var(--t);border:1px solid var(--b2);border-radius:9px;padding:12px;font:inherit;font-size:16px;min-height:44px}
+.intake textarea{resize:vertical;min-height:96px}
+.intake input:focus,.intake select:focus,.intake textarea:focus{outline:2px solid rgba(198,244,50,.45);outline-offset:1px;border-color:var(--a)}
+.intake input[aria-invalid=true],.intake select[aria-invalid=true],.intake textarea[aria-invalid=true]{border-color:#F87171}
+.intake .opt{border:1px solid var(--b);border-radius:10px;padding:0 12px;background:rgba(255,255,255,.02)}
+.intake .opt summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:600}
+.intake .opt .fg{padding:4px 0 12px}
+.intake .hint{margin:0;color:var(--m);font-size:14px;line-height:20px}
+.intake .form-actions{display:flex;flex-direction:column;gap:8px;align-items:stretch}
+.intake .btn{min-height:44px;font-size:16px}
+.intake .btn:disabled{opacity:.65;cursor:not-allowed}
+.form-status,.form-err{margin-top:12px}
+.form-status:not(.is-on),.form-err:not(.is-on){display:none}
+.form-status{padding:16px;border-radius:12px;border:1px solid rgba(198,244,50,.35);background:rgba(198,244,50,.08)}
+.form-status:focus{outline:2px solid var(--a);outline-offset:2px}
+.form-status h2{font-size:18px;margin:0 0 6px}
+.form-status p{margin:0;color:var(--m);font-size:14px;line-height:20px}
+.form-status textarea{width:100%;margin-top:10px;font:14px/20px var(--mono);background:#050506;color:var(--t);border:1px solid var(--b2);border-radius:8px;padding:10px}
+.form-err{color:#FECACA;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.45);border-radius:10px;padding:12px;font-size:14px;line-height:20px}
+.form-err:focus{outline:2px solid #F87171;outline-offset:2px}
+@media(max-width:640px){#form-card,#intake,#inquiry-form{padding:16px}}

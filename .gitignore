@@ -5,6 +5,9 @@ npm.json
 *.log
 !testing/fixtures/**/*.log
 .env*
+.wrangler/
+.dev.vars
+intake/.dev.vars
 testing/logs/
 testing/status/
 testing/local.env

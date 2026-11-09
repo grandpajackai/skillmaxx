@@ -5,40 +5,37 @@ desc: "Submit your skill, plugin or MCP server to SkillMaxx — free listing on 
 ---
 <div class="wrap prose">
   <h1 class="ph">Submit a skill</h1>
-  <p class="lead">Built a skill, plugin or MCP server for a coding agent? Submit it here for a free listing. We verify install methods against official docs and, where possible, sandbox-test the install.</p>
-  <p class="muted" style="margin-top:-4px">Fill in the form, then send it by email or as a GitHub issue. Or just email the same fields to <a href="mailto:skillmaxx@gilventures.ai?subject=Skill%20submission">skillmaxx@gilventures.ai</a>.</p>
+  <p class="lead">List a skill, plugin or MCP server for free. We check the source and, where we can, sandbox-test the install.</p>
+  <p class="muted" id="intake-note">{{ intake.note }}</p>
 
   <div class="card static" id="form-card">
-    <form
-      id="submit-form"
-      data-smx-form data-issue data-subject="Skill submission" data-err="#submit-err" data-mail="mailto:skillmaxx@gilventures.ai?subject=Skill%20submission"
-    >
+    <form id="submit-form" class="intake" method="post" action="" data-kind="skill" data-endpoint="{{ intake.endpoint }}" data-err="#submit-err" data-ok="#submit-ok" novalidate>
+      <div class="fg">
+        <label class="fl" for="skill-name">
+          <span>Skill name <em>Required</em></span>
+          <input id="skill-name" name="name" required maxlength="120" autocomplete="off" placeholder="e.g. Postgres MCP">
+        </label>
+        <label class="fl" for="skill-url">
+          <span>Source URL <em>Required</em></span>
+          <input id="skill-url" name="source_url" type="url" inputmode="url" required maxlength="400" placeholder="https://github.com/you/your-skill" autocomplete="url">
+        </label>
+      </div>
 
-      <fieldset>
-        <legend>Skill info</legend>
+      <details class="opt">
+        <summary>Optional details</summary>
         <div class="fg">
-          <label class="fl">
-            <span>Skill name <em class="muted">required</em></span>
-            <input type="text" name="name" required placeholder="e.g. Sentry, Postgres MCP, Tailwind plugin" maxlength="120">
+          <label class="fl" for="skill-email">
+            <span>Your email <em>Optional, only if you want a reply</em></span>
+            <input id="skill-email" name="email" type="email" inputmode="email" maxlength="200" autocomplete="email" placeholder="you@example.com">
           </label>
-          <label class="fl">
-            <span>One-line description <em class="muted">required</em></span>
-            <input type="text" name="description" required placeholder="What does it do, in one sentence" maxlength="200">
+          <label class="fl" for="skill-desc">
+            <span>One-line description</span>
+            <input id="skill-desc" name="description" maxlength="200" placeholder="What it does, in one sentence">
           </label>
-          <label class="fl">
-            <span>Source URL <em class="muted">required</em></span>
-            <input type="url" name="source_url" required placeholder="https://github.com/you/your-skill or npm package URL" maxlength="400">
-          </label>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>Category</legend>
-        <div class="fg">
-          <label class="fl">
-            <span>Category <em class="muted">required</em></span>
-            <select name="category" required>
-              <option value="" disabled selected>Choose a category…</option>
+          <label class="fl" for="skill-cat">
+            <span>Category</span>
+            <select id="skill-cat" name="category">
+              <option value="">Choose a category…</option>
               <option value="automation">Automation</option>
               <option value="communication">Communication</option>
               <option value="database">Database</option>
@@ -54,190 +51,25 @@ desc: "Submit your skill, plugin or MCP server to SkillMaxx — free listing on 
               <option value="other">Other</option>
             </select>
           </label>
+          <p class="hint">Install-doc links earn “Verified from docs”. Leave blank for agents you don't support.</p>
+          <label class="fl" for="doc-claude"><span class="alabel"><i class="ad" style="--c:{{ site.agentColor.claude_code }}"></i>Claude Code docs</span><input id="doc-claude" type="url" inputmode="url" name="install_claude_code" maxlength="400" placeholder="https://"></label>
+          <label class="fl" for="doc-codex"><span class="alabel"><i class="ad" style="--c:{{ site.agentColor.codex }}"></i>Codex docs</span><input id="doc-codex" type="url" inputmode="url" name="install_codex" maxlength="400" placeholder="https://"></label>
+          <label class="fl" for="doc-grok"><span class="alabel"><i class="ad" style="--c:{{ site.agentColor.grok_build }}"></i>Grok Build docs</span><input id="doc-grok" type="url" inputmode="url" name="install_grok_build" maxlength="400" placeholder="https://"></label>
+          <label class="fl" for="doc-cursor"><span class="alabel"><i class="ad" style="--c:{{ site.agentColor.cursor }}"></i>Cursor docs</span><input id="doc-cursor" type="url" inputmode="url" name="install_cursor" maxlength="400" placeholder="https://"></label>
+          <label class="fl" for="doc-pi"><span class="alabel"><i class="ad" style="--c:{{ site.agentColor.pi }}"></i>Pi docs</span><input id="doc-pi" type="url" inputmode="url" name="install_pi" maxlength="400" placeholder="https://"></label>
         </div>
-      </fieldset>
+      </details>
 
-      <fieldset>
-        <legend>Install docs for each agent you support</legend>
-        <p class="muted hint">Link to the official docs page that shows the install command for each agent you support. That's what earns "Verified from docs" on your listing. Leave blank for agents you don't support yet.</p>
-        <div class="fg agrid">
-          <label class="fl">
-            <span class="alabel"><i class="ad" style="--c:{{ site.agentColor.claude_code }}"></i>Claude Code</span>
-            <input type="url" name="install_claude_code" placeholder="https://docs.anthropic.com/…" maxlength="400">
-          </label>
-          <label class="fl">
-            <span class="alabel"><i class="ad" style="--c:{{ site.agentColor.codex }}"></i>Codex</span>
-            <input type="url" name="install_codex" placeholder="https://…" maxlength="400">
-          </label>
-          <label class="fl">
-            <span class="alabel"><i class="ad" style="--c:{{ site.agentColor.grok_build }}"></i>Grok Build</span>
-            <input type="url" name="install_grok_build" placeholder="https://…" maxlength="400">
-          </label>
-          <label class="fl">
-            <span class="alabel"><i class="ad" style="--c:{{ site.agentColor.cursor }}"></i>Cursor</span>
-            <input type="url" name="install_cursor" placeholder="https://…" maxlength="400">
-          </label>
-          <label class="fl">
-            <span class="alabel"><i class="ad" style="--c:{{ site.agentColor.pi }}"></i>Pi</span>
-            <input type="url" name="install_pi" placeholder="https://…" maxlength="400">
-          </label>
-        </div>
-      </fieldset>
+      <p class="sr" aria-hidden="true"><label>Leave blank<input name="fax_number" tabindex="-1" autocomplete="off"></label></p>
 
-      <div class="fg"><label class="fl"><span>Your email <em class="muted">optional, for a confirmation and listing updates</em></span><input type="email" name="email" placeholder="you@example.com" maxlength="200"></label></div>
       <div class="form-actions">
-        <button type="submit" class="btn">Submit skill</button>
-        <p class="muted">Submitting sends your entry to our review queue. Listings are free. We'll verify install docs before publishing.</p>
+        <button type="submit" class="btn">{{ intake.skillButton }}</button>
+        <p class="hint">{{ intake.help }}</p>
       </div>
     </form>
-    <p id="submit-err" role="alert" hidden style="margin-top:10px;color:#e55;font-size:13px"></p>
-
-    {# Success state — shown when redirected back with ?sent=true #}
-    <div class="success-msg" id="success-msg" hidden>
-      <div class="check-icon">✓</div>
-      <h2>Submission received</h2>
-      <p>We got your skill &mdash; it's in the review queue. We check install docs and where possible sandbox-test the install before publishing. You'll hear from us if we need anything.</p>
-      <a href="{{ site.base }}/" class="btn ghost">Back to SkillMaxx</a>
-    </div>
+    <div id="submit-ok" class="form-status" role="status" tabindex="-1"></div>
+    <p id="submit-err" class="form-err" role="alert" tabindex="-1"></p>
+    <noscript><p>Script is off, so this page can't copy or submit. Email skillmaxx@gilventures.ai the skill name and source link.</p></noscript>
   </div>
 </div>
-
-<style>
-  #form-card {
-    padding: 28px;
-    margin-top: 20px;
-    margin-bottom: 48px;
-  }
-  #submit-form fieldset {
-    margin-bottom: 24px;
-  }
-  #submit-form legend {
-    font-size: 14px;
-    color: var(--t);
-    text-transform: none;
-    letter-spacing: 0;
-    font-weight: 600;
-    margin-bottom: 10px;
-    padding-bottom: 4px;
-    border-bottom: 1px solid var(--b);
-    width: 100%;
-  }
-  .fg {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .agrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 12px;
-  }
-  .fl {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-  .fl > span {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--t);
-  }
-  .fl > span em {
-    font-style: normal;
-  }
-  .alabel {
-    display: flex !important;
-    align-items: center;
-    gap: 6px;
-  }
-  .fl input,
-  .fl select,
-  .fl textarea {
-    background: var(--s2);
-    color: var(--t);
-    border: 1px solid var(--b2);
-    border-radius: 9px;
-    padding: 10px 12px;
-    font: inherit;
-    font-size: 14px;
-    min-height: 42px;
-    transition: border-color .15s;
-  }
-  .fl input:focus,
-  .fl select:focus,
-  .fl textarea:focus {
-    outline: 2px solid rgba(198,244,50,.4);
-    outline-offset: 1px;
-    border-color: var(--a);
-  }
-  .fl input::placeholder,
-  .fl textarea::placeholder {
-    color: var(--un);
-  }
-  .hint {
-    margin: 0 0 10px;
-    line-height: 20px;
-  }
-  .form-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
-    margin-top: 4px;
-    padding-top: 20px;
-    border-top: 1px solid var(--b);
-  }
-  .form-actions .btn {
-    font-size: 15px;
-    padding: 12px 24px;
-  }
-  .success-msg {
-    text-align: center;
-    padding: 40px 20px;
-  }
-  .check-icon {
-    display: inline-grid;
-    place-items: center;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: rgba(198,244,50,.15);
-    color: var(--a);
-    font-size: 26px;
-    font-weight: 700;
-    margin-bottom: 16px;
-    border: 1px solid rgba(198,244,50,.3);
-  }
-  .success-msg h2 {
-    font-size: 22px;
-    margin: 0 0 10px;
-  }
-  .success-msg p {
-    color: var(--m);
-    max-width: 460px;
-    margin: 0 auto 20px;
-    line-height: 22px;
-  }
-  .success-msg .btn {
-    margin: 0 auto;
-  }
-  @media (max-width: 640px) {
-    #form-card { padding: 18px; }
-    .agrid { grid-template-columns: 1fr; }
-  }
-</style>
-
-<script>
-  (() => {
-    const sent = new URLSearchParams(location.search).get('sent');
-    if (sent === 'true') {
-      document.getElementById('submit-form').hidden = true;
-      document.getElementById('success-msg').hidden = false;
-      // Clean the URL without reload
-      const u = new URL(location);
-      u.searchParams.delete('sent');
-      history.replaceState(null, '', u);
-    }
-  })();
-</script>
-<script src="/assets/forms.js" defer></script>
+<script src="/assets/forms.js" type="module"></script>

@@ -80,60 +80,49 @@ desc: "Sponsor the SkillMaxx newsletter or a featured slot in the directory of a
 
 <div class="card static" style="margin-top:20px" id="inquiry-form">
   <h2 class="h3">Inquire about advertising</h2>
-  <p class="muted">Pick a slot (or something custom) and tell us about your tool. Fill out the form below and someone will respond by email — usually within a business day.</p>
-  <form id="ad-form" data-smx-form data-err="#ad-error" data-mail="mailto:skillmaxx@gilventures.ai?subject=Sponsor%20inquiry" data-subject="Sponsor inquiry" style="display:flex;flex-direction:column;gap:14px;margin-top:12px">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px">
-      <div style="display:flex;flex-direction:column;gap:4px">
-        <label for="ad-name" style="font-size:13px;color:var(--m)">Name <span style="color:#e55">*</span></label>
-        <input type="text" id="ad-name" name="name" required placeholder="Your name" style="background:var(--s2);color:var(--t);border:1px solid var(--b2);border-radius:9px;padding:9px 12px;font:inherit;font-size:14px;min-height:40px">
+  <p class="muted">{{ intake.note }}</p>
+  <form id="ad-form" class="intake" method="post" action="" data-kind="sponsor-inquiry" data-endpoint="{{ intake.endpoint }}" data-err="#ad-error" data-ok="#ad-ok" novalidate>
+    <div class="fg">
+      <label class="fl" for="ad-email"><span>Email <em>Required</em></span><input type="email" id="ad-email" name="email" required maxlength="200" inputmode="email" autocomplete="email" placeholder="you@example.com"></label>
+      <label class="fl" for="ad-type"><span>Ad type <em>Required</em></span>
+        <select id="ad-type" name="ad_type" required>
+          <option value="">Select one…</option>
+          <option value="Custom / other" data-slot="custom">Something custom</option>
+          <option value="Newsletter sponsor ($19 for 1 issue founding)" data-slot="newsletter">Newsletter — $19 for 1 issue (founding)</option>
+          <option value="Newsletter 4-pack ($59/mo for 4 issues founding)" data-slot="newsletter-monthly">Newsletter 4-pack — $59/mo for 4 issues (~$15 each, save $17)</option>
+          <option value="Featured slot ($29 for 1 month founding)" data-slot="featured">Featured — $29 for 1 month (founding)</option>
+          <option value="Category sponsor ($15 for 1 month founding)" data-slot="category">Category — $15 for 1 month (founding)</option>
+          <option value="Founding bundle ($49 for 1 month, worth $63)" data-slot="bundle">Founding bundle — $49 for 1 month (1 NL issue + Featured + Category, worth $63)</option>
+        </select>
+      </label>
+    </div>
+    <details class="opt">
+      <summary>Optional details</summary>
+      <div class="fg">
+        <label class="fl" for="ad-name"><span>Name</span><input type="text" id="ad-name" name="name" maxlength="120" autocomplete="name" placeholder="Your name"></label>
+        <label class="fl" for="ad-company"><span>Company</span><input type="text" id="ad-company" name="company" maxlength="160" autocomplete="organization" placeholder="Your company or product"></label>
+        <label class="fl" for="ad-message"><span>Message</span><textarea id="ad-message" name="message" rows="3" maxlength="2000" placeholder="What you want to run, and anything we should know"></textarea></label>
       </div>
-      <div style="display:flex;flex-direction:column;gap:4px">
-        <label for="ad-email" style="font-size:13px;color:var(--m)">Email <span style="color:#e55">*</span></label>
-        <input type="email" id="ad-email" name="email" required placeholder="you@example.com" style="background:var(--s2);color:var(--t);border:1px solid var(--b2);border-radius:9px;padding:9px 12px;font:inherit;font-size:14px;min-height:40px">
-      </div>
+    </details>
+    <p class="sr" aria-hidden="true"><label>Leave blank<input name="fax_number" tabindex="-1" autocomplete="off"></label></p>
+    <div class="form-actions">
+      <button type="submit" class="btn">{{ intake.inquiryButton }}</button>
+      <p class="hint">{{ intake.help }}</p>
     </div>
-    <div style="display:flex;flex-direction:column;gap:4px">
-      <label for="ad-company" style="font-size:13px;color:var(--m)">Company</label>
-      <input type="text" id="ad-company" name="company" placeholder="Your company or product" style="background:var(--s2);color:var(--t);border:1px solid var(--b2);border-radius:9px;padding:9px 12px;font:inherit;font-size:14px;min-height:40px">
-    </div>
-    <div style="display:flex;flex-direction:column;gap:4px">
-      <label for="ad-type" style="font-size:13px;color:var(--m)">Ad type <span style="color:#e55">*</span></label>
-      <select id="ad-type" name="ad_type" required style="background:var(--s2);color:var(--t);border:1px solid var(--b2);border-radius:9px;padding:9px 12px;font:inherit;font-size:14px;min-height:40px">
-        <option value="">Select one…</option>
-        <option value="Custom / other" data-slot="custom">Something custom</option>
-        <option value="Newsletter sponsor ($19 for 1 issue founding)" data-slot="newsletter">Newsletter — $19 for 1 issue (founding)</option>
-        <option value="Newsletter 4-pack ($59/mo for 4 issues founding)" data-slot="newsletter-monthly">Newsletter 4-pack — $59/mo for 4 issues (~$15 each, save $17)</option>
-        <option value="Featured slot ($29 for 1 month founding)" data-slot="featured">Featured — $29 for 1 month (founding)</option>
-        <option value="Category sponsor ($15 for 1 month founding)" data-slot="category">Category — $15 for 1 month (founding)</option>
-        <option value="Founding bundle ($49 for 1 month, worth $63)" data-slot="bundle">Founding bundle — $49 for 1 month (1 NL issue + Featured + Category, worth $63)</option>
-      </select>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:4px">
-      <label for="ad-message" style="font-size:13px;color:var(--m)">Message <span style="color:#e55">*</span></label>
-      <textarea id="ad-message" name="message" required rows="4" placeholder="Tell us about your skill, plugin or MCP server and what you're interested in…" style="background:var(--s2);color:var(--t);border:1px solid var(--b2);border-radius:9px;padding:9px 12px;font:inherit;font-size:14px;resize:vertical;min-height:90px"></textarea>
-    </div>
-    <button type="submit" class="btn" style="align-self:flex-start;padding:10px 24px;font-weight:600">Send inquiry</button>
   </form>
-  <div id="ad-success" role="status" hidden style="margin-top:14px;padding:14px;border-radius:9px;background:rgba(198,244,50,.08);border:1px solid rgba(198,244,50,.3)">
-    <p style="margin:0;color:var(--a);font-weight:600">✓ Inquiry sent</p>
-    <p class="muted" style="margin:6px 0 0">Thanks! Someone will get back to you by email, usually within a business day.</p>
-  </div>
-  <p id="ad-error" role="alert" hidden style="margin-top:10px;color:#e55;font-size:13px">Something went wrong. Please try again or email us directly at skillmaxx@gilventures.ai.</p>
+  <div id="ad-ok" class="form-status" role="status" tabindex="-1"></div>
+  <p id="ad-error" class="form-err" role="alert" tabindex="-1"></p>
 </div>
 
 <script>
 (function(){
-  var form = document.getElementById('ad-form');
-  var ok = document.getElementById('ad-success');
-  var err = document.getElementById('ad-error');
   var sel=document.getElementById('ad-type');
-  function pick(k){for(var i=0;i<sel.options.length;i++){if(sel.options[i].dataset.slot===k){sel.selectedIndex=i;break}}}
-  document.querySelectorAll('a.book[href="#inquiry-form"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();pick(a.dataset.slot);var f=document.getElementById('inquiry-form');f.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(function(){sel.focus({preventScroll:true})},400);history.replaceState(null,'','#inquiry-form')})});
+  var email=document.getElementById('ad-email');
+  function pick(k){for(var i=0;i<sel.options.length;i++){if(sel.options[i].dataset.slot===k){sel.selectedIndex=i;return true}}return false}
+  document.querySelectorAll('a.book[href="#inquiry-form"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();var picked=pick(a.dataset.slot);document.getElementById('inquiry-form').scrollIntoView({behavior:'smooth',block:'start'});setTimeout(function(){(picked?email:sel).focus({preventScroll:true})},400);history.replaceState(null,'','#inquiry-form')})});
   document.querySelectorAll('.tier').forEach(function(c){c.addEventListener('click',function(e){if(e.target.closest('a'))return;var b=c.querySelector('a.book');if(b)b.click()})});
-  var m=location.search.match(/[?&]slot=([a-z]+)/);if(m)pick(m[1]);
-
-  if (new URLSearchParams(location.search).get('sent') === 'true') { form.hidden = true; ok.hidden = false; history.replaceState(null, '', location.pathname + '#inquiry-form') }
+  var m=location.search.match(/[?&]slot=([a-z0-9-]+)/);if(m)pick(m[1]);
 })();
 </script>
-<script src="/assets/forms.js" defer></script>
+<script src="/assets/forms.js" type="module"></script>
 </div>

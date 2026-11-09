@@ -1,0 +1,11 @@
+name = "skillmaxx-intake"
+main = "worker.mjs"
+compatibility_date = "2026-11-09"
+workers_dev = true
+
+# Create with: npx wrangler kv namespace create INTAKE
+# Then uncomment and paste the id. Until this binding exists the worker
+# refuses submissions (received: false) instead of acknowledging them.
+# [[kv_namespaces]]
+# binding = "INTAKE"
+# id = ""
