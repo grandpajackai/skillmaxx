@@ -24,6 +24,7 @@ jobs:
         env:
           SITE_URL: https://skillmaxx.gilventures.ai
           PATH_PREFIX: /
+          INTAKE_ENDPOINT: ${{ vars.INTAKE_ENDPOINT }}
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -12,10 +12,12 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci --ignore-scripts
+      - run: node --test intake/contract.test.mjs intake/worker.test.mjs
       - run: npx @11ty/eleventy
         env:
           SITE_URL: https://skillmaxx.gilventures.ai
           PATH_PREFIX: /
+          INTAKE_ENDPOINT: ${{ vars.INTAKE_ENDPOINT }}
       - name: Sanity check output
         run: |
           test -f _site/index.html

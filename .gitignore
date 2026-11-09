@@ -4,4 +4,7 @@ review/*/*-full.png
 npm.json
 *.log
 .env*
+.wrangler/
+.dev.vars
+intake/.dev.vars
 testing/logs/
