@@ -41,7 +41,7 @@ One page to catch up. Site: https://skillmaxx.gilventures.ai · Repo: grandpajac
 ## Routines (Grok Bot, times ET)
 | Routine | Schedule | Status (Nov 8, ~2:35 AM ET) |
 |---|---|---|
-| Nightly refresh (fetch, test, report, deploy) | daily 2:00 AM | enabled; Nov 8: ok, 919/1,070, marketplaces unchanged, xcode pending→broken (never passed), no big event |
+| Nightly refresh (Mac runs tests 2 AM; Grok Bot validates Mac outputs, refreshes catalog, QA, publishes) | daily ~4:00 AM ET | enabled; Nov 9: Mac run 727/1,070 rejected (Grok Build marketplace-scan failures + agent versions differ from published series), not published, retest needed |
 | **Brandon's daily SkillMaxx queue** (X replies as post link + copy block, Reddit comments/posts, LinkedIn picks, DMs due that day; direct link or exact search text per item; DECISIONS #57–63, #71) | Mon/Wed/Fri 8:00 AM | enabled; Nov 6 run failed (usage outage) |
 | X radar (log: growth/x-radar/) | daily 10:00 AM | enabled; Nov 7: ok (0 strong replies, no trend post); Nov 6 run failed (usage outage) |
 | Post check (Buffer sent / errors) | daily 10:30 AM | **paused** (last run Nov 4 failed) |
