@@ -25,3 +25,8 @@ Sends Tue 2026-11-10. Issue #2 (Nov 3) is final; anything below that's urgent ca
 - **Reddit API (unverified)**: jordanburke/reddit-mcp-server's README says Reddit stopped accepting new public Data API requests Oct 31, ends RSS Nov 13, and starts removal Jan 12 2027. Verify with Reddit before using.
 - X news trends, headlines only: harness engineering, Anthropic blocking game recreations, invisible watermarks on older Claude models.
 - New to test: Stageshow, deed-page-skill (author OK'd), second-read, TokenEconomizer (in nightly?), claude-workflow-recorder, Weasel icons skill, shadcn 100 charts MCP, Immersive Fusion observability MCP, REA (`npx rea-agents setup`). Gap: skills-CLI (`npx skills add`) installs aren't a run_tests.py test type yet.
+
+## From X radar 2026-11-10
+- **"One install, every agent" is the new launch pitch**: StarSling Skills (`npx skills add starslingdev/skills`, Claude Code/Codex/Cursor, via @DanKornas) and wshobson/agents both lead with cross-agent installs. Good test targets for the nightly.
+- **Viral skill launch**: a "youtube agent skill" with 11 /yt-* commands for Claude Code hit 24.6k views and 750 bookmarks in a day (@TemsYanik). Repo not named yet.
+- **MCP safety, unverified**: ha-mcp (Home Assistant) reportedly exposes 45 destructive tools out of 77 (@naveendas96's test).

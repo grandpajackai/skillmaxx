@@ -1,0 +1,156 @@
+[
+ {
+  "company": "Sourcegraph",
+  "kind": "followup1",
+  "to": "hi@sourcegraph.com",
+  "body_file": "/workspace/tmp/out1110/fu1.txt",
+  "how": "Reply to our original sent email to hi@sourcegraph.com (Sent folder) so subject is 'Re: <original>'"
+ },
+ {
+  "company": "42Crunch",
+  "kind": "followup1",
+  "to": "info@42crunch.com",
+  "body_file": "/workspace/tmp/out1110/fu1.txt",
+  "how": "Reply to our original sent email to info@42crunch.com (Sent folder) so subject is 'Re: <original>'"
+ },
+ {
+  "company": "Pydantic",
+  "kind": "followup1",
+  "to": "hello@pydantic.dev",
+  "body_file": "/workspace/tmp/out1110/fu1.txt",
+  "how": "Reply to our original sent email to hello@pydantic.dev (Sent folder) so subject is 'Re: <original>'"
+ },
+ {
+  "company": "Dash0",
+  "kind": "followup1",
+  "to": "hi@dash0.com",
+  "body_file": "/workspace/tmp/out1110/fu1.txt",
+  "how": "Reply to our original sent email to hi@dash0.com (Sent folder) so subject is 'Re: <original>'"
+ },
+ {
+  "company": "Val Town",
+  "kind": "followup1",
+  "to": "hi@val.town",
+  "body_file": "/workspace/tmp/out1110/fu1.txt",
+  "how": "Reply to our original sent email to hi@val.town (Sent folder) so subject is 'Re: <original>'"
+ },
+ {
+  "company": "CodSpeed",
+  "kind": "followup1",
+  "to": "contact@codspeed.io",
+  "body_file": "/workspace/tmp/out1110/fu1.txt",
+  "how": "Reply to our original sent email to contact@codspeed.io (Sent folder) so subject is 'Re: <original>'"
+ },
+ {
+  "company": "GrowthBook",
+  "kind": "followup1",
+  "to": "hello@growthbook.io",
+  "body_file": "/workspace/tmp/out1110/fu1.txt",
+  "how": "Reply to our original sent email to hello@growthbook.io (Sent folder) so subject is 'Re: <original>'"
+ },
+ {
+  "company": "Mergify",
+  "kind": "followup1",
+  "to": "sales@mergify.com",
+  "body_file": "/workspace/tmp/out1110/fu1.txt",
+  "how": "Reply to our original sent email to sales@mergify.com (Sent folder) so subject is 'Re: <original>'"
+ },
+ {
+  "company": "Desktop Commander",
+  "kind": "followup1",
+  "to": "team@desktopcommander.app",
+  "body_file": "/workspace/tmp/out1110/fu1.txt",
+  "how": "Reply to our original sent email to team@desktopcommander.app (Sent folder) so subject is 'Re: <original>'"
+ },
+ {
+  "company": "Postman",
+  "kind": "followup1",
+  "to": "info@postman.com",
+  "body_file": "/workspace/tmp/out1110/fu1.txt",
+  "how": "Reply to our original sent email to info@postman.com (Sent folder) so subject is 'Re: <original>'"
+ },
+ {
+  "company": "Pixeltable",
+  "kind": "followup1",
+  "to": "contact@pixeltable.com",
+  "body_file": "/workspace/tmp/out1110/fu1.txt",
+  "how": "Reply to our original sent email to contact@pixeltable.com (Sent folder) so subject is 'Re: <original>'"
+ },
+ {
+  "company": "StackHawk",
+  "kind": "followup1",
+  "to": "info@stackhawk.com",
+  "body_file": "/workspace/tmp/out1110/fu1.txt",
+  "how": "Reply to our original sent email to info@stackhawk.com (Sent folder) so subject is 'Re: <original>'"
+ },
+ {
+  "company": "Chroma",
+  "kind": "new",
+  "to": "hello@trychroma.com",
+  "subject": "Package Search MCP and the people picking agent tools",
+  "body_file": "/workspace/tmp/out1110/new-06.txt"
+ },
+ {
+  "company": "Letta",
+  "kind": "new",
+  "to": "contact@letta.com",
+  "subject": "agent memory, from the install-test side",
+  "body_file": "/workspace/tmp/out1110/new-07.txt"
+ },
+ {
+  "company": "Agno",
+  "kind": "new",
+  "to": "hello@agno.com",
+  "subject": "what breaks when agents install MCP servers",
+  "body_file": "/workspace/tmp/out1110/new-08.txt"
+ },
+ {
+  "company": "Kilo Code",
+  "kind": "new",
+  "to": "sales@kilo.ai",
+  "subject": "a 6th agent column on SkillMaxx?",
+  "body_file": "/workspace/tmp/out1110/new-09.txt"
+ },
+ {
+  "company": "Socket",
+  "kind": "new",
+  "to": "sales@socket.dev",
+  "subject": "we npx 45 MCP packages a night",
+  "body_file": "/workspace/tmp/out1110/new-10.txt"
+ },
+ {
+  "company": "Infisical",
+  "kind": "new",
+  "to": "team@infisical.com",
+  "subject": "30 of our MCP checks stopped at 'needs key'",
+  "body_file": "/workspace/tmp/out1110/new-11.txt"
+ },
+ {
+  "company": "Scalekit",
+  "kind": "new",
+  "to": "hi@scalekit.com",
+  "subject": "MCP auth, from 225 nightly installs",
+  "body_file": "/workspace/tmp/out1110/new-12.txt"
+ },
+ {
+  "company": "Knock",
+  "kind": "new",
+  "to": "hello@knock.app",
+  "subject": "Knock's agent toolkit and coding agents",
+  "body_file": "/workspace/tmp/out1110/new-13.txt"
+ },
+ {
+  "company": "Speakeasy",
+  "kind": "new",
+  "to": "sales@speakeasy.com",
+  "subject": "generated MCP servers in our nightly tests",
+  "body_file": "/workspace/tmp/out1110/new-14.txt"
+ },
+ {
+  "company": "Brave Search API",
+  "kind": "new",
+  "to": "api-sales@brave.com",
+  "subject": "search tools for agents, and Brave",
+  "body_file": "/workspace/tmp/out1110/new-15.txt"
+ }
+]
