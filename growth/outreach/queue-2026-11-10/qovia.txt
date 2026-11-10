@@ -1,0 +1,12 @@
+Hi Scott,
+
+Thanks for the clear submission, and sorry for the slow reply. You also caught a real problem: our old form backend kept returning 522, so emailing was exactly the right call. The forms now hand off straight to email instead.
+
+I checked the PyPI package, the docs and the remote MCP endpoint (it answers initialize), and Qovia is now listed as an MCP server: https://skillmaxx.gilventures.ai/skills/qovia/
+
+One heads-up on what our install tests can show: the sandboxes have no API keys, so we check that each agent can register and connect to the server. Anything that needs a Qovia key will show as needs-key, not broken. If you have a preferred install line per agent, send it over and we'll use it.
+
+Thanks for building this and for writing in.
+
+Brandon
+SkillMaxx · https://skillmaxx.gilventures.ai
