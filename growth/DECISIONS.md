@@ -129,3 +129,7 @@ No new owner decisions came in on Oct 31. Operating rules adopted after that day
 75. **Bluesky display name is "SkillMaxx AI"** to match X (confirms #9).
 76. **Brandon's goal: no pending setup on his side, focus on content.** Grok Bot alerts him whenever sponsor email outreach or another initiative needs his reply.
 77. **Nightly refresh moves to ~4 AM ET and consumes the Mac pipeline's outputs** (Brandon, 2026-11-08): no duplicate box installs/report/build; validate freshness, provenance, source SHA, catalog identity and versions before publishing; catalog refresh, QA, publishing and health audit stay with Grok Bot; forms audit checks mailto/GitHub issue, not FormSubmit.
+
+## 2026-11-10 — Brandon's calls (recorded by the Nov 11 nightly)
+78. **Sponsor emails go out from Zoho webmail in an attended session** when box SMTP is blocked: Brandon approved sending all 23 prepared Nov 10 emails that way (unattended runs still send nothing).
+79. **Check every sponsor follow-up before sending**: confirm no reply already arrived (including Spam), the same nudge wasn't already sent, and the email is at the right step of the sequence; skip and report anyone who replied, already got a nudge, or was emailed too recently.
