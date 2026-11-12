@@ -12,6 +12,10 @@ bash -n testing/lock.sh || fail syntax_lock
 grep -q 'skillmaxx_lock' testing/nightly.sh || fail nightly_lock
 grep -q 'flock' testing/nightly.sh && fail nightly_still_uses_flock
 grep -q 'SKILLMAXX_AGENTS' testing/nightly.sh || fail agents_env
+grep -q 'claude-plugins-official' testing/nightly.sh || fail claude_mirror_refresh
+grep -q 'do not rename marketplace.json' testing/nightly.sh || fail claude_mirror_not_renamed
+grep -q 'refresh_templates.sh' testing/nightly.sh || fail template_refresh
+bash -n testing/refresh_templates.sh || fail syntax_refresh
 grep -q 'SKILLMAXX_AGENTS:-/workspace/agents' testing/sbx.sh || fail sbx_default
 
 # Install and uninstall must refuse on this non-Mac and must not write a plist.

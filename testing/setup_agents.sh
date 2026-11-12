@@ -13,7 +13,7 @@ else
 fi
 [ -d codex-mirror ] || git clone -q --depth 1 https://github.com/openai/plugins codex-mirror
 python3 -c "import json;p='codex-mirror/.agents/plugins/marketplace.json';d=json.load(open(p));d['name']='openai-plugins-mirror';json.dump(d,open(p,'w'))"
-S=$(dirname "$0")/sbx.sh; T=$AG/templates; rm -rf $T; mkdir -p $T
-SBX_KEEP=$T/claude $S "" 'claude plugin marketplace add anthropics/claude-plugins-official'
-SBX_KEEP=$T/grok $S "" 'claude plugin marketplace add anthropics/claude-plugins-official; grok plugin marketplace add xai-org/plugin-marketplace'
-SBX_KEEP=$T/codex $S "" "codex plugin marketplace add $AG/codex-mirror"
+# Full catalog checkout. Keep this directory name: it is Grok's source name and the install pin.
+# Keep marketplace.json's name field: Claude installs still pin @claude-plugins-official.
+[ -d claude-plugins-official ] || git clone -q --depth 1 https://github.com/anthropics/claude-plugins-official claude-plugins-official
+bash "$(dirname "$0")/refresh_templates.sh"

@@ -21,7 +21,7 @@ fi
 run_bwrap() {
   bwrap --ro-bind / / --tmpfs /home --tmpfs /root --tmpfs /workspace --tmpfs /cursor --tmpfs /tmp \
     --ro-bind "$AG/node_modules" "$AG/node_modules" --ro-bind "$AG/cursorhome/.local" "$AG/cursorhome/.local" \
-    --ro-bind-try "$AG/codex-mirror" "$AG/codex-mirror" --ro-bind-try "$AG/node22" "$AG/node22" \
+    --ro-bind-try "$AG/codex-mirror" "$AG/codex-mirror" --ro-bind-try "$AG/claude-plugins-official" "$AG/claude-plugins-official" --ro-bind-try "$AG/node22" "$AG/node22" \
     --ro-bind "$(dirname "$(readlink -f "$0")")" /tmp/smx-testing \
     --bind "$H" /home/sbx --setenv HOME /home/sbx \
     --setenv PATH "$AG/node22/bin:$AG/node_modules/.bin:$AG/cursorhome/.local/bin:/usr/local/bin:/usr/bin:/bin" \
@@ -39,6 +39,7 @@ run_docker() {
     -e PATH=/opt/skillmaxx/node_modules/.bin:/opt/cursorhome/.local/bin:/usr/local/bin:/usr/bin:/bin
     -u "$(id -u):$(id -g)" -w /home/sbx)
   [ -d "$AG/codex-mirror" ] && args+=(-v "$AG/codex-mirror:$AG/codex-mirror:ro")
+  [ -d "$AG/claude-plugins-official" ] && args+=(-v "$AG/claude-plugins-official:$AG/claude-plugins-official:ro")
   # /tmp is a tmpfs, so the probe path is a symlink made after that mount, not a bind under it.
   args+=("$IMAGE" bash -c "ln -sfn /smx-testing /tmp/smx-testing && $*")
   "${args[@]}"
