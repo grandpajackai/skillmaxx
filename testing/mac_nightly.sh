@@ -48,7 +48,7 @@ say_dependencies() {
   cat <<'EOF'
 Mechanical steps inside testing/nightly.sh (same behavior as the Grok routine's script):
   1. git fetch, checkout master, fast-forward pull. Needs the git credentials this machine already has. This script does not create or change credentials.
-  2. Update the local Codex marketplace mirror when SKILLMAXX_AGENTS/codex-mirror exists, then rename it to openai-plugins-mirror.
+  2. Update local marketplace mirrors when they exist: Codex (SKILLMAXX_AGENTS/codex-mirror, then rename it to openai-plugins-mirror) and the Claude official catalog (SKILLMAXX_AGENTS/claude-plugins-official, cloned if missing, pulled only, not renamed). Then rebuild the Claude, Grok, and Codex templates so Grok's Claude source is that directory. A template left over from `claude plugin marketplace add anthropics/claude-plugins-official` keeps the GitHub URL, and Grok re-scans GitHub on every install.
   3. Sandboxed install tests (testing/run_tests.py via testing/sbx.sh). Every case still runs. On Linux, bubblewrap. On a Mac, the same cases run inside local image skillmaxx-sandbox:local (Docker, not privileged, not the Mac binaries). If neither sandbox is ready, sbx.sh exits and does not run the case on the host. This script does not start Docker, pull images, or install CLIs.
   4. fetch_meta.py. Public HTTP only (no token). Requires Pillow (PIL) and the codex mirror for Codex paths.
   5. testing/daily_report.py. Writes report JSON and, only for a big event, a local draft file. It does not send or queue posts.
@@ -111,7 +111,7 @@ Rollback on the Mac:
   Uninstall removes the launchd job only. It does not re-enable or disable the Grok routine. Turn that routine back on yourself if you still want it.
 
 Non-secret config: testing/local.env (see testing/local.env.example).
-  SKILLMAXX_AGENTS   templates and codex mirror, under your home on a Mac. Default /workspace/agents.
+  SKILLMAXX_AGENTS   templates, codex mirror, and claude-plugins-official mirror, under your home on a Mac. Default /workspace/agents.
   SKILLMAXX_TRIAL=1   mac_nightly.sh run sets this unless both production flags are yes.
   SKILLMAXX_PRODUCTION=yes and SKILLMAXX_ALLOW_PUSH=yes   together: checkout master and push. Do not set these for the trial.
 
@@ -149,6 +149,11 @@ cmd_preflight() {
     check 0 "codex mirror" "$SKILLMAXX_AGENTS/codex-mirror"
   else
     check 0 "codex mirror" "missing; nightly.sh already continues without it and says so"
+  fi
+  if [ -d "$SKILLMAXX_AGENTS/claude-plugins-official" ]; then
+    check 0 "claude mirror" "$SKILLMAXX_AGENTS/claude-plugins-official"
+  else
+    check 0 "claude mirror" "missing; nightly.sh already continues without it and says so. Grok Claude-catalog installs need this local path."
   fi
   img=${SKILLMAXX_SANDBOX_IMAGE:-skillmaxx-sandbox:local}
   if command -v bwrap >/dev/null 2>&1; then

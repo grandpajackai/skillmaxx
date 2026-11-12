@@ -7,6 +7,12 @@ fail() { echo "FAIL: $*" >&2; exit 1; }
 bash -n testing/sbx.sh || fail syntax
 grep -q '@earendil-works/pi-coding-agent' testing/sandbox/Dockerfile || fail dockerfile_pi
 grep -q '@earendil-works/pi-coding-agent' testing/setup_agents.sh || fail setup_pi
+grep -q 'refresh_templates.sh' testing/setup_agents.sh || fail setup_calls_refresh
+grep -q 'claude-plugins-official' testing/refresh_templates.sh || fail refresh_claude_mirror
+grep -q 'grok plugin marketplace add xai-org/plugin-marketplace' testing/refresh_templates.sh || fail setup_grok_native
+grep -q 'grok plugin marketplace add $AG/claude-plugins-official' testing/refresh_templates.sh || fail setup_grok_local_claude
+# Grok must not import Claude's GitHub marketplace entry. That entry is why list shows the GitHub URL.
+grep -q 'claude plugin marketplace add anthropics/claude-plugins-official' testing/setup_agents.sh testing/refresh_templates.sh && fail setup_grok_remote_claude
 grep -q -- '--privileged' testing/sbx.sh && fail sbx_privileged_flag
 
 tmp=$(mktemp -d)
@@ -40,11 +46,13 @@ export SKILLMAXX_AGENTS="$tmp/agents"
 mkdir -p "$SKILLMAXX_AGENTS"
 PATH="$tmp/both:/usr/bin:/bin" bash testing/sbx.sh "" true || fail bwrap_run
 grep -q -- '--ro-bind' "$SBX_RECORD" || fail bwrap_ro
+grep -q 'claude-plugins-official' "$SBX_RECORD" || fail bwrap_claude_mirror
 grep -q -- '--unshare-pid' "$SBX_RECORD" || fail bwrap_pid
 grep -q -- '--unsetenv' "$SBX_RECORD" || fail bwrap_unset
 grep -q supersecret "$SBX_RECORD" && fail bwrap_leaked_secret
 grep -q 'docker should not be called' "$SBX_RECORD" && fail docker_called_despite_bwrap
 
+mkdir -p "$SKILLMAXX_AGENTS/claude-plugins-official"
 # Docker path: strict flags, secret not in argv, payload not executed on the host.
 unset -f true 2>/dev/null || true
 marker="$tmp/host-ran"
@@ -64,6 +72,7 @@ grep -q supersecret "$SBX_RECORD" && fail docker_leaked_secret
 grep -q 'skillmaxx-sandbox:local' "$SBX_RECORD" || fail docker_image
 grep -q '/smx-testing:ro' "$SBX_RECORD" || fail docker_probe_mount
 grep -q 'ln -sfn /smx-testing /tmp/smx-testing' "$SBX_RECORD" || fail docker_probe_link
+grep -q "claude-plugins-official:$SKILLMAXX_AGENTS/claude-plugins-official:ro" "$SBX_RECORD" || fail docker_claude_mirror
 
 # Daemon down: refuse, do not touch the host.
 export FAKE_DOCKER=down
