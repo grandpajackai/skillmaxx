@@ -11,8 +11,33 @@ grep -q 'refresh_templates.sh' testing/setup_agents.sh || fail setup_calls_refre
 grep -q 'claude-plugins-official' testing/refresh_templates.sh || fail refresh_claude_mirror
 grep -q 'grok plugin marketplace add xai-org/plugin-marketplace' testing/refresh_templates.sh || fail setup_grok_native
 grep -q 'grok plugin marketplace add $AG/claude-plugins-official' testing/refresh_templates.sh || fail setup_grok_local_claude
-# Grok must not import Claude's GitHub marketplace entry. That entry is why list shows the GitHub URL.
-grep -q 'claude plugin marketplace add anthropics/claude-plugins-official' testing/setup_agents.sh testing/refresh_templates.sh && fail setup_grok_remote_claude
+grep -q 'codex plugin marketplace add $AG/codex-mirror' testing/refresh_templates.sh || fail setup_codex_local
+# Claude reserves claude-plugins-official for anthropics GitHub sources, so a local-path add
+# fails. The Claude template uses the official GitHub source. A Grok home must not be created
+# by that add: Grok imports known_marketplaces.json and then re-scans GitHub on every install.
+remote='claude plugin marketplace add anthropics/claude-plugins-official'
+code_lines() { grep -vE '^[[:space:]]*#' "$1" || true; }
+code_lines testing/setup_agents.sh | grep -q "$remote" && fail setup_grok_remote_claude
+claude_lines=$(code_lines testing/refresh_templates.sh | grep 'SBX_KEEP=$STAGE/claude ' || true)
+[ -n "$claude_lines" ] || fail claude_template_missing
+printf '%s\n' "$claude_lines" | grep -q "$remote" || fail claude_official_marketplace
+printf '%s\n' "$claude_lines" | grep -q 'claude plugin marketplace add $AG/claude-plugins-official' && fail claude_reserved_local_name
+grok_lines=$(code_lines testing/refresh_templates.sh | grep 'SBX_KEEP=$STAGE/grok ' || true)
+[ -n "$grok_lines" ] || fail setup_grok_local_claude
+printf '%s\n' "$grok_lines" | grep -q 'grok plugin marketplace add $AG/claude-plugins-official' || fail setup_grok_local_claude
+printf '%s\n' "$grok_lines" | grep -q 'SBX_KEEP=$STAGE/grok "$S" "" ' || fail setup_grok_fresh_home
+printf '%s\n' "$grok_lines" | grep -q 'claude plugin marketplace add' && fail setup_grok_remote_claude
+printf '%s\n' "$grok_lines" | grep -q 'anthropics/claude-plugins-official' && fail setup_grok_remote_claude
+while IFS= read -r line; do
+  case "$line" in
+    *"$remote"*)
+      case "$line" in
+        *'SBX_KEEP=$STAGE/claude '*) ;;
+        *) fail setup_grok_remote_claude ;;
+      esac
+      ;;
+  esac
+done < <(code_lines testing/refresh_templates.sh)
 grep -q -- '--privileged' testing/sbx.sh && fail sbx_privileged_flag
 
 tmp=$(mktemp -d)

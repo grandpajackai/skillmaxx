@@ -49,7 +49,7 @@ if [ -d "$M" ]; then
   git -C "$M" checkout -q -- .agents/plugins/marketplace.json; git -C "$M" pull -q --ff-only || echo "warn: mirror pull failed, using cached copy"
   SKILLMAXX_MIRROR="$M" python3 -c 'import json,os;p=os.environ["SKILLMAXX_MIRROR"]+"/.agents/plugins/marketplace.json";d=json.load(open(p));d["name"]="openai-plugins-mirror";json.dump(d,open(p,"w"))'
 fi
-step "claude mirror"   # local path only; do not rename marketplace.json (Claude still pins @claude-plugins-official)
+step "claude mirror"   # local checkout for the Grok template; do not rename marketplace.json (Claude still pins @claude-plugins-official)
 mkdir -p "$SKILLMAXX_AGENTS"
 C="$SKILLMAXX_AGENTS/claude-plugins-official"
 if [ ! -d "$C/.git" ]; then
@@ -57,7 +57,7 @@ if [ ! -d "$C/.git" ]; then
 elif ! git -C "$C" pull -q --ff-only; then
   echo "warn: claude marketplace mirror pull failed, using cached copy"
 fi
-step "marketplace templates"   # re-register the local path so an old template cannot keep the GitHub source
+step "marketplace templates"   # Claude: official GitHub source. Grok: local directory in its own home, not Claude's GitHub entry.
 bash testing/refresh_templates.sh || die "marketplace templates"
 step "install tests"; python3 testing/run_tests.py --jobs 8 --retry 1 || die "run_tests.py"
 step "metadata"; for i in 1 2; do python3 fetch_meta.py && break; [ $i = 2 ] && die "fetch_meta.py"; echo "retrying fetch_meta in 60s"; sleep 60; done

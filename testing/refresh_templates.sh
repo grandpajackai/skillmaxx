@@ -1,13 +1,22 @@
 #!/bin/bash
-# Rebuild the Claude, Grok, and Codex sandbox templates from the local marketplace checkouts.
+# Rebuild the Claude, Grok, and Codex sandbox templates.
 # Does not install CLIs, publish, or set production/push flags.
 #
-# Grok 1.0.77 reads Claude's known_marketplaces.json. `claude plugin marketplace add
-# anthropics/claude-plugins-official` stores a GitHub source there and keeps a checkout beside it.
-# Grok imports the GitHub URL and ignores that checkout, so `grok plugin marketplace list` shows
-# the URL and every install syncs GitHub again. Registering the directory with
-# `grok plugin marketplace add <path>` stores a filesystem path. The directory basename
-# claude-plugins-official is the source name, which is the pin @claude-plugins-official.
+# Claude reserves the marketplace name claude-plugins-official for GitHub sources from the
+# anthropics organization. `claude plugin marketplace add <local directory>` fails:
+# "The name 'claude-plugins-official' is reserved for official Anthropic marketplaces and
+# can only be used with GitHub sources from the 'anthropics' organization."
+# The Claude template therefore uses the official source:
+#   claude plugin marketplace add anthropics/claude-plugins-official
+#
+# Grok 1.0.77 reads Claude's known_marketplaces.json when it is in the same home. That GitHub
+# source makes `grok plugin marketplace list` show the URL, and every install syncs GitHub again.
+# The Grok template is a separate fresh home. It does not run Claude's marketplace add and it is
+# not seeded from the Claude template. It registers xAI with
+# `grok plugin marketplace add xai-org/plugin-marketplace` and the local checkout with
+# `grok plugin marketplace add <path>`. The directory basename claude-plugins-official is the
+# source name, which is the pin @claude-plugins-official.
+# Codex stays on the local codex-mirror.
 set -euo pipefail
 AG=${SKILLMAXX_AGENTS:-/workspace/agents}
 HERE=$(cd "$(dirname "$0")" && pwd)
@@ -24,8 +33,8 @@ mkdir -p "$AG"
 STAGE=$(mktemp -d "$AG/templates-stage.XXXXXX")
 cleanup() { [ -d "$STAGE" ] && rm -rf "$STAGE"; }
 trap cleanup EXIT
-# New homes, so the Grok home has no leftover GitHub marketplace entry.
-SBX_KEEP=$STAGE/claude "$S" "" "claude plugin marketplace add $AG/claude-plugins-official"
+# Separate fresh homes. The Grok home must not contain Claude's GitHub marketplace entry.
+SBX_KEEP=$STAGE/claude "$S" "" "claude plugin marketplace add anthropics/claude-plugins-official"
 SBX_KEEP=$STAGE/grok "$S" "" "grok plugin marketplace add xai-org/plugin-marketplace; grok plugin marketplace add $AG/claude-plugins-official"
 SBX_KEEP=$STAGE/codex "$S" "" "codex plugin marketplace add $AG/codex-mirror"
 T=$AG/templates
