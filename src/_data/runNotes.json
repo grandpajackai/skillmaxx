@@ -2,7 +2,7 @@
  "baselines": [
   {
    "start": "2026-11-12",
-   "why": "Nightly tests moved to a new machine (Brandon's Mac, Docker sandbox) running newer releases of all 5 agents.",
+   "why": "Nightly tests moved to a new test machine (a Mac, running each install in a Docker sandbox) with newer releases of all 5 agents.",
    "from": {"claude_code": "2.1.197", "codex": "0.163.0", "grok_build": "1.0.62", "cursor": "2026.10.16", "pi": "1.4.0"},
    "to": {"claude_code": "2.1.319", "codex": "0.167.0", "grok_build": "1.0.77", "cursor": "2026.11.05", "pi": "1.5.0"}
   }
