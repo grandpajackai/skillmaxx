@@ -3,6 +3,7 @@
 set -uo pipefail
 ROOT=$(cd "$(dirname "$0")/.." && pwd)
 cd "$ROOT"
+unset SKILLMAXX_NPM_CACHE 2>/dev/null || true
 fail() { echo "FAIL: $*" >&2; exit 1; }
 bash -n testing/sbx.sh || fail syntax
 grep -q '@earendil-works/pi-coding-agent' testing/sandbox/Dockerfile || fail dockerfile_pi
@@ -110,4 +111,24 @@ grep -q 'unsandboxed' /tmp/sbx-down.txt || fail down_message
 export FAKE_DOCKER=noimage
 if PATH="$tmp/dockeronly:/usr/bin:/bin" bash testing/sbx.sh "" "touch $marker" >/tmp/sbx-noimage.txt 2>&1; then fail noimage_should_fail; fi
 [ ! -e "$marker" ] || fail noimage_ran_on_host
+
+# npm cache bind is off by default, on when SKILLMAXX_NPM_CACHE is a directory.
+export SBX_RECORD="$tmp/bwrap-nocache.txt"
+: > "$SBX_RECORD"
+PATH="$tmp/both:/usr/bin:/bin" bash testing/sbx.sh "" true || fail bwrap_nocache
+grep -q '/tmp/skillmaxx-npm-cache' "$SBX_RECORD" && fail bwrap_npm_default
+mkdir -p "$tmp/npmcache"
+export SKILLMAXX_NPM_CACHE="$tmp/npmcache"
+export SBX_RECORD="$tmp/bwrap-cache.txt"
+: > "$SBX_RECORD"
+PATH="$tmp/both:/usr/bin:/bin" bash testing/sbx.sh "" true || fail bwrap_cache
+grep -q "$SKILLMAXX_NPM_CACHE" "$SBX_RECORD" || fail bwrap_npm_bind
+grep -q '/tmp/skillmaxx-npm-cache' "$SBX_RECORD" || fail bwrap_npm_target
+export FAKE_DOCKER=ok
+export SBX_RECORD="$tmp/docker-cache.txt"
+: > "$SBX_RECORD"
+PATH="$tmp/dockeronly:/usr/bin:/bin" bash testing/sbx.sh "" true || fail docker_cache
+grep -q "$SKILLMAXX_NPM_CACHE:/tmp/skillmaxx-npm-cache" "$SBX_RECORD" || fail docker_npm_bind
+unset SKILLMAXX_NPM_CACHE
+
 echo "ok sbx fixture checks (no real container)"

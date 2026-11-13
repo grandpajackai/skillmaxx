@@ -17,7 +17,7 @@
     "cursor": "2026.11.05",
     "pi": "1.5.0"
    },
-   "caveat": "the new sandbox image was also missing uvx, the tool that starts Python MCP servers. So MCP time, MCP fetch, MCP git and claimidx (20 installs across all 5 agents) failed on Nov 12 and 13 for our reason, not theirs. All 20 passed on Nov 8. Treat those 4 as untested until the next run on the fixed image."
+   "caveat": "the new sandbox image was also missing uvx, the tool that starts Python MCP servers. So MCP time, MCP fetch, MCP git and claimidx (20 installs across all 5 agents) failed on Nov 12 and 13 for our reason, not theirs. All 20 passed on Nov 8. Treat those 4 as untested until the next run on the fixed image. The same Nov 12\u201313 runs also charged a first-time npm download against each agent's MCP connect timeout (Claude Code 30s, Cursor 60s), so several working npx servers failed for our reason. The harness now pre-fetches those packages into a shared npm cache before the health check; connect timeouts themselves are unchanged and still each agent's default."
   }
  ],
  "no_valid_run": [
