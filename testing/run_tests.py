@@ -8,23 +8,59 @@ Usage: run_tests.py [--agents claude_code,grok_build,...] [--limit N] [--jobs 6]
 import json,shutil,re,subprocess,sys,os,datetime,argparse,concurrent.futures as cf,shlex
 HERE=os.path.dirname(os.path.abspath(__file__));ROOT=os.path.dirname(HERE);T=os.path.join(os.environ.get("SKILLMAXX_AGENTS","/workspace/agents"),"templates")
 SBX=os.path.join(HERE,"sbx.sh");ANSI=re.compile(r"\x1b\[[0-9;?]*[A-Za-z]")
-ap=argparse.ArgumentParser();ap.add_argument("--agents",default="claude_code,codex,grok_build,cursor,pi");ap.add_argument("--limit",type=int,default=0);ap.add_argument("--jobs",type=int,default=6);ap.add_argument("--only",default="");ap.add_argument("--timeout",type=int,default=150);ap.add_argument("--retry",type=int,default=0)
-a=ap.parse_args();AG=a.agents.split(",")
-items=json.load(open(os.path.join(ROOT,"data/skills.json")))["items"]
-if a.only: items=[i for i in items if i["slug"] in a.only.split(",")]
-VERS={}
-def ver(cmd):
-  try: return ANSI.sub("",subprocess.run([SBX,"",cmd+" 2>&1"],capture_output=True,text=True,timeout=30).stdout).strip().splitlines()[-1]
-  except Exception: return "?"
-def mcp_cmd(it):
-  c=it["install"].get("claude_code") or "";return c.split(" -- ",1)[1] if " -- " in c else None
-def mcp_name(it): return re.sub(r"[^a-z0-9]","",it["slug"].lower())[-20:] or "srv"
 # Qualifiers confirmed on Grok 1.0.77. "xAI Official" also works for the xAI git source;
 # the owner/repo form needs no shell quotes. The Claude source name is claude-plugins-official
 # (a local directory of that basename). @plugin-marketplace is not a registered name.
 # Prefer the xAI source when a skill is listed in both.
 GROK_NATIVE_QUAL="xai-org/plugin-marketplace"
 GROK_CLAUDE_QUAL="claude-plugins-official"
+def mcp_cmd(it):
+  c=it["install"].get("claude_code") or "";return c.split(" -- ",1)[1] if " -- " in c else None
+def mcp_name(it): return re.sub(r"[^a-z0-9]","",it["slug"].lower())[-20:] or "srv"
+def npx_package(cmd):
+  """Package name from an `npx -y <pkg>` (or `npx --package <pkg>`) MCP start command."""
+  if not cmd: return None
+  try: parts=shlex.split(cmd)
+  except ValueError: return None
+  if not parts or parts[0]!="npx": return None
+  i=1
+  while i<len(parts):
+    a=parts[i]
+    if a in ("-y","--yes","--no-yes","-q","--quiet","--prefer-offline","--offline","--no-install","--ignore-existing"):
+      i+=1; continue
+    if a in ("-p","--package") and i+1<len(parts): return parts[i+1]
+    if a.startswith("--package="): return a.split("=",1)[1]
+    if a.startswith("-") and i+1<len(parts) and not parts[i+1].startswith("-"):
+      i+=2; continue
+    if a.startswith("-"):
+      i+=1; continue
+    return a
+  return None
+def npm_cache_dir():
+  env=os.environ.get("SKILLMAXX_NPM_CACHE")
+  if env: return env
+  if sys.platform=="darwin": return os.path.expanduser("~/Library/Caches/skillmaxx-npm")
+  return os.path.join(os.environ.get("XDG_CACHE_HOME",os.path.expanduser("~/.cache")),"skillmaxx-npm")
+def prewarm_npm(pkgs,jobs=3,timeout=400):
+  """Fetch npx packages into a shared cache once, before any agent health-check.
+  Each sandbox home is still empty of accounts and config. The agent's own connect
+  timeout then measures server start, not a first-time npm download. Same cache is
+  used for all 5 agents. Timeouts are unchanged."""
+  pkgs=sorted({p for p in pkgs if p})
+  if not pkgs or os.environ.get("SKILLMAXX_SKIP_PREWARM")=="1": return
+  cache=npm_cache_dir(); os.makedirs(cache,exist_ok=True); os.environ["SKILLMAXX_NPM_CACHE"]=cache
+  print(f"pre-warming {len(pkgs)} npm packages into {cache}",file=sys.stderr,flush=True)
+  def one(pkg):
+    js="console.log('WARM_OK')"; cmd=f"npx -y --package={shlex.quote(pkg)} -- node -e {shlex.quote(js)}"
+    try:
+      p=subprocess.run([SBX,"",cmd],capture_output=True,text=True,timeout=timeout)
+      ok="WARM_OK" in (p.stdout+p.stderr)
+    except subprocess.TimeoutExpired:
+      ok=False
+    print(("ok" if ok else "fail"),pkg,file=sys.stderr,flush=True)
+    return ok
+  with cf.ThreadPoolExecutor(min(jobs,len(pkgs))) as ex:
+    list(ex.map(one,pkgs))
 def grok_plugin_install(slug,listings):
   L=" ".join(listings or [])
   if "plugin-marketplace" in L: qual=GROK_NATIVE_QUAL
@@ -62,6 +98,9 @@ def grok_ok(o):
   pre,post=o.split('---LIST')[0],o.split('---LIST')[-1]
   m=re.search(r"Installed \d+ plugin\(s\) from [^:]+: ([^\n]+)",pre)
   return bool(m) and all(re.search(rf":\s+{re.escape(n.strip())}\s+\[",post) for n in m[1].split(","))
+def ver(cmd):
+  try: return ANSI.sub("",subprocess.run([SBX,"",cmd+" 2>&1"],capture_output=True,text=True,timeout=30).stdout).strip().splitlines()[-1]
+  except Exception: return "?"
 def run(c):
   r=run1(c);n=0
   while r["status"]=="fail" and n<a.retry:  # retry a failed install once (or --retry times) in a fresh sandbox
@@ -80,7 +119,12 @@ def run1(c):
     lines=pre+["$ verify:"]+(hit or post[-3:])
   return {"slug":it["slug"],"agent":ag,"status":"pass" if ok else "fail","log":"\n".join(lines[-9:])[-700:]}
 if __name__=="__main__":
+  ap=argparse.ArgumentParser();ap.add_argument("--agents",default="claude_code,codex,grok_build,cursor,pi");ap.add_argument("--limit",type=int,default=0);ap.add_argument("--jobs",type=int,default=6);ap.add_argument("--only",default="");ap.add_argument("--timeout",type=int,default=150);ap.add_argument("--retry",type=int,default=0)
+  a=ap.parse_args();AG=a.agents.split(",")
+  items=json.load(open(os.path.join(ROOT,"data/skills.json")))["items"]
+  if a.only: items=[i for i in items if i["slug"] in a.only.split(",")]
   today=datetime.datetime.now().astimezone().isoformat(timespec="minutes")
+  prewarm_npm({npx_package(mcp_cmd(it)) for it in items})
   cs=cases();print(f"{len(cs)} cases",file=sys.stderr);res=[]
   with cf.ThreadPoolExecutor(a.jobs) as ex:
     for i,r in enumerate(ex.map(run,cs)):
