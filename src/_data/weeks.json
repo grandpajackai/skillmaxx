@@ -1,5 +1,133 @@
 [
  {
+  "key": "2026-46",
+  "start": "2026-11-09",
+  "end": "2026-11-15",
+  "first": "2026-11-12",
+  "last": "2026-11-13",
+  "runs": 2,
+  "trend": [
+   {
+    "date": "2026-11-12",
+    "pass": 866,
+    "tested": 1040,
+    "total": 1070,
+    "needs_key": 30,
+    "rate": 83.3
+   },
+   {
+    "date": "2026-11-13",
+    "pass": 863,
+    "tested": 1045,
+    "total": 1070,
+    "needs_key": 25,
+    "rate": 82.6
+   }
+  ],
+  "ranking": [
+   {
+    "agent": "claude_code",
+    "name": "Claude Code",
+    "pass": 665,
+    "tested": 731,
+    "rate": 91.0,
+    "flaky": 5,
+    "needs_key": 11
+   },
+   {
+    "agent": "grok_build",
+    "name": "Grok Build",
+    "pass": 692,
+    "tested": 761,
+    "rate": 90.9,
+    "flaky": 5,
+    "needs_key": 11
+   },
+   {
+    "agent": "codex",
+    "name": "Codex",
+    "pass": 172,
+    "tested": 227,
+    "rate": 75.8,
+    "flaky": 1,
+    "needs_key": 11
+   },
+   {
+    "agent": "pi",
+    "name": "Pi",
+    "pass": 154,
+    "tested": 269,
+    "rate": 57.2,
+    "flaky": 1,
+    "needs_key": 11
+   },
+   {
+    "agent": "cursor",
+    "name": "Cursor",
+    "pass": 46,
+    "tested": 97,
+    "rate": 47.4,
+    "flaky": 0,
+    "needs_key": 11
+   }
+  ],
+  "fixed": [],
+  "broke": [],
+  "flaky": [
+   {
+    "slug": "rigour-labs-mcp",
+    "name": "@rigour-labs/mcp",
+    "n": 2
+   },
+   {
+    "slug": "mozilla-firefox-devtools-mcp-moz",
+    "name": "@mozilla/firefox-devtools-mcp-moz",
+    "n": 2
+   },
+   {
+    "slug": "4sh-ui-kit",
+    "name": "@4sh/ui-kit",
+    "n": 1
+   },
+   {
+    "slug": "cyanheads-pubmed-mcp-server",
+    "name": "@cyanheads/pubmed-mcp-server",
+    "n": 1
+   },
+   {
+    "slug": "mozilla-firefox-devtools-mcp",
+    "name": "@mozilla/firefox-devtools-mcp",
+    "n": 1
+   }
+  ],
+  "fixed_n": 0,
+  "broke_n": 0,
+  "flaky_n": 10,
+  "needs_key": 25,
+  "standout": {
+   "slug": "mcp-sequential-thinking",
+   "name": "MCP sequential-thinking (reference)",
+   "desc": "Dynamic, reflective problem-solving through thought sequences",
+   "agents": [
+    "claude_code",
+    "codex",
+    "grok_build",
+    "cursor",
+    "pi"
+   ],
+   "why": null,
+   "stars": 91859
+  },
+  "version_changes": [],
+  "svg": "<svg viewBox=\"0 0 560 180\" width=\"100%\" role=\"img\" aria-labelledby=\"ct\" class=\"chart\" xmlns=\"http://www.w3.org/2000/svg\"><title id=\"ct\">Install pass rate by night: 2026-11-12 83.3%, 2026-11-13 82.6%</title><line x1=\"34\" y1=\"146\" x2=\"526\" y2=\"146\" stroke=\"currentColor\" stroke-opacity=\".25\"/><text x=\"4\" y=\"38\" font-size=\"11\" fill=\"currentColor\">85%</text><text x=\"4\" y=\"150\" font-size=\"11\" fill=\"currentColor\">78%</text><path d=\"M34.0,63.1 L526.0,73.3\" fill=\"none\" stroke=\"#22c55e\" stroke-width=\"3\" stroke-linejoin=\"round\"/><circle cx=\"34.0\" cy=\"63.1\" r=\"4\" fill=\"#22c55e\"/><text x=\"34.0\" y=\"54.1\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">83.3%</text><text x=\"34.0\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-12</text><circle cx=\"526.0\" cy=\"73.3\" r=\"4\" fill=\"#22c55e\"/><text x=\"526.0\" y=\"64.3\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">82.6%</text><text x=\"526.0\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-13</text></svg>",
+  "baseline_start": "2026-11-12",
+  "no_valid_run": [
+   "2026-11-09",
+   "2026-11-10",
+   "2026-11-11"
+  ]
+ },
+ {
   "key": "2026-45",
   "start": "2026-11-02",
   "end": "2026-11-08",
