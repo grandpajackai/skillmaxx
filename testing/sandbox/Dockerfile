@@ -8,6 +8,8 @@ FROM node:22-bookworm
 RUN apt-get update \
  && apt-get install -y --no-install-recommends git python3 ca-certificates curl bash \
  && rm -rf /var/lib/apt/lists/*
+# uv/uvx: Python MCP servers (mcp-time, mcp-fetch, mcp-git, claimidx) start with uvx. The box sandbox has it.
+RUN curl -LsSf https://astral.sh/uv/0.13.7/install.sh | env UV_INSTALL_DIR=/usr/local/bin UV_NO_MODIFY_PATH=1 sh
 WORKDIR /opt/skillmaxx
 RUN npm init -y \
  && npm i @anthropic-ai/claude-code @openai/codex @xai-official/grok @earendil-works/pi-coding-agent \
