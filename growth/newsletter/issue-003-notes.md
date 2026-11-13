@@ -30,3 +30,13 @@ Sends Tue 2026-11-10. Issue #2 (Nov 3) is final; anything below that's urgent ca
 - **"One install, every agent" is the new launch pitch**: StarSling Skills (`npx skills add starslingdev/skills`, Claude Code/Codex/Cursor, via @DanKornas) and wshobson/agents both lead with cross-agent installs. Good test targets for the nightly.
 - **Viral skill launch**: a "youtube agent skill" with 11 /yt-* commands for Claude Code hit 24.6k views and 750 bookmarks in a day (@TemsYanik). Repo not named yet.
 - **MCP safety, unverified**: ha-mcp (Home Assistant) reportedly exposes 45 destructive tools out of 77 (@naveendas96's test).
+
+## From X radar, Nov 11
+- MCPJam Conformance: spec checks for MCP servers (protocol, OAuth, Apps, Tasks) with a score and fixes. https://x.com/mcpjams/status/2120279953912791399
+- Modern Web Guidance 1.0 (Chrome, Firefox, Edge, MDN): agent skills that stop agents writing JS for things HTML/CSS do natively. https://x.com/LabubuNoBB/status/2120329614765768813
+- Unverified: Mittwald says attackers came in through its MCP server, 56 customer projects compromised. Verify with a primary source first. https://x.com/botnewsnetwork/status/2120223376207999056
+
+## From X radar, Nov 13
+- Floorplan: Claude Code plugin that maps an app's files, endpoints and screens into a zoomable map; local, MIT. https://x.com/HeyGurisaroy/status/2121131247242301650
+- Simular box: a cloud Ubuntu desktop that Claude Code, Codex and Cursor drive through one MCP server. https://x.com/benjaminwolfe_/status/2120917718891139177
+- Skill Issue (@Palakonweb): agent skills ranked by real usage, with an MCP server for discovery. https://x.com/EveryDevAi/status/2121155103004708945
