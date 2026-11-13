@@ -5,7 +5,7 @@ no credentials, no API keys. Verifies install + that the agent lists it as loade
 servers, that the agent's own health check connects). Writes testing/results/<date>.json and appends history.json.
 Usage: run_tests.py [--agents claude_code,grok_build,...] [--limit N] [--jobs 6] [--only slug,slug]
 """
-import json,re,subprocess,sys,os,datetime,argparse,concurrent.futures as cf,shlex
+import json,shutil,re,subprocess,sys,os,datetime,argparse,concurrent.futures as cf,shlex
 HERE=os.path.dirname(os.path.abspath(__file__));ROOT=os.path.dirname(HERE);T=os.path.join(os.environ.get("SKILLMAXX_AGENTS","/workspace/agents"),"templates")
 SBX=os.path.join(HERE,"sbx.sh");ANSI=re.compile(r"\x1b\[[0-9;?]*[A-Za-z]")
 ap=argparse.ArgumentParser();ap.add_argument("--agents",default="claude_code,codex,grok_build,cursor,pi");ap.add_argument("--limit",type=int,default=0);ap.add_argument("--jobs",type=int,default=6);ap.add_argument("--only",default="");ap.add_argument("--timeout",type=int,default=150);ap.add_argument("--retry",type=int,default=0)
@@ -88,7 +88,7 @@ if __name__=="__main__":
       if i%25==0: print(i,r["slug"],r["agent"],r["status"],file=sys.stderr,flush=True)
   VERS={"claude_code":ver("claude --version"),"codex":ver("codex --version"),"grok_build":ver("grok --version"),"cursor":ver("cursor-agent --version"),"pi":"pi "+ver("pi --version")}
   os.makedirs(os.path.join(HERE,"results"),exist_ok=True)
-  out={"run_at":today,"versions":VERS,"sandbox":"bubblewrap, fresh HOME, no credentials/API keys","results":res}
+  out={"run_at":today,"versions":VERS,"sandbox":("bubblewrap" if shutil.which("bwrap") else "Docker (skillmaxx-sandbox:local, not privileged)")+", fresh HOME, no credentials/API keys","results":res}
   rp=os.path.join(HERE,"results",today[:10]+".json")
   if os.path.exists(rp):
     old=json.load(open(rp));keep={(r["slug"],r["agent"]) for r in res};out["results"]=[r for r in old["results"] if (r["slug"],r["agent"]) not in keep]+res

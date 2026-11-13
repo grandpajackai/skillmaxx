@@ -166,6 +166,11 @@ cmd_preflight() {
     check 1 "sandbox" "Docker is up but local image $img is missing. Build: docker build -t $img -f testing/sandbox/Dockerfile testing/sandbox" || blocked=1
   else
     check 0 "sandbox" "local image $img. Tests run in that Linux container as your uid, without --privileged."
+    if docker run --rm "$img" sh -c 'command -v uvx' >/dev/null 2>&1; then
+      check 0 "uvx in image" "Python MCP servers can start"
+    else
+      check 0 "uvx in image" "MISSING. Python MCP servers (mcp-time, mcp-fetch, mcp-git, claimidx) will fail and the 4 AM import holds. Fix: docker build -t $img -f testing/sandbox/Dockerfile.add-uv testing/sandbox"
+    fi
   fi
   [ -f "$ROOT/data/skills.json" ]
   check $? "skills.json" "catalog the tests read" || blocked=1
