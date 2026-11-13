@@ -1,0 +1,115 @@
+<!--
+  Paste into Beehiiv: title, subtitle and preview text go in the post settings fields;
+  the HTML below goes in the editor (Insert > HTML snippet, or paste as rich text from a browser).
+  Title: SkillMaxx #3: new agents, new baseline, and a bug that was ours
+  Subtitle: We upgraded all 5 agents, skipped 3 nights we couldn&#x27;t trust, and found one more mistake of our own.
+  Preview text: 863 of 1,070 installs passed on the new agent versions. Here&#x27;s what that number does and doesn&#x27;t mean.
+-->
+<p><img alt="SkillMaxx" src="https://raw.githubusercontent.com/grandpajackai/skillmaxx/master/growth/brand/beehiiv/skillmaxx-banner-1200x300.png" /></p>
+<h2>hey, Brandon here 👋</h2>
+<p>Big week behind the scenes, and not all of it pretty. Here's the honest version.</p>
+<p><strong>1. We moved to the latest agents.</strong> Until Nov 8 our nightly tests ran on older agent versions. Since Nov 12 they run on current releases:</p>
+<table>
+<thead>
+<tr>
+<th>Agent</th>
+<th>Before (to Nov 8)</th>
+<th>Now (from Nov 12)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude Code</td>
+<td>2.1.197</td>
+<td>2.1.319</td>
+</tr>
+<tr>
+<td>Codex</td>
+<td>0.163.0</td>
+<td>0.167.0</td>
+</tr>
+<tr>
+<td>Grok Build</td>
+<td>1.0.62</td>
+<td>1.0.77</td>
+</tr>
+<tr>
+<td>Cursor</td>
+<td>2026.10.16</td>
+<td>2026.11.05</td>
+</tr>
+<tr>
+<td>Pi</td>
+<td>1.4.0</td>
+<td>1.5.0</td>
+</tr>
+</tbody>
+</table>
+<p>You run the new versions, so that's what we should test. The catch: scores before and after Nov 12 aren't a like-for-like comparison, so we treat Nov 12 as a fresh start. Nothing gets called "broke" or "fixed" across that line.</p>
+<p><strong>2. We skipped three nights on purpose.</strong> On Nov 9, 10 and 11 a bug in our own test harness stopped Grok Build from scanning its Claude plugin marketplace, so lots of Grok Build installs "failed" for no fault of the add-ons. We fixed the harness and did not publish those three nights. They're marked "no valid run" on the <a href="https://skillmaxx.gilventures.ai/reports/#no-valid-run">reports page</a>. No numbers beat wrong numbers.</p>
+<p><strong>3. One more mistake, also ours.</strong> The new test sandbox was missing <code>uvx</code>, the tool that starts Python MCP servers. So MCP time, MCP fetch, MCP git and claimidx (20 installs across all 5 agents) failed on Nov 12 and 13. All 20 passed on Nov 8. Don't avoid those servers because of our report: treat them as untested until the next run on the fixed sandbox.</p>
+<h2>📊 The new baseline (Nov 13)</h2>
+<p><strong>863 of 1,070 installs passed</strong> (82.6% of the 1,045 we can judge without an API key). Nov 12 was 866. The last run on the old versions, Nov 8, was 919.</p>
+<p>So what's the drop? Of the installs that passed on Nov 8, 57 failed on Nov 12's new setup, and 4 went the other way. 20 of those 57 are the <code>uvx</code> mistake above. The rest we're re-checking on the new versions before we say anything about them.</p>
+<p><strong>By agent on Nov 13</strong> (installs we can judge without an API key; 5 per agent need a key):</p>
+<table>
+<thead>
+<tr>
+<th>Agent</th>
+<th>Passed</th>
+<th>Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude Code</td>
+<td>332 / 366</td>
+<td>90.7%</td>
+</tr>
+<tr>
+<td>Grok Build</td>
+<td>345 / 381</td>
+<td>90.6%</td>
+</tr>
+<tr>
+<td>Codex</td>
+<td>86 / 114</td>
+<td>75.4%</td>
+</tr>
+<tr>
+<td>Pi</td>
+<td>77 / 135</td>
+<td>57.0%</td>
+</tr>
+<tr>
+<td>Cursor (MCP servers)</td>
+<td>23 / 49</td>
+<td>46.9%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Standout:</strong> <a href="https://skillmaxx.gilventures.ai/skills/mcp-sequential-thinking/">MCP sequential-thinking (reference)</a> installed clean in all 5 agents on both new-baseline nights.</p>
+<p><strong>Still wobbly on Nov 13</strong> (failed once, re-checking): @cyanheads/pubmed-mcp-server and Airwallex Dev (Claude Code and Grok Build), @rigour-labs/mcp (Grok Build).</p>
+<p>Full report: <a href="https://skillmaxx.gilventures.ai/reports/2026-11-13/">https://skillmaxx.gilventures.ai/reports/2026-11-13/</a> · What changed on Nov 12: <a href="https://skillmaxx.gilventures.ai/reports/2026-11-12/">https://skillmaxx.gilventures.ai/reports/2026-11-12/</a> · Is your tool safe today? <a href="https://skillmaxx.gilventures.ai/reports/latest/">https://skillmaxx.gilventures.ai/reports/latest/</a></p>
+<h2>🗓️ Last full week on the old versions (Nov 2 to 8, 6 runs)</h2>
+<p><strong>919 of 1,040</strong> judgeable installs passed on Nov 8 (88.4%). <strong>0</strong> confirmed broke, <strong>17</strong> really fixed (including notion-mcp-server, which broke in issue #2, and the Clangd, Csharp, Gopls and Jdtls LSP plugins), <strong>19</strong> flip-flopped. Most reliable agent: Claude Code at 94.2%. Chart: <a href="https://skillmaxx.gilventures.ai/reports/week/2026-45/">https://skillmaxx.gilventures.ai/reports/week/2026-45/</a></p>
+<h2>👀 On our radar (not tested by us yet)</h2>
+<ul>
+<li><strong><a href="https://x.com/HeyGurisaroy/status/2121131247242301650">Floorplan</a>:</strong> a Claude Code plugin that maps your app's files, endpoints and screens into a zoomable map. Local, MIT.</li>
+<li><strong><a href="https://x.com/LabubuNoBB/status/2120329614765768813">Modern Web Guidance 1.0</a>:</strong> agent skills, credited to the Chrome, Firefox, Edge and MDN teams, meant to stop agents writing JavaScript for things HTML and CSS already do.</li>
+<li><strong><a href="https://x.com/mcpjams/status/2120279953912791399">MCPJam Conformance</a>:</strong> spec checks for MCP servers (protocol, OAuth, Apps, Tasks) with a score and suggested fixes.</li>
+<li><strong><a href="https://x.com/EveryDevAi/status/2121155103004708945">Skill Issue</a>:</strong> agent skills ranked by real usage, with an MCP server for discovery.</li>
+</ul>
+<p>Want one of these in the nightly run? Reply with the name.</p>
+<h2>🔧 Tip of the week</h2>
+<p><strong>Pin your agent version when something matters.</strong> This week proved it: the same add-on can behave differently on a newer agent release. If an install breaks right after your agent auto-updates, check the agent's changelog before you blame the add-on.</p>
+<h2>🙏 Tell us</h2>
+<ol>
+<li><strong>One tool you want tested</strong> before you install it.</li>
+<li><strong>Did we get your tool wrong?</strong> Send the link and we'll rerun it and fix the page.</li>
+<li><strong>Was the honest-mistakes section useful, or too much inside baseball?</strong></li>
+</ol>
+<p>I read every reply.</p>
+<hr />
+<p><strong>Sponsor:</strong> This spot is open. Founding rate: <strong>$19 for 1 issue</strong> (or <strong>$59/mo for 4 issues</strong>, about $15 each). Placements are always labeled; see <a href="https://skillmaxx.gilventures.ai/advertise/">https://skillmaxx.gilventures.ai/advertise/</a></p>
+<p>Built a skill? We'll run it through all five agents: <a href="https://skillmaxx.gilventures.ai/submit/">https://skillmaxx.gilventures.ai/submit/</a></p>

@@ -5,7 +5,7 @@ no credentials, no API keys. Verifies install + that the agent lists it as loade
 servers, that the agent's own health check connects). Writes testing/results/<date>.json and appends history.json.
 Usage: run_tests.py [--agents claude_code,grok_build,...] [--limit N] [--jobs 6] [--only slug,slug]
 """
-import json,re,subprocess,sys,os,datetime,argparse,concurrent.futures as cf,shlex
+import json,shutil,re,subprocess,sys,os,datetime,argparse,concurrent.futures as cf,shlex
 HERE=os.path.dirname(os.path.abspath(__file__));ROOT=os.path.dirname(HERE);T=os.path.join(os.environ.get("SKILLMAXX_AGENTS","/workspace/agents"),"templates")
 SBX=os.path.join(HERE,"sbx.sh");ANSI=re.compile(r"\x1b\[[0-9;?]*[A-Za-z]")
 ap=argparse.ArgumentParser();ap.add_argument("--agents",default="claude_code,codex,grok_build,cursor,pi");ap.add_argument("--limit",type=int,default=0);ap.add_argument("--jobs",type=int,default=6);ap.add_argument("--only",default="");ap.add_argument("--timeout",type=int,default=150);ap.add_argument("--retry",type=int,default=0)
@@ -19,6 +19,18 @@ def ver(cmd):
 def mcp_cmd(it):
   c=it["install"].get("claude_code") or "";return c.split(" -- ",1)[1] if " -- " in c else None
 def mcp_name(it): return re.sub(r"[^a-z0-9]","",it["slug"].lower())[-20:] or "srv"
+# Qualifiers confirmed on Grok 1.0.77. "xAI Official" also works for the xAI git source;
+# the owner/repo form needs no shell quotes. The Claude source name is claude-plugins-official
+# (a local directory of that basename). @plugin-marketplace is not a registered name.
+# Prefer the xAI source when a skill is listed in both.
+GROK_NATIVE_QUAL="xai-org/plugin-marketplace"
+GROK_CLAUDE_QUAL="claude-plugins-official"
+def grok_plugin_install(slug,listings):
+  L=" ".join(listings or [])
+  if "plugin-marketplace" in L: qual=GROK_NATIVE_QUAL
+  elif "claude-plugins-official" in L: qual=GROK_CLAUDE_QUAL
+  else: return None
+  return f"grok plugin install {slug}@{qual} --trust 2>&1; echo ---LIST; grok plugin list 2>&1"
 def cases():
   out=[]
   for it in items:
@@ -28,7 +40,8 @@ def cases():
         if "claude-plugins-official" in L: out.append((it,ag,"claude",f"claude plugin install {s}@claude-plugins-official 2>&1; echo ---LIST; claude plugin list 2>&1",lambda o,s=s: re.search(rf"{re.escape(s)}@claude-plugins-official[\s\S]{{0,120}}enabled",o.split('---LIST')[-1]) is not None))
         elif ismcp and mcp_cmd(it): n=mcp_name(it);out.append((it,ag,"",f"claude mcp add {n} -- {mcp_cmd(it)} 2>&1; echo ---LIST; claude mcp list 2>&1",lambda o,n=n: re.search(rf"^{n}:.*Connected",o.split('---LIST')[-1],re.M) is not None))
       elif ag=="grok_build":
-        if "plugin-marketplace" in L or "claude-plugins-official" in L: out.append((it,ag,"grok",f"grok plugin install {s} --trust 2>&1; echo ---LIST; grok plugin list 2>&1",grok_ok))
+        cmd=grok_plugin_install(s,it.get("listings",[]))
+        if cmd: out.append((it,ag,"grok",cmd,grok_ok))
         elif ismcp and mcp_cmd(it): n=mcp_name(it);out.append((it,ag,"",f"grok mcp add {n} -- {mcp_cmd(it)} 2>&1; echo ---LIST; grok mcp list 2>&1; grok mcp doctor 2>&1",lambda o,n=n: re.search(rf"^\s*{n} \(stdio[\s\S]*?handshake OK",o.split('---LIST')[-1],re.M) is not None and "0 healthy" not in o))
       elif ag=="codex":
         if "openai/plugins" in L: out.append((it,ag,"codex",f"codex plugin add {s}@openai-plugins-mirror 2>&1; echo ---LIST; codex plugin list 2>&1",lambda o,s=s: re.search(rf"^{re.escape(s)}@openai-plugins-mirror\s+(installed|enabled)",o.split('---LIST')[-1],re.M) is not None))
@@ -75,7 +88,7 @@ if __name__=="__main__":
       if i%25==0: print(i,r["slug"],r["agent"],r["status"],file=sys.stderr,flush=True)
   VERS={"claude_code":ver("claude --version"),"codex":ver("codex --version"),"grok_build":ver("grok --version"),"cursor":ver("cursor-agent --version"),"pi":"pi "+ver("pi --version")}
   os.makedirs(os.path.join(HERE,"results"),exist_ok=True)
-  out={"run_at":today,"versions":VERS,"sandbox":"bubblewrap, fresh HOME, no credentials/API keys","results":res}
+  out={"run_at":today,"versions":VERS,"sandbox":("bubblewrap" if shutil.which("bwrap") else "Docker (skillmaxx-sandbox:local, not privileged)")+", fresh HOME, no credentials/API keys","results":res}
   rp=os.path.join(HERE,"results",today[:10]+".json")
   if os.path.exists(rp):
     old=json.load(open(rp));keep={(r["slug"],r["agent"]) for r in res};out["results"]=[r for r in old["results"] if (r["slug"],r["agent"]) not in keep]+res

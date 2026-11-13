@@ -16,6 +16,8 @@ jobs:
         env:
           SITE_URL: https://skillmaxx.gilventures.ai
           PATH_PREFIX: /
+      - name: Check built pages for leaked template syntax and broken newsletter cards
+        run: python3 review/check_built_site.py _site
       - name: Sanity check output
         run: |
           test -f _site/index.html

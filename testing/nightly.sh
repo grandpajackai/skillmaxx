@@ -3,7 +3,7 @@
 # After a Tuesday Beehiiv send: confirm /newsletter/issue-N/ is live and matches what was emailed (growth/routines/NEWSLETTER-SEND.md). Nightly itself does not publish archive pages.
 # Every run logs to testing/logs/nightly-<date>.log (gitignored) and exits non-zero with the failing step named.
 # Failed installs are retried once (--retry 1); daily_report.py only calls something broken after 2 failing nights.
-# Steps: sync master -> refresh codex mirror -> sandboxed install tests -> metadata -> daily report + post drafts -> build -> data-only commit + push.
+# Steps: sync master -> refresh marketplace mirrors -> rebuild templates from those local paths -> sandboxed install tests -> metadata -> daily report + post drafts -> build -> data-only commit + push.
 # On exit, testing/freshness.py writes gitignored local status (no network, not added to the data commit).
 # Mac entry, preflight, and launchd: testing/mac_nightly.sh. This file stays the mechanical nightly.
 # Lock is per machine (testing/lock.sh). It does not stop the Grok box from running too.
@@ -49,7 +49,16 @@ if [ -d "$M" ]; then
   git -C "$M" checkout -q -- .agents/plugins/marketplace.json; git -C "$M" pull -q --ff-only || echo "warn: mirror pull failed, using cached copy"
   SKILLMAXX_MIRROR="$M" python3 -c 'import json,os;p=os.environ["SKILLMAXX_MIRROR"]+"/.agents/plugins/marketplace.json";d=json.load(open(p));d["name"]="openai-plugins-mirror";json.dump(d,open(p,"w"))'
 fi
-[ -d "$SKILLMAXX_AGENTS/templates/claude" ] || die "agent templates missing (run testing/setup_agents.sh)"
+step "claude mirror"   # local checkout for the Grok template; do not rename marketplace.json (Claude still pins @claude-plugins-official)
+mkdir -p "$SKILLMAXX_AGENTS"
+C="$SKILLMAXX_AGENTS/claude-plugins-official"
+if [ ! -d "$C/.git" ]; then
+  git clone -q --depth 1 https://github.com/anthropics/claude-plugins-official "$C" || die "claude marketplace mirror clone"
+elif ! git -C "$C" pull -q --ff-only; then
+  echo "warn: claude marketplace mirror pull failed, using cached copy"
+fi
+step "marketplace templates"   # Claude: official GitHub source. Grok: local directory in its own home, not Claude's GitHub entry.
+bash testing/refresh_templates.sh || die "marketplace templates"
 step "install tests"; python3 testing/run_tests.py --jobs 8 --retry 1 || die "run_tests.py"
 step "metadata"; for i in 1 2; do python3 fetch_meta.py && break; [ $i = 2 ] && die "fetch_meta.py"; echo "retrying fetch_meta in 60s"; sleep 60; done
 step "daily report"; python3 testing/daily_report.py || die "daily_report.py"

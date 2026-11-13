@@ -24,6 +24,15 @@ rd = lambda p, d=None: json.load(open(os.path.join(ROOT, p))) if os.path.exists(
 items = {x["slug"]: x for x in rd("data/skills.json", {"items": []})["items"]}
 meta = rd("data/meta/meta.json", {})
 nm = lambda s: items.get(s, {}).get("name", s)
+# Test baselines (src/_data/runNotes.json): when the whole test setup moves to new agent versions on purpose,
+# night-over-night comparisons across that date are not like-for-like. Statuses still use real prior nights
+# ("broken" = failed 2 nights running), but broke/fixed/flip-flop lists and the agent-update callout only
+# compare runs on the same baseline, and the first night of a new baseline gets a baseline callout instead.
+NOTES = rd("src/_data/runNotes.json", {}) or {}
+BASES = sorted(NOTES.get("baselines", []), key=lambda b: b["start"])
+def base_of(run):
+    d = run["run_at"][:10] if run else ""
+    return max([i + 1 for i, b in enumerate(BASES) if b["start"] <= d] or [0])
 stars = lambda s: (meta.get(s) or {}).get("stars") or 0
 
 def keyed(run):
@@ -35,20 +44,22 @@ def classify(runs, i):
     st = lambda run: {(r["slug"], r["agent"]): r["status"] for r in run["results"]} if run else {}
     c, p, q = st(cur), st(prev), st(pp)
     keys = keyed(cur) | (keyed(prev) if prev else set())
+    same = lambda run: run is not None and base_of(run) == base_of(cur)
+    p_s = p if same(prev) else {}; q_s = q if same(prev) and same(pp) else {}
     rows = {}
     for r in cur["results"]:
         k = (r["slug"], r["agent"]); v = r["status"]
-        flaky = r.get("retry") == "pass" or (k in p and k in q and q[k] != p[k] and p[k] != v)
+        flaky = r.get("retry") == "pass" or (k in p_s and k in q_s and q_s[k] != p_s[k] and p_s[k] != v)
         if v == "pass": s = "pass"
         elif r["slug"] in keys: s = "needs_key"
         elif p.get(k) == "fail": s = "broken"
         else: s = "pending"
         rows[k] = {"s": s, "flaky": flaky}
-    return rows, c, p, q, keys
+    return rows, c, p_s, q_s, keys, p
 
 def report(runs, i):
     cur = runs[i]; prev = runs[i - 1] if i else None
-    rows, c, p, q, keys = classify(runs, i)
+    rows, c, p, q, keys, p_all = classify(runs, i)
     cnt = lambda pred: sum(1 for v in rows.values() if pred(v))
     rep = {"date": cur["run_at"][:10], "run_at": cur["run_at"], "versions": cur.get("versions", {}),
            "total": len(rows), "pass": cnt(lambda v: v["s"] == "pass"), "addons": len({s for s, _ in rows}),
@@ -67,14 +78,14 @@ def report(runs, i):
                              key=lambda x: (x["name"].lower(), x["agent"]))
     if prev:
         rep["prev_date"] = prev["run_at"][:10]
-        rep["prev_pass"] = sum(v == "pass" for v in p.values()); rep["prev_total"] = len(p)
+        rep["prev_pass"] = sum(v == "pass" for v in p_all.values()); rep["prev_total"] = len(p_all)
         # broke = confirmed: 2nd failing night in a row after passing the night before that (needs 3 runs of history)
         rep["broke"] = li(lambda k, v: v["s"] == "broken" and q.get(k) == "pass")
         # fixed = passes tonight after failing 2+ nights; a single-night blip that came back is flaky, not fixed
         rep["fixed"] = li(lambda k, v: v["s"] == "pass" and p.get(k) == "fail" and q.get(k) == "fail" and k[0] not in keys and not v["flaky"])
         rep["pending_list"] = li(lambda k, v: v["s"] == "pending")
         rep["flaky_list"] = li(lambda k, v: v["flaky"])
-        ps = {s for s, _ in p}
+        ps = {s for s, _ in p_all}
         rep["added"] = sorted([{"slug": s, "name": nm(s)} for s in {s for s, _ in c} - ps], key=lambda x: x["name"].lower())
         rep["removed"] = sorted([{"slug": s, "name": nm(s)} for s in ps - {s for s, _ in c}], key=lambda x: x["name"].lower())
         # agent update callout: version changed and installs that passed last night now fail (pending or broken)
@@ -85,6 +96,20 @@ def report(runs, i):
                 n = [x for x in li(lambda k, v: k[1] == a and v["s"] in ("pending", "broken") and p.get(k) == "pass")]
                 vc.append({"agent": a, "from": va, "to": vb, "broke": len(n), "items": n[:10]})
         rep["version_changes"] = vc
+        b = base_of(cur)
+        if b and base_of(prev) != b:  # first night on a new test baseline: not like-for-like with prev
+            bl = BASES[b - 1]
+            rep["version_changes"] = []
+            rep["baseline_change"] = {"start": bl["start"], "why": bl.get("why", ""), "from": bl.get("from", {}), "to": bl.get("to", {}),
+                "prev_date": rep["prev_date"],
+                "pass_to_fail": sum(1 for k, v in rows.items() if p_all.get(k) == "pass" and v["s"] in ("pending", "broken")),
+                "fail_to_pass": sum(1 for k, v in rows.items() if p_all.get(k) == "fail" and v["s"] == "pass")}
+    b = base_of(cur)
+    if b:
+        import datetime as _dt
+        st = BASES[b - 1]["start"]; age = (_dt.date.fromisoformat(rep["date"]) - _dt.date.fromisoformat(st)).days
+        # a short note for the first week on a new baseline (comparisons still reach back across the switch)
+        rep["baseline"] = {"start": st, "recent": age <= 7, "from": BASES[b - 1].get("from", {}), "to": BASES[b - 1].get("to", {})}
     rep["needs_key_list"] = li(lambda k, v: v["s"] == "needs_key")
     rep["broken_list"] = li(lambda k, v: v["s"] == "broken")
     # standout: clean everywhere it was tested tonight, nothing flaky/pending/broken for it; new, then confirmed-fixed, then agents, then stars
@@ -118,7 +143,7 @@ def events(r):
     for x in r.get("broke", []):
         if (x.get("stars") or 0) >= POPULAR:
             ev.append(f"{x['name']} ({x['stars']:,} stars) broke in {NAME[x['agent']]}, 2 nights running.")
-    for v in r.get("version_changes", []):
+    for v in r.get("version_changes", []):  # empty on the first night of a new test baseline (planned switch, not news)
         if v["broke"] >= 3:
             ev.append(f"{NAME[v['agent']]} updated {v['from']} → {v['to']} and {v['broke']} installs that worked the night before stopped working.")
     return ev
