@@ -1,5 +1,5 @@
 {
- "generated_et": "2026-11-02 11:20 AM ET",
+ "generated_et": "2026-11-13 11:42 AM ET",
  "source": "growth/sponsors/PIPELINE.csv",
  "why": "Owner dashboard canvas d70f3b85 could not be edited (no canvas read/edit tool in this run). Paste LEADS as a full replacement for the canvas Sales pipeline lead table (same column order as the canvas rows).",
  "columns": [
@@ -16,17 +16,18 @@
   "next_follow_up"
  ],
  "status_counts": {
-  "Contacted": 72,
-  "Target": 40,
+  "Contacted": 95,
+  "Target": 12,
   "dm-closed": 7,
+  "declined-warm": 3,
+  "Replied": 3,
   "call-only": 2,
   "blocked-form": 2,
-  "declined-warm": 1,
-  "Replied": 1,
+  "Bounced": 2,
   "x-only": 1,
   "Contacted (unconfirmed)": 1
  },
- "total": 127,
+ "total": 128,
  "LEADS": [
   [
    "Exa",
@@ -36,10 +37,10 @@
    "partnerships@exa.ai",
    "Contacted",
    "2026-10-27",
-   "Cold email #1 from skillmaxx@gilventures.ai to partnerships@exa.ai (OUTREACH.md template)",
+   "Cold email #1 from skillmaxx@gilventures.ai to partnerships@exa.ai (OUTREACH.md template) | Follow-up #1 sent 11:21 AM ET 2026-11-09 via Zoho webmail (weekly scorecard 2026-45)",
    "In directory: yes; best slot: Category: Search $15/mo; why fit: Search MCP agents install first; Exa already sponsors AI events and has a public partner program",
    "Warmest; draft in growth/outreach/01-exa.md",
-   "2026-11-03, then 2026-11-10 (final)"
+   "2026-11-16 (final)"
   ],
   [
    "Firecrawl",
@@ -49,10 +50,10 @@
    "partnerships@firecrawl.dev",
    "Contacted",
    "2026-10-27",
-   "Cold email #1 from skillmaxx@gilventures.ai to partnerships@firecrawl.dev (OUTREACH.md template)",
+   "Cold email #1 from skillmaxx@gilventures.ai to partnerships@firecrawl.dev (OUTREACH.md template) | Follow-up #1 sent 11:24 AM ET 2026-11-09 via Zoho webmail (weekly scorecard 2026-45)",
    "In directory: yes; best slot: Bundle $49; why fit: Scraping MCP + Claude plugin in our directory; active DevRel; affiliate program for directories/newsletters",
    "Draft 02-firecrawl.md; affiliate page explicitly welcomes tool directories",
-   "2026-11-03, then 2026-11-10 (final)"
+   "2026-11-16 (final)"
   ],
   [
    "Upstash / Context7",
@@ -88,10 +89,10 @@
    "partnerships@composio.dev",
    "Contacted",
    "2026-10-27",
-   "Cold email #1 from skillmaxx@gilventures.ai to partnerships@composio.dev (OUTREACH.md template)",
+   "Cold email #1 from skillmaxx@gilventures.ai to partnerships@composio.dev (OUTREACH.md template) | Follow-up #1 sent 11:26 AM ET 2026-11-09 via Zoho webmail (weekly scorecard 2026-45)",
    "In directory: yes; best slot: Category: Integrations $15/mo; why fit: Tool integrations for agents; owns awesome-claude-skills list people already use",
    "Draft 03-composio.md",
-   "2026-11-03, then 2026-11-10 (final)"
+   "2026-11-16 (final)"
   ],
   [
    "Browser Use",
@@ -101,10 +102,10 @@
    "sales@browser-use.com",
    "Contacted",
    "2026-10-27",
-   "Cold email #1 from skillmaxx@gilventures.ai to sales@browser-use.com (OUTREACH.md template)",
+   "Cold email #1 from skillmaxx@gilventures.ai to sales@browser-use.com (OUTREACH.md template) | Follow-up #1 sent 11:27 AM ET 2026-11-09 via Zoho webmail (weekly scorecard 2026-45)",
    "In directory: yes; best slot: Featured $29/mo; why fit: Browser automation plugin in our directory; loud on X; enterprise contact published",
    "Prefer X after engaging their content; sales email is public",
-   "2026-11-03, then 2026-11-10 (final)"
+   "2026-11-16 (final)"
   ],
   [
    "Neon",
@@ -140,10 +141,10 @@
    "hello@coderabbit.ai",
    "Contacted",
    "2026-10-27",
-   "Cold email #1 from skillmaxx@gilventures.ai to hello@coderabbit.ai (OUTREACH.md template)",
+   "Cold email #1 from skillmaxx@gilventures.ai to hello@coderabbit.ai (OUTREACH.md template) | Follow-up #1 sent 11:29 AM ET 2026-11-09 via Zoho webmail (weekly scorecard 2026-45)",
    "In directory: yes; best slot: Featured $29/mo; why fit: Code-review plugin/skills pass in multiple agents; public sales + partnerships contacts",
    "KB lists hello@ for partnerships",
-   "2026-11-03, then 2026-11-10 (final)"
+   "2026-11-16 (final)"
   ],
   [
    "Sentry",
@@ -179,10 +180,10 @@
    "founders@skyvern.com",
    "Contacted",
    "2026-10-27",
-   "Cold email #1 from skillmaxx@gilventures.ai to founders@skyvern.com (OUTREACH.md template)",
+   "Cold email #1 from skillmaxx@gilventures.ai to founders@skyvern.com (OUTREACH.md template) | Follow-up #1 sent 11:30 AM ET 2026-11-09 via Zoho webmail (weekly scorecard 2026-45)",
    "In directory: yes; best slot: Category $15/mo; why fit: Browser automation; smaller than Browser Use; listed in directory",
    "Site offers call bookings only; emailed founders@ (public on GitHub README) instead. Smaller budget signal",
-   "2026-11-03, then 2026-11-10 (final)"
+   "2026-11-16 (final)"
   ],
   [
    "Bright Data",
@@ -192,10 +193,10 @@
    "sales@brightdata.com",
    "Contacted",
    "2026-10-27",
-   "Cold email #1 from skillmaxx@gilventures.ai to sales@brightdata.com (OUTREACH.md template)",
+   "Cold email #1 from skillmaxx@gilventures.ai to sales@brightdata.com (OUTREACH.md template) | Follow-up #1 sent 11:31 AM ET 2026-11-09 via Zoho webmail (weekly scorecard 2026-45)",
    "In directory: yes; best slot: Category or Newsletter; why fit: brightdata-plugin in directory; hosted MCP; AI Transformation Partners track",
    "Partner form has no message box; emailed sales@ (public on /contact; phone +972-9-8355993 also listed). Enterprise-priced; expect slow / custom",
-   "2026-11-03, then 2026-11-10 (final)"
+   "2026-11-16 (final)"
   ],
   [
    "Apify",
@@ -205,10 +206,10 @@
    "partners@apify.com",
    "Contacted",
    "2026-10-27",
-   "Cold email #1 from skillmaxx@gilventures.ai to partners@apify.com (OUTREACH.md template)",
+   "Cold email #1 from skillmaxx@gilventures.ai to partners@apify.com (OUTREACH.md template) | Follow-up #1 sent 11:33 AM ET 2026-11-09 via Zoho webmail (weekly scorecard 2026-45)",
    "In directory: no; best slot: Category or Newsletter; why fit: Web scraping + AI agents platform; partner program welcomes directories; integrations@ / partners@",
    "Not yet listed — invite to /submit/ in same note",
-   "2026-11-03, then 2026-11-10 (final)"
+   "2026-11-16 (final)"
   ],
   [
    "Browserbase",
@@ -218,10 +219,10 @@
    "hello@browserbase.com",
    "Contacted",
    "2026-10-28",
-   "Cold email #1 from skillmaxx@gilventures.ai to hello@browserbase.com (subject \"Browserbase next to Browser Use in our Automation category?\"); sent 3:31 PM ET Oct 28",
+   "Cold email #1 from skillmaxx@gilventures.ai to hello@browserbase.com (subject \"Browserbase next to Browser Use in our Automation category?\"); sent 3:31 PM ET Oct 28 | Follow-up #1 sent 11:42 AM ET 2026-11-09 via Zoho webmail (weekly scorecard 2026-45)",
    "In directory: no — not listed; Browser Use is (category automation); invite /submit/ for mcp-server-browserbase; best slot: Category: Automation $15/mo; why fit: Hosted browsers for agents; natural category neighbor to Browser Use",
    "Address source: https://docs.browserbase.com/platform/identity/overview. Scheduled send Oct 28, spaced (random 20–42 min gaps, background sender); verify in growth/outreach/sent/2026-10-28-email-results.json. hello@browserbase.com published in Browserbase docs ('Contact hello@browserbase.com to trial Verified or discuss an upgrade'). Alternatives: partner form https://www.browserbase.com/partner (200, has 'I want to partner, let's talk!' option); sales@browserbase.com in docs billing page. They're hiring a first Partnerships Lead (posted 2026-10-19) — no one may own this inbox yet.",
-   "2026-11-04, then 2026-11-11 (final)"
+   "2026-11-16 (final)"
   ],
   [
    "Daytona",
@@ -244,10 +245,10 @@
    "hello@e2b.dev",
    "Contacted",
    "2026-10-28",
-   "Cold email #1 from skillmaxx@gilventures.ai to hello@e2b.dev (subject \"E2B isn't in our agent install tests yet (want in?)\"); sent 11:14 AM ET Oct 28",
+   "Cold email #1 from skillmaxx@gilventures.ai to hello@e2b.dev (subject \"E2B isn't in our agent install tests yet (want in?)\"); sent 11:14 AM ET Oct 28 | Follow-up #1 sent 11:43 AM ET 2026-11-09 via Zoho webmail (weekly scorecard 2026-45)",
    "In directory: no — not listed (0 matches in data/skills.json); invite /submit/; best slot: Newsletter $19/issue (or $59/mo for 4); why fit: Agent sandboxes with MCP tooling; enterprise contact published",
    "Address source: https://e2b.dev/contact. Sent 11:14 AM ET Oct 28 via Zoho SMTP (results in growth/outreach/sent/2026-10-28-email-results.json). hello@ is the contact-page address; enterprise@e2b.dev is the sales fallback. Not listed: invite /submit/.",
-   "2026-11-04, then 2026-11-11 (final)"
+   "2026-11-16 (final)"
   ],
   [
    "Axiom",
@@ -257,10 +258,10 @@
    "partners@axiom.co",
    "Contacted",
    "2026-10-27",
-   "Cold email #1 from skillmaxx@gilventures.ai to partners@axiom.co (OUTREACH.md template)",
+   "Cold email #1 from skillmaxx@gilventures.ai to partners@axiom.co (OUTREACH.md template) | Follow-up #1 sent 11:35 AM ET 2026-11-09 via Zoho webmail (weekly scorecard 2026-45)",
    "In directory: yes; best slot: Category: Monitoring $15/mo; why fit: Observability skills in directory; partner program",
    "Sent cold email 2026-10-27 from skillmaxx@gilventures.ai to partners@axiom.co",
-   "2026-11-03, then 2026-11-10 (final)"
+   "2026-11-16 (final)"
   ],
   [
    "Semgrep",
@@ -270,10 +271,10 @@
    "partnerships@semgrep.com",
    "Contacted",
    "2026-10-27",
-   "Cold email #1 from skillmaxx@gilventures.ai to partnerships@semgrep.com (OUTREACH.md template)",
+   "Cold email #1 from skillmaxx@gilventures.ai to partnerships@semgrep.com (OUTREACH.md template) | Follow-up #1 sent 11:36 AM ET 2026-11-09 via Zoho webmail (weekly scorecard 2026-45)",
    "In directory: yes; best slot: Category: Security $15/mo; why fit: Security plugin/MCP in directory; partnerships email published",
    "Sent cold email 2026-10-27 from skillmaxx@gilventures.ai to partnerships@semgrep.com",
-   "2026-11-03, then 2026-11-10 (final)"
+   "2026-11-16 (final)"
   ],
   [
    "Mem0",
@@ -283,10 +284,10 @@
    "founders@mem0.ai",
    "Contacted",
    "2026-10-27",
-   "Cold email #1 from skillmaxx@gilventures.ai to founders@mem0.ai (OUTREACH.md template)",
+   "Cold email #1 from skillmaxx@gilventures.ai to founders@mem0.ai (OUTREACH.md template) | Follow-up #1 sent 11:38 AM ET 2026-11-09 via Zoho webmail (weekly scorecard 2026-45)",
    "In directory: no; best slot: Newsletter or Featured; why fit: Agent memory layer; public contact-us for demos/partnerships",
    "Contact form requires a phone number; emailed founders@ (public on GitHub README).",
-   "2026-11-03, then 2026-11-10 (final)"
+   "2026-11-16 (final)"
   ],
   [
    "Parallel AI",
@@ -296,10 +297,10 @@
    "partnerships@parallel.ai",
    "Contacted",
    "2026-10-27",
-   "Cold email #1 from skillmaxx@gilventures.ai to partnerships@parallel.ai (OUTREACH.md template)",
+   "Cold email #1 from skillmaxx@gilventures.ai to partnerships@parallel.ai (OUTREACH.md template) | Follow-up #1 sent 11:40 AM ET 2026-11-09 via Zoho webmail (weekly scorecard 2026-45)",
    "In directory: no; best slot: Newsletter $19/issue; why fit: Agent web search; partners with Browser Use; partnerships email cited publicly",
    "Re-check site footer before send",
-   "2026-11-03, then 2026-11-10 (final)"
+   "2026-11-16 (final)"
   ],
   [
    "Pinecone",
@@ -335,10 +336,10 @@
    "hello@prisma.io",
    "Contacted",
    "2026-10-29",
-   "Cold email #1 from skillmaxx@gilventures.ai to hello@prisma.io (subject \"we install your Prisma MCP plugin every night (it behaves)\"); sent 11:15 AM ET Oct 29",
+   "Cold email #1 from skillmaxx@gilventures.ai to hello@prisma.io (subject \"we install your Prisma MCP plugin every night (it behaves)\"); sent 11:15 AM ET Oct 29 | Follow-up #1 sent 11:51 AM ET 2026-11-09 via Zoho webmail (weekly scorecard 2026-45; logged 2026-11-10 from Sent folder)",
    "In directory: yes: prisma (plugin, category 'other'); 2026-10-29: pass on claude_code, grok_build; best slot: Newsletter $19/issue (or $59/mo for 4); why fit: ORM plugin in directory; strong Node/TS audience",
    "Address source: https://www.prisma.io/programs/partners. hello@prisma.io is the mailto on the Partner network page (and site footer). Newsletter offered rather than Category: Databases because Neon/Supabase/Qdrant were already pitched Databases on 10-27. Oct 29: numbers re-checked against the Oct 29 nightly (unchanged); results go to growth/outreach/sent/2026-10-29-email-results.json.",
-   "2026-11-05, then 2026-11-12 (final)"
+   "2026-11-16 (final)"
   ],
   [
    "PlanetScale",
@@ -400,10 +401,10 @@
    "sales@amplitude.com",
    "Contacted",
    "2026-10-29",
-   "Cold email #1 from skillmaxx@gilventures.ai to sales@amplitude.com (subject \"your Amplitude plugin in our nightly install tests (+ a Pi log)\"); sent 4:54 PM ET Oct 29",
+   "Cold email #1 from skillmaxx@gilventures.ai to sales@amplitude.com (subject \"your Amplitude plugin in our nightly install tests (+ a Pi log)\"); sent 4:54 PM ET Oct 29 | Follow-up #1 sent 11:52 AM ET 2026-11-09 via Zoho webmail (logged 2026-11-10 from Sent folder)",
    "In directory: yes: amplitude (plugin, monitoring); 2026-10-29: pass on claude_code, grok_build (grok_build flagged flaky this week); pi BROKEN (2+ nights; pi installs the repo but verify finds no loadable extension); best slot: Category: Monitoring $15/mo; why fit: MCP marketplace listing in directory",
    "Address source: https://amplitude.com/contact. sales@amplitude.com is in amplitude.com/contact JSON-LD (labeled contactType 'Customer Support', with phone +1 650-988-5131). Fallback: Marketo form on https://amplitude.com/contact. Overlap: Axiom offered Category: Monitoring on 10-27. Double-check the Pi failure log before sending. Oct 29: numbers re-checked against the Oct 29 nightly (unchanged); results go to growth/outreach/sent/2026-10-29-email-results.json.",
-   "2026-11-05, then 2026-11-12 (final)"
+   "2026-11-16 (final)"
   ],
   [
    "Aikido",
@@ -413,10 +414,10 @@
    "hello@aikido.dev",
    "Contacted",
    "2026-10-29",
-   "Cold email #1 from skillmaxx@gilventures.ai to hello@aikido.dev (subject \"Aikido's Claude plugin passed in 3 agents last night\"); sent 12:13 PM ET Oct 29",
+   "Cold email #1 from skillmaxx@gilventures.ai to hello@aikido.dev (subject \"Aikido's Claude plugin passed in 3 agents last night\"); sent 12:13 PM ET Oct 29 | Follow-up #1 sent 11:54 AM ET 2026-11-09 via Zoho webmail (logged 2026-11-10 from Sent folder)",
    "In directory: yes: aikido (plugin, category 'other'); 2026-10-29: pass on claude_code, grok_build, pi; best slot: Category: Security $15/mo; why fit: Security plugin in directory; startup-sized",
    "Address source: https://www.aikido.dev/contact. hello@aikido.dev = 'General Inquiries' in contact page JSON-LD and footer 'Connect'. Overlap: Semgrep was offered Category: Security on 10-27 (one sponsor per category, first come). Oct 29: numbers re-checked against the Oct 29 nightly (unchanged); results go to growth/outreach/sent/2026-10-29-email-results.json.",
-   "2026-11-05, then 2026-11-12 (final)"
+   "2026-11-16 (final)"
   ],
   [
    "Zapier",
@@ -426,10 +427,10 @@
    "partners@zapier.com",
    "Contacted",
    "2026-10-29",
-   "Cold email #1 from skillmaxx@gilventures.ai to partners@zapier.com (subject \"your Zapier plugin is in our nightly agent install tests\"); sent 2:56 PM ET Oct 29",
+   "Cold email #1 from skillmaxx@gilventures.ai to partners@zapier.com (subject \"your Zapier plugin is in our nightly agent install tests\"); sent 2:56 PM ET Oct 29 | Follow-up #1 sent 11:55 AM ET 2026-11-09 via Zoho webmail (logged 2026-11-10 from Sent folder)",
    "In directory: yes: zapier (plugin, productivity); 2026-10-29: pass on claude_code, grok_build; best slot: Newsletter $19/issue (or $59/mo for 4); why fit: zapier-mcp plugin in directory; automation buyers",
-   "Address source: https://zapier.com/l/solution-partner. UNCERTAIN FIT: partners@zapier.com is published on Zapier's own Solution Partner page, but as the follow-up inbox for Solution Partner applications (agencies). Pipeline URL zapier.com/l/partner now 404s. No marketing/sponsorship address found. Low priority; expect slow/no reply. Oct 29: numbers re-checked against the Oct 29 nightly (unchanged); results go to growth/outreach/sent/2026-10-29-email-results.json. | Auto-ack received Oct 29 (no human reply yet)",
-   "2026-11-05, then 2026-11-12 (final)"
+   "Address source: https://zapier.com/l/solution-partner. UNCERTAIN FIT: partners@zapier.com is published on Zapier's own Solution Partner page, but as the follow-up inbox for Solution Partner applications (agencies). Pipeline URL zapier.com/l/partner now 404s. No marketing/sponsorship address found. Low priority; expect slow/no reply. Oct 29: numbers re-checked against the Oct 29 nightly (unchanged); results go to growth/outreach/sent/2026-10-29-email-results.json. | Auto-ack received Oct 29 (no human reply yet) | Nov 9 11:55 AM ET: Zapbot automated acknowledgment from partners@zapier.com (receipt + partner resources); no human reply yet | Nov 9 11:55 AM: Zapbot auto-ack on the nudge thread (not a human reply).",
+   "2026-11-16 (final)"
   ],
   [
    "Linear",
@@ -439,10 +440,10 @@
    "hello@linear.app",
    "Contacted",
    "2026-10-29",
-   "Cold email #1 from skillmaxx@gilventures.ai to hello@linear.app (subject \"your Linear plugin passed in 3 agents last night\"); sent 2:09 AM ET Oct 29 (off-hours: sender time-guard bug; sender stopped right after)",
+   "Cold email #1 from skillmaxx@gilventures.ai to hello@linear.app (subject \"your Linear plugin passed in 3 agents last night\"); sent 2:09 AM ET Oct 29 (off-hours: sender time-guard bug; sender stopped right after) | Follow-up #1 sent 11:45 AM ET 2026-11-09 via Zoho webmail (weekly scorecard 2026-45)",
    "In directory: yes — linear (plugin, productivity); 2026-10-28 run: pass on claude_code, codex, grok_build; best slot: Category: Productivity $15/mo; why fit: Linear plugin in directory; product-eng audience",
    "Address source: https://linear.app/contact. Scheduled send Oct 28, spaced (random 20–42 min gaps, background sender); verify in growth/outreach/sent/2026-10-28-email-results.json. Contact page lists hello@linear.app under 'Other inquiries … press inquiries, partnerships, or other questions' — best-fit address of the batch.",
-   "2026-11-04, then 2026-11-11 (final)"
+   "2026-11-16 (final)"
   ],
   [
    "Notion",
@@ -504,10 +505,10 @@
    "hi@sourcegraph.com",
    "Contacted",
    "2026-10-29",
-   "Cold email #1 from skillmaxx@gilventures.ai to hi@sourcegraph.com (subject \"your Sourcegraph plugin is in our nightly install tests\"); sent 1:30 PM ET Oct 29",
+   "Cold email #1 from skillmaxx@gilventures.ai to hi@sourcegraph.com (subject \"your Sourcegraph plugin is in our nightly install tests\"); sent 1:30 PM ET Oct 29 | Follow-up #1 (day-7 nudge, fu1.txt with week-45 scorecard link) sent 1:10 PM ET Nov 10 via Zoho webmail",
    "In directory: yes: sourcegraph (plugin, development); 2026-10-29: pass on claude_code, grok_build; best slot: Newsletter $19/issue (or $59/mo for 4); why fit: Code search / Cody audience; listed",
    "Address source: https://sourcegraph.com/contact. Contact page: 'Everything else hi@sourcegraph.com' (sales goes to a form; support@ excluded). Oct 29: numbers re-checked against the Oct 29 nightly (unchanged); results go to growth/outreach/sent/2026-10-29-email-results.json.",
-   "2026-11-05, then 2026-11-12 (final)"
+   "2026-11-17 (final)"
   ],
   [
    "Snyk",
@@ -530,10 +531,10 @@
    "info@42crunch.com",
    "Contacted",
    "2026-10-29",
-   "Cold email #1 from skillmaxx@gilventures.ai to info@42crunch.com (subject \"your API security plugin passes our nightly install tests\"); sent 2:35 PM ET Oct 29",
+   "Cold email #1 from skillmaxx@gilventures.ai to info@42crunch.com (subject \"your API security plugin passes our nightly install tests\"); sent 2:35 PM ET Oct 29 | Follow-up #1 (day-7 nudge, fu1.txt with week-45 scorecard link) sent 1:12 PM ET Nov 10 via Zoho webmail",
    "In directory: yes: 42crunch-api-security-testing (plugin, security); 2026-10-29: pass on claude_code, grok_build; best slot: Newsletter $19/issue (or $59/mo for 4); why fit: API security testing plugin passes nightly",
    "Address source: https://info.42crunch.com/owasp-api-security-top-10-cs-youtube. info@42crunch.com is in the 'Contact Us' footer on 42Crunch's own info.42crunch.com pages (with phone 415-250-3038) and in developers.42crunch.com/tos. Main contact page https://42crunch.com/contact-us.html lists only jobs@/dpo@ plus a sales form — fallback route if you'd rather use the form. Oct 29: numbers re-checked against the Oct 29 nightly (unchanged); results go to growth/outreach/sent/2026-10-29-email-results.json.",
-   "2026-11-05, then 2026-11-12 (final)"
+   "2026-11-17 (final)"
   ],
   [
    "ActiveCampaign",
@@ -556,10 +557,10 @@
    "hello@pydantic.dev",
    "Contacted",
    "2026-10-29",
-   "Cold email #1 from skillmaxx@gilventures.ai to hello@pydantic.dev (subject \"Logfire and Pydantic AI both installed clean last night\"); sent 11:39 AM ET Oct 29",
+   "Cold email #1 from skillmaxx@gilventures.ai to hello@pydantic.dev (subject \"Logfire and Pydantic AI both installed clean last night\"); sent 11:39 AM ET Oct 29 | Follow-up #1 (day-7 nudge, fu1.txt with week-45 scorecard link) sent 1:22 PM ET Nov 10 via Zoho webmail",
    "In directory: yes: logfire (plugin, monitoring) + pydantic-ai (plugin, development); 2026-10-29: both pass on claude_code, grok_build; best slot: Newsletter $19/issue (or $59/mo for 4)",
    "Address source: https://pydantic.dev/contact. pydantic.dev/contact: 'General enquiries: For partnerships, media, and everything that is not a sales or support request. hello@pydantic.dev'. sales@pydantic.dev is the sales-form fallback (not used). Message in growth/outreach/sent/2026-10-29-batch.json.",
-   "2026-11-05, then 2026-11-12 (final)"
+   "2026-11-17 (final)"
   ],
   [
    "Dash0",
@@ -569,10 +570,10 @@
    "hi@dash0.com",
    "Contacted",
    "2026-10-29",
-   "Cold email #1 from skillmaxx@gilventures.ai to hi@dash0.com (subject \"your Dash0 plugin passes our nightly install tests\"); sent 12:59 PM ET Oct 29",
+   "Cold email #1 from skillmaxx@gilventures.ai to hi@dash0.com (subject \"your Dash0 plugin passes our nightly install tests\"); sent 12:59 PM ET Oct 29 | Follow-up #1 (day-7 nudge, fu1.txt with week-45 scorecard link) sent 1:13 PM ET Nov 10 via Zoho webmail",
    "In directory: yes: dash0 (plugin, monitoring); 2026-10-29: pass on claude_code, grok_build; best slot: Category: Monitoring $15/mo",
    "Address source: https://www.dash0.com/contact. dash0.com/contact: 'Reach out to explore opportunities, discuss partnerships... general inquiries hi@dash0.com'. Overlap: Amplitude is also offered Category: Monitoring today (first to book gets it); Axiom got Monitoring on 10-27. Message in growth/outreach/sent/2026-10-29-batch.json.",
-   "2026-11-05, then 2026-11-12 (final)"
+   "2026-11-17 (final)"
   ],
   [
    "Railway",
@@ -580,12 +581,12 @@
    "https://railway.com",
    "email",
    "partners@railway.com",
-   "Contacted",
+   "declined-warm",
    "2026-10-29",
-   "Cold email #1 from skillmaxx@gilventures.ai to partners@railway.com (subject \"your Railway plugin passes our nightly install tests\"); sent 2:01 PM ET Oct 29",
+   "Cold email #1 from skillmaxx@gilventures.ai to partners@railway.com (subject \"your Railway plugin passes our nightly install tests\"); sent 2:01 PM ET Oct 29 | Warm decline reply sent 11:49 AM ET 2026-11-09 via Zoho webmail (logged 2026-11-10 from Sent folder)",
    "In directory: yes: railway (plugin, deployment); 2026-10-29: pass on claude_code, grok_build; best slot: Category: Deployment $15/mo",
-   "Address source: https://railway.com/partners. railway.com/partners: 'Questions? partners@railway.com' (also on docs.railway.com/templates/partners). team@railway.com is the documented sales inbox (docs.railway.com/platform/support), fallback only. UNCERTAIN FIT: partners@ is the template/tech partner program inbox. Message in growth/outreach/sent/2026-10-29-batch.json. | Auto-ack received Oct 29 (no human reply yet)",
-   "2026-11-05, then 2026-11-12 (final)"
+   "Address source: https://railway.com/partners. railway.com/partners: 'Questions? partners@railway.com' (also on docs.railway.com/templates/partners). team@railway.com is the documented sales inbox (docs.railway.com/platform/support), fallback only. UNCERTAIN FIT: partners@ is the template/tech partner program inbox. Message in growth/outreach/sent/2026-10-29-batch.json. | Auto-ack received Oct 29 (no human reply yet) | Railway Partnerships declined sponsorship Fri Nov 6 5:20 PM ET (appreciated the plugin testing)",
+   "2027-02-07"
   ],
   [
    "Val Town",
@@ -595,10 +596,10 @@
    "hi@val.town",
    "Contacted",
    "2026-10-30",
-   "Cold email #1 from skillmaxx@gilventures.ai to hi@val.town (subject \"your Val Town plugin passes our nightly install tests\"); sent 11:29 AM ET Oct 30",
+   "Cold email #1 from skillmaxx@gilventures.ai to hi@val.town (subject \"your Val Town plugin passes our nightly install tests\"); sent 11:29 AM ET Oct 30 | Follow-up #1 (day-7 nudge, fu1.txt with week-45 scorecard link) sent 1:23 PM ET Nov 10 via Zoho webmail",
    "In directory: yes: valtown (plugin, deployment); 2026-10-29: pass on claude_code, grok_build; best slot: Newsletter $19/issue (or $59/mo for 4)",
    "Address source: https://docs.val.town/contact-us/contact-us/. docs.val.town Contact us page: 'Email hi@val.town' (also site footer). Newsletter not Deployment because Railway gets the Deployment offer. Message in growth/outreach/sent/2026-10-29-batch.json. | Oct 30: sent by /workspace/tmp/send_1030.py (results growth/outreach/sent/2026-10-30-email-results.json, message_id <179337416343.1899396.12227420478833686200@gilventures.ai>).",
-   "2026-11-06, then 2026-11-13 (final)"
+   "2026-11-17 (final)"
   ],
   [
    "CodSpeed",
@@ -608,10 +609,10 @@
    "contact@codspeed.io",
    "Contacted",
    "2026-10-30",
-   "Cold email #1 from skillmaxx@gilventures.ai to contact@codspeed.io (subject \"your CodSpeed plugin passes our nightly install tests\"); sent 12:00 PM ET Oct 30",
+   "Cold email #1 from skillmaxx@gilventures.ai to contact@codspeed.io (subject \"your CodSpeed plugin passes our nightly install tests\"); sent 12:00 PM ET Oct 30 | Follow-up #1 (day-7 nudge, fu1.txt with week-45 scorecard link) sent 1:23 PM ET Nov 10 via Zoho webmail",
    "In directory: yes: codspeed (plugin, development); 2026-10-29: pass on claude_code, grok_build; best slot: Newsletter $19/issue (or $59/mo for 4)",
    "Address source: https://codspeed.io/. contact@codspeed.io is the 'Contact Us' mailto in the codspeed.io footer (and docs). support@ excluded. Message in growth/outreach/sent/2026-10-29-batch.json. | Oct 30: sent by /workspace/tmp/send_1030.py (results growth/outreach/sent/2026-10-30-email-results.json, message_id <179337602887.1899396.14674478025395990517@gilventures.ai>).",
-   "2026-11-06, then 2026-11-13 (final)"
+   "2026-11-17 (final)"
   ],
   [
    "GrowthBook",
@@ -621,10 +622,10 @@
    "hello@growthbook.io",
    "Contacted",
    "2026-10-30",
-   "Cold email #1 from skillmaxx@gilventures.ai to hello@growthbook.io (subject \"GrowthBook in our Testing category?\"); sent 12:22 PM ET Oct 30",
+   "Cold email #1 from skillmaxx@gilventures.ai to hello@growthbook.io (subject \"GrowthBook in our Testing category?\"); sent 12:22 PM ET Oct 30 | Follow-up #1 (day-7 nudge, fu1.txt with week-45 scorecard link) sent 1:24 PM ET Nov 10 via Zoho webmail",
    "In directory: yes: growthbook (plugin, testing); 2026-10-29: pass on claude_code, grok_build; best slot: Category: Testing $15/mo",
    "Address source: https://docs.growthbook.io/faq. docs.growthbook.io/faq: 'send an email to hello@growthbook.io if Slack isn't your thing'. General inbox. Message in growth/outreach/sent/2026-10-29-batch.json. | Oct 30: sent by /workspace/tmp/send_1030.py (results growth/outreach/sent/2026-10-30-email-results.json, message_id <179337735739.1899396.10082618200497652860@gilventures.ai>).",
-   "2026-11-06, then 2026-11-13 (final)"
+   "2026-11-17 (final)"
   ],
   [
    "Mergify",
@@ -634,10 +635,10 @@
    "sales@mergify.com",
    "Contacted",
    "2026-10-30",
-   "Cold email #1 from skillmaxx@gilventures.ai to sales@mergify.com (subject \"flaky tests: your Mergify plugin and our nightly runs\"); sent 12:59 PM ET Oct 30",
+   "Cold email #1 from skillmaxx@gilventures.ai to sales@mergify.com (subject \"flaky tests: your Mergify plugin and our nightly runs\"); sent 12:59 PM ET Oct 30 | Follow-up #1 (day-7 nudge, fu1.txt with week-45 scorecard link) sent 1:24 PM ET Nov 10 via Zoho webmail",
    "In directory: yes: mergify (plugin, development); 2026-10-29: pass on claude_code, grok_build; best slot: Newsletter $19/issue (or $59/mo for 4)",
    "Address source: https://mergify.com/contact. mergify.com/contact: 'Sales Email sales@mergify.com for volume pricing, procurement...'. Only non-support address; UNCERTAIN FIT (sales inbox). Message in growth/outreach/sent/2026-10-29-batch.json. | Oct 30: sent by /workspace/tmp/send_1030.py (results growth/outreach/sent/2026-10-30-email-results.json, message_id <179337956753.1899396.11584026133123479089@gilventures.ai>).",
-   "2026-11-06, then 2026-11-13 (final)"
+   "2026-11-17 (final)"
   ],
   [
    "Desktop Commander",
@@ -647,10 +648,10 @@
    "team@desktopcommander.app",
    "Contacted",
    "2026-10-30",
-   "Cold email #1 from skillmaxx@gilventures.ai to team@desktopcommander.app (subject \"Desktop Commander passes our nightly install tests\"); sent 2:22 PM ET Oct 30",
+   "Cold email #1 from skillmaxx@gilventures.ai to team@desktopcommander.app (subject \"Desktop Commander passes our nightly install tests\"); sent 2:22 PM ET Oct 30 | Follow-up #1 (day-7 nudge, fu1.txt with week-45 scorecard link) sent 1:25 PM ET Nov 10 via Zoho webmail",
    "In directory: yes: desktop-commander (plugin, productivity); 2026-10-29: pass on claude_code, grok_build; best slot: Newsletter $19/issue (or $59/mo for 4)",
    "Address source: https://desktopcommander.app/. team@desktopcommander.app is the Organization contactPoint in desktopcommander.app JSON-LD (labeled customer support). Small team (Riga, LV); keep it friendly. Message in growth/outreach/sent/2026-10-29-batch.json. | Oct 30: sent by /workspace/tmp/send_1030.py (results growth/outreach/sent/2026-10-30-email-results.json, message_id <179338457653.1899396.12797005852108200691@gilventures.ai>).",
-   "2026-11-06, then 2026-11-13 (final)"
+   "2026-11-17 (final)"
   ],
   [
    "Resend",
@@ -751,10 +752,10 @@
    "info@postman.com",
    "Contacted",
    "2026-10-30",
-   "Cold email #1 from skillmaxx@gilventures.ai to info@postman.com (subject \"your Postman plugin passed in 3 agents last night\"); sent 2:53 PM ET Oct 30",
+   "Cold email #1 from skillmaxx@gilventures.ai to info@postman.com (subject \"your Postman plugin passed in 3 agents last night\"); sent 2:53 PM ET Oct 30 | Follow-up #1 (day-7 nudge, fu1.txt with week-45 scorecard link) sent 1:26 PM ET Nov 10 via Zoho webmail",
    "In directory: yes: postman (plugin, development) from github.com/postmanlabs/postman-plugin; 2026-10-30: pass on claude_code, grok_build, pi (one of 65/423 add-ons passing in 3+ agents); best slot: Featured $29 for 1 month / $25/mo (month-to-month)",
    "Address source: https://www.postman.com/company/contact-us/. Contact page: 'General and media questions — Email info@postman.com' (also the San Francisco HQ address block). UNCERTAIN FIT: info@ is the general + media inbox (sales goes to the /contact-sales form, which asks 'Are you a Postman user?'). Big company; tiny ask, low odds. Message in growth/outreach/queue-2026-10-30/batch.json. | Oct 30: sent by /workspace/tmp/send_1030.py (results growth/outreach/sent/2026-10-30-email-results.json, message_id <179338640144.1899396.7037785474100679119@gilventures.ai>).",
-   "2026-11-06, then 2026-11-13 (final)"
+   "2026-11-17 (final)"
   ],
   [
    "Pixeltable",
@@ -764,10 +765,10 @@
    "contact@pixeltable.com",
    "Contacted",
    "2026-10-30",
-   "Cold email #1 from skillmaxx@gilventures.ai to contact@pixeltable.com (subject \"your Pixeltable plugin passes our nightly install tests\"); sent 3:15 PM ET Oct 30",
+   "Cold email #1 from skillmaxx@gilventures.ai to contact@pixeltable.com (subject \"your Pixeltable plugin passes our nightly install tests\"); sent 3:15 PM ET Oct 30 | Follow-up #1 (day-7 nudge, fu1.txt with week-45 scorecard link) sent 1:26 PM ET Nov 10 via Zoho webmail",
    "In directory: yes: pixeltable (plugin, development); 2026-10-30: pass on claude_code, grok_build; best slot: Newsletter $19/issue (or $59/mo for 4)",
    "Address source: https://www.pixeltable.com/. pixeltable.com Organization JSON-LD: email contact@pixeltable.com, with contactPoint types 'customer support' and 'sales' (url https://www.pixeltable.com/contact). Small SF startup; contact@ is listed as both the sales and support contact. X @pixeltablehq. Message in growth/outreach/queue-2026-10-30/batch.json. | Oct 30: sent by /workspace/tmp/send_1030.py (results growth/outreach/sent/2026-10-30-email-results.json, message_id <179338770683.1899396.2776559640742744709@gilventures.ai>).",
-   "2026-11-06, then 2026-11-13 (final)"
+   "2026-11-17 (final)"
   ],
   [
    "StackHawk",
@@ -777,10 +778,10 @@
    "info@stackhawk.com",
    "Contacted",
    "2026-10-30",
-   "Cold email #1 from skillmaxx@gilventures.ai to info@stackhawk.com (subject \"both StackHawk plugins passed our nightly install tests\"); sent 3:45 PM ET Oct 30",
+   "Cold email #1 from skillmaxx@gilventures.ai to info@stackhawk.com (subject \"both StackHawk plugins passed our nightly install tests\"); sent 3:45 PM ET Oct 30 | Follow-up #1 (day-7 nudge, fu1.txt with week-45 scorecard link) sent 1:27 PM ET Nov 10 via Zoho webmail",
    "In directory: yes: stackhawk-hawkscan + stackhawk-api (plugins, security); 2026-10-30: both pass on claude_code, grok_build; best slot: Newsletter $19/issue (or $59/mo for 4)",
    "Address source: https://www.stackhawk.com/contact-us/. Contact page card: 'General Inquiries — Something else… We'd love to chat!' mailto:info@stackhawk.com (support@ is the separate support card, not used). Newsletter, not Category: Security (Semgrep 10-27 and Aikido 10-29 already offered Security). Message in growth/outreach/queue-2026-10-30/batch.json. | Oct 30: sent by /workspace/tmp/send_1030.py (results growth/outreach/sent/2026-10-30-email-results.json, message_id <179338953622.1899396.1629137654760836977@gilventures.ai>).",
-   "2026-11-06, then 2026-11-13 (final)"
+   "2026-11-17 (final)"
   ],
   [
    "Nimble",
@@ -788,12 +789,12 @@
    "https://www.nimbleway.com",
    "email",
    "hello@nimbleway.com",
-   "Target",
-   "",
-   "Not sent: drafted for Oct 30 batch (subject \"your Nimble plugin passes our nightly install tests\"), but the Oct 30 sender process died after StackHawk (3:45 PM ET), so it never went out. 2026-11-02 11:10:59 AM ET: Nov 2 sender failed on this first send before login (TLS handshake to smtp.zoho.com:465 dropped: SSLEOFError; box cannot reach Zoho SMTP, port 587 also times out). Not sent; sender stopped, rest of the 20-email batch untouched",
+   "Contacted",
+   "2026-11-02",
+   "Cold email #1 from skillmaxx@gilventures.ai (Zoho webmail; box SMTP blocked) to hello@nimbleway.com (subject \"your Nimble plugin passes our nightly install tests\") at 11:22 AM ET Nov 2",
    "In directory: yes: nimble (plugin, other); 2026-10-30: pass on claude_code, grok_build; best slot: Newsletter $19/issue (or $59/mo for 4)",
    "Address source: https://www.nimbleway.com/contact. Footer on the Contact page (and site-wide): 'Contact Us' mailto:hello@nimbleway.com next to mailto:support@nimbleway.com (support not used). Web-data neighbor of Firecrawl / Bright Data / Apify (all pitched earlier). Newsletter keeps it separate from any category offer. Message in growth/outreach/queue-2026-10-30/batch.json.",
-   "Re-queue once SMTP from the box works again (first in the next batch)"
+   "2026-11-09, then 2026-11-16 (final)"
   ],
   [
    "Carbone",
@@ -801,12 +802,12 @@
    "https://carbone.io",
    "email",
    "contact@carbone.io",
-   "Target",
-   "",
-   "Not sent: drafted for Oct 30 batch (subject \"the Carbone skill passes our nightly install tests\"), but the Oct 30 sender process died after StackHawk (3:45 PM ET), so it never went out",
+   "Contacted",
+   "2026-11-02",
+   "Cold email #1 from skillmaxx@gilventures.ai (Zoho webmail; box SMTP blocked) to contact@carbone.io (subject \"the Carbone skill passes our nightly install tests\") at 11:27 AM ET Nov 2",
    "In directory: yes: carbone-skill (plugin, productivity); 2026-10-30: pass on claude_code, grok_build; best slot: Newsletter $19/issue (or $59/mo for 4)",
    "Address source: https://carbone.io/. carbone.io Organization JSON-LD: email contact@carbone.io, contactPoint type 'sales' contact@carbone.io (support@carbone.io is the support contact, not used). Small French company (CarboneIO SAS); keep it friendly. Newsletter, not Category: Productivity (Linear got that offer). Message in growth/outreach/queue-2026-10-30/batch.json.",
-   "Send Mon 2026-11-02, first in the weekday email batch (recheck numbers first)"
+   "2026-11-09, then 2026-11-16 (final)"
   ],
   [
    "Buildkite",
@@ -1126,12 +1127,12 @@
    "https://nightviz.ai",
    "email",
    "sales@nightviz.ai",
-   "Target",
-   "",
-   "",
+   "Contacted",
+   "2026-11-02",
+   "Cold email #1 from skillmaxx@gilventures.ai (Zoho webmail; box SMTP blocked) to sales@nightviz.ai (subject \"your NightVision skills install clean in 3 agents\") at 11:32 AM ET Nov 2",
    "In directory: yes (NightVision skills); best slot: Category: Security $15/mo; why fit: security skill already listed, small vendor that buys niche dev placements",
    "Source: https://nightviz.ai/ (schema.org ContactPoint contactType=sales). Also partners@nightviz.ai on https://nightviz.ai/partners (channel/reseller team, not used). Added 2026-11-02 weekly pipeline run.",
-   ""
+   "2026-11-09, then 2026-11-16 (final)"
   ],
   [
    "Currents",
@@ -1139,12 +1140,12 @@
    "https://currents.dev",
    "email",
    "hello@currents.dev",
-   "Target",
-   "",
-   "",
+   "Contacted",
+   "2026-11-02",
+   "Cold email #1 from skillmaxx@gilventures.ai (Zoho webmail; box SMTP blocked) to hello@currents.dev (subject \"@currents/mcp in our nightly MCP tests\") at 11:37 AM ET Nov 2",
    "In directory: yes (@currents/mcp npm MCP); best slot: Category: MCP $15/mo; why fit: their MCP is in our nightly npm set; testing audience overlaps",
    "Source: https://currents.dev/about (hello@currents.dev). /contact is a Calendly call booking, so per routing we use the public email. Added 2026-11-02 weekly pipeline run.",
-   ""
+   "2026-11-09, then 2026-11-16 (final)"
   ],
   [
    "Windsor.ai",
@@ -1152,12 +1153,12 @@
    "https://windsor.ai",
    "email",
    "hello@windsor.ai",
-   "Target",
-   "",
-   "",
+   "Contacted",
+   "2026-11-02",
+   "Cold email #1 from skillmaxx@gilventures.ai (Zoho webmail; box SMTP blocked) to hello@windsor.ai (subject \"your Windsor.ai plugin passes our nightly install tests\") at 11:42 AM ET Nov 2",
    "In directory: yes (Windsor AI plugin, productivity); best slot: Category $15/mo; why fit: plugin listed; 11-50 person team, buys small placements",
    "Source: https://windsor.ai/contact-us/ (organization email hello@windsor.ai). Added 2026-11-02 weekly pipeline run.",
-   ""
+   "2026-11-09, then 2026-11-16 (final)"
   ],
   [
    "Rigour Labs",
@@ -1191,12 +1192,12 @@
    "https://arize.com",
    "email",
    "partnerships@arize.com",
-   "Target",
-   "",
-   "",
+   "Contacted",
+   "2026-11-13",
+   "Cold email #1 from skillmaxx@gilventures.ai to partnerships@arize.com (subject \"a $19 test in front of people picking agent tools\"); sent 11:03 AM ET Nov 13 via Zoho Mail API (growth/scripts/zoho_mail.py), Zoho messageId 1794585802761138400. Body: growth/outreach/queue-2026-11-13/",
    "In directory: no; best slot: Newsletter $19 or Featured $29; why fit: agent eval/observability buyers = our readers; partner program open",
    "Source: https://arize.com/partners/ ('Contact partnerships' mailto). Added 2026-11-02 weekly pipeline run.",
-   ""
+   "2026-11-19, then 2026-11-26 (final)"
   ],
   [
    "Braintrust",
@@ -1204,11 +1205,11 @@
    "https://www.braintrust.dev",
    "email",
    "hello@braintrust.dev",
-   "Target",
-   "",
-   "",
+   "Bounced",
+   "2026-11-13",
+   "Cold email #1 from skillmaxx@gilventures.ai to hello@braintrust.dev (subject \"evals for the people choosing agent tools\"); sent 11:03 AM ET Nov 13 via Zoho Mail API (growth/scripts/zoho_mail.py), Zoho messageId 1794585827228155300. Body: growth/outreach/queue-2026-11-13/",
    "In directory: no; best slot: Newsletter $19 or Featured $29; why fit: AI-engineering audience, heavy dev-newsletter advertiser",
-   "Source: https://www.braintrust.dev/ (schema.org ContactPoint hello@braintrust.dev, url /contact). Added 2026-11-02 weekly pipeline run.",
+   "Source: https://www.braintrust.dev/ (schema.org ContactPoint hello@braintrust.dev, url /contact). Added 2026-11-02 weekly pipeline run. | Nov 13: BOUNCED (Gmail 550 5.1.1, hello@braintrust.dev does not exist). No follow-ups; find a verified address before any retry.",
    ""
   ],
   [
@@ -1217,12 +1218,12 @@
    "https://www.helicone.ai",
    "email",
    "contact@helicone.ai",
-   "Target",
-   "",
-   "",
+   "Contacted",
+   "2026-11-13",
+   "Cold email #1 from skillmaxx@gilventures.ai to contact@helicone.ai (subject \"a $19 test in front of people picking agent tools\"); sent 11:04 AM ET Nov 13 via Zoho Mail API (growth/scripts/zoho_mail.py), Zoho messageId 1794585862395155100. Body: growth/outreach/queue-2026-11-13/",
    "In directory: no; best slot: Newsletter $19; why fit: agent builders routing LLM calls; YC dev-tool that sponsors newsletters",
    "Source: https://www.helicone.ai/ (footer CONNECT > Email mailto:contact@helicone.ai). Added 2026-11-02 weekly pipeline run.",
-   ""
+   "2026-11-19, then 2026-11-26 (final)"
   ],
   [
    "LangWatch",
@@ -1230,12 +1231,12 @@
    "https://langwatch.ai",
    "email",
    "contact@langwatch.ai",
-   "Target",
-   "",
-   "",
+   "Contacted",
+   "2026-11-13",
+   "Cold email #1 from skillmaxx@gilventures.ai to contact@langwatch.ai (subject \"install tests meet agent simulations\"); sent 11:04 AM ET Nov 13 via Zoho Mail API (growth/scripts/zoho_mail.py), Zoho messageId 1794585886393155000. Body: growth/outreach/queue-2026-11-13/",
    "In directory: no; best slot: Newsletter $19; why fit: agent-testing angle matches our install-test story",
    "Source: https://langwatch.ai/ (footer 'Contact' mailto:contact@langwatch.ai). Added 2026-11-02 weekly pipeline run.",
-   ""
+   "2026-11-19, then 2026-11-26 (final)"
   ],
   [
    "Weaviate",
@@ -1243,12 +1244,12 @@
    "https://weaviate.io",
    "email",
    "hello@weaviate.io",
-   "Target",
-   "",
-   "",
+   "Contacted",
+   "2026-11-13",
+   "Cold email #1 from skillmaxx@gilventures.ai to hello@weaviate.io (subject \"agent memory, the people picking agent tools, and a $15 test\"); sent 11:02 AM ET Nov 13 via Zoho Mail API (growth/scripts/zoho_mail.py), Zoho messageId 1794585776362155100. Body: growth/outreach/queue-2026-11-13/",
    "In directory: no; best slot: Category: Database $15/mo or Newsletter $19; why fit: RAG/agent memory infra; Qdrant/Pinecone/Zilliz already pitched, so category is contested",
    "Source: https://weaviate.io/contact (schema.org ContactPoint contactType=sales hello@weaviate.io). Added 2026-11-02 weekly pipeline run.",
-   ""
+   "2026-11-19, then 2026-11-26 (final)"
   ],
   [
    "Chroma",
@@ -1256,12 +1257,12 @@
    "https://www.trychroma.com",
    "email",
    "hello@trychroma.com",
-   "Target",
-   "",
-   "",
+   "Contacted",
+   "2026-11-11",
+   "Cold email #1 from skillmaxx@gilventures.ai to hello@trychroma.com (subject \"Package Search MCP and the people picking agent tools\"); sent 11:28 AM ET Nov 11 via Zoho webmail",
    "In directory: no; best slot: Newsletter $19 or Category $15; why fit: Package Search MCP targets coding agents directly",
    "Source: https://www.trychroma.com/company (footer 'Contact' mailto:hello@trychroma.com). Added 2026-11-02 weekly pipeline run.",
-   ""
+   "2026-11-18, then 2026-11-25 (final)"
   ],
   [
    "Letta",
@@ -1269,12 +1270,12 @@
    "https://www.letta.com",
    "email",
    "contact@letta.com",
-   "Target",
-   "",
-   "",
+   "Contacted",
+   "2026-11-11",
+   "Cold email #1 from skillmaxx@gilventures.ai to contact@letta.com (subject \"agent memory, from the install-test side\"); sent 11:31 AM ET Nov 11 via Zoho webmail",
    "In directory: no; best slot: Newsletter $19; why fit: agent memory infra, same buyers as Mem0 (already contacted)",
    "Source: https://www.letta.com/contact/ (page names contact@letta.com; form also there). Added 2026-11-02 weekly pipeline run.",
-   ""
+   "2026-11-18, then 2026-11-25 (final)"
   ],
   [
    "Agno",
@@ -1282,12 +1283,12 @@
    "https://www.agno.com",
    "email",
    "hello@agno.com",
-   "Target",
-   "",
-   "",
+   "Contacted",
+   "2026-11-11",
+   "Cold email #1 from skillmaxx@gilventures.ai to hello@agno.com (subject \"what breaks when agents install MCP servers\"); sent 11:33 AM ET Nov 11 via Zoho webmail",
    "In directory: no; best slot: Newsletter $19 or Featured $29; why fit: agent framework devs are our core readers",
    "Source: https://www.agno.com/ (schema.org ContactPoint contactType=sales hello@agno.com). Added 2026-11-02 weekly pipeline run.",
-   ""
+   "2026-11-18, then 2026-11-25 (final)"
   ],
   [
    "Kilo Code",
@@ -1295,12 +1296,12 @@
    "https://kilo.ai",
    "email",
    "sales@kilo.ai",
-   "Target",
-   "",
-   "",
+   "Contacted",
+   "2026-11-11",
+   "Cold email #1 from skillmaxx@gilventures.ai to sales@kilo.ai (subject \"a 6th agent column on SkillMaxx?\"); sent 11:37 AM ET Nov 11 via Zoho webmail",
    "In directory: no (agent, possible future 6th agent column); best slot: Featured $29 or Newsletter $19; why fit: coding-agent users pick add-ons from directories like ours",
-   "Source: https://kilo.ai/enterprise ('Questions about enterprise deployment? sales@kilo.ai'; also schema.org sales ContactPoint). affiliates@kilocode.ai on /partners not used. Added 2026-11-02 weekly pipeline run.",
-   ""
+   "Source: https://kilo.ai/enterprise ('Questions about enterprise deployment? sales@kilo.ai'; also schema.org sales ContactPoint). affiliates@kilocode.ai on /partners not used. Added 2026-11-02 weekly pipeline run. | Nov 11 11:37 AM: Pylon support-ticket auto-ack from kilocode@service.usepylon.com (not a human reply).",
+   "2026-11-18, then 2026-11-25 (final)"
   ],
   [
    "Sourcery",
@@ -1312,7 +1313,7 @@
    "",
    "",
    "In directory: no; best slot: Category: Code review $15/mo or Newsletter $19; why fit: code-review buyers (CodeRabbit/Qodo/Greptile already pitched)",
-   "Source: https://www.sourcery.ai/ (FAQ: 'Have another question? Email hello@sourcery.ai'). Added 2026-11-02 weekly pipeline run.",
+   "Source: https://www.sourcery.ai/ (FAQ: 'Have another question? Email hello@sourcery.ai'). Added 2026-11-02 weekly pipeline run. | Nov 13: NOT sent. The drafted pitch offered a \"Code review\" category slot, but the directory has no Code review category (14 categories: Database, Monitoring, Development, ...). Needs a corrected draft (e.g. Monitoring for Better Stack) and Brandon's OK.",
    ""
   ],
   [
@@ -1321,12 +1322,12 @@
    "https://socket.dev",
    "email",
    "sales@socket.dev",
-   "Target",
-   "",
-   "",
+   "Contacted",
+   "2026-11-11",
+   "Cold email #1 from skillmaxx@gilventures.ai to sales@socket.dev (subject \"we npx 45 MCP packages a night\"); sent 11:39 AM ET Nov 11 via Zoho webmail",
    "In directory: no; best slot: Category: Security $15/mo or Newsletter $19; why fit: we install hundreds of npm MCP packages nightly; supply-chain risk is our readers' worry",
    "Source: https://socket.dev/contact (Sales section mailto:sales@socket.dev). Added 2026-11-02 weekly pipeline run.",
-   ""
+   "2026-11-18, then 2026-11-25 (final)"
   ],
   [
    "Infisical",
@@ -1334,12 +1335,12 @@
    "https://infisical.com",
    "email",
    "team@infisical.com",
-   "Target",
-   "",
-   "",
+   "Contacted",
+   "2026-11-11",
+   "Cold email #1 from skillmaxx@gilventures.ai to team@infisical.com (subject \"30 of our MCP checks stopped at 'needs key'\"); sent 11:41 AM ET Nov 11 via Zoho webmail",
    "In directory: no; best slot: Newsletter $19 or Featured $29; why fit: 30 of our MCP cases need API keys; secrets for agents is their pitch",
    "Source: https://infisical.com/ (schema.org organization email + footer 'Team Email' team@infisical.com). Added 2026-11-02 weekly pipeline run.",
-   ""
+   "2026-11-18, then 2026-11-25 (final)"
   ],
   [
    "Doppler",
@@ -1347,11 +1348,11 @@
    "https://www.doppler.com",
    "email",
    "info@doppler.com",
-   "Target",
-   "",
-   "",
+   "Bounced",
+   "2026-11-13",
+   "Cold email #1 from skillmaxx@gilventures.ai to info@doppler.com (subject \"the API keys in agent MCP configs\"); sent 11:05 AM ET Nov 13 via Zoho Mail API (growth/scripts/zoho_mail.py), Zoho messageId 1794585913396138300. Body: growth/outreach/queue-2026-11-13/",
    "In directory: no; best slot: Newsletter $19; why fit: agent MCP configs leak keys; dev-newsletter advertiser",
-   "Source: https://www.doppler.com/ (footer mailto:info@doppler.com). Added 2026-11-02 weekly pipeline run.",
+   "Source: https://www.doppler.com/ (footer mailto:info@doppler.com). Added 2026-11-02 weekly pipeline run. | Nov 13: BOUNCED (Gmail 550 5.1.1, info@doppler.com does not exist). No follow-ups; find a verified address before any retry.",
    ""
   ],
   [
@@ -1360,12 +1361,12 @@
    "https://www.scalekit.com",
    "email",
    "hi@scalekit.com",
-   "Target",
-   "",
-   "",
+   "Contacted",
+   "2026-11-11",
+   "Cold email #1 from skillmaxx@gilventures.ai to hi@scalekit.com (subject \"MCP auth, from 225 nightly installs\"); sent 11:43 AM ET Nov 11 via Zoho webmail",
    "In directory: no; best slot: Newsletter $19 or Category $15; why fit: MCP auth is literally their product; WorkOS (Replied) is a competitor",
    "Source: https://www.scalekit.com/ (schema.org ContactPoint contactType=sales hi@scalekit.com). Added 2026-11-02 weekly pipeline run.",
-   ""
+   "2026-11-18, then 2026-11-25 (final)"
   ],
   [
    "Kinde",
@@ -1399,12 +1400,12 @@
    "https://knock.app",
    "email",
    "hello@knock.app",
-   "Target",
-   "",
-   "",
+   "Contacted",
+   "2026-11-11",
+   "Cold email #1 from skillmaxx@gilventures.ai to hello@knock.app (subject \"Knock's agent toolkit and coding agents\"); sent 11:45 AM ET Nov 11 via Zoho webmail",
    "In directory: no; best slot: Newsletter $19; why fit: ships an agent toolkit/MCP; dev-infra marketing team",
    "Source: https://knock.app/ (schema.org ContactPoint contactType=sales hello@knock.app). Added 2026-11-02 weekly pipeline run.",
-   ""
+   "2026-11-18, then 2026-11-25 (final)"
   ],
   [
    "Speakeasy",
@@ -1412,12 +1413,12 @@
    "https://www.speakeasy.com",
    "email",
    "sales@speakeasy.com",
-   "Target",
-   "",
-   "",
+   "Contacted",
+   "2026-11-11",
+   "Cold email #1 from skillmaxx@gilventures.ai to sales@speakeasy.com (subject \"generated MCP servers in our nightly tests\"); sent 11:47 AM ET Nov 11 via Zoho webmail",
    "In directory: no; best slot: Newsletter $19 or Category: MCP $15/mo; why fit: they generate MCP servers, our readers install them",
    "Source: https://www.speakeasy.com/contact (schema.org ContactPoint contactType=sales sales@speakeasy.com). Added 2026-11-02 weekly pipeline run.",
-   ""
+   "2026-11-18, then 2026-11-25 (final)"
   ],
   [
    "Turso",
@@ -1425,12 +1426,12 @@
    "https://turso.tech",
    "email",
    "info@turso.tech",
-   "Target",
-   "",
-   "",
+   "Contacted",
+   "2026-11-13",
+   "Cold email #1 from skillmaxx@gilventures.ai to info@turso.tech (subject \"founding sponsor of our databases page?\"); sent 11:05 AM ET Nov 13 via Zoho Mail API (growth/scripts/zoho_mail.py), Zoho messageId 1794585938351155100. Body: growth/outreach/queue-2026-11-13/",
    "In directory: no; best slot: Category: Database $15/mo or Newsletter $19; why fit: DB-per-agent positioning",
    "Source: https://turso.tech/contact ('For general company inquiries, email info@turso.tech. This address is not a support channel.'). Added 2026-11-02 weekly pipeline run.",
-   ""
+   "2026-11-19, then 2026-11-26 (final)"
   ],
   [
    "Xata",
@@ -1451,12 +1452,12 @@
    "https://motherduck.com",
    "email",
    "info@motherduck.com",
-   "Target",
-   "",
-   "",
+   "Contacted",
+   "2026-11-13",
+   "Cold email #1 from skillmaxx@gilventures.ai to info@motherduck.com (subject \"DuckDB is already in our directory\"); sent 11:06 AM ET Nov 13 via Zoho Mail API (growth/scripts/zoho_mail.py), Zoho messageId 1794585960968155100. Body: growth/outreach/queue-2026-11-13/",
    "In directory: no (DuckDB Skills plugin is listed); best slot: Category: Data $15/mo; why fit: DuckDB skills already in directory",
    "Source: https://motherduck.com/ (schema.org ContactPoint contactType=sales info@motherduck.com). Added 2026-11-02 weekly pipeline run.",
-   ""
+   "2026-11-19, then 2026-11-26 (final)"
   ],
   [
    "InstantDB",
@@ -1481,7 +1482,7 @@
    "",
    "",
    "In directory: no; best slot: Category: Observability $15/mo or Newsletter $19; why fit: big dev-newsletter advertiser; has MCP server",
-   "Source: https://betterstack.com/ (footer hello@betterstack.com next to sales phone). Added 2026-11-02 weekly pipeline run.",
+   "Source: https://betterstack.com/ (footer hello@betterstack.com next to sales phone). Added 2026-11-02 weekly pipeline run. | Nov 13: NOT sent. The drafted pitch offered a \"Observability\" category slot, but the directory has no Observability category (14 categories: Database, Monitoring, Development, ...). Needs a corrected draft (e.g. Monitoring for Better Stack) and Brandon's OK.",
    ""
   ],
   [
@@ -1490,12 +1491,12 @@
    "https://www.checklyhq.com",
    "email",
    "info@checklyhq.com",
-   "Target",
-   "",
-   "",
+   "Contacted",
+   "2026-11-13",
+   "Cold email #1 from skillmaxx@gilventures.ai to info@checklyhq.com (subject \"nightly checks, but for agent installs\"); sent 11:06 AM ET Nov 13 via Zoho Mail API (growth/scripts/zoho_mail.py), Zoho messageId 1794585983512138400. Body: growth/outreach/queue-2026-11-13/",
    "In directory: no; best slot: Newsletter $19; why fit: monitoring-as-code devs; has agent/MCP rules",
    "Source: https://www.checklyhq.com/about/ ('Contact Us info@checklyhq.com'). Added 2026-11-02 weekly pipeline run.",
-   ""
+   "2026-11-19, then 2026-11-26 (final)"
   ],
   [
    "Warp",
@@ -1503,12 +1504,12 @@
    "https://www.warp.dev",
    "email",
    "sales@warp.dev",
-   "Target",
-   "",
-   "",
+   "Contacted",
+   "2026-11-13",
+   "Cold email #1 from skillmaxx@gilventures.ai to sales@warp.dev (subject \"we test agent add-ons every night (Warp's crowd)\"); sent 11:06 AM ET Nov 13 via Zoho Mail API (growth/scripts/zoho_mail.py), Zoho messageId 1794586006599155000. Body: growth/outreach/queue-2026-11-13/",
    "In directory: no (agent/terminal); best slot: Featured $29 or Newsletter $19; why fit: coding-agent users; Warp supports MCP",
    "Source: https://www.warp.dev/contact ('Enterprise & Sales ... sales@warp.dev'; press@ not used). Added 2026-11-02 weekly pipeline run.",
-   ""
+   "2026-11-19, then 2026-11-26 (final)"
   ],
   [
    "Blacksmith",
@@ -1529,12 +1530,12 @@
    "https://coder.com",
    "email",
    "ask@coder.com",
-   "Target",
-   "",
-   "",
+   "Contacted",
+   "2026-11-13",
+   "Cold email #1 from skillmaxx@gilventures.ai to ask@coder.com (subject \"coding agents in governed workspaces\"); sent 11:07 AM ET Nov 13 via Zoho Mail API (growth/scripts/zoho_mail.py), Zoho messageId 1794586040826138300. Body: growth/outreach/queue-2026-11-13/",
    "In directory: no; best slot: Newsletter $19; why fit: runs coding agents in governed workspaces",
    "Source: https://coder.com/contact/sales (schema.org ContactPoint 'General Inquiry' ask@coder.com). Added 2026-11-02 weekly pipeline run.",
-   ""
+   "2026-11-19, then 2026-11-26 (final)"
   ],
   [
    "Deepgram",
@@ -1542,12 +1543,12 @@
    "https://deepgram.com",
    "email",
    "info@deepgram.com",
-   "Target",
-   "",
-   "",
+   "Contacted",
+   "2026-11-13",
+   "Cold email #1 from skillmaxx@gilventures.ai to info@deepgram.com (subject \"a $19 test in front of people building agents\"); sent 11:07 AM ET Nov 13 via Zoho Mail API (growth/scripts/zoho_mail.py), Zoho messageId 1794586065542138400. Body: growth/outreach/queue-2026-11-13/",
    "In directory: no; best slot: Newsletter $19; why fit: voice-agent builders; separate support portal so info@ is general",
    "Source: https://deepgram.com/contact-us (schema.org ContactPoint info@deepgram.com; tech support is a separate portal). Added 2026-11-02 weekly pipeline run.",
-   ""
+   "2026-11-19, then 2026-11-26 (final)"
   ],
   [
    "SerpApi",
@@ -1568,12 +1569,12 @@
    "https://brave.com/search/api/",
    "email",
    "api-sales@brave.com",
-   "Target",
-   "",
-   "",
+   "Contacted",
+   "2026-11-11",
+   "Cold email #1 from skillmaxx@gilventures.ai to api-sales@brave.com (subject \"search tools for agents, and Brave\"); sent 11:48 AM ET Nov 11 via Zoho webmail",
    "In directory: no; best slot: Category: Search $15/mo; why fit: Brave Search MCP is a common agent install",
    "Source: https://brave.com/search/api/ (footer 'API sales api-sales@brave.com'; adsales@ is for Brave Ads, not used). Added 2026-11-02 weekly pipeline run.",
-   ""
+   "2026-11-18, then 2026-11-25 (final)"
   ],
   [
    "n8n",
@@ -1581,12 +1582,12 @@
    "https://n8n.io",
    "email",
    "partners@n8n.io",
-   "Target",
-   "",
-   "",
+   "Contacted",
+   "2026-11-13",
+   "Cold email #1 from skillmaxx@gilventures.ai to partners@n8n.io (subject \"a $19 test in front of people picking agent tools\"); sent 11:08 AM ET Nov 13 via Zoho Mail API (growth/scripts/zoho_mail.py), Zoho messageId 1794586105677138300. Body: growth/outreach/queue-2026-11-13/",
    "In directory: no; best slot: Newsletter $19 or Featured $29; why fit: agent-automation builders overlap; Zapier already pitched",
-   "Source: https://n8n.io/contact/ ('Contact partners team' mailto:partners@n8n.io). marketing@n8n.io there is the Communications/press team, not used. Added 2026-11-02 weekly pipeline run.",
-   ""
+   "Source: https://n8n.io/contact/ ('Contact partners team' mailto:partners@n8n.io). marketing@n8n.io there is the Communications/press team, not used. Added 2026-11-02 weekly pipeline run. | Nov 13: n8n partners auto-reply (high volume, \"a few days\"); not a human reply.",
+   "2026-11-19, then 2026-11-26 (final)"
   ],
   [
    "Trigger.dev",
@@ -1620,12 +1621,12 @@
    "https://liveblocks.io",
    "form",
    "https://liveblocks.io/contact/sales",
-   "Contacted",
+   "Replied",
    "2026-11-02",
-   "Sales form submitted ~11:12 AM ET Nov 2 (size 1-10, role C-level) with Newsletter $19 pitch; confirmation \"Thanks, we'll be in touch shortly\"",
+   "Sales form submitted ~11:12 AM ET Nov 2 (size 1-10, role C-level) with Newsletter $19 pitch; confirmation \"Thanks, we'll be in touch shortly\" | Reply to Stacy Schmitz sent 11:50 AM ET 2026-11-09 via Zoho webmail (logged 2026-11-10 from Sent folder)",
    "In directory: no; best slot: Newsletter $19; why fit: AI copilots/agents in apps, dev-newsletter sponsor",
-   "Form fields: first name, email, message (no phone). Source: https://liveblocks.io/contact/sales. Added 2026-11-02 weekly pipeline run.",
-   "2026-11-09, then 2026-11-16 (final)"
+   "Form fields: first name, email, message (no phone). Source: https://liveblocks.io/contact/sales. Added 2026-11-02 weekly pipeline run. | Stacy Schmitz (stacy.schmitz@liveblocks.io) sent getting-started/onboarding emails Nov 2 and Nov 5 (SDR follow-up to the demo form, not a sponsorship answer)",
+   "2026-11-16 (nudge if no answer)"
   ],
   [
    "Arcade.dev",
@@ -1659,12 +1660,12 @@
    "https://www.assemblyai.com",
    "form",
    "https://www.assemblyai.com/contact/sales",
-   "Contacted",
+   "declined-warm",
    "2026-11-02",
    "Sales form submitted ~11:14 AM ET Nov 2 with Newsletter $19 pitch; button showed \"SUBMITTED!\"",
    "In directory: no; best slot: Newsletter $19; why fit: voice-agent builders, big dev-newsletter sponsor",
-   "Form fields: first/last name, email, how can we help (no phone). Source: https://www.assemblyai.com/contact/sales. Added 2026-11-02 weekly pipeline run.",
-   "2026-11-09, then 2026-11-16 (final)"
+   "Form fields: first/last name, email, how can we help (no phone). Source: https://www.assemblyai.com/contact/sales. Added 2026-11-02 weekly pipeline run. | Nov 2 11:14 AM ET: AssemblyAI's automated Sales AI Agent (contactsales@assemblyai.com) said the channel is for Voice AI API customers, not sponsorships, and declined for now. Automated reply, so no response sent; no 7/14-day follow-ups",
+   "2027-02-08"
   ],
   [
    "Rootly",
@@ -1678,6 +1679,19 @@
    "In directory: yes (Rootly plugin); best slot: Category $15/mo; why fit: plugin listed; incident.io already contacted",
    "Only route is the demo-request form (first/last name, email, product interest, how heard; no phone). Emails on site are privacy/security/support only. Source: https://rootly.com/demo (rootly.com/contact redirects here). Added 2026-11-02 weekly pipeline run. 2026-11-02: /demo form has no message field and only a \"Book a demo\" button, so not submitted. Routes: X https://x.com/rootlyhq, LinkedIn https://www.linkedin.com/company/rootlyhq/. Logged in BRANDON-OUTREACH.md.",
    ""
+  ],
+  [
+   "PickAPlugin",
+   "Small hand-sorted directory of ChatGPT and Codex plugins (pickaplugin.com); inbound, not a sponsor lead",
+   "https://pickaplugin.com",
+   "email",
+   "hello@pickaplugin.com",
+   "Replied",
+   "2026-11-13",
+   "Inbound Nov 12 12:58 PM ET from Aaron proposing a link swap + free-to-cite research page (https://pickaplugin.com/research/state-of-codex-plugins-2026). Our reply 2026-11-13 11:24 AM ET (Zoho msg 1794587098729155300, thread 1794506288968158500): thanks, no commitment. Brandon accepted the link swap 2026-11-13 11:38 AM ET; confirmation email not yet sent.",
+   "",
+   "Link swap accepted by Brandon 2026-11-13 (not a paid slot). Proposed placement: a short Related directories section on /how-we-test/ linking https://pickaplugin.com (the site has no resources page today; a footer link would bury it). They can link https://skillmaxx.gilventures.ai/reports/latest/. Site link not added yet.",
+   "send accepted-reply, then add the /how-we-test/ link"
   ]
  ]
 }
