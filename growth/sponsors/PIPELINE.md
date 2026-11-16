@@ -1,6 +1,6 @@
 # Sponsor pipeline
 
-**Machine-readable list:** [PIPELINE.csv](PIPELINE.csv) — 128 prospects (as of 2026-11-13; 127 + inbound PickAPlugin), status column, public contact routes only (no guessed emails).  
+**Machine-readable list:** [PIPELINE.csv](PIPELINE.csv) — 153 prospects (as of 2026-11-16 weekly run; 128 + 25 verified Targets; Zed dropped), status column, public contact routes only (no guessed emails).  
 **Templates + weekly cadence:** [OUTREACH.md](OUTREACH.md).  
 **Pricing / caps:** [../SPONSORS.md](../SPONSORS.md) · [SCALING.md](SCALING.md).  
 **Playbook:** [PLAYBOOK.md](PLAYBOOK.md).
@@ -25,7 +25,32 @@ PIPELINE.csv columns: company, who_they_are, website, contact_route (email/form/
 
 Routing: verified public email first (never guess) → contact form → if a site only offers call bookings, find a public email → if only a phone, log `call-only` with the number and tell Brandon → else `linkedin`/`x` with the URL and tell Brandon. Call-only and LinkedIn/X leads show in the dashboard "Needs Brandon" list.
 
-## Snapshot (from PIPELINE.csv, 2026-11-02 ~9:15 AM ET, weekly pipeline run)
+
+## Snapshot (from PIPELINE.csv, 2026-11-16 ~10:20 AM ET, weekly pipeline re-run)
+
+This run did **not** send email, forms, or Bluesky notes. The 11 AM daily outreach routine is the only sender today.
+
+| Stage | Count |
+|---|---|
+| Target | 37 (12 previously uncontacted + **25 new**, verified live 2026-11-16; Zed dropped) |
+| Contacted | 95 (8 follow-ups already sent this morning by a running queue were logged, not sent by this run) |
+| Contacted (unconfirmed) | 1 (Nango) |
+| Replied | 3 (WorkOS; Liveblocks SDR onboarding, not a sponsorship answer; PickAPlugin link swap accepted, site link not added yet) |
+| dm-closed | 7 |
+| call-only (needs Brandon) | 2 |
+| blocked-form | 2 |
+| x-only (needs Brandon) | 1 |
+| declined-warm | 3 |
+| Bounced | 2 (Braintrust, Doppler) |
+| Booked | 0 |
+| Live | 0 |
+| Lost | 0 |
+
+Founding sponsors booked: **0 / 10**. Stripe last checked Sun Nov 15 ~6:15 PM ET (Gil Ventures LLC live): 0 charges, 0 Checkout sessions, 0 subscriptions. Beehiiv: 5 active subs, all test/Brandon addresses; no issues emailed yet. Due list: [../outreach/due-2026-11-16.md](../outreach/due-2026-11-16.md).
+
+New Targets (public routes verified on the live page, 2026-11-16): Typesense, Cerebras, Dify, Flowise, Fern, Zuplo, Diffbot, Oxylabs, Scrapfly, Zenrows, Patronus AI, Cursor (customer-service inbox, low odds), Strapi, Lightning AI, Voyage AI, Cognee, Bruno, Apidog, Cerbos (partner-programme form; press email not used), Teleport, Namespace, Northflank, Dagger, BrowserStack, QA Wolf. Recommended slot for almost all is Newsletter $19 — the site has no Search or Scraping category.
+
+### Previous snapshot (2026-11-02 ~9:15 AM ET, weekly pipeline run)
 
 | Stage | Count |
 |---|---|
@@ -63,4 +88,4 @@ Oct 28 run: 9 emails (E2B sent 11:14 AM ET; 8 more spaced through the afternoon 
 ## Inbound leads
 | Date | Company | Contact | Slot | Source | Stage | Notes |
 |---|---|---|---|---|---|---|
-| _(none yet)_ | | | | | | |
+| 2026-11-12 | PickAPlugin | Aaron, hello@pickaplugin.com | n/a (link swap) | Inbound email | Replied | Swap accepted 2026-11-13; confirmation not yet sent; /how-we-test/ link not added yet. |

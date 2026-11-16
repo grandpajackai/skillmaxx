@@ -1,0 +1,82 @@
+[
+ {
+  "company": "Browserbase",
+  "to": "hello@browserbase.com",
+  "subject": "Re: Browserbase next to Browser Use in our Automation category?",
+  "kind": "fu2",
+  "http": 200,
+  "zoho_messageId": "1794838404501138300",
+  "sent_at": "2026-11-16 09:13:24 ET",
+  "via": "Zoho Mail API"
+ },
+ {
+  "company": "Windsor.ai",
+  "to": "hello@windsor.ai",
+  "subject": "Re: your Windsor.ai plugin passes our nightly install tests",
+  "kind": "fu1",
+  "http": 200,
+  "zoho_messageId": "1794838671264138400",
+  "sent_at": "2026-11-16 09:17:51 ET",
+  "via": "Zoho Mail API"
+ },
+ {
+  "company": "Carbone",
+  "to": "contact@carbone.io",
+  "subject": "Re: the Carbone skill passes our nightly install tests",
+  "kind": "fu1",
+  "http": 200,
+  "zoho_messageId": "1794840195521155300",
+  "sent_at": "2026-11-16 09:43:15 ET",
+  "via": "Zoho Mail API"
+ },
+ {
+  "company": "E2B",
+  "to": "hello@e2b.dev",
+  "subject": "Re: E2B isn't in our agent install tests yet (want in?)",
+  "kind": "fu2",
+  "http": 200,
+  "zoho_messageId": "1794840440330155100",
+  "sent_at": "2026-11-16 09:47:20 ET",
+  "via": "Zoho Mail API"
+ },
+ {
+  "company": "Currents",
+  "to": "hello@currents.dev",
+  "subject": "Re: @currents/mcp in our nightly MCP tests",
+  "kind": "fu1",
+  "http": 200,
+  "zoho_messageId": "1794840768231155000",
+  "sent_at": "2026-11-16 09:52:48 ET",
+  "via": "Zoho Mail API"
+ },
+ {
+  "company": "Prisma",
+  "to": "hello@prisma.io",
+  "subject": "Re: we install your Prisma MCP plugin every night (it behaves)",
+  "kind": "fu2",
+  "http": 200,
+  "zoho_messageId": "1794841043780155101",
+  "sent_at": "2026-11-16 09:57:23 ET",
+  "via": "Zoho Mail API"
+ },
+ {
+  "company": "Aikido",
+  "to": "hello@aikido.dev",
+  "subject": "Re: Aikido's Claude plugin passed in 3 agents last night",
+  "kind": "fu2",
+  "http": 200,
+  "zoho_messageId": "1794841538470155000",
+  "sent_at": "2026-11-16 10:05:38 ET",
+  "via": "Zoho Mail API"
+ },
+ {
+  "company": "NightVision",
+  "to": "sales@nightviz.ai",
+  "subject": "Re: your NightVision skills install clean in 3 agents",
+  "kind": "fu1",
+  "http": 200,
+  "zoho_messageId": "1794841823510138400",
+  "sent_at": "2026-11-16 10:10:23 ET",
+  "via": "Zoho Mail API"
+ }
+]
