@@ -1,0 +1,14 @@
+---
+layout: base.njk
+pagination: {data: runGaps, size: 1, alias: g}
+permalink: "/reports/{{ g.date }}/"
+robots: "noindex,follow"
+eleventyComputed:
+  title: "No daily install report for {{ g.date }}"
+  desc: "SkillMaxx published no daily install report for {{ g.date }}. {{ g.why }}"
+---
+<div class="wrap prose"><p class="muted"><a href="/reports/">Daily reports</a> › {{ g.date }}</p>
+<h1 class="ph">No report for {{ g.date }}</h1>
+<div class="callout" role="note"><p>{{ g.why }}</p></div>
+<p>We don't publish numbers from a run that didn't finish or that we know is wrong, and we don't backfill missed nights.{% if g.kind == "no_valid_run" %} This night is listed under <a href="/reports/#no-valid-run">no valid run</a>.{% else %} This night is listed under <a href="/reports/#no-report">no report</a>.{% endif %}</p>
+<p>{% if g.prev %}Previous report: <a href="/reports/{{ g.prev }}/">{{ g.prev }}</a>. {% endif %}{% if g.next %}Next report: <a href="/reports/{{ g.next }}/">{{ g.next }}</a>. {% endif %}Current answer: <a href="/reports/latest/">today's report</a>. <a href="/how-we-test/">How we test</a></p></div>
