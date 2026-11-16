@@ -187,8 +187,10 @@ open(path, "a").write("\n")
 PY
 }
 
-git -C "$PRIMARY" fetch -q origin "$REF" || { write_source "$REF" "" failed ""; fail "fetch origin/$REF failed. Not running tests on an unknown revision."; }
-git -C "$PRIMARY" fetch -q origin master >/dev/null 2>&1 || true
+# Explicit refspecs: the Mac checkout's remote.origin.fetch only maps a deleted trial branch, so a bare
+# "git fetch origin master" leaves origin/master stale and the run would test an old commit.
+git -C "$PRIMARY" fetch -q origin "+refs/heads/$REF:refs/remotes/origin/$REF" || { write_source "$REF" "" failed ""; fail "fetch origin/$REF failed. Not running tests on an unknown revision."; }
+git -C "$PRIMARY" fetch -q origin "+refs/heads/master:refs/remotes/origin/master" >/dev/null 2>&1 || true
 master_sha=$(git -C "$PRIMARY" rev-parse --verify --quiet origin/master || echo unknown)
 if [ ! -e "$WORK/.git" ]; then
   mkdir -p "$(dirname "$WORK")"
