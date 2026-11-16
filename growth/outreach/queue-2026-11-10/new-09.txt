@@ -1,0 +1,17 @@
+TO: sales@kilo.ai
+SUBJECT: a 6th agent column on SkillMaxx?
+----- BODY BELOW -----
+Hi Kilo team,
+
+I'm Brandon. I run SkillMaxx, a free directory that install-tests 428 agent skills, plugins and MCP servers nightly in Claude Code, Codex, Grok Build, Cursor and Pi (public logs: https://skillmaxx.gilventures.ai/reports/latest/).
+
+We test 5 agents today, and Kilo is one we've talked about adding as a 6th column. If we do, would your users care more about install results through the VS Code extension or the Kilo CLI?
+
+Honest ask: would you take a founding Featured slot at $29/month ($25/mo ongoing)? Month-to-month, no long lock. Always labeled Sponsored; money never changes a test result.
+
+We launched in Oct 2026 and the newsletter started Nov 3, so the audience is tiny (hence the price). You'd get a monthly report with real numbers, even small ones.
+
+A one-line "not now" helps too.
+
+Brandon
+SkillMaxx · https://skillmaxx.gilventures.ai/advertise/

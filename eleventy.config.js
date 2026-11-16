@@ -17,5 +17,5 @@ export default function(c){
  c.addFilter("dupName",(all,s)=>all.filter(x=>x.name===s.name).length>1);
  c.addFilter("dupDesc",(all,s)=>all.filter(x=>x.description===s.description).length>1);
  c.addFilter("sumDocs",a=>a.reduce((n,x)=>n+x.docCount,0));
- return {pathPrefix:process.env.PATH_PREFIX??"/skillmaxx/",dir:{input:"src",output:"_site"},htmlTemplateEngine:"njk"};
+ return {pathPrefix:process.env.PATH_PREFIX??"/skillmaxx/",dir:{input:"src",output:"_site"},htmlTemplateEngine:"njk",markdownTemplateEngine:"njk"};
 }

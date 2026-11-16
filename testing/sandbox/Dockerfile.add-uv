@@ -1,0 +1,8 @@
+# Adds uv/uvx to an existing skillmaxx-sandbox:local image WITHOUT reinstalling or upgrading any agent CLI,
+# so the agent-version baseline stays the same. Python MCP servers (mcp-time, mcp-fetch, mcp-git, claimidx)
+# start with `uvx`; the Linux box sandbox has it, the first Mac image did not (Nov 12-13: "uvx" ENOENT).
+#   docker build -t skillmaxx-sandbox:local -f testing/sandbox/Dockerfile.add-uv testing/sandbox
+#   docker run --rm skillmaxx-sandbox:local uvx --version
+FROM skillmaxx-sandbox:local
+RUN curl -LsSf https://astral.sh/uv/0.13.7/install.sh | env UV_INSTALL_DIR=/usr/local/bin UV_NO_MODIFY_PATH=1 sh \
+ && /usr/local/bin/uvx --version

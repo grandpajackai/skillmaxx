@@ -1,0 +1,17 @@
+TO: api-sales@brave.com
+SUBJECT: search tools for agents, and Brave
+----- BODY BELOW -----
+Hi Brave Search API team,
+
+I'm Brandon. I run SkillMaxx, a free directory that install-tests 428 agent skills, plugins and MCP servers nightly in Claude Code, Codex, Grok Build, Cursor and Pi (public logs: https://skillmaxx.gilventures.ai/reports/latest/).
+
+Search is one of the most crowded corners for our readers, and Brave's MCP server isn't in our directory yet. When agents use Brave through MCP, is it mostly plain web search, or the LLM-context and summarizer endpoints?
+
+Honest ask: would you take a founding Newsletter slot at $19/issue ($59/mo for 4)? Locked 6 months for the first 10 sponsors. Always labeled Sponsored; money never changes a test result.
+
+We launched in Oct 2026 and the newsletter started Nov 3, so the audience is tiny (hence the price). You'd get a monthly report with real numbers, even small ones.
+
+A one-line "not now" helps too.
+
+Brandon
+SkillMaxx · https://skillmaxx.gilventures.ai/advertise/

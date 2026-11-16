@@ -1,0 +1,7 @@
+{
+  "run_at": "2026-11-07T02:07-05:00",
+  "results": [
+    {"slug": "example", "agent": "claude_code", "status": "pass"},
+    {"slug": "example", "agent": "codex", "status": "fail"}
+  ]
+}

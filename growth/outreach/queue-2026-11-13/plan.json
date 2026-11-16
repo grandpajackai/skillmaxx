@@ -1,0 +1,93 @@
+[
+ {
+  "company": "Weaviate",
+  "kind": "new",
+  "to": "hello@weaviate.io",
+  "subject": "agent memory, the people picking agent tools, and a $15 test",
+  "body_file": "growth/outreach/queue-2026-11-13/new-01.txt"
+ },
+ {
+  "company": "Arize AI",
+  "kind": "new",
+  "to": "partnerships@arize.com",
+  "subject": "a $19 test in front of people picking agent tools",
+  "body_file": "growth/outreach/queue-2026-11-13/new-02.txt"
+ },
+ {
+  "company": "Braintrust",
+  "kind": "new",
+  "to": "hello@braintrust.dev",
+  "subject": "evals for the people choosing agent tools",
+  "body_file": "growth/outreach/queue-2026-11-13/new-03.txt"
+ },
+ {
+  "company": "Helicone",
+  "kind": "new",
+  "to": "contact@helicone.ai",
+  "subject": "a $19 test in front of people picking agent tools",
+  "body_file": "growth/outreach/queue-2026-11-13/new-04.txt"
+ },
+ {
+  "company": "LangWatch",
+  "kind": "new",
+  "to": "contact@langwatch.ai",
+  "subject": "install tests meet agent simulations",
+  "body_file": "growth/outreach/queue-2026-11-13/new-05.txt"
+ },
+ {
+  "company": "Doppler",
+  "kind": "new",
+  "to": "info@doppler.com",
+  "subject": "the API keys in agent MCP configs",
+  "body_file": "growth/outreach/queue-2026-11-13/new-07.txt"
+ },
+ {
+  "company": "Turso",
+  "kind": "new",
+  "to": "info@turso.tech",
+  "subject": "founding sponsor of our databases page?",
+  "body_file": "growth/outreach/queue-2026-11-13/new-08.txt"
+ },
+ {
+  "company": "MotherDuck",
+  "kind": "new",
+  "to": "info@motherduck.com",
+  "subject": "DuckDB is already in our directory",
+  "body_file": "growth/outreach/queue-2026-11-13/new-09.txt"
+ },
+ {
+  "company": "Checkly",
+  "kind": "new",
+  "to": "info@checklyhq.com",
+  "subject": "nightly checks, but for agent installs",
+  "body_file": "growth/outreach/queue-2026-11-13/new-11.txt"
+ },
+ {
+  "company": "Warp",
+  "kind": "new",
+  "to": "sales@warp.dev",
+  "subject": "we test agent add-ons every night (Warp's crowd)",
+  "body_file": "growth/outreach/queue-2026-11-13/new-12.txt"
+ },
+ {
+  "company": "Coder",
+  "kind": "new",
+  "to": "ask@coder.com",
+  "subject": "coding agents in governed workspaces",
+  "body_file": "growth/outreach/queue-2026-11-13/new-13.txt"
+ },
+ {
+  "company": "Deepgram",
+  "kind": "new",
+  "to": "info@deepgram.com",
+  "subject": "a $19 test in front of people building agents",
+  "body_file": "growth/outreach/queue-2026-11-13/new-14.txt"
+ },
+ {
+  "company": "n8n",
+  "kind": "new",
+  "to": "partners@n8n.io",
+  "subject": "a $19 test in front of people picking agent tools",
+  "body_file": "growth/outreach/queue-2026-11-13/new-15.txt"
+ }
+]

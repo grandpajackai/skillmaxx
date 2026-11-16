@@ -1,4 +1,4 @@
-<!-- Beehiiv paste-ready FINAL, not yet sent. Sends Tue Nov 3. Refreshed 2026-11-03 ~3 AM ET from `python3 testing/weekly_scorecard.py` (Oct 28 to Nov 3, 7 runs). Beehiiv draft post_d4f7cc7e still holds the Oct 30 text: the connector's edit_post_content is blocked on the free plan, so paste these blocks in the Beehiiv editor. Publish to /newsletter/issue-2/ only after the send (growth/routines/NEWSLETTER-SEND.md). -->
+<!-- Issue #2, as written for Tue Nov 3, 2026 (numbers from `python3 testing/weekly_scorecard.py 2026-11-03`, Oct 28 to Nov 3, 7 runs; re-checked Nov 13). It was never emailed: the Beehiiv draft post_d4f7cc7e could not be edited on the free plan. Archived on the site Nov 13 at /newsletter/issue-2/ (Brandon, Nov 13: archive every issue on the site even before the email). Paste-ready HTML: issue-002-beehiiv.html. -->
 **Title:** SkillMaxx #2: we stopped crying wolf
 **Subtitle:** A two-night rule for "broken", MCP tested in all 5 agents, and a question for you.
 **Preview text:** 100+ add-ons flip-flopped this week. We refused to call any of them broken.
@@ -10,6 +10,7 @@
 Quick confession. In week one we were calling things "broken" and "fixed" off a single night of tests. Then we noticed 13 of our 14 "fixed" items had just flip-flopped. That's not news, that's noise.
 
 So we changed the rules:
+
 - **Broken** now means it failed **two nights in a row**.
 - **Flaky** means it flip-flopped (or only passed on a retry). We label it and move on.
 - **Needs your key** means it only failed because our sandbox has no API keys. Not the tool's fault.
@@ -19,14 +20,20 @@ Good thing we did: over the last seven nights, **104 add-ons flip-flopped** at l
 ## 📊 Weekly install scorecard (Oct 28 to Nov 3, 7 nightly runs)
 
 **Pass rate trend** (installs we can judge without an API key): 89.2% → 90.9% → 91.1% → 86.8% → 86.8% → 86.8% → **86.9%** (900/1,036 on Nov 3). The Oct 31 dip isn't a wave of breakage: that's the night MCP servers started running in Codex, Grok Build and Pi too, so 138 new installs joined the count, and some servers don't connect in those agents yet.
+
 **Confirmed broke (failed 2 nights running):** [notion-mcp-server](https://skillmaxx.gilventures.ai/skills/notion-mcp-server/) (2 installs, Claude Code and Cursor). It's an upstream import error with `@notionhq/client` 5.x, not your setup.
+
 **Really fixed (passing after 2+ bad nights):** [Chrome DevTools](https://skillmaxx.gilventures.ai/skills/chrome-devtools/) and [Chrome DevTools MCP](https://skillmaxx.gilventures.ai/skills/chrome-devtools-mcp/) (2 installs).
+
 **Flaky, retry before you blame:** 104 add-ons flip-flopped (e.g. mcp-local-rag, Azure SQL Developer, korean-law-mcp, @mozilla/firefox-devtools-mcp, Amplitude).
+
 **Needs your API key:** 30 installs only failed because our sandbox has no keys.
+
 **Standout of the week:** [MCP time (reference)](https://skillmaxx.gilventures.ai/skills/mcp-time/), clean in all 5 agents, zero flakes. It gives your agent time and timezone conversion.
+
 **Most reliable agents:** 1. Claude Code 94.2% · 2. Grok Build 92.5% · 3. Codex 88.3% · 4. Pi 65.4% · 5. Cursor 64.1%
 
-This week's chart: https://skillmaxx.gilventures.ai/reports/week/2026-45/ · Last full week: https://skillmaxx.gilventures.ai/reports/week/2026-44/ · Is your tool safe today? https://skillmaxx.gilventures.ai/reports/latest/
+Weekly charts: [week 44](https://skillmaxx.gilventures.ai/reports/week/2026-44/) (Oct 26 to Nov 1) · [week 45](https://skillmaxx.gilventures.ai/reports/week/2026-45/) (Nov 2 to 8) · Is your tool safe today? https://skillmaxx.gilventures.ai/reports/latest/
 
 ## 🧪 New: MCP servers now tested in all 5 agents
 
@@ -52,6 +59,7 @@ Until Oct 31 we only tested MCP servers in Claude Code and Cursor. Since the Oct
 ## 🙏 I need your help (seriously)
 
 We're tiny and early, and I'd rather build what you'll use than guess. Hit reply with any of these:
+
 1. **One tool you want tested** before you install it. (Two people on Bluesky did. Both tools are in our nightly runs now, and agent-postbox passed in all 5 agents on its first night.)
 2. **Is this scorecard useful or noise?** One word is fine.
 3. **Did we get your tool wrong?** Send the link, we'll rerun it and fix the page.

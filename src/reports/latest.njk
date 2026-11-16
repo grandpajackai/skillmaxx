@@ -10,6 +10,7 @@ eleventyComputed:
 <div class="wrap prose"><p class="muted"><a href="/reports/">Daily reports</a> › Latest ({{ r.date }})</p>
 <h1 class="ph">Is it safe to install today?</h1>
 <p class="answer">Type a skill, plugin or MCP server and pick your agent. The answer comes from last night's real install in a clean sandbox ({{ r.date }}): <b>{{ r.pass }} of {{ r.total }} installs passed</b>, {{ r.needs_key }} only need your API key, {{ r.broken }} have failed two nights running and {{ r.pending }} are on a one-night wobble we re-check tomorrow.</p>
+{% include "baselinenote.njk" %}
 <form id="safe" class="safe" role="search" onsubmit="return false">
 <label for="sq">Tool name</label> <input id="sq" type="search" placeholder="e.g. Playwright, Slack, GitHub" autocomplete="off">
 <label for="sa">Agent</label> <select id="sa"><option value="">Any agent</option>{% for a in site.agents %}<option value="{{ a }}">{{ a|agentName }}</option>{% endfor %}</select>

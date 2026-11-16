@@ -1,0 +1,134 @@
+[
+ {
+  "company": "Weaviate",
+  "to": "hello@weaviate.io",
+  "subject": "agent memory, the people picking agent tools, and a $15 test",
+  "kind": "cold #1",
+  "http": 200,
+  "zoho_messageId": "1794585776362155100",
+  "sent_at": "2026-11-13 11:02:56 ET",
+  "via": "Zoho Mail API (growth/scripts/zoho_mail.py)"
+ },
+ {
+  "company": "Arize AI",
+  "to": "partnerships@arize.com",
+  "subject": "a $19 test in front of people picking agent tools",
+  "kind": "cold #1",
+  "http": 200,
+  "zoho_messageId": "1794585802761138400",
+  "sent_at": "2026-11-13 11:03:22 ET",
+  "via": "Zoho Mail API (growth/scripts/zoho_mail.py)"
+ },
+ {
+  "company": "Braintrust",
+  "to": "hello@braintrust.dev",
+  "subject": "evals for the people choosing agent tools",
+  "kind": "cold #1",
+  "http": 200,
+  "zoho_messageId": "1794585827228155300",
+  "sent_at": "2026-11-13 11:03:47 ET",
+  "via": "Zoho Mail API (growth/scripts/zoho_mail.py)",
+  "bounced": "550 5.1.1 address does not exist (Gmail mailer-daemon, Nov 13)"
+ },
+ {
+  "company": "Helicone",
+  "to": "contact@helicone.ai",
+  "subject": "a $19 test in front of people picking agent tools",
+  "kind": "cold #1",
+  "http": 200,
+  "zoho_messageId": "1794585862395155100",
+  "sent_at": "2026-11-13 11:04:22 ET",
+  "via": "Zoho Mail API (growth/scripts/zoho_mail.py)"
+ },
+ {
+  "company": "LangWatch",
+  "to": "contact@langwatch.ai",
+  "subject": "install tests meet agent simulations",
+  "kind": "cold #1",
+  "http": 200,
+  "zoho_messageId": "1794585886393155000",
+  "sent_at": "2026-11-13 11:04:46 ET",
+  "via": "Zoho Mail API (growth/scripts/zoho_mail.py)"
+ },
+ {
+  "company": "Doppler",
+  "to": "info@doppler.com",
+  "subject": "the API keys in agent MCP configs",
+  "kind": "cold #1",
+  "http": 200,
+  "zoho_messageId": "1794585913396138300",
+  "sent_at": "2026-11-13 11:05:13 ET",
+  "via": "Zoho Mail API (growth/scripts/zoho_mail.py)",
+  "bounced": "550 5.1.1 address does not exist (Gmail mailer-daemon, Nov 13)"
+ },
+ {
+  "company": "Turso",
+  "to": "info@turso.tech",
+  "subject": "founding sponsor of our databases page?",
+  "kind": "cold #1",
+  "http": 200,
+  "zoho_messageId": "1794585938351155100",
+  "sent_at": "2026-11-13 11:05:38 ET",
+  "via": "Zoho Mail API (growth/scripts/zoho_mail.py)"
+ },
+ {
+  "company": "MotherDuck",
+  "to": "info@motherduck.com",
+  "subject": "DuckDB is already in our directory",
+  "kind": "cold #1",
+  "http": 200,
+  "zoho_messageId": "1794585960968155100",
+  "sent_at": "2026-11-13 11:06:01 ET",
+  "via": "Zoho Mail API (growth/scripts/zoho_mail.py)"
+ },
+ {
+  "company": "Checkly",
+  "to": "info@checklyhq.com",
+  "subject": "nightly checks, but for agent installs",
+  "kind": "cold #1",
+  "http": 200,
+  "zoho_messageId": "1794585983512138400",
+  "sent_at": "2026-11-13 11:06:23 ET",
+  "via": "Zoho Mail API (growth/scripts/zoho_mail.py)"
+ },
+ {
+  "company": "Warp",
+  "to": "sales@warp.dev",
+  "subject": "we test agent add-ons every night (Warp's crowd)",
+  "kind": "cold #1",
+  "http": 200,
+  "zoho_messageId": "1794586006599155000",
+  "sent_at": "2026-11-13 11:06:46 ET",
+  "via": "Zoho Mail API (growth/scripts/zoho_mail.py)"
+ },
+ {
+  "company": "Coder",
+  "to": "ask@coder.com",
+  "subject": "coding agents in governed workspaces",
+  "kind": "cold #1",
+  "http": 200,
+  "zoho_messageId": "1794586040826138300",
+  "sent_at": "2026-11-13 11:07:20 ET",
+  "via": "Zoho Mail API (growth/scripts/zoho_mail.py)"
+ },
+ {
+  "company": "Deepgram",
+  "to": "info@deepgram.com",
+  "subject": "a $19 test in front of people building agents",
+  "kind": "cold #1",
+  "http": 200,
+  "zoho_messageId": "1794586065542138400",
+  "sent_at": "2026-11-13 11:07:45 ET",
+  "via": "Zoho Mail API (growth/scripts/zoho_mail.py)"
+ },
+ {
+  "company": "n8n",
+  "to": "partners@n8n.io",
+  "subject": "a $19 test in front of people picking agent tools",
+  "kind": "cold #1",
+  "http": 200,
+  "zoho_messageId": "1794586105677138300",
+  "sent_at": "2026-11-13 11:08:25 ET",
+  "via": "Zoho Mail API (growth/scripts/zoho_mail.py)"
+ }
+]

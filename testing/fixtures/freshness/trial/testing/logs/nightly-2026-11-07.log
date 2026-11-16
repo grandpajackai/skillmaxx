@@ -1,0 +1,12 @@
+== 2026-11-07 16:10:00 EST trial branch
+TRIAL: staying on cursor/local-freshness-status-74c8. No fetch, checkout, or pull. Push disabled.
+== 2026-11-07 16:10:05 EST codex mirror
+== 2026-11-07 16:10:06 EST install tests
+== 2026-11-07 16:20:00 EST metadata
+== 2026-11-07 16:21:00 EST daily report
+== 2026-11-07 16:21:10 EST weekly pages
+== 2026-11-07 16:25:00 EST build
+== 2026-11-07 16:28:00 EST commit data
+TRIAL: not pushing
+== 2026-11-07 16:28:27 EST done
+775 / 1070 pass

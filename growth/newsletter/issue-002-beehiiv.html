@@ -1,0 +1,56 @@
+<!--
+  Paste into Beehiiv: title, subtitle and preview text go in the post settings fields;
+  the HTML below goes in the editor (Insert > HTML snippet, or paste as rich text from a browser).
+  Title: SkillMaxx #2: we stopped crying wolf
+  Subtitle: A two-night rule for &quot;broken&quot;, MCP tested in all 5 agents, and a question for you.
+  Preview text: 100+ add-ons flip-flopped this week. We refused to call any of them broken.
+-->
+<p><img alt="SkillMaxx" src="https://raw.githubusercontent.com/grandpajackai/skillmaxx/master/growth/brand/beehiiv/skillmaxx-banner-1200x300.png" /></p>
+<h2>hey, Brandon here 👋</h2>
+<p>Quick confession. In week one we were calling things "broken" and "fixed" off a single night of tests. Then we noticed 13 of our 14 "fixed" items had just flip-flopped. That's not news, that's noise.</p>
+<p>So we changed the rules:</p>
+<ul>
+<li><strong>Broken</strong> now means it failed <strong>two nights in a row</strong>.</li>
+<li><strong>Flaky</strong> means it flip-flopped (or only passed on a retry). We label it and move on.</li>
+<li><strong>Needs your key</strong> means it only failed because our sandbox has no API keys. Not the tool's fault.</li>
+</ul>
+<p>Good thing we did: over the last seven nights, <strong>104 add-ons flip-flopped</strong> at least once. Under the old rules that would've been 104 scary headlines. Under the new rules, exactly one thing is confirmed broken.</p>
+<h2>📊 Weekly install scorecard (Oct 28 to Nov 3, 7 nightly runs)</h2>
+<p><strong>Pass rate trend</strong> (installs we can judge without an API key): 89.2% → 90.9% → 91.1% → 86.8% → 86.8% → 86.8% → <strong>86.9%</strong> (900/1,036 on Nov 3). The Oct 31 dip isn't a wave of breakage: that's the night MCP servers started running in Codex, Grok Build and Pi too, so 138 new installs joined the count, and some servers don't connect in those agents yet.</p>
+<p><strong>Confirmed broke (failed 2 nights running):</strong> <a href="https://skillmaxx.gilventures.ai/skills/notion-mcp-server/">notion-mcp-server</a> (2 installs, Claude Code and Cursor). It's an upstream import error with <code>@notionhq/client</code> 5.x, not your setup.</p>
+<p><strong>Really fixed (passing after 2+ bad nights):</strong> <a href="https://skillmaxx.gilventures.ai/skills/chrome-devtools/">Chrome DevTools</a> and <a href="https://skillmaxx.gilventures.ai/skills/chrome-devtools-mcp/">Chrome DevTools MCP</a> (2 installs).</p>
+<p><strong>Flaky, retry before you blame:</strong> 104 add-ons flip-flopped (e.g. mcp-local-rag, Azure SQL Developer, korean-law-mcp, @mozilla/firefox-devtools-mcp, Amplitude).</p>
+<p><strong>Needs your API key:</strong> 30 installs only failed because our sandbox has no keys.</p>
+<p><strong>Standout of the week:</strong> <a href="https://skillmaxx.gilventures.ai/skills/mcp-time/">MCP time (reference)</a>, clean in all 5 agents, zero flakes. It gives your agent time and timezone conversion.</p>
+<p><strong>Most reliable agents:</strong> 1. Claude Code 94.2% · 2. Grok Build 92.5% · 3. Codex 88.3% · 4. Pi 65.4% · 5. Cursor 64.1%</p>
+<p>Weekly charts: <a href="https://skillmaxx.gilventures.ai/reports/week/2026-44/">week 44</a> (Oct 26 to Nov 1) · <a href="https://skillmaxx.gilventures.ai/reports/week/2026-45/">week 45</a> (Nov 2 to 8) · Is your tool safe today? <a href="https://skillmaxx.gilventures.ai/reports/latest/">https://skillmaxx.gilventures.ai/reports/latest/</a></p>
+<h2>🧪 New: MCP servers now tested in all 5 agents</h2>
+<p>Until Oct 31 we only tested MCP servers in Claude Code and Cursor. Since the Oct 31 nightly they also run in <strong>Codex, Grok Build and Pi</strong>. Pass means the agent's own health check says the server connected (for Codex, which has no keyless health check, we run the MCP handshake ourselves and say so). What "pass" means, exactly: <a href="https://skillmaxx.gilventures.ai/how-we-test/">https://skillmaxx.gilventures.ai/how-we-test/</a></p>
+<h2>📖 Two deep dives from our test logs</h2>
+<ul>
+<li><strong><a href="https://skillmaxx.gilventures.ai/blog/mcp-servers-claude-code-vs-cursor/">Which MCP servers work in Claude Code vs Cursor?</a></strong> 614 installs. All 7 official reference servers passed in both; only 23 of 45 npm packages did. If you're picking an MCP server, start here.</li>
+<li><strong><a href="https://skillmaxx.gilventures.ai/blog/809-of-900-agent-addon-installs/">809 of 900: what 5,404 installs taught us</a></strong> Six nights, five agents, 89% passing, and the patterns behind the other 11%.</li>
+</ul>
+<h2>🔧 Install tips of the week</h2>
+<ol>
+<li><strong>Pin the marketplace.</strong> Same plugin names now live in more than one marketplace, so agents ask "which one?". Claude Code: <code>/plugin install sentry@claude-plugins-official</code>. Grok Build: <code>grok plugin install auth0@&lt;marketplace&gt;</code>.</li>
+<li><strong>Pin MCP versions too.</strong> "Installs clean" is not the same as "safe". This week a malicious npm MCP package got a GitHub advisory (GHSA-65cr-mcfq-59hh, <code>@atlisp/mcp</code> 1.12.14; it was never in our directory). Use exact versions like <code>npx -y some-mcp@1.2.3</code>, not <code>@latest</code>, and skim what a server can touch before you add it.</li>
+<li><strong>One flaky night isn't a verdict.</strong> If an add-on fails once, retry before you rip it out. That's literally why we built the two-night rule.</li>
+</ol>
+<h2>🆕 New on the site</h2>
+<ul>
+<li><strong><a href="https://skillmaxx.gilventures.ai/blog/">Blog</a>:</strong> long reads built on our own test data.</li>
+<li><strong>Is it safe to install today?</strong> Type a tool, pick your agent, get last night's answer: <a href="https://skillmaxx.gilventures.ai/reports/latest/">https://skillmaxx.gilventures.ai/reports/latest/</a></li>
+<li><strong>Every issue, archived:</strong> <a href="https://skillmaxx.gilventures.ai/newsletter/">https://skillmaxx.gilventures.ai/newsletter/</a></li>
+</ul>
+<h2>🙏 I need your help (seriously)</h2>
+<p>We're tiny and early, and I'd rather build what you'll use than guess. Hit reply with any of these:</p>
+<ol>
+<li><strong>One tool you want tested</strong> before you install it. (Two people on Bluesky did. Both tools are in our nightly runs now, and agent-postbox passed in all 5 agents on its first night.)</li>
+<li><strong>Is this scorecard useful or noise?</strong> One word is fine.</li>
+<li><strong>Did we get your tool wrong?</strong> Send the link, we'll rerun it and fix the page.</li>
+</ol>
+<p>I read every reply.</p>
+<hr />
+<p><strong>Sponsor:</strong> This spot is open. Founding rate: <strong>$19 for 1 issue</strong> (or <strong>$59/mo for 4 issues</strong>, about $15 each). Placements are always labeled; see <a href="https://skillmaxx.gilventures.ai/advertise/">https://skillmaxx.gilventures.ai/advertise/</a></p>
+<p>Built a skill? We'll run it through all five agents: <a href="https://skillmaxx.gilventures.ai/submit/">https://skillmaxx.gilventures.ai/submit/</a></p>

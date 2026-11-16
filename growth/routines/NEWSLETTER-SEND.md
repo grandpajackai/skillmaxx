@@ -1,6 +1,14 @@
 # Newsletter send + site archive (every Tuesday)
 
-**Rule:** every Beehiiv send also lands in the public archive at `/newsletter/issue-N/`, and on the index at `/newsletter/`. Issue #1 is archive-only (never emailed). Issue #2 is the **first email** (Tue Nov 3, 2026).
+**Rule (since Nov 13, 2026, Brandon):** every issue goes on the public archive at `/newsletter/issue-N/` (and the `/newsletter/` index) as soon as it is final, **even before or without a Beehiiv email**. The archive is the record of what we're doing; the email is extra reach. Issue #1 and #2 are archive-only (#2 was written for Nov 3 but never emailed: the free Beehiiv plan blocks connector edits). Issue #3 (Nov 13) is the first one with paste-ready HTML for a manual Beehiiv send.
+
+**Quick path:** write `growth/newsletter/issue-00N-beehiiv.md` from published numbers only, then
+`python3 growth/newsletter/to_site.py N YYYY-MM-DD "desc" "optional archive note"` (makes `src/newsletter/issue-N.md`) and
+`python3 growth/newsletter/to_html.py growth/newsletter/issue-00N-beehiiv.md` (makes the paste-ready `.html`). PR, squash-merge, verify the page is 200.
+
+**Brandon's manual Beehiiv send (free plan):** app.beehiiv.com → Posts → open the draft (or New post) → set Title / Subtitle / Preview text from the top of the `.html` file → in the editor, delete the old body, then paste the HTML (open the `.html` in a browser, select all, copy, paste into the editor; or use an HTML snippet block) → Preview → Publish → "Email and web" → Send now (or schedule Tue 9 AM ET). After it sends, tell Grok Bot so the Buffer "newsletter is out" posts get scheduled.
+
+_Older rule, superseded below where it conflicts:_ archive pages were added only after the Beehiiv send.
 
 Source of truth for paste text: `growth/newsletter/issue-00N-beehiiv.md`.
 Archive pages: `src/newsletter/issue-N.md` (collection tag `issues` → listed by `src/newsletter/index.njk`).

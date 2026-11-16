@@ -16,6 +16,8 @@ args = [a for a in sys.argv[1:] if a != "--write"]; WRITE = "--write" in sys.arg
 reps = sorted(json.load(open(os.path.join(ROOT, "src/_data/reports.json"))), key=lambda r: r["date"])
 pct = lambda p, t: round(p / t * 100, 1) if t else None
 tested = lambda r: r.get("tested", r["total"])
+_notes = os.path.join(ROOT, "src/_data/runNotes.json")
+NOVALID = [x["date"] for x in json.load(open(_notes)).get("no_valid_run", [])] if os.path.exists(_notes) else []
 wkey = lambda d: "%04d-%02d" % dt.date.fromisoformat(d).isocalendar()[:2]
 
 def chart(trend):
@@ -58,12 +60,14 @@ def week(wk, key):
     sos = [r["standout"] for r in wk if r.get("standout") and r["standout"]["slug"] not in flaky]
     so = max(reversed(sos), key=lambda x: (len(x.get("agents", [])), x.get("stars") or 0)) if sos else None
     vc = [dict(v, date=r["date"]) for r in wk for v in r.get("version_changes", [])]
+    bs = [r["baseline_change"]["start"] for r in wk if r.get("baseline_change")]
     y, w = map(int, key.split("-"))
     return {"key": key, "start": dt.date.fromisocalendar(y, w, 1).isoformat(), "end": dt.date.fromisocalendar(y, w, 7).isoformat(),
             "first": wk[0]["date"], "last": wk[-1]["date"], "runs": len(wk), "trend": trend, "ranking": rank,
             "fixed": top("fixed"), "broke": top("broke"), "flaky": top("flaky"), "fixed_n": sum(c["fixed"].values()),
             "broke_n": sum(c["broke"].values()), "flaky_n": len(flaky), "needs_key": wk[-1].get("needs_key", 0),
-            "standout": so, "version_changes": vc, "svg": chart(trend)}
+            "standout": so, "version_changes": vc, "svg": chart(trend), "baseline_start": bs[0] if bs else None,
+            "no_valid_run": [d for d in NOVALID if dt.date.fromisocalendar(y, w, 1).isoformat() <= d <= dt.date.fromisocalendar(y, w, 7).isoformat()]}
 
 def markdown(w):
     L = lambda x: f"[{x['name']}]({SITE}/skills/{x['slug']}/)"
@@ -73,6 +77,7 @@ def markdown(w):
     out.append(f"**Really fixed (passing after 2+ bad nights):** " + (", ".join(L(x) for x in w["fixed"]) or "nothing") + f" ({w['fixed_n']} installs)")
     if w["flaky_n"]: out.append(f"**Flaky, ignore the drama:** {w['flaky_n']} add-ons flip-flopped (e.g. " + ", ".join(x["name"] for x in w["flaky"][:5]) + "). We don't call these broken or fixed.")
     if w["needs_key"]: out.append(f"**Needs your API key:** {w['needs_key']} installs only failed because our sandbox has no keys. Not broken, just shy.")
+    if w.get("baseline_start"): out.append(f"**New test baseline from {w['baseline_start']}:** newer releases of all 5 agents, so this week is not like-for-like with earlier weeks." + (f" No valid run on {', '.join(w['no_valid_run'])} (test-harness bug, fixed)." if w.get("no_valid_run") else ""))
     for v in w["version_changes"]:
         if v["broke"]: out.append(f"**Agent update:** {NAME.get(v['agent'], v['agent'])} {v['from']} → {v['to']} ({v['date']}): {v['broke']} installs stopped working.")
     if w["standout"]: out.append(f"**Standout of the week:** {L(w['standout'])}, clean in {len(w['standout']['agents'])} agents, zero flakes. {w['standout'].get('desc', '')}")

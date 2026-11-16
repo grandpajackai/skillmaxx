@@ -4,7 +4,7 @@ No API tokens: uses public github.com pages, raw.githubusercontent.com and githu
 import json,re,os,io,urllib.request,urllib.parse,html,concurrent.futures as cf
 from PIL import Image
 ROOT=os.path.dirname(os.path.abspath(__file__));LOGO=os.path.join(ROOT,"src/assets/logos");RD=os.path.join(ROOT,"data/meta/readme")
-MIR="/workspace/agents/codex-mirror";UA={"User-Agent":"SkillMaxx-metadata/1.0 (+https://skillmaxx.dev)"}
+MIR=os.path.join(os.environ.get("SKILLMAXX_AGENTS","/workspace/agents"),"codex-mirror");UA={"User-Agent":"SkillMaxx-metadata/1.0 (+https://skillmaxx.dev)"}
 MKT={"anthropics/claude-plugins-official","anthropics/claude-plugins-public","openai/plugins","xai-org/plugin-marketplace"}
 cc={p["name"]:p for p in json.load(open(os.path.join(ROOT,"mp.json")))["plugins"]}
 gk={p["name"]:p for p in json.load(open(os.path.join(ROOT,"grok_mp.json")))["plugins"]}

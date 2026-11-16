@@ -6,6 +6,7 @@ permalink: /newsletter/issue-1/
 ogType: article
 issue: 1
 issueDate: "2026-10-25"
+date: 2026-10-25
 tags: issues
 jsonld: {"@context":"https://schema.org","@type":"Article","headline":"SkillMaxx #1: we installed 902 agent plugins so you don't have to","datePublished":"2026-10-25","author":{"@type":"Organization","name":"SkillMaxx"},"publisher":{"@type":"Organization","name":"SkillMaxx"},"image":"https://skillmaxx.gilventures.ai/assets/newsletter/skillmaxx-banner-1200x300.png"}
 ---
