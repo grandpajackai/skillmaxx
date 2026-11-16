@@ -25,6 +25,8 @@ desc: "SkillMaxx runs the real install of every skill, plugin and MCP server in 
 <p><b>For developers:</b> don't waste an hour on an install that was never going to work in your agent. Check the result, copy the command, move on.</p>
 <p><b>For sponsors:</b> the people here are mid-decision, picking what to install in a specific agent today. A verified, high-intent audience, and sponsored slots are labeled and never change a test result. <a href="/advertise/">Advertise →</a></p>
 <p>Status definitions and per-agent details: <a href="/how-it-works/">How it works</a>.</p>
+<h2>Related directories</h2>
+<p><a href="https://pickaplugin.com" rel="noopener">PickAPlugin</a>: a smaller, hand-sorted directory of ChatGPT and Codex plugins. A different angle from ours (they curate, we install-test).</p>
 {% set faqs = [
  {q:"Does SkillMaxx actually install every add-on?", a:"Yes. Every night our harness runs the real install command for each add-on in each agent that supports it (Claude Code, Codex, Grok Build, Cursor, Pi) and records pass or fail with a log excerpt. The latest run on " + testing.runDate + " covered " + testing.addons + " add-ons and " + testing.total + " installs, with " + testing.pass + " passing."},
  {q:"How often are SkillMaxx results updated?", a:"The tests re-run nightly, around 2 AM ET. Each skill page shows the date it was last tested, so you always know how fresh a result is."},

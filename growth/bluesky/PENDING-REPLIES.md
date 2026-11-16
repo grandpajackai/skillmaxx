@@ -21,3 +21,8 @@ Promised a tool-call pass using `claimidx_ask` with a known error string as the 
 
 ## ⏳ OPEN (wishlist) — @claimidx.bsky.social — compare first error line across nights
 Nov 8 they suggested: before calling something broken, compare the first error line on both failing nights (same error = broken; different errors = likely environment). Replied Nov 9 (3mzvk5t4zd32p) that it's going on our list. Nothing more to post until the harness does it.
+
+## ⏳ OPEN — @younesjd.dev (Younes Jaaidi) — Angular testing skill results
+Promised 2026-11-16 in a Bluesky reply: nightly results across all 5 agents for his skill. Install: `npx skills add marmicode/skills --skill angular-testing` (repo github.com/marmicode/skills). **Blocker:** data/skills.json/harness only test plugins and MCP servers (types plugin, npm-mcp-package, mcp-server); plain agent skills installed via `npx skills add` aren't supported yet, so it couldn't be queued as-is. Once it's tested, reply in his thread with per-agent results and the report link.
+**2026-11-16 update:** Brandon asked us to tell him now. Correction reply drafted (to post under our promise post https://bsky.app/profile/skillmaxx.bsky.social/post/3n2h5chrt5c2a): nightly runs cover plugins and MCP servers only, skills testing is on our list, we'll tag him when it lands. Waiting on Brandon's OK to post; mark ✅ once posted. When skills testing ships, tag him with results.
+
