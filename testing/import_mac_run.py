@@ -7,7 +7,8 @@ Usage: python3 testing/import_mac_run.py RESULTS.json [--source-sha SHA] [--chec
 Holds (exit 2, nothing written) when the run is not publishable:
   - Grok Build marketplace-scan errors ("Couldn't scan every marketplace"), the Nov 9-11 harness bug
   - a missing/unknown agent version, a date listed under no_valid_run, a run_at that doesn't match the file name
-  - an install count more than 5% off the last published run, or slugs not in data/skills.json
+  - an install count more than 5% off the last published run (same add-ons only: add-ons newly added to
+    data/skills.json since then are reported but not counted), or slugs not in data/skills.json
   - a source sha that is not on origin/master
   - installs failing only because the sandbox image has no uvx (override: --allow-missing-uvx)
 A change of agent versions is NOT a hold: the daily report shows an agent-update callout, and planned
@@ -44,8 +45,18 @@ def main(argv):
     bad = [a for a in ("claude_code", "codex", "grok_build", "cursor", "pi") if not v.get(a) or "?" in v[a]]
     if bad: holds.append(f"unknown agent version for {', '.join(bad)}")
     if last:
-        n0 = len(last["results"])
-        if n0 and abs(len(res) - n0) > 0.05 * n0: holds.append(f"{len(res)} installs vs {n0} in the last published run (>5% off)")
+        # Drift is measured on add-ons in both this run and the last published one, still in data/skills.json.
+        # Add-ons added to the catalog on purpose since then (e.g. the first "skill" items, Nov 17) and ones
+        # removed from it are reported, not counted, so a deliberate catalog change never holds a night.
+        # Unknown slugs are still a hold below.
+        old_slugs = {r["slug"] for r in last["results"]}
+        added = {r["slug"] for r in res} - old_slugs
+        n0 = sum(r["slug"] in skills for r in last["results"])
+        n1 = sum(r["slug"] in old_slugs for r in res)
+        if added & skills:
+            new_cases = sum(r["slug"] in added & skills for r in res)
+            print(f"note: {new_cases} installs for {len(added & skills)} add-on(s) new to the catalog since the last published run, not counted in the drift check: {', '.join(sorted(added & skills)[:5])}")
+        if n0 and abs(n1 - n0) > 0.05 * n0: holds.append(f"{n1} installs vs {n0} in the last published run for the same add-ons (>5% off)")
     unknown = sorted({r["slug"] for r in res} - skills)
     if unknown: holds.append(f"{len(unknown)} slugs not in data/skills.json (e.g. {', '.join(unknown[:3])})")
     if sha:

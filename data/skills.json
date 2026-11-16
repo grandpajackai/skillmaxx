@@ -16,7 +16,8 @@
     "https://docs.x.ai/build/features/skills-plugins-marketplaces",
     "https://docs.anthropic.com/en/docs/claude-code/mcp",
     "https://developers.openai.com/codex/mcp",
-    "https://cursor.com/docs/context/mcp"
+    "https://cursor.com/docs/context/mcp",
+    "https://github.com/vercel-labs/skills"
   ],
   "items": [
     {
@@ -1651,6 +1652,45 @@
       ],
       "listing_url": "https://github.com/anthropics/claude-plugins-official",
       "notes": "Grok Build status relies on xAI docs saying Grok reads Claude Code plugins automatically."
+    },
+    {
+      "slug": "angular-testing",
+      "name": "Angular Testing",
+      "description": "Writes, fixes and reviews Angular tests following the Pragmatic Angular Testing approach: fakes over mocks, real collaborators by default, components tested through the DOM. Targets Vitest and also applies to Jest, Jasmine/Karma and Angular Testing Library projects.",
+      "source_url": "https://github.com/marmicode/skills/tree/main/skills/angular-testing",
+      "category": "testing",
+      "type": "skill",
+      "skill": {
+        "source": "marmicode/skills",
+        "name": "angular-testing",
+        "cli": "https://github.com/vercel-labs/skills"
+      },
+      "install": {
+        "claude_code": "npx skills add marmicode/skills --skill angular-testing -g -a claude-code",
+        "codex": "npx skills add marmicode/skills --skill angular-testing -g -a codex",
+        "grok_build": "npx skills add marmicode/skills --skill angular-testing -g -a grok",
+        "cursor": "npx skills add marmicode/skills --skill angular-testing -g -a cursor",
+        "pi": "npx skills add marmicode/skills --skill angular-testing -g -a pi"
+      },
+      "compatibility": {
+        "claude_code": "documented",
+        "codex": "documented",
+        "grok_build": "documented",
+        "cursor": "documented",
+        "pi": "documented"
+      },
+      "compat_sources": {
+        "claude_code": "https://github.com/vercel-labs/skills#supported-agents",
+        "codex": "https://github.com/vercel-labs/skills#supported-agents",
+        "grok_build": "https://github.com/vercel-labs/skills#supported-agents",
+        "cursor": "https://github.com/vercel-labs/skills#supported-agents",
+        "pi": "https://github.com/vercel-labs/skills#supported-agents"
+      },
+      "listings": [
+        "https://github.com/marmicode/skills"
+      ],
+      "listing_url": "https://github.com/marmicode/skills",
+      "notes": "Standalone Agent Skill by Younes Jaaidi (Marmicode), installed with the skills CLI (npx skills add). Tested nightly in all 5 agents since 2026-11-17."
     },
     {
       "slug": "apollo",

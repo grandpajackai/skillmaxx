@@ -2,7 +2,7 @@
 """SkillMaxx nightly test harness.
 Installs each skill in each agent CLI inside a throwaway bubblewrap sandbox (sbx.sh) with a fresh HOME,
 no credentials, no API keys. Verifies install + that the agent lists it as loaded/enabled (or, for MCP
-servers, that the agent's own health check connects). Writes testing/results/<date>.json and appends history.json.
+servers, that the agent's own health check connects; for standalone skills, that the agent lists the skill). Writes testing/results/<date>.json and appends history.json.
 Usage: run_tests.py [--agents claude_code,grok_build,...] [--limit N] [--jobs 6] [--only slug,slug]
 """
 import json,shutil,re,subprocess,sys,os,datetime,argparse,concurrent.futures as cf,shlex
@@ -14,6 +14,45 @@ SBX=os.path.join(HERE,"sbx.sh");ANSI=re.compile(r"\x1b\[[0-9;?]*[A-Za-z]")
 # Prefer the xAI source when a skill is listed in both.
 GROK_NATIVE_QUAL="xai-org/plugin-marketplace"
 GROK_CLAUDE_QUAL="claude-plugins-official"
+# Standalone Agent Skills (type "skill": a SKILL.md folder in a git repo, installed with the
+# vercel-labs `skills` CLI, i.e. `npx skills add <repo> --skill <name>`). Pinned so a CLI release
+# can't change results overnight. Telemetry is off (DISABLE_TELEMETRY/DO_NOT_TRACK), so the only
+# network is npm (the CLI) and GitHub (the skill repo), the same hosts plugin tests already use.
+SKILLS_CLI="skills@1.9.0"
+SKILL_AGENT={"claude_code":"claude-code","codex":"codex","grok_build":"grok","cursor":"cursor","pi":"pi"}
+# Per-agent "pass" for a standalone skill: the skills CLI installs it for that agent, then the agent's
+# own CLI lists it, keyless. Cursor is the exception: cursor-agent can't list skills without signing in,
+# so the check is that the SKILL.md landed in ~/.agents/skills AND this cursor-agent build's own code
+# reads skills from that folder.
+def ere(s): return re.sub(r'([.^$*+?()\[\]{}|\\])',r'\\\1',s)  # escape for grep -E without stray backslashes
+def skill_verify(ag,n):
+  q=shlex.quote
+  if ag=="claude_code":  # the stream-json init event lists loaded skills before any API call
+    return ("claude -p --output-format stream-json --verbose ok 2>&1 | grep -m1 -oE '\"skills\":\\[[^]]*\\]'",
+            lambda o,n=n: re.search(rf'"skills":\[[^\]]*"{re.escape(n)}"',o.split('---LIST')[-1]) is not None)
+  if ag=="codex":  # the model-visible prompt Codex would send, rendered locally
+    return (f"codex debug prompt-input > /tmp/cx-prompt.txt 2>&1; grep -oE {q(ere(n)+': .{0,60}')} /tmp/cx-prompt.txt | head -1; grep -oE {q('[^ (]*/'+ere(n)+'/SKILL'+chr(92)+'.md')} /tmp/cx-prompt.txt | head -1",
+            lambda o,n=n: re.search(rf"(?m)^{re.escape(n)}: ",o.split('---LIST')[-1]) is not None and f"/{n}/SKILL.md" in o.split('---LIST')[-1])
+  if ag=="grok_build":
+    return ("grok inspect 2>&1 | sed -n '/^ *Skills (/,/^ *$/p'",
+            lambda o,n=n: re.search(rf"\u2514\s+{re.escape(n)}\s",o.split('---LIST')[-1]) is not None)
+  if ag=="pi":  # RPC get_commands lists every loaded skill as /skill:<name>
+    req=q('{"type":"get_commands","id":"1"}')
+    return (f"printf '%s\\n' {req} | timeout 60 pi --mode rpc --offline 2>&1 | grep -o {q(chr(34)+'name'+chr(34)+':'+chr(34)+'skill:'+n+chr(34))} | head -1",
+            lambda o,n=n: f'"name":"skill:{n}"' in o.split('---LIST')[-1])
+  if ag=="cursor":
+    marker='configDir:".agents",subdir:"skills"'
+    return (f"D=$(dirname \"$(readlink -f \"$(command -v cursor-agent)\")\"); grep -qF {q(marker)} \"$D\"/index.js && echo 'cursor-agent reads ~/.agents/skills'; grep -H -m1 '^name:' ~/.agents/skills/{q(n)}/SKILL.md",
+            lambda o,n=n: "cursor-agent reads ~/.agents/skills" in o.split('---LIST')[-1] and re.search(rf"(?m)/\.agents/skills/{re.escape(n)}/SKILL\.md:name:\s*['\"]?{re.escape(n)}['\"]?\s*$",o.split('---LIST')[-1]) is not None)
+  return None
+def skill_case(it,ag):
+  sk=it.get("skill") or {};src,n=sk.get("source"),sk.get("name")
+  if not src or not n or ag not in SKILL_AGENT: return None
+  v=skill_verify(ag,n)
+  if not v: return None
+  cmd=(f"export DISABLE_TELEMETRY=1 DO_NOT_TRACK=1 npm_config_update_notifier=false; npx -y {SKILLS_CLI} add {shlex.quote(src)} --skill {shlex.quote(n)} -g -a {SKILL_AGENT[ag]} -y 2>&1 | tail -4; "
+       f"echo ---LIST; {v[0]}")
+  return (it,ag,"",cmd,v[1])
 def mcp_cmd(it):
   c=it["install"].get("claude_code") or "";return c.split(" -- ",1)[1] if " -- " in c else None
 def mcp_name(it): return re.sub(r"[^a-z0-9]","",it["slug"].lower())[-20:] or "srv"
@@ -71,6 +110,8 @@ def cases():
   out=[]
   for it in items:
     s=it["slug"];L=" ".join(it.get("listings",[]));ismcp=it["type"] in("mcp-server","npm-mcp-package")
+    if it["type"]=="skill":
+      out+=[c for c in (skill_case(it,ag) for ag in AG) if c];continue
     for ag in AG:
       if ag=="claude_code":
         if "claude-plugins-official" in L: out.append((it,ag,"claude",f"claude plugin install {s}@claude-plugins-official 2>&1; echo ---LIST; claude plugin list 2>&1",lambda o,s=s: re.search(rf"{re.escape(s)}@claude-plugins-official[\s\S]{{0,120}}enabled",o.split('---LIST')[-1]) is not None))
@@ -115,7 +156,7 @@ def run1(c):
   if "---LIST" in o:
     pre=[l for l in o.split("---LIST")[0].splitlines() if l.strip() and not l.startswith("WARNING")][-3:]
     post=[l for l in o.split("---LIST",1)[1].splitlines() if l.strip()]
-    hit=[l for l in post if it["slug"].lower() in l.lower() or mcp_name(it) in l or "SKILL.md" in l or "Status" in l or "ready" in l or "tools" in l.lower() or "PROBE" in l or "handshake" in l or "enabled" in l][:4]
+    hit=[l for l in post if it["type"]=="skill" or it["slug"].lower() in l.lower() or mcp_name(it) in l or "SKILL.md" in l or "Status" in l or "ready" in l or "tools" in l.lower() or "PROBE" in l or "handshake" in l or "enabled" in l][:4]
     lines=pre+["$ verify:"]+(hit or post[-3:])
   return {"slug":it["slug"],"agent":ag,"status":"pass" if ok else "fail","log":"\n".join(lines[-9:])[-700:]}
 if __name__=="__main__":
@@ -124,7 +165,7 @@ if __name__=="__main__":
   items=json.load(open(os.path.join(ROOT,"data/skills.json")))["items"]
   if a.only: items=[i for i in items if i["slug"] in a.only.split(",")]
   today=datetime.datetime.now().astimezone().isoformat(timespec="minutes")
-  prewarm_npm({npx_package(mcp_cmd(it)) for it in items})
+  prewarm_npm({npx_package(mcp_cmd(it)) for it in items}|({SKILLS_CLI} if any(it["type"]=="skill" for it in items) else set()))
   cs=cases();print(f"{len(cs)} cases",file=sys.stderr);res=[]
   with cf.ThreadPoolExecutor(a.jobs) as ex:
     for i,r in enumerate(ex.map(run,cs)):

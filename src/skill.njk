@@ -31,7 +31,7 @@ eleventyComputed:
 </section>
 <aside class="compat"><h2>Compatibility</h2><ul>{% for a in site.agents %}<li><span><i class="ad" style="--c:{{ site.agentColor[a] }}"></i>{{ a|agentName }}</span>{{ status(s.eff[a]) }}</li>{% endfor %}</ul>
 {% if s.notes %}<p class="note">{{ s.notes }}</p>{% endif %}
-<p class="muted">Before installing, check the source repo: plugins and MCP servers can run code and reach your accounts.</p></aside>
+<p class="muted">Before installing, check the source repo: skills, plugins and MCP servers can run code and reach your accounts.</p></aside>
 </div>
 {% if s.readme %}<section class="readme"><div class="rowh"><h2 class="sh">README</h2><a href="{{ s.meta.repo }}" rel="nofollow noopener">View on GitHub ↗</a></div><div class="md">{{ s.readme.html | safe }}</div>{% if s.readme.truncated %}<a class="btn ghost" href="{{ s.meta.repo }}" rel="nofollow noopener">Read the full README on GitHub →</a>{% endif %}<p class="muted">Preview from the source repo. Images are removed.</p></section>{% endif %}
 {% set rel = skills | related(s) %}{% if rel.length %}<h2 class="sh">Similar alternatives</h2><div class="grid g4">{% for r in rel %}{{ card(r) }}{% endfor %}</div>{% endif %}

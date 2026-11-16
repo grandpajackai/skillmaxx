@@ -12,7 +12,7 @@ const readme=(slug,repo)=>{try{let t=fs.readFileSync(new URL(`../../data/meta/re
 const raw=JSON.parse(fs.readFileSync(new URL("../../data/skills.json",import.meta.url)));
 const A=["claude_code","codex","grok_build","cursor","pi"];
 const merge={"developer tools":"development","observability":"monitoring","mcp (npm)":"mcp servers","learning":"education & research","scientific research":"education & research","data & analytics":"database","files":"utilities","memory":"utilities","reasoning":"utilities","web":"utilities","creativity":"design","migration":"development","location":"other","math":"other","finance":"other","business & operations":"productivity","testing":"development"};
-const T={"plugin":"Plugin","mcp-server":"MCP server","npm-mcp-package":"MCP (npm)"};
+const T={"plugin":"Plugin","mcp-server":"MCP server","npm-mcp-package":"MCP (npm)","skill":"Agent Skill"};
 export default raw.items.map(x=>{const c=(x.category||"other").toLowerCase();const docs=A.filter(a=>x.compatibility[a]==="documented");
  const w=x.name.replace(/^@[^/]+\//,"").split(/[\s\-_/]+/).filter(Boolean);
  const m={...(META[x.slug]||{})};if(m.repo&&/github\.com\/(anthropics\/claude-plugins-(official|public)|openai\/plugins|xai-org\/plugin-marketplace)\b/.test(m.repo))m.stars=null;const test={},eff={};for(const a of A){const h=HIST[`${x.slug}|${a}`];if(h&&h.length){const l=h[h.length-1];test[a]={status:l.status,at:l.at,log:l.log,history:h.slice(-10)}}eff[a]=test[a]?(test[a].status==='pass'?'tested':'failed'):x.compatibility[a]}
