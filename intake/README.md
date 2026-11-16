@@ -1,6 +1,6 @@
 # SkillMaxx intake
 
-Direct form delivery is **off** until this worker is deployed and `INTAKE_ENDPOINT` is set. The site then posts JSON to `POST /intake`. The page says "Received" only when the response is HTTP 2xx **and** the body is `{ "ok": true, "received": true, "id": "smx_…" }`. A bare 200 is treated as failure.
+Deployed 2026-11-16 as `skillmaxx-intake` at https://skillmaxx-intake.skillmaxx.workers.dev (Cloudflare account skillmaxx@gilventures.ai, Workers Free). The bearer read token lives only on the Grok Bot box at /home/box/.skillmaxx-secrets/intake.env. Direct form delivery is off whenever `INTAKE_ENDPOINT` is unset. The site then posts JSON to `POST /intake`. The page says "Received" only when the response is HTTP 2xx **and** the body is `{ "ok": true, "received": true, "id": "smx_…" }`. A bare 200 is treated as failure.
 
 The worker stores the submission in Workers KV. It does not send email. Visitor text is not written to the public repo, a public GitHub issue, or the client.
 
@@ -26,4 +26,4 @@ Do this only if signup stays on the free plan and does not ask for a card. Limit
 
 ## Not production
 
-`node --test intake/contract.test.mjs intake/worker.test.mjs` uses an in-memory KV. `node intake/browser.check.mjs` mocks `fetch`. Neither contacts Cloudflare or sends mail.
+`node --test intake/contract.test.mjs intake/worker.test.mjs` uses an in-memory KV. `node intake/browser.check.mjs` (after `npx @11ty/eleventy`; set `ARTIFACTS_DIR` to save screenshots elsewhere) mocks `fetch`. Neither contacts Cloudflare or sends mail.

@@ -37,7 +37,7 @@ One page to catch up. Site: https://skillmaxx.gilventures.ai · Repo: grandpajac
 | LinkedIn connection notes + Sales Navigator lead-gen (Brandon's trial) | [growth/sponsors/LINKEDIN-NOTES-2026-11-01.md](growth/sponsors/LINKEDIN-NOTES-2026-11-01.md), [growth/sponsors/SALES-NAV-PLAYBOOK.md](growth/sponsors/SALES-NAV-PLAYBOOK.md), [growth/sponsors/SALES-NAV-LEADS.csv](growth/sponsors/SALES-NAV-LEADS.csv) |
 | Outreach rules (verify named contacts, smart questions, DM-open column) | [growth/sponsors/OUTREACH.md](growth/sponsors/OUTREACH.md) §0/§0b, DECISIONS #57–68 |
 | Newsletter subscribe CTA rule | [growth/NEWSLETTER-CTA-RULE.md](growth/NEWSLETTER-CTA-RULE.md) |
-| Form intake (prepared, not live) | [intake/README.md](intake/README.md), `src/assets/forms.js`, `src/submit.njk`, `src/advertise.njk`, `src/sponsor/thanks.njk` |
+| Form intake (live via Cloudflare Worker) | [intake/README.md](intake/README.md), `src/assets/forms.js`, `src/submit.njk`, `src/advertise.njk`, `src/sponsor/thanks.njk` |
 
 ## Routines (Grok Bot, times ET)
 | Routine | Schedule | Status (Nov 11, ~4:15 AM ET) |
@@ -72,7 +72,7 @@ One page to catch up. Site: https://skillmaxx.gilventures.ai · Repo: grandpajac
 | GitHub (SkillMaxx) | free SkillMaxx account, business email | public activity (issues, stars); links + description set, no logo avatar yet (DECISIONS #74) |
 | Domain | skillmaxx.gilventures.ai | |
 | Email | skillmaxx@gilventures.ai (Zoho) | on Brandon's phone; reply address after a form is actually delivered; sponsor outreach sender (SPF + DKIM verified Oct 27); since Nov 13 sending and inbox/Spam reads go through the Zoho Mail REST API helper growth/scripts/zoho_mail.py (creds in /home/box/.skillmaxx-secrets/, never in the repo); box SMTP/IMAP stay blocked |
-| Form intake | prepared, not live (`intake/`) | FormSubmit stays removed (PR #88). Forms no longer open a mail app or a public GitHub issue. Until `INTAKE_ENDPOINT` is set, the button copies a note and says it was not sent. Direct delivery is a Workers KV inbox we would run; it acknowledges a post only after the write. Setup and free-tier limits: intake/README.md. Not deployed this run |
+| Form intake | Cloudflare Workers Free, account skillmaxx@gilventures.ai (separate from Gil Marketing; token scoped to Workers only, no zones) | Worker `skillmaxx-intake` at https://skillmaxx-intake.skillmaxx.workers.dev (KV `INTAKE`). Site posts to `/intake` via the Actions variable `INTAKE_ENDPOINT`. Read/delete with `GET`/`DELETE /inbox` + bearer read token stored on the box at /home/box/.skillmaxx-secrets/intake.env (never in the repo). Not emailed; nothing pushes new submissions yet. Setup: intake/README.md |
 | Stripe | Gil Ventures LLC (live, acct …HnNCwlg7U0) | connector still on the wrong account ("Linkedin") as of Nov 11, needs re-auth to Gil Ventures LLC; 8 payment links, portal bpc_1UUuTKHnNCwlg7U0D15J5OZG; no payouts/refunds/settings without Brandon |
 | Beehiiv | SkillMaxx Weekly | Grok Bot runs it fully (DECISIONS #73); issue #2 still a draft (post_d4f7cc7e), body needs editor paste; 5 active subs (Nov 6) |
 | Buffer | org 6adfb3f8d2cea8f4b234c15b | X 6adfb5c92f1f5ed648deaa83, Bluesky 6adfbe402f1f5ed648def519, LinkedIn page 6adfc4f12f1f5ed648df8e37; posts use explicit times, 2-week plan queued, daily top-up |

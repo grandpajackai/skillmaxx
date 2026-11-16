@@ -10,7 +10,7 @@ import { chromium } from "playwright";
 
 const require = createRequire(import.meta.url);
 const axePath = require.resolve("axe-core/axe.js");
-const OUT = "/opt/cursor/artifacts";
+const OUT = process.env.ARTIFACTS_DIR || "/opt/cursor/artifacts";
 const MOCK_ID = "smx_mocked" + "0".repeat(18);
 const PORT = 8765;
 const BASE = `http://127.0.0.1:${PORT}`;
