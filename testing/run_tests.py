@@ -42,15 +42,15 @@ def skill_verify(ag,n):
             lambda o,n=n: f'"name":"skill:{n}"' in o.split('---LIST')[-1])
   if ag=="cursor":
     marker='configDir:".agents",subdir:"skills"'
-    return (f"D=$(dirname \"$(readlink -f \"$(command -v cursor-agent)\")\"); grep -qF {q(marker)} \"$D\"/index.js && echo 'cursor-agent reads ~/.agents/skills'; grep -m1 '^name:' ~/.agents/skills/{q(n)}/SKILL.md",
-            lambda o,n=n: "cursor-agent reads ~/.agents/skills" in o.split('---LIST')[-1] and re.search(rf"(?m)^name:\s*['\"]?{re.escape(n)}['\"]?\s*$",o.split('---LIST')[-1]) is not None)
+    return (f"D=$(dirname \"$(readlink -f \"$(command -v cursor-agent)\")\"); grep -qF {q(marker)} \"$D\"/index.js && echo 'cursor-agent reads ~/.agents/skills'; grep -H -m1 '^name:' ~/.agents/skills/{q(n)}/SKILL.md",
+            lambda o,n=n: "cursor-agent reads ~/.agents/skills" in o.split('---LIST')[-1] and re.search(rf"(?m)/\.agents/skills/{re.escape(n)}/SKILL\.md:name:\s*['\"]?{re.escape(n)}['\"]?\s*$",o.split('---LIST')[-1]) is not None)
   return None
 def skill_case(it,ag):
   sk=it.get("skill") or {};src,n=sk.get("source"),sk.get("name")
   if not src or not n or ag not in SKILL_AGENT: return None
   v=skill_verify(ag,n)
   if not v: return None
-  cmd=(f"export DISABLE_TELEMETRY=1 DO_NOT_TRACK=1; npx -y {SKILLS_CLI} add {shlex.quote(src)} --skill {shlex.quote(n)} -g -a {SKILL_AGENT[ag]} -y 2>&1 | tail -4; "
+  cmd=(f"export DISABLE_TELEMETRY=1 DO_NOT_TRACK=1 npm_config_update_notifier=false; npx -y {SKILLS_CLI} add {shlex.quote(src)} --skill {shlex.quote(n)} -g -a {SKILL_AGENT[ag]} -y 2>&1 | tail -4; "
        f"echo ---LIST; {v[0]}")
   return (it,ag,"",cmd,v[1])
 def mcp_cmd(it):
@@ -156,7 +156,7 @@ def run1(c):
   if "---LIST" in o:
     pre=[l for l in o.split("---LIST")[0].splitlines() if l.strip() and not l.startswith("WARNING")][-3:]
     post=[l for l in o.split("---LIST",1)[1].splitlines() if l.strip()]
-    hit=[l for l in post if it["slug"].lower() in l.lower() or mcp_name(it) in l or "SKILL.md" in l or "Status" in l or "ready" in l or "tools" in l.lower() or "PROBE" in l or "handshake" in l or "enabled" in l][:4]
+    hit=[l for l in post if it["type"]=="skill" or it["slug"].lower() in l.lower() or mcp_name(it) in l or "SKILL.md" in l or "Status" in l or "ready" in l or "tools" in l.lower() or "PROBE" in l or "handshake" in l or "enabled" in l][:4]
     lines=pre+["$ verify:"]+(hit or post[-3:])
   return {"slug":it["slug"],"agent":ag,"status":"pass" if ok else "fail","log":"\n".join(lines[-9:])[-700:]}
 if __name__=="__main__":
