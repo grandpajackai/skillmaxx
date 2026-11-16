@@ -1,0 +1,16 @@
+[
+  {
+    "company": "Better Stack",
+    "kind": "new",
+    "to": "hello@betterstack.com",
+    "subject": "founding sponsor of our monitoring page?",
+    "body_file": "growth/outreach/queue-2026-11-17/better-stack.txt"
+  },
+  {
+    "company": "Sourcery",
+    "kind": "new",
+    "to": "hello@sourcery.ai",
+    "subject": "AI review for the people choosing coding agents",
+    "body_file": "growth/outreach/queue-2026-11-17/sourcery.txt"
+  }
+]
