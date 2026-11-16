@@ -5,30 +5,40 @@ desc: "You're booked. Send your logo, link and ad copy so we can schedule your S
 permalink: /sponsor/thanks/
 noindex: true
 ---
-{% set fs = "background:var(--s2);color:var(--t);border:1px solid var(--b2);border-radius:9px;padding:9px 12px;font:inherit;font-size:14px;min-height:40px" %}
-<div class="wrap"><h1 class="ph">You're in. Thank you!</h1>
-<p class="lead">Thanks for backing SkillMaxx as a founding sponsor. Send your assets below and we'll confirm your schedule by email, usually within a business day. Your receipt comes from the payment provider.</p>
+<div class="wrap prose"><h1 class="ph">You're in. Thank you!</h1>
+<p class="lead">Thanks for backing SkillMaxx as a founding sponsor. Send the link and the words for the placement below. We'll confirm the schedule by email, usually within a business day. Your receipt comes from the payment provider.</p>
+<p class="muted">{{ intake.note }}</p>
 <div class="card static" id="intake" style="margin-top:20px">
 <h2 class="h3">Your ad assets</h2>
-<p class="muted">Specs: logo as a square SVG or PNG (256px or larger), one link, and ad copy up to 50 words (newsletter) or a 90-character pitch (featured card). Everything is labeled "Sponsored".</p>
-<form id="sp-form" data-smx-form data-err="#sp-err" data-ok="#sp-ok" data-mail="mailto:skillmaxx@gilventures.ai?subject=Sponsor%20assets" data-subject="Sponsor assets" style="display:flex;flex-direction:column;gap:14px;margin-top:12px">
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px">
-<label style="display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--m)">Name *<input name="name" required style="{{ fs }}"></label>
-<label style="display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--m)">Email *<input type="email" name="email" required style="{{ fs }}"></label>
-<label style="display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--m)">Company / product *<input name="company" required style="{{ fs }}"></label>
-<label style="display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--m)">Slot *<select id="sp-slot" name="slot" required style="{{ fs }}"><option value="">Select one…</option>{% for t in sponsorLinks.slots %}<option value="{{ t.name }}" data-slot="{{ t.key }}">{{ t.name }} (${{ t.price }}/{{ t.unit }})</option>{% endfor %}</select></label>
-<label style="display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--m)">Preferred start date *<input type="date" name="start_date" required style="{{ fs }}"></label>
-<label style="display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--m)">Link (where clicks go) *<input type="url" name="link" required placeholder="https://" style="{{ fs }}"></label>
+<p class="hint">Specs: one link, ad copy up to 50 words (newsletter) or a 90-character pitch (featured card). Everything is labeled "Sponsored".</p>
+<form id="sp-form" class="intake" method="post" action="" data-kind="sponsor-assets" data-endpoint="{{ intake.endpoint }}" data-err="#sp-err" data-ok="#sp-ok" novalidate>
+<div class="fg">
+<label class="fl" for="sp-email"><span>Email <em>Required</em></span><input id="sp-email" type="email" name="email" required maxlength="200" inputmode="email" autocomplete="email"></label>
+<label class="fl" for="sp-slot"><span>Slot <em>Required</em></span><select id="sp-slot" name="slot" required><option value="">Select one…</option>{% for t in sponsorLinks.slots %}<option value="{{ t.name }}" data-slot="{{ t.key }}">{{ t.name }} (${{ t.price }} {{ t.priceSuffix }})</option>{% endfor %}</select></label>
+<label class="fl" for="sp-link"><span>Link <em>Required</em></span><input id="sp-link" type="url" name="link" required maxlength="400" inputmode="url" placeholder="https://" autocomplete="url"></label>
+<label class="fl" for="sp-copy"><span>Ad copy <em>Required</em></span><textarea id="sp-copy" name="ad_copy" required rows="3" maxlength="400" placeholder="Up to 50 words, or a 90-character pitch"></textarea></label>
 </div>
-<label style="display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--m)">Logo URL (SVG/PNG) <span style="font-size:12px">No hosted logo? Reply to your receipt email with the file attached.</span><input type="url" name="logo_url" placeholder="https://…/logo.svg" style="{{ fs }}"></label>
-<label style="display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--m)">Ad copy *<textarea name="ad_copy" required rows="4" maxlength="400" placeholder="Up to 50 words for the newsletter, or a 90-character pitch for a featured card" style="{{ fs }};resize:vertical;min-height:90px"></textarea></label>
-<label style="display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--m)">Category (category sponsors only)<input name="category" placeholder="e.g. Databases" style="{{ fs }}"></label>
-<button type="submit" class="btn" style="align-self:flex-start;padding:10px 24px;font-weight:600">Send assets</button>
+<details class="opt">
+<summary>Optional details</summary>
+<div class="fg">
+<label class="fl" for="sp-name"><span>Name</span><input id="sp-name" name="name" maxlength="120" autocomplete="name"></label>
+<label class="fl" for="sp-company"><span>Company / product</span><input id="sp-company" name="company" maxlength="160" autocomplete="organization"></label>
+<label class="fl" for="sp-start"><span>Preferred start date</span><input id="sp-start" type="date" name="start_date"></label>
+<label class="fl" for="sp-logo"><span>Logo URL</span><input id="sp-logo" type="url" name="logo_url" maxlength="400" inputmode="url" placeholder="https://…/logo.svg"></label>
+<label class="fl" for="sp-cat"><span>Category <em>Category sponsors only</em></span><input id="sp-cat" name="category" maxlength="80" placeholder="e.g. Databases"></label>
+</div>
+</details>
+<input type="hidden" id="sp-plan" name="plan" value="">
+<p class="sr" aria-hidden="true"><label>Leave blank<input name="fax_number" tabindex="-1" autocomplete="off"></label></p>
+<div class="form-actions">
+<button type="submit" class="btn">{{ intake.assetsButton }}</button>
+<p class="hint">{{ intake.help }} A logo file can wait for the reply. This form does not charge you again.</p>
+</div>
 </form>
-<div id="sp-ok" hidden style="margin-top:14px;padding:14px;border-radius:9px;background:rgba(198,244,50,.08);border:1px solid rgba(198,244,50,.3)"><p style="margin:0;color:var(--a);font-weight:600">✓ Assets received</p><p class="muted" style="margin:6px 0 0">We'll email you a schedule and a preview before anything goes live.</p></div>
-<p id="sp-err" hidden style="margin-top:10px;color:#e55;font-size:13px">Something went wrong. Please email your assets to skillmaxx@gilventures.ai.</p>
+<div id="sp-ok" class="form-status" role="status" tabindex="-1"></div>
+<p id="sp-err" class="form-err" role="alert" tabindex="-1"></p>
 </div>
 <p class="muted" style="margin-top:16px">Questions? <a href="mailto:skillmaxx@gilventures.ai">skillmaxx@gilventures.ai</a> · <a href="/advertise/#media-kit">Media kit</a></p>
-<script>(function(){var s=document.getElementById('sp-slot'),m=location.search.match(/[?&]slot=([a-z]+)/);if(m)for(var i=0;i<s.options.length;i++)if(s.options[i].dataset.slot===m[1])s.selectedIndex=i;})();</script>
-<script src="/assets/forms.js" defer></script>
+<script>(function(){var s=document.getElementById('sp-slot'),plan=document.getElementById('sp-plan'),m=location.search.match(/[?&]slot=([a-z-]+)/);if(!m||!s)return;var key=m[1].replace(/-monthly$/,'');if(plan)plan.value=/-monthly$/.test(m[1])?'monthly':'once';for(var i=0;i<s.options.length;i++)if(s.options[i].dataset.slot===key)s.selectedIndex=i;})();</script>
+<script src="/assets/forms.js" type="module"></script>
 </div>

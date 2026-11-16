@@ -1,0 +1,10 @@
+name = "skillmaxx-intake"
+main = "worker.mjs"
+compatibility_date = "2026-11-09"
+workers_dev = true
+
+# KV namespace "INTAKE" on the SkillMaxx Cloudflare account (created 2026-11-16).
+# Without this binding the worker refuses submissions (received: false).
+[[kv_namespaces]]
+binding = "INTAKE"
+id = "19eca4ae31494908a522dcae98b0ebe3"
