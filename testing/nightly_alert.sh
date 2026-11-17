@@ -44,6 +44,8 @@ smx_scrub() {
 # smx_alert STEP ERROR [LOGFILE] [DATE]
 # Prints only "alert: http=<code>" (no URL, no key). Logs one line to $SKILLMAXX_STATE/alerts.log.
 smx_alert() {
+  # Tests set SKILLMAXX_ALERT_DISABLE=1: log locally, never POST to the real webhook.
+  if [ "${SKILLMAXX_ALERT_DISABLE:-}" = 1 ]; then echo "alert: disabled (test) step=$1"; return 0; fi
   step=$1; err=$2; logf=${3:-}; day=${4:-$(TZ=America/New_York date +%F)}
   smx_alert_load
   tail_txt=

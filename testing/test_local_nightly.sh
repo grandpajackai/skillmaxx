@@ -3,12 +3,25 @@
 set -uo pipefail
 ROOT=$(cd "$(dirname "$0")/.." && pwd)
 fail() { echo "FAIL: $*" >&2; exit 1; }
+# Never reach the real alert webhook or the real state dir from a test (a Nov 17 box run sent a false alert).
+unset SKILLMAXX_ALERT_WEBHOOK_URL SKILLMAXX_ALERT_WEBHOOK_KEY
+export SKILLMAXX_ALERT_DISABLE=1 SKILLMAXX_ALERT_ENV=/dev/null
+SKILLMAXX_STATE=$(mktemp -d); export SKILLMAXX_STATE
 bash -n "$ROOT/testing/local_nightly.sh" || fail syntax
 bash -n "$ROOT/testing/nightly.sh" || fail nightly_syntax
 
 # Outside 02:00 Eastern the launchd entry exits without touching git.
 out=$(SKILLMAXX_LAUNCHD=1 SKILLMAXX_EASTERN_HOUR=15 bash "$ROOT/testing/local_nightly.sh" 2>&1) || fail hour_gate_failed
 echo "$out" | grep -q 'not 02' || fail hour_gate_message
+
+# Watchdog: a run that started and then failed (already alerted) must not raise a "did not start" alert.
+wd=$(mktemp -d); d=$(TZ=America/New_York date +%F)
+printf '%s 1\n' "$d" > "$wd/run-finished"; printf '2026-01-01 1\n' > "$wd/run-started"
+printf 'x day=%s step=nightly.sh http=200\n' "$d" > "$wd/alerts.log"
+out=$(SKILLMAXX_STATE="$wd" SKILLMAXX_WATCHDOG_ANY_OS=1 SKILLMAXX_LAUNCHD=1 SKILLMAXX_EASTERN_HOUR=08 bash "$ROOT/testing/local_nightly.sh" 2>&1)
+echo "$out" | grep -q 'did not start' && fail watchdog_false_not_started
+[ -f "$wd/watchdog-alerted" ] && fail watchdog_alerted_after_failed_run
+rm -rf "$wd"
 
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT

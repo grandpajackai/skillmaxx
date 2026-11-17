@@ -116,6 +116,8 @@ intake_check() {
 
 watchdog() {
   [ "$((10#$hour))" -ge 5 ] || return 0
+  # The nightly only runs on the Mac. Elsewhere (the box, CI, tests) there is no 02 run to watch, so never alert.
+  [ "$(uname -s)" = Darwin ] || [ "${SKILLMAXX_WATCHDOG_ANY_OS:-}" = 1 ] || return 0
   intake_check || true
   # Dead-man for the alert itself: today's run failed but its alert never got a 2xx. Retry once an hour.
   if [ "$(cut -d' ' -f1 "$STATE/run-finished" 2>/dev/null)" = "$today" ] && [ "$(cut -d' ' -f2 "$STATE/run-finished" 2>/dev/null)" != "0" ] \
@@ -124,15 +126,24 @@ watchdog() {
     return 0
   fi
   [ -f "$STATE/watchdog-alerted" ] && [ "$(cat "$STATE/watchdog-alerted")" = "$today" ] && return 0
-  [ -f "$STATE/last-success-date" ] && [ "$(cat "$STATE/last-success-date")" = "$today" ] && return 0
+  if [ -f "$STATE/last-success-date" ] && [ "$(cat "$STATE/last-success-date")" = "$today" ]; then
+    # Grok-free publish retry (05-12 ET) when the post-run publish did not finish.
+    ps=$(cat "$STATE/publish-status" 2>/dev/null)
+    if [ "$((10#$hour))" -le 12 ] && [ "$ps" != "$today published" ] && [ "$ps" != "$today hold" ]; then
+      bash "$ROOT/testing/publish_nightly.sh" "$today" || true
+    fi
+    return 0
+  fi
   started=$(cut -d' ' -f1 "$STATE/run-started" 2>/dev/null)
   finished=$(cut -d' ' -f1 "$STATE/run-finished" 2>/dev/null)
-  if [ "$started" != "$today" ]; then
-    step=not-started; msg="The 02:00 ET nightly did not start today (Mac asleep, off, or launchd missed it). Now ${hour}:00 ET."
+  now_et=$(TZ=America/New_York date '+%H:%M %Z')  # real clock, not the SKILLMAXX_EASTERN_HOUR test override
+  # A run that started and then failed is "started": run-finished for today counts even if run-started is stale.
+  if [ "$started" != "$today" ] && [ "$finished" != "$today" ]; then
+    step=not-started; msg="The 02:00 ET nightly did not start today (Mac asleep, off, or launchd missed it). Now ${now_et}."
   elif [ "$finished" != "$today" ]; then
     pid=$(cut -d' ' -f2 "$STATE/run-started" 2>/dev/null)
     if [ -n "$pid" ] && kill -0 "$pid" 2>/dev/null; then
-      step=still-running; msg="The nightly that started at 02:00 ET is still running at ${hour}:00 ET (pid $pid)."
+      step=still-running; msg="The nightly that started at 02:00 ET is still running at ${now_et} (pid $pid)."
     else
       step=died; msg="The nightly that started at 02:00 ET stopped without finishing (killed, crash, or the Mac slept)."
     fi
@@ -187,6 +198,14 @@ command -v git >/dev/null 2>&1 || fail "git is missing"
 primary_top=$(git -C "$PRIMARY" rev-parse --show-toplevel) || fail "primary checkout is not a git repo"
 if [ "${SKILLMAXX_SKIP_DOCKER:-}" != "1" ]; then
   docker_ready
+fi
+# Self-heal (Nov 17): a Homebrew Python upgrade (3.15) dropped Pillow and fetch_meta.py failed after the tests.
+STEP=python-deps
+pyb=python3; [ -x /opt/homebrew/bin/python3 ] && pyb=/opt/homebrew/bin/python3
+if ! "$pyb" -c 'import PIL' 2>/dev/null; then
+  echo "local nightly: Pillow missing for $pyb; installing it (pip --user)"
+  "$pyb" -m pip install -q --user --break-system-packages pillow >/dev/null 2>&1 || "$pyb" -m pip install -q --user pillow >/dev/null 2>&1
+  "$pyb" -c 'import PIL' 2>/dev/null || fail "Pillow is missing for $pyb and pip could not install it (fetch_meta.py needs it)"
 fi
 
 # shellcheck source=testing/lock.sh
@@ -280,3 +299,9 @@ if [ "${1:-}" = "--launchd" ] || [ "${SKILLMAXX_LAUNCHD:-}" = "1" ]; then
   TZ=America/New_York date +%F > "$STATE/last-success-date"
 fi
 echo "local nightly: source $REF $sha copied to $STATE. No commit and no push."
+if [ "${1:-}" = "--launchd" ] || [ "${SKILLMAXX_LAUNCHD:-}" = "1" ]; then
+  # Grok-free publish: data-only branch + PR + squash-merge after the required build check. It alerts on its own
+  # problems and never changes this run's result. SKILLMAXX_AUTO_PUBLISH=0 in local.env turns it off.
+  STEP=publish
+  bash "$ROOT/testing/publish_nightly.sh" "$today" || echo "local nightly: publish did not finish (the hourly watchdog retries until 12 ET)"
+fi
