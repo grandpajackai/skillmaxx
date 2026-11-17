@@ -101,8 +101,28 @@ on_exit() {
 
 # Hourly launchd watchdog (not 02): alert once a day from 05 ET on if today's 02 run never started
 # (Mac asleep or off) or started and is still not finished.
+# Once a day at 06 ET (same hourly job, no extra launchd entry): check the form intake worker.
+intake_check() {
+  [ "$hour" = "06" ] || return 0
+  [ -f "$STATE/intake-checked" ] && [ "$(cat "$STATE/intake-checked")" = "$today" ] && return 0
+  printf '%s\n' "$today" > "$STATE/intake-checked"
+  url=${SKILLMAXX_INTAKE_HEALTH_URL:-https://skillmaxx-intake.skillmaxx.workers.dev/health}
+  body=$(curl -sS --max-time 20 --retry 2 --retry-delay 10 "$url" 2>&1)
+  if ! printf '%s' "$body" | grep -q '"ok":true' || ! printf '%s' "$body" | grep -q '"storage":true'; then
+    smx_alert "intake-health" "Intake worker /health is not ok at 06 ET (site forms may be down): $(printf '%s' "$body" | head -c 200)" "" "$today" || true
+  fi
+  return 0
+}
+
 watchdog() {
   [ "$((10#$hour))" -ge 5 ] || return 0
+  intake_check || true
+  # Dead-man for the alert itself: today's run failed but its alert never got a 2xx. Retry once an hour.
+  if [ "$(cut -d' ' -f1 "$STATE/run-finished" 2>/dev/null)" = "$today" ] && [ "$(cut -d' ' -f2 "$STATE/run-finished" 2>/dev/null)" != "0" ] \
+     && ! grep "day=$today " "$STATE/alerts.log" 2>/dev/null | grep -v 'step=test-alert' | grep -q 'http=2'; then
+    smx_alert "alert-retry" "Today's 02:00 ET nightly failed (exit $(cut -d' ' -f2 "$STATE/run-finished")) and its first alert did not go through." "$LOGDIR/run-$today.log" "$today" || true
+    return 0
+  fi
   [ -f "$STATE/watchdog-alerted" ] && [ "$(cat "$STATE/watchdog-alerted")" = "$today" ] && return 0
   [ -f "$STATE/last-success-date" ] && [ "$(cat "$STATE/last-success-date")" = "$today" ] && return 0
   started=$(cut -d' ' -f1 "$STATE/run-started" 2>/dev/null)
@@ -133,7 +153,7 @@ fi
 
 if [ "${1:-}" = "--test-alert" ]; then
   # One wiring check. The payload says TEST ONLY so the routine can ignore it.
-  smx_alert "test-alert" "TEST ONLY - alert wiring check, ignore" "" "$(TZ=America/New_York date +%F)"
+  smx_alert "test-alert" "${SKILLMAXX_TEST_REASON:-TEST: alert path check, ignore}" "" "$(TZ=America/New_York date +%F)"
   exit 0
 fi
 
@@ -159,6 +179,8 @@ if [ "${1:-}" = "--launchd" ] || [ "${SKILLMAXX_LAUNCHD:-}" = "1" ]; then
 fi
 today=${today:-$(TZ=America/New_York date +%F)}
 trap on_exit EXIT
+# A kill, Ctrl-C, or hangup still exits through on_exit, so it alerts too.
+trap 'FAIL_MSG="killed by a signal at step $STEP"; exit 143' TERM INT HUP
 
 STEP=preflight
 command -v git >/dev/null 2>&1 || fail "git is missing"
@@ -234,6 +256,12 @@ unset SKILLMAXX_PRODUCTION SKILLMAXX_ALLOW_PUSH
 nightly=${SKILLMAXX_NIGHTLY:-$WORK/testing/nightly.sh}
 STEP=nightly.sh
 ( cd "$WORK" && bash "$nightly" ) || fail "nightly.sh failed (tests, metadata, report, build, or freshness). No push was attempted."
+if [ "$ALERT_ON_FAIL" = "1" ]; then
+  STEP=results-check
+  rf="$WORK/testing/results/$today.json"
+  n=$(python3 -c 'import json,sys; print(len(json.load(open(sys.argv[1])).get("results") or []))' "$rf" 2>/dev/null || echo 0)
+  [ "${n:-0}" -gt 0 ] 2>/dev/null || fail "nightly.sh exited 0 but produced no results for $today (missing or empty testing/results/$today.json)."
+fi
 STEP=copy-results
 
 mkdir -p "$LOGDIR" "$STATE/results" "$STATE/status"
