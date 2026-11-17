@@ -69,7 +69,7 @@ SUNDAY=0; [ "$(python3 -c 'import sys,datetime; print(datetime.date.fromisoforma
 if [ "$SUNDAY" = 1 ] && [ -f growth/scripts/weekly_blog_auto.py ]; then
   python3 growth/scripts/weekly_blog_auto.py "$D" || echo "publish: weekly blog post skipped (generator error)"
 fi
-SUM=$(python3 -c 'import json,sys; r=json.load(open(sys.argv[1]))["results"]; print(f"{sum(x[\"status\"]==\"pass\" for x in r)}/{len(r):,}")' "testing/results/$D.json")
+SUM=$(python3 -c 'import json,sys; r=json.load(open(sys.argv[1]))["results"]; print("%d/%s" % (sum(x["status"] == "pass" for x in r), format(len(r), ",")))' "testing/results/$D.json")
 ADD=(); for f in testing/results testing/history.json src/_data/reports.json src/_data/latestRows.json src/_data/weeks.json growth/daily growth/weekly src/blog; do [ -e "$f" ] && ADD+=("$f"); done
 git add -- "${ADD[@]}"
 git diff --cached --quiet && { echo "publish: nothing changed"; status published; exit 0; }
