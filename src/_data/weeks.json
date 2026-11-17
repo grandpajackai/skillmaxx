@@ -1,5 +1,127 @@
 [
  {
+  "key": "2026-47",
+  "start": "2026-11-16",
+  "end": "2026-11-22",
+  "first": "2026-11-17",
+  "last": "2026-11-17",
+  "runs": 1,
+  "trend": [
+   {
+    "date": "2026-11-17",
+    "pass": 911,
+    "tested": 1050,
+    "total": 1075,
+    "needs_key": 25,
+    "rate": 86.8
+   }
+  ],
+  "ranking": [
+   {
+    "agent": "claude_code",
+    "name": "Claude Code",
+    "pass": 343,
+    "tested": 367,
+    "rate": 93.5,
+    "flaky": 2,
+    "needs_key": 5
+   },
+   {
+    "agent": "grok_build",
+    "name": "Grok Build",
+    "pass": 353,
+    "tested": 382,
+    "rate": 92.4,
+    "flaky": 3,
+    "needs_key": 5
+   },
+   {
+    "agent": "codex",
+    "name": "Codex",
+    "pass": 96,
+    "tested": 115,
+    "rate": 83.5,
+    "flaky": 0,
+    "needs_key": 5
+   },
+   {
+    "agent": "cursor",
+    "name": "Cursor",
+    "pass": 33,
+    "tested": 50,
+    "rate": 66.0,
+    "flaky": 2,
+    "needs_key": 5
+   },
+   {
+    "agent": "pi",
+    "name": "Pi",
+    "pass": 86,
+    "tested": 136,
+    "rate": 63.2,
+    "flaky": 2,
+    "needs_key": 5
+   }
+  ],
+  "fixed": [],
+  "broke": [
+   {
+    "slug": "sap-fiori-mcp-server",
+    "name": "Sap Fiori MCP Server",
+    "n": 2
+   }
+  ],
+  "flaky": [
+   {
+    "slug": "comfyui-mcp",
+    "name": "comfyui-mcp",
+    "n": 2
+   },
+   {
+    "slug": "hyperframes",
+    "name": "Hyperframes",
+    "n": 2
+   },
+   {
+    "slug": "mcp-local-rag",
+    "name": "mcp-local-rag",
+    "n": 2
+   },
+   {
+    "slug": "deepeval",
+    "name": "Deepeval",
+    "n": 1
+   },
+   {
+    "slug": "mcp-apps",
+    "name": "MCP Apps",
+    "n": 1
+   }
+  ],
+  "fixed_n": 0,
+  "broke_n": 2,
+  "flaky_n": 6,
+  "needs_key": 25,
+  "standout": {
+   "slug": "angular-testing",
+   "name": "Angular Testing",
+   "desc": "Writes, fixes and reviews Angular tests following the Pragmatic Angular Testing approach: fakes over mocks, real collaborators by default, components tested through the DOM. Targets Vitest and also ap",
+   "agents": [
+    "claude_code",
+    "codex",
+    "grok_build",
+    "cursor",
+    "pi"
+   ],
+   "why": "new tonight",
+   "stars": null
+  },
+  "version_changes": [],
+  "svg": "<svg viewBox=\"0 0 560 180\" width=\"100%\" role=\"img\" aria-labelledby=\"ct\" class=\"chart\" xmlns=\"http://www.w3.org/2000/svg\"><title id=\"ct\">Install pass rate by night: 2026-11-17 86.8%</title><line x1=\"34\" y1=\"146\" x2=\"526\" y2=\"146\" stroke=\"currentColor\" stroke-opacity=\".25\"/><text x=\"4\" y=\"38\" font-size=\"11\" fill=\"currentColor\">89%</text><text x=\"4\" y=\"150\" font-size=\"11\" fill=\"currentColor\">82%</text><path d=\"M280.0,66.0\" fill=\"none\" stroke=\"#22c55e\" stroke-width=\"3\" stroke-linejoin=\"round\"/><circle cx=\"280.0\" cy=\"66.0\" r=\"4\" fill=\"#22c55e\"/><text x=\"280.0\" y=\"57.0\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">86.8%</text><text x=\"280.0\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-17</text></svg>",
+  "baseline_start": null,
+  "no_valid_run": []
+ },
+ {
   "key": "2026-46",
   "start": "2026-11-09",
   "end": "2026-11-15",
