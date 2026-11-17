@@ -4,6 +4,7 @@ pagination: {data: seo.categories, size: 1, alias: c}
 permalink: "/best/{{ c.slug }}/"
 ogType: article
 lastmodRun: true
+eleventyExcludeFromCollections: true
 eleventyComputed:
   title: "{{ c.title }}"
   desc: "{{ c.passing.length }} {{ c.noun }} that installed in Claude Code, Codex, Grok Build, Cursor or Pi on {{ seo.dateLabel }}, ranked by agents passed. Re-tested nightly."

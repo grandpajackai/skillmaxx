@@ -4,6 +4,7 @@ pagination: {data: seo.agents, size: 1, alias: g}
 permalink: "/works-in/{{ g.slug }}/"
 ogType: article
 lastmodRun: true
+eleventyExcludeFromCollections: true
 eleventyComputed:
   title: "{{ g.title }} Tested nightly ({{ seo.dateLabel }})"
   desc: "{{ g.pass }} of {{ g.tested }} agent add-ons installed and loaded in {{ g.name }} in our clean-sandbox test on {{ seo.dateLabel }}. Full list, failures, and why. Re-tested every night."
