@@ -5,12 +5,14 @@
   - a newsletter card (section.nlcard) whose heading or subtext is empty or literally "true"/"false"
     (the Nov 2026 bug: .md pages rendered includes with Liquid, so `nlh or "..."` became `true`)
   - a newsletter card without the Beehiiv form placeholder (div.bhf[data-bhform])
+  - a <script type="application/ld+json"> block that isn't valid JSON (breaks rich results / answer engines)
 Usage: python3 review/check_built_site.py [_site]"""
-import re, sys, glob, os
+import re, sys, glob, os, json
 root = sys.argv[1] if len(sys.argv) > 1 else "_site"
 STRIP = re.compile(r"<(script|style|code|pre)\b.*?</\1>|<!--.*?-->", re.S | re.I)
 LEAK = re.compile(r"\{#|#\}|\{%|%\}|\{\{|\}\}")
 CARD = re.compile(r'<section class="[^"]*\bnlcard\b[^"]*"[^>]*>(.*?)</section>', re.S)
+LD = re.compile(r'<script type="application/ld\+json">(.*?)</script>', re.S)
 bad = []
 files = glob.glob(os.path.join(root, "**", "*.html"), recursive=True)
 for f in files:
@@ -19,6 +21,11 @@ for f in files:
     for m in LEAK.finditer(vis):
         bad.append(f"{f}: leaked template syntax near: {vis[max(0, m.start() - 40):m.end() + 40]!r}")
         break
+    for ld in LD.findall(s):
+        try:
+            json.loads(ld)
+        except ValueError as e:
+            bad.append(f"{f}: invalid JSON-LD ({e})")
     for c in CARD.findall(s):
         h = re.search(r"<h2[^>]*>(.*?)</h2>", c, re.S); p = re.search(r"<p[^>]*>(.*?)</p>", c, re.S)
         for label, m in (("heading", h), ("subtext", p)):

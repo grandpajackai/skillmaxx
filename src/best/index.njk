@@ -1,0 +1,14 @@
+---
+layout: base.njk
+permalink: /best/
+lastmodRun: true
+eleventyComputed:
+  title: "Best agent skills, plugins and MCP servers by category, install-tested ({{ seo.dateLabel }})"
+  desc: "Category rankings of add-ons for Claude Code, Codex, Grok Build, Cursor and Pi, based on real nightly install tests."
+---
+<div class="wrap prose"><p class="muted"><a href="/">SkillMaxx</a> › Best by category</p>
+<h1 class="ph">Best agent add-ons by category, tested</h1>
+<p class="ltb"><a href="/how-we-test/" class="tag tok">Last tested {{ seo.date }}</a></p>
+<p class="answer">Each list ranks add-ons by how many of 5 coding agents they installed and loaded in during our nightly sandbox test on {{ seo.dateLabel }}, then by GitHub stars.</p>
+<ul>{% for c in seo.categories %}<li><a href="/best/{{ c.slug }}/">Best {{ c.noun }}</a>: {{ c.passing.length }} passed of {{ c.items.length }} tested</li>{% endfor %}</ul>
+<p class="related-links"><a href="/works-in/">What works in each agent →</a><a href="/matrix/">Compatibility matrix →</a></p></div>

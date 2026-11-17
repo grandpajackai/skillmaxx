@@ -177,3 +177,4 @@ h2.h3{font-size:17px;margin:0 0 8px}
 .form-err{color:#FECACA;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.45);border-radius:10px;padding:12px;font-size:14px;line-height:20px}
 .form-err:focus{outline:2px solid #F87171;outline-offset:2px}
 @media(max-width:640px){#form-card,#intake,#inquiry-form{padding:16px}}
+.qa{border:1px solid #26272b;border-radius:12px;padding:14px 18px;margin:18px 0}.qa h2{margin:0 0 6px}.qal{display:flex;flex-wrap:wrap;gap:6px 18px;list-style:none;padding:0;margin:8px 0}

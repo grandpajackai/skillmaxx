@@ -20,6 +20,14 @@ Statuses: "Tested" = installed and loaded by our harness in a sandbox with no cr
 - [How it works]({{ site.url }}/how-it-works/): methodology and status definitions
 - [Machine-readable index]({{ site.url }}/index.json): all skills as JSON
 
+## What works in each agent (updated nightly, last run {{ seo.date }})
+{% for g in seo.agents %}- [Which skills, plugins and MCP servers work in {{ g.name }}?]({{ site.url }}/works-in/{{ g.slug }}/): {{ g.pass }} of {{ g.tested }} passed ({{ g.rate }}%), {{ g.needsKey.length }} need an API key, {{ g.broken.length }} failed
+{% endfor %}
+## Best add-ons by category (install-tested)
+{% for c in seo.categories %}- [Best {{ c.noun }}]({{ site.url }}/best/{{ c.slug }}/): {{ c.passing.length }} of {{ c.items.length }} passed in at least one agent; top: {% for i in c.passing.slice(0,3) %}{{ i.s.name }}{% if not loop.last %}, {% endif %}{% endfor %}
+{% endfor %}
+Every add-on page (/skills/<slug>/) opens with a dated answer to "Does <name> work in <agent>?".
+
 ## Guides
 - [Best MCP servers that actually work in Cursor]({{ site.url }}/guides/best-mcp-servers-cursor/)
 - [What actually installs in Grok Build]({{ site.url }}/guides/what-installs-in-grok-build/)

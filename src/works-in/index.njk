@@ -1,0 +1,14 @@
+---
+layout: base.njk
+permalink: /works-in/
+lastmodRun: true
+eleventyComputed:
+  title: "Which agent skills, plugins and MCP servers work in each coding agent? ({{ seo.dateLabel }})"
+  desc: "Nightly install results for Claude Code, Codex, Grok Build, Cursor and Pi: how many add-ons install and load in each agent, with the full lists."
+---
+<div class="wrap prose"><p class="muted"><a href="/">SkillMaxx</a> › Works in</p>
+<h1 class="ph">Which add-ons work in each coding agent?</h1>
+<p class="ltb"><a href="/how-we-test/" class="tag tok">Last tested {{ seo.date }}</a></p>
+<p class="answer">In our nightly sandbox install test on {{ seo.dateLabel }}: {% for g in seo.agents %}{{ g.name }} {{ g.pass }} of {{ g.tested }} ({{ g.rate }}%){% if not loop.last %}, {% endif %}{% endfor %}. Pick an agent for the full list.</p>
+<div class="tw"><table class="matrix"><thead><tr><th>Agent</th><th>Passed</th><th>Tested</th><th>Needs API key</th><th>Failed</th></tr></thead><tbody>{% for g in seo.agents %}<tr><th scope="row"><a href="/works-in/{{ g.slug }}/">What works in {{ g.name }}</a></th><td>{{ g.pass }}</td><td>{{ g.tested }}</td><td>{{ g.needsKey.length }}</td><td>{{ g.broken.length }}</td></tr>{% endfor %}</tbody></table></div>
+<p class="related-links"><a href="/best/">Best by category →</a><a href="/matrix/">Compatibility matrix →</a><a href="/how-we-test/">How we test →</a></p></div>
