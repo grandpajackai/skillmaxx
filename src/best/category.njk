@@ -1,0 +1,23 @@
+---
+layout: base.njk
+pagination: {data: seo.categories, size: 1, alias: c}
+permalink: "/best/{{ c.slug }}/"
+ogType: article
+lastmodRun: true
+eleventyComputed:
+  title: "{{ c.title }}"
+  desc: "{{ c.passing.length }} {{ c.noun }} that installed in Claude Code, Codex, Grok Build, Cursor or Pi on {{ seo.dateLabel }}, ranked by agents passed. Re-tested nightly."
+---
+<div class="wrap prose"><p class="muted"><a href="/">SkillMaxx</a> › <a href="/best/">Best by category</a> › {{ c.label }}</p>
+<h1 class="ph">{{ c.title }}</h1>
+<p class="ltb"><a href="/how-we-test/" class="tag tok">Last tested {{ seo.date }}</a></p>
+<p class="answer">{{ c.faqs[0].a }}</p>
+<h2>Which {{ c.noun }} install in the most agents?</h2>
+<div class="tw"><table class="matrix"><thead><tr><th>#</th><th>Add-on</th><th>Type</th><th>Installed in ({{ seo.dateLabel }})</th><th>Stars</th></tr></thead><tbody>{% for i in c.passing %}<tr><td>{{ loop.index }}</td><th scope="row"><a href="/skills/{{ i.s.slug }}/">{{ i.s.name }}</a></th><td>{{ i.s.typeLabel }}</td><td style="white-space:normal">{{ i.okNames | join(", ") }}</td><td>{% if i.stars %}★ {{ i.stars | kfmt }}{% endif %}</td></tr>{% endfor %}</tbody></table></div>
+<h2>How do {{ c.noun }} do in each agent?</h2>
+<ul>{% for p in c.perAgent %}<li><a href="/works-in/{{ seo.agentSlug[p.a] }}/">{{ p.name }}</a>: {{ p.n }} of {{ p.t }} installed and loaded</li>{% endfor %}</ul>
+<p class="related-links">{% for o in seo.categories %}{% if o.key != c.key %}<a href="/best/{{ o.slug }}/">Best {{ o.noun }} →</a>{% endif %}{% endfor %}</p>
+<section class="faq" aria-labelledby="faqh"><h2 id="faqh">FAQ</h2>{% for f in c.faqs %}<details open><summary><h3>{{ f.q }}</h3></summary><p>{{ f.a }}</p></details>{% endfor %}</section>
+<p class="muted">Ranked by number of agents passed, then GitHub stars. "Installed" means it installs and loads in a sandbox with no credentials. See <a href="/how-we-test/">how we test</a>.</p></div>
+{% for l in c.ld %}<script type="application/ld+json">{{ l | json | safe }}</script>{% endfor %}
+{% include "nlembed.njk" %}

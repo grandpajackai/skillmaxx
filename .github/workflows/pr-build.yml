@@ -25,3 +25,5 @@ jobs:
           test -f _site/index.html
           test -f _site/CNAME || test -f src/CNAME || true
           n=$(find _site/skills -name index.html | wc -l); echo "skill pages: $n"; test "$n" -gt 100
+          for a in claude-code codex grok-build cursor pi; do test -f _site/works-in/$a/index.html; done
+          echo "best pages: $(find _site/best -name index.html | wc -l)"; test -f _site/best/index.html

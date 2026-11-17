@@ -1,0 +1,29 @@
+---
+layout: base.njk
+pagination: {data: seo.agents, size: 1, alias: g}
+permalink: "/works-in/{{ g.slug }}/"
+ogType: article
+lastmodRun: true
+eleventyComputed:
+  title: "{{ g.title }} Tested nightly ({{ seo.dateLabel }})"
+  desc: "{{ g.pass }} of {{ g.tested }} agent add-ons installed and loaded in {{ g.name }} in our clean-sandbox test on {{ seo.dateLabel }}. Full list, failures, and why. Re-tested every night."
+---
+<div class="wrap prose"><p class="muted"><a href="/">SkillMaxx</a> › <a href="/works-in/">Works in</a> › {{ g.name }}</p>
+<h1 class="ph">{{ g.title }}</h1>
+<p class="ltb"><a href="/how-we-test/" class="tag tok">Last tested {{ seo.date }}</a></p>
+<p class="answer">As of {{ seo.dateLabel }}, <b>{{ g.pass }} of {{ g.tested }}</b> skills, plugins and MCP servers we tested in {{ g.name }} ({{ g.rate }}%) installed and loaded in a clean sandbox with no accounts or API keys. {{ g.needsKey.length }} more failed only because they need your API key, {{ g.broken.length }} failed two nights running, and {{ g.pending.length }} are being re-checked. The list below updates after every nightly run.</p>
+{% for grp in g.groups %}<h2>Which {{ grp.label }} work in {{ g.name }}? ({{ grp.items.length }})</h2>
+<div class="tw"><table class="matrix"><thead><tr><th>Add-on</th><th>What it does</th></tr></thead><tbody>{% for s in grp.items %}<tr><th scope="row"><a href="/skills/{{ s.slug }}/">{{ s.name }}</a></th><td style="white-space:normal">{{ s.description | truncate(100) }}</td></tr>{% endfor %}</tbody></table></div>{% endfor %}
+{% if g.needsKey.length %}<h2>Which add-ons need an API key in {{ g.name }}? ({{ g.needsKey.length }})</h2>
+<p>These failed in our sandbox only because it has no account or API key. Add yours and they should connect.</p>
+<ul>{% for s in g.needsKey %}<li><a href="/skills/{{ s.slug }}/">{{ s.name }}</a></li>{% endfor %}</ul>{% endif %}
+{% if g.broken.length %}<h2>Which add-ons failed in {{ g.name }}? ({{ g.broken.length }})</h2>
+<p>These failed the install or load check two nights running. Each page has the log excerpt from our run.</p>
+<ul>{% for s in g.broken %}<li><a href="/skills/{{ s.slug }}/">{{ s.name }}</a></li>{% endfor %}</ul>{% endif %}
+{% if g.pending.length %}<h2>Which results are still being re-checked? ({{ g.pending.length }})</h2>
+<ul>{% for s in g.pending %}<li><a href="/skills/{{ s.slug }}/">{{ s.name }}</a></li>{% endfor %}</ul>{% endif %}
+<p class="related-links">{% for o in seo.agents %}{% if o.key != g.key %}<a href="/works-in/{{ o.slug }}/">What works in {{ o.name }} →</a>{% endif %}{% endfor %}<a href="/best/">Best by category →</a><a href="/reports/latest/">Latest nightly report →</a></p>
+<section class="faq" aria-labelledby="faqh"><h2 id="faqh">FAQ</h2>{% for f in g.faqs %}<details open><summary><h3>{{ f.q }}</h3></summary><p>{{ f.a }}</p></details>{% endfor %}</section>
+<p class="muted">"Works" means it installs and loads in a sandbox with no credentials. We don't run your prompts. See <a href="/how-we-test/">how we test</a>.</p></div>
+{% for l in g.ld %}<script type="application/ld+json">{{ l | json | safe }}</script>{% endfor %}
+{% include "nlembed.njk" %}
