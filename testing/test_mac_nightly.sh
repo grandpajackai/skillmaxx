@@ -1,6 +1,8 @@
 #!/bin/bash
 # Fixture checks for testing/mac_nightly.sh. No git pull, no tests, no launchd load.
 set -uo pipefail
+unset SKILLMAXX_ALERT_WEBHOOK_URL SKILLMAXX_ALERT_WEBHOOK_KEY
+export SKILLMAXX_ALERT_DISABLE=1 SKILLMAXX_ALERT_ENV=/dev/null
 ROOT=$(cd "$(dirname "$0")/.." && pwd)
 cd "$ROOT"
 fail() { echo "FAIL: $*" >&2; exit 1; }
