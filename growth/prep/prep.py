@@ -14,7 +14,7 @@ Each subcommand does only the mechanical part of one Grok routine (fetch, list, 
             --zoho (box only): read-only Inbox/Spam/Sent scan for replies/duplicates per due domain via
             growth/scripts/zoho_mail.py list (never send/reply).
   pipeline  Weekly pipeline: counts by status, Contacted aging (7/14 d), top Targets, BFCM window flag.
-  recap     Sunday recap stats: week scorecard, nightly trend, pipeline counts, emails sent, blog/newsletter
+  recap     Sunday recap stats + newsletter-draft.md (no-LLM draft of the next issue, src/newsletter format): week scorecard, nightly trend, pipeline counts, emails sent, blog/newsletter
             status, merged PRs (gh, if logged in), Bluesky follower count.
 
 Usage: prep.py CMD [--date YYYY-MM-DD] [--out DIR] [--offline] [--zoho]
@@ -187,7 +187,7 @@ def facts(d):
     out["latest_report"] = {
         "date": r["date"], "pass": r.get("pass"), "total": r.get("total"), "tested": r.get("tested"),
         "addons": r.get("addons"), "needs_key": r.get("needs_key"), "by_agent": by,
-        "url": f"{SITE}/reports/{r['date']}/", "versions": r.get("versions"),
+        "url": f"{SITE}/reports/{r['date']}/", "versions": r.get("versions"), "by_raw": r.get("by") or {},
     }
     try:
         st, body = get(out["latest_report"]["url"])
@@ -645,11 +645,17 @@ def cmd_recap(d, a):
             "pipeline_counts": counts(pipeline_rows()), "emails_sent_7d": sent, "merged_prs_7d": prs,
             "bluesky": bs, "radar_files_7d": radar, "blog_files": [os.path.basename(b) for b in blog][-5:],
             "newsletter_issues": [os.path.basename(n) for n in news], "facts": facts(d)}
+    issue_no, draft = newsletter_draft(d, wk, data["facts"])
+    os.makedirs(a.out, exist_ok=True)
+    with open(os.path.join(a.out, "newsletter-draft.md"), "w", encoding="utf-8") as fh:
+        fh.write(draft)
+    data["newsletter_draft"] = {"issue": issue_no, "path": os.path.join(a.out, "newsletter-draft.md")}
     md = [f"# Sunday recap prep — week ending {d} (generated {stamp()})", "",
+          f"Newsletter: no-LLM draft of issue #{issue_no} written to {os.path.join(a.out, 'newsletter-draft.md')} (unsent, unpublished; polish the <!-- DRAFT --> parts).", "",
           "Stats only. Wins/misses wording, the dashboard edit, the newsletter draft and anything sent stay with Grok.", "",
           f"## Nightly runs, week {wk.get('key')} ({wk.get('start')}–{wk.get('end')})"]
     md += [f"- {t['date']}: {t['pass']:,}/{t['total']:,} passed ({t.get('rate')}% of tested)" for t in (wk.get("trend") or [])] or ["- no runs"]
-    md += ["", "## Agent ranking"] + [f"- {x['name']}: {x['pass']}/{x['tested']} ({x['rate']}%), flaky {x.get('flaky')}" for x in (wk.get("ranking") or [])]
+    md += ["", "## Agent ranking (summed over the week's runs)"] + [f"- {x['name']}: {x['pass']}/{x['tested']} ({x['rate']}%), flaky {x.get('flaky')}" for x in (wk.get("ranking") or [])]
     for k in ("fixed", "broke", "standout"):
         v = wk.get(k)
         if v:
@@ -664,6 +670,124 @@ def cmd_recap(d, a):
            f"- Newsletter issues on site: {', '.join(data['newsletter_issues'])}",
            "- Stripe, Beehiiv subscriber count and X/Buffer analytics: not fetched here (Grok connectors)."]
     return data, md
+
+
+# ---------------------------------------------------------------- newsletter draft (part of recap)
+NL_FOOTER = """## 🙏 Tell us
+
+1. **One tool you want tested** before you install it.
+2. **Did we get your tool wrong?** Send the link and we'll rerun it and fix the page.
+
+I read every reply.
+
+---
+
+**Sponsor:** This spot is open. Founding rate: **$19 for 1 issue** (or **$59/mo for 4 issues**, about $15 each). Placements are always labeled; see [skillmaxx.gilventures.ai/advertise/](/advertise/)
+
+Built a skill? We'll run it through all five agents: [skillmaxx.gilventures.ai/submit/](/submit/)
+
+</div>
+{% include "nlembed.njk" %}
+"""
+
+
+def fmt_d(s):
+    try:
+        x = date.fromisoformat(s)
+        return x.strftime("%b ") + str(x.day)
+    except (TypeError, ValueError):
+        return str(s)
+
+
+def next_issue_no():
+    nums = [int(m.group(1)) for p in multi_glob("src/newsletter/issue-*.md")
+            for m in [re.match(r"issue-(\d+)\.md$", os.path.basename(p))] if m]
+    return (max(nums) + 1) if nums else 1
+
+
+def newsletter_draft(d, wk, f):
+    """No-LLM draft of the next SkillMaxx Weekly issue, mirroring src/newsletter/issue-N.md. Real numbers only."""
+    n = next_issue_no()
+    r = f.get("latest_report") or {}
+    trend = wk.get("trend") or []
+    last = trend[-1] if trend else {}
+    key = wk.get("key", "")
+    span = f"{fmt_d(wk.get('first') or wk.get('start'))} to {fmt_d(wk.get('last') or wk.get('end'))}"
+    title = f"SkillMaxx #{n}: week {key.split('-')[-1] if key else '?'} in agent installs"
+    p, tot = last.get("pass", r.get("pass")), last.get("total", r.get("total"))
+    desc = (f"Issue #{n} of SkillMaxx Weekly: {p:,} of {tot:,} installs passed on {fmt_d(last.get('date', r.get('date')))}; "
+            f"{wk.get('fixed_n', 0)} fixed, {wk.get('broke_n', 0)} broke, {wk.get('flaky_n', 0)} flaky ({span}).") if p and tot else f"Issue #{n} of SkillMaxx Weekly."
+    jl = json.dumps({"@context": "https://schema.org", "@type": "Article", "headline": title, "datePublished": d.isoformat(),
+                     "author": {"@type": "Organization", "name": "SkillMaxx"}, "publisher": {"@type": "Organization", "name": "SkillMaxx"},
+                     "image": f"{SITE}/assets/newsletter/skillmaxx-banner-1200x300.png"})
+    L = ["---", "layout: base.njk", f"title: {json.dumps(title)}", f"desc: {json.dumps(desc)}",
+         "# DRAFT from growth/prep/prep.py recap (no LLM). Not built (eleventy ignores *.draft.md) and not sent.",
+         "# To publish: polish, rename to issue-%d.md, set permalink: /newsletter/issue-%d/, remove the two draft lines below, add tags: issues." % (n, n),
+         "permalink: false", "eleventyExcludeFromCollections: true",
+         "ogType: article", f"issue: {n}", f'issueDate: "{d.isoformat()}"', f"date: {d.isoformat()}", f"jsonld: {jl}", "---",
+         '<div class="wrap prose nlissue">',
+         f'<p class="crumbs"><a href="/">SkillMaxx</a> / <a href="/newsletter/">Newsletter</a> / Issue #{n}</p>',
+         f'<h1 class="ph">{title}</h1>',
+         f'<p class="lead">{desc.split(": ", 1)[-1]}</p>', "",
+         "![SkillMaxx](/assets/newsletter/skillmaxx-banner-1200x300.png)", "",
+         "## hey, Brandon here 👋", "",
+         "<!-- DRAFT: write 2–4 short paragraphs in growth/VOICE.md voice: the week's story, any mistakes of ours, what changed. Facts below only. -->",
+         f"This week we ran {wk.get('runs', len(trend))} nightly install tests ({span}) of agent skills, plugins and MCP servers in Claude Code, Codex, Grok Build, Cursor and Pi.", ""]
+    if wk.get("no_valid_run"):
+        L += [f"Nights with no valid run (not published): {', '.join(fmt_d(x) for x in wk['no_valid_run'])}.", ""]
+    if wk.get("version_changes"):
+        L += [f"Agent version changes this week: {json.dumps(wk['version_changes'])[:300]}", ""]
+    L += [f"## 📊 This week's numbers ({fmt_d(last.get('date', r.get('date')))})", ""]
+    if p and tot:
+        tested = last.get("tested")
+        L += [f"**{p:,} of {tot:,} installs passed**" + (f" ({last.get('rate')}% of the {tested:,} we can judge without an API key)." if tested else "."), ""]
+    if len(trend) > 1:
+        L += ["Night by night: " + " · ".join(f"{fmt_d(t['date'])} {t['pass']:,}/{t['total']:,}" for t in trend) + ".", ""]
+    by = r.get("by_raw") or {}
+    if by:
+        rows = []
+        for k, v in by.items():
+            judge = (v.get("total") or 0) - (v.get("needs_key") or 0)
+            if judge > 0:
+                rows.append((v.get("pass", 0) / judge, AG.get(k, k), v.get("pass", 0), judge))
+        rows.sort(reverse=True)
+        nk = sorted({v.get("needs_key") or 0 for v in by.values()})
+        L += [f"**By agent on {fmt_d(r.get('date'))}** (installs we can judge without an API key"
+              + (f"; {nk[0]} per agent need a key" if len(nk) == 1 and nk[0] else "") + "):", "",
+              "| Agent | Passed | Rate |", "|---|---|---|"]
+        L += [f"| {name} | {ps} / {j} | {rate * 100:.1f}% |" for rate, name, ps, j in rows] + [""]
+    so = wk.get("standout")
+    if so:
+        L += [f"**Standout:** [{so['name']}](/skills/{so['slug']}/) installed clean in {len(so.get('agents') or [])} of 5 agents"
+              + (f" ({so['why']})." if so.get("why") else "."), ""]
+
+    def names(lst):
+        return ", ".join(f"[{x['name']}](/skills/{x['slug']}/)" for x in (lst or [])[:5])
+    L += [f"**{wk.get('fixed_n', 0)}** fixed" + (f" (including {names(wk.get('fixed'))})" if wk.get("fixed") else "")
+          + f", **{wk.get('broke_n', 0)}** broke" + (f" (including {names(wk.get('broke'))})" if wk.get("broke") else "")
+          + f", **{wk.get('flaky_n', 0)}** flaky" + (f" (including {names(wk.get('flaky'))})" if wk.get("flaky") else "") + ".", ""]
+    links = []
+    if r.get("date"):
+        links.append(f"Full report: [skillmaxx.gilventures.ai/reports/{r['date']}/](/reports/{r['date']}/)")
+    if key:
+        links.append(f"Week chart: [skillmaxx.gilventures.ai/reports/week/{key}/](/reports/week/{key}/)")
+    links.append("Is your tool safe today? [skillmaxx.gilventures.ai/reports/latest/](/reports/latest/)")
+    L += [" · ".join(links), ""]
+    blog = multi_glob(f"src/blog/week-{key}.njk") if key else []
+    if blog:
+        L += ["## 📝 On the blog", "", f"This week's data write-up: [skillmaxx.gilventures.ai/blog/week-{key}/](/blog/week-{key}/)", ""]
+    picks = []
+    for pth in reversed(radar_files(6, d)):
+        for m in XURL.finditer(open(pth, encoding="utf-8").read()):
+            u = f"https://x.com/{m.group(1)}/status/{m.group(2)}"
+            if u not in picks:
+                picks.append(u)
+    L += ["## 👀 On our radar (not tested by us yet)", "",
+          "<!-- DRAFT: pick up to 4 from the week's X radar files and write one line each; candidates: "
+          + (" ".join(picks[:8]) or "none found") + " -->", "",
+          "Want one of these in the nightly run? Reply with the name.", "",
+          "## 🔧 Tip of the week", "", "<!-- DRAFT: one practical tip grounded in this week's data. -->", "", NL_FOOTER]
+    return n, "\n".join(L)
 
 
 # ---------------------------------------------------------------- main
