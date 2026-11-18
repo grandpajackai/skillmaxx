@@ -69,8 +69,23 @@ SUNDAY=0; [ "$(python3 -c 'import sys,datetime; print(datetime.date.fromisoforma
 if [ "$SUNDAY" = 1 ] && [ -f growth/scripts/weekly_blog_auto.py ]; then
   python3 growth/scripts/weekly_blog_auto.py "$D" || echo "publish: weekly blog post skipped (generator error)"
 fi
+# Grok-free routine prep committed with the data (growth/prep/prep.py: no LLM, no sends, keyless reads only).
+# Mondays: sponsor-pipeline counts/aging for the 9 AM routine. Sundays: recap stats for the 6 PM routine.
+# The box prep loop (/home/box/skillmaxx-prep) writes fresher same-day copies; these are the committed record.
+DOW=$(python3 -c 'import sys,datetime; print(datetime.date.fromisoformat(sys.argv[1]).isoweekday())' "$D")
+if [ -f growth/prep/prep.py ] && { [ "$DOW" = 1 ] || [ "$DOW" = 7 ]; }; then
+  PREP=$(mktemp -d)
+  if [ "$DOW" = 1 ]; then
+    python3 growth/prep/prep.py pipeline --date "$D" --out "$PREP" >/dev/null && mkdir -p growth/sponsors/briefs \
+      && cp "$PREP/pipeline.md" "growth/sponsors/briefs/pipeline-$D.md" || echo "publish: pipeline prep skipped"
+  else
+    python3 growth/prep/prep.py recap --date "$D" --out "$PREP" >/dev/null && mkdir -p growth/weekly \
+      && cp "$PREP/recap.md" "growth/weekly/recap-prep-$D.md" || echo "publish: recap prep skipped"
+  fi
+  rm -rf "$PREP"
+fi
 SUM=$(python3 -c 'import json,sys; r=json.load(open(sys.argv[1]))["results"]; print("%d/%s" % (sum(x["status"] == "pass" for x in r), format(len(r), ",")))' "testing/results/$D.json")
-ADD=(); for f in testing/results testing/history.json src/_data/reports.json src/_data/latestRows.json src/_data/weeks.json growth/daily growth/weekly src/blog; do [ -e "$f" ] && ADD+=("$f"); done
+ADD=(); for f in testing/results testing/history.json src/_data/reports.json src/_data/latestRows.json src/_data/weeks.json growth/daily growth/weekly growth/sponsors/briefs src/blog; do [ -e "$f" ] && ADD+=("$f"); done
 git add -- "${ADD[@]}"
 git diff --cached --quiet && { echo "publish: nothing changed"; status published; exit 0; }
 git -c user.name=grandpajackai -c user.email=grandpajackai@gmail.com commit -qm "data: nightly refresh $D ($SUM)" || fail "commit failed"
