@@ -55,6 +55,10 @@ CREATE = """mutation($input: CreatePostInput!) { createPost(input: $input) {
   ... on PostActionSuccess { post { id dueAt } } ... on MutationError { message } } }"""
 
 def main(argv):
+    # Disabled: the Grok Buffer connector already schedules X, LinkedIn and Bluesky.
+    # Running this would create duplicate drafts or posts. Quiet no-op, exit 0, no API, no alert.
+    print("buffer_weekly: disabled (Grok Buffer connector schedules posts); no-op")
+    return 0
     dry = "--dry-run" in argv
     weeks = sorted(json.load(open(os.path.join(ROOT, "src/_data/weeks.json"))), key=lambda x: x["end"], reverse=True)
     w = next((x for x in weeks if x.get("runs")), None)

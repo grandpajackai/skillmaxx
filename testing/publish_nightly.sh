@@ -95,8 +95,8 @@ for i in $(seq 1 30); do
   page=$(curl -sf --max-time 20 "$SITE/reports/$D/" 2>/dev/null)
   if [ -n "$page" ] && ! printf '%s' "$page" | grep -q 'No report this night'; then
     status published; echo "publish: live $SITE/reports/$D/"
-    # Sundays: next week's Buffer posts from the scorecard (drafts by default; needs ~/.skillmaxx-secrets/buffer.env).
-    [ "$SUNDAY" = 1 ] && [ -f growth/scripts/buffer_weekly.py ] && { python3 growth/scripts/buffer_weekly.py || echo "publish: buffer_weekly failed"; }
+    # Sundays: do not run buffer_weekly.py. Buffer posting is handled by the Grok Buffer
+    # connector; the Mac script would only create duplicates. weekly_blog_auto.py is unchanged.
     exit 0
   fi
   sleep 30
