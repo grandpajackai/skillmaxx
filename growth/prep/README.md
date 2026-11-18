@@ -29,4 +29,12 @@ Box loop: `/home/box/skillmaxx-prep/supervise.sh` (not in this repo; no cron/sys
 `/home/box/skillmaxx-prep/repo` (fetch + reset to origin/master; never committed to or pushed from).
 Manual run: `/home/box/skillmaxx-prep/run-now.sh outreach --zoho`.
 
+**Newsletter draft (since Nov 18):** `recap` also writes `newsletter-draft.md`, a no-LLM draft of the next
+SkillMaxx Weekly issue in the `src/newsletter/issue-N.md` format (front matter, crumbs, Brandon intro, numbers,
+by-agent table, fixed/broke/flaky, links, blog, radar candidates, tip, Tell us, sponsor footer). Real numbers
+only; the parts that need writing are `<!-- DRAFT: ... -->` comments. Box: `/home/box/skillmaxx-prep/out/DATE/newsletter-draft.md`.
+Mac Sunday data PR: `src/newsletter/issue-N.draft.md`, which eleventy ignores (`*.draft.md` in eleventy.config.js,
+plus `permalink: false`), so it is never built, listed or sent. The Sunday recap routine polishes it, renames it to
+`issue-N.md` to publish, and saves an unsent Beehiiv draft.
+
 Local check: `python3 testing/test_prep.py` (offline, no Zoho, no network).

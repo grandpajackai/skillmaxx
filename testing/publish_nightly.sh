@@ -81,11 +81,14 @@ if [ -f growth/prep/prep.py ] && { [ "$DOW" = 1 ] || [ "$DOW" = 7 ]; }; then
   else
     python3 growth/prep/prep.py recap --date "$D" --out "$PREP" >/dev/null && mkdir -p growth/weekly \
       && cp "$PREP/recap.md" "growth/weekly/recap-prep-$D.md" || echo "publish: recap prep skipped"
+    # Unsent newsletter draft next to the issues; *.draft.md is ignored by eleventy (never built or listed).
+    N=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["newsletter_draft"]["issue"])' "$PREP/recap.json" 2>/dev/null)
+    [ -n "$N" ] && [ -f "$PREP/newsletter-draft.md" ] && cp "$PREP/newsletter-draft.md" "src/newsletter/issue-$N.draft.md" || echo "publish: newsletter draft skipped"
   fi
   rm -rf "$PREP"
 fi
 SUM=$(python3 -c 'import json,sys; r=json.load(open(sys.argv[1]))["results"]; print("%d/%s" % (sum(x["status"] == "pass" for x in r), format(len(r), ",")))' "testing/results/$D.json")
-ADD=(); for f in testing/results testing/history.json src/_data/reports.json src/_data/latestRows.json src/_data/weeks.json growth/daily growth/weekly growth/sponsors/briefs src/blog; do [ -e "$f" ] && ADD+=("$f"); done
+ADD=(); for f in testing/results testing/history.json src/_data/reports.json src/_data/latestRows.json src/_data/weeks.json growth/daily growth/weekly growth/sponsors/briefs src/blog src/newsletter; do [ -e "$f" ] && ADD+=("$f"); done
 git add -- "${ADD[@]}"
 git diff --cached --quiet && { echo "publish: nothing changed"; status published; exit 0; }
 git -c user.name=grandpajackai -c user.email=grandpajackai@gmail.com commit -qm "data: nightly refresh $D ($SUM)" || fail "commit failed"
