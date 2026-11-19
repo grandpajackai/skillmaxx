@@ -1,0 +1,1256 @@
+[
+{
+"date": "2026-11-18",
+"run_at": "2026-11-18T02:00-05:00",
+"versions": {
+"claude_code": "2.1.319 (Claude Code)",
+"codex": "codex-cli 0.167.0",
+"grok_build": "grok 1.0.77 (50ca579fa996)",
+"cursor": "2026.11.05-86047df",
+"pi": "pi 1.5.0"
+},
+"total": 1075,
+"pass": 912,
+"addons": 428,
+"needs_key": 25,
+"broken": 137,
+"flaky": 10,
+"by": {
+"claude_code": {
+"pass": 342,
+"needs_key": 5,
+"broken": 24,
+"pending": 1,
+"total": 372,
+"fail": 30,
+"flaky": 1
+},
+"codex": {
+"pass": 96,
+"needs_key": 5,
+"broken": 19,
+"pending": 0,
+"total": 120,
+"fail": 24,
+"flaky": 1
+},
+"grok_build": {
+"pass": 354,
+"needs_key": 5,
+"broken": 28,
+"pending": 0,
+"total": 387,
+"fail": 33,
+"flaky": 3
+},
+"cursor": {
+"pass": 33,
+"needs_key": 5,
+"broken": 17,
+"pending": 0,
+"total": 55,
+"fail": 22,
+"flaky": 2
+},
+"pi": {
+"pass": 87,
+"needs_key": 5,
+"broken": 49,
+"pending": 0,
+"total": 141,
+"fail": 54,
+"flaky": 3
+}
+},
+"fail": 163,
+"tested": 1050,
+"prev_date": "2026-11-17",
+"prev_pass": 911,
+"prev_total": 1075,
+"broke": [
+{
+"slug": "desktop-commander",
+"name": "Desktop Commander",
+"agent": "grok_build",
+"stars": 10249
+},
+{
+"slug": "hyperframes",
+"name": "Hyperframes",
+"agent": "claude_code",
+"stars": 80696
+}
+],
+"fixed": []
+},
+{
+"date": "2026-11-17",
+"run_at": "2026-11-17T02:00-05:00",
+"versions": {
+"claude_code": "2.1.319 (Claude Code)",
+"codex": "codex-cli 0.167.0",
+"grok_build": "grok 1.0.77 (50ca579fa996)",
+"cursor": "2026.11.05-86047df",
+"pi": "pi 1.5.0"
+},
+"total": 1075,
+"pass": 911,
+"addons": 428,
+"needs_key": 25,
+"broken": 135,
+"flaky": 9,
+"by": {
+"claude_code": {
+"pass": 343,
+"needs_key": 5,
+"broken": 23,
+"pending": 1,
+"total": 372,
+"fail": 29,
+"flaky": 2
+},
+"codex": {
+"pass": 96,
+"needs_key": 5,
+"broken": 19,
+"pending": 0,
+"total": 120,
+"fail": 24,
+"flaky": 0
+},
+"grok_build": {
+"pass": 353,
+"needs_key": 5,
+"broken": 27,
+"pending": 2,
+"total": 387,
+"fail": 34,
+"flaky": 3
+},
+"cursor": {
+"pass": 33,
+"needs_key": 5,
+"broken": 17,
+"pending": 0,
+"total": 55,
+"fail": 22,
+"flaky": 2
+},
+"pi": {
+"pass": 86,
+"needs_key": 5,
+"broken": 49,
+"pending": 1,
+"total": 141,
+"fail": 55,
+"flaky": 2
+}
+},
+"fail": 164,
+"tested": 1050,
+"prev_date": "2026-11-14",
+"prev_pass": 910,
+"prev_total": 1070,
+"broke": [
+{
+"slug": "sap-fiori-mcp-server",
+"name": "Sap Fiori MCP Server",
+"agent": "claude_code",
+"stars": 162
+},
+{
+"slug": "sap-fiori-mcp-server",
+"name": "Sap Fiori MCP Server",
+"agent": "grok_build",
+"stars": 162
+}
+],
+"fixed": []
+},
+{
+"date": "2026-11-14",
+"run_at": "2026-11-14T02:00-05:00",
+"versions": {
+"claude_code": "2.1.319 (Claude Code)",
+"codex": "codex-cli 0.167.0",
+"grok_build": "grok 1.0.77 (50ca579fa996)",
+"cursor": "2026.11.05-86047df",
+"pi": "pi 1.5.0"
+},
+"total": 1070,
+"pass": 910,
+"addons": 427,
+"needs_key": 25,
+"broken": 133,
+"flaky": 9,
+"by": {
+"claude_code": {
+"pass": 343,
+"needs_key": 5,
+"broken": 22,
+"pending": 1,
+"total": 371,
+"fail": 28,
+"flaky": 1
+},
+"codex": {
+"pass": 95,
+"needs_key": 5,
+"broken": 19,
+"pending": 0,
+"total": 119,
+"fail": 24,
+"flaky": 1
+},
+"grok_build": {
+"pass": 354,
+"needs_key": 5,
+"broken": 26,
+"pending": 1,
+"total": 386,
+"fail": 32,
+"flaky": 3
+},
+"cursor": {
+"pass": 32,
+"needs_key": 5,
+"broken": 17,
+"pending": 0,
+"total": 54,
+"fail": 22,
+"flaky": 2
+},
+"pi": {
+"pass": 86,
+"needs_key": 5,
+"broken": 49,
+"pending": 0,
+"total": 140,
+"fail": 54,
+"flaky": 2
+}
+},
+"fail": 160,
+"tested": 1045,
+"prev_date": "2026-11-13",
+"prev_pass": 863,
+"prev_total": 1070,
+"broke": [
+{
+"slug": "airwallex-dev",
+"name": "Airwallex Dev",
+"agent": "claude_code",
+"stars": 8
+},
+{
+"slug": "airwallex-dev",
+"name": "Airwallex Dev",
+"agent": "grok_build",
+"stars": 8
+}
+],
+"fixed": [
+{
+"slug": "benborla29-mcp-server-mysql",
+"name": "@benborla29/mcp-server-mysql",
+"agent": "claude_code",
+"stars": null
+},
+{
+"slug": "ironbee-ai-devtools",
+"name": "@ironbee-ai/devtools",
+"agent": "codex",
+"stars": null
+},
+{
+"slug": "ironbee-ai-devtools",
+"name": "@ironbee-ai/devtools",
+"agent": "cursor",
+"stars": null
+},
+{
+"slug": "ironbee-ai-devtools",
+"name": "@ironbee-ai/devtools",
+"agent": "pi",
+"stars": null
+},
+{
+"slug": "mozilla-firefox-devtools-mcp",
+"name": "@mozilla/firefox-devtools-mcp",
+"agent": "claude_code",
+"stars": null
+},
+{
+"slug": "next-ai-drawio-mcp-server",
+"name": "@next-ai-drawio/mcp-server",
+"agent": "claude_code",
+"stars": null
+},
+{
+"slug": "putervision-vision-memory-mcp",
+"name": "@putervision/vision-memory-mcp",
+"agent": "claude_code",
+"stars": null
+},
+{
+"slug": "putervision-vision-memory-mcp",
+"name": "@putervision/vision-memory-mcp",
+"agent": "codex",
+"stars": null
+},
+{
+"slug": "putervision-vision-memory-mcp",
+"name": "@putervision/vision-memory-mcp",
+"agent": "cursor",
+"stars": null
+},
+{
+"slug": "putervision-vision-memory-mcp",
+"name": "@putervision/vision-memory-mcp",
+"agent": "grok_build",
+"stars": null
+},
+{
+"slug": "putervision-vision-memory-mcp",
+"name": "@putervision/vision-memory-mcp",
+"agent": "pi",
+"stars": null
+},
+{
+"slug": "browser-devtools-mcp",
+"name": "browser-devtools-mcp",
+"agent": "claude_code",
+"stars": null
+},
+{
+"slug": "browser-devtools-mcp",
+"name": "browser-devtools-mcp",
+"agent": "grok_build",
+"stars": null
+},
+{
+"slug": "claimidx",
+"name": "Claimidx",
+"agent": "claude_code",
+"stars": 3
+},
+{
+"slug": "claimidx",
+"name": "Claimidx",
+"agent": "codex",
+"stars": 3
+},
+{
+"slug": "claimidx",
+"name": "Claimidx",
+"agent": "cursor",
+"stars": 3
+},
+{
+"slug": "claimidx",
+"name": "Claimidx",
+"agent": "grok_build",
+"stars": 3
+},
+{
+"slug": "claimidx",
+"name": "Claimidx",
+"agent": "pi",
+"stars": 3
+},
+{
+"slug": "hyperframes",
+"name": "Hyperframes",
+"agent": "claude_code",
+"stars": 80696
+},
+{
+"slug": "hyperframes",
+"name": "Hyperframes",
+"agent": "grok_build",
+"stars": 80696
+},
+{
+"slug": "korean-law-mcp",
+"name": "korean-law-mcp",
+"agent": "claude_code",
+"stars": null
+},
+{
+"slug": "korean-law-mcp",
+"name": "korean-law-mcp",
+"agent": "codex",
+"stars": null
+},
+{
+"slug": "korean-law-mcp",
+"name": "korean-law-mcp",
+"agent": "cursor",
+"stars": null
+},
+{
+"slug": "korean-law-mcp",
+"name": "korean-law-mcp",
+"agent": "grok_build",
+"stars": null
+},
+{
+"slug": "korean-law-mcp",
+"name": "korean-law-mcp",
+"agent": "pi",
+"stars": null
+},
+{
+"slug": "mcp-fetch",
+"name": "MCP fetch (reference)",
+"agent": "claude_code",
+"stars": 91859
+},
+{
+"slug": "mcp-fetch",
+"name": "MCP fetch (reference)",
+"agent": "codex",
+"stars": 91859
+},
+{
+"slug": "mcp-fetch",
+"name": "MCP fetch (reference)",
+"agent": "cursor",
+"stars": 91859
+},
+{
+"slug": "mcp-fetch",
+"name": "MCP fetch (reference)",
+"agent": "grok_build",
+"stars": 91859
+},
+{
+"slug": "mcp-fetch",
+"name": "MCP fetch (reference)",
+"agent": "pi",
+"stars": 91859
+},
+{
+"slug": "mcp-git",
+"name": "MCP git (reference)",
+"agent": "claude_code",
+"stars": 91859
+},
+{
+"slug": "mcp-git",
+"name": "MCP git (reference)",
+"agent": "codex",
+"stars": 91859
+},
+{
+"slug": "mcp-git",
+"name": "MCP git (reference)",
+"agent": "cursor",
+"stars": 91859
+},
+{
+"slug": "mcp-git",
+"name": "MCP git (reference)",
+"agent": "grok_build",
+"stars": 91859
+},
+{
+"slug": "mcp-git",
+"name": "MCP git (reference)",
+"agent": "pi",
+"stars": 91859
+},
+{
+"slug": "mcp-time",
+"name": "MCP time (reference)",
+"agent": "claude_code",
+"stars": 91859
+},
+{
+"slug": "mcp-time",
+"name": "MCP time (reference)",
+"agent": "codex",
+"stars": 91859
+},
+{
+"slug": "mcp-time",
+"name": "MCP time (reference)",
+"agent": "cursor",
+"stars": 91859
+},
+{
+"slug": "mcp-time",
+"name": "MCP time (reference)",
+"agent": "grok_build",
+"stars": 91859
+},
+{
+"slug": "mcp-time",
+"name": "MCP time (reference)",
+"agent": "pi",
+"stars": 91859
+},
+{
+"slug": "mcp-local-rag",
+"name": "mcp-local-rag",
+"agent": "codex",
+"stars": null
+}
+]
+},
+{
+"date": "2026-11-13",
+"run_at": "2026-11-13T02:00-05:00",
+"versions": {
+"claude_code": "2.1.319 (Claude Code)",
+"codex": "codex-cli 0.167.0",
+"grok_build": "grok 1.0.77 (50ca579fa996)",
+"cursor": "2026.11.05-86047df",
+"pi": "pi 1.5.0"
+},
+"total": 1070,
+"pass": 863,
+"addons": 427,
+"needs_key": 25,
+"broken": 177,
+"flaky": 5,
+"by": {
+"claude_code": {
+"pass": 332,
+"needs_key": 5,
+"broken": 32,
+"pending": 2,
+"total": 371,
+"fail": 39,
+"flaky": 2
+},
+"codex": {
+"pass": 86,
+"needs_key": 5,
+"broken": 28,
+"pending": 0,
+"total": 119,
+"fail": 33,
+"flaky": 0
+},
+"grok_build": {
+"pass": 345,
+"needs_key": 5,
+"broken": 33,
+"pending": 3,
+"total": 386,
+"fail": 41,
+"flaky": 2
+},
+"cursor": {
+"pass": 23,
+"needs_key": 5,
+"broken": 26,
+"pending": 0,
+"total": 54,
+"fail": 31,
+"flaky": 0
+},
+"pi": {
+"pass": 77,
+"needs_key": 5,
+"broken": 58,
+"pending": 0,
+"total": 140,
+"fail": 63,
+"flaky": 1
+}
+},
+"fail": 207,
+"tested": 1045,
+"prev_date": "2026-11-12",
+"prev_pass": 866,
+"prev_total": 1070,
+"broke": [],
+"fixed": []
+},
+{
+"date": "2026-11-12",
+"run_at": "2026-11-12T02:00-05:00",
+"versions": {
+"claude_code": "2.1.319 (Claude Code)",
+"codex": "codex-cli 0.167.0",
+"grok_build": "grok 1.0.77 (50ca579fa996)",
+"cursor": "2026.11.05-86047df",
+"pi": "pi 1.5.0"
+},
+"total": 1070,
+"pass": 866,
+"addons": 427,
+"needs_key": 30,
+"broken": 117,
+"flaky": 7,
+"by": {
+"claude_code": {
+"pass": 333,
+"needs_key": 6,
+"broken": 17,
+"pending": 15,
+"total": 371,
+"fail": 38,
+"flaky": 3
+},
+"codex": {
+"pass": 86,
+"needs_key": 6,
+"broken": 18,
+"pending": 9,
+"total": 119,
+"fail": 33,
+"flaky": 1
+},
+"grok_build": {
+"pass": 347,
+"needs_key": 6,
+"broken": 21,
+"pending": 12,
+"total": 386,
+"fail": 39,
+"flaky": 3
+},
+"cursor": {
+"pass": 23,
+"needs_key": 6,
+"broken": 16,
+"pending": 9,
+"total": 54,
+"fail": 31,
+"flaky": 0
+},
+"pi": {
+"pass": 77,
+"needs_key": 6,
+"broken": 45,
+"pending": 12,
+"total": 140,
+"fail": 63,
+"flaky": 0
+}
+},
+"fail": 204,
+"tested": 1040,
+"prev_date": "2026-11-08",
+"prev_pass": 919,
+"prev_total": 1070,
+"broke": [],
+"fixed": []
+},
+{
+"date": "2026-11-08",
+"run_at": "2026-11-08T02:06-05:00",
+"versions": {
+"claude_code": "2.1.197 (Claude Code)",
+"codex": "codex-cli 0.163.0",
+"grok_build": "grok 1.0.62 (1474f9cbdd91)",
+"cursor": "2026.10.16-e3cb207",
+"pi": "pi 1.4.0"
+},
+"total": 1070,
+"pass": 919,
+"addons": 427,
+"needs_key": 30,
+"broken": 121,
+"flaky": 3,
+"by": {
+"claude_code": {
+"pass": 344,
+"needs_key": 6,
+"broken": 21,
+"pending": 0,
+"total": 371,
+"fail": 27,
+"flaky": 0
+},
+"codex": {
+"pass": 95,
+"needs_key": 6,
+"broken": 18,
+"pending": 0,
+"total": 119,
+"fail": 24,
+"flaky": 0
+},
+"grok_build": {
+"pass": 359,
+"needs_key": 6,
+"broken": 21,
+"pending": 0,
+"total": 386,
+"fail": 27,
+"flaky": 3
+},
+"cursor": {
+"pass": 32,
+"needs_key": 6,
+"broken": 16,
+"pending": 0,
+"total": 54,
+"fail": 22,
+"flaky": 0
+},
+"pi": {
+"pass": 89,
+"needs_key": 6,
+"broken": 45,
+"pending": 0,
+"total": 140,
+"fail": 51,
+"flaky": 0
+}
+},
+"fail": 151,
+"tested": 1040,
+"prev_date": "2026-11-07",
+"prev_pass": 919,
+"prev_total": 1070,
+"broke": [],
+"fixed": []
+},
+{
+"date": "2026-11-07",
+"run_at": "2026-11-07T02:07-05:00",
+"versions": {
+"claude_code": "2.1.197 (Claude Code)",
+"codex": "codex-cli 0.163.0",
+"grok_build": "grok 1.0.62 (1474f9cbdd91)",
+"cursor": "2026.10.16-e3cb207",
+"pi": "pi 1.4.0"
+},
+"total": 1070,
+"pass": 919,
+"addons": 427,
+"needs_key": 30,
+"broken": 119,
+"flaky": 2,
+"by": {
+"claude_code": {
+"pass": 344,
+"needs_key": 6,
+"broken": 20,
+"pending": 1,
+"total": 371,
+"fail": 27,
+"flaky": 0
+},
+"codex": {
+"pass": 95,
+"needs_key": 6,
+"broken": 18,
+"pending": 0,
+"total": 119,
+"fail": 24,
+"flaky": 0
+},
+"grok_build": {
+"pass": 359,
+"needs_key": 6,
+"broken": 20,
+"pending": 1,
+"total": 386,
+"fail": 27,
+"flaky": 2
+},
+"cursor": {
+"pass": 32,
+"needs_key": 6,
+"broken": 16,
+"pending": 0,
+"total": 54,
+"fail": 22,
+"flaky": 0
+},
+"pi": {
+"pass": 89,
+"needs_key": 6,
+"broken": 45,
+"pending": 0,
+"total": 140,
+"fail": 51,
+"flaky": 0
+}
+},
+"fail": 151,
+"tested": 1040,
+"prev_date": "2026-11-06",
+"prev_pass": 917,
+"prev_total": 1066,
+"broke": [],
+"fixed": []
+},
+{
+"date": "2026-11-06",
+"run_at": "2026-11-06T16:11-05:00",
+"versions": {
+"claude_code": "2.1.197 (Claude Code)",
+"codex": "codex-cli 0.163.0",
+"grok_build": "grok 1.0.62 (1474f9cbdd91)",
+"cursor": "2026.10.16-e3cb207",
+"pi": "pi 1.4.0"
+},
+"total": 1066,
+"pass": 917,
+"addons": 425,
+"needs_key": 30,
+"broken": 119,
+"flaky": 12,
+"by": {
+"claude_code": {
+"pass": 343,
+"needs_key": 6,
+"broken": 20,
+"pending": 0,
+"total": 369,
+"fail": 26,
+"flaky": 2
+},
+"codex": {
+"pass": 95,
+"needs_key": 6,
+"broken": 18,
+"pending": 0,
+"total": 119,
+"fail": 24,
+"flaky": 2
+},
+"grok_build": {
+"pass": 358,
+"needs_key": 6,
+"broken": 20,
+"pending": 0,
+"total": 384,
+"fail": 26,
+"flaky": 4
+},
+"cursor": {
+"pass": 32,
+"needs_key": 6,
+"broken": 16,
+"pending": 0,
+"total": 54,
+"fail": 22,
+"flaky": 2
+},
+"pi": {
+"pass": 89,
+"needs_key": 6,
+"broken": 45,
+"pending": 0,
+"total": 140,
+"fail": 51,
+"flaky": 2
+}
+},
+"fail": 149,
+"tested": 1036,
+"prev_date": "2026-11-05",
+"prev_pass": 890,
+"prev_total": 1066,
+"broke": [],
+"fixed": [
+{
+"slug": "clangd-lsp",
+"name": "Clangd LSP",
+"agent": "grok_build",
+"stars": 46390
+},
+{
+"slug": "csharp-lsp",
+"name": "Csharp LSP",
+"agent": "grok_build",
+"stars": 46390
+},
+{
+"slug": "gopls-lsp",
+"name": "Gopls LSP",
+"agent": "grok_build",
+"stars": 46390
+},
+{
+"slug": "jdtls-lsp",
+"name": "Jdtls LSP",
+"agent": "grok_build",
+"stars": 46390
+},
+{
+"slug": "kotlin-lsp",
+"name": "Kotlin LSP",
+"agent": "grok_build",
+"stars": 46390
+},
+{
+"slug": "lua-lsp",
+"name": "Lua LSP",
+"agent": "grok_build",
+"stars": 46390
+},
+{
+"slug": "notion-mcp-server",
+"name": "notion-mcp-server",
+"agent": "claude_code",
+"stars": null
+},
+{
+"slug": "notion-mcp-server",
+"name": "notion-mcp-server",
+"agent": "codex",
+"stars": null
+},
+{
+"slug": "notion-mcp-server",
+"name": "notion-mcp-server",
+"agent": "cursor",
+"stars": null
+},
+{
+"slug": "notion-mcp-server",
+"name": "notion-mcp-server",
+"agent": "grok_build",
+"stars": null
+},
+{
+"slug": "notion-mcp-server",
+"name": "notion-mcp-server",
+"agent": "pi",
+"stars": null
+},
+{
+"slug": "php-lsp",
+"name": "Php LSP",
+"agent": "grok_build",
+"stars": 46390
+},
+{
+"slug": "pyright-lsp",
+"name": "Pyright LSP",
+"agent": "grok_build",
+"stars": 46390
+},
+{
+"slug": "ruby-lsp",
+"name": "Ruby LSP",
+"agent": "grok_build",
+"stars": 46390
+},
+{
+"slug": "rust-analyzer-lsp",
+"name": "Rust Analyzer LSP",
+"agent": "grok_build",
+"stars": 46390
+},
+{
+"slug": "swift-lsp",
+"name": "Swift LSP",
+"agent": "grok_build",
+"stars": 46390
+},
+{
+"slug": "typescript-lsp",
+"name": "TypeScript LSP",
+"agent": "grok_build",
+"stars": 46390
+}
+]
+},
+{
+"date": "2026-11-05",
+"run_at": "2026-11-05T13:29-05:00",
+"versions": {
+"claude_code": "2.1.197 (Claude Code)",
+"codex": "codex-cli 0.163.0",
+"grok_build": "grok 1.0.62 (1474f9cbdd91)",
+"cursor": "2026.10.16-e3cb207",
+"pi": "pi 1.4.0"
+},
+"total": 1066,
+"pass": 890,
+"addons": 425,
+"needs_key": 30,
+"broken": 136,
+"flaky": 2,
+"by": {
+"claude_code": {
+"pass": 340,
+"needs_key": 6,
+"broken": 21,
+"pending": 2,
+"total": 369,
+"fail": 29,
+"flaky": 0
+},
+"codex": {
+"pass": 92,
+"needs_key": 6,
+"broken": 19,
+"pending": 2,
+"total": 119,
+"fail": 27,
+"flaky": 0
+},
+"grok_build": {
+"pass": 343,
+"needs_key": 6,
+"broken": 33,
+"pending": 2,
+"total": 384,
+"fail": 41,
+"flaky": 2
+},
+"cursor": {
+"pass": 29,
+"needs_key": 6,
+"broken": 17,
+"pending": 2,
+"total": 54,
+"fail": 25,
+"flaky": 0
+},
+"pi": {
+"pass": 86,
+"needs_key": 6,
+"broken": 46,
+"pending": 2,
+"total": 140,
+"fail": 54,
+"flaky": 0
+}
+},
+"fail": 176,
+"tested": 1036,
+"prev_date": "2026-11-03",
+"prev_pass": 900,
+"prev_total": 1066,
+"broke": [],
+"fixed": []
+},
+{
+"date": "2026-11-03",
+"run_at": "2026-11-03T02:08-05:00",
+"versions": {
+"claude_code": "2.1.197 (Claude Code)",
+"codex": "codex-cli 0.163.0",
+"grok_build": "grok 1.0.62 (1474f9cbdd91)",
+"cursor": "2026.10.16-e3cb207",
+"pi": "pi 1.4.0"
+},
+"total": 1066,
+"pass": 900,
+"addons": 425,
+"needs_key": 30,
+"broken": 136,
+"flaky": 3,
+"by": {
+"claude_code": {
+"pass": 342,
+"needs_key": 6,
+"broken": 21,
+"pending": 0,
+"total": 369,
+"fail": 27,
+"flaky": 0
+},
+"codex": {
+"pass": 94,
+"needs_key": 6,
+"broken": 19,
+"pending": 0,
+"total": 119,
+"fail": 25,
+"flaky": 0
+},
+"grok_build": {
+"pass": 345,
+"needs_key": 6,
+"broken": 33,
+"pending": 0,
+"total": 384,
+"fail": 39,
+"flaky": 2
+},
+"cursor": {
+"pass": 31,
+"needs_key": 6,
+"broken": 17,
+"pending": 0,
+"total": 54,
+"fail": 23,
+"flaky": 1
+},
+"pi": {
+"pass": 88,
+"needs_key": 6,
+"broken": 46,
+"pending": 0,
+"total": 140,
+"fail": 52,
+"flaky": 0
+}
+},
+"fail": 166,
+"tested": 1036,
+"prev_date": "2026-11-02",
+"prev_pass": 895,
+"prev_total": 1061,
+"broke": [],
+"fixed": []
+},
+{
+"date": "2026-11-02",
+"run_at": "2026-11-02T02:02-05:00",
+"versions": {
+"claude_code": "2.1.197 (Claude Code)",
+"codex": "codex-cli 0.163.0",
+"grok_build": "grok 1.0.62 (1474f9cbdd91)",
+"cursor": "2026.10.16-e3cb207",
+"pi": "pi 1.4.0"
+},
+"total": 1061,
+"pass": 895,
+"addons": 424,
+"needs_key": 30,
+"broken": 136,
+"flaky": 14,
+"by": {
+"claude_code": {
+"pass": 341,
+"needs_key": 6,
+"broken": 21,
+"pending": 0,
+"total": 368,
+"fail": 27,
+"flaky": 2
+},
+"codex": {
+"pass": 93,
+"needs_key": 6,
+"broken": 19,
+"pending": 0,
+"total": 118,
+"fail": 25,
+"flaky": 1
+},
+"grok_build": {
+"pass": 344,
+"needs_key": 6,
+"broken": 33,
+"pending": 0,
+"total": 383,
+"fail": 39,
+"flaky": 6
+},
+"cursor": {
+"pass": 30,
+"needs_key": 6,
+"broken": 17,
+"pending": 0,
+"total": 53,
+"fail": 23,
+"flaky": 2
+},
+"pi": {
+"pass": 87,
+"needs_key": 6,
+"broken": 46,
+"pending": 0,
+"total": 139,
+"fail": 52,
+"flaky": 3
+}
+},
+"fail": 166,
+"tested": 1031,
+"prev_date": "2026-11-01",
+"prev_pass": 895,
+"prev_total": 1061,
+"broke": [],
+"fixed": []
+},
+{
+"date": "2026-11-01",
+"run_at": "2026-11-01T02:06-05:00",
+"versions": {
+"claude_code": "2.1.197 (Claude Code)",
+"codex": "codex-cli 0.163.0",
+"grok_build": "grok 1.0.62 (1474f9cbdd91)",
+"cursor": "2026.10.16-e3cb207",
+"pi": "pi 1.4.0"
+},
+"total": 1061,
+"pass": 895,
+"addons": 424,
+"needs_key": 30,
+"broken": 136,
+"flaky": 5,
+"by": {
+"claude_code": {
+"pass": 341,
+"needs_key": 6,
+"broken": 21,
+"pending": 0,
+"total": 368,
+"fail": 27,
+"flaky": 2
+},
+"codex": {
+"pass": 93,
+"needs_key": 6,
+"broken": 19,
+"pending": 0,
+"total": 118,
+"fail": 25,
+"flaky": 0
+},
+"grok_build": {
+"pass": 344,
+"needs_key": 6,
+"broken": 33,
+"pending": 0,
+"total": 383,
+"fail": 39,
+"flaky": 3
+},
+"cursor": {
+"pass": 30,
+"needs_key": 6,
+"broken": 17,
+"pending": 0,
+"total": 53,
+"fail": 23,
+"flaky": 0
+},
+"pi": {
+"pass": 87,
+"needs_key": 6,
+"broken": 46,
+"pending": 0,
+"total": 139,
+"fail": 52,
+"flaky": 0
+}
+},
+"fail": 166,
+"tested": 1031,
+"prev_date": "2026-10-31",
+"prev_pass": 891,
+"prev_total": 1061,
+"broke": [
+{
+"slug": "notion-mcp-server",
+"name": "notion-mcp-server",
+"agent": "claude_code",
+"stars": null
+},
+{
+"slug": "notion-mcp-server",
+"name": "notion-mcp-server",
+"agent": "cursor",
+"stars": null
+}
+],
+"fixed": []
+}
+]

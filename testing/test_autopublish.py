@@ -13,11 +13,20 @@ def load(rel, name):
     m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m); return m
 
 
+FIX = os.path.join(ROOT, "testing/fixtures/autopublish")
+
+
 def fixture():
-    """Temp repo root with the real committed data the generators read."""
+    """Temp repo root from frozen data (testing/fixtures/autopublish, snapshot of Nov 18, 2026) plus issues 1-3 and the
+    two hand-written posts, so the tests don't drift as real issues/posts/weeks are published."""
     t = tempfile.mkdtemp(prefix="smx-auto-")
-    for rel in ["src/_data/weeks.json", "src/_data/reports.json", "src/_data/runNotes.json", "data/skills.json",
-                "testing/results/2026-11-18.json"] + glob.glob("src/newsletter/issue-[0-9]*.md", root_dir=ROOT) + glob.glob("src/blog/*.njk", root_dir=ROOT):
+    for src, rel in [("weeks.json", "src/_data/weeks.json"), ("reports.json", "src/_data/reports.json"),
+                     ("runNotes.json", "src/_data/runNotes.json"), ("skills.json", "data/skills.json"),
+                     ("results-2026-11-18.json", "testing/results/2026-11-18.json")]:
+        os.makedirs(os.path.dirname(os.path.join(t, rel)), exist_ok=True)
+        shutil.copy(os.path.join(FIX, src), os.path.join(t, rel))
+    for rel in ["src/newsletter/issue-1.md", "src/newsletter/issue-2.md", "src/newsletter/issue-3.md",
+                "src/blog/six-nights.njk", "src/blog/mcp-claude-code-vs-cursor.njk"]:
         os.makedirs(os.path.dirname(os.path.join(t, rel)), exist_ok=True)
         shutil.copy(os.path.join(ROOT, rel), os.path.join(t, rel))
     return t
