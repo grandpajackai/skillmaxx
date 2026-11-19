@@ -114,11 +114,36 @@ intake_check() {
   return 0
 }
 
+# Mondays from 07 ET (same hourly job): is last week's newsletter issue live? Once a day; alerts with
+# kind newsletter_missing through nightly_alert.sh (never prints the webhook). See testing/check_newsletter_live.py.
+newsletter_check() {
+  py=python3; [ -x /opt/homebrew/bin/python3 ] && py=/opt/homebrew/bin/python3
+  [ "$("$py" -c 'import sys,datetime; print(datetime.date.fromisoformat(sys.argv[1]).isoweekday())' "$today" 2>/dev/null)" = 1 ] || return 0
+  [ "$((10#$hour))" -ge 7 ] || return 0
+  [ "$(cat "$STATE/newsletter-checked" 2>/dev/null)" = "$today" ] && return 0
+  chk="$ROOT/testing/check_newsletter_live.py"
+  [ -f "$chk" ] || chk="${SKILLMAXX_PUBLISH_DIR:-$STATE/publish}/testing/check_newsletter_live.py"
+  [ -f "$chk" ] || return 0
+  msg=$("$py" "$chk" --date "$today" --repo "$PRIMARY" 2>&1); rc=$?
+  echo "local nightly: $msg"
+  if [ "$rc" = 3 ] && [ "$(cat "$STATE/newsletter-checked" 2>/dev/null)" != "$today retry" ] && [ "$((10#$hour))" -lt 12 ]; then
+    # First miss before noon: re-check next hour (a Pages deploy may still be running), alert on the second miss.
+    printf '%s retry\n' "$today" > "$STATE/newsletter-checked"
+    return 0
+  fi
+  printf '%s\n' "$today" > "$STATE/newsletter-checked"
+  if [ "$rc" = 3 ]; then
+    SMX_ALERT_KIND=newsletter_missing smx_alert "newsletter" "$msg" "" "$today" || true
+  fi
+  return 0
+}
+
 watchdog() {
   [ "$((10#$hour))" -ge 5 ] || return 0
   # The nightly only runs on the Mac. Elsewhere (the box, CI, tests) there is no 02 run to watch, so never alert.
   [ "$(uname -s)" = Darwin ] || [ "${SKILLMAXX_WATCHDOG_ANY_OS:-}" = 1 ] || return 0
   intake_check || true
+  newsletter_check || true
   # Dead-man for the alert itself: today's run failed but its alert never got a 2xx. Retry once an hour.
   if [ "$(cut -d' ' -f1 "$STATE/run-finished" 2>/dev/null)" = "$today" ] && [ "$(cut -d' ' -f2 "$STATE/run-finished" 2>/dev/null)" != "0" ] \
      && ! grep "day=$today " "$STATE/alerts.log" 2>/dev/null | grep -v 'step=test-alert' | grep -q 'http=2'; then

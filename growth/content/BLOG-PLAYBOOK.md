@@ -1,23 +1,43 @@
-# Weekly blog post playbook (SEO + AEO)
+# Blog playbook (SEO + AEO)
 
-One post a week, written by the Sunday recap routine from a data brief. Everything else (per-agent pages,
-best-by-category pages, per-skill "does it work" answers, sitemap, llms.txt) regenerates on every deploy from
-the nightly data with no LLM and no credits.
+## Schedule (since Nov 18, 2026): two free posts a week, both automatic, no AI, no hand posting
+All of this runs on the Mac inside `testing/publish_nightly.sh`, in the same auto-merged data PR as that night's
+report. Nothing here costs credits or needs Brandon.
 
-## Inputs (free)
+| Day | Post | Script | File -> URL |
+|---|---|---|---|
+| Wednesday (Thu catch-up) | Mid-week check: pass rate by agent vs a week earlier, what broke / got fixed, pass rate by add-on type | `growth/scripts/midweek_blog_auto.py` | `src/blog/midweek-YYYY-WW.njk` -> `/blog/midweek-YYYY-WW/` |
+| Sunday (Mon catch-up) | Weekly scorecard write-up | `growth/scripts/weekly_blog_auto.py` | `src/blog/week-YYYY-WW.njk` -> `/blog/week-YYYY-WW/` |
+| Sunday (Mon catch-up) | SkillMaxx Weekly issue (site archive; **email send stays held**) | `growth/scripts/newsletter_auto.py` | `src/newsletter/issue-N.md` -> `/newsletter/issue-N/` |
+| Monday from 07 ET | Check: is last week's issue live (HTTP 200)? Else alert `newsletter_missing` | `testing/check_newsletter_live.py` via the hourly watchdog in `testing/local_nightly.sh` | – |
+
+- `YYYY-WW` is the ISO week (same key as `/reports/week/YYYY-WW/`). Every script is idempotent: it skips when
+  its file exists and never overwrites. The mid-week post never runs on a Sunday; the URL prefixes
+  (`week-`, `midweek-`) never collide with each other or with the data pages (`/reports/`, `/best/`, `/works-in/`).
+- **Exactly one Sunday post:** `weekly_blog_auto.py` is the single source. It writes nothing if any other
+  `src/blog/*.njk` is already dated that Sunday or uses `/blog/week-YYYY-WW/`. The Grok Sunday recap does **not**
+  write a Sunday post: it only checks that `/blog/week-YYYY-WW/` is live and links it (its prep brief says
+  whether the file exists). Grok may optionally polish the auto newsletter issue by editing `issue-N.md`.
+- A hand-written deep dive (below) is optional and goes out on a **non-Sunday** date with its own keyword slug.
+- Everything else (per-agent pages, best-by-category pages, per-skill answers, sitemap, llms.txt) regenerates on
+  every deploy from the nightly data with no LLM and no credits.
+
+## Optional hand-written deep dive (only when there is a real story; never on a Sunday)
+
+### Inputs (free)
 1. `python3 growth/scripts/weekly_post_brief.py --out growth/content/briefs/<YYYY-MM-DD>.md` (add `--suggest`
    for fresh Google autocomplete). Reads only committed repo files.
 2. `growth/content/keywords.md` (plus the "GSC queries" section once Search Console is verified).
 3. `growth/VOICE.md` for tone.
 
-## Pick the angle (2 minutes)
+### Pick the angle (2 minutes)
 - Choose the single most useful story in the brief: a pass-rate move of 1+ point for an agent, a well-known
   add-on that newly broke or got fixed, or a pattern (e.g. "npm MCP servers fail in Pi for one reason").
 - Choose 1 primary query from the brief's "Target queries" (searcher wording), plus 2–3 secondary.
 - If the brief has no real story (all changes under 1 point, nothing notable broke or got fixed), skip the
   week and say so in the run summary. Never pad.
 
-## Write it (~800–1200 words)
+### Write it (~800–1200 words)
 - **Title / H1:** the primary query as a question or a direct claim with a number, e.g.
   "Which MCP servers work in Codex? 22 of 45 in our Nov 14 test". Under 65 characters if possible.
 - **Answer first:** the first paragraph answers the H1 in 2–3 plain sentences with the number and the date
@@ -35,7 +55,7 @@ the nightly data with no LLM and no credits.
   chains, no invented quotes, no pricing. Say "installs and loads in a sandbox", not "works perfectly".
 - **Close:** one line on what we'll re-check next week, and the related-links row.
 
-## File format
+### File format
 `src/blog/<slug>.njk`, copying the front matter of `src/blog/mcp-claude-code-vs-cursor.njk`:
 `layout: base.njk`, `title`, `permalink: /blog/<keyword-slug>/` (primary query words, no date),
 `tags: blog`, `issueDate: "YYYY-MM-DD"`, `ogType: article`, `desc` (≤155 chars, includes the number),
@@ -44,11 +64,11 @@ with `<div class="wrap prose"><p class="muted">Mon D, YYYY · Data from run(s) �
 and ends with `{% include "nlembed.njk" %}`. New posts appear on /blog/, in the sitemap and in the
 build automatically.
 
-## Ship it
+### Ship it
 Branch `blog/<YYYY-MM-DD>`, PR, wait for the PR build (it runs `review/check_built_site.py`), squash-merge,
 then curl the live URL once and add one line to STATUS.md. Never force-push.
 
-## Checklist (paste into the PR body)
+### Checklist (paste into the PR body)
 - [ ] H1 = primary query, answer in first paragraph with number + date
 - [ ] 3–5 question H2s, each answered in its first sentence
 - [ ] ≥1 data table; every number traceable to the brief

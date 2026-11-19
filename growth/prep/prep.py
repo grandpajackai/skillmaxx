@@ -645,14 +645,28 @@ def cmd_recap(d, a):
             "pipeline_counts": counts(pipeline_rows()), "emails_sent_7d": sent, "merged_prs_7d": prs,
             "bluesky": bs, "radar_files_7d": radar, "blog_files": [os.path.basename(b) for b in blog][-5:],
             "newsletter_issues": [os.path.basename(n) for n in news], "facts": facts(d)}
-    issue_no, draft = newsletter_draft(d, wk, data["facts"])
     os.makedirs(a.out, exist_ok=True)
-    with open(os.path.join(a.out, "newsletter-draft.md"), "w", encoding="utf-8") as fh:
-        fh.write(draft)
-    data["newsletter_draft"] = {"issue": issue_no, "path": os.path.join(a.out, "newsletter-draft.md")}
+    key = wk.get("key") or f"{d.isocalendar()[0]}-{d.isocalendar()[1]:02d}"
+    published = published_issue_for_week(d)
+    if published:
+        issue_no = published[0]
+        data["newsletter_draft"] = {"issue": issue_no, "published": os.path.relpath(published[1], ROOT), "path": None}
+        nl_line = (f"Newsletter: issue #{issue_no} is already published for this week ({os.path.relpath(published[1], ROOT)} -> "
+                   f"{SITE}/newsletter/issue-{issue_no}/, auto from the Mac, no LLM). No draft written. Optional polish = edit that file; the email send stays held.")
+    else:
+        issue_no, draft = newsletter_draft(d, wk, data["facts"])
+        with open(os.path.join(a.out, "newsletter-draft.md"), "w", encoding="utf-8") as fh:
+            fh.write(draft)
+        data["newsletter_draft"] = {"issue": issue_no, "path": os.path.join(a.out, "newsletter-draft.md")}
+        nl_line = (f"Newsletter: issue #{issue_no} is NOT published yet (the Mac Sunday auto-publish has not run or skipped). "
+                   f"Fallback no-LLM draft written to {os.path.join(a.out, 'newsletter-draft.md')} (unsent, unpublished).")
+    post = os.path.join(ROOT, "src/blog", f"week-{key}.njk")
+    data["sunday_post"] = {"key": key, "exists": os.path.exists(post), "url": f"{SITE}/blog/week-{key}/"}
+    blog_line = (f"Sunday blog post: {SITE}/blog/week-{key}/ " + ("exists (Mac weekly_blog_auto.py)." if data["sunday_post"]["exists"] else "is NOT in the repo yet.")
+                 + " It is the only Sunday post: check and link it, never write a second Sunday post.")
     md = [f"# Sunday recap prep — week ending {d} (generated {stamp()})", "",
-          f"Newsletter: no-LLM draft of issue #{issue_no} written to {os.path.join(a.out, 'newsletter-draft.md')} (unsent, unpublished; polish the <!-- DRAFT --> parts).", "",
-          "Stats only. Wins/misses wording, the dashboard edit, the newsletter draft and anything sent stay with Grok.", "",
+          nl_line, "", blog_line, "",
+          "Stats only. Wins/misses wording, the dashboard edit, optional newsletter polish and anything sent stay with Grok.", "",
           f"## Nightly runs, week {wk.get('key')} ({wk.get('start')}–{wk.get('end')})"]
     md += [f"- {t['date']}: {t['pass']:,}/{t['total']:,} passed ({t.get('rate')}% of tested)" for t in (wk.get("trend") or [])] or ["- no runs"]
     md += ["", "## Agent ranking (summed over the week's runs)"] + [f"- {x['name']}: {x['pass']}/{x['tested']} ({x['rate']}%), flaky {x.get('flaky')}" for x in (wk.get("ranking") or [])]
@@ -697,6 +711,18 @@ def fmt_d(s):
         return x.strftime("%b ") + str(x.day)
     except (TypeError, ValueError):
         return str(s)
+
+
+def published_issue_for_week(d):
+    """(N, path) of a src/newsletter/issue-N.md already dated in d's Mon-Sun week (growth/scripts/newsletter_auto.py)."""
+    try:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("newsletter_auto", os.path.join(ROOT, "growth/scripts/newsletter_auto.py"))
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        return mod.issue_for_week(d, ROOT)
+    except Exception:
+        return None
 
 
 def next_issue_no():

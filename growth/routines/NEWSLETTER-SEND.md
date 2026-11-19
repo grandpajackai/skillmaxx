@@ -1,5 +1,14 @@
 # Newsletter send + site archive (every Tuesday)
 
+**Auto-publish (since Nov 18, 2026, Brandon via COO):** the site archive page is now written with no AI and no
+hand step. Every Sunday the Mac's data PR (`testing/publish_nightly.sh` -> `growth/scripts/newsletter_auto.py`)
+adds `src/newsletter/issue-N.md` for that Mon-Sun week and auto-merges it, so `/newsletter/issue-N/` goes live
+Sunday morning (first: issue #4, Sun Nov 22). Monday re-runs it as an idempotent catch-up, and from 07 ET Monday
+the Mac watchdog checks `/newsletter/issue-N/` returns 200, else posts a `newsletter_missing` alert.
+**The email send stays held** until the first real subscriber: nothing here touches Beehiiv. When sends resume,
+paste the published page's copy (it is the record), not a different draft. The "Before send" steps below about
+holding `issue-N.md` back are superseded for the archive page.
+
 **Rule (since Nov 13, 2026, Brandon):** every issue goes on the public archive at `/newsletter/issue-N/` (and the `/newsletter/` index) as soon as it is final, **even before or without a Beehiiv email**. The archive is the record of what we're doing; the email is extra reach. Issue #1 and #2 are archive-only (#2 was written for Nov 3 but never emailed: the free Beehiiv plan blocks connector edits). Issue #3 (Nov 13) is the first one with paste-ready HTML for a manual Beehiiv send.
 
 **Quick path:** write `growth/newsletter/issue-00N-beehiiv.md` from published numbers only, then

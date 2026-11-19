@@ -4,8 +4,12 @@ Writes src/blog/week-<YYYY-WW>.njk for the newest week whose last day is <= DATE
 Skips if the file exists or the week has no runs. Run on Sundays by testing/publish_nightly.sh, which ships it
 in the same data PR as that night's report. Facts only from repo data; Brandon can still hand-write the
 Sunday deep-dive (growth/content/BLOG-PLAYBOOK.md) on top of this.
+Single Sunday post (Nov 18): this script is the only source of the Sunday post. It writes nothing if any other
+src/blog/*.njk is already dated that Sunday (issueDate) or uses /blog/week-<key>/, so a hand/Grok post and the
+auto post never both go out. The Grok Sunday recap only checks and links /blog/week-<key>/.
+The Wednesday post is growth/scripts/midweek_blog_auto.py (/blog/midweek-<key>/), never dated a Sunday.
 Usage: python3 growth/scripts/weekly_blog_auto.py [YYYY-MM-DD] [--force]"""
-import json, os, sys, html
+import glob, json, os, re, sys, html
 from datetime import date
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 SLUG = {"claude_code": "claude-code", "codex": "codex", "grok_build": "grok-build", "cursor": "cursor", "pi": "pi"}
@@ -20,6 +24,16 @@ def items(lst, verb):
     more = f"<p class=\"muted\">And {len(lst) - 10} more on the scorecard.</p>" if len(lst) > 10 else ""
     return f"<ul>{li}</ul>{more}"
 
+def sunday_posts(sunday, key, root=None):
+    """Blog sources already dated this Sunday or claiming /blog/week-<key>/ (the single-Sunday-post guard)."""
+    hits = []
+    for p in sorted(glob.glob(os.path.join(root or ROOT, "src/blog", "*.njk"))):
+        head = open(p, encoding="utf-8").read().split("\n---", 2)[0][:3000]
+        if re.search(r'^issueDate:\s*"?%s"?\s*$' % re.escape(sunday), head, re.M) or f"/blog/week-{key}/" in head:
+            hits.append(p)
+    return hits
+
+
 def main(argv):
     day = next((a for a in argv if not a.startswith("-")), None) or date.today().isoformat()
     weeks = json.load(open(os.path.join(ROOT, "src/_data/weeks.json")))
@@ -27,6 +41,9 @@ def main(argv):
     if not w: print("no complete week with runs"); return 0
     out = os.path.join(ROOT, "src/blog", f"week-{w['key']}.njk")
     if os.path.exists(out) and "--force" not in argv: print("exists:", out); return 0
+    other = [p for p in sunday_posts(w["end"], w["key"]) if os.path.abspath(p) != os.path.abspath(out)]
+    if other:
+        print("Sunday post already exists, not writing a second one:", ", ".join(os.path.relpath(p, ROOT) for p in other)); return 0
     t = w["trend"][-1]; p, n = t["pass"], t["tested"]; rate = round(100 * p / n, 1) if n else 0
     runs = w["runs"]; span = f"{fmt(w['start'])} to {fmt(w['end'])}"
     title = f"Agent add-on installs, week of {fmt(w['start'])}: {p:,} of {n:,} passed"

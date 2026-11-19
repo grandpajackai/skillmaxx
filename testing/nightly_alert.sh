@@ -1,5 +1,6 @@
 # SkillMaxx nightly failure alert. Source from bash (3.2 compatible); do not execute.
 # Posts {"kind":"nightly_failure","date","step","error","log_tail"} to the Grok Bot webhook
+# (kind is nightly_failure unless the caller sets SMX_ALERT_KIND, e.g. newsletter_missing for the Monday check)
 # routine that already handles inbox alerts. Free: plain curl, no new service.
 # Secrets live outside the repo in SKILLMAXX_ALERT_ENV (default ~/.skillmaxx-secrets/alert.env,
 # chmod 600) as SKILLMAXX_ALERT_WEBHOOK_URL and SKILLMAXX_ALERT_WEBHOOK_KEY. They are passed to
@@ -45,7 +46,7 @@ smx_scrub() {
 # Prints only "alert: http=<code>" (no URL, no key). Logs one line to $SKILLMAXX_STATE/alerts.log.
 smx_alert() {
   # Tests set SKILLMAXX_ALERT_DISABLE=1: log locally, never POST to the real webhook.
-  if [ "${SKILLMAXX_ALERT_DISABLE:-}" = 1 ]; then echo "alert: disabled (test) step=$1"; return 0; fi
+  if [ "${SKILLMAXX_ALERT_DISABLE:-}" = 1 ]; then echo "alert: disabled (test) kind=${SMX_ALERT_KIND:-nightly_failure} step=$1"; return 0; fi
   step=$1; err=$2; logf=${3:-}; day=${4:-$(TZ=America/New_York date +%F)}
   smx_alert_load
   tail_txt=
@@ -55,8 +56,9 @@ smx_alert() {
   tail_txt=$(smx_scrub "$tail_txt")
   err=$(smx_scrub "$err")
   host=$(hostname -s 2>/dev/null || echo mac)
-  body=$(printf '{"kind":"nightly_failure","date":"%s","step":"%s","error":"%s","log_tail":"%s","machine":"%s","at":"%s"}' \
-    "$(smx_json_str "$day")" "$(smx_json_str "$step")" "$(smx_json_str "$err")" \
+  kind=${SMX_ALERT_KIND:-nightly_failure}
+  body=$(printf '{"kind":"%s","date":"%s","step":"%s","error":"%s","log_tail":"%s","machine":"%s","at":"%s"}' \
+    "$(smx_json_str "$kind")" "$(smx_json_str "$day")" "$(smx_json_str "$step")" "$(smx_json_str "$err")" \
     "$(smx_json_str "$tail_txt")" "$(smx_json_str "$host")" "$(TZ=America/New_York date '+%F %T %Z')")
   code=000
   if [ -z "${SKILLMAXX_ALERT_WEBHOOK_URL:-}" ] || [ -z "${SKILLMAXX_ALERT_WEBHOOK_KEY:-}" ]; then
@@ -79,7 +81,7 @@ smx_alert() {
   fi
   st=${SKILLMAXX_STATE:-$HOME/.local/share/skillmaxx}
   mkdir -p "$st" 2>/dev/null
-  printf '%s day=%s step=%s http=%s\n' "$(TZ=America/New_York date '+%F %T %Z')" "$day" "$step" "$code" >> "$st/alerts.log" 2>/dev/null
+  printf '%s day=%s step=%s kind=%s http=%s\n' "$(TZ=America/New_York date '+%F %T %Z')" "$day" "$step" "$kind" "$code" >> "$st/alerts.log" 2>/dev/null
   echo "alert: step=$step http=$code"
   return 0
 }
