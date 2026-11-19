@@ -10,6 +10,11 @@
 # Pushes only a data/nightly-* branch with the gh login already on this machine. Never pushes master,
 # never uses SKILLMAXX_PRODUCTION/ALLOW_PUSH, sends no mail or posts. Alerts reuse testing/nightly_alert.sh.
 # Disable with SKILLMAXX_AUTO_PUBLISH=0 in testing/local.env.
+# Content (Nov 18, all no-LLM, same data PR): Sun weekly post (weekly_blog_auto.py, the only Sunday post) +
+#   SkillMaxx Weekly issue src/newsletter/issue-N.md (newsletter_auto.py; email send stays held);
+#   Mon idempotent catch-up of both for the Sunday; Wed mid-week post (midweek_blog_auto.py), Thu catch-up.
+# Self-update: after fetching master into $PUB it re-runs master's copy of this script if this copy differs,
+#   so a merged change runs the same night without hand-copying it into the Mac's primary checkout.
 set -uo pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
 STATE=${SKILLMAXX_STATE:-$HOME/.local/share/skillmaxx}
@@ -23,7 +28,7 @@ LOG="$STATE/logs/publish-$D.log"
 [ -d /opt/homebrew/bin ] && PATH="/opt/homebrew/bin:$PATH"
 export PATH
 mkdir -p "$STATE/logs"
-exec > >(tee -a "$LOG") 2>&1
+[ -n "${SMX_PUBLISH_REEXEC:-}" ] || exec > >(tee -a "$LOG") 2>&1
 # shellcheck source=testing/nightly_alert.sh
 . "$HERE/nightly_alert.sh"
 status() { printf '%s %s\n' "$D" "$1" > "$STATE/publish-status"; }
@@ -37,7 +42,7 @@ fail() {
   exit 1
 }
 
-mkdir "$STATE/publish.lock" 2>/dev/null || { [ -n "$(find "$STATE/publish.lock" -mmin +90 2>/dev/null)" ] && rm -rf "$STATE/publish.lock" && mkdir "$STATE/publish.lock"; } || { echo "publish: another publish is running"; exit 0; }
+[ -n "${SMX_PUBLISH_REEXEC:-}" ] || mkdir "$STATE/publish.lock" 2>/dev/null || { [ -n "$(find "$STATE/publish.lock" -mmin +90 2>/dev/null)" ] && rm -rf "$STATE/publish.lock" && mkdir "$STATE/publish.lock"; } || { echo "publish: another publish is running"; exit 0; }
 trap 'rm -rf "$STATE/publish.lock"' EXIT
 echo "publish: $D start $(TZ=America/New_York date '+%F %T %Z')"
 [ "${SKILLMAXX_AUTO_PUBLISH:-1}" = "0" ] && { echo "publish: SKILLMAXX_AUTO_PUBLISH=0, skipping"; exit 0; }
@@ -56,6 +61,11 @@ if git cat-file -e "origin/master:testing/results/$D.json" 2>/dev/null; then
   echo "publish: $D is already on master"; status published; exit 0
 fi
 git checkout -q -f -B "data/nightly-$D" origin/master && git clean -fdq || fail "could not reset $PUB"
+# Self-update: run master's version of this script (lock and log are inherited; one hop only).
+if [ -z "${SMX_PUBLISH_REEXEC:-}" ] && [ -f testing/publish_nightly.sh ] && ! cmp -s "$0" testing/publish_nightly.sh; then
+  echo "publish: running master's testing/publish_nightly.sh"
+  SMX_PUBLISH_REEXEC=1 exec bash "$PUB/testing/publish_nightly.sh" "$D" "$RES"
+fi
 
 python3 testing/import_mac_run.py "$RES" --source-sha "$SHA"; rc=$?
 if [ "$rc" = 2 ]; then
@@ -65,14 +75,22 @@ if [ "$rc" = 2 ]; then
 fi
 [ "$rc" = 0 ] || fail "import_mac_run.py exited $rc"
 
-SUNDAY=0; [ "$(python3 -c 'import sys,datetime; print(datetime.date.fromisoformat(sys.argv[1]).isoweekday())' "$D")" = 7 ] && SUNDAY=1
-if [ "$SUNDAY" = 1 ] && [ -f growth/scripts/weekly_blog_auto.py ]; then
-  python3 growth/scripts/weekly_blog_auto.py "$D" || echo "publish: weekly blog post skipped (generator error)"
+DOW=$(python3 -c 'import sys,datetime; print(datetime.date.fromisoformat(sys.argv[1]).isoweekday())' "$D")
+PREV=$(python3 -c 'import sys,datetime; print(datetime.date.fromisoformat(sys.argv[1]) - datetime.timedelta(days=1))' "$D")
+# Sunday (and Monday catch-up for the Sunday): the one Sunday blog post, then that week's newsletter issue.
+# Both are idempotent (skip if already there) and never overwrite. Order matters: the issue links the post.
+if [ "$DOW" = 7 ] || [ "$DOW" = 1 ]; then
+  [ -f growth/scripts/weekly_blog_auto.py ] && { python3 growth/scripts/weekly_blog_auto.py "$D" || echo "publish: weekly blog post skipped (generator error)"; }
+  NLD=$D; [ "$DOW" = 1 ] && NLD=$PREV
+  [ -f growth/scripts/newsletter_auto.py ] && { python3 growth/scripts/newsletter_auto.py "$NLD" || echo "publish: newsletter issue skipped (generator refused or failed)"; }
+fi
+# Wednesday (Thursday catch-up): the mid-week post, /blog/midweek-<YYYY-WW>/.
+if [ "$DOW" = 3 ] || [ "$DOW" = 4 ]; then
+  [ -f growth/scripts/midweek_blog_auto.py ] && { python3 growth/scripts/midweek_blog_auto.py "$D" || echo "publish: mid-week blog post skipped (generator error)"; }
 fi
 # Grok-free routine prep committed with the data (growth/prep/prep.py: no LLM, no sends, keyless reads only).
 # Mondays: sponsor-pipeline counts/aging for the 9 AM routine. Sundays: recap stats for the 6 PM routine.
 # The box prep loop (/home/box/skillmaxx-prep) writes fresher same-day copies; these are the committed record.
-DOW=$(python3 -c 'import sys,datetime; print(datetime.date.fromisoformat(sys.argv[1]).isoweekday())' "$D")
 if [ -f growth/prep/prep.py ] && { [ "$DOW" = 1 ] || [ "$DOW" = 7 ]; }; then
   PREP=$(mktemp -d)
   if [ "$DOW" = 1 ]; then
@@ -81,9 +99,10 @@ if [ -f growth/prep/prep.py ] && { [ "$DOW" = 1 ] || [ "$DOW" = 7 ]; }; then
   else
     python3 growth/prep/prep.py recap --date "$D" --out "$PREP" >/dev/null && mkdir -p growth/weekly \
       && cp "$PREP/recap.md" "growth/weekly/recap-prep-$D.md" || echo "publish: recap prep skipped"
-    # Unsent newsletter draft next to the issues; *.draft.md is ignored by eleventy (never built or listed).
+    # Fallback only: if newsletter_auto.py did not publish this week's issue, keep the unsent no-LLM draft next to
+    # the issues (*.draft.md is ignored by eleventy). prep.py writes no draft when the week's issue exists.
     N=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["newsletter_draft"]["issue"])' "$PREP/recap.json" 2>/dev/null)
-    [ -n "$N" ] && [ -f "$PREP/newsletter-draft.md" ] && cp "$PREP/newsletter-draft.md" "src/newsletter/issue-$N.draft.md" || echo "publish: newsletter draft skipped"
+    if [ -n "$N" ] && [ -f "$PREP/newsletter-draft.md" ]; then cp "$PREP/newsletter-draft.md" "src/newsletter/issue-$N.draft.md"; fi
   fi
   rm -rf "$PREP"
 fi
