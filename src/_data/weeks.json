@@ -4,8 +4,8 @@
   "start": "2026-11-16",
   "end": "2026-11-22",
   "first": "2026-11-17",
-  "last": "2026-11-18",
-  "runs": 2,
+  "last": "2026-11-19",
+  "runs": 3,
   "trend": [
    {
     "date": "2026-11-17",
@@ -22,56 +22,70 @@
     "total": 1075,
     "needs_key": 25,
     "rate": 86.9
+   },
+   {
+    "date": "2026-11-19",
+    "pass": 906,
+    "tested": 1050,
+    "total": 1075,
+    "needs_key": 25,
+    "rate": 86.3
    }
   ],
   "ranking": [
    {
     "agent": "claude_code",
     "name": "Claude Code",
-    "pass": 685,
-    "tested": 734,
-    "rate": 93.3,
-    "flaky": 3,
-    "needs_key": 10
+    "pass": 1024,
+    "tested": 1101,
+    "rate": 93.0,
+    "flaky": 8,
+    "needs_key": 15
    },
    {
     "agent": "grok_build",
     "name": "Grok Build",
-    "pass": 707,
-    "tested": 764,
-    "rate": 92.5,
-    "flaky": 6,
-    "needs_key": 10
+    "pass": 1059,
+    "tested": 1146,
+    "rate": 92.4,
+    "flaky": 11,
+    "needs_key": 15
    },
    {
     "agent": "codex",
     "name": "Codex",
-    "pass": 192,
-    "tested": 230,
+    "pass": 288,
+    "tested": 345,
     "rate": 83.5,
-    "flaky": 1,
-    "needs_key": 10
+    "flaky": 3,
+    "needs_key": 15
    },
    {
     "agent": "cursor",
     "name": "Cursor",
-    "pass": 66,
-    "tested": 100,
-    "rate": 66.0,
-    "flaky": 4,
-    "needs_key": 10
+    "pass": 98,
+    "tested": 150,
+    "rate": 65.3,
+    "flaky": 6,
+    "needs_key": 15
    },
    {
     "agent": "pi",
     "name": "Pi",
-    "pass": 173,
-    "tested": 272,
-    "rate": 63.6,
-    "flaky": 5,
-    "needs_key": 10
+    "pass": 260,
+    "tested": 408,
+    "rate": 63.7,
+    "flaky": 8,
+    "needs_key": 15
    }
   ],
-  "fixed": [],
+  "fixed": [
+   {
+    "slug": "desktop-commander",
+    "name": "Desktop Commander",
+    "n": 1
+   }
+  ],
   "broke": [
    {
     "slug": "sap-fiori-mcp-server",
@@ -81,7 +95,7 @@
    {
     "slug": "desktop-commander",
     "name": "Desktop Commander",
-    "n": 1
+    "n": 2
    },
    {
     "slug": "hyperframes",
@@ -91,13 +105,18 @@
   ],
   "flaky": [
    {
-    "slug": "comfyui-mcp",
-    "name": "comfyui-mcp",
-    "n": 5
-   },
-   {
     "slug": "mcp-local-rag",
     "name": "mcp-local-rag",
+    "n": 7
+   },
+   {
+    "slug": "comfyui-mcp",
+    "name": "comfyui-mcp",
+    "n": 6
+   },
+   {
+    "slug": "hyperframes",
+    "name": "Hyperframes",
     "n": 4
    },
    {
@@ -106,19 +125,14 @@
     "n": 3
    },
    {
-    "slug": "hyperframes",
-    "name": "Hyperframes",
+    "slug": "zscaler",
+    "name": "Zscaler",
     "n": 3
-   },
-   {
-    "slug": "mcp-apps",
-    "name": "MCP Apps",
-    "n": 1
    }
   ],
-  "fixed_n": 0,
-  "broke_n": 4,
-  "flaky_n": 8,
+  "fixed_n": 1,
+  "broke_n": 5,
+  "flaky_n": 14,
   "needs_key": 25,
   "standout": {
    "slug": "mcp-time",
@@ -135,7 +149,7 @@
    "stars": 91859
   },
   "version_changes": [],
-  "svg": "<svg viewBox=\"0 0 560 180\" width=\"100%\" role=\"img\" aria-labelledby=\"ct\" class=\"chart\" xmlns=\"http://www.w3.org/2000/svg\"><title id=\"ct\">Install pass rate by night: 2026-11-17 86.8%, 2026-11-18 86.9%</title><line x1=\"34\" y1=\"146\" x2=\"526\" y2=\"146\" stroke=\"currentColor\" stroke-opacity=\".25\"/><text x=\"4\" y=\"38\" font-size=\"11\" fill=\"currentColor\">89%</text><text x=\"4\" y=\"150\" font-size=\"11\" fill=\"currentColor\">82%</text><path d=\"M34.0,67.1 L526.0,65.5\" fill=\"none\" stroke=\"#22c55e\" stroke-width=\"3\" stroke-linejoin=\"round\"/><circle cx=\"34.0\" cy=\"67.1\" r=\"4\" fill=\"#22c55e\"/><text x=\"34.0\" y=\"58.1\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">86.8%</text><text x=\"34.0\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-17</text><circle cx=\"526.0\" cy=\"65.5\" r=\"4\" fill=\"#22c55e\"/><text x=\"526.0\" y=\"56.5\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">86.9%</text><text x=\"526.0\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-18</text></svg>",
+  "svg": "<svg viewBox=\"0 0 560 180\" width=\"100%\" role=\"img\" aria-labelledby=\"ct\" class=\"chart\" xmlns=\"http://www.w3.org/2000/svg\"><title id=\"ct\">Install pass rate by night: 2026-11-17 86.8%, 2026-11-18 86.9%, 2026-11-19 86.3%</title><line x1=\"34\" y1=\"146\" x2=\"526\" y2=\"146\" stroke=\"currentColor\" stroke-opacity=\".25\"/><text x=\"4\" y=\"38\" font-size=\"11\" fill=\"currentColor\">89%</text><text x=\"4\" y=\"150\" font-size=\"11\" fill=\"currentColor\">81%</text><path d=\"M34.0,64.9 L280.0,63.5 L526.0,72.3\" fill=\"none\" stroke=\"#22c55e\" stroke-width=\"3\" stroke-linejoin=\"round\"/><circle cx=\"34.0\" cy=\"64.9\" r=\"4\" fill=\"#22c55e\"/><text x=\"34.0\" y=\"55.9\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">86.8%</text><text x=\"34.0\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-17</text><circle cx=\"280.0\" cy=\"63.5\" r=\"4\" fill=\"#22c55e\"/><text x=\"280.0\" y=\"54.5\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">86.9%</text><text x=\"280.0\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-18</text><circle cx=\"526.0\" cy=\"72.3\" r=\"4\" fill=\"#22c55e\"/><text x=\"526.0\" y=\"63.3\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">86.3%</text><text x=\"526.0\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-19</text></svg>",
   "baseline_start": null,
   "no_valid_run": []
  },
