@@ -2646,6 +2646,45 @@
       "notes": "Grok Build status relies on xAI docs saying Grok reads Claude Code plugins automatically."
     },
     {
+      "slug": "blender-core",
+      "name": "Blender Core",
+      "description": "Foundation for any Blender 5.2+ task an agent drives — running bpy via MCP (live) or headless CLI, context overrides, locale-safe node lookup, enum discovery, 5.x API changes, verification. Use first for any Blender, bpy, .blend or 3D-asset request; routes to the specialized blender-* skills.",
+      "source_url": "https://github.com/EL4CTEO/blender-skills/tree/main/skills/blender-core",
+      "category": "design",
+      "type": "skill",
+      "skill": {
+        "source": "EL4CTEO/blender-skills",
+        "name": "blender-core",
+        "cli": "https://github.com/vercel-labs/skills"
+      },
+      "install": {
+        "claude_code": "npx skills add EL4CTEO/blender-skills --skill blender-core -g -a claude-code",
+        "codex": "npx skills add EL4CTEO/blender-skills --skill blender-core -g -a codex",
+        "grok_build": "npx skills add EL4CTEO/blender-skills --skill blender-core -g -a grok",
+        "cursor": "npx skills add EL4CTEO/blender-skills --skill blender-core -g -a cursor",
+        "pi": "npx skills add EL4CTEO/blender-skills --skill blender-core -g -a pi"
+      },
+      "compatibility": {
+        "claude_code": "documented",
+        "codex": "documented",
+        "grok_build": "documented",
+        "cursor": "documented",
+        "pi": "documented"
+      },
+      "compat_sources": {
+        "claude_code": "https://github.com/vercel-labs/skills#supported-agents",
+        "codex": "https://github.com/vercel-labs/skills#supported-agents",
+        "grok_build": "https://github.com/vercel-labs/skills#supported-agents",
+        "cursor": "https://github.com/vercel-labs/skills#supported-agents",
+        "pi": "https://github.com/vercel-labs/skills#supported-agents"
+      },
+      "listings": [
+        "https://github.com/EL4CTEO/blender-skills"
+      ],
+      "listing_url": "https://github.com/EL4CTEO/blender-skills",
+      "notes": "Starter skill from EL4CTEO/blender-skills (28-skill Blender 5.2+ / verified 5.3 pack, MIT, 2.5k stars). Nightly install-tests `blender-core` with the pinned skills CLI. Official README install: Claude Code plugin (`/plugin marketplace add EL4CTEO/blender-skills` then `/plugin install blender-agent-skills@blender-agent-skills`), or clone and `./blender-skills/install/install.sh` (default ~/.claude/skills and ~/.agents/skills)."
+    },
+    {
       "slug": "blitzstrike",
       "name": "blitzstrike",
       "description": "Blitz Strike — a universal MCP security-audit toolbelt. BLITZ sweeps the attack surface, EAGLE-EYE traces source-to-sink, STRIKE verifies live. 57 attack chains, 130-tool catalog, intelligence data layer. One server, every agent.",
@@ -9298,6 +9337,45 @@
       ],
       "listing_url": "https://github.com/anthropics/claude-plugins-official",
       "notes": ""
+    },
+    {
+      "slug": "nestjs",
+      "name": "NestJS",
+      "description": "NestJS, the TypeScript framework for Node.js backends. How to start a project non-interactively with the Nest CLI, the project layout and module system, where the current docs are, and the mistakes agents make in Nest apps that still pass their tests. Use when creating or extending a NestJS application.",
+      "source_url": "https://github.com/nestjs/agent-skills/tree/master/skills/nestjs",
+      "category": "development",
+      "type": "skill",
+      "skill": {
+        "source": "nestjs/agent-skills",
+        "name": "nestjs",
+        "cli": "https://github.com/vercel-labs/skills"
+      },
+      "install": {
+        "claude_code": "npx skills add nestjs/agent-skills --skill nestjs -g -a claude-code",
+        "codex": "npx skills add nestjs/agent-skills --skill nestjs -g -a codex",
+        "grok_build": "npx skills add nestjs/agent-skills --skill nestjs -g -a grok",
+        "cursor": "npx skills add nestjs/agent-skills --skill nestjs -g -a cursor",
+        "pi": "npx skills add nestjs/agent-skills --skill nestjs -g -a pi"
+      },
+      "compatibility": {
+        "claude_code": "documented",
+        "codex": "documented",
+        "grok_build": "documented",
+        "cursor": "documented",
+        "pi": "documented"
+      },
+      "compat_sources": {
+        "claude_code": "https://github.com/vercel-labs/skills#supported-agents",
+        "codex": "https://github.com/vercel-labs/skills#supported-agents",
+        "grok_build": "https://github.com/vercel-labs/skills#supported-agents",
+        "cursor": "https://github.com/vercel-labs/skills#supported-agents",
+        "pi": "https://github.com/vercel-labs/skills#supported-agents"
+      },
+      "listings": [
+        "https://github.com/nestjs/agent-skills"
+      ],
+      "listing_url": "https://github.com/nestjs/agent-skills",
+      "notes": "Official NestJS Agent Skills (nestjs/agent-skills, MIT), published 2026-11-20. The pack also has nestjs-feature, nestjs-auth, nestjs-data, nestjs-testing and nestjs-production. Nightly install-tests the starter skill `nestjs` with the pinned skills CLI (same as angular-testing). Official install from the README is `npx @nestjs/skills add` (npm) or `claude plugin marketplace add nestjs/agent-skills` then `claude plugin install nestjs@nestjs`."
     },
     {
       "slug": "netlify",
