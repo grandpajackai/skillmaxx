@@ -220,7 +220,7 @@ def test_publish_script():
     s = open(os.path.join(ROOT, "testing/publish_nightly.sh"), encoding="utf-8").read()
     assert "newsletter_auto.py" in s and "midweek_blog_auto.py" in s and "weekly_blog_auto.py" in s
     assert "buffer_weekly" not in s.split("# Sundays: do not run buffer_weekly.py")[0], "Buffer stays off"
-    assert "fetch_radar_hn.py" in s and "check_first_subscriber.py" in s
+    assert "fetch_radar_hn.py" in s and "check_first_subscriber.py" in s and "send_telegram_requests.py" in s
     assert "SKILLMAXX_PRODUCTION=" not in s and "SKILLMAXX_ALLOW_PUSH=" not in s
     for bad_bh in ("/posts", "save_post", "schedule_post", "create_post"):
         assert bad_bh not in s.lower(), f"publish_nightly.sh must never publish to Beehiiv ({bad_bh})"
@@ -286,6 +286,42 @@ def test_first_subscriber_alert():
     print("ok first subscriber alert: test accounts excluded, one-shot hq.alert wired")
 
 
+
+
+def test_telegram_requests():
+    td = tempfile.mkdtemp()
+    st_dir = os.path.join(td, "state")
+    os.makedirs(st_dir, exist_ok=True)
+    hq_dir = os.path.join(td, "brandon-hq")
+    os.makedirs(os.path.join(hq_dir, "hq"), exist_ok=True)
+    log_path = os.path.join(td, "tg_calls.json")
+    open(os.path.join(hq_dir, "hq", "alert.py"), "w").write(
+        "import json, sys\n"
+        f"open({log_path!r}, 'a').write(json.dumps(sys.argv[1:]) + '\\n')\n"
+        "print(json.dumps({'ping': True, 'reason': 'ok', 'channels': ['mac', 'telegram']}))\n"
+    )
+    script = os.path.join(ROOT, "testing/send_telegram_requests.py")
+    env = {**os.environ, "SKILLMAXX_STATE": st_dir}
+    reqs = json.load(open(os.path.join(ROOT, "growth/telegram/REQUESTS.json")))
+    assert any(r["id"] == "req-002-github-skillmaxx-vault" for r in reqs)
+    r1 = subprocess.run([sys.executable, script, "--hq-dir", hq_dir], capture_output=True, text=True, env=env)
+    assert r1.returncode == 0 and f"({len(reqs)} sent" in r1.stdout, r1.stdout + r1.stderr
+    calls = open(log_path).read().splitlines()
+    assert len(calls) == len(reqs) and "--severity" in calls[0] and "critical" in calls[0], calls
+    r2 = subprocess.run([sys.executable, script, "--hq-dir", hq_dir], capture_output=True, text=True, env=env)
+    assert r2.returncode == 0 and "already sent" in r2.stdout, r2.stdout
+    assert len(open(log_path).read().splitlines()) == len(reqs)
+    st2 = os.path.join(td, "state2")
+    hq2 = os.path.join(td, "hq2")
+    os.makedirs(os.path.join(hq2, "hq"), exist_ok=True)
+    open(os.path.join(hq2, "hq", "alert.py"), "w").write(
+        "import json\nprint(json.dumps({'ping': False, 'reason': 'quiet_hours', 'channels': []}))\n"
+    )
+    r3 = subprocess.run([sys.executable, script, "--hq-dir", hq2], capture_output=True, text=True, env={**os.environ, "SKILLMAXX_STATE": st2})
+    assert r3.returncode == 0 and "(0 sent" in r3.stdout and not os.path.exists(os.path.join(st2, "telegram-requests-sent.json")), r3.stdout
+    shutil.rmtree(td)
+    print("ok telegram requests: critical bypasses quiet hours, sends once per id, tracks state")
+
 if __name__ == "__main__":
-    test_newsletter(); test_midweek(); test_sunday_guard(); test_monday_check(); test_alert_wiring(); test_publish_script(); test_first_subscriber_alert()
+    test_newsletter(); test_midweek(); test_sunday_guard(); test_monday_check(); test_alert_wiring(); test_publish_script(); test_first_subscriber_alert(); test_telegram_requests()
     print("test_autopublish: all ok")

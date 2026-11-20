@@ -67,6 +67,8 @@ if [ -z "${SMX_PUBLISH_REEXEC:-}" ] && [ -f testing/publish_nightly.sh ] && ! cm
   SMX_PUBLISH_REEXEC=1 exec bash "$PUB/testing/publish_nightly.sh" "$D" "$RES"
 fi
 
+[ -f testing/send_telegram_requests.py ] && { python3 testing/send_telegram_requests.py || true; }
+
 python3 testing/import_mac_run.py "$RES" --source-sha "$SHA"; rc=$?
 if [ "$rc" = 2 ]; then
   status hold
