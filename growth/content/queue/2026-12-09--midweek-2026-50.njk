@@ -1,0 +1,44 @@
+---
+layout: base.njk
+title: "Best agent add-on categories by pass rate ([[SMX:CD_FMT]] check): [[SMX:PASS]] of [[SMX:TOTAL]] passed"
+permalink: /blog/midweek-[[SMX:WEEK_KEY]]/
+tags: blog
+issueDate: "[[SMX:ISSUE_DATE]]"
+ogType: article
+desc: "As of [[SMX:CD_FMT_FULL]], [[SMX:PASS]] of [[SMX:TOTAL]] installs passed ([[SMX:RATE]]%). Pass rates across Development, Database, Security and MCP Servers."
+jsonld: {"@context":"https://schema.org","@type":"BlogPosting","headline":"Best agent add-on categories by pass rate ([[SMX:CD_FMT]] check): [[SMX:PASS]] of [[SMX:TOTAL]] passed","datePublished":"[[SMX:ISSUE_DATE]]","description":"As of [[SMX:CD_FMT_FULL]], [[SMX:PASS]] of [[SMX:TOTAL]] installs passed ([[SMX:RATE]]%). Pass rates across Development, Database, Security and MCP Servers.","author":{"@type":"Organization","name":"SkillMaxx"},"publisher":{"@type":"Organization","name":"SkillMaxx"}}
+---
+<div class="wrap prose"><p class="muted">[[SMX:ISSUE_DATE_FMT]] · Data from the [[SMX:CD_FMT]] nightly run[[SMX:BASE_CLAUSE]] · refreshed from nightly reports</p>
+<h1 class="ph">Which categories of agent add-ons install most reliably? ([[SMX:CD_FMT]] check)</h1>
+<p class="answer">As of [[SMX:CD_FMT_FULL]], [[SMX:PASS]] of [[SMX:TOTAL]] sandboxed installs passed across all five agents ([[SMX:RATE]]% of the [[SMX:TESTED]] judgeable installs).[[SMX:BASE_SENTENCE]] Categories dominated by marketplace plugins (Development, Productivity, Security, Monitoring) consistently clear high install rates, while standalone MCP server categories run lower because npm MCP packages often require credentials.</p>
+
+<h2>Which categories of agent add-ons have the highest install pass rates?</h2>
+<p class="answer">Development, Productivity, Database and Monitoring add-ons install cleanly most often because most of them ship as official marketplace plugins with self-contained configs.</p>
+[[SMX:CATEGORY_TABLE]]
+<p>You can browse tested tools sorted by how many agents they pass in on <a href="/best/development/">Development</a>, <a href="/best/database/">Database</a>, <a href="/best/monitoring/">Monitoring</a>, <a href="/best/security/">Security</a>, and <a href="/best/mcp-servers/">MCP Servers</a>.</p>
+
+<h2>How did each agent perform mid-week?</h2>
+<p class="answer">Each agent's pass rate reflects the mix of plugins, standalone skills and MCP servers supported by its CLI.</p>
+[[SMX:AGENT_COMPARISON_TABLE]]
+
+<h2>How do add-on types compare on install reliability?</h2>
+<p class="answer">Marketplace plugins and official reference MCP servers continue to outperform community npm MCP packages in clean sandboxes.</p>
+[[SMX:TYPE_TABLE]]
+
+<h2>What broke and what got fixed [[SMX:SINCE]]?</h2>
+<p class="answer">Every confirmed break failed two nights in a row after an automatic retry.</p>
+<h3>Broke [[SMX:SINCE]]</h3>
+[[SMX:BROKE_LIST]]
+<h3>Fixed [[SMX:SINCE]]</h3>
+[[SMX:FIXED_LIST]]
+
+[[SMX:CAVEATS_HTML]]
+{% set faqs = [
+  {q:"What are the best Claude Code plugins for developers?", a:"The highest-reliability developer add-ons are listed on /best/development/ and /works-in/claude-code/, ranked by how many agents they passed in on [[SMX:CD_FMT_FULL]] and GitHub stars."},
+  {q:"Why do Database and Security categories score differently from MCP Servers?", a:"Categories like Development and Security include many marketplace plugins (such as Supabase and Pinecone), which pass over 95% of clean installs, whereas the MCP Servers category is weighted toward npm packages that often need API keys."},
+  {q:"How many add-ons does SkillMaxx test nightly?", a:"As of [[SMX:CD_FMT_FULL]], SkillMaxx lists [[SMX:ADDONS]] add-ons and ran [[SMX:TOTAL]] sandboxed install tests in the latest nightly run."}
+] %}{% set art = {headline: "Best agent add-on categories by pass rate (" + "[[SMX:CD_FMT]] check)", description: desc} %}
+{% include "faq.njk" %}
+<p class="related-links"><a href="/best/development/">Best Development add-ons →</a><a href="/best/database/">Best Database add-ons →</a><a href="/best/security/">Best Security add-ons →</a><a href="/best/monitoring/">Best Monitoring add-ons →</a><a href="/reports/[[SMX:CD]]/">[[SMX:CD_FMT]] report →</a><a href="/how-we-test/">How we test →</a>[[SMX:SUNDAY_LINK_PART]]</p>
+</div>
+{% include "nlembed.njk" %}

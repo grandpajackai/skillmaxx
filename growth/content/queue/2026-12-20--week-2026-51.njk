@@ -1,0 +1,44 @@
+---
+layout: base.njk
+title: "Week [[SMX:WEEK_KEY]] scorecard: Pi MCP ([[SMX:PI_MCP_RATE]]%) vs plugins ([[SMX:PI_PLUGIN_RATE]]%) across [[SMX:WEEK_RUNS]] runs"
+permalink: /blog/week-[[SMX:WEEK_KEY]]/
+tags: blog
+issueDate: "[[SMX:WEEK_END]]"
+ogType: article
+desc: "Week [[SMX:WEEK_KEY]] ([[SMX:WEEK_SPAN]]): [[SMX:PASS]] of [[SMX:TESTED]] passed ([[SMX:RATE]]%). Pi passed [[SMX:PI_MCP_PASS]]/[[SMX:PI_MCP_TOTAL]] MCP servers vs [[SMX:PI_PLUGIN_PASS]]/[[SMX:PI_PLUGIN_TOTAL]] plugins."
+jsonld: {"@context":"https://schema.org","@type":"BlogPosting","headline":"Week [[SMX:WEEK_KEY]] scorecard: Pi MCP ([[SMX:PI_MCP_RATE]]%) vs plugins ([[SMX:PI_PLUGIN_RATE]]%) across [[SMX:WEEK_RUNS]] runs","datePublished":"[[SMX:WEEK_END]]","description":"Week [[SMX:WEEK_KEY]] ([[SMX:WEEK_SPAN]]): [[SMX:PASS]] of [[SMX:TESTED]] passed ([[SMX:RATE]]%). Pi passed [[SMX:PI_MCP_PASS]]/[[SMX:PI_MCP_TOTAL]] MCP servers vs [[SMX:PI_PLUGIN_PASS]]/[[SMX:PI_PLUGIN_TOTAL]] plugins.","author":{"@type":"Organization","name":"SkillMaxx"},"publisher":{"@type":"Organization","name":"SkillMaxx"}}
+---
+<div class="wrap prose"><p class="muted">[[SMX:WEEK_END_FMT]] · Data from [[SMX:WEEK_RUNS]] nightly runs, [[SMX:WEEK_SPAN]] · generated from the weekly scorecard</p>
+<h1 class="ph">Week [[SMX:WEEK_KEY]] scorecard: Pi MCP compatibility vs GitHub plugins</h1>
+<p class="answer">From [[SMX:WEEK_SPAN]], SkillMaxx ran [[SMX:WEEK_RUNS]] nightly install tests across five coding agents, with [[SMX:PASS]] of [[SMX:TESTED]] judgeable installs passing on [[SMX:LATEST_DATE_FMT]] ([[SMX:RATE]]%). Inside Pi (v0.99+ with built-in MCP support), [[SMX:PI_MCP_PASS]] of [[SMX:PI_MCP_TOTAL]] MCP servers connected ([[SMX:PI_MCP_RATE]]%) compared with [[SMX:PI_PLUGIN_PASS]] of [[SMX:PI_PLUGIN_TOTAL]] GitHub-packaged plugins ([[SMX:PI_PLUGIN_RATE]]%).</p>
+
+<h2>How did all five agents perform in week [[SMX:WEEK_KEY]]?</h2>
+<p class="answer">Here is the full week [[SMX:WEEK_KEY]] agent ranking and night-by-night pass trend.</p>
+[[SMX:WEEK_RANKING_TABLE]]
+[[SMX:WEEK_TREND_TABLE]]
+[[SMX:WEEK_VERSIONS_HTML]]
+
+<h2>How well does Pi handle MCP servers compared to GitHub plugins?</h2>
+<p class="answer">Pi handles standard MCP servers via <code>pi mcp list</code> at roughly the same rate as Codex and Cursor, while plugins installed as GitHub Pi packages depend on whether the repository follows Pi's skill directory layout.</p>
+[[SMX:PI_MCP_VS_PLUGIN_HTML]]
+<p>In our Nov 20, 2026 baseline (<code>testing/results/2026-11-20.json</code>), Pi passed 9 of 9 reference MCP servers (100%) and 21 of 45 npm MCP servers (46.7%), right in line with Codex (8/9 and 22/45) and Cursor (9/9 and 23/45). By contrast, Pi passed 55 of 86 plugins (64.0%) because several repos only expose Claude Code plugin layouts without Pi-compatible skill paths. Browse verified Pi-ready add-ons at <a href="/works-in/pi/">what works in Pi</a>.</p>
+
+<h2>What got fixed, broke or flipped in week [[SMX:WEEK_KEY]]?</h2>
+<p class="answer">Week [[SMX:WEEK_KEY]] logged [[SMX:FIXED_N]] fixed add-ons, [[SMX:BROKE_N]] confirmed breaks and [[SMX:FLAKY_N]] flaky flips.</p>
+<h3>Fixed this week</h3>[[SMX:WEEK_FIXED_LIST]]
+<h3>Broke this week</h3>[[SMX:WEEK_BROKE_LIST]]
+<h3>Flaky (passed some nights, failed others)</h3>[[SMX:WEEK_FLAKY_LIST]]
+
+<h2>Standout add-on of week [[SMX:WEEK_KEY]]</h2>
+[[SMX:WEEK_STANDOUT_HTML]]
+
+[[SMX:CAVEATS_HTML]]
+{% set faqs = [
+  {q:"Does Pi coding agent support MCP servers?", a:"Yes. Pi 0.99+ ships built-in MCP support, verified nightly via pi mcp list. On [[SMX:LATEST_DATE_FMT]], [[SMX:PI_MCP_PASS]] of [[SMX:PI_MCP_TOTAL]] tested MCP servers ([[SMX:PI_MCP_RATE]]%) connected cleanly in Pi."},
+  {q:"How does Pi compare to Claude Code on add-on compatibility?", a:"On MCP servers and standalone Agent Skills, Pi and Claude Code match closely when no API key is required. On marketplace plugins, Claude Code has native marketplace support while Pi installs GitHub repos as Pi packages, so only repos exposing Pi-discoverable skills pass."},
+  {q:"Where can I find the full week [[SMX:WEEK_KEY]] test scorecard?", a:"Open /reports/week/[[SMX:WEEK_KEY]]/ for the interactive scorecard or /reports/latest/ for today's per-add-on lookup."}
+] %}{% set art = {headline: "Week " + "[[SMX:WEEK_KEY]] scorecard: Pi MCP vs plugins", description: desc} %}
+{% include "faq.njk" %}
+<p class="related-links"><a href="/works-in/pi/">What works in Pi →</a><a href="/works-in/claude-code/">What works in Claude Code →</a><a href="/matrix/">Compatibility matrix →</a><a href="/reports/week/[[SMX:WEEK_KEY]]/">Scorecard [[SMX:WEEK_KEY]] →</a><a href="/how-we-test/">How we test →</a></p>
+</div>
+{% include "nlembed.njk" %}

@@ -1,0 +1,44 @@
+---
+layout: base.njk
+title: "Week [[SMX:WEEK_KEY]] scorecard: Grok Build ([[SMX:GROK_PLUGIN_RATE]]%) vs Claude Code ([[SMX:CLAUDE_PLUGIN_RATE]]%) plugins"
+permalink: /blog/week-[[SMX:WEEK_KEY]]/
+tags: blog
+issueDate: "[[SMX:WEEK_END]]"
+ogType: article
+desc: "Week [[SMX:WEEK_KEY]] ([[SMX:WEEK_SPAN]]): [[SMX:PASS]] of [[SMX:TESTED]] passed ([[SMX:RATE]]%). Grok Build passed [[SMX:GROK_PLUGIN_PASS]] of [[SMX:GROK_PLUGIN_TOTAL]] plugins."
+jsonld: {"@context":"https://schema.org","@type":"BlogPosting","headline":"Week [[SMX:WEEK_KEY]] scorecard: Grok Build ([[SMX:GROK_PLUGIN_RATE]]%) vs Claude Code ([[SMX:CLAUDE_PLUGIN_RATE]]%) plugins","datePublished":"[[SMX:WEEK_END]]","description":"Week [[SMX:WEEK_KEY]] ([[SMX:WEEK_SPAN]]): [[SMX:PASS]] of [[SMX:TESTED]] passed ([[SMX:RATE]]%). Grok Build passed [[SMX:GROK_PLUGIN_PASS]] of [[SMX:GROK_PLUGIN_TOTAL]] plugins.","author":{"@type":"Organization","name":"SkillMaxx"},"publisher":{"@type":"Organization","name":"SkillMaxx"}}
+---
+<div class="wrap prose"><p class="muted">[[SMX:WEEK_END_FMT]] · Data from [[SMX:WEEK_RUNS]] nightly runs, [[SMX:WEEK_SPAN]] · generated from the weekly scorecard</p>
+<h1 class="ph">Week [[SMX:WEEK_KEY]] scorecard: Grok Build vs Claude Code plugin compatibility</h1>
+<p class="answer">From [[SMX:WEEK_SPAN]], [[SMX:PASS]] of [[SMX:TESTED]] judgeable installs passed on [[SMX:LATEST_DATE_FMT]] ([[SMX:RATE]]%). On plugins specifically, Grok Build passed [[SMX:GROK_PLUGIN_PASS]] of [[SMX:GROK_PLUGIN_TOTAL]] ([[SMX:GROK_PLUGIN_RATE]]%) and Claude Code passed [[SMX:CLAUDE_PLUGIN_PASS]] of [[SMX:CLAUDE_PLUGIN_TOTAL]] ([[SMX:CLAUDE_PLUGIN_RATE]]%), showing near-parity on shared marketplace plugins aside from two known edge cases.</p>
+
+<h2>How did all five agents perform in week [[SMX:WEEK_KEY]]?</h2>
+<p class="answer">Below are the aggregated [[SMX:WEEK_RUNS]]-night pass rates and daily trend for week [[SMX:WEEK_KEY]].</p>
+[[SMX:WEEK_RANKING_TABLE]]
+[[SMX:WEEK_TREND_TABLE]]
+[[SMX:WEEK_VERSIONS_HTML]]
+
+<h2>Do Claude Code plugins install in Grok Build?</h2>
+<p class="answer">Yes: Grok Build supports Claude Code marketplaces alongside xAI's own marketplace, so most Claude Code plugins install there with two documented exceptions: Claude Code LSP plugins and ambiguous names that exist in multiple marketplaces.</p>
+[[SMX:GROK_VS_CLAUDE_PLUGINS_HTML]]
+<p>When the same plugin name appears in both xAI's marketplace and Claude Code's marketplace (examples documented in our <a href="/guides/what-installs-in-grok-build/">What installs in Grok Build</a> guide include <code>auth0</code>, <code>grafana-mcp</code>, <code>postman</code> and <code>pr-review-toolkit</code>), Grok Build asks you to disambiguate with <code>name@marketplace</code>. Meanwhile, Claude Code LSP plugins (such as language-server plugins) only target Claude Code.</p>
+
+<h2>What got fixed, broke or turned flaky in week [[SMX:WEEK_KEY]]?</h2>
+<p class="answer">Week [[SMX:WEEK_KEY]] recorded [[SMX:FIXED_N]] fixed add-ons, [[SMX:BROKE_N]] broken add-ons and [[SMX:FLAKY_N]] flaky add-ons.</p>
+<h3>Fixed this week</h3>[[SMX:WEEK_FIXED_LIST]]
+<h3>Broke this week</h3>[[SMX:WEEK_BROKE_LIST]]
+<h3>Flaky (passed some nights, failed others)</h3>[[SMX:WEEK_FLAKY_LIST]]
+
+<h2>Standout add-on of week [[SMX:WEEK_KEY]]</h2>
+[[SMX:WEEK_STANDOUT_HTML]]
+
+[[SMX:CAVEATS_HTML]]
+{% set faqs = [
+  {q:"Can Grok Build install Claude Code plugins?", a:"Yes. Grok Build documents Claude marketplace support, and on [[SMX:LATEST_DATE_FMT]] [[SMX:GROK_PLUGIN_PASS]] of [[SMX:GROK_PLUGIN_TOTAL]] plugins ([[SMX:GROK_PLUGIN_RATE]]%) installed cleanly in Grok Build. The main exceptions are Claude Code LSP plugins."},
+  {q:"How do I fix an ambiguous plugin install in Grok Build?", a:"Append the marketplace name using name@marketplace so Grok Build knows whether to pull from the xAI or Claude Code marketplace."},
+  {q:"Where can I compare every plugin between Claude Code and Grok Build?", a:"Check /matrix/ for the full side-by-side compatibility grid, or /works-in/grok-build/ and /works-in/claude-code/ for each agent's verified list."}
+] %}{% set art = {headline: "Week " + "[[SMX:WEEK_KEY]] scorecard: Grok Build vs Claude Code plugins", description: desc} %}
+{% include "faq.njk" %}
+<p class="related-links"><a href="/works-in/grok-build/">What works in Grok Build →</a><a href="/works-in/claude-code/">What works in Claude Code →</a><a href="/guides/what-installs-in-grok-build/">Grok Build plugin guide →</a><a href="/reports/week/[[SMX:WEEK_KEY]]/">Scorecard [[SMX:WEEK_KEY]] →</a><a href="/matrix/">Compatibility matrix →</a><a href="/how-we-test/">How we test →</a></p>
+</div>
+{% include "nlembed.njk" %}

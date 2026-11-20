@@ -13,6 +13,11 @@ Usage: python3 growth/scripts/midweek_blog_auto.py [YYYY-MM-DD] [--force] [--dry
 import html, json, os, sys
 from datetime import date, timedelta
 
+_HERE = os.path.dirname(os.path.abspath(__file__))
+if _HERE not in sys.path:
+    sys.path.insert(0, _HERE)
+import blog_queue
+
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 SLUG = {"claude_code": "claude-code", "codex": "codex", "grok_build": "grok-build", "cursor": "cursor", "pi": "pi"}
 AG = {"claude_code": "Claude Code", "codex": "Codex", "grok_build": "Grok Build", "cursor": "Cursor", "pi": "Pi"}
@@ -109,7 +114,8 @@ def build(d):
     agent_rows = "".join(r for _, r in sorted(rows, reverse=True))
     # By add-on type from the per-install results.
     res = rd_json(f"testing/results/{cd}.json", {}).get("results") or []
-    types = {i["slug"]: i.get("type") for i in (rd_json("data/skills.json", {}).get("items") or [])}
+    skills_items = rd_json("data/skills.json", {}).get("items") or []
+    types = {i["slug"]: i.get("type") for i in skills_items}
     agg = {}
     for x in res:
         t = TYPE.get(types.get(x["slug"]), "Other")
@@ -138,6 +144,50 @@ def build(d):
     jsonld = json.dumps({"@context": "https://schema.org", "@type": "BlogPosting", "headline": title, "datePublished": d.isoformat(),
                          "description": desc, "author": {"@type": "Organization", "name": "SkillMaxx"}, "publisher": {"@type": "Organization", "name": "SkillMaxx"}})
     sunday = os.path.exists(os.path.join(ROOT, "src/blog", f"week-{prev_key}.njk"))
+    queued = blog_queue.find_queued(ROOT, f"midweek-{key}", d.isoformat())
+    if queued:
+        _, qpath = queued
+        agent_table = (
+            '<div class="tw"><table class="matrix"><thead><tr><th>Agent</th>'
+            f'<th>Passed ({fmt(cd)})</th><th>Rate</th><th>{fmt(base["date"]) if base else "Week before"}</th>'
+            f'<th>Change (points)</th></tr></thead><tbody>{agent_rows}</tbody></table></div>'
+        )
+        tokens = blog_queue.build_common_tokens(res, skills_items, cur, notes, lo, cd)
+        extra_cav = list(tokens.pop("CAVEAT_LIST", []))
+        if base and cur.get("versions") and base.get("versions") and cur["versions"] != base["versions"]:
+            extra_cav.append("Agent versions changed since the comparison night, so some moves may come from the agents, not the add-ons.")
+        tokens.update({
+            "ISSUE_DATE": d.isoformat(),
+            "ISSUE_DATE_FMT": fmt(d, True),
+            "WEEK_KEY": key,
+            "PREV_WEEK_KEY": prev_key,
+            "CD": cd,
+            "CD_FMT": fmt(cd),
+            "CD_FMT_FULL": fmt(cd, True),
+            "BASE_CLAUSE": f", compared with {fmt(base['date'])}" if base else "",
+            "BASE_SENTENCE": delta,
+            "SINCE": since,
+            "PASS": f"{p:,}",
+            "TOTAL": f"{n:,}",
+            "TESTED": f"{tested:,}",
+            "RATE": f"{r_now}",
+            "NEEDS_KEY": f"{cur.get('needs_key', 0):,}",
+            "BROKEN": f"{cur.get('broken', 0):,}",
+            "PENDING": f"{cur.get('pending', 0):,}",
+            "FLAKY": f"{cur.get('flaky', 0):,}",
+            "ADDONS": f"{cur.get('addons') or len(skills_items):,}",
+            "BROKE_N": str(len(mv["broke"])),
+            "FIXED_N": str(len(mv["fixed"])),
+            "AGENT_COMPARISON_TABLE": agent_table,
+            "BROKE_LIST": li(mv["broke"], "broke"),
+            "FIXED_LIST": li(mv["fixed"], "got fixed"),
+            "CAVEATS_HTML": f'<p class="muted">Caveats: {" ".join(extra_cav)}</p>' if extra_cav else "",
+            "SUNDAY_LINK_PART": f' · <a href="/blog/week-{prev_key}/">last Sunday’s weekly write-up</a>' if sunday else "",
+        })
+        rendered, err = blog_queue.render_queued_template(qpath, tokens)
+        if err:
+            return None, err
+        return out_path(d), rendered
     body = f"""---
 layout: base.njk
 title: {json.dumps(title)}

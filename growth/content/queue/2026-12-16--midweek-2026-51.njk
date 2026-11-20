@@ -1,0 +1,47 @@
+---
+layout: base.njk
+title: "Skills vs plugins vs MCP servers ([[SMX:CD_FMT]] check): [[SMX:PASS]] of [[SMX:TOTAL]] passed"
+permalink: /blog/midweek-[[SMX:WEEK_KEY]]/
+tags: blog
+issueDate: "[[SMX:ISSUE_DATE]]"
+ogType: article
+desc: "On [[SMX:CD_FMT_FULL]], [[SMX:PASS]] of [[SMX:TOTAL]] installs passed ([[SMX:RATE]]%). How Agent Skills, marketplace plugins and MCP servers differ."
+jsonld: {"@context":"https://schema.org","@type":"BlogPosting","headline":"Skills vs plugins vs MCP servers ([[SMX:CD_FMT]] check): [[SMX:PASS]] of [[SMX:TOTAL]] passed","datePublished":"[[SMX:ISSUE_DATE]]","description":"On [[SMX:CD_FMT_FULL]], [[SMX:PASS]] of [[SMX:TOTAL]] installs passed ([[SMX:RATE]]%). How Agent Skills, marketplace plugins and MCP servers differ.","author":{"@type":"Organization","name":"SkillMaxx"},"publisher":{"@type":"Organization","name":"SkillMaxx"}}
+---
+<div class="wrap prose"><p class="muted">[[SMX:ISSUE_DATE_FMT]] · Data from the [[SMX:CD_FMT]] nightly run[[SMX:BASE_CLAUSE]] · refreshed from nightly reports</p>
+<h1 class="ph">Skills vs plugins vs MCP servers: install commands and pass rates ([[SMX:CD_FMT]] check)</h1>
+<p class="answer">As of [[SMX:CD_FMT_FULL]], [[SMX:PASS]] of [[SMX:TOTAL]] sandboxed installs passed across Claude Code, Codex, Grok Build, Cursor and Pi ([[SMX:RATE]]% of [[SMX:TESTED]] judgeable installs).[[SMX:BASE_SENTENCE]] Skills (<code>SKILL.md</code> folders), marketplace plugins and MCP servers solve different jobs and show distinct pass rates because they rely on completely different install paths.</p>
+
+<h2>What is the difference between an agent skill, a plugin and an MCP server?</h2>
+<p class="answer">An Agent Skill is a portable Markdown instruction folder (<code>SKILL.md</code>), a plugin is an agent-packaged bundle (often shipping skills, hooks and commands together), and an MCP server is a live tool process speaking Model Context Protocol.</p>
+<ul>
+<li><b>Standalone Agent Skills:</b> Installed from GitHub via <code>npx skills add &lt;repo&gt; --skill &lt;name&gt; -g -a &lt;agent&gt;</code> and checked in each agent's skill loader (Claude Code startup list, Codex <code>prompt-input</code>, Grok <code>inspect</code>, Pi RPC <code>get_commands</code>, or Cursor's <code>~/.agents/skills</code> folder).</li>
+<li><b>Plugins:</b> Installed from official agent marketplaces (Claude Code, Codex, Grok Build) or as GitHub packages in Pi. Cursor's CLI does not ship a plugin installer, so plugins are tested in four agents.</li>
+<li><b>MCP servers:</b> Registered via <code>claude mcp add</code>, <code>~/.cursor/mcp.json</code> or the agent's MCP config, then verified with a live protocol handshake across all five agents.</li>
+</ul>
+
+<h2>Which format installs most reliably across agents?</h2>
+<p class="answer">Marketplace plugins and reference MCP servers install cleanly at the highest rates, while community npm MCP packages fail more often due to missing credentials or startup flags.</p>
+[[SMX:TYPE_TABLE]]
+
+<h2>How did each agent score this week?</h2>
+<p class="answer">Each agent's pass rate reflects the subset of skills, plugins and MCP servers its CLI supports.</p>
+[[SMX:AGENT_COMPARISON_TABLE]]
+
+<h2>What changed [[SMX:SINCE]]?</h2>
+<p class="answer">Movers below reflect verified two-night breaks and recoveries rather than single-night noise.</p>
+<h3>Broke [[SMX:SINCE]]</h3>
+[[SMX:BROKE_LIST]]
+<h3>Fixed [[SMX:SINCE]]</h3>
+[[SMX:FIXED_LIST]]
+
+[[SMX:CAVEATS_HTML]]
+{% set faqs = [
+  {q:"What is the difference between Claude skills, plugins and MCP servers?", a:"A skill is a SKILL.md instruction folder loaded into the agent's prompt, a plugin is a marketplace bundle that can include skills, commands and hooks, and an MCP server is a separate process that exposes live tools and resources over Model Context Protocol."},
+  {q:"Which format works across the most coding agents?", a:"Standalone Agent Skills (via npx skills add) and standard MCP servers both run across all five agents we test (Claude Code, Codex, Grok Build, Cursor and Pi), whereas marketplace plugins are agent-specific."},
+  {q:"How do I install an MCP server in Claude Code vs Cursor?", a:"In Claude Code you run claude mcp add and check status with claude mcp list. In Cursor you add an entry under mcpServers in ~/.cursor/mcp.json. Exact commands for each server appear on its SkillMaxx page."}
+] %}{% set art = {headline: "Skills vs plugins vs MCP servers (" + "[[SMX:CD_FMT]] check)", description: desc} %}
+{% include "faq.njk" %}
+<p class="related-links"><a href="/how-we-test/">How we test →</a><a href="/best/">Best by category →</a><a href="/works-in/claude-code/">Claude Code →</a><a href="/works-in/cursor/">Cursor →</a><a href="/reports/[[SMX:CD]]/">[[SMX:CD_FMT]] report →</a><a href="/reports/latest/">Latest report →</a>[[SMX:SUNDAY_LINK_PART]]</p>
+</div>
+{% include "nlembed.njk" %}
