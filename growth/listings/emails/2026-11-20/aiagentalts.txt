@@ -1,0 +1,22 @@
+Hello,
+
+I'd like to submit a free basic listing for SkillMaxx.
+
+Name: SkillMaxx
+Type: other agent tooling (an install-test directory, not an MCP server or a skill)
+Repository / docs: https://github.com/grandpajackai/skillmaxx
+Website: https://skillmaxx.gilventures.ai/
+Licence: the repo is public; it does not currently publish an SPDX license file
+Official or community: community-built (independent of Anthropic, OpenAI, xAI, Cursor, and Pi)
+Install command: none — it is a website and open test harness, not something you install into an agent
+One-line description: Free directory that re-installs agent skills, plugins, and MCP servers every night in fresh sandboxes and publishes pass/fail results.
+
+On the 2026-11-20 nightly run we tested 428 add-ons across Claude Code, Codex, Grok Build, Cursor, and Pi: 906 of 1,075 install tests passed. Results, including failures and log excerpts, are at https://skillmaxx.gilventures.ai/reports/latest/ and the method is at https://skillmaxx.gilventures.ai/how-we-test/.
+
+Happy to adjust the blurb if you have a preferred format.
+
+Brandon Gil
+SkillMaxx
+https://skillmaxx.gilventures.ai/
+
+P.S. If you'd like the weekly install results yourself, the SkillMaxx newsletter is free: https://skillmaxx.gilventures.ai/newsletter/

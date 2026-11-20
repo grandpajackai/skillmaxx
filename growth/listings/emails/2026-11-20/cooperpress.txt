@@ -1,0 +1,17 @@
+Hello,
+
+A brief tip for JavaScript Weekly or Node Weekly, with an honest caveat: SkillMaxx is not a JavaScript library. It is a free, open directory that re-installs agent skills, plugins, and MCP servers every night in fresh sandboxes for coding agents (Claude Code, Codex, Grok Build, Cursor, and Pi) and publishes pass/fail results, including failures.
+
+On 2026-11-20, 906 of 1,075 install tests passed across 428 add-ons.
+
+https://skillmaxx.gilventures.ai/
+https://skillmaxx.gilventures.ai/reports/latest/
+https://skillmaxx.gilventures.ai/how-we-test/
+
+If that is outside the brief, please ignore this email. I will not follow up.
+
+Brandon Gil
+SkillMaxx
+https://skillmaxx.gilventures.ai/
+
+P.S. If you'd like the weekly install results yourself, the SkillMaxx newsletter is free: https://skillmaxx.gilventures.ai/newsletter/

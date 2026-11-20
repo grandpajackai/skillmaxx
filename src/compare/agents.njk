@@ -1,0 +1,27 @@
+---
+layout: base.njk
+permalink: /compare/agents/
+ogType: article
+lastmodRun: true
+eleventyExcludeFromCollections: true
+eleventyComputed:
+  title: "{{ seo.compare.title }}"
+  desc: "Nightly install-test counts for Claude Code, Codex, Grok Build, Cursor and Pi on {{ seo.dateLabel }}: how many skills, plugins and MCP servers installed in each agent, with sample sizes."
+---
+<div class="wrap prose"><p class="muted"><a href="/">SkillMaxx</a> › Compare agents</p>
+<h1 class="ph">Which coding agent installs the most add-ons?</h1>
+<p class="ltb"><a href="/how-we-test/" class="tag tok">Last tested {{ seo.date }}</a></p>
+<p class="answer">{{ seo.compare.faqs[0].a }}</p>
+<h2>Install results by agent ({{ seo.dateLabel }})</h2>
+<div class="tw"><table class="matrix"><thead><tr><th>Agent</th><th>Passed</th><th>Tested</th><th>Pass rate</th><th>Needs API key</th><th>Failed (2 nights)</th></tr></thead><tbody>{% for g in seo.agents %}<tr><th scope="row"><a href="/works-in/{{ g.slug }}/">{{ g.name }}</a></th><td>{{ g.pass }}</td><td>{{ g.tested }}</td><td>{{ g.rate }}%</td><td>{{ g.needsKey.length }}</td><td>{{ g.broken.length }}</td></tr>{% endfor %}</tbody></table></div>
+<p>We only test an add-on in an agent when we have an install path for that pair, so the tested counts are not the same size. A higher pass rate on a smaller sample (for example Cursor) is not a claim that the agent is more reliable overall.</p>
+{% if seo.kinds.length %}<h2>Results by type</h2>
+{% for k in seo.kinds %}
+<h3>{{ k.h1 }}</h3>
+<ul>{% for p in k.perAgent %}<li>{% if p.href %}<a href="{{ p.href }}">{{ k.noun }} in {{ p.name }}</a>{% else %}{{ k.noun }} in {{ p.name }}{% endif %}: {{ p.n }} of {{ p.t }} passed ({{ p.rate }}%)</li>{% endfor %}</ul>
+{% endfor %}{% endif %}
+<p class="related-links">{% for k in seo.kinds %}<a href="/best/{{ k.slug }}/">{{ k.h1 }} →</a>{% endfor %}<a href="/works-in/">What works in each agent →</a><a href="/best/">Best by category →</a><a href="/reports/latest/">Latest nightly report →</a></p>
+<section class="faq" aria-labelledby="faqh"><h2 id="faqh">FAQ</h2>{% for f in seo.compare.faqs %}<details open><summary><h3>{{ f.q }}</h3></summary><p>{{ f.a }}</p></details>{% endfor %}</section>
+<p class="muted">"Installed" means it installs and loads in a sandbox with no credentials. We don't run your prompts. See <a href="/how-we-test/">how we test</a>.</p></div>
+{% for l in seo.compare.ld %}<script type="application/ld+json">{{ l | json | safe }}</script>{% endfor %}
+{% include "nlembed.njk" %}
