@@ -1,0 +1,9 @@
+[
+  {
+    "id": "req-002-github-skillmaxx-vault",
+    "title": "SkillMaxx: GitHub login in Vault",
+    "message": "SkillMaxx: to let me open the awesome-list PRs from the SkillMaxx GitHub account (not your personal one), please save that account's GitHub login in Grok Bot under Settings > Vault (site github.com, name it \"GitHub (SkillMaxx)\"). If it has 2FA by authenticator app, tell me in chat when you're around. That's all.",
+    "severity": "critical",
+    "created": "2026-11-20T15:45:00-05:00"
+  }
+]
