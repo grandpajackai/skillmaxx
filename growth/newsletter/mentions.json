@@ -1,0 +1,15 @@
+{
+  "mentions": [
+    {
+      "id": "lamp-lampos",
+      "issue": 4,
+      "section_title": "Independent mention",
+      "body": "Autonomous [Lamp](https://www.autonomous.ai/lamp) is a fully assembled open-source desk companion robot. Its open-source operating system, [lampOS](https://github.com/autonomous-ai/lampOS), is built to give coding agents such as Claude Code, Codex, Hermes, OpenClaw, OpenCode and Pi a camera, microphones, a voice and a moving body they can control, with extra skills available from Lamp's Skill Store or the Lamp SDK. The same project also documents running the OS on other robots, or on hardware you bring yourself.",
+      "disclaimer": "Not tested by SkillMaxx; independent mention, not sponsored.",
+      "sources": [
+        "https://www.autonomous.ai/lamp",
+        "https://github.com/autonomous-ai/lampOS"
+      ]
+    }
+  ]
+}

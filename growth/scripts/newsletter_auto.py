@@ -118,6 +118,35 @@ def names(lst, k=5):
     return ", ".join(link(x) for x in (lst or [])[:k])
 
 
+
+def mentions_for_issue(n):
+    """Independent, unsponsored mentions scheduled for this issue only (growth/newsletter/mentions.json)."""
+    doc = rd_json("growth/newsletter/mentions.json", [])
+    items = doc.get("mentions") if isinstance(doc, dict) else doc
+    out = []
+    seen = set()
+    for it in items or []:
+        if not isinstance(it, dict):
+            continue
+        issues = it.get("issues") if isinstance(it.get("issues"), list) else []
+        if it.get("issue") is not None:
+            issues = list(issues) + [it.get("issue")]
+        issues = {int(x) for x in issues if str(x).isdigit() or isinstance(x, int)}
+        if n not in issues:
+            continue
+        mid = str(it.get("id") or it.get("section_title") or len(out))
+        if mid in seen:
+            continue
+        title = clean(it.get("section_title") or it.get("title") or "Independent mention")
+        body = str(it.get("body") or it.get("body_md") or "").strip()
+        disc = str(it.get("disclaimer") or "Not tested by SkillMaxx; independent mention, not sponsored.").strip()
+        if not body or PLACEHOLDER.search(body) or PLACEHOLDER.search(title) or PLACEHOLDER.search(disc):
+            continue
+        seen.add(mid)
+        out.append((title, body, disc))
+    return out
+
+
 def tip(wk, rep):
     """One practical tip picked by rule from this week's data (no LLM)."""
     if wk.get("version_changes"):
@@ -252,6 +281,8 @@ def build(d, root=None, radar=None):
             break
     if radar_lines:
         L += ["## 👀 On our radar (not tested by us yet)", ""] + radar_lines + ["", "Want one of these in the nightly run? Reply with the name.", ""]
+    for title, body, disc in mentions_for_issue(n):
+        L += [f"## {title}", "", body, "", f"*{disc}*", ""]
     L += ["## 🔧 Tip of the week", "", tip(wk, rep), "", FOOTER]
     return n, "\n".join(L), key
 

@@ -26,9 +26,13 @@ def fixture():
         os.makedirs(os.path.dirname(os.path.join(t, rel)), exist_ok=True)
         shutil.copy(os.path.join(FIX, src), os.path.join(t, rel))
     for rel in ["src/newsletter/issue-1.md", "src/newsletter/issue-2.md", "src/newsletter/issue-3.md",
-                "src/blog/six-nights.njk", "src/blog/mcp-claude-code-vs-cursor.njk"]:
+                "src/blog/six-nights.njk", "src/blog/mcp-claude-code-vs-cursor.njk",
+                "growth/newsletter/mentions.json"]:
+        src = os.path.join(ROOT, rel)
+        if not os.path.exists(src):
+            continue
         os.makedirs(os.path.dirname(os.path.join(t, rel)), exist_ok=True)
-        shutil.copy(os.path.join(ROOT, rel), os.path.join(t, rel))
+        shutil.copy(src, os.path.join(t, rel))
     return t
 
 
@@ -67,6 +71,9 @@ def test_newsletter():
         assert bad not in text, bad
     assert text.rstrip().endswith('{% include "nlembed.njk" %}') and '<div class="wrap prose nlissue">' in text
     assert "/reports/week/2026-47/" in text and "Issue #4" in text
+    assert "Independent mention" in text
+    assert "https://www.autonomous.ai/lamp" in text and "https://github.com/autonomous-ai/lampOS" in text
+    assert "Not tested by SkillMaxx; independent mention, not sponsored." in text
     # Idempotent: same day, later day of the same week, and Monday catch-up for the Sunday all skip without touching it.
     m0 = os.stat(p).st_mtime_ns
     for day in ("2026-11-22", "2026-11-21", "2026-11-16"):
@@ -79,7 +86,9 @@ def test_newsletter():
     w48 = dict(weeks[0], key="2026-48", start="2026-11-23", end="2026-11-29")
     json.dump([w48] + weeks, open(os.path.join(t, "src/_data/weeks.json"), "w"))
     rc, out = quiet(nl.main, ["2026-11-29"]); assert rc == 0 and os.path.exists(os.path.join(t, "src/newsletter/issue-5.md")), out
-    assert "/newsletter/issue-5/" in open(os.path.join(t, "src/newsletter/issue-5.md")).read()
+    t5first = open(os.path.join(t, "src/newsletter/issue-5.md")).read()
+    assert "/newsletter/issue-5/" in t5first
+    assert "autonomous.ai/lamp" not in t5first and "lampOS" not in t5first, "mentions are one-time per listed issue"
     # Placeholder guard: bad source data -> refuse, write nothing.
     w49 = dict(weeks[0], key="2026-49", start="2026-11-30", end="2026-12-06", standout={"slug": "x", "name": "TODO", "agents": []})
     json.dump([w49, w48] + weeks, open(os.path.join(t, "src/_data/weeks.json"), "w"))
