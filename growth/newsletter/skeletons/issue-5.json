@@ -1,0 +1,41 @@
+{
+  "issue": 5,
+  "week": "2026-48",
+  "target_date": "2026-11-29",
+  "theme": "Cross-agent MCP compatibility & post-Thanksgiving install stability",
+  "radar_policy": "Pulled fresh at Sunday publish time via growth/scripts/fetch_radar_hn.py --date 2026-11-29 --radar-json.",
+  "slot_order": [
+    "opener_note",
+    "weekly_numbers",
+    "on_the_blog",
+    "spotlight",
+    "on_our_radar_fresh_sunday",
+    "independent_mentions",
+    "evergreen_section",
+    "tip_of_the_week",
+    "tell_us_prompts",
+    "sponsor_slot"
+  ],
+  "opener_note": "Hope you had a good Thanksgiving week. Our nightly sandboxes kept running right through the holiday so you can see which add-ons held steady and which ones slipped.",
+  "spotlight": {
+    "heading": "## \ud83d\udd0d Spotlight: Cross-agent MCP compatibility",
+    "body": "If you use more than one coding agent, MCP servers are the fastest way to keep the same tools across setups. Official reference servers and clean npm packages behave almost identically across Claude Code, Codex, Grok Build, Cursor and Pi once slow npm downloads are cached ahead of time. Browse every server tested in all five agents on [Best MCP servers](/best/mcp-servers/) or our [Cursor MCP guide](/guides/best-mcp-servers-cursor/).",
+    "include_mcp_stats": true,
+    "include_type_stats": false
+  },
+  "evergreen_section": {
+    "heading": "## \ud83e\udded Why one bad night does not mark a tool broken",
+    "body": "A single failed install in a clean sandbox can come from a registry blip or a slow package host. That is why SkillMaxx retries every failure once in a fresh container, labels flip-floppers as flaky, and waits for two bad nights in a row before calling anything broken. Full rules: [flaky vs broken installs](/guides/flaky-vs-broken/)."
+  },
+  "tell_us_prompts": [
+    "**One MCP server or plugin you want tested** before you wire it into your setup.",
+    "**Did we get your tool wrong?** Send the link and we will rerun it and fix the page.",
+    "**Which breakdown helps you more:** cross-agent MCP tables or per-agent plugin lists?"
+  ],
+  "sponsor_note": "BFCM (through Nov 30 ET): Category and Newsletter founding slots lock for 12 months; Featured is $19 for December (code `BFCM-FEATURED-DEC`, one slot).",
+  "section_prompts": {
+    "opener": "Optional Grok polish after auto-publish: keep Brandon's 1st-person humble voice; connect the week-48 pass-rate move to the mid-week MCP post without inventing stats.",
+    "spotlight": "Highlight any notable MCP server that passed all 5 agents or recovered in week 48 from testing/results/<lastd>.json.",
+    "radar": "Verify the 4 HN items from --radar-json are current from Nov 23-29 and add 1-sentence plain-English context if any title is cryptic."
+  }
+}

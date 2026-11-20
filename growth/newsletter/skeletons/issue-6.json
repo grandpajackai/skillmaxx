@@ -1,0 +1,41 @@
+{
+  "issue": 6,
+  "week": "2026-49",
+  "target_date": "2026-12-06",
+  "theme": "December kickoff: Plugins vs. standalone skills vs. MCP servers & API-key clarity",
+  "radar_policy": "Pulled fresh at Sunday publish time via growth/scripts/fetch_radar_hn.py --date 2026-12-06 --radar-json.",
+  "slot_order": [
+    "opener_note",
+    "weekly_numbers",
+    "on_the_blog",
+    "spotlight",
+    "on_our_radar_fresh_sunday",
+    "independent_mentions",
+    "evergreen_section",
+    "tip_of_the_week",
+    "tell_us_prompts",
+    "sponsor_slot"
+  ],
+  "opener_note": "First full week of December. Teams are locking down their coding setups before year-end freezes, so this issue focuses on separating credential-gated tools from genuinely broken installs.",
+  "spotlight": {
+    "heading": "## \ud83d\udd0d Spotlight: Plugins vs. standalone skills vs. MCP servers",
+    "body": "SkillMaxx tracks three formats in one catalog: marketplace plugins, standalone Agent Skills (`SKILL.md` installed via `npx skills add`), and MCP servers (reference and npm). Plugins pack metadata and commands cleanly inside one agent's marketplace, while standalone skills and MCP servers aim to work across all five CLIs. See how each format is verified on [How we test](/how-we-test/).",
+    "include_mcp_stats": false,
+    "include_type_stats": true
+  },
+  "evergreen_section": {
+    "heading": "## \ud83d\udee1\ufe0f Sandbox note: Why missing API keys are not bugs",
+    "body": "Our nightly containers start with an empty home folder and zero API keys or logins. Any SaaS MCP server or plugin that asks for a token at startup fails our keyless check and gets grouped under needs your key rather than broken. Open any listing from [today's report](/reports/latest/) to inspect the exact error line and required environment variable."
+  },
+  "tell_us_prompts": [
+    "**One skill repo or MCP server you want added** to the nightly sandbox run ([submit here](/submit/)).",
+    "**Did our keyless sandbox mislabel a credential-gated tool?** Reply with the URL and we will inspect the log.",
+    "**Which coding agent is your daily driver right now:** Claude Code, Codex, Grok Build, Cursor, or Pi?"
+  ],
+  "sponsor_note": "",
+  "section_prompts": {
+    "opener": "Optional Grok polish after auto-publish: summarize week 49's main move (Codex/Cursor/Pi/Grok/Claude) in 2 plain sentences grounded in reports.json.",
+    "spotlight": "Call out any newly added skills or plugins from data/skills.json that landed cleanly across all 5 agents during week 49.",
+    "radar": "Verify the 4 HN items from --radar-json are current from Nov 30-Dec 6 and clearly labeled not tested by SkillMaxx yet."
+  }
+}

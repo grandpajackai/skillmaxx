@@ -371,6 +371,52 @@ def test_blog_queue():
     shutil.rmtree(t)
     print("ok blog queue: 8 drafts, date gate, token refresh, JSON-LD valid")
 
+
+
+def test_newsletter_skeletons():
+    sdir = os.path.join(ROOT, "growth/newsletter/skeletons")
+    for n in (5, 6):
+        doc = json.load(open(os.path.join(sdir, f"issue-{n}.json")))
+        assert doc["issue"] == n and doc["spotlight"]["heading"] and doc["evergreen_section"]["heading"]
+        assert len(doc["tell_us_prompts"]) == 3 and "section_prompts" in doc
+
+    t = fixture()
+    shutil.copytree(sdir, os.path.join(t, "growth/newsletter/skeletons"))
+    nl = load("growth/scripts/newsletter_auto.py", "nls"); nl.ROOT = t
+    # Issue 4 first (must not use issue 5 skeleton)
+    assert nl.main(["2026-11-22"]) == 0
+    weeks = json.load(open(os.path.join(t, "src/_data/weeks.json")))
+    w48 = dict(weeks[0], key="2026-48", start="2026-11-23", end="2026-11-29", trend=[dict(weeks[0]["trend"][-1], date="2026-11-29")])
+    w49 = dict(weeks[0], key="2026-49", start="2026-11-30", end="2026-12-06", trend=[dict(weeks[0]["trend"][-1], date="2026-12-06")])
+    json.dump([w49, w48] + weeks, open(os.path.join(t, "src/_data/weeks.json"), "w"))
+    shutil.copy(os.path.join(t, "testing/results/2026-11-18.json"), os.path.join(t, "testing/results/2026-11-29.json"))
+    shutil.copy(os.path.join(t, "testing/results/2026-11-18.json"), os.path.join(t, "testing/results/2026-12-06.json"))
+
+    rj = os.path.join(t, "radar.json")
+    json.dump([{"title": "Fresh Sunday HN item", "url": "https://news.ycombinator.com/item?id=555", "points": 31, "comments": 4}], open(rj, "w"))
+
+    rc5, out5 = quiet(nl.main, ["2026-11-29", "--radar-json", rj])
+    p5 = os.path.join(t, "src/newsletter/issue-5.md")
+    assert rc5 == 0 and os.path.exists(p5), out5
+    t5 = open(p5, encoding="utf-8").read()
+    assert "Spotlight: Cross-agent MCP compatibility" in t5
+    assert "This week's receipt" in t5
+    assert "Fresh Sunday HN item" in t5
+    assert "BFCM-FEATURED-DEC" in t5
+    assert not nl.problems(t5), nl.problems(t5)
+
+    rc6, out6 = quiet(nl.main, ["2026-12-06", "--radar-json", rj])
+    p6 = os.path.join(t, "src/newsletter/issue-6.md")
+    assert rc6 == 0 and os.path.exists(p6), out6
+    t6 = open(p6, encoding="utf-8").read()
+    assert "Spotlight: Plugins vs. standalone skills vs. MCP servers" in t6
+    assert "This week by format" in t6
+    assert "Why missing API keys are not bugs" in t6
+    assert "Fresh Sunday HN item" in t6
+    assert not nl.problems(t6), nl.problems(t6)
+    shutil.rmtree(t)
+    print("ok newsletter skeletons: issues 5 and 6 render planned evergreen sections, live receipts, fresh radar, zero placeholders")
+
 if __name__ == "__main__":
-    test_newsletter(); test_midweek(); test_sunday_guard(); test_monday_check(); test_alert_wiring(); test_publish_script(); test_first_subscriber_alert(); test_telegram_requests(); test_blog_queue()
+    test_newsletter(); test_midweek(); test_sunday_guard(); test_monday_check(); test_alert_wiring(); test_publish_script(); test_first_subscriber_alert(); test_telegram_requests(); test_blog_queue(); test_newsletter_skeletons()
     print("test_autopublish: all ok")
