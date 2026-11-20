@@ -30,9 +30,18 @@ fi
 # throwaway HOME can still be deleted after the container exits.
 NPM_LINK=""
 if [ "$NPM_CACHE_MOUNT" = 1 ]; then
-  # Share only the content-addressable cache. Each sandbox gets its own ~/.npm/_npx
-  # so parallel jobs do not race on npx extract/rename (ENOTEMPTY).
-  NPM_LINK="mkdir -p /home/sbx/.npm/_npx /tmp/skillmaxx-npm-cache/_cacache /tmp/skillmaxx-npm-cache/_prebuilds && ln -sfn /tmp/skillmaxx-npm-cache/_cacache /home/sbx/.npm/_cacache && ln -sfn /tmp/skillmaxx-npm-cache/_prebuilds /home/sbx/.npm/_prebuilds && "
+  if [ "${SKILLMAXX_PREWARM_NPX:-}" = 1 ]; then
+    NPM_LINK="mkdir -p /home/sbx/.npm /tmp/skillmaxx-npm-cache/_cacache /tmp/skillmaxx-npm-cache/_prebuilds /tmp/skillmaxx-npm-cache/_npx && ln -sfn /tmp/skillmaxx-npm-cache/_cacache /home/sbx/.npm/_cacache && ln -sfn /tmp/skillmaxx-npm-cache/_prebuilds /home/sbx/.npm/_prebuilds && ln -sfn /tmp/skillmaxx-npm-cache/_npx /home/sbx/.npm/_npx && "
+  else
+    # Symlink completed pre-warmed _npx/<hash> dirs (ones with package.json) so npx
+    # starts immediately without re-running npm install inside the agent timeout, while
+    # leaving ~/.npm/_npx itself private so non-prewarmed runs cannot race.
+    NPM_LINK="mkdir -p /home/sbx/.npm/_npx /tmp/skillmaxx-npm-cache/_cacache /tmp/skillmaxx-npm-cache/_prebuilds /tmp/skillmaxx-npm-cache/_npx && ln -sfn /tmp/skillmaxx-npm-cache/_cacache /home/sbx/.npm/_cacache && ln -sfn /tmp/skillmaxx-npm-cache/_prebuilds /home/sbx/.npm/_prebuilds && for d in /tmp/skillmaxx-npm-cache/_npx/*; do [ -f "\$d/package.json" ] && ln -sfn "\$d" "/home/sbx/.npm/_npx/\${d##*/}" || true; done && "
+  fi
+fi
+UV_CACHE_MOUNT=
+if [ -n "${SKILLMAXX_UV_CACHE:-}" ] && [ -d "$SKILLMAXX_UV_CACHE" ]; then
+  UV_CACHE_MOUNT=1
 fi
 
 run_bwrap() {
@@ -40,7 +49,7 @@ run_bwrap() {
     --ro-bind "$AG/node_modules" "$AG/node_modules" --ro-bind "$AG/cursorhome/.local" "$AG/cursorhome/.local" \
     --ro-bind-try "$AG/codex-mirror" "$AG/codex-mirror" --ro-bind-try "$AG/claude-plugins-official" "$AG/claude-plugins-official" --ro-bind-try "$AG/node22" "$AG/node22" \
     --ro-bind "$(dirname "$(readlink -f "$0")")" /tmp/smx-testing \
-    --bind "$H" /home/sbx ${NPM_CACHE_MOUNT:+--bind "$SKILLMAXX_NPM_CACHE" /tmp/skillmaxx-npm-cache} --setenv HOME /home/sbx \
+    --bind "$H" /home/sbx ${NPM_CACHE_MOUNT:+--bind "$SKILLMAXX_NPM_CACHE" /tmp/skillmaxx-npm-cache} ${UV_CACHE_MOUNT:+--bind "$SKILLMAXX_UV_CACHE" /tmp/skillmaxx-uv-cache --setenv UV_CACHE_DIR /tmp/skillmaxx-uv-cache} --setenv HOME /home/sbx \
     --setenv PATH "$AG/node22/bin:$AG/node_modules/.bin:$AG/cursorhome/.local/bin:/usr/local/bin:/usr/bin:/bin" \
     --unsetenv GH_TOKEN --unsetenv GITHUB_TOKEN --unsetenv ANTHROPIC_API_KEY --unsetenv OPENAI_API_KEY --unsetenv XAI_API_KEY \
     --chdir /home/sbx --dev /dev --proc /proc --unshare-pid --unshare-ipc --die-with-parent \
@@ -58,6 +67,7 @@ run_docker() {
   [ -d "$AG/codex-mirror" ] && args+=(-v "$AG/codex-mirror:$AG/codex-mirror:ro")
   [ -d "$AG/claude-plugins-official" ] && args+=(-v "$AG/claude-plugins-official:$AG/claude-plugins-official:ro")
   if [ "$NPM_CACHE_MOUNT" = 1 ]; then args+=(-v "$SKILLMAXX_NPM_CACHE:/tmp/skillmaxx-npm-cache"); fi
+  if [ "$UV_CACHE_MOUNT" = 1 ]; then args+=(-v "$SKILLMAXX_UV_CACHE:/tmp/skillmaxx-uv-cache" -e UV_CACHE_DIR=/tmp/skillmaxx-uv-cache); fi
   # /tmp is a tmpfs, so the probe path is a symlink made after that mount, not a bind under it.
   args+=("$IMAGE" bash -c "ln -sfn /smx-testing /tmp/smx-testing && $NPM_LINK$*")
   "${args[@]}"
