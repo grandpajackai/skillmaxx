@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-20",
+  "time": "17:27 ET",
+  "from": "skillmaxx@gilventures.ai",
+  "sent": [
+    {"to": "submit@aiagentalts.com", "subject": "Free listing submission: SkillMaxx (install-test directory for agent skills and MCP servers)", "messageId": "1795213631411155300", "source": "https://aiagentalts.com/submit/"},
+    {"to": "hello@vibestacklab.com", "subject": "Tool tip: SkillMaxx, nightly install tests for coding-agent add-ons", "messageId": "1795213634136155000", "source": "https://vibestacklab.com/newsletter"},
+    {"to": "tips@latent.space", "subject": "Tip: SkillMaxx, a free nightly install-test directory for MCP servers and agent skills", "messageId": "1795213636669155000", "source": "https://latent.space/about/"},
+    {"to": "editorial@aicodetoolkit.com", "subject": "Topic tip: nightly Claude Code plugin and MCP install results", "messageId": "1795213639232155300", "source": "https://aicodetoolkit.com/contact/"},
+    {"to": "editor@cooperpress.com", "subject": "Tip (not a JS library): SkillMaxx, a free install-test directory for coding-agent add-ons", "messageId": "1795213641763138300", "source": "https://cooperpress.com/contact/"}
+  ],
+  "note": "All five used the newsletter P.S. from growth/outreach/SUBSCRIBE_PS.md. Numbers are from the 2026-11-20 nightly (906/1,075; 428 add-ons). No invented stats."
+}

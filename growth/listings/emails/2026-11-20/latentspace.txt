@@ -1,0 +1,17 @@
+Hello,
+
+A tip in case it is useful for Latent Space readers who install MCP servers and agent skills: SkillMaxx is a free, open directory that re-runs the real install command for 428 add-ons every night in clean sandboxes across Claude Code, Codex, Grok Build, Cursor, and Pi, and publishes pass/fail matrices plus failure logs.
+
+On 2026-11-20, 906 of 1,075 install tests passed. We only count a pass when the add-on installs and loads with no credentials; we do not run prompts or invent scores.
+
+https://skillmaxx.gilventures.ai/
+https://skillmaxx.gilventures.ai/reports/latest/
+https://skillmaxx.gilventures.ai/how-we-test/
+
+Please ignore this if it is not a fit.
+
+Brandon Gil
+SkillMaxx
+https://skillmaxx.gilventures.ai/
+
+P.S. If you'd like the weekly install results yourself, the SkillMaxx newsletter is free: https://skillmaxx.gilventures.ai/newsletter/

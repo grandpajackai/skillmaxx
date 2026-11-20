@@ -1,0 +1,27 @@
+---
+layout: base.njk
+pagination: {data: seo.kinds, size: 1, alias: k}
+permalink: "/best/{{ k.slug }}/"
+ogType: article
+lastmodRun: true
+eleventyExcludeFromCollections: true
+eleventyComputed:
+  title: "{{ k.title }}"
+  desc: "{{ k.passing.length }} of {{ k.items.length }} {{ k.noun }} installed in at least one of Claude Code, Codex, Grok Build, Cursor or Pi on {{ seo.dateLabel }}. Ranked by agents passed. Re-tested nightly."
+---
+<div class="wrap prose"><p class="muted"><a href="/">SkillMaxx</a> › <a href="/best/">Best by category</a> › {{ k.h1 }}</p>
+<h1 class="ph">{{ k.h1 }}</h1>
+<p class="ltb"><a href="/how-we-test/" class="tag tok">Last tested {{ seo.date }}</a></p>
+<p class="answer">{{ k.faqs[0].a }}</p>
+<h2>Which {{ k.noun }} install in the most agents?</h2>
+<div class="tw"><table class="matrix"><thead><tr><th>#</th><th>Add-on</th><th>Type</th><th>Installed in ({{ seo.dateLabel }})</th><th>Stars</th></tr></thead><tbody>{% for i in k.passing %}<tr><td>{{ loop.index }}</td><th scope="row"><a href="/skills/{{ i.s.slug }}/">{{ i.s.name }}</a></th><td>{{ i.s.typeLabel }}</td><td style="white-space:normal">{{ i.okNames | join(", ") }}</td><td>{% if i.stars %}★ {{ i.stars | kfmt }}{% endif %}</td></tr>{% endfor %}</tbody></table></div>
+{% if k.clean.length %}<h2>Which {{ k.noun }} passed in every agent we tested? ({{ k.clean.length }})</h2>
+<p>These installed and loaded in every agent that has an install path we can test.{% if k.cleanAll %} {{ k.cleanAll }} of them passed in all 5 agents.{% endif %}</p>
+<ul>{% for i in k.clean %}<li><a href="/skills/{{ i.s.slug }}/">{{ i.s.name }}</a> ({{ i.okNames | join(", ") }})</li>{% endfor %}</ul>{% endif %}
+<h2>How do {{ k.noun }} do in each agent?</h2>
+<ul>{% for p in k.perAgent %}<li>{% if p.href %}<a href="{{ p.href }}">{{ p.name }}</a>{% else %}{{ p.name }}{% endif %}: {{ p.n }} of {{ p.t }} installed and loaded{% if p.key %}, {{ p.key }} need an API key{% endif %}{% if p.broken %}, {{ p.broken }} failed two nights running{% endif %}</li>{% endfor %}</ul>
+<p class="related-links">{% for o in seo.kinds %}{% if o.key != k.key %}<a href="/best/{{ o.slug }}/">{{ o.h1 }} →</a>{% endif %}{% endfor %}<a href="/compare/agents/">Compare agents →</a><a href="/works-in/">What works in each agent →</a><a href="/best/">Best by category →</a></p>
+<section class="faq" aria-labelledby="faqh"><h2 id="faqh">FAQ</h2>{% for f in k.faqs %}<details open><summary><h3>{{ f.q }}</h3></summary><p>{{ f.a }}</p></details>{% endfor %}</section>
+<p class="muted">Ranked by number of agents passed, then GitHub stars. "Installed" means it installs and loads in a sandbox with no credentials. See <a href="/how-we-test/">how we test</a>.</p></div>
+{% for l in k.ld %}<script type="application/ld+json">{{ l | json | safe }}</script>{% endfor %}
+{% include "nlembed.njk" %}
