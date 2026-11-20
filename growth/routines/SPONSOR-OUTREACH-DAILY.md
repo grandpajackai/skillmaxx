@@ -27,4 +27,5 @@ python3 growth/scripts/zoho_mail.py reply MESSAGE_ID --to a@b.com --subject "Re:
 3. Re-check facts in the draft against the latest `src/_data/reports.json` and the live directory (counts, category names) before sending. Never invent numbers.
 4. Form-lead nudges (Resend, Clerk, Sanity, Netlify, other `form` rows) are not email threads: skip them here.
 5. After sending, wait a few minutes and read Inbox for bounces (`mailer-daemon`) and auto-replies; mark bounced rows **Bounced** with no follow-ups.
-6. Log each send in `growth/sponsors/PIPELINE.csv` (status, date, subject, time ET, Zoho messageId, next follow-ups) and `growth/outreach/sent/YYYY-MM-DD-email-results.json`; STATUS.md line via PR + squash-merge.
+6. Append the one-line newsletter invite from `growth/outreach/SUBSCRIBE_PS.md` to outbound pitches, follow-ups, and polite decline replies (never on unsubscribes or opt-outs).
+7. Log each send in `growth/sponsors/PIPELINE.csv` (status, date, subject, time ET, Zoho messageId, next follow-ups) and `growth/outreach/sent/YYYY-MM-DD-email-results.json`; STATUS.md line via PR + squash-merge.

@@ -82,7 +82,14 @@ PREV=$(python3 -c 'import sys,datetime; print(datetime.date.fromisoformat(sys.ar
 if [ "$DOW" = 7 ] || [ "$DOW" = 1 ]; then
   [ -f growth/scripts/weekly_blog_auto.py ] && { python3 growth/scripts/weekly_blog_auto.py "$D" || echo "publish: weekly blog post skipped (generator error)"; }
   NLD=$D; [ "$DOW" = 1 ] && NLD=$PREV
-  [ -f growth/scripts/newsletter_auto.py ] && { python3 growth/scripts/newsletter_auto.py "$NLD" || echo "publish: newsletter issue skipped (generator refused or failed)"; }
+  if [ -f growth/scripts/newsletter_auto.py ]; then
+    RADAR_JSON=$(mktemp)
+    if [ -f growth/scripts/fetch_radar_hn.py ]; then
+      python3 growth/scripts/fetch_radar_hn.py --date "$NLD" --out "$RADAR_JSON" || true
+    fi
+    python3 growth/scripts/newsletter_auto.py "$NLD" --radar-json "$RADAR_JSON" || echo "publish: newsletter issue skipped (generator refused or failed)"
+    rm -f "$RADAR_JSON"
+  fi
 fi
 # Wednesday (Thursday catch-up): the mid-week post, /blog/midweek-<YYYY-WW>/.
 if [ "$DOW" = 3 ] || [ "$DOW" = 4 ]; then
@@ -126,6 +133,7 @@ for i in 1 2 3; do
   gh pr update-branch "$PR" -R "$REPO" >/dev/null 2>&1 || true
 done
 [ "$merged" = 1 ] || fail "could not merge $PR"
+[ -f testing/check_first_subscriber.py ] && { python3 testing/check_first_subscriber.py || true; }
 status merged
 echo "publish: merged $PR; waiting for $SITE/reports/$D/"
 for i in $(seq 1 30); do

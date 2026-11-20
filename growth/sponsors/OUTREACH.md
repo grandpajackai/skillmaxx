@@ -7,7 +7,7 @@
 - **Email pacing:** never send in a burst. Spread the day's cold emails at *random* intervals (roughly 20–60 min apart, jittered) between ~9:00 AM and ~6:00 PM America/New_York, weekdays. Daily cap stays on the ramp: ~10/day week 1 → ~20/day week 2 → max 30/day, only if zero bounces/spam complaints. A steady every-5-minutes cadence (~120/day) is **not** used: volume, not spacing, is what hurts a new domain.
 - **Contact forms:** no fixed cap beyond the 15–30/day target; still one per company, honest, logged.
 - **Every reply gets a quick, personal response** (same day, same thread with In-Reply-To/References): thank them by name, mention something specific about their product, answer only inside the approved sponsor model (send the matching advertise-page payment link if interested). Discounts/custom terms → draft only and report to Brandon.
-- **Decliners:** warm note, zero pitch/pressure, door open for later as the audience grows; light invite to follow the journey on X (@SkillMaxxAI) or Bluesky (skillmaxx.bsky.social) and say we'll follow back. Set status `declined-warm`, next_follow_up ≈ +90 days, no day-7/14 follow-ups.
+- **Decliners:** warm note, zero pitch/pressure, door open for later as the audience grows; light invite to follow the journey on X (@SkillMaxxAI) or Bluesky (skillmaxx.bsky.social) and say we'll follow back, plus the one-line newsletter invite from `growth/outreach/SUBSCRIBE_PS.md` (never on unsubscribes/opt-outs). Set status `declined-warm`, next_follow_up ≈ +90 days, no day-7/14 follow-ups.
 - **Inbox check:** read the skillmaxx@gilventures.ai inbox at least twice a day (~noon and ~5 PM ET) and before each send batch; report every reply to Brandon.
 
 **Source of prospects:** [PIPELINE.csv](PIPELINE.csv). Stages: Target → Contacted → Replied → Booked → Live → Renewed / Lost.
@@ -55,6 +55,8 @@ Even a one-line "not now" or "test this config instead" helps.
 
 Brandon
 SkillMaxx · https://skillmaxx.gilventures.ai/advertise/
+
+P.S. If you'd like the weekly install results yourself, the SkillMaxx newsletter is free: https://skillmaxx.gilventures.ai/newsletter/
 ```
 
 **Slot cheat sheet for the blank:**
@@ -94,6 +96,8 @@ Since my last note we published this week's install scorecard: {link to /reports
 If sponsoring isn't a fit, a one-line "not now" is genuinely helpful, and so is "test this instead".
 
 Brandon
+
+P.S. If you'd like the weekly install results yourself, the SkillMaxx newsletter is free: https://skillmaxx.gilventures.ai/newsletter/
 ```
 
 ### Follow-up 2 — 14 days after first email (final)
@@ -108,6 +112,8 @@ If timing is wrong, I'll check back after we cross a real audience milestone rat
 
 Thanks either way,
 Brandon
+
+P.S. If you'd like the weekly install results yourself, the SkillMaxx newsletter is free: https://skillmaxx.gilventures.ai/newsletter/
 ```
 
 After follow-up 2: set status **Lost** (or **Nurture** with next_touch = after 500 subs / BFCM week), no more outbound until a milestone.
