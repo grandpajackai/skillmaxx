@@ -1,0 +1,48 @@
+---
+layout: base.njk
+title: "API-key failures vs broken MCP servers ([[SMX:CD_FMT]] check): [[SMX:PASS]] of [[SMX:TOTAL]] passed"
+permalink: /blog/midweek-[[SMX:WEEK_KEY]]/
+tags: blog
+issueDate: "[[SMX:ISSUE_DATE]]"
+ogType: article
+desc: "On [[SMX:CD_FMT_FULL]], [[SMX:NEEDS_KEY]] installs failed only for a missing API key and [[SMX:BROKEN]] failed 2+ nights. How to tell before installing."
+jsonld: {"@context":"https://schema.org","@type":"BlogPosting","headline":"API-key failures vs broken MCP servers ([[SMX:CD_FMT]] check): [[SMX:PASS]] of [[SMX:TOTAL]] passed","datePublished":"[[SMX:ISSUE_DATE]]","description":"On [[SMX:CD_FMT_FULL]], [[SMX:NEEDS_KEY]] installs failed only for a missing API key and [[SMX:BROKEN]] failed 2+ nights. How to tell before installing.","author":{"@type":"Organization","name":"SkillMaxx"},"publisher":{"@type":"Organization","name":"SkillMaxx"}}
+---
+<div class="wrap prose"><p class="muted">[[SMX:ISSUE_DATE_FMT]] · Data from the [[SMX:CD_FMT]] nightly run[[SMX:BASE_CLAUSE]] · refreshed from nightly reports</p>
+<h1 class="ph">How to tell an API-key failure from a broken MCP server ([[SMX:CD_FMT]] check)</h1>
+<p class="answer">As of [[SMX:CD_FMT_FULL]], [[SMX:PASS]] of [[SMX:TOTAL]] sandboxed installs passed ([[SMX:RATE]]% of the [[SMX:TESTED]] judgeable installs).[[SMX:BASE_SENTENCE]] Another [[SMX:NEEDS_KEY]] installs failed solely because our keyless test sandbox has no API keys or logins, while [[SMX:BROKEN]] installs failed two nights running for other reasons.</p>
+
+<h2>How many add-ons failed only because they need an API key?</h2>
+<p class="answer">On [[SMX:CD_FMT]], [[SMX:NEEDS_KEY]] installs out of [[SMX:TOTAL]] were separated into the "needs your key" bucket so credential-gated tools do not inflate broken counts.</p>
+[[SMX:STATUS_BREAKDOWN_TABLE]]
+<p>Our Nov 20, 2026 run (<code>src/_data/reports.json</code>) showed the same pattern: 25 installs across the five agents (5 per agent) failed strictly for missing keys, while 140 were broken and 4 were pending a second check. A "needs your key" result usually works fine once you supply your own token in the agent's config.</p>
+
+<h2>How did each agent perform mid-week?</h2>
+<p class="answer">Comparing each agent against a week earlier separates new breakage from persistent credential gates.</p>
+[[SMX:AGENT_COMPARISON_TABLE]]
+
+<h2>How do you check if an MCP server is safe before installing?</h2>
+<p class="answer">Before pasting any MCP command into your terminal or <code>mcp.json</code>, verify three things: whether it passes a clean install check, what environment variables it asks for, and what local filesystem or shell permissions it expects.</p>
+<ol>
+<li><b>Check the nightly install log first.</b> Each listing on SkillMaxx shows whether an MCP server failed for a missing key (safe to configure with your own scoped token) or crashed on startup two nights running.</li>
+<li><b>Inspect required arguments and env vars.</b> Servers that read local files or query databases (such as <a href="/skills/mcp-git/">MCP git</a> or <a href="/skills/yawlabs-postgres-mcp/">Postgres MCP</a>) should only receive the minimum directory path or read-only connection string they need.</li>
+<li><b>Watch out for stale or unmaintained npm wrappers.</b> Checking <a href="/best/security/">security add-ons</a> and <a href="/reports/latest/">today's status</a> takes ten seconds before you grant an agent tool access.</li>
+</ol>
+
+<h2>What broke or got fixed [[SMX:SINCE]]?</h2>
+<p class="answer">Confirmed breaks require two failing nights in a row; single-night dips stay pending until the next run.</p>
+<h3>Broke [[SMX:SINCE]]</h3>
+[[SMX:BROKE_LIST]]
+<h3>Fixed [[SMX:SINCE]]</h3>
+[[SMX:FIXED_LIST]]
+
+[[SMX:CAVEATS_HTML]]
+{% set faqs = [
+  {q:"Is an MCP server safe to use if it failed SkillMaxx's test?", a:"Check the reason on its SkillMaxx page. On [[SMX:CD_FMT_FULL]], [[SMX:NEEDS_KEY]] installs failed only because our sandbox holds no API keys, which is normal for SaaS integrations. Only [[SMX:BROKEN]] installs failed two nights running without a key excuse."},
+  {q:"How does SkillMaxx detect missing API key failures?", a:"Our test classifier scans the agent's install and handshake log excerpt for authentication, token, or missing credential errors and separates them from broken installs."},
+  {q:"Where can I see which MCP servers work with zero keys?", a:"Open the Compatibility Matrix at /matrix/ or filter /best/mcp-servers/ to see the add-ons that pass in a keyless sandbox."}
+] %}{% set art = {headline: "API-key failures vs broken MCP servers (" + "[[SMX:CD_FMT]] check)", description: desc} %}
+{% include "faq.njk" %}
+<p class="related-links"><a href="/reports/[[SMX:CD]]/">[[SMX:CD_FMT]] report →</a><a href="/reports/latest/">Latest report →</a><a href="/best/security/">Security add-ons →</a><a href="/guides/flaky-vs-broken/">Flaky vs broken →</a><a href="/matrix/">Compatibility matrix →</a><a href="/how-we-test/">How we test →</a>[[SMX:SUNDAY_LINK_PART]]</p>
+</div>
+{% include "nlembed.njk" %}

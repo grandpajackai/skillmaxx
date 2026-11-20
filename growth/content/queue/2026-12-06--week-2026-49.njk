@@ -1,0 +1,44 @@
+---
+layout: base.njk
+title: "Week [[SMX:WEEK_KEY]] scorecard: Codex MCP ([[SMX:CODEX_MCP_RATE]]%) vs Claude Code & Cursor"
+permalink: /blog/week-[[SMX:WEEK_KEY]]/
+tags: blog
+issueDate: "[[SMX:WEEK_END]]"
+ogType: article
+desc: "Week [[SMX:WEEK_KEY]] ([[SMX:WEEK_SPAN]]): [[SMX:PASS]] of [[SMX:TESTED]] passed ([[SMX:RATE]]%). Codex passed [[SMX:CODEX_MCP_PASS]] of [[SMX:CODEX_MCP_TOTAL]] MCP servers."
+jsonld: {"@context":"https://schema.org","@type":"BlogPosting","headline":"Week [[SMX:WEEK_KEY]] scorecard: Codex MCP ([[SMX:CODEX_MCP_RATE]]%) vs Claude Code & Cursor","datePublished":"[[SMX:WEEK_END]]","description":"Week [[SMX:WEEK_KEY]] ([[SMX:WEEK_SPAN]]): [[SMX:PASS]] of [[SMX:TESTED]] passed ([[SMX:RATE]]%). Codex passed [[SMX:CODEX_MCP_PASS]] of [[SMX:CODEX_MCP_TOTAL]] MCP servers.","author":{"@type":"Organization","name":"SkillMaxx"},"publisher":{"@type":"Organization","name":"SkillMaxx"}}
+---
+<div class="wrap prose"><p class="muted">[[SMX:WEEK_END_FMT]] · Data from [[SMX:WEEK_RUNS]] nightly runs, [[SMX:WEEK_SPAN]] · generated from the weekly scorecard</p>
+<h1 class="ph">Week [[SMX:WEEK_KEY]] scorecard: Codex vs Claude Code vs Cursor MCP compatibility</h1>
+<p class="answer">Across [[SMX:WEEK_RUNS]] nightly runs from [[SMX:WEEK_SPAN]], [[SMX:PASS]] of [[SMX:TESTED]] judgeable installs passed on [[SMX:LATEST_DATE_FMT]] ([[SMX:RATE]]%). Focusing strictly on MCP servers, Codex passed [[SMX:CODEX_MCP_PASS]] of [[SMX:CODEX_MCP_TOTAL]] tested servers ([[SMX:CODEX_MCP_RATE]]%), showing how closely the five agents agree once slow npm downloads are cached ahead of time.</p>
+
+<h2>How did the five agents score in week [[SMX:WEEK_KEY]]?</h2>
+<p class="answer">Here is the full week [[SMX:WEEK_KEY]] scorecard across plugins, skills and MCP servers for all five coding agents.</p>
+[[SMX:WEEK_RANKING_TABLE]]
+[[SMX:WEEK_TREND_TABLE]]
+[[SMX:WEEK_VERSIONS_HTML]]
+
+<h2>Does MCP work with Codex as reliably as Claude Code and Cursor?</h2>
+<p class="answer">Yes: Codex connects to roughly the same set of reference and npm MCP servers as Claude Code, Cursor, Grok Build and Pi when tested on identical server commands.</p>
+[[SMX:MCP_BY_AGENT_TABLE]]
+<p>In our Nov 20, 2026 baseline (<code>testing/results/2026-11-20.json</code>), Codex passed 8 of 9 reference MCP servers (88.9%) and 22 of 45 npm MCP servers (48.9%), right alongside Cursor (9/9 and 23/45) and Claude Code (8/9 and 20/45). Because Codex's CLI has no standalone MCP health check without signing in, our harness verifies Codex registers the server as enabled and then performs the exact MCP <code>initialize</code> + <code>tools/list</code> handshake using the command Codex would launch (<a href="/how-we-test/">see full methodology</a>).</p>
+
+<h2>Which add-ons got fixed, broke or flipped this week?</h2>
+<p class="answer">Week [[SMX:WEEK_KEY]] logged [[SMX:FIXED_N]] fixed add-ons, [[SMX:BROKE_N]] confirmed breaks and [[SMX:FLAKY_N]] flaky flips.</p>
+<h3>Fixed this week</h3>[[SMX:WEEK_FIXED_LIST]]
+<h3>Broke this week</h3>[[SMX:WEEK_BROKE_LIST]]
+<h3>Flaky (passed some nights, failed others)</h3>[[SMX:WEEK_FLAKY_LIST]]
+
+<h2>Standout cross-agent add-on of the week</h2>
+[[SMX:WEEK_STANDOUT_HTML]]
+
+[[SMX:CAVEATS_HTML]]
+{% set faqs = [
+  {q:"Does MCP work with Codex?", a:"Yes. On [[SMX:LATEST_DATE_FMT]], [[SMX:CODEX_MCP_PASS]] of [[SMX:CODEX_MCP_TOTAL]] tested MCP servers ([[SMX:CODEX_MCP_RATE]]%) installed and completed the MCP handshake in Codex inside a keyless sandbox."},
+  {q:"Why might an MCP server work in Cursor but not Codex or Claude Code?", a:"Small differences come from per-agent startup timeouts, stdio handling, or transient night-to-night flips. Compare per-agent logs on each server's SkillMaxx page or check /works-in/codex/."},
+  {q:"How many plugins work in Codex?", a:"Codex tests plugins from the official openai/plugins marketplace (65 of 65 passed in our Nov 20, 2026 run). Check /works-in/codex/ for today's live count."}
+] %}{% set art = {headline: "Week " + "[[SMX:WEEK_KEY]] scorecard: Codex MCP vs Claude Code and Cursor", description: desc} %}
+{% include "faq.njk" %}
+<p class="related-links"><a href="/works-in/codex/">What works in Codex →</a><a href="/works-in/cursor/">What works in Cursor →</a><a href="/best/mcp-servers/">Best MCP servers →</a><a href="/guides/best-mcp-servers-cursor/">Cursor MCP guide →</a><a href="/reports/week/[[SMX:WEEK_KEY]]/">Scorecard [[SMX:WEEK_KEY]] →</a><a href="/how-we-test/">How we test →</a></p>
+</div>
+{% include "nlembed.njk" %}

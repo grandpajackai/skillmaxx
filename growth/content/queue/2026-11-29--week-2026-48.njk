@@ -1,0 +1,45 @@
+---
+layout: base.njk
+title: "Week [[SMX:WEEK_KEY]] scorecard: [[SMX:PASS]] of [[SMX:TESTED]] passed, and why Pi lags on plugins"
+permalink: /blog/week-[[SMX:WEEK_KEY]]/
+tags: blog
+issueDate: "[[SMX:WEEK_END]]"
+ogType: article
+desc: "[[SMX:WEEK_RUNS]] nightly runs ([[SMX:WEEK_SPAN]]): [[SMX:PASS]] of [[SMX:TESTED]] judgeable installs passed ([[SMX:RATE]]%). Pi passed [[SMX:PI_PLUGIN_RATE]]% of plugins."
+jsonld: {"@context":"https://schema.org","@type":"BlogPosting","headline":"Week [[SMX:WEEK_KEY]] scorecard: [[SMX:PASS]] of [[SMX:TESTED]] passed, and why Pi lags on plugins","datePublished":"[[SMX:WEEK_END]]","description":"[[SMX:WEEK_RUNS]] nightly runs ([[SMX:WEEK_SPAN]]): [[SMX:PASS]] of [[SMX:TESTED]] judgeable installs passed ([[SMX:RATE]]%). Pi passed [[SMX:PI_PLUGIN_RATE]]% of plugins.","author":{"@type":"Organization","name":"SkillMaxx"},"publisher":{"@type":"Organization","name":"SkillMaxx"}}
+---
+<div class="wrap prose"><p class="muted">[[SMX:WEEK_END_FMT]] · Data from [[SMX:WEEK_RUNS]] nightly runs, [[SMX:WEEK_SPAN]] · generated from the weekly scorecard</p>
+<h1 class="ph">Agent add-on installs, week of [[SMX:WEEK_START_FMT]]: [[SMX:PASS]] of [[SMX:TESTED]] passed</h1>
+<p class="answer">From [[SMX:WEEK_SPAN]] we ran [[SMX:WEEK_RUNS]] nightly install tests of agent skills, plugins and MCP servers in Claude Code, Codex, Grok Build, Cursor and Pi. On the latest night ([[SMX:LATEST_DATE_FMT]]), [[SMX:PASS]] of [[SMX:TESTED]] judgeable installs passed ([[SMX:RATE]]%), with [[SMX:FIXED_N]] add-ons starting to work, [[SMX:BROKE_N]] breaking and [[SMX:FLAKY_N]] flipping between nights.</p>
+
+<h2>How reliable were agent add-on installs this week?</h2>
+<p class="answer">Weekly pass rates across all [[SMX:WEEK_RUNS]] runs show how consistently add-ons install and load inside each agent's clean sandbox.</p>
+[[SMX:WEEK_RANKING_TABLE]]
+<p>Night-by-night totals for week [[SMX:WEEK_KEY]]:</p>
+[[SMX:WEEK_TREND_TABLE]]
+[[SMX:WEEK_VERSIONS_HTML]]
+
+<h2>Why does Pi lag behind Claude Code, Grok Build and Codex on plugins?</h2>
+<p class="answer">Pi has no native plugin marketplace installer, so our harness installs each plugin's GitHub repository as a Pi package and checks whether Pi detects skills where it looks for them.</p>
+[[SMX:PLUGIN_BY_AGENT_TABLE]]
+<p>On [[SMX:LATEST_DATE_FMT]], Pi passed [[SMX:PI_PLUGIN_PASS]] of [[SMX:PI_PLUGIN_TOTAL]] tested plugins ([[SMX:PI_PLUGIN_RATE]]%). Compare that with our Nov 20, 2026 baseline (<code>testing/results/2026-11-20.json</code>), where Pi passed 55 of 86 plugins (64.0%) while Codex hit 65 of 65 (100%), Grok Build hit 326 of 332 (98.2%), and Claude Code hit 311 of 317 (98.1%). Most Pi failures are layout mismatches: the GitHub repository downloads cleanly, but its skills are packaged in another agent's directory convention rather than where Pi's <code>get_commands</code> RPC expects them.</p>
+
+<h2>What got fixed, broke or turned flaky this week?</h2>
+<p class="answer">Our scorecard separates real regressions from one-night network noise by requiring two consecutive failures to mark a tool broken.</p>
+<h3>Fixed this week</h3>[[SMX:WEEK_FIXED_LIST]]
+<h3>Broke this week</h3>[[SMX:WEEK_BROKE_LIST]]
+<h3>Flaky (passed some nights, failed others)</h3>[[SMX:WEEK_FLAKY_LIST]]
+
+<h2>Which add-on stood out across agents?</h2>
+[[SMX:WEEK_STANDOUT_HTML]]
+
+[[SMX:CAVEATS_HTML]]
+{% set faqs = [
+  {q:"Why do Claude Code plugins fail when installed in Pi?", a:"Pi does not ship a Claude plugin marketplace installer, so SkillMaxx installs the plugin's GitHub repo as a Pi package. In [[SMX:LATEST_DATE_FMT]] runs, [[SMX:PI_PLUGIN_PASS]] of [[SMX:PI_PLUGIN_TOTAL]] plugins ([[SMX:PI_PLUGIN_RATE]]%) exposed skills in the paths Pi scans."},
+  {q:"How many installs broke vs flipped in week [[SMX:WEEK_KEY]]?", a:"Across [[SMX:WEEK_RUNS]] nightly runs from [[SMX:WEEK_SPAN]], [[SMX:FIXED_N]] add-ons got fixed, [[SMX:BROKE_N]] broke (two failing nights in a row), and [[SMX:FLAKY_N]] were flaky."},
+  {q:"Does a flaky label mean a plugin is broken?", a:"No. Flaky add-ons passed on some nights and failed on others, usually from transient download or startup timing. SkillMaxx excludes them from broken counts."}
+] %}{% set art = {headline: "Week " + "[[SMX:WEEK_KEY]] scorecard: " + "[[SMX:PASS]] of [[SMX:TESTED]] passed", description: desc} %}
+{% include "faq.njk" %}
+<p class="related-links"><a href="/reports/week/[[SMX:WEEK_KEY]]/">Weekly scorecard [[SMX:WEEK_KEY]] →</a><a href="/reports/">Daily reports →</a><a href="/works-in/pi/">What works in Pi →</a><a href="/works-in/codex/">What works in Codex →</a><a href="/guides/flaky-vs-broken/">Flaky vs broken rules →</a><a href="/how-we-test/">How we test →</a></p>
+</div>
+{% include "nlembed.njk" %}

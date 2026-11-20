@@ -235,7 +235,7 @@ def test_publish_script():
         assert bad_bh not in s.lower(), f"publish_nightly.sh must never publish to Beehiiv ({bad_bh})"
     assert subprocess.run(["bash", "-n", os.path.join(ROOT, "testing/publish_nightly.sh")]).returncode == 0
     # Generators are offline: no network or mail code at all. The Monday check only GETs the public site.
-    for f in ("growth/scripts/newsletter_auto.py", "growth/scripts/midweek_blog_auto.py", "growth/scripts/weekly_blog_auto.py"):
+    for f in ("growth/scripts/newsletter_auto.py", "growth/scripts/midweek_blog_auto.py", "growth/scripts/weekly_blog_auto.py", "growth/scripts/blog_queue.py"):
         src = open(os.path.join(ROOT, f), encoding="utf-8").read()
         for bad in ("urllib", "requests", "smtplib", "http.client", "socket", "subprocess"):
             assert f"import {bad}" not in src and f"{bad}." not in src, f"{f} must stay offline ({bad})"
@@ -331,6 +331,46 @@ def test_telegram_requests():
     shutil.rmtree(td)
     print("ok telegram requests: critical bypasses quiet hours, sends once per id, tracks state")
 
+
+
+def test_blog_queue():
+    qdir = os.path.join(ROOT, "growth/content/queue")
+    qfiles = sorted(glob.glob(os.path.join(qdir, "*.njk")))
+    assert len(qfiles) == 8, f"expected 8 queued blog drafts, got {len(qfiles)}"
+    bq = load("growth/scripts/blog_queue.py", "bq")
+    assert bq.find_queued(ROOT, "midweek-2026-48", "2026-11-24") is None, "must not publish before draft date"
+    assert bq.find_queued(ROOT, "midweek-2026-48", "2026-11-25") is not None
+
+    t = fixture()
+    shutil.copytree(qdir, os.path.join(t, "growth/content/queue"))
+    reps = json.load(open(os.path.join(t, "src/_data/reports.json")))
+    weeks = json.load(open(os.path.join(t, "src/_data/weeks.json")))
+    r48 = dict(reps[0], date="2026-11-25", prev_date="2026-11-18")
+    json.dump([r48] + reps, open(os.path.join(t, "src/_data/reports.json"), "w"))
+    shutil.copy(os.path.join(t, "testing/results/2026-11-18.json"), os.path.join(t, "testing/results/2026-11-25.json"))
+    w48 = dict(weeks[0], key="2026-48", start="2026-11-23", end="2026-11-29", first="2026-11-25", last="2026-11-29",
+               trend=[dict(weeks[0]["trend"][-1], date="2026-11-25"), dict(weeks[0]["trend"][-1], date="2026-11-29")])
+    json.dump([w48] + weeks, open(os.path.join(t, "src/_data/weeks.json"), "w"))
+    shutil.copy(os.path.join(t, "testing/results/2026-11-18.json"), os.path.join(t, "testing/results/2026-11-29.json"))
+
+    mw = load("growth/scripts/midweek_blog_auto.py", "mwq"); mw.ROOT = t
+    rc, out = quiet(mw.main, ["2026-11-25"])
+    pmw = os.path.join(t, "src/blog/midweek-2026-48.njk")
+    assert rc == 0 and os.path.exists(pmw), out
+    txt_mw = open(pmw, encoding="utf-8").read()
+    assert "[[SMX:" not in txt_mw and "Why npm MCP servers fail" in txt_mw
+    assert json.loads(fm(txt_mw)["jsonld"])["@type"] == "BlogPosting"
+
+    wb = load("growth/scripts/weekly_blog_auto.py", "wbq"); wb.ROOT = t
+    rc, out = quiet(wb.main, ["2026-11-29"])
+    pwb = os.path.join(t, "src/blog/week-2026-48.njk")
+    assert rc == 0 and os.path.exists(pwb), out
+    txt_wb = open(pwb, encoding="utf-8").read()
+    assert "[[SMX:" not in txt_wb and "why Pi lags on plugins" in txt_wb
+    assert json.loads(fm(txt_wb)["jsonld"])["@type"] == "BlogPosting"
+    shutil.rmtree(t)
+    print("ok blog queue: 8 drafts, date gate, token refresh, JSON-LD valid")
+
 if __name__ == "__main__":
-    test_newsletter(); test_midweek(); test_sunday_guard(); test_monday_check(); test_alert_wiring(); test_publish_script(); test_first_subscriber_alert(); test_telegram_requests()
+    test_newsletter(); test_midweek(); test_sunday_guard(); test_monday_check(); test_alert_wiring(); test_publish_script(); test_first_subscriber_alert(); test_telegram_requests(); test_blog_queue()
     print("test_autopublish: all ok")

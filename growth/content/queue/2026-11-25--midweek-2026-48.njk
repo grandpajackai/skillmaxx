@@ -1,0 +1,46 @@
+---
+layout: base.njk
+title: "Why npm MCP servers fail more than plugins ([[SMX:CD_FMT]] check): [[SMX:PASS]] of [[SMX:TOTAL]] passed"
+permalink: /blog/midweek-[[SMX:WEEK_KEY]]/
+tags: blog
+issueDate: "[[SMX:ISSUE_DATE]]"
+ogType: article
+desc: "As of [[SMX:CD_FMT_FULL]], [[SMX:PASS]] of [[SMX:TOTAL]] sandboxed add-on installs passed ([[SMX:RATE]]%). [[SMX:MCP_ALL5_COUNT]] MCP servers cleared all 5 agents."
+jsonld: {"@context":"https://schema.org","@type":"BlogPosting","headline":"Why npm MCP servers fail more than plugins ([[SMX:CD_FMT]] check): [[SMX:PASS]] of [[SMX:TOTAL]] passed","datePublished":"[[SMX:ISSUE_DATE]]","description":"As of [[SMX:CD_FMT_FULL]], [[SMX:PASS]] of [[SMX:TOTAL]] sandboxed add-on installs passed ([[SMX:RATE]]%). [[SMX:MCP_ALL5_COUNT]] MCP servers cleared all 5 agents.","author":{"@type":"Organization","name":"SkillMaxx"},"publisher":{"@type":"Organization","name":"SkillMaxx"}}
+---
+<div class="wrap prose"><p class="muted">[[SMX:ISSUE_DATE_FMT]] · Data from the [[SMX:CD_FMT]] nightly run[[SMX:BASE_CLAUSE]] · refreshed from nightly reports</p>
+<h1 class="ph">Why npm MCP servers fail more than plugins ([[SMX:CD_FMT]] mid-week check)</h1>
+<p class="answer">As of [[SMX:CD_FMT_FULL]], [[SMX:PASS]] of [[SMX:TOTAL]] sandboxed installs of skills, plugins and MCP servers passed in Claude Code, Codex, Grok Build, Cursor and Pi ([[SMX:RATE]]% of the [[SMX:TESTED]] installs we can judge without an API key).[[SMX:BASE_SENTENCE]] While marketplace plugins reliably clear 98% in Claude Code and Grok Build, community npm MCP packages pass only [[SMX:MCP_NPM_PASS_RANGE]] across the five agents because many require credentials, positional CLI arguments or extra local services.</p>
+
+<h2>How did each agent do this week?</h2>
+<p class="answer">Across the five CLIs on [[SMX:CD_FMT]], agents that test marketplace plugins show higher raw pass rates than agents tested mainly or solely on MCP servers and GitHub packages.</p>
+[[SMX:AGENT_COMPARISON_TABLE]]
+<p>Each agent is tested only on the add-on formats its CLI supports, so this table measures ecosystem readiness rather than ranking the agents themselves. Cursor only runs MCP servers and standalone skills (no plugin installer), which pulls its raw pass rate down whenever community npm MCP servers require setup.</p>
+
+<h2>Why do npm MCP servers fail more often than plugins?</h2>
+<p class="answer">Community npm MCP packages have to start a live server process and complete an MCP handshake inside a clean, keyless Linux sandbox, whereas plugins only need to unpack files and register their metadata.</p>
+[[SMX:TYPE_TABLE]]
+<p>In our Nov 20, 2026 baseline (<code>testing/results/2026-11-20.json</code>), official reference and curated MCP servers passed 8–9 of 9 per agent (88.9%–100%), while the 45 npm MCP packages passed 16–23 of 45 (35.6%–51.1%). Official plugins hit 98.1% in Claude Code (311/317), 98.2% in Grok Build (326/332), and 100% in Codex (65/65). Remember that our harness pre-fetches npm packages into a shared cache before timing each agent's connect check, so an npm MCP failure here is not a cold download timeout; it means the server refused to connect without a token, path argument or local daemon.</p>
+
+<h2>Which MCP servers pass across all five agents?</h2>
+<p class="answer">On [[SMX:CD_FMT]], [[SMX:MCP_ALL5_COUNT]] of [[SMX:MCP_TOTAL_COUNT]] tested MCP servers connected cleanly in all five agents (Claude Code, Codex, Grok Build, Cursor and Pi) with zero credentials configured.</p>
+[[SMX:MCP_ALL5_LIST]]
+<p>If an MCP server works in one agent with zero setup, it usually works in the others once configured correctly. See the live <a href="/guides/best-mcp-servers-cursor/">MCP servers that work in Cursor</a> guide and the <a href="/best/mcp-servers/">best MCP servers leaderboard</a> for exact config commands.</p>
+
+<h2>What broke and what got fixed [[SMX:SINCE]]?</h2>
+<p class="answer">We only mark an add-on broken after two failing nights in a row (with one automatic retry each night), and only mark it fixed once it recovers after two or more bad nights.</p>
+<h3>Broke [[SMX:SINCE]]</h3>
+[[SMX:BROKE_LIST]]
+<h3>Fixed [[SMX:SINCE]]</h3>
+[[SMX:FIXED_LIST]]
+
+[[SMX:CAVEATS_HTML]]
+{% set faqs = [
+  {q:"Why do npm MCP servers fail in Cursor and Claude Code?", a:"As of [[SMX:CD_FMT_FULL]], npm MCP packages passed [[SMX:MCP_NPM_PASS_RANGE]] across our 5 test sandboxes. Most failures happen because the server requires an API key, database URL or path argument that a clean keyless sandbox does not provide, not because the agent is broken."},
+  {q:"How many MCP servers work across all five coding agents?", a:"In our [[SMX:CD_FMT]] nightly run, [[SMX:MCP_ALL5_COUNT]] of [[SMX:MCP_TOTAL_COUNT]] tested MCP servers connected cleanly in Claude Code, Codex, Grok Build, Cursor and Pi with zero configuration keys."},
+  {q:"Does SkillMaxx count slow npm downloads against MCP timeouts?", a:"No. Since the Nov 12, 2026 baseline update, our harness pre-fetches npx packages into a shared npm cache before running each agent's connect health check."}
+] %}{% set art = {headline: "Why npm MCP servers fail more than plugins (" + "[[SMX:CD_FMT]] check)", description: desc} %}
+{% include "faq.njk" %}
+<p class="related-links"><a href="/reports/[[SMX:CD]]/">[[SMX:CD_FMT]] full report →</a><a href="/reports/latest/">Latest nightly report →</a><a href="/works-in/cursor/">What works in Cursor →</a><a href="/works-in/claude-code/">What works in Claude Code →</a><a href="/best/mcp-servers/">Best MCP servers →</a><a href="/how-we-test/">How we test →</a>[[SMX:SUNDAY_LINK_PART]]</p>
+</div>
+{% include "nlembed.njk" %}
