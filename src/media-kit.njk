@@ -1,0 +1,141 @@
+---
+layout: base.njk
+title: "SkillMaxx Media Kit: honest audience numbers, ad specs and founding rates"
+permalink: /media-kit/
+ogType: website
+desc: "SkillMaxx sponsor media kit: real build-time catalog and nightly test numbers, founding sponsorship rates ($15–$49), ad specs, sample placements and inquiry link."
+jsonld: {"@context":"https://schema.org","@type":"WebPage","name":"SkillMaxx Media Kit","url":"https://skillmaxx.gilventures.ai/media-kit/","description":"Honest audience numbers, nightly test methodology, ad formats, sample placements and founding sponsorship pricing for SkillMaxx.","publisher":{"@type":"Organization","name":"SkillMaxx","url":"https://skillmaxx.gilventures.ai/"}}
+---
+<div class="wrap">
+  <p class="crumbs"><a href="/">SkillMaxx</a> / <a href="/advertise/">Advertise</a> / Media Kit</p>
+  <h1 class="ph">SkillMaxx Media Kit</h1>
+  <p class="lead">Put your skill, plugin or MCP server in front of developers deciding what to install across Claude Code, Codex, Grok Build, Cursor and Pi. We launched in October 2026 and are early — so we share only verified numbers and offer founding pricing.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 22px">
+    <a class="btn" href="/advertise/#inquiry-form">Open sponsor inquiry form →</a>
+    <a class="btn ghost" href="/advertise/">Book a founding slot</a>
+    <a class="btn ghost" href="mailto:skillmaxx@gilventures.ai?subject=SkillMaxx%20Media%20Kit%20Inquiry">Email skillmaxx@gilventures.ai</a>
+  </div>
+
+  <style>
+    .mk{margin:10px 0;padding-left:18px;line-height:1.9}.mk b{color:var(--a)}
+    .fbadge{display:inline-block;margin:4px 0 14px;padding:5px 11px;border-radius:999px;background:rgba(198,244,50,.12);border:1px solid rgba(198,244,50,.4);color:var(--a);font-size:13px;font-weight:600;max-width:100%}
+    @media (min-width:961px){.tiers{grid-template-columns:repeat(4,1fr)}}
+    .tier .book{align-self:flex-start;margin-top:auto}
+    .spec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:16px 0}
+    @media (max-width:760px){.spec-grid{grid-template-columns:1fr}}
+  </style>
+
+  {% set inv = sponsors.inventory %}
+  {% set featOpen = inv.featured.capacity - inv.featured.booked %}
+  {% set nlOpen = inv.newsletter.capacity - inv.newsletter.booked %}
+  {% set catOpen = inv.category.capacity - inv.category.booked %}
+
+  <section class="card static" id="audience-numbers">
+    <h2 class="h3">1. Honest audience &amp; catalog numbers (build-time, verified only)</h2>
+    <p class="muted">Updated automatically on every deploy from committed test data. We never invent traffic claims or inflated subscriber counts.</p>
+    <ul class="mk">
+      <li><b>{{ skills.length }}</b> agent skills, plugins and MCP servers indexed with install commands</li>
+      <li><b>5</b> coding agents tested nightly: Claude Code, Codex, Grok Build, Cursor and Pi</li>
+      {% if testing.total %}<li><b>{{ testing.total }}</b> sandboxed install tests in the latest run (<b>{{ testing.pass }}</b> passing on {{ testing.runDate }}) across <b>{{ reports.length }}</b> recorded daily runs</li>{% endif %}
+      <li><b>Newsletter subscribers:</b> {% if sponsorLinks.subscribers %}<b>{{ sponsorLinks.subscribers }}</b> verified Beehiiv subscribers{% else %}just launched — we'll publish the verified Beehiiv subscriber count here once available; until then real counts are shared privately with booked sponsors{% endif %}</li>
+      <li><b>Site traffic:</b> analytics are being set up, so no pageview numbers are claimed yet. Booked sponsors receive real monthly numbers (even when small).</li>
+      <li><b>Open inventory this month:</b> Featured <b>{{ featOpen }}</b> of {{ inv.featured.capacity }} · Newsletter <b>{{ nlOpen }}</b> of {{ inv.newsletter.capacity }} issue slots · Category <b>{{ catOpen }}</b> of {{ inv.category.capacity }} · Founding seats left <b>{{ sponsors.founding.cap - sponsors.founding.booked }}</b> of {{ sponsors.founding.cap }}</li>
+    </ul>
+  </section>
+
+  <section style="margin-top:24px" id="founding-rates">
+    <h2 class="h3">2. Founding sponsorship rates</h2>
+    <p class="fbadge">Founding price, locked for 6 months · first 10 sponsors</p>
+    <p class="muted" style="max-width:52rem;margin:0 0 12px">Because SkillMaxx is early, founding sponsors lock in low rates now while the catalog, SEO pages and newsletter grow. Featured is month-to-month (no long lock). No struck-through "regular" prices — what you see is what you pay.</p>
+    <div id="bfcm-mk" class="card static" hidden style="margin:0 0 14px;border-color:rgba(198,244,50,.5)"><p style="margin:0"><b>Black Friday, our way (Nov 27–30 ET):</b> book a Category or Newsletter founding slot by Cyber Monday and lock your rate for 12 months (not 6). Featured: $19 for December — one slot.</p></div>
+    <script>(function(){var n=Date.now();if(n>=Date.parse("2026-11-27T05:00:00Z")&&n<Date.parse("2026-12-01T05:00:00Z")){document.getElementById("bfcm-mk").hidden=false}})()</script>
+    <p class="muted" style="font-size:13px;max-width:52rem">Black Friday / Cyber Monday (Nov 27–30 ET): Category and Newsletter founding bookings lock for <b>12 months</b>. Featured for December is <b>$19</b> (normally $29) — <b>one slot, first come first served</b>; use promo code <code>BFCM-FEATURED-DEC</code> on the Featured pay-once checkout. Free December newsletter shoutout is not part of this offer.</p>
+
+    <div class="tiers">
+      {% for t in sponsorLinks.slots %}
+      <div class="card static tier{% if t.highlight %} hl2{% endif %}">
+        <h3 class="h3">{{ t.name }}</h3>
+        <p class="price">${{ t.price }}<small> {{ t.priceSuffix }}</small></p>
+        {% if t.key == "featured" %}
+          <p class="muted" style="font-size:12px;margin:0 0 6px">Founding price · month-to-month (no long lock)</p>
+        {% else %}
+          <p class="muted" style="font-size:12px;margin:0 0 6px">Founding price, locked for 6 months</p>
+        {% endif %}
+        <p class="muted">{{ t.desc }}</p>
+        <a class="btn book" href="/advertise/#slot-{{ t.key }}">Book on /advertise/</a>
+      </div>
+      {% endfor %}
+    </div>
+    {% if sponsorLinks.compareNote %}<p class="muted" style="font-size:13px;max-width:52rem">{{ sponsorLinks.compareNote }}</p>{% endif %}
+  </section>
+
+  <section class="card static" style="margin-top:24px" id="formats-and-specs">
+    <h2 class="h3">3. What a sponsor gets &amp; ad formats</h2>
+    <p class="muted">Every paid placement is clearly labeled <b>Sponsored</b> or <b>Sponsor</b>. Money never buys a passing test result, changes compatibility statuses, or alters directory rankings.</p>
+    <div class="spec-grid">
+      <div class="card static">
+        <h3 class="h3" style="font-size:1rem">Newsletter sponsor</h3>
+        <p class="muted"><b>Placement:</b> One labeled block in SkillMaxx Weekly (Tuesday email + permanent public archive page under <code>/newsletter/</code>).<br><b>Specs:</b> Up to ~50 words of plain copy + 1 destination URL. Maximum 1 sponsor per issue while early.<br><b>Rate:</b> $19 for 1 issue, or $59/mo for 4 issues (~$15/issue).</p>
+      </div>
+      <div class="card static">
+        <h3 class="h3" style="font-size:1rem">Featured slot (homepage + category top)</h3>
+        <p class="muted"><b>Placement:</b> The single Sponsored card in the homepage Featured row plus top-of-category placement.<br><b>Specs:</b> Product name, 1-line pitch (max 90 characters), square logo (SVG or PNG, 256px+), destination URL.<br><b>Rate:</b> $29 for 1 month ($25/mo subscription; month-to-month).</p>
+      </div>
+      <div class="card static">
+        <h3 class="h3" style="font-size:1rem">Category sponsor</h3>
+        <p class="muted"><b>Placement:</b> Logo and destination link on one category browse page (e.g. Database, Security, Monitoring, MCP Servers). Exclusive — 1 sponsor per category.<br><b>Specs:</b> Square logo (SVG or PNG, 256px+), short label, destination URL.<br><b>Rate:</b> $15 for 1 month ($13/mo subscription).</p>
+      </div>
+      <div class="card static">
+        <h3 class="h3" style="font-size:1rem">Founding bundle &amp; custom</h3>
+        <p class="muted"><b>Bundle:</b> 1 newsletter issue + Featured slot + Category sponsor for one month, plus a "Founding Sponsor" credit on <code>/advertise/</code> ($49 for 1 month or $42/mo; $63 separately).<br><b>Custom:</b> Multi-category or longer partnerships — <a href="/advertise/#inquiry-form">send an inquiry</a> or email <a href="mailto:skillmaxx@gilventures.ai?subject=Custom%20sponsorship">skillmaxx@gilventures.ai</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card static" style="margin-top:24px" id="sample-placements">
+    <h2 class="h3">4. Sample placements</h2>
+    <p class="muted">Mockups below use a labeled <b>Example</b> sponsor, not a real customer.</p>
+    <h3 class="h3" style="font-size:1.05rem;margin-top:14px">Newsletter sponsor block</h3>
+    <p><img src="/assets/social/placements/newsletter-sponsor-example.png" alt="Example newsletter sponsor block labeled EXAMPLE" width="560" style="max-width:100%;border-radius:10px;border:1px solid var(--b2)"></p>
+    <h3 class="h3" style="font-size:1.05rem;margin-top:14px">Homepage Featured Sponsored card</h3>
+    <p><img src="/assets/social/placements/featured-card-example.png" alt="Example homepage Featured Sponsored card labeled EXAMPLE" width="720" style="max-width:100%;border-radius:10px;border:1px solid var(--b2)"></p>
+    <h3 class="h3" style="font-size:1.05rem;margin-top:14px">Category page sponsor strip</h3>
+    <p><img src="/assets/social/placements/category-slot-example.png" alt="Example category page sponsor strip labeled EXAMPLE" width="720" style="max-width:100%;border-radius:10px;border:1px solid var(--b2)"></p>
+  </section>
+
+  <section class="card static" style="margin-top:24px" id="methodology">
+    <h2 class="h3">5. Nightly-test methodology (why developers use SkillMaxx)</h2>
+    <p class="muted">Developers arrive on SkillMaxx mid-decision — checking whether a skill, plugin or MCP server actually installs in their coding agent before they wire it in. Every night around 2 AM ET, our harness runs real CLI installs inside throwaway sandboxes with zero credentials, retries failures once, marks something broken only after two bad nights in a row, and separates missing-API-key failures from broken add-ons.</p>
+    {% if testing.total %}
+    <div class="tw" style="margin:14px 0">
+      <table class="matrix">
+        <thead><tr><th>Agent</th><th>Tested ({{ testing.runDate }})</th><th>Passed</th><th>Failed</th></tr></thead>
+        <tbody>
+          {% for a in site.agents %}{% set b = testing.by[a] or {} %}{% set tot = (b.pass or 0) + (b.fail or 0) %}
+          <tr>
+            <th scope="row"><a href="/works-in/{{ a | replace("_","-") }}/">{{ a | agentName }}</a></th>
+            <td data-label="Tested">{{ tot }}</td>
+            <td data-label="Passed" class="tok">{{ b.pass or 0 }}</td>
+            <td data-label="Failed">{{ b.fail or 0 }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+    {% if weeks.length %}{% set w = weeks[0] %}
+      <h3 class="h3" style="font-size:1.05rem;margin-top:16px">Latest weekly install trend (week {{ w.key }})</h3>
+      {% include "weekchart.njk" %}
+    {% endif %}
+    <p class="muted" style="margin-top:12px">Read full details: <a href="/how-we-test/">How we test</a> · <a href="/reports/latest/">Today's install report</a>{% if weeks.length %} · <a href="/reports/week/{{ weeks[0].key }}/">Weekly scorecard</a>{% endif %} · <a href="/matrix/">Compatibility matrix</a>.</p>
+  </section>
+
+  <section class="card static" style="margin-top:24px" id="contact">
+    <h2 class="h3">6. Ready to book or ask a question?</h2>
+    <p class="muted">Book directly via Stripe on <a href="/advertise/">/advertise/</a>, fill out the short <a href="/advertise/#inquiry-form">sponsor inquiry form</a>, or email <a href="mailto:skillmaxx@gilventures.ai?subject=SkillMaxx%20Sponsorship">skillmaxx@gilventures.ai</a>. Every sponsor gets a real monthly report and can cancel subscriptions anytime with no contracts.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:10px">
+      <a class="btn" href="/advertise/#inquiry-form">Open sponsor inquiry form →</a>
+      <a class="btn ghost" href="/advertise/">View checkout links on /advertise/</a>
+    </div>
+  </section>
+</div>
