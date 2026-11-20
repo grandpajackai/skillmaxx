@@ -8,6 +8,7 @@
 - **Contact forms:** no fixed cap beyond the 15–30/day target; still one per company, honest, logged.
 - **Every reply gets a quick, personal response** (same day, same thread with In-Reply-To/References): thank them by name, mention something specific about their product, answer only inside the approved sponsor model (send the matching advertise-page payment link if interested). Discounts/custom terms → draft only and report to Brandon.
 - **Decliners:** warm note, zero pitch/pressure, door open for later as the audience grows; light invite to follow the journey on X (@SkillMaxxAI) or Bluesky (skillmaxx.bsky.social) and say we'll follow back, plus the one-line newsletter invite from `growth/outreach/SUBSCRIBE_PS.md` (never on unsubscribes/opt-outs). Set status `declined-warm`, next_follow_up ≈ +90 days, no day-7/14 follow-ups.
+- **Inbound threads (do not email from daily outreach):** status `Warm - inbound` or `contact_route` `inbound-email` (the prospect wrote to us). Never add these addresses to the weekday cold or follow-up queue. Only send a personal in-thread reply when there is a real reason (promised mention, they asked a question, or a dated next_follow_up). Autonomous (Dee, dee@autonomous.ai) is in this bucket as of 2026-11-20.
 - **Inbox check:** read the skillmaxx@gilventures.ai inbox at least twice a day (~noon and ~5 PM ET) and before each send batch; report every reply to Brandon.
 
 **Source of prospects:** [PIPELINE.csv](PIPELINE.csv). Stages: Target → Contacted → Replied → Booked → Live → Renewed / Lost.

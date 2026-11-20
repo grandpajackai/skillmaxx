@@ -25,7 +25,7 @@ python3 growth/scripts/zoho_mail.py reply MESSAGE_ID --to a@b.com --subject "Re:
 1. Only send what Brandon approved (cold pitches from an approved queue; follow-ups per OUTREACH.md §3). Window 8:30 AM–7 PM ET, 20–40 s apart, stop on the first non-200.
 2. Before each recipient: `find <domain>` / `search "sender:<domain>"` across Inbox **and** Spam for any reply; check Sent for a duplicate or a nudge already sent; check the follow-up's position in the sequence and that the last touch was not too recent (PIPELINE.csv `next_follow_up` wins). Skip and log anyone who fails.
 3. Re-check facts in the draft against the latest `src/_data/reports.json` and the live directory (counts, category names) before sending. Never invent numbers.
-4. Form-lead nudges (Resend, Clerk, Sanity, Netlify, other `form` rows) are not email threads: skip them here.
+4. Form-lead nudges (Resend, Clerk, Sanity, Netlify, other `form` rows) are not email threads: skip them here. Also skip every `Warm - inbound` / `inbound-email` row (the prospect wrote to us) — including Autonomous (Dee, dee@autonomous.ai). Those threads are never part of the daily cold or follow-up queue; only a personal in-thread reply when there is a real reason.
 5. After sending, wait a few minutes and read Inbox for bounces (`mailer-daemon`) and auto-replies; mark bounced rows **Bounced** with no follow-ups.
 6. Append the one-line newsletter invite from `growth/outreach/SUBSCRIBE_PS.md` to outbound pitches, follow-ups, and polite decline replies (never on unsubscribes or opt-outs).
 7. Log each send in `growth/sponsors/PIPELINE.csv` (status, date, subject, time ET, Zoho messageId, next follow-ups) and `growth/outreach/sent/YYYY-MM-DD-email-results.json`; STATUS.md line via PR + squash-merge.
