@@ -147,6 +147,76 @@ def mentions_for_issue(n):
     return out
 
 
+
+def skeleton_for_issue(n):
+    """Optional planned issue skeleton (growth/newsletter/skeletons/issue-N.json)."""
+    doc = rd_json(f"growth/newsletter/skeletons/issue-{n}.json", None)
+    return doc if isinstance(doc, dict) else {}
+
+
+def _live_spotlight_stats(lastd, skel):
+    """Compute a concise live-data line from testing/results/<lastd>.json when requested by the skeleton."""
+    sp = skel.get("spotlight") or {}
+    if not (sp.get("include_mcp_stats") or sp.get("include_type_stats")):
+        return ""
+    res = (rd_json(f"testing/results/{lastd}.json", {}) or {}).get("results") or []
+    items = (rd_json("data/skills.json", {}) or {}).get("items") or []
+    if not res or not items:
+        return ""
+    types = {x["slug"]: x.get("type") for x in items}
+    if sp.get("include_mcp_stats"):
+        by_slug = {}
+        for x in res:
+            if types.get(x["slug"]) in ("mcp-server", "npm-mcp-package"):
+                by_slug.setdefault(x["slug"], {})[x["agent"]] = (x["status"] == "pass")
+        all5 = sum(1 for v in by_slug.values() if len(v) == 5 and all(v.values()))
+        if by_slug:
+            return f"**This week's receipt ({fmt(lastd)}):** {all5} of {len(by_slug)} tested MCP servers connected cleanly in all 5 coding agents."
+    if sp.get("include_type_stats"):
+        agg = {}
+        labels = {"plugin": "Plugins", "mcp-server": "Reference MCP", "npm-mcp-package": "npm MCP", "skill": "Agent Skills"}
+        for x in res:
+            lb = labels.get(types.get(x["slug"]))
+            if not lb:
+                continue
+            p_, n_ = agg.get(lb, (0, 0))
+            agg[lb] = (p_ + (x["status"] == "pass"), n_ + 1)
+        if agg:
+            parts = [f"{lb} {p_}/{n_} ({round(100 * p_ / n_, 1)}%)" for lb, (p_, n_) in agg.items() if n_]
+            return f"**This week by format ({fmt(lastd)}):** " + " · ".join(parts) + "."
+    return ""
+
+
+def _render_footer(skel):
+    prompts = [str(x).strip() for x in (skel.get("tell_us_prompts") or []) if str(x).strip()]
+    sponsor_extra = str(skel.get("sponsor_note") or "").strip()
+    if not prompts and not sponsor_extra:
+        return FOOTER
+    if not prompts:
+        prompts = [
+            "**One tool you want tested** before you install it.",
+            "**Did we get your tool wrong?** Send the link and we'll rerun it and fix the page.",
+        ]
+    lines = ["## 🙏 Tell us", ""]
+    for idx, q in enumerate(prompts, 1):
+        lines.append(f"{idx}. {q}")
+    lines += [
+        "",
+        "I read every reply.",
+        "",
+        "---",
+        "",
+        "**Sponsor:** This spot is open. Founding rate: **$19 for 1 issue** (or **$59/mo for 4 issues**, about $15 each). Placements are always labeled; see [skillmaxx.gilventures.ai/advertise/](/advertise/)" + (f" {sponsor_extra}" if sponsor_extra else ""),
+        "",
+        "Built a skill? We'll run it through all five agents: [skillmaxx.gilventures.ai/submit/](/submit/)",
+        "",
+        "</div>",
+        '{% include "nlembed.njk" %}',
+        "",
+    ]
+    return "\n".join(lines)
+
+
 def tip(wk, rep):
     """One practical tip picked by rule from this week's data (no LLM)."""
     if wk.get("version_changes"):
@@ -200,6 +270,10 @@ def build(d, root=None, radar=None):
          f'<h1 class="ph">{html.escape(title)}</h1>',
          f'<p class="lead">{p:,} of {tot:,} installs passed on {fmt(lastd)}. <span class="muted">Test data from {span}, {sun.year}.</span></p>', "",
          f"![SkillMaxx]({BANNER})", "", "## hey, Brandon here 👋", ""]
+    skel = skeleton_for_issue(n)
+    opener_note = str(skel.get("opener_note") or "").strip()
+    if opener_note and not PLACEHOLDER.search(opener_note):
+        L += [opener_note, ""]
     # Story paragraph, all from the scorecard.
     prev = next((w for w in weeks if w.get("end", "") < mon.isoformat() and w.get("trend")), None)
     move = ""
@@ -265,6 +339,14 @@ def build(d, root=None, radar=None):
         blog.append(f"- Sunday: [{clean(t)}](/blog/week-{key}/)")
     if blog:
         L += ["## 📝 On the blog", ""] + blog + [""]
+    sp = skel.get("spotlight") or {}
+    if sp.get("heading") and sp.get("body"):
+        sh, sb = str(sp["heading"]).strip(), str(sp["body"]).strip()
+        if not PLACEHOLDER.search(sh) and not PLACEHOLDER.search(sb):
+            L += [sh, "", sb, ""]
+            stat_line = _live_spotlight_stats(lastd, skel)
+            if stat_line and not PLACEHOLDER.search(stat_line):
+                L += [stat_line, ""]
     radar_lines = []
     for item in (radar or []):
         if not isinstance(item, dict):
@@ -283,7 +365,12 @@ def build(d, root=None, radar=None):
         L += ["## 👀 On our radar (not tested by us yet)", ""] + radar_lines + ["", "Want one of these in the nightly run? Reply with the name.", ""]
     for title, body, disc in mentions_for_issue(n):
         L += [f"## {title}", "", body, "", f"*{disc}*", ""]
-    L += ["## 🔧 Tip of the week", "", tip(wk, rep), "", FOOTER]
+    ev = skel.get("evergreen_section") or {}
+    if ev.get("heading") and ev.get("body"):
+        eh, eb = str(ev["heading"]).strip(), str(ev["body"]).strip()
+        if not PLACEHOLDER.search(eh) and not PLACEHOLDER.search(eb):
+            L += [eh, "", eb, ""]
+    L += ["## 🔧 Tip of the week", "", tip(wk, rep), "", _render_footer(skel)]
     return n, "\n".join(L), key
 
 
