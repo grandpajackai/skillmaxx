@@ -1,13 +1,20 @@
 #!/usr/bin/env python3
-"""Free, local 1080x1350 PNG & animated MP4 carousel generator for SkillMaxx.
+"""Free, local PNG & animated MP4 carousel generator for SkillMaxx.
 
 Reads only real committed nightly data (src/_data/reports.json, weeks.json, latestRows.json,
 data/skills.json, data/meta/meta.json) and renders HTML/CSS slides with bundled Inter & JetBrains Mono
 fonts via headless Chromium (Python playwright, falling back to google-chrome/chromium CLI).
+Default canvas is 1080x1350; --size 1080x1920 (or both) emits TikTok Photo Mode variants.
 With --animate, records deterministic 30fps H.264 MP4 slides + still PNG fallbacks + preview.mp4 via ffmpeg.
+The timely format pulls fresh HN radar at render time (growth/scripts/fetch_radar_hn.py).
+CTA default is the free newsletter; --cta keyword|hybrid is a placeholder until Brandon chooses.
+Never posts or queues to Buffer.
 
 Usage:
-  python3 growth/carousels/generate.py [--format news|leaderboard|orgchart|maxxing|v2|all] [--date YYYY-MM-DD] [--out DIR] [--zip] [--animate] [--fps 30]
+  python3 growth/carousels/generate.py --format v3 --size both --cta newsletter --out DIR --zip
+  python3 growth/carousels/generate.py --format timely --date YYYY-MM-DD --size both --out DIR --zip
+  python3 growth/carousels/generate.py --format timely --stub --size both --out DIR --zip
+  python3 growth/carousels/generate.py [--format news|leaderboard|orgchart|maxxing|timely|v2|v3|all] [--date YYYY-MM-DD] [--out DIR] [--zip] [--animate] [--fps 30] [--size 1080x1350|1080x1920|both] [--v3] [--cta newsletter|keyword|hybrid] [--keyword SCORE] [--radar-json PATH] [--stub] [--preview-label TEXT]
 """
 from __future__ import annotations
 
@@ -72,6 +79,219 @@ TYPE_LABEL = {
     "npm-mcp-package": "MCP npm",
     "skill": "Skill",
 }
+
+NL_URL = "https://skillmaxx.gilventures.ai/newsletter/"
+VENDOR_HOSTS = (
+    "anthropic.com",
+    "claude.dev",
+    "openai.com",
+    "blog.google",
+    "ai.google.dev",
+    "deepmind.com",
+    "cognition.ai",
+    "cursor.com",
+    "x.ai",
+    "meta.com",
+    "about.instagram.com",
+    "engineering.fb.com",
+    "microsoft.com",
+    "github.blog",
+    "developers.facebook.com",
+    "ai.meta.com",
+)
+
+
+class RenderConfig:
+    width: int = 1080
+    height: int = 1350
+    cta: str = "newsletter"  # newsletter | keyword | hybrid
+    keyword: str = "SCORE"
+    variant: str = "v2"  # v2 | v3
+    radar_json: str | None = None
+    preview_label: str | None = None
+    stub: bool = False
+
+
+CFG = RenderConfig()
+
+
+def set_render(
+    *,
+    width: int | None = None,
+    height: int | None = None,
+    cta: str | None = None,
+    keyword: str | None = None,
+    variant: str | None = None,
+    radar_json: str | None = None,
+    preview_label: str | None = None,
+    stub: bool | None = None,
+) -> None:
+    if width is not None:
+        CFG.width = width
+    if height is not None:
+        CFG.height = height
+    if cta is not None:
+        CFG.cta = cta
+    if keyword is not None:
+        CFG.keyword = keyword
+    if variant is not None:
+        CFG.variant = variant
+    if radar_json is not None:
+        CFG.radar_json = radar_json
+    if preview_label is not None:
+        CFG.preview_label = preview_label
+    if stub is not None:
+        CFG.stub = stub
+
+
+def base_css() -> str:
+    w, h = CFG.width, CFG.height
+    css = BASE_CSS.replace("width: 1080px;", f"width: {w}px;").replace("height: 1350px;", f"height: {h}px;")
+    if h >= 1920:
+        css += (
+            "\n.slide { padding: 88px 80px 80px; }\n"
+            ".topbar { margin-bottom: 64px; }\n"
+            ".note { padding-top: 28px; }\n"
+            ".footer { margin-top: 36px; padding-top: 28px; }\n"
+        )
+    css += """
+.preview-banner {
+  align-self: flex-start;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #FBBF24;
+  background: rgba(251,191,36,0.10);
+  border: 1px solid rgba(251,191,36,0.38);
+  padding: 8px 16px;
+  border-radius: 99px;
+  margin-bottom: 18px;
+}
+.claim-pill {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #FBBF24;
+  background: rgba(251,191,36,0.12);
+  border: 1px solid rgba(251,191,36,0.40);
+  padding: 6px 12px;
+  border-radius: 99px;
+}
+.source-line {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  color: #8A8F98;
+  line-height: 1.45;
+  margin-top: 10px;
+}
+"""
+    return css
+
+
+def footer_cta() -> str:
+    if CFG.cta == "keyword":
+        return f'Comment "{CFG.keyword}"'
+    if CFG.cta == "hybrid":
+        return f'Comment "{CFG.keyword}" · newsletter'
+    return "Free Sunday newsletter"
+
+
+def preview_chip() -> str:
+    if not CFG.preview_label:
+        return ""
+    return f'<div class="preview-banner">{esc(CFG.preview_label)}</div>'
+
+
+def cta_block(extra_html: str = "", animate: bool = False) -> str:
+    """Newsletter is the default CTA. keyword/hybrid are placeholders until Brandon chooses."""
+    pop = ' data-anim="pop" data-delay="1.15" data-dur="0.46" data-from-y="22" data-from-scale="0.93"' if animate else ""
+    glow = ' data-anim="glow" data-delay="1.65" data-period="3.35"' if animate else ""
+    kw = esc(CFG.keyword)
+    extra = extra_html or (
+        "Daily report, per-agent matrix, and raw failure logs at "
+        '<b style="color:#EDEDEF">skillmaxx.gilventures.ai</b>'
+    )
+    newsletter = (
+        f'<div class="nl-cta-box"{pop}>'
+        '<div class="cta-label">Subscribe to the free newsletter</div>'
+        '<div style="font-size:34px;font-weight:800;line-height:1.25">'
+        'Get the nightly results every week. <span style="color:#C6F432">Free.</span>'
+        "</div>"
+        f'<div class="nl-url-pill"{glow}>{NL_URL}</div>'
+        f'<div class="cta-desc" style="font-size:19px">{extra}</div>'
+        "</div>"
+    )
+    keyword = (
+        f'<div class="nl-cta-box"{pop}>'
+        '<div class="cta-label">Placeholder keyword CTA — not live until a fulfillment path is staffed</div>'
+        '<div style="font-size:34px;font-weight:800;line-height:1.25">'
+        f'Comment <span class="kw-pill">{kw}</span> and I&apos;ll send the link.'
+        "</div>"
+        '<div class="cta-desc" style="font-size:19px;margin-top:14px">'
+        f"Placeholder only. Default remains the newsletter URL until Brandon chooses. {extra}"
+        "</div></div>"
+    )
+    hybrid = (
+        f'<div class="nl-cta-box"{pop}>'
+        '<div class="cta-label">Hybrid CTA placeholder — newsletter is the working default</div>'
+        '<div style="font-size:32px;font-weight:800;line-height:1.25;margin-bottom:8px">'
+        f'Comment <span class="kw-pill">{kw}</span> and I&apos;ll DM the same link.'
+        "</div>"
+        f'<div class="nl-url-pill"{glow}>{NL_URL}</div>'
+        f'<div class="cta-desc" style="font-size:19px">Or subscribe directly. Keyword fulfillment is not staffed yet. {extra}</div>'
+        "</div>"
+    )
+    if CFG.cta == "keyword":
+        return keyword
+    if CFG.cta == "hybrid":
+        return hybrid
+    return newsletter
+
+
+def _parse_host(url: str) -> str:
+    try:
+        from urllib.parse import urlparse
+        return (urlparse(url).netloc or "").lower().lstrip("www.")
+    except Exception:
+        return ""
+
+
+def vendor_flag(url: str, title: str = "") -> str | None:
+    """Return 'vendor-claim', 'vendor-source', or None. Never treats HN points as a vendor metric."""
+    import re
+    host = _parse_host(url)
+    is_vendor = any(host == h or host.endswith("." + h) for h in VENDOR_HOSTS)
+    claimish = bool(re.search(r"\b(\d+\s*%|faster|beats|outperforms|claims?|benchmark|wins?)\b", title or "", re.I))
+    if is_vendor and claimish:
+        return "vendor-claim"
+    if is_vendor:
+        return "vendor-source"
+    return None
+
+
+def load_radar(limit: int = 5) -> list[dict]:
+    if CFG.radar_json:
+        raw = Path(CFG.radar_json)
+        if raw.is_file():
+            data = json.loads(raw.read_text(encoding="utf-8"))
+            return (data if isinstance(data, list) else data.get("items") or [])[:limit]
+        return []
+    try:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "fetch_radar_hn", ROOT / "growth/scripts/fetch_radar_hn.py"
+        )
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        return mod.gather(date.today(), days=6, limit=limit)
+    except Exception:
+        return []
 
 
 def rd_json(rel: str, default=None):
@@ -241,7 +461,7 @@ h1 {
   letter-spacing: -0.035em;
   margin-bottom: 24px;
 }
-h1 em { font-style: normal; color: #C6F432; }
+h1 em, h2 em { font-style: normal; color: #C6F432; }
 h2 {
   font-size: 50px;
   line-height: 1.1;
@@ -607,8 +827,9 @@ def wrap_slide(
 ) -> str:
     dur_attr = f' data-duration="{duration:.2f}"' if animate else ""
     script_tag = f"<script>{ANIM_JS}</script>" if animate else ""
+    chip = preview_chip()
     return f"""<!doctype html>
-<html><head><meta charset="utf-8"><style>{font_css()}{BASE_CSS}</style></head>
+<html><head><meta charset="utf-8"><style>{font_css()}{base_css()}</style></head>
 <body>
   <div class="slide"{dur_attr}>
     <div class="topbar">
@@ -618,7 +839,7 @@ def wrap_slide(
         <div class="page-num">{idx:02d} / {total:02d}</div>
       </div>
     </div>
-    <div class="content">{body}</div>
+    <div class="content">{chip}{body}</div>
     <div class="footer">
       <div><b>skillmaxx.gilventures.ai</b> · 5 agents · $0 free directory</div>
       <div>{esc(footer_right)}</div>
@@ -1557,13 +1778,79 @@ def build_orgchart_slides(data: dict, animate: bool = False) -> list[str]:
 
     all_slides = [s1, *dept_slides, s7]
     durations = [6.0, 5.5, 5.5, 5.5, 5.5, 5.5, 5.0]
+    if CFG.variant == "v3":
+        by_map = rep.get("by") or {}
+        agent_rows = []
+        for i_ag, (akey, color) in enumerate(
+            [
+                ("claude_code", "#F59E0B"),
+                ("grok_build", "#22D3EE"),
+                ("codex", "#22C55E"),
+                ("cursor", "#A78BFA"),
+                ("pi", "#F472B6"),
+            ]
+        ):
+            st = by_map.get(akey) or {}
+            ag_pass = st.get("pass", 0)
+            ag_tot = (st.get("total") or 0) - (st.get("needs_key") or 0)
+            ag_broken = st.get("broken", 0)
+            r_anim = (
+                f' data-anim="row" data-delay="{0.28 + i_ag * 0.10:.2f}" data-dur="0.36" data-from-y="16"'
+                if animate
+                else ""
+            )
+            agent_rows.append(
+                f'<div class="v2-row"{r_anim}>'
+                f'<div class="v2-icon" style="border-color:{color}55">{_dept_svg("build", color, 22)}</div>'
+                '<div class="v2-main"><div class="v2-name-line">'
+                f'<div class="v2-name">{esc(AG_NAME[akey])}</div>'
+                f'<div class="v2-role" style="color:{color}">{ag_broken} broken</div>'
+                "</div>"
+                f'<div class="v2-desc">Judgeable clean installs only — API-key skips are excluded.</div>'
+                "</div>"
+                '<div class="v2-right">'
+                f'<div class="v2-idx">{i_ag + 1:02d}</div>'
+                f'<div class="v2-badge" style="color:{color};border-color:{color}55;background:{color}14">{ag_pass} / {ag_tot}</div>'
+                "</div></div>"
+            )
+        s_payoff = f"""
+    <div class="dept-kicker" style="color:#C6F432">PAYOFF · TONIGHT&apos;S FIVE AGENTS</div>
+    <h2>What actually <em>passed</em> last night.</h2>
+    <p class="sub" style="margin-bottom:24px">Each agent is tested only on the add-on formats it supports. These are not a bake-off.</p>
+    <div class="v2-rows">{"".join(agent_rows)}</div>
+    <p class="note">Source: SkillMaxx nightly report · {esc(rep["date"])}. Judgeable totals exclude API-key skips.</p>
+    """
+        recap_rows = []
+        for d in depts:
+            cnt = len(dept_items[d["key"]])
+            recap_rows.append(
+                f'<div class="item-row">'
+                f'<div><div class="item-title">{esc(d["tab"])}</div>'
+                f'<div class="item-desc">{esc(d["sub"])}</div></div>'
+                f'<span class="pill lime">{cnt} verified</span></div>'
+            )
+        s_recap = f"""
+    <div class="dept-kicker">RECAP · {esc(d_lbl.upper())}</div>
+    <h2>The stack, <em>at a glance.</em></h2>
+    <p class="sub" style="margin-bottom:22px">{cc_pass} passing Claude Code add-ons, split into five departments. Full matrix at skillmaxx.gilventures.ai/works-in/claude-code/</p>
+    <div class="card-stack" style="gap:12px">{"".join(recap_rows)}</div>
+    """
+        s_cta = f"""
+    <div class="eyebrow"><span class="dot"></span>OPEN SOURCE · ZERO PAYWALL · {esc(d_lbl.upper())}</div>
+    <h1>{cc_pass} verified. <em>Start with one.</em></h1>
+    <p class="cover-sub" style="margin-bottom:22px">Tonight&apos;s {cc_broken} broken Claude add-ons stay public, with raw exit logs.</p>
+    {cta_block(f'All {cc_pass} live at <b style="color:#EDEDEF">skillmaxx.gilventures.ai/works-in/claude-code/</b>', animate)}
+    """
+        all_slides = [s1, s_payoff, *dept_slides, s_recap, s_cta]
+        durations = [6.0, 5.2, 5.5, 5.5, 5.5, 5.5, 5.5, 5.2, 5.0]
+        total_slides = len(all_slides)
     return [
         wrap_slide(
             f"<style>{V2_CSS}</style>" + body,
             i + 1,
             total_slides,
             f"CLAUDE STACK · {fmt_short(rep['date']).upper()}",
-            "Swipe →" if i < total_slides - 1 else "Free Sunday newsletter",
+            "Swipe →" if i < total_slides - 1 else footer_cta(),
             animate=animate,
             duration=durations[i],
         )
@@ -1867,13 +2154,69 @@ def build_maxxing_slides(data: dict, animate: bool = False) -> list[str]:
 
     all_slides = [s1, s2, s3, s4, s5, s6]
     durations = [6.0, 5.5, 5.5, 5.5, 5.0, 5.0]
+    if CFG.variant == "v3":
+        trend = wk.get("trend") or []
+        trend_rows = []
+        for i_t, t in enumerate(trend[-5:]):
+            t_anim = (
+                f' data-anim="row" data-delay="{0.25 + i_t * 0.10:.2f}" data-dur="0.36" data-from-y="16"'
+                if animate
+                else ""
+            )
+            trend_rows.append(
+                f'<div class="v2-row"{t_anim}>'
+                f'<div class="v2-icon" style="border-color:#C6F43255">{_dept_svg("ops", "#C6F432", 22)}</div>'
+                '<div class="v2-main"><div class="v2-name-line">'
+                f'<div class="v2-name">{esc(fmt_date(t["date"]))}</div>'
+                f'<div class="v2-role" style="color:#C6F432">{t.get("rate", 0)}% clean</div>'
+                "</div>"
+                f'<div class="v2-desc">{t.get("pass", 0):,} passed of {t.get("tested", 0):,} judged that night.</div>'
+                "</div>"
+                f'<div class="v2-right"><div class="v2-idx">{i_t + 1:02d}</div>'
+                f'<div class="v2-badge" style="color:#C6F432;border-color:#C6F43255;background:#C6F43214">{t.get("pass", 0):,}</div>'
+                "</div></div>"
+            )
+        if not trend_rows:
+            trend_rows.append(
+                '<div class="v2-row"><div class="v2-main"><div class="v2-name">No week trend in weeks.json for this date.</div></div></div>'
+            )
+        s_trend = f"""
+    <div class="dept-kicker" style="color:#22D3EE">THIS WEEK · {esc(wk.get("key", ""))}</div>
+    <h2>The week so far, <em>night by night.</em></h2>
+    <p class="sub" style="margin-bottom:22px">From weeks.json trend[]. {wk.get("fixed_n", 0)} fix(es), {wk.get("broke_n", 0)} confirmed breaks, {wk.get("flaky_n", 0)} flaky this week.</p>
+    <div class="v2-rows">{"".join(trend_rows)}</div>
+    <p class="note">Source: src/_data/weeks.json · key {esc(wk.get("key", ""))} · {esc(wk.get("start", ""))}–{esc(wk.get("end", ""))} · {wk.get("runs", 0)} run(s)</p>
+    """
+        s_recap = f"""
+    <div class="dept-kicker">RECAP · {esc(d_lbl.upper())}</div>
+    <h2>SkillMaxxing, <em>in one glance.</em></h2>
+    <div class="card-stack" style="gap:14px;margin-top:18px">
+      <div class="card" style="padding:22px 26px"><div class="item-title">01 · {rep['pass']:,} / {tested:,} clean last night ({rate}%)</div><div class="item-desc">Judged installs only. API-key skips are not counted as failures.</div></div>
+      <div class="card" style="padding:22px 26px"><div class="item-title">02 · {len(five_of_five)} tools passed on all 5 agents</div><div class="item-desc">The cross-agent elite from latestRows.json — not a sponsored list.</div></div>
+      <div class="card" style="padding:22px 26px"><div class="item-title">03 · Pick an agent, copy the passing command, read the 10-night history</div><div class="item-desc">The loop lives at skillmaxx.gilventures.ai/works-in/&lt;agent&gt;/</div></div>
+    </div>
+    """
+        s_cta = f"""
+    <div class="eyebrow"><span class="dot"></span>OPEN SOURCE · ZERO PAYWALL · {esc(d_lbl.upper())}</div>
+    <h1>Stop guessing. <em>Read the logs.</em></h1>
+    <p class="cover-sub" style="margin-bottom:22px">The {len(five_of_five)} cross-agent winners, new sandbox breaks, and copy-paste commands — in one free Sunday issue.</p>
+    <div class="stat-grid" style="margin-top:0;margin-bottom:20px">
+      <div class="stat-card"><div class="stat-val lime">{rate}%</div><div class="stat-lbl">Clean pass rate<br>({rep['pass']:,}/{tested:,})</div></div>
+      <div class="stat-card"><div class="stat-val">{addons:,}</div><div class="stat-lbl">Skills, plugins<br>&amp; MCPs tested</div></div>
+      <div class="stat-card"><div class="stat-val">$0</div><div class="stat-lbl">Free directory<br>&amp; weekly digest</div></div>
+    </div>
+    {cta_block(animate=animate)}
+    """
+        all_slides = [s1, s2, s3, s4, s5, s_trend, s_recap, s_cta]
+        durations = [6.0, 5.5, 5.5, 5.5, 5.0, 5.2, 5.2, 5.0]
+        total_slides = len(all_slides)
     return [
         wrap_slide(
             f"<style>{V2_CSS}</style>" + body,
             i + 1,
             total_slides,
             f"SKILLMAXXING · {fmt_short(rep['date']).upper()}",
-            "Swipe →" if i < total_slides - 1 else "Free Sunday newsletter",
+            "Swipe →" if i < total_slides - 1 else footer_cta(),
             animate=animate,
             duration=durations[i],
         )
@@ -1914,7 +2257,7 @@ def render_slides_html(slides: list[str], out_dir: Path) -> list[Path]:
         try:
             with sync_playwright() as p:
                 browser = _launch_playwright_browser(p)
-                page = browser.new_page(viewport={"width": 1080, "height": 1350}, device_scale_factor=1)
+                page = browser.new_page(viewport={"width": CFG.width, "height": CFG.height}, device_scale_factor=1)
                 for i, doc in enumerate(slides, 1):
                     page.set_content(doc, wait_until="load")
                     page.evaluate("document.fonts.ready")
@@ -1940,7 +2283,7 @@ def render_slides_html(slides: list[str], out_dir: Path) -> list[Path]:
                     "--disable-gpu",
                     "--no-sandbox",
                     "--hide-scrollbars",
-                    "--window-size=1080,1350",
+                    f"--window-size={CFG.width},{CFG.height}",
                     f"--screenshot={out_png}",
                     hp.as_uri(),
                 ],
@@ -1967,7 +2310,7 @@ def render_slides_animated(slides: list[str], out_dir: Path, fps: int = 30) -> t
 
     with sync_playwright() as p:
         browser = _launch_playwright_browser(p)
-        page = browser.new_page(viewport={"width": 1080, "height": 1350}, device_scale_factor=1)
+        page = browser.new_page(viewport={"width": CFG.width, "height": CFG.height}, device_scale_factor=1)
         for i, doc in enumerate(slides, 1):
             page.set_content(doc, wait_until="load")
             page.evaluate("document.fonts.ready")
@@ -2069,23 +2412,250 @@ def zip_dir(folder: Path, zip_path: Path) -> Path:
     return zip_path
 
 
+def _flag_pill(flag: str | None) -> str:
+    if flag == "vendor-claim":
+        return '<span class="claim-pill">Vendor claim — not independently verified</span>'
+    if flag == "vendor-source":
+        return '<span class="claim-pill">Vendor source</span>'
+    return ""
+
+
+def _hn_when(iso: str) -> str:
+    if not iso:
+        return ""
+    try:
+        return fmt_date(iso[:10])
+    except Exception:
+        return iso[:10]
+
+
+def build_timely_slides(data: dict, animate: bool = False) -> list[str]:
+    """Wednesday news slot. Fresh HN/radar pull only. Future weeks use --stub."""
+    if CFG.stub:
+        return build_timely_stub_slides(data, animate=animate)
+    rep = data["rep"]
+    d_lbl = fmt_date(rep["date"])
+    items = load_radar(limit=5)
+    if len(items) < 3:
+        # Do not pad with stale research. Fall back to an honest stub.
+        return build_timely_stub_slides(data, animate=animate, reason="Fresh radar returned fewer than 3 stories.")
+
+    pull_lbl = date.today().isoformat()
+    versions = rep.get("versions") or {}
+    ver_bits = []
+    for akey in ("claude_code", "codex", "grok_build", "cursor", "pi"):
+        if versions.get(akey):
+            ver_bits.append(f"{AG_SHORT[akey]} {esc(str(versions[akey]))}")
+    ver_line = " · ".join(ver_bits) if ver_bits else "Versions recorded in tonight's reports.json"
+
+    s1 = f"""
+    <div class="eyebrow"><span class="dot"></span>FRESH HN RADAR · PULLED {esc(pull_lbl)}</div>
+    <h1>This week on the <em>radar.</em></h1>
+    <p class="cover-sub" style="margin-bottom:28px">{len(items)} stories from Hacker News, pulled at render time. Points are as of the pull, not a SkillMaxx metric. Vendor claims stay flagged.</p>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-val lime">{len(items)}</div><div class="stat-lbl">Stories on this deck<br>(HN Algolia, live)</div></div>
+      <div class="stat-card"><div class="stat-val" style="font-size:42px">{esc(fmt_short(rep["date"]))}</div><div class="stat-lbl">Sandbox night used<br>for version context</div></div>
+      <div class="stat-card"><div class="stat-val">$0</div><div class="stat-lbl">Keyless pull · no<br>invented numbers</div></div>
+    </div>
+    <p class="note">Source: growth/scripts/fetch_radar_hn.py → hn.algolia.com. Queries: mcp server, claude code, agent skills, codex cli, cursor mcp.</p>
+    """
+
+    s2 = f"""
+    <div class="dept-kicker" style="color:#C6F432">PAYOFF · WHAT WE CAN SAY</div>
+    <h2>News first. <em>Our logs second.</em></h2>
+    <p class="sub" style="margin-bottom:22px">We do not restate vendor benchmarks. The only SkillMaxx facts on this deck are last night&apos;s sandbox pin and pass counts.</p>
+    <div class="card-stack" style="gap:16px">
+      <div class="card" style="padding:24px 28px">
+        <div class="item-title">Tonight&apos;s sandbox versions</div>
+        <div class="item-desc" style="font-size:22px;color:#EDEDEF;margin-top:8px">{ver_line}</div>
+      </div>
+      <div class="card" style="padding:24px 28px">
+        <div class="item-title">Last night&apos;s judged result</div>
+        <div class="item-desc" style="font-size:22px;color:#EDEDEF;margin-top:8px">{rep.get("pass", 0):,} passed of {rep.get("tested") or rep.get("total") or 0:,} judged installs ({esc(rep["date"])}).</div>
+      </div>
+      <div class="card" style="padding:24px 28px">
+        <div class="item-title">Sourcing rule</div>
+        <div class="item-desc" style="font-size:22px;color:#EDEDEF;margin-top:8px">Each story shows the HN score at pull time. Vendor blogs get a flag. Unverified metrics are never copied as ours.</div>
+      </div>
+    </div>
+    """
+
+    story_slides = []
+    for i, it in enumerate(items, 1):
+        title = it.get("title") or "Untitled"
+        url = it.get("url") or ""
+        hn = it.get("hn") or ""
+        flag = vendor_flag(url, title)
+        pts = it.get("points") or 0
+        comments = it.get("comments") or 0
+        when = _hn_when(it.get("created") or "")
+        pill = _flag_pill(flag)
+        pop = f' data-anim="pop" data-delay="0.25" data-dur="0.42" data-from-y="18" data-from-scale="0.94"' if animate else ""
+        story_slides.append(f"""
+    <div class="dept-kicker">STORY {i:02d} OF {len(items):02d} · HN</div>
+    <h2>{esc(title)}</h2>
+    <div style="margin:12px 0 22px">{pill}</div>
+    <div class="card" style="padding:28px 30px"{pop}>
+      <div class="stat-grid" style="margin:0">
+        <div class="stat-card" style="padding:18px 20px"><div class="stat-val lime">{pts}</div><div class="stat-lbl">HN points<br>as of pull</div></div>
+        <div class="stat-card" style="padding:18px 20px"><div class="stat-val">{comments}</div><div class="stat-lbl">HN comments<br>as of pull</div></div>
+        <div class="stat-card" style="padding:18px 20px"><div class="stat-val" style="font-size:32px">{esc(when) or "—"}</div><div class="stat-lbl">Story date<br>(UTC day)</div></div>
+      </div>
+      <div class="source-line">Source: {esc(url or hn)}</div>
+      <div class="source-line">{esc(hn)}</div>
+    </div>
+    <p class="note">Points and comments are first-party from HN Algolia at pull {esc(pull_lbl)}. Not a SkillMaxx measurement.</p>
+    """)
+
+    recap_items = []
+    for i, it in enumerate(items, 1):
+        flag = vendor_flag(it.get("url") or "", it.get("title") or "")
+        tag = " · vendor claim" if flag == "vendor-claim" else (" · vendor source" if flag == "vendor-source" else "")
+        recap_items.append(
+            f'<div class="item-row"><div><div class="item-title">{i:02d} · {esc(it.get("title") or "")}</div>'
+            f'<div class="item-desc">{it.get("points") or 0} pts · {it.get("comments") or 0} comments as of pull{esc(tag)}</div></div></div>'
+        )
+    s_recap = f"""
+    <div class="dept-kicker">RECAP · SAVE THIS</div>
+    <h2>{len(items)} stories, <em>no invented numbers.</em></h2>
+    <p class="sub" style="margin-bottom:18px">Pulled {esc(pull_lbl)}. Re-pull at publish time — do not reuse this snapshot next week.</p>
+    <div class="card-stack" style="gap:10px">{"".join(recap_items)}</div>
+    """
+
+    s_cta = f"""
+    <div class="eyebrow"><span class="dot"></span>FREE WEEKLY DIGEST</div>
+    <h1>The radar, plus <em>what actually installed.</em></h1>
+    <p class="cover-sub" style="margin-bottom:22px">Sunday issue: the week&apos;s sandbox scorecard and a fresh HN pull at publish time. Not a recycled research memo.</p>
+    {cta_block(animate=animate)}
+    """
+
+    all_slides = [s1, s2, *story_slides, s_recap, s_cta]
+    # 2 + n + 2; n is 3-5 so length is 7-9
+    durations = [5.5, 5.2] + [5.0] * len(story_slides) + [5.2, 5.0]
+    total = len(all_slides)
+    badge = f"RADAR · {fmt_short(rep['date']).upper()}"
+    return [
+        wrap_slide(
+            body,
+            i + 1,
+            total,
+            badge,
+            "Swipe →" if i < total - 1 else footer_cta(),
+            animate=animate,
+            duration=durations[i],
+        )
+        for i, body in enumerate(all_slides)
+    ]
+
+
+def build_timely_stub_slides(data: dict, animate: bool = False, reason: str | None = None) -> list[str]:
+    """Template for a Wednesday that has no known news yet. Re-render at publish time."""
+    rep = data["rep"]
+    d_lbl = fmt_date(rep["date"])
+    why = reason or "This week's stories are not knowable yet. The deck is rendered at publish time from a fresh HN/radar pull."
+    s1 = f"""
+    <div class="eyebrow"><span class="dot"></span>TEMPLATE STUB · RENDER AT PUBLISH</div>
+    <h1>Wednesday radar. <em>Not filled in yet.</em></h1>
+    <p class="cover-sub" style="margin-bottom:28px">{esc(why)}</p>
+    <div class="card-stack" style="gap:16px">
+      <div class="card" style="padding:24px 28px">
+        <div class="item-title">What happens at publish</div>
+        <div class="item-desc" style="font-size:22px;color:#EDEDEF;margin-top:8px">python3 growth/carousels/generate.py --format timely --size both --animate --zip</div>
+      </div>
+      <div class="card" style="padding:24px 28px">
+        <div class="item-title">Sourcing rule</div>
+        <div class="item-desc" style="font-size:22px;color:#EDEDEF;margin-top:8px">Live fetch_radar_hn.py only. Vendor claims flagged. No numbers from a prior research memo.</div>
+      </div>
+    </div>
+    """
+    s2 = f"""
+    <div class="dept-kicker">STRUCTURE · 8–9 SLIDES</div>
+    <h2>Cover, payoff, <em>one story per slide</em>, recap, CTA.</h2>
+    <div class="card-stack" style="gap:14px;margin-top:18px">
+      <div class="item-row"><div><div class="item-title">01 · Cover</div><div class="item-desc">Hook + pull timestamp + story count from the live pull.</div></div></div>
+      <div class="item-row"><div><div class="item-title">02 · Payoff</div><div class="item-desc">Tonight&apos;s sandbox versions and judged pass count only.</div></div></div>
+      <div class="item-row"><div><div class="item-title">03–07 · One HN story each</div><div class="item-desc">Title, source, HN points as of pull, vendor flag if needed.</div></div></div>
+      <div class="item-row"><div><div class="item-title">08 · Recap</div><div class="item-desc">Saveable list. No invented figures.</div></div></div>
+      <div class="item-row"><div><div class="item-title">09 · CTA</div><div class="item-desc">Newsletter default until Brandon chooses a keyword path.</div></div></div>
+    </div>
+    <p class="note">Placeholder data night on this stub: {esc(rep["date"])} ({d_lbl}). Re-pull at publish; do not ship this stub.</p>
+    """
+    s3 = f"""
+    <div class="eyebrow"><span class="dot"></span>FREE WEEKLY DIGEST</div>
+    <h1>The radar ships <em>when the week does.</em></h1>
+    <p class="cover-sub" style="margin-bottom:22px">Sunday newsletter + this Wednesday deck both gather HN at publish time, not days early.</p>
+    {cta_block(animate=animate)}
+    """
+    all_slides = [s1, s2, s3]
+    durations = [5.5, 5.5, 5.0]
+    total = 3
+    return [
+        wrap_slide(
+            body,
+            i + 1,
+            total,
+            "RADAR STUB",
+            "Swipe →" if i < total - 1 else footer_cta(),
+            animate=animate,
+            duration=durations[i],
+        )
+        for i, body in enumerate(all_slides)
+    ]
+
+
+
+
 BUILDERS = {
     "news": (build_news_slides, "news"),
     "leaderboard": (build_leaderboard_slides, "leaderboard"),
     "orgchart": (build_orgchart_slides, "v2-orgchart"),
     "maxxing": (build_maxxing_slides, "v2-maxxing"),
+    "timely": (build_timely_slides, "timely"),
 }
+
+
+def _parse_size(value: str) -> list[tuple[int, int, str]]:
+    if value == "1080x1350":
+        return [(1080, 1350, "")]
+    if value == "1080x1920":
+        return [(1080, 1920, "-tiktok")]
+    if value == "both":
+        return [(1080, 1350, ""), (1080, 1920, "-tiktok")]
+    raise SystemExit(f"Unknown --size {value}")
+
+
+def _prefix_for(fmt: str, animate: bool) -> str:
+    if fmt == "orgchart":
+        return "v3-orgchart" if CFG.variant == "v3" else "v2-orgchart"
+    if fmt == "maxxing":
+        return "v3-maxxing" if CFG.variant == "v3" else "v2-maxxing"
+    if fmt == "timely":
+        return "v3-timely-stub" if CFG.stub else "v3-timely"
+    if animate and fmt in {"news", "leaderboard"}:
+        return fmt
+    return BUILDERS[fmt][1]
 
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--format", choices=["news", "leaderboard", "orgchart", "maxxing", "v2", "all"], default="all")
+    ap.add_argument("--format", choices=["news", "leaderboard", "orgchart", "maxxing", "timely", "v2", "v3", "all"], default="all")
     ap.add_argument("--date", help="Report date YYYY-MM-DD (default: latest in src/_data/reports.json)")
     ap.add_argument("--out", default="/workspace/carousels-samples")
     ap.add_argument("--zip", action="store_true")
-    ap.add_argument("--animate", action="store_true", help="Render animated MP4 slides (1080x1350 H.264 30fps) + PNG fallbacks + preview.mp4")
+    ap.add_argument("--animate", action="store_true", help="Render animated MP4 slides (H.264 30fps) + PNG fallbacks + preview.mp4")
     ap.add_argument("--fps", type=int, default=30, help="Frame rate for --animate (default: 30)")
+    ap.add_argument("--size", choices=["1080x1350", "1080x1920", "both"], default="1080x1350")
+    ap.add_argument("--v3", action="store_true", help="Use v3 8-10 slide structure for orgchart/maxxing")
+    ap.add_argument("--cta", choices=["newsletter", "keyword", "hybrid"], default="newsletter")
+    ap.add_argument("--keyword", default="SCORE", help="Placeholder comment keyword for --cta keyword|hybrid")
+    ap.add_argument("--radar-json", dest="radar_json", help="Optional pre-pulled radar JSON (otherwise fetch_radar_hn.py runs live)")
+    ap.add_argument("--stub", action="store_true", help="Render the timely deck as a publish-time template stub")
+    ap.add_argument("--preview-label", dest="preview_label", help="Optional banner, e.g. preview data that will be re-rendered at publish")
     a = ap.parse_args(argv)
+
+    variant = "v3" if (a.v3 or a.format in {"v3", "timely"}) else "v2"
+    set_render(cta=a.cta, keyword=a.keyword, variant=variant, radar_json=a.radar_json,
+               preview_label=a.preview_label, stub=a.stub)
 
     data = load_data(a.date)
     d_str = data["rep"]["date"]
@@ -2093,35 +2663,47 @@ def main(argv=None) -> int:
     if a.format == "all":
         targets = ["news", "leaderboard", "orgchart", "maxxing"]
     elif a.format == "v2":
+        set_render(variant="v2")
         targets = ["orgchart", "maxxing"]
+    elif a.format == "v3":
+        set_render(variant="v3")
+        targets = ["orgchart", "maxxing", "timely"]
     else:
         targets = [a.format]
 
-    for fmt in targets:
-        fn, prefix = BUILDERS[fmt]
-        if a.animate:
-            anim_prefix = f"v2-animated-{prefix[3:]}" if prefix.startswith("v2-") else f"animated-{prefix}"
-            name = f"{anim_prefix}-{d_str}"
-            dest = out_root / name
-            try:
-                slides = fn(data, animate=True)
-            except TypeError:
+    for width, height, size_tag in _parse_size(a.size):
+        set_render(width=width, height=height)
+        for fmt in targets:
+            fn, _legacy = BUILDERS[fmt]
+            prefix = _prefix_for(fmt, a.animate)
+            if a.animate:
+                if prefix.startswith("v3-"):
+                    anim_prefix = f"v3-animated-{prefix[3:]}"
+                elif prefix.startswith("v2-"):
+                    anim_prefix = f"v2-animated-{prefix[3:]}"
+                else:
+                    anim_prefix = f"animated-{prefix}"
+                name = f"{anim_prefix}{size_tag}-{d_str}"
+                dest = out_root / name
+                try:
+                    slides = fn(data, animate=True)
+                except TypeError:
+                    slides = fn(data)
+                mp4s, pngs, preview, durs = render_slides_animated(slides, dest, fps=a.fps)
+                tot_dur = sum(durs)
+                print(
+                    f"carousel {fmt} (animated {width}x{height}): {len(mp4s)} mp4s + {len(pngs)} pngs + {preview.name} "
+                    f"({tot_dur:.1f}s total @ {a.fps}fps) -> {dest}"
+                )
+            else:
                 slides = fn(data)
-            mp4s, pngs, preview, durs = render_slides_animated(slides, dest, fps=a.fps)
-            tot_dur = sum(durs)
-            print(
-                f"carousel {fmt} (animated): {len(mp4s)} mp4s + {len(pngs)} pngs + {preview.name} "
-                f"({tot_dur:.1f}s total @ {a.fps}fps) -> {dest}"
-            )
-        else:
-            slides = fn(data)
-            name = f"{prefix}-{d_str}"
-            dest = out_root / name
-            pngs = render_slides_html(slides, dest)
-            print(f"carousel {fmt}: rendered {len(pngs)} slides (1080x1350) -> {dest}")
-        if a.zip:
-            zp = zip_dir(dest, out_root / f"{name}.zip")
-            print(f"carousel {fmt}: zipped -> {zp}")
+                name = f"{prefix}{size_tag}-{d_str}"
+                dest = out_root / name
+                pngs = render_slides_html(slides, dest)
+                print(f"carousel {fmt}: rendered {len(pngs)} slides ({width}x{height}) -> {dest}")
+            if a.zip:
+                zp = zip_dir(dest, out_root / f"{name}.zip")
+                print(f"carousel {fmt}: zipped -> {zp}")
     return 0
 
 
