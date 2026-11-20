@@ -508,6 +508,26 @@ def approved_queues():
     return out
 
 
+
+OUTREACH_SKIP_STATUSES = {
+    "Lost", "Bounced", "opted-out", "declined-warm", "Warm - inbound",
+    "Booked", "Live", "Renewed", "dm-closed",
+}
+OUTREACH_SKIP_ROUTES = {"form", "call-only", "linkedin", "x", "inbound-email"}
+
+
+def outreach_skip(r):
+    """True when the daily outreach queue must not email this pipeline row."""
+    st = (r.get("status") or "").strip()
+    route = (r.get("contact_route") or "").strip()
+    notes = (r.get("notes") or "")
+    if st in OUTREACH_SKIP_STATUSES or route in OUTREACH_SKIP_ROUTES:
+        return True
+    if "DAILY OUTREACH: NEVER EMAIL" in notes:
+        return True
+    return False
+
+
 def cmd_outreach(d, a):
     rows = pipeline_rows()
     idx, zerr = None, None
@@ -521,6 +541,8 @@ def cmd_outreach(d, a):
     due, targets = [], []
     for r in rows:
         st = r.get("status", "")
+        if outreach_skip(r):
+            continue
         if st.startswith("Contacted") and r.get("contact_route") == "email":
             nd, raw = next_due(r)
             if nd and nd <= d:

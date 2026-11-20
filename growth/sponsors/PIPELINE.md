@@ -5,7 +5,7 @@
 **Pricing / caps:** [../SPONSORS.md](../SPONSORS.md) · [SCALING.md](SCALING.md).  
 **Playbook:** [PLAYBOOK.md](PLAYBOOK.md).
 
-Stages: **Target → Contacted → Replied → Booked → Live → Renewed / Lost**.
+Stages: **Target → Contacted → Replied → Booked → Live → Renewed / Lost**. Other statuses used in the sheet: `declined-warm`, `opted-out`, `Bounced`, and **`Warm - inbound`** (the prospect wrote to us — daily outreach must never email these rows).
 
 **Standing gate (updated 2026-10-27):** Brandon approved starting outreach today. Newsletter #2 still first-sends **Tue Nov 3**. Email ramp ~10/day week 1 (verified public addresses only). Contact forms can go faster. Day-1: **10 Contacted** by email. Day-2 (Oct 28): 9 email + 6 form.
 
@@ -21,9 +21,9 @@ Every booking gets a row here. Default founding lock = 6 months from first payme
 
 ## Lead log columns + routing (Brandon, 2026-10-27)
 
-PIPELINE.csv columns: company, who_they_are, website, contact_route (email/form/call-only/linkedin/x), contact_detail, status, date_contacted, outreach_sent, data_points, notes, next_follow_up.
+PIPELINE.csv columns: company, who_they_are, website, contact_route (email/form/call-only/linkedin/x/inbound-email), contact_detail, status, date_contacted, outreach_sent, data_points, notes, next_follow_up.
 
-Routing: verified public email first (never guess) → contact form → if a site only offers call bookings, find a public email → if only a phone, log `call-only` with the number and tell Brandon → else `linkedin`/`x` with the URL and tell Brandon. Call-only and LinkedIn/X leads show in the dashboard "Needs Brandon" list.
+Routing: verified public email first (never guess) → contact form → if a site only offers call bookings, find a public email → if only a phone, log `call-only` with the number and tell Brandon → else `linkedin`/`x` with the URL and tell Brandon. Call-only and LinkedIn/X leads show in the dashboard "Needs Brandon" list. `inbound-email` is for threads where the prospect wrote to us first (e.g. Autonomous / Dee, dee@autonomous.ai, 2026-11-20). The weekday outreach routine must never email `inbound-email` or `Warm - inbound` rows; only a personal in-thread reply when there is a real reason.
 
 
 ## Snapshot (from PIPELINE.csv, 2026-11-16 ~10:20 AM ET, weekly pipeline re-run)
