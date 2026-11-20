@@ -26,6 +26,11 @@ Statuses: "Tested" = installed and loaded by our harness in a sandbox with no cr
 ## Best add-ons by category (install-tested)
 {% for c in seo.categories %}- [Best {{ c.noun }}]({{ site.url }}/best/{{ c.slug }}/): {{ c.passing.length }} of {{ c.items.length }} passed in at least one agent; top: {% for i in c.passing.slice(0,3) %}{{ i.s.name }}{% if not loop.last %}, {% endif %}{% endfor %}
 {% endfor %}
+## Best by type and by agent (install-tested, last run {{ seo.date }})
+{% for k in seo.kinds %}- [{{ k.h1 }}]({{ site.url }}/best/{{ k.slug }}/): {{ k.passing.length }} of {{ k.items.length }} passed in at least one agent; {{ k.clean.length }} passed in every agent they were tested in; top: {% for i in k.passing.slice(0,3) %}{{ i.s.name }}{% if not loop.last %}, {% endif %}{% endfor %}
+{% endfor %}{% for t in seo.agentTypes %}- [{{ t.h1 }}]({{ site.url }}/best/{{ t.slug }}/): {{ t.pass }} of {{ t.tested }} passed in {{ t.agentName }} ({{ t.rate }}%)
+{% endfor %}- [Which coding agent installs the most add-ons?]({{ site.url }}/compare/agents/)
+
 Every add-on page (/skills/<slug>/) opens with a dated answer to "Does <name> work in <agent>?".
 
 ## Guides

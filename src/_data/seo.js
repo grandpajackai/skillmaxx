@@ -53,4 +53,75 @@ for(const c of categories){const u=`/best/${c.slug}/`;const mcp=/mcp/i.test(c.la
  c.faqs=[{q:`What are the best ${c.noun} for coding agents?`,a:`Ranked by how many of 5 coding agents they installed in on ${dateLabel}, then GitHub stars, the top ${c.noun} in SkillMaxx's nightly test are ${list(top)}. ${c.passing.length} of ${c.items.length} tested ${c.noun} passed in at least one agent.`},
   ...c.perAgent.filter(p=>p.t>=3).map(p=>({q:`How many ${c.noun} work in ${p.name}?`,a:`${p.n} of ${p.t} ${c.noun} we tested in ${p.name} installed and loaded on ${dateLabel}.`}))];
  c.ld=[itemList(c.title,c.passing.map(i=>i.s)),faqLd(c.faqs),crumbs([["SkillMaxx","/"],["Best by category","/best/"],[c.label,u]])];}
-export default {date,dateLabel,answers,agents,categories,agentSlug:SLUG};
+// Type-level pages (/best/which-mcp-servers-install-cleanly/, /best/plugins/) and per-agent type pages
+// (/best/mcp-servers-for-cursor/, /best/plugins-for-claude-code/, …). Same nightly
+// rows as /works-in/ and /best/<category>/. "Installs cleanly" means status=pass
+// (installed and loaded in a keyless sandbox). Skill type is omitted: only 3
+// agent skills are in the catalog, below the page minimum.
+const MCP_TYPES=new Set(["mcp-server","npm-mcp-package"]);
+const KIND_DEFS=[
+  {key:"mcp",slug:"which-mcp-servers-install-cleanly",agentSlug:"mcp-servers",noun:"MCP servers",match:s=>MCP_TYPES.has(s.type),min:10,
+    title:"Which MCP servers install cleanly in coding agents? (tested)",
+    h1:"Which MCP servers install cleanly?"},
+  {key:"plugin",slug:"plugins",agentSlug:"plugins",noun:"plugins",match:s=>s.type==="plugin",min:10,
+    title:"Best agent plugins that actually install (tested)",
+    h1:"Best agent plugins that actually install"}
+];
+const rankItems=pool=>pool.map(s=>{const ok=A.filter(a=>st[`${s.slug}|${a}`]==="pass");return {s,ok,okNames:ok.map(a=>NAME[a]),stars:s.meta.stars||0}}).sort((x,y)=>y.ok.length-x.ok.length||y.stars-x.stars||x.s.name.localeCompare(y.s.name));
+const kinds=KIND_DEFS.map(def=>{
+  const pool=skills.filter(s=>def.match(s)&&A.some(a=>st[`${s.slug}|${a}`]));
+  const items=rankItems(pool);const passing=items.filter(i=>i.ok.length);
+  const clean=passing.filter(i=>i.ok.length===A.filter(a=>st[`${i.s.slug}|${a}`]).length);
+  const perAgent=A.map(a=>{const n=items.filter(i=>st[`${i.s.slug}|${a}`]==="pass").length,t=items.filter(i=>st[`${i.s.slug}|${a}`]).length;return {a,name:NAME[a],slug:SLUG[a],n,t,key:items.filter(i=>st[`${i.s.slug}|${a}`]==="needs_key").length,broken:items.filter(i=>st[`${i.s.slug}|${a}`]==="broken").length,rate:t?Math.round(n*1000/t)/10:0}}).filter(x=>x.t);
+  return {...def,items,passing,clean,perAgent};
+}).filter(k=>k.passing.length>=k.min);
+for(const k of kinds){
+  const u=`/best/${k.slug}/`;const top=k.passing.slice(0,3).map(i=>i.s.name);
+  const allN=k.clean.filter(i=>i.ok.length===A.length).length;k.cleanAll=allN;
+  k.faqs=[
+    {q:`Which ${k.noun} install cleanly?`,a:`In SkillMaxx's nightly install test on ${dateLabel}, ${k.passing.length} of ${k.items.length} ${k.noun} we tested installed and loaded in at least one of 5 coding agents (Claude Code, Codex, Grok Build, Cursor and Pi) in a clean sandbox with no credentials. Ranked by agents passed, then GitHub stars, the top ${k.noun} are ${list(top)}. ${k.clean.length} passed in every agent they were tested in${allN?`, including ${allN} that passed in all 5 agents`:""}.`},
+    ...k.perAgent.filter(p=>p.t>=3).map(p=>({q:`How many ${k.noun} install in ${p.name}?`,a:`${p.n} of ${p.t} ${k.noun} we tested in ${p.name} installed and loaded on ${dateLabel}. ${p.key} failed only because our keyless sandbox has no API key, and ${p.broken} failed two nights running.`}))
+  ];
+  k.ld=[itemList(k.title,k.passing.map(i=>i.s)),faqLd(k.faqs),crumbs([["SkillMaxx","/"],["Best by category","/best/"],[k.h1,u]]),dataset(`${k.noun} install results (SkillMaxx nightly tests)`,`Nightly pass/fail install results for ${k.items.length} ${k.noun} across five coding agents.`,u)];
+}
+const MIN_AT=5;
+const agentTypes=[];
+for(const a of A){
+  for(const def of KIND_DEFS){
+    const pool=skills.filter(s=>def.match(s)&&st[`${s.slug}|${a}`]);
+    if(!pool.length)continue;
+    const by={pass:[],needs_key:[],broken:[],pending:[],flaky:[]};
+    for(const s of pool){const v=st[`${s.slug}|${a}`];if(by[v])by[v].push(s)}
+    const pending=[...by.pending,...by.flaky];const tested=pool.length,pass=by.pass.length;
+    if(pass<MIN_AT)continue;
+    const passing=by.pass.slice().sort((x,y)=>(y.meta.stars||0)-(x.meta.stars||0)||x.name.localeCompare(y.name)).map(s=>({s,stars:s.meta.stars||0}));
+    const title=def.key==="mcp"?`Best MCP servers for ${NAME[a]} that actually install (tested)`:`Best ${NAME[a]} plugins that actually install (tested)`;
+    const slug=`${def.agentSlug||def.slug}-for-${SLUG[a]}`;
+    const rate=Math.round(pass*1000/tested)/10;
+    const row={agent:a,agentName:NAME[a],agentSlug:SLUG[a],kind:def.key,kindSlug:def.slug,noun:def.noun,slug,title,h1:def.key==="mcp"?`Best MCP servers for ${NAME[a]}`:`Best ${NAME[a]} plugins`,passing,needsKey:by.needs_key,broken:by.broken,pending,tested,pass,rate};
+    const u=`/best/${slug}/`;
+    row.faqs=[
+      {q:`What are the best ${def.noun} for ${NAME[a]}?`,a:`In SkillMaxx's nightly install test on ${dateLabel}, ${pass} of ${tested} ${def.noun} we tested in ${NAME[a]} (${rate}%) installed and loaded in a clean sandbox with no credentials. The list below is those that passed, ranked by GitHub stars. This is an install-and-load check, not a feature benchmark.`},
+      {q:`Why do some ${def.noun} fail in ${NAME[a]}?`,a:`Of the ${tested-pass} that didn't pass in ${NAME[a]} on ${dateLabel}, ${by.needs_key.length} failed only because our keyless sandbox has no API key or account, ${by.broken.length} failed two nights running, and ${pending.length} were a one-night failure or flip-flopping and get re-checked on the next run.`},
+      {q:`How does SkillMaxx test ${def.noun} in ${NAME[a]}?`,a:`Every night we run the real install command in ${NAME[a]}'s CLI in a throwaway sandbox, then check that the add-on loads (plugins enabled, MCP servers connected with tools listed). A failure is retried once, and something is called broken only after two failing nights.`}
+    ];
+    row.ld=[itemList(title,passing.map(i=>i.s)),faqLd(row.faqs),crumbs([["SkillMaxx","/"],["Best by category","/best/"],[row.h1,u]]),dataset(`${def.noun} that installed in ${NAME[a]} (SkillMaxx nightly tests)`,`Nightly pass/fail install results for ${tested} ${def.noun} in ${NAME[a]}.`,u)];
+    agentTypes.push(row);
+  }
+}
+for(const k of kinds){for(const p of k.perAgent){const hit=agentTypes.find(t=>t.kind===k.key&&t.agent===p.a);p.href=hit?`/best/${hit.slug}/`:null;}}
+// Agent comparison: same nightly counts, with sample-size caveats (Cursor and Pi have fewer tests).
+const mostPass=[...agents].sort((a,b)=>b.pass-a.pass||b.rate-a.rate)[0];
+const bestRate=[...agents].sort((a,b)=>b.rate-a.rate||b.pass-a.pass)[0];
+const compare={
+  title:"Which coding agent installs the most skills, plugins and MCP servers? (tested)",
+  faqs:[
+    {q:"Which coding agent installed the most add-ons?",a:`On ${dateLabel}, ${mostPass.name} had the most passing install tests: ${mostPass.pass} of ${mostPass.tested} (${mostPass.rate}%). ${bestRate.name} had the highest pass rate: ${bestRate.rate}% (${bestRate.pass} of ${bestRate.tested}). These counts are not a quality ranking of the agents: we only test add-ons that have an install path in that agent, so Cursor (${agents.find(x=>x.key==="cursor")?.tested??0} tests) and Pi (${agents.find(x=>x.key==="pi")?.tested??0} tests) have smaller samples than Claude Code and Grok Build.`},
+    {q:"How many add-ons passed in each agent?",a:agents.map(g=>`${g.name}: ${g.pass} of ${g.tested} passed (${g.rate}%), ${g.needsKey.length} need an API key, ${g.broken.length} failed two nights running`).join(". ")+"."},
+    {q:"What does a passing install mean?",a:`A pass means the add-on installed and loaded in that agent's CLI in a throwaway sandbox with no credentials on ${dateLabel}. We do not run your prompts, so a pass is not a feature-by-feature review. See how we test.`}
+  ]
+};
+compare.ld=[faqLd(compare.faqs),crumbs([["SkillMaxx","/"],["Compare agents","/compare/agents/"]]),dataset("Coding-agent install comparison (SkillMaxx nightly tests)",`How many of the skills, plugins and MCP servers SkillMaxx tests installed in Claude Code, Codex, Grok Build, Cursor and Pi on ${dateLabel}.`,"/compare/agents/")];
+
+export default {date,dateLabel,answers,agents,categories,kinds,agentTypes,compare,agentSlug:SLUG};
+

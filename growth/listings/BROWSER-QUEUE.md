@@ -97,3 +97,53 @@ All items below must be opened from the **SkillMaxx GitHub account** once Brando
 11. **`AIAnytime/Awesome-MCP-Servers` (`## Resources` — NEW, verify fit)**:
    - URL: https://github.com/AIAnytime/Awesome-MCP-Servers
    - Line (only if `## Resources` accepts external test directories): `- [SkillMaxx](https://skillmaxx.gilventures.ai/) — Free directory that install-tests 428+ MCP servers, plugins, and agent skills nightly across five coding clients and publishes raw failure logs.`
+
+
+---
+
+## D. New free targets added 2026-11-20 (evening) — not yet submitted
+
+Checked against `LISTINGS.md` and sections A–C above so these are not duplicates. Use SkillMaxx brand accounts only (`skillmaxx@gilventures.ai`, `GitHub (SkillMaxx)`). Skip any paid upsell. Standard paste kit is in `growth/seo/DIRECTORY-SUBMISSIONS.md`.
+
+### 1. Claude Marketplaces (free web form — GitHub sign-in)
+- **URL:** https://claudemarketplaces.com/submit
+- **Fit check:** The page asks for "a skill repo, an MCP server or a plugin marketplace repo." SkillMaxx is an install-test directory, not one of those three. Submit only if the form has a way to describe a directory, and say so honestly; otherwise skip.
+- **Cost:** Free. **Do not** pay $4 for priority review.
+- **Fields / payload:**
+  - Name: `SkillMaxx`
+  - URL: `https://skillmaxx.gilventures.ai/`
+  - Repo: `https://github.com/grandpajackai/skillmaxx`
+  - Type: directory / install-test harness (not a skill, MCP server, or marketplace repo)
+  - Description: `Free directory that re-installs 428 agent skills, plugins, and MCP servers every night in fresh sandboxes across Claude Code, Codex, Grok Build, Cursor, and Pi, and publishes pass/fail matrices plus failure logs.`
+  - Contact: `skillmaxx@gilventures.ai`
+  - Sign in with the **SkillMaxx** GitHub account, not `grandpajackai`.
+
+### 2. AgentSkillsHub (free JS web form)
+- **URL:** https://agentskillshub.top/submit/
+- **Status (2026-11-20):** Submit page is live; the form is JavaScript-only (static fetch does not show fields). Offers Skill, Workflow, or Verified Creator paths.
+- **What to do:** Open in a browser, pick the closest free path that can list a directory or tool (not a single SKILL.md unless that is the only option — in that case skip). Skip any paid Verified Creator upsell.
+- **Fields / payload:** same Name / URL / Repo / Description / Contact as above.
+
+### 3. `BehiSecc/awesome-claude-skills` (PR, ~10.3k★) — wait for `GitHub (SkillMaxx)` login
+- **URL:** https://github.com/BehiSecc/awesome-claude-skills
+- **Section:** `## 🗂️ Collections` (this list already includes other directories such as Agent Skills Hub and Skillselion, so a directory entry fits). Do not add SkillMaxx under a skill category.
+- **How:** Fork + PR from the SkillMaxx GitHub account. Contribution rules: fork, edit, PR (or open an issue). No star/age floor stated.
+- **Line:**
+  `- [SkillMaxx](https://skillmaxx.gilventures.ai/) - Free directory that install-tests Claude Code plugins, skills, and MCP servers nightly across Claude Code, Codex, Grok Build, Cursor, and Pi and publishes pass/fail results and failure logs.`
+
+### 4. `vawe-hq/awesome-agent-skills-directories` (PR) — wait for `GitHub (SkillMaxx)` login
+- **URL:** https://github.com/vawe-hq/awesome-agent-skills-directories
+- **Note:** New list (0 stars when checked 2026-11-20) of registries, marketplaces, and directories, with how-to-get-listed steps. On-topic even though it is small. `CONTRIBUTING.md` asks for one place per pull request, with a link to the page that states the steps.
+- **How:** Fork + PR from the SkillMaxx GitHub account. Add one alphabetical table row.
+- **Suggested row** (adjust columns to match the README table: Name, What it is, How to get listed, Requirements, Checked):
+  `| [SkillMaxx](https://skillmaxx.gilventures.ai/) | Free install-test directory of agent skills, plugins and MCP servers, with nightly sandbox results for Claude Code, Codex, Grok Build, Cursor and Pi. Repo: [grandpajackai/skillmaxx](https://github.com/grandpajackai/skillmaxx). | No submission form for third-party add-ons to *be tested*; the site has [/submit/](https://skillmaxx.gilventures.ai/submit/) to suggest an add-on. This row lists SkillMaxx itself as a directory. | Public site, no signup, failures published. | 2026-11-20 |`
+
+### Checked and skipped on 2026-11-20 (evening)
+- **AugmentClaude** (`https://augmentclaude.com/submit`): free, but only accepts a single `SKILL.md`. SkillMaxx is not a skill. Skip.
+- **Skillselion** (`https://skillselion.com/`): paid sponsored placement from $29, no free submit path found. Skip.
+- **cursor.directory** (`https://cursor.directory/plugins/new`): free, but listings are installable Cursor plugins (config blocks), not directories. SkillMaxx has nothing to install into the editor. Skip.
+- **Official MCP Registry / Smithery / Glama / MCPBundles / Docker MCP Catalog:** for publishing an MCP *server*. SkillMaxx is not a server. Skip.
+- **Claude Market** (`https://claudemarket.ai/submit`): $19 one-time. Skip (paid only).
+- **BuildWithClaude** (`https://www.buildwithclaude.com/contribute`): contribute agents/commands/skills into *their* marketplace, not a third-party directory listing. Skip.
+- **Bytes.dev, Ben's Bites, Sidebar, Software Lead Weekly, Python Weekly, Last Week in AI:** no published free tip/submit address we could verify (Bytes/Ben's Bites/Sidebar are paid/sponsor paths; Python Weekly's `submit@` was only cited on a third-party page, not on pythonweekly.com). Skip.
+- **PyCoder's Weekly** (`https://pycoders.com/submissions`): has a free browser form, but SkillMaxx is not a Python project. Weak fit; not queued.

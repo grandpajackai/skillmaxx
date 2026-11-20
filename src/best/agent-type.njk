@@ -1,0 +1,30 @@
+---
+layout: base.njk
+pagination: {data: seo.agentTypes, size: 1, alias: t}
+permalink: "/best/{{ t.slug }}/"
+ogType: article
+lastmodRun: true
+eleventyExcludeFromCollections: true
+eleventyComputed:
+  title: "{{ t.title }}"
+  desc: "{{ t.pass }} of {{ t.tested }} {{ t.noun }} installed and loaded in {{ t.agentName }} on {{ seo.dateLabel }} ({{ t.rate }}%). Ranked by GitHub stars. Re-tested nightly."
+---
+<div class="wrap prose"><p class="muted"><a href="/">SkillMaxx</a> › <a href="/best/">Best by category</a> › <a href="/best/{{ t.kindSlug }}/">{{ t.noun }}</a> › {{ t.agentName }}</p>
+<h1 class="ph">{{ t.h1 }}</h1>
+<p class="ltb"><a href="/how-we-test/" class="tag tok">Last tested {{ seo.date }}</a></p>
+<p class="answer">{{ t.faqs[0].a }}</p>
+<h2>Which {{ t.noun }} installed in {{ t.agentName }}? ({{ t.passing.length }})</h2>
+<div class="tw"><table class="matrix"><thead><tr><th>#</th><th>Add-on</th><th>What it does</th><th>Stars</th></tr></thead><tbody>{% for i in t.passing %}<tr><td>{{ loop.index }}</td><th scope="row"><a href="/skills/{{ i.s.slug }}/">{{ i.s.name }}</a></th><td style="white-space:normal">{{ i.s.description | truncate(100) }}</td><td>{% if i.stars %}★ {{ i.stars | kfmt }}{% endif %}</td></tr>{% endfor %}</tbody></table></div>
+{% if t.needsKey.length %}<h2>Which {{ t.noun }} need an API key in {{ t.agentName }}? ({{ t.needsKey.length }})</h2>
+<p>These failed in our sandbox only because it has no account or API key. Add yours and they should connect.</p>
+<ul>{% for s in t.needsKey %}<li><a href="/skills/{{ s.slug }}/">{{ s.name }}</a></li>{% endfor %}</ul>{% endif %}
+{% if t.broken.length %}<h2>Which {{ t.noun }} failed in {{ t.agentName }}? ({{ t.broken.length }})</h2>
+<p>These failed the install or load check two nights running. Each page has the log excerpt from our run.</p>
+<ul>{% for s in t.broken %}<li><a href="/skills/{{ s.slug }}/">{{ s.name }}</a></li>{% endfor %}</ul>{% endif %}
+{% if t.pending.length %}<h2>Which results are still being re-checked? ({{ t.pending.length }})</h2>
+<ul>{% for s in t.pending %}<li><a href="/skills/{{ s.slug }}/">{{ s.name }}</a></li>{% endfor %}</ul>{% endif %}
+<p class="related-links">{% for o in seo.agentTypes %}{% if o.kind == t.kind and o.agent != t.agent %}<a href="/best/{{ o.slug }}/">{{ t.noun }} for {{ o.agentName }} →</a>{% endif %}{% endfor %}{% for k in seo.kinds %}{% if k.key == t.kind %}<a href="/best/{{ k.slug }}/">All {{ k.noun }} →</a>{% endif %}{% endfor %}<a href="/works-in/{{ t.agentSlug }}/">Everything that works in {{ t.agentName }} →</a><a href="/compare/agents/">Compare agents →</a></p>
+<section class="faq" aria-labelledby="faqh"><h2 id="faqh">FAQ</h2>{% for f in t.faqs %}<details open><summary><h3>{{ f.q }}</h3></summary><p>{{ f.a }}</p></details>{% endfor %}</section>
+<p class="muted">Ranked by GitHub stars among add-ons that passed. "Installed" means it installs and loads in a sandbox with no credentials. See <a href="/how-we-test/">how we test</a>.</p></div>
+{% for l in t.ld %}<script type="application/ld+json">{{ l | json | safe }}</script>{% endfor %}
+{% include "nlembed.njk" %}

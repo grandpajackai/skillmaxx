@@ -1,0 +1,17 @@
+Hello,
+
+A topic tip for your Claude Code library, in case it is useful: SkillMaxx is a free directory that install-tests Claude Code plugins, skills, and MCP servers every night in a clean sandbox (and the same for Codex, Grok Build, Cursor, and Pi). Failures and log excerpts are published, not hidden.
+
+On the 2026-11-20 run, 340 of 372 Claude Code install tests passed (311 of 317 plugins; 28 of 54 MCP servers). Live lists:
+
+https://skillmaxx.gilventures.ai/works-in/claude-code/
+https://skillmaxx.gilventures.ai/best/plugins-for-claude-code/
+https://skillmaxx.gilventures.ai/how-we-test/
+
+This is a tip, not a partnership or sponsorship request. Please ignore if it is not a fit.
+
+Brandon Gil
+SkillMaxx
+https://skillmaxx.gilventures.ai/
+
+P.S. If you'd like the weekly install results yourself, the SkillMaxx newsletter is free: https://skillmaxx.gilventures.ai/newsletter/

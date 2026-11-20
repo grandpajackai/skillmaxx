@@ -1,0 +1,15 @@
+Hello,
+
+You invited notes about a tool worth a look, so I wanted to share SkillMaxx: a free, open directory that re-installs agent skills, plugins, and MCP servers every night in throwaway sandboxes for Claude Code, Codex, Grok Build, Cursor, and Pi, then publishes what actually passed or failed.
+
+Site: https://skillmaxx.gilventures.ai/
+Latest run (2026-11-20): 906 of 1,075 install tests passed, across 428 add-ons. Failures and log excerpts are public: https://skillmaxx.gilventures.ai/reports/latest/
+How we test: https://skillmaxx.gilventures.ai/how-we-test/
+
+There is no paywall. If it is not a fit for the newsletter, no need to reply.
+
+Brandon Gil
+SkillMaxx
+https://skillmaxx.gilventures.ai/
+
+P.S. If you'd like the weekly install results yourself, the SkillMaxx newsletter is free: https://skillmaxx.gilventures.ai/newsletter/

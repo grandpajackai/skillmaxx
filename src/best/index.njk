@@ -11,4 +11,8 @@ eleventyComputed:
 <p class="ltb"><a href="/how-we-test/" class="tag tok">Last tested {{ seo.date }}</a></p>
 <p class="answer">Each list ranks add-ons by how many of 5 coding agents they installed and loaded in during our nightly sandbox test on {{ seo.dateLabel }}, then by GitHub stars.</p>
 <ul>{% for c in seo.categories %}<li><a href="/best/{{ c.slug }}/">Best {{ c.noun }}</a>: {{ c.passing.length }} passed of {{ c.items.length }} tested</li>{% endfor %}</ul>
-<p class="related-links"><a href="/works-in/">What works in each agent →</a><a href="/matrix/">Compatibility matrix →</a></p></div>
+{% if seo.kinds.length %}<h2>By type</h2>
+<ul>{% for k in seo.kinds %}<li><a href="/best/{{ k.slug }}/">{{ k.h1 }}</a>: {{ k.passing.length }} of {{ k.items.length }} passed in at least one agent</li>{% endfor %}</ul>{% endif %}
+{% if seo.agentTypes.length %}<h2>By agent and type</h2>
+<ul>{% for t in seo.agentTypes %}<li><a href="/best/{{ t.slug }}/">{{ t.h1 }}</a>: {{ t.pass }} of {{ t.tested }} passed in {{ t.agentName }} ({{ t.rate }}%)</li>{% endfor %}</ul>{% endif %}
+<p class="related-links"><a href="/compare/agents/">Compare agents →</a><a href="/works-in/">What works in each agent →</a><a href="/matrix/">Compatibility matrix →</a></p></div>
