@@ -55,7 +55,9 @@ def skill_case(it,ag):
   return (it,ag,"",cmd,v[1])
 def mcp_cmd(it):
   c=it["install"].get("claude_code") or "";return c.split(" -- ",1)[1] if " -- " in c else None
-def mcp_name(it): return re.sub(r"[^a-z0-9]","",it["slug"].lower())[-20:] or "srv"
+def mcp_name(it):
+  n=re.sub(r"[^a-z0-9]","",it["slug"].lower())[-20:] or "srv"
+  return ("s"+n)[:20] if n[0].isdigit() else n
 def npx_package(cmd):
   """Package name from an `npx -y <pkg>` (or `npx --package <pkg>`) MCP start command."""
   if not cmd: return None
@@ -89,10 +91,11 @@ def prewarm_npm(pkgs,jobs=3,timeout=400):
   if not pkgs or os.environ.get("SKILLMAXX_SKIP_PREWARM")=="1": return
   cache=npm_cache_dir(); os.makedirs(cache,exist_ok=True); os.environ["SKILLMAXX_NPM_CACHE"]=cache
   print(f"pre-warming {len(pkgs)} npm packages into {cache}",file=sys.stderr,flush=True)
+  env={**os.environ,"SKILLMAXX_PREWARM_NPX":"1"}
   def one(pkg):
     js="console.log('WARM_OK')"; cmd=f"npx -y --package={shlex.quote(pkg)} -- node -e {shlex.quote(js)}"
     try:
-      p=subprocess.run([SBX,"",cmd],capture_output=True,text=True,timeout=timeout)
+      p=subprocess.run([SBX,"",cmd],capture_output=True,text=True,timeout=timeout,env=env)
       ok="WARM_OK" in (p.stdout+p.stderr)
     except subprocess.TimeoutExpired:
       ok=False
@@ -100,6 +103,34 @@ def prewarm_npm(pkgs,jobs=3,timeout=400):
     return ok
   with cf.ThreadPoolExecutor(min(jobs,len(pkgs))) as ex:
     list(ex.map(one,pkgs))
+def uvx_cmd(cmd):
+  """Normalized `uvx ...` invocation from an MCP start command, or None."""
+  if not cmd: return None
+  try: parts=shlex.split(cmd)
+  except ValueError: return None
+  if not parts or parts[0]!="uvx": return None
+  return " ".join(shlex.quote(p) for p in parts)
+def uv_cache_dir():
+  env=os.environ.get("SKILLMAXX_UV_CACHE")
+  if env: return env
+  if sys.platform=="darwin": return os.path.expanduser("~/Library/Caches/skillmaxx-uv")
+  return os.path.join(os.environ.get("XDG_CACHE_HOME",os.path.expanduser("~/.cache")),"skillmaxx-uv")
+def prewarm_uvx(cmds,jobs=2,timeout=180):
+  """Fetch uvx packages/venvs into a shared UV_CACHE_DIR once before any agent health-check."""
+  cmds=sorted({c for c in cmds if c})
+  if not cmds or os.environ.get("SKILLMAXX_SKIP_PREWARM")=="1": return
+  cache=uv_cache_dir(); os.makedirs(cache,exist_ok=True); os.environ["SKILLMAXX_UV_CACHE"]=cache
+  print(f"pre-warming {len(cmds)} uvx commands into {cache}",file=sys.stderr,flush=True)
+  def one(cmd):
+    try:
+      p=subprocess.run([SBX,"",f"python3 /tmp/smx-testing/mcp_probe.py {cmd}"],capture_output=True,text=True,timeout=timeout)
+      ok="PROBE OK" in (p.stdout+p.stderr)
+    except subprocess.TimeoutExpired:
+      ok=False
+    print(("ok" if ok else "fail"),cmd,file=sys.stderr,flush=True)
+    return ok
+  with cf.ThreadPoolExecutor(min(jobs,len(cmds))) as ex:
+    list(ex.map(one,cmds))
 def grok_plugin_install(slug,listings):
   L=" ".join(listings or [])
   if "plugin-marketplace" in L: qual=GROK_NATIVE_QUAL
@@ -114,7 +145,7 @@ def cases():
       out+=[c for c in (skill_case(it,ag) for ag in AG) if c];continue
     for ag in AG:
       if ag=="claude_code":
-        if "claude-plugins-official" in L: out.append((it,ag,"claude",f"claude plugin install {s}@claude-plugins-official 2>&1; echo ---LIST; claude plugin list 2>&1",lambda o,s=s: re.search(rf"{re.escape(s)}@claude-plugins-official[\s\S]{{0,120}}enabled",o.split('---LIST')[-1]) is not None))
+        if "claude-plugins-official" in L: out.append((it,ag,"claude",f"claude plugin install {s}@claude-plugins-official 2>&1 && (claude plugin enable {s}@claude-plugins-official >/dev/null 2>&1 || true); echo ---LIST; claude plugin list 2>&1",lambda o,s=s: re.search(rf"{re.escape(s)}@claude-plugins-official[\s\S]{{0,120}}enabled",o.split('---LIST')[-1]) is not None))
         elif ismcp and mcp_cmd(it): n=mcp_name(it);out.append((it,ag,"",f"claude mcp add {n} -- {mcp_cmd(it)} 2>&1; echo ---LIST; claude mcp list 2>&1",lambda o,n=n: re.search(rf"^{n}:.*Connected",o.split('---LIST')[-1],re.M) is not None))
       elif ag=="grok_build":
         cmd=grok_plugin_install(s,it.get("listings",[]))
@@ -134,7 +165,8 @@ def cases():
         if m and it["type"]=="plugin":
           repo=f"github.com/{m[1]}/{m[2]}"
           out.append((it,ag,"",f"pi install git:{repo} 2>&1; echo ---LIST; pi list 2>&1; echo ---SKILLS; (find ~/.pi/agent/git/*/*/*/skills -name SKILL.md 2>/dev/null; for f in ~/.pi/agent/git/*/*/*/package.json; do grep -q '\"pi\"' $f 2>/dev/null && echo PIMANIFEST $f; done) | head -5",lambda o,r=m[2]: r.lower() in o.split('---LIST')[-1].split('---SKILLS')[0].lower() and ("SKILL.md" in o.split('---SKILLS')[-1] or "PIMANIFEST" in o.split('---SKILLS')[-1])))
-  return out[:a.limit] if a.limit else out
+  lim=getattr(globals().get("a"),"limit",0)
+  return out[:lim] if lim else out
 def grok_ok(o):
   pre,post=o.split('---LIST')[0],o.split('---LIST')[-1]
   m=re.search(r"Installed \d+ plugin\(s\) from [^:]+: ([^\n]+)",pre)
@@ -156,16 +188,17 @@ def run1(c):
   if "---LIST" in o:
     pre=[l for l in o.split("---LIST")[0].splitlines() if l.strip() and not l.startswith("WARNING")][-3:]
     post=[l for l in o.split("---LIST",1)[1].splitlines() if l.strip()]
-    hit=[l for l in post if it["type"]=="skill" or it["slug"].lower() in l.lower() or mcp_name(it) in l or "SKILL.md" in l or "Status" in l or "ready" in l or "tools" in l.lower() or "PROBE" in l or "handshake" in l or "enabled" in l][:4]
+    hit=[l for l in post if it["type"]=="skill" or it["slug"].lower() in l.lower() or mcp_name(it) in l or "SKILL.md" in l or "Status" in l or "ready" in l or "tools" in l.lower() or "PROBE" in l or "handshake" in l or "enabled" in l or "✗" in l or "✘" in l or "error" in l.lower() or "failed" in l.lower() or "timed out" in l.lower()][:4]
     lines=pre+["$ verify:"]+(hit or post[-3:])
   return {"slug":it["slug"],"agent":ag,"status":"pass" if ok else "fail","log":"\n".join(lines[-9:])[-700:]}
 if __name__=="__main__":
-  ap=argparse.ArgumentParser();ap.add_argument("--agents",default="claude_code,codex,grok_build,cursor,pi");ap.add_argument("--limit",type=int,default=0);ap.add_argument("--jobs",type=int,default=6);ap.add_argument("--only",default="");ap.add_argument("--timeout",type=int,default=150);ap.add_argument("--retry",type=int,default=0)
+  ap=argparse.ArgumentParser();ap.add_argument("--agents",default="claude_code,codex,grok_build,cursor,pi");ap.add_argument("--limit",type=int,default=0);ap.add_argument("--jobs",type=int,default=6);ap.add_argument("--only",default="");ap.add_argument("--timeout",type=int,default=300);ap.add_argument("--retry",type=int,default=0)
   a=ap.parse_args();AG=a.agents.split(",")
   items=json.load(open(os.path.join(ROOT,"data/skills.json")))["items"]
   if a.only: items=[i for i in items if i["slug"] in a.only.split(",")]
   today=datetime.datetime.now().astimezone().isoformat(timespec="minutes")
   prewarm_npm({npx_package(mcp_cmd(it)) for it in items}|({SKILLS_CLI} if any(it["type"]=="skill" for it in items) else set()))
+  prewarm_uvx({uvx_cmd(mcp_cmd(it)) for it in items})
   cs=cases();print(f"{len(cs)} cases",file=sys.stderr);res=[]
   with cf.ThreadPoolExecutor(a.jobs) as ex:
     for i,r in enumerate(ex.map(run,cs)):

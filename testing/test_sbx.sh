@@ -129,6 +129,50 @@ export SBX_RECORD="$tmp/docker-cache.txt"
 : > "$SBX_RECORD"
 PATH="$tmp/dockeronly:/usr/bin:/bin" bash testing/sbx.sh "" true || fail docker_cache
 grep -q "$SKILLMAXX_NPM_CACHE:/tmp/skillmaxx-npm-cache" "$SBX_RECORD" || fail docker_npm_bind
+# Prewarm mode symlinks ~/.npm/_npx directly; normal mode symlinks per-package dirs with package.json.
+export SKILLMAXX_PREWARM_NPX=1
+export SBX_RECORD="$tmp/bwrap-prewarm-npx.txt"
+: > "$SBX_RECORD"
+PATH="$tmp/both:/usr/bin:/bin" bash testing/sbx.sh "" true || fail bwrap_prewarm_npx
+grep -q 'ln -sfn /tmp/skillmaxx-npm-cache/_npx /home/sbx/.npm/_npx' "$SBX_RECORD" || fail bwrap_prewarm_npx_link
+unset SKILLMAXX_PREWARM_NPX
+export SBX_RECORD="$tmp/bwrap-norm-npx.txt"
+: > "$SBX_RECORD"
+PATH="$tmp/both:/usr/bin:/bin" bash testing/sbx.sh "" true || fail bwrap_norm_npx
+grep -q 'package.json' "$SBX_RECORD" || fail bwrap_norm_npx_pkgcheck
+
+# Verify the generated NPM_LINK snippet succeeds even when _npx is empty (no partial failure on &&).
+mkdir -p "$tmp/empty_home/.npm" "$tmp/empty_cache/_npx" "$tmp/empty_cache/_cacache" "$tmp/empty_cache/_prebuilds"
+mkdir -p "$tmp/empty_cache/_npx/broken_no_pkg" "$tmp/empty_cache/_npx/good_pkg"
+echo '{}' > "$tmp/empty_cache/_npx/good_pkg/package.json"
+bash -c '
+  mkdir -p "$1/.npm/_npx" &&
+  for d in "$2/_npx/"*; do [ -f "$d/package.json" ] && ln -sfn "$d" "$1/.npm/_npx/${d##*/}" || true; done &&
+  touch "$1/ok"
+' _ "$tmp/empty_home" "$tmp/empty_cache" || fail empty_npx_loop
+[ -f "$tmp/empty_home/ok" ] || fail empty_npx_loop_ran
+[ -L "$tmp/empty_home/.npm/_npx/good_pkg" ] || fail good_pkg_linked
+[ ! -e "$tmp/empty_home/.npm/_npx/broken_no_pkg" ] || fail broken_pkg_skipped
 unset SKILLMAXX_NPM_CACHE
+
+# uv cache bind is off by default, on when SKILLMAXX_UV_CACHE is a directory.
+export SBX_RECORD="$tmp/bwrap-nouv.txt"
+: > "$SBX_RECORD"
+PATH="$tmp/both:/usr/bin:/bin" bash testing/sbx.sh "" true || fail bwrap_nouv
+grep -q 'UV_CACHE_DIR' "$SBX_RECORD" && fail bwrap_uv_default
+mkdir -p "$tmp/uvcache"
+export SKILLMAXX_UV_CACHE="$tmp/uvcache"
+export SBX_RECORD="$tmp/bwrap-uv.txt"
+: > "$SBX_RECORD"
+PATH="$tmp/both:/usr/bin:/bin" bash testing/sbx.sh "" true || fail bwrap_uv
+grep -q "$SKILLMAXX_UV_CACHE" "$SBX_RECORD" || fail bwrap_uv_bind
+grep -q 'UV_CACHE_DIR' "$SBX_RECORD" || fail bwrap_uv_env
+export FAKE_DOCKER=ok
+export SBX_RECORD="$tmp/docker-uv.txt"
+: > "$SBX_RECORD"
+PATH="$tmp/dockeronly:/usr/bin:/bin" bash testing/sbx.sh "" true || fail docker_uv
+grep -q "$SKILLMAXX_UV_CACHE:/tmp/skillmaxx-uv-cache" "$SBX_RECORD" || fail docker_uv_bind
+grep -q 'UV_CACHE_DIR=/tmp/skillmaxx-uv-cache' "$SBX_RECORD" || fail docker_uv_env
+unset SKILLMAXX_UV_CACHE
 
 echo "ok sbx fixture checks (no real container)"
