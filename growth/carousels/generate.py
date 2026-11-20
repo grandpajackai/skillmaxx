@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-"""Free, local 1080x1350 PNG carousel generator for SkillMaxx (news + leaderboard).
+"""Free, local 1080x1350 PNG & animated MP4 carousel generator for SkillMaxx.
 
 Reads only real committed nightly data (src/_data/reports.json, weeks.json, latestRows.json,
 data/skills.json, data/meta/meta.json) and renders HTML/CSS slides with bundled Inter & JetBrains Mono
 fonts via headless Chromium (Python playwright, falling back to google-chrome/chromium CLI).
+With --animate, records deterministic 30fps H.264 MP4 slides + still PNG fallbacks + preview.mp4 via ffmpeg.
 
 Usage:
-  python3 growth/carousels/generate.py [--format news|leaderboard|all] [--date YYYY-MM-DD] [--out DIR] [--zip]
+  python3 growth/carousels/generate.py [--format news|leaderboard|orgchart|maxxing|v2|all] [--date YYYY-MM-DD] [--out DIR] [--zip] [--animate] [--fps 30]
 """
 from __future__ import annotations
 
@@ -396,11 +397,220 @@ h2 {
 """
 
 
-def wrap_slide(body: str, idx: int, total: int, badge: str, footer_right: str = "Swipe →") -> str:
+
+ANIM_JS = r"""
+(function() {
+  function clamp01(x) { return x < 0 ? 0 : (x > 1 ? 1 : x); }
+  function easeOutCubic(x) { x = clamp01(x); return 1 - Math.pow(1 - x, 3); }
+  function easeOutBack(x) {
+    x = clamp01(x);
+    const c1 = 1.70158, c3 = c1 + 1;
+    return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2);
+  }
+  function easeInOutSine(x) { x = clamp01(x); return -(Math.cos(Math.PI * x) - 1) / 2; }
+
+  const slide = document.querySelector('.slide');
+  const duration = parseFloat(slide?.dataset?.duration || '5.5');
+
+  const pops = Array.from(document.querySelectorAll('[data-anim="pop"]'));
+  const rows = Array.from(document.querySelectorAll('[data-anim="row"]'));
+  const counts = Array.from(document.querySelectorAll('[data-anim="count"]'));
+  const badges = Array.from(document.querySelectorAll('[data-anim="badge-count"]'));
+  const bars = Array.from(document.querySelectorAll('[data-anim="bar"]'));
+  const floats = Array.from(document.querySelectorAll('[data-anim="float"]'));
+  const trees = Array.from(document.querySelectorAll('[data-anim="org-tree"]'));
+  const glows = Array.from(document.querySelectorAll('[data-anim="glow"]'));
+  const sweeps = Array.from(document.querySelectorAll('[data-anim="step-sweep"]'));
+  const dots = Array.from(document.querySelectorAll('.eyebrow .dot'));
+
+  function formatNum(val, dec, comma) {
+    let s = dec > 0 ? val.toFixed(dec) : String(Math.round(val));
+    if (comma) {
+      const parts = s.split('.');
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      s = parts.join('.');
+    }
+    return s;
+  }
+
+  function applyTime(t) {
+    for (const el of pops) {
+      const d = parseFloat(el.dataset.delay || '0');
+      const dur = parseFloat(el.dataset.dur || '0.42');
+      const fy = parseFloat(el.dataset.fromY || '20');
+      const fs = parseFloat(el.dataset.fromScale || '0.90');
+      const raw = clamp01((t - d) / dur);
+      const p = raw <= 0 ? 0 : (el.dataset.ease === 'cubic' ? easeOutCubic(raw) : easeOutBack(raw));
+      const op = easeOutCubic(clamp01(raw * 1.4));
+      const y = fy * (1 - p);
+      const s = fs + (1 - fs) * p;
+      el.style.opacity = String(op);
+      el.style.transform = `translate3d(0, ${y.toFixed(2)}px, 0) scale(${s.toFixed(4)})`;
+    }
+
+    for (const el of rows) {
+      const d = parseFloat(el.dataset.delay || '0');
+      const dur = parseFloat(el.dataset.dur || '0.40');
+      const raw = clamp01((t - d) / dur);
+      const p = easeOutCubic(raw);
+      const op = easeOutCubic(clamp01(raw * 1.5));
+      const y = -22 * (1 - p);
+      const s = 0.97 + 0.03 * p;
+      el.style.opacity = String(op);
+      el.style.transform = `translate3d(0, ${y.toFixed(2)}px, 0) scale(${s.toFixed(4)})`;
+    }
+
+    for (const el of counts) {
+      const d = parseFloat(el.dataset.delay || '0');
+      const dur = parseFloat(el.dataset.dur || '0.65');
+      const target = parseFloat(el.dataset.target || '0');
+      const dec = parseInt(el.dataset.decimals || '0', 10);
+      const comma = el.dataset.comma === '1';
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      const raw = clamp01((t - d) / dur);
+      const val = target * easeOutCubic(raw);
+      el.textContent = prefix + formatNum(val, dec, comma) + suffix;
+    }
+
+    for (const el of badges) {
+      const d = parseFloat(el.dataset.delay || '0');
+      const dur = parseFloat(el.dataset.dur || '0.48');
+      const passN = parseInt(el.dataset.pass || '5', 10);
+      const totalN = parseInt(el.dataset.total || '5', 10);
+      const suffix = el.dataset.suffix || ' PASS';
+      const raw = clamp01((t - d) / dur);
+      const cur = Math.round(passN * easeOutCubic(raw));
+      el.textContent = `${cur}/${totalN}${suffix}`;
+      if (raw > 0.85 && raw < 1.0) {
+        const flash = Math.sin(((raw - 0.85) / 0.15) * Math.PI);
+        el.style.transform = `scale(${(1 + 0.08 * flash).toFixed(3)})`;
+      } else {
+        el.style.transform = 'scale(1)';
+      }
+    }
+
+    for (const el of bars) {
+      const d = parseFloat(el.dataset.delay || '0');
+      const dur = parseFloat(el.dataset.dur || '0.85');
+      const w = parseFloat(el.dataset.width || '0');
+      const raw = clamp01((t - d) / dur);
+      const cur = w * easeOutCubic(raw);
+      el.style.width = `${cur.toFixed(2)}%`;
+    }
+
+    for (const el of floats) {
+      const per = parseFloat(el.dataset.period || '6.0');
+      const phase = parseFloat(el.dataset.phase || '0');
+      const baseRot = parseFloat(el.dataset.baseRot || '0');
+      const ampY = parseFloat(el.dataset.ampY || '12');
+      const ampX = parseFloat(el.dataset.ampX || '3');
+      const ampRot = parseFloat(el.dataset.ampRot || '1.1');
+      const theta = (2 * Math.PI * (t / per)) + phase;
+      const dx = ampX * Math.cos(theta);
+      const dy = ampY * Math.sin(theta);
+      const rot = baseRot + ampRot * Math.sin(theta + 0.7);
+      el.style.transform = `translate3d(${dx.toFixed(2)}px, ${dy.toFixed(2)}px, 0) rotate(${rot.toFixed(3)}deg)`;
+    }
+
+    for (const svg of trees) {
+      const d = parseFloat(svg.dataset.delay || '0.65');
+      const dur = parseFloat(svg.dataset.dur || '0.90');
+      const raw = clamp01((t - d) / dur);
+      const stem = svg.querySelector('#clip-stem');
+      const bar = svg.querySelector('#clip-bar');
+      const drops = svg.querySelector('#clip-drops');
+      const dotsSvg = svg.querySelectorAll('circle[data-dot]');
+
+      const pStem = easeOutCubic(clamp01(raw / 0.28));
+      const pBar = easeOutCubic(clamp01((raw - 0.24) / 0.42));
+      const pDrops = easeOutCubic(clamp01((raw - 0.60) / 0.40));
+
+      if (stem) stem.setAttribute('height', (30 * pStem).toFixed(2));
+      if (bar) {
+        const half = 420 * pBar;
+        bar.setAttribute('x', (468 - half).toFixed(2));
+        bar.setAttribute('width', (half * 2).toFixed(2));
+      }
+      if (drops) drops.setAttribute('height', (48 * pDrops).toFixed(2));
+
+      dotsSvg.forEach((c, idx) => {
+        const dp = clamp01((raw - (0.68 + idx * 0.05)) / 0.18);
+        const r = 4.5 * easeOutBack(dp);
+        c.setAttribute('r', Math.max(0, r).toFixed(2));
+        c.style.opacity = String(clamp01(dp * 2));
+      });
+    }
+
+    for (const el of glows) {
+      const d = parseFloat(el.dataset.delay || '0');
+      const per = parseFloat(el.dataset.period || '3.0');
+      const baseColor = el.dataset.glowColor || '198,244,50';
+      const tt = Math.max(0, t - d);
+      const pulse = t >= d ? 0.5 * (1 - Math.cos((2 * Math.PI * tt) / per)) : 0;
+      const alpha = 0.10 + 0.16 * pulse;
+      const spread = 36 + 24 * pulse;
+      if (el.classList.contains('collage-hero')) {
+        el.style.boxShadow = `0 24px 64px rgba(0,0,0,0.85), 0 0 ${spread.toFixed(1)}px rgba(${baseColor},${alpha.toFixed(3)})`;
+      } else {
+        el.style.boxShadow = `0 16px 46px rgba(0,0,0,0.55), 0 0 ${spread.toFixed(1)}px rgba(${baseColor},${alpha.toFixed(3)})`;
+      }
+    }
+
+    if (sweeps.length) {
+      sweeps.forEach((el, idx) => {
+        const sStart = parseFloat(el.dataset.sweepStart || '1.75') + idx * 0.45;
+        const sDur = 0.55;
+        const raw = clamp01((t - sStart) / sDur);
+        const pulse = raw > 0 && raw < 1 ? Math.sin(raw * Math.PI) : 0;
+        if (pulse > 0.001) {
+          el.style.boxShadow = `0 0 ${(32 * pulse).toFixed(1)}px rgba(198,244,50,${(0.28 * pulse).toFixed(3)})`;
+        } else {
+          el.style.boxShadow = '';
+        }
+      });
+    }
+
+    for (const dot of dots) {
+      const pulse = 0.5 * (1 - Math.cos((2 * Math.PI * t) / duration * 2));
+      dot.style.boxShadow = `0 0 ${(10 + 10 * pulse).toFixed(1)}px #C6F432`;
+      dot.style.transform = `scale(${(1 + 0.18 * pulse).toFixed(3)})`;
+    }
+  }
+
+  window.__setAnimTime = applyTime;
+  applyTime(0);
+
+  if (!window.__MANUAL_ANIM_CLOCK) {
+    let t0 = null;
+    function tick(now) {
+      if (window.__MANUAL_ANIM_CLOCK) return;
+      if (t0 === null) t0 = now;
+      const elapsed = ((now - t0) / 1000) % duration;
+      applyTime(elapsed);
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+})();
+"""
+
+
+def wrap_slide(
+    body: str,
+    idx: int,
+    total: int,
+    badge: str,
+    footer_right: str = "Swipe →",
+    animate: bool = False,
+    duration: float = 5.5,
+) -> str:
+    dur_attr = f' data-duration="{duration:.2f}"' if animate else ""
+    script_tag = f"<script>{ANIM_JS}</script>" if animate else ""
     return f"""<!doctype html>
 <html><head><meta charset="utf-8"><style>{font_css()}{BASE_CSS}</style></head>
 <body>
-  <div class="slide">
+  <div class="slide"{dur_attr}>
     <div class="topbar">
       <div class="brand">{brand_mark(46)}<div>Skill<span>Maxx</span></div></div>
       <div class="top-meta">
@@ -414,7 +624,7 @@ def wrap_slide(body: str, idx: int, total: int, badge: str, footer_right: str = 
       <div>{esc(footer_right)}</div>
     </div>
   </div>
-</body></html>"""
+{script_tag}</body></html>"""
 
 
 def build_news_slides(data: dict) -> list[str]:
@@ -1032,6 +1242,26 @@ V2_CSS = """
   border-radius: 14px;
   margin: 0 6px;
 }
+.nl-cta-box {
+  background: linear-gradient(135deg, rgba(198,244,50,0.16), rgba(34,211,238,0.08));
+  border: 2px solid rgba(198,244,50,0.62);
+  border-radius: 26px;
+  padding: 32px 36px;
+  margin-top: 22px;
+  box-shadow: 0 16px 46px rgba(0,0,0,0.55), 0 0 40px rgba(198,244,50,0.12);
+}
+.nl-url-pill {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 24px;
+  font-weight: 800;
+  color: #0A0A0B;
+  background: #C6F432;
+  padding: 12px 24px;
+  border-radius: 14px;
+  margin: 12px 0 14px;
+  letter-spacing: -0.01em;
+}
 """
 
 
@@ -1062,10 +1292,9 @@ def _collect_agent_status(data: dict) -> dict[str, dict[str, str]]:
     return out
 
 
-def build_orgchart_slides(data: dict) -> list[str]:
+def build_orgchart_slides(data: dict, animate: bool = False) -> list[str]:
     rep, skills = data["rep"], data["skills"]
     d_lbl = fmt_date(rep["date"])
-    tested = rep.get("tested") or rep["total"]
     cc_stats = (rep.get("by") or {}).get("claude_code") or {}
     cc_pass = cc_stats.get("pass", 0)
     cc_broken = cc_stats.get("broken", 0)
@@ -1158,29 +1387,41 @@ def build_orgchart_slides(data: dict) -> list[str]:
 
     # Slide 1: Hook + Org Chart
     dept_cards_html = []
-    for d in depts:
+    for d_idx, d in enumerate(depts):
         cnt = len(dept_items[d["key"]])
         c = d["color"]
+        pop_attr = f' data-anim="pop" data-delay="{1.35 + d_idx * 0.12:.2f}" data-dur="0.40" data-from-y="20" data-from-scale="0.86"' if animate else ""
+        cnt_attr = f' data-anim="count" data-delay="{1.40 + d_idx * 0.12:.2f}" data-dur="0.50" data-target="{cnt}" data-suffix=" verified"' if animate else ""
         dept_cards_html.append(f"""
-        <div class="org-dept" style="border-color:rgba(255,255,255,0.14)">
+        <div class="org-dept" style="border-color:rgba(255,255,255,0.14)"{pop_attr}>
           <div class="org-dept-icon" style="border-color:{c}55;background:{c}18">{_dept_svg(d["key"], c, 28)}</div>
           <div class="org-dept-name" style="color:{c}">{esc(d["tab"])}</div>
-          <div class="org-dept-cnt">{cnt} verified</div>
+          <div class="org-dept-cnt"{cnt_attr}>{cnt} verified</div>
         </div>""")
 
-    s1 = f"""
-    <div class="eyebrow"><span class="dot"></span>NIGHTLY SANDBOX LOGS · {esc(d_lbl.upper())}</div>
-    <h1><em>{cc_pass}</em> skills that actually install in Claude Code.</h1>
-    <p class="cover-sub" style="margin-bottom:28px">Re-installed every night in fresh containers ({cc_pct}% clean pass rate). One core agent, five departments.</p>
-    <div class="org-wrap">
-      <div class="org-ceo">
-        <div class="org-ceo-pill">CORE AGENT</div>
-        <div class="org-dept-icon" style="width:62px;height:62px">{_dept_svg("build", "#C6F432", 32)}</div>
-        <div>
-          <div style="font-size:30px;font-weight:800;letter-spacing:-0.02em">Claude Code</div>
-          <div style="font-family:'JetBrains Mono',monospace;font-size:17px;color:#C6F432">{cc_pass} / {cc_judge} judgeable clean · 5 skipped (API key)</div>
-        </div>
-      </div>
+    ceo_anim = ' data-anim="pop" data-delay="0.22" data-dur="0.44" data-from-y="16" data-from-scale="0.88"' if animate else ""
+    if animate:
+        tree_svg = """
+      <svg class="org-tree-svg" viewBox="0 0 936 74" fill="none" data-anim="org-tree" data-delay="0.60" data-dur="0.90">
+        <defs>
+          <clipPath id="treeClip">
+            <rect id="clip-stem" x="458" y="0" width="20" height="0"/>
+            <rect id="clip-bar" x="468" y="20" width="0" height="16"/>
+            <rect id="clip-drops" x="0" y="28" width="936" height="0"/>
+          </clipPath>
+        </defs>
+        <g clip-path="url(#treeClip)">
+          <path d="M468 0 V28 M84 28 H852 M84 28 V74 M276 28 V74 M468 28 V74 M660 28 V74 M852 28 V74"
+                stroke="#C6F432" stroke-opacity="0.55" stroke-width="2.5" stroke-dasharray="6 6"/>
+        </g>
+        <circle data-dot="1" cx="84" cy="70" r="0" fill="#C6F432"/>
+        <circle data-dot="1" cx="276" cy="70" r="0" fill="#22D3EE"/>
+        <circle data-dot="1" cx="468" cy="70" r="0" fill="#A78BFA"/>
+        <circle data-dot="1" cx="660" cy="70" r="0" fill="#F59E0B"/>
+        <circle data-dot="1" cx="852" cy="70" r="0" fill="#22C55E"/>
+      </svg>"""
+    else:
+        tree_svg = """
       <svg class="org-tree-svg" viewBox="0 0 936 74" fill="none">
         <path d="M468 0 V28 M84 28 H852 M84 28 V74 M276 28 V74 M468 28 V74 M660 28 V74 M852 28 V74"
               stroke="#C6F432" stroke-opacity="0.55" stroke-width="2.5" stroke-dasharray="6 6"/>
@@ -1189,13 +1430,35 @@ def build_orgchart_slides(data: dict) -> list[str]:
         <circle cx="468" cy="70" r="4.5" fill="#A78BFA"/>
         <circle cx="660" cy="70" r="4.5" fill="#F59E0B"/>
         <circle cx="852" cy="70" r="4.5" fill="#22C55E"/>
-      </svg>
+      </svg>"""
+
+    sc1_p = ' data-anim="pop" data-delay="2.05" data-dur="0.40" data-from-y="18" data-from-scale="0.92"' if animate else ""
+    sc2_p = ' data-anim="pop" data-delay="2.18" data-dur="0.40" data-from-y="18" data-from-scale="0.92"' if animate else ""
+    sc3_p = ' data-anim="pop" data-delay="2.31" data-dur="0.40" data-from-y="18" data-from-scale="0.92"' if animate else ""
+    sc1_c = f' data-anim="count" data-delay="2.10" data-dur="0.65" data-target="{cc_pct}" data-decimals="1" data-suffix="%"' if animate else ""
+    sc2_c = f' data-anim="count" data-delay="2.23" data-dur="0.65" data-target="{cc_pass}"' if animate else ""
+    sc3_c = f' data-anim="count" data-delay="2.36" data-dur="0.60" data-target="{cc_broken}"' if animate else ""
+
+    s1 = f"""
+    <div class="eyebrow"><span class="dot"></span>NIGHTLY SANDBOX LOGS · {esc(d_lbl.upper())}</div>
+    <h1><em>{cc_pass}</em> skills that actually install in Claude Code.</h1>
+    <p class="cover-sub" style="margin-bottom:28px">Re-installed every night in fresh containers ({cc_pct}% clean pass rate). One core agent, five departments.</p>
+    <div class="org-wrap">
+      <div class="org-ceo"{ceo_anim}>
+        <div class="org-ceo-pill">CORE AGENT</div>
+        <div class="org-dept-icon" style="width:62px;height:62px">{_dept_svg("build", "#C6F432", 32)}</div>
+        <div>
+          <div style="font-size:30px;font-weight:800;letter-spacing:-0.02em">Claude Code</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:17px;color:#C6F432">{cc_pass} / {cc_judge} judgeable clean · 5 skipped (API key)</div>
+        </div>
+      </div>
+      {tree_svg}
       <div class="org-grid">{''.join(dept_cards_html)}</div>
     </div>
     <div class="stat-grid" style="margin-top:28px;margin-bottom:0">
-      <div class="stat-card" style="padding:22px 24px"><div class="stat-val lime" style="font-size:44px">{cc_pct}%</div><div class="stat-lbl">Claude Code clean<br>install rate</div></div>
-      <div class="stat-card" style="padding:22px 24px"><div class="stat-val" style="font-size:44px">{cc_pass}</div><div class="stat-lbl">Verified add-ons<br>(sum of 5 depts)</div></div>
-      <div class="stat-card" style="padding:22px 24px"><div class="stat-val" style="font-size:44px">{cc_broken}</div><div class="stat-lbl">Broken installs<br>kept visible tonight</div></div>
+      <div class="stat-card" style="padding:22px 24px"{sc1_p}><div class="stat-val lime" style="font-size:44px"{sc1_c}>{cc_pct}%</div><div class="stat-lbl">Claude Code clean<br>install rate</div></div>
+      <div class="stat-card" style="padding:22px 24px"{sc2_p}><div class="stat-val" style="font-size:44px"{sc2_c}>{cc_pass}</div><div class="stat-lbl">Verified add-ons<br>(sum of 5 depts)</div></div>
+      <div class="stat-card" style="padding:22px 24px"{sc3_p}><div class="stat-val" style="font-size:44px"{sc3_c}>{cc_broken}</div><div class="stat-lbl">Broken installs<br>kept visible tonight</div></div>
     </div>
     <p class="note">Every count above sums strictly to tonight&apos;s {cc_pass} passing Claude Code installs. No sponsored ranks.</p>
     """
@@ -1216,8 +1479,16 @@ def build_orgchart_slides(data: dict) -> list[str]:
         for r_i, it in enumerate(items[:7], 1):
             star_str = f" · {fmt_stars(it['stars'])}" if it["stars"] else ""
             badge_txt = f"{it['pass_cnt']}/{it['total_cnt']} PASS"
+            r_delay = 0.24 + (r_i - 1) * 0.21
+            row_anim = f' data-anim="row" data-delay="{r_delay:.2f}" data-dur="0.40"' if animate else ""
+            b_anim = (
+                f' data-anim="badge-count" data-delay="{r_delay + 0.14:.2f}" data-dur="0.48"'
+                f' data-pass="{it["pass_cnt"]}" data-total="{it["total_cnt"]}" data-suffix=" PASS"'
+                if animate
+                else ""
+            )
             rows_html.append(f"""
-            <div class="v2-row">
+            <div class="v2-row"{row_anim}>
               <div class="v2-icon" style="border-color:{c}44">{_dept_svg(d["key"], c, 22)}</div>
               <div class="v2-main">
                 <div class="v2-name-line">
@@ -1228,7 +1499,7 @@ def build_orgchart_slides(data: dict) -> list[str]:
               </div>
               <div class="v2-right">
                 <div class="v2-idx">{r_i:02d}</div>
-                <div class="v2-badge" style="color:{c};border-color:{c}55;background:{c}14">{badge_txt}</div>
+                <div class="v2-badge" style="color:{c};border-color:{c}55;background:{c}14"{b_anim}>{badge_txt}</div>
               </div>
             </div>""")
 
@@ -1240,57 +1511,67 @@ def build_orgchart_slides(data: dict) -> list[str]:
         <div class="v2-rows">{''.join(rows_html)}</div>
         """)
 
-    # Slide 7: Closer + Keyword CTA
+    # Slide 7: Subscribe to the free newsletter CTA
+    r1_a = ' data-anim="row" data-delay="0.25" data-dur="0.38"' if animate else ""
+    r2_a = ' data-anim="row" data-delay="0.52" data-dur="0.38"' if animate else ""
+    r3_a = ' data-anim="row" data-delay="0.79" data-dur="0.38"' if animate else ""
+    cta_a = ' data-anim="pop" data-delay="1.15" data-dur="0.46" data-from-y="22" data-from-scale="0.93"' if animate else ""
+    cta_g = ' data-anim="glow" data-delay="1.65" data-period="3.35"' if animate else ""
+
     s7 = f"""
     <div class="eyebrow"><span class="dot"></span>{cc_pass} VERIFIED · {cc_broken} BROKEN KEPT VISIBLE</div>
-    <h1><em>{cc_pass}</em> clean installs. Start with one.</h1>
-    <p class="cover-sub" style="margin-bottom:28px">Every add-on on SkillMaxx includes its exact install command, 5-agent compatibility matrix, and raw failure log.</p>
+    <h1><em>{cc_pass}</em> clean installs. Delivered weekly.</h1>
+    <p class="cover-sub" style="margin-bottom:26px">Every Sunday: the verified Claude Code stack, 5-agent compatibility shifts, and raw failure logs.</p>
     <div class="card-stack" style="gap:14px">
-      <div class="item-row">
+      <div class="item-row"{r1_a}>
         <div>
           <div class="item-title">01 · Filter by your coding agent</div>
           <div class="item-desc">Claude Code ({cc_pass} pass), Grok Build, Codex, Cursor, or Pi.</div>
         </div>
         <span class="pill lime">LIVE MATRIX</span>
       </div>
-      <div class="item-row">
+      <div class="item-row"{r2_a}>
         <div>
           <div class="item-title">02 · Copy the tested install command</div>
           <div class="item-desc">No guessing marketplace names or broken npm flags.</div>
         </div>
         <span class="pill cyan">COPY-PASTE</span>
       </div>
-      <div class="item-row">
+      <div class="item-row"{r3_a}>
         <div>
-          <div class="item-title">03 · Inspect failures before debugging</div>
+          <div class="item-title">03 · Spot confirmed breaks first</div>
           <div class="item-desc">Tonight&apos;s {cc_broken} broken Claude add-ons stay public with raw exit logs.</div>
         </div>
         <span class="pill amber">RAW LOGS</span>
       </div>
     </div>
-    <div class="kw-box">
-      <div class="cta-label">Want the full verified stack?</div>
-      <div style="font-size:32px;font-weight:800;line-height:1.35;margin-bottom:14px">
-        Comment <span class="kw-pill">INSTALL</span> and I&apos;ll send it over.
+    <div class="nl-cta-box"{cta_a}>
+      <div class="cta-label">Subscribe to the free newsletter</div>
+      <div style="font-size:34px;font-weight:800;line-height:1.25">
+        Get the nightly results every week. <span style="color:#C6F432">Free.</span>
       </div>
-      <div class="cta-desc">Or browse all {cc_pass} live now at <b style="color:#EDEDEF">skillmaxx.gilventures.ai/works-in/claude-code/</b></div>
+      <div class="nl-url-pill"{cta_g}>https://skillmaxx.gilventures.ai/newsletter/</div>
+      <div class="cta-desc" style="font-size:19px">All {cc_pass} live at <b style="color:#EDEDEF">skillmaxx.gilventures.ai/works-in/claude-code/</b></div>
     </div>
     """
 
     all_slides = [s1, *dept_slides, s7]
+    durations = [6.0, 5.5, 5.5, 5.5, 5.5, 5.5, 5.0]
     return [
         wrap_slide(
             f"<style>{V2_CSS}</style>" + body,
             i + 1,
             total_slides,
             f"CLAUDE STACK · {fmt_short(rep['date']).upper()}",
-            "Swipe →" if i < total_slides - 1 else 'Comment "INSTALL"',
+            "Swipe →" if i < total_slides - 1 else "Free Sunday newsletter",
+            animate=animate,
+            duration=durations[i],
         )
         for i, body in enumerate(all_slides)
     ]
 
 
-def build_maxxing_slides(data: dict) -> list[str]:
+def build_maxxing_slides(data: dict, animate: bool = False) -> list[str]:
     rep, wk, skills = data["rep"], data["wk"], data["skills"]
     d_lbl = fmt_date(rep["date"])
     tested = rep.get("tested") or rep["total"]
@@ -1320,11 +1601,21 @@ def build_maxxing_slides(data: dict) -> list[str]:
 
     total_slides = 6
 
-    # Slide 1: Artifact Collage Hook (artem.novitckii inspired in SkillMaxx dark+lime)
+    # Slide 1: Artifact Collage Hook (centered main card + levitating surrounding cards)
+    def _fl(base_rot: float, phase: float, amp_y: float = 13.0, amp_x: float = 3.0, amp_rot: float = 1.1) -> str:
+        if not animate:
+            return ""
+        return (
+            f' data-anim="float" data-period="6.0" data-base-rot="{base_rot}"'
+            f' data-phase="{phase:.2f}" data-amp-y="{amp_y:.1f}" data-amp-x="{amp_x:.1f}" data-amp-rot="{amp_rot:.1f}"'
+        )
+
+    hero_glow = ' data-anim="glow" data-delay="0" data-period="6.0"' if animate else ""
+
     s1 = f"""
     <div class="collage-stage">
       <!-- Top-left: Permission / Sandbox modal -->
-      <div class="art-card" style="top:18px;left:0;width:308px;transform:rotate(-4deg)">
+      <div class="art-card" style="top:20px;left:2px;width:308px;transform:rotate(-4deg)"{_fl(-4.0, 0.00, 13.0, 3.0, 1.1)}>
         <div class="art-win-bar"><span class="art-dot" style="background:#EF4444"></span><span class="art-dot" style="background:#F59E0B"></span><span class="art-dot" style="background:#22C55E"></span>sandbox_check.sh</div>
         <div style="font-size:16px;font-weight:600;margin-bottom:10px">Install in fresh Docker?</div>
         <div style="display:flex;gap:8px;font-family:'JetBrains Mono',monospace;font-size:13px">
@@ -1334,14 +1625,14 @@ def build_maxxing_slides(data: dict) -> list[str]:
       </div>
 
       <!-- Top-center: Terminal install -->
-      <div class="art-card" style="top:8px;left:328px;width:320px;transform:rotate(2deg);border-color:rgba(198,244,50,0.34)">
+      <div class="art-card" style="top:14px;left:328px;width:320px;transform:rotate(2deg);border-color:rgba(198,244,50,0.34)"{_fl(2.0, 1.05, 11.0, 2.5, 0.9)}>
         <div class="art-win-bar"><span class="art-dot" style="background:#C6F432"></span>claude — skillmaxx</div>
         <div style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#C6F432;margin-bottom:6px">&gt; {rep['pass']:,} / {tested:,} clean</div>
         <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#D4D4D8">✔ {rate}% judgeable pass</div>
       </div>
 
       <!-- Top-right: SKILL.md diskette / file card -->
-      <div class="art-card" style="top:24px;right:0;width:255px;transform:rotate(4deg)">
+      <div class="art-card" style="top:24px;right:2px;width:255px;transform:rotate(4deg)"{_fl(4.0, 2.10, 14.0, 3.0, 1.2)}>
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
           <span style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:#22D3EE">SKILL.md</span>
           <span class="pill cyan">{addons:,}</span>
@@ -1350,41 +1641,41 @@ def build_maxxing_slides(data: dict) -> list[str]:
       </div>
 
       <!-- Mid-left: 02:00 AM ET clock -->
-      <div class="art-card" style="top:220px;left:-6px;width:270px;transform:rotate(-3deg);border-color:rgba(245,158,11,0.40)">
+      <div class="art-card" style="top:220px;left:-4px;width:270px;transform:rotate(-3deg);border-color:rgba(245,158,11,0.40)"{_fl(-3.0, 3.14, 12.0, 3.5, 1.0)}>
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#FCD34D;margin-bottom:4px">CRON · NIGHTLY RUN</div>
         <div style="font-family:'JetBrains Mono',monospace;font-size:38px;font-weight:800;color:#F59E0B;letter-spacing:-0.03em">02:00 AM</div>
         <div style="font-size:13px;color:#9CA3AF">America/New_York · {esc(d_lbl)}</div>
       </div>
 
       <!-- Mid-right: Raw fail warning -->
-      <div class="art-card" style="top:224px;right:-6px;width:280px;transform:rotate(3deg);border-color:rgba(239,68,68,0.40)">
+      <div class="art-card" style="top:224px;right:-4px;width:280px;transform:rotate(3deg);border-color:rgba(239,68,68,0.40)"{_fl(3.0, 4.19, 13.0, 3.5, 1.0)}>
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#FCA5A5;margin-bottom:4px">RAW FAILURE LOGS</div>
         <div style="font-family:'JetBrains Mono',monospace;font-size:15px;color:#EDEDEF">✖ {cc.get('broken', 0)} broken in Claude</div>
         <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#9CA3AF;margin-top:4px">✖ {pi.get('broken', 0)} broken in Pi · stays public</div>
       </div>
 
       <!-- Center Focal Headline -->
-      <div class="collage-hero">
+      <div class="collage-hero"{hero_glow}>
         <div class="eyebrow" style="margin:0 auto 18px"><span class="dot"></span>{addons:,} ADD-ONS · 5 CODING AGENTS</div>
         <h1>The art of<br><em>SkillMaxxing</em>.</h1>
         <p style="font-size:25px;color:#A1A1AA;line-height:1.4">Stop installing agent skills that break on step one. Real sandbox logs from {esc(d_lbl)}.</p>
       </div>
 
       <!-- Bottom-left: 5/5 badge -->
-      <div class="art-card" style="bottom:74px;left:4px;width:292px;transform:rotate(-2.5deg);border-color:rgba(34,197,94,0.42)">
+      <div class="art-card" style="bottom:74px;left:4px;width:292px;transform:rotate(-2.5deg);border-color:rgba(34,197,94,0.42)"{_fl(-2.5, 5.24, 14.0, 3.0, 1.1)}>
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#86EFAC;margin-bottom:4px">CROSS-AGENT ELITE</div>
         <div style="font-size:26px;font-weight:800;color:#EDEDEF">{len(five_of_five)} pass in <span style="color:#22C55E">5 / 5</span></div>
         <div style="font-size:14px;color:#9CA3AF">Claude · Grok · Codex · Cursor · Pi</div>
       </div>
 
       <!-- Bottom-center: Query pill -->
-      <div class="art-card" style="bottom:42px;left:322px;width:308px;transform:rotate(1.5deg)">
+      <div class="art-card" style="bottom:44px;left:322px;width:308px;transform:rotate(1.5deg)"{_fl(1.5, 2.62, 11.0, 2.5, 0.9)}>
         <div style="font-size:14px;color:#9CA3AF;margin-bottom:6px">Before you run <code style="color:#C6F432">npx</code> or <code style="color:#C6F432">/plugin</code>:</div>
         <div style="font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:600;color:#EDEDEF">skillmaxx.gilventures.ai ↗</div>
       </div>
 
       <!-- Bottom-right: Agent breakdown -->
-      <div class="art-card" style="bottom:70px;right:4px;width:280px;transform:rotate(-3deg)">
+      <div class="art-card" style="bottom:70px;right:4px;width:280px;transform:rotate(-3deg)"{_fl(-3.0, 0.78, 13.0, 3.0, 1.1)}>
         <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#A78BFA;margin-bottom:6px">5 SANDBOX AGENTS</div>
         <div style="font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.5;color:#D4D4D8">
           Claude {cc.get('pass', 0)} · Grok {gb.get('pass', 0)}<br>
@@ -1404,7 +1695,6 @@ def build_maxxing_slides(data: dict) -> list[str]:
             ag = AG_SHORT.get(b.get("agent"), "")
             if ag and ag not in broke_map[sl]:
                 broke_map[sl].append(ag)
-    # Fallback to latestRows broken if broke_map has < 4 entries
     if len(broke_map) < 4:
         for sl, ag_map in ag_status.items():
             fails = [AG_SHORT[a] for a, st in ag_map.items() if st in ("fail", "broken") and a in AG_SHORT]
@@ -1416,8 +1706,9 @@ def build_maxxing_slides(data: dict) -> list[str]:
 
     broke_rows = []
     for i, (sl, ags) in enumerate(list(broke_map.items())[:5], 1):
+        r_anim = f' data-anim="row" data-delay="{0.65 + (i - 1) * 0.24:.2f}" data-dur="0.40"' if animate else ""
         broke_rows.append(f"""
-        <div class="v2-row" style="border-color:rgba(239,68,68,0.28)">
+        <div class="v2-row" style="border-color:rgba(239,68,68,0.28)"{r_anim}>
           <div class="v2-icon" style="border-color:rgba(239,68,68,0.40);background:rgba(239,68,68,0.10)">{_dept_svg("guard", "#FCA5A5", 22)}</div>
           <div class="v2-main">
             <div class="v2-name-line">
@@ -1432,17 +1723,24 @@ def build_maxxing_slides(data: dict) -> list[str]:
           </div>
         </div>""")
 
+    pill_specs = [
+        ("Pi", pi.get("broken", 0)),
+        ("Grok", gb.get("broken", 0)),
+        ("Claude", cc.get("broken", 0)),
+        ("Codex", cx.get("broken", 0)),
+        ("Cursor", cu.get("broken", 0)),
+    ]
+    pills_html = []
+    for p_i, (ag_lbl, br_n) in enumerate(pill_specs):
+        p_anim = f' data-anim="pop" data-delay="{0.15 + p_i * 0.10:.2f}" data-dur="0.34" data-from-y="10" data-from-scale="0.88"' if animate else ""
+        c_anim = f' data-anim="count" data-delay="{0.18 + p_i * 0.10:.2f}" data-dur="0.45" data-target="{br_n}" data-prefix="{ag_lbl}: " data-suffix=" broken"' if animate else ""
+        pills_html.append(f'<span class="pill red"{p_anim}{c_anim}>{ag_lbl}: {br_n} broken</span>')
+
     s2 = f"""
     <div class="dept-kicker" style="color:#FCA5A5">01 · THE TRAP</div>
     <h2>Most lists hide what <em style="color:#FCA5A5">broke</em>.</h2>
     <p class="sub" style="margin-bottom:22px">Real broken installs from {esc(d_lbl)} — zero retries hidden, zero paid removals.</p>
-    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
-      <span class="pill red">Pi: {pi.get('broken', 0)} broken</span>
-      <span class="pill red">Grok: {gb.get('broken', 0)} broken</span>
-      <span class="pill red">Claude: {cc.get('broken', 0)} broken</span>
-      <span class="pill red">Codex: {cx.get('broken', 0)} broken</span>
-      <span class="pill red">Cursor: {cu.get('broken', 0)} broken</span>
-    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">{''.join(pills_html)}</div>
     <div class="v2-rows">{''.join(broke_rows)}</div>
     <p class="note">An add-on is only marked confirmed &ldquo;broke&rdquo; after failing two consecutive nightly runs.</p>
     """
@@ -1450,8 +1748,11 @@ def build_maxxing_slides(data: dict) -> list[str]:
     # Slide 3: 5/5 Cross-Agent Elite
     elite_rows = []
     for i, it in enumerate(five_of_five[:7], 1):
+        r_d = 0.30 + (i - 1) * 0.21
+        r_anim = f' data-anim="row" data-delay="{r_d:.2f}" data-dur="0.40"' if animate else ""
+        b_anim = f' data-anim="badge-count" data-delay="{r_d + 0.14:.2f}" data-dur="0.48" data-pass="5" data-total="5" data-suffix=" PASS"' if animate else ""
         elite_rows.append(f"""
-        <div class="v2-row">
+        <div class="v2-row"{r_anim}>
           <div class="v2-icon" style="border-color:rgba(34,197,94,0.42)">{_dept_svg("guard", "#22C55E", 22)}</div>
           <div class="v2-main">
             <div class="v2-name-line">
@@ -1462,13 +1763,14 @@ def build_maxxing_slides(data: dict) -> list[str]:
           </div>
           <div class="v2-right">
             <div class="v2-idx">{i:02d}</div>
-            <div class="v2-badge" style="color:#86EFAC;border-color:rgba(34,197,94,0.42);background:rgba(34,197,94,0.12)">5/5 PASS</div>
+            <div class="v2-badge" style="color:#86EFAC;border-color:rgba(34,197,94,0.42);background:rgba(34,197,94,0.12)"{b_anim}>5/5 PASS</div>
           </div>
         </div>""")
 
+    elite_cnt_attr = f' data-anim="count" data-delay="0.05" data-dur="0.65" data-target="{len(five_of_five)}"' if animate else ""
     s3 = f"""
     <div class="dept-kicker" style="color:#86EFAC">02 · CROSS-AGENT ELITE</div>
-    <h2>{len(five_of_five)} add-ons pass in <em style="color:#22C55E">all 5 agents</em>.</h2>
+    <h2><span{elite_cnt_attr}>{len(five_of_five)}</span> add-ons pass in <em style="color:#22C55E">all 5 agents</em>.</h2>
     <p class="sub" style="margin-bottom:20px">Installed cleanly across Claude Code, Grok Build, Codex, Cursor, and Pi on {esc(d_lbl)}.</p>
     <div class="v2-rows">{''.join(elite_rows)}</div>
     """
@@ -1481,16 +1783,21 @@ def build_maxxing_slides(data: dict) -> list[str]:
             by_rows.append((v.get("pass", 0) / judge, ag, v.get("pass", 0), judge, v.get("broken", 0)))
     by_rows.sort(reverse=True)
     bars = []
-    for r, ag, ps, j, br in by_rows:
+    for b_i, (r, ag, ps, j, br) in enumerate(by_rows):
         pct = round(r * 100, 1)
         c = AG_COLOR.get(ag, "#C6F432")
+        d0 = 0.22 + b_i * 0.16
+        row_a = f' data-anim="pop" data-delay="{d0:.2f}" data-dur="0.38" data-from-y="16" data-from-scale="0.96" data-ease="cubic"' if animate else ""
+        bar_a = f' data-anim="bar" data-delay="{d0 + 0.18:.2f}" data-dur="0.85" data-width="{pct}"' if animate else ""
+        pct_a = f' data-anim="count" data-delay="{d0 + 0.18:.2f}" data-dur="0.85" data-target="{pct}" data-decimals="1" data-suffix="%"' if animate else ""
+        fill_style = f"width:0%;background:{c}" if animate else f"width:{pct}%;background:{c}"
         bars.append(f"""
-        <div class="bar-row">
+        <div class="bar-row"{row_a}>
           <div class="bar-head">
             <div class="bar-name"><span style="width:14px;height:14px;border-radius:50%;background:{c};display:inline-block"></span>{esc(AG_NAME.get(ag, ag))}</div>
-            <div class="bar-nums">{pct}% <span>{ps}/{j} clean · {br} broken</span></div>
+            <div class="bar-nums"><span style="color:#EDEDEF;font-size:24px;font-weight:600;margin-left:0"{pct_a}>{pct}%</span> <span>{ps}/{j} clean · {br} broken</span></div>
           </div>
-          <div class="track"><div class="fill" style="width:{pct}%;background:{c}"></div></div>
+          <div class="track"><div class="fill" style="{fill_style}"{bar_a}></div></div>
         </div>""")
 
     s4 = f"""
@@ -1502,22 +1809,27 @@ def build_maxxing_slides(data: dict) -> list[str]:
     """
 
     # Slide 5: 3-Step Clean Setup Loop
+    st1_a = ' data-anim="pop" data-delay="0.25" data-dur="0.42" data-from-y="20" data-from-scale="0.94"' if animate else ""
+    st2_a = ' data-anim="pop" data-delay="0.70" data-dur="0.42" data-from-y="20" data-from-scale="0.94"' if animate else ""
+    st3_a = ' data-anim="pop" data-delay="1.15" data-dur="0.42" data-from-y="20" data-from-scale="0.94"' if animate else ""
+    sw_a = ' data-anim="step-sweep" data-sweep-start="1.75"' if animate else ""
+
     s5 = f"""
     <div class="dept-kicker" style="color:#22D3EE">04 · THE WORKFLOW</div>
     <h2>The 3-step <em style="color:#22D3EE">SkillMaxxing</em> loop.</h2>
     <p class="sub" style="margin-bottom:28px">How to wire up a clean agent stack without debugging broken READMEs.</p>
     <div class="card-stack" style="gap:18px">
-      <div class="card" style="padding:26px 28px;border-color:rgba(198,244,50,0.32)">
+      <div class="card" style="padding:26px 28px;border-color:rgba(198,244,50,0.32)"{st1_a}{sw_a}>
         <div style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#C6F432;margin-bottom:8px">STEP 01 · PICK YOUR AGENT</div>
         <div style="font-size:27px;font-weight:700;margin-bottom:8px">Start on <code style="color:#C6F432">/works-in/&lt;agent&gt;/</code></div>
         <div class="item-desc" style="font-size:20px">See only skills, plugins, and MCP servers that installed cleanly in last night&apos;s sandbox.</div>
       </div>
-      <div class="card" style="padding:26px 28px;border-color:rgba(34,211,238,0.32)">
+      <div class="card" style="padding:26px 28px;border-color:rgba(34,211,238,0.32)"{st2_a}{sw_a}>
         <div style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#22D3EE;margin-bottom:8px">STEP 02 · COPY TESTED COMMAND</div>
         <div style="font-size:27px;font-weight:700;margin-bottom:8px">Run the exact verified command</div>
         <div class="item-desc" style="font-size:20px">Claude <code style="color:#EDEDEF">/plugin install</code>, <code style="color:#EDEDEF">npx</code> MCP config, or Codex skill path — straight from passing runs.</div>
       </div>
-      <div class="card" style="padding:26px 28px;border-color:rgba(167,139,250,0.32)">
+      <div class="card" style="padding:26px 28px;border-color:rgba(167,139,250,0.32)"{st3_a}{sw_a}>
         <div style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#A78BFA;margin-bottom:8px">STEP 03 · CHECK 10-NIGHT HISTORY</div>
         <div style="font-size:27px;font-weight:700;margin-bottom:8px">Spot flaky vs. rock-solid tools</div>
         <div class="item-desc" style="font-size:20px">Read raw failure logs before spending 20 minutes wondering why a server won&apos;t boot.</div>
@@ -1525,34 +1837,68 @@ def build_maxxing_slides(data: dict) -> list[str]:
     </div>
     """
 
-    # Slide 6: Keyword CTA Closer
+    # Slide 6: Subscribe to the free newsletter CTA
+    m1_p = ' data-anim="pop" data-delay="0.25" data-dur="0.40" data-from-y="18" data-from-scale="0.90"' if animate else ""
+    m2_p = ' data-anim="pop" data-delay="0.40" data-dur="0.40" data-from-y="18" data-from-scale="0.90"' if animate else ""
+    m3_p = ' data-anim="pop" data-delay="0.55" data-dur="0.40" data-from-y="18" data-from-scale="0.90"' if animate else ""
+    m1_c = f' data-anim="count" data-delay="0.30" data-dur="0.65" data-target="{rate}" data-decimals="1" data-suffix="%"' if animate else ""
+    m2_c = f' data-anim="count" data-delay="0.45" data-dur="0.65" data-target="{addons}" data-comma="1"' if animate else ""
+    nl_p = ' data-anim="pop" data-delay="1.05" data-dur="0.46" data-from-y="22" data-from-scale="0.93"' if animate else ""
+    nl_g = ' data-anim="glow" data-delay="1.55" data-period="3.45"' if animate else ""
+
     s6 = f"""
     <div class="eyebrow"><span class="dot"></span>OPEN SOURCE · ZERO PAYWALL · {esc(d_lbl.upper())}</div>
-    <h1>Comment <span class="kw-pill" style="font-size:56px;vertical-align:middle">MAXX</span></h1>
-    <p class="cover-sub" style="margin-bottom:28px">And I&apos;ll send you the full verified setup: the {len(five_of_five)} cross-agent winners, copy-paste commands, and tonight&apos;s raw failure matrix.</p>
-    <div class="stat-grid" style="margin-top:0;margin-bottom:26px">
-      <div class="stat-card"><div class="stat-val lime">{rate}%</div><div class="stat-lbl">Clean pass rate<br>({rep['pass']:,}/{tested:,})</div></div>
-      <div class="stat-card"><div class="stat-val">{addons:,}</div><div class="stat-lbl">Skills, plugins<br>&amp; MCPs tested</div></div>
-      <div class="stat-card"><div class="stat-val">$0</div><div class="stat-lbl">Free directory<br>&amp; weekly digest</div></div>
+    <h1>Stop guessing. <em>Read the logs.</em></h1>
+    <p class="cover-sub" style="margin-bottom:26px">The {len(five_of_five)} cross-agent winners, new sandbox breaks, and copy-paste commands — in one free Sunday issue.</p>
+    <div class="stat-grid" style="margin-top:0;margin-bottom:20px">
+      <div class="stat-card"{m1_p}><div class="stat-val lime"{m1_c}>{rate}%</div><div class="stat-lbl">Clean pass rate<br>({rep['pass']:,}/{tested:,})</div></div>
+      <div class="stat-card"{m2_p}><div class="stat-val"{m2_c}>{addons:,}</div><div class="stat-lbl">Skills, plugins<br>&amp; MCPs tested</div></div>
+      <div class="stat-card"{m3_p}><div class="stat-val">$0</div><div class="stat-lbl">Free directory<br>&amp; weekly digest</div></div>
     </div>
-    <div class="cta-box" style="margin-bottom:0">
-      <div class="cta-label">Or Grab It Direct</div>
-      <div class="cta-url">skillmaxx.gilventures.ai</div>
-      <div class="cta-desc">Daily report, per-agent matrix, and free weekly newsletter at <b style="color:#EDEDEF">/newsletter/</b>.</div>
+    <div class="nl-cta-box" style="margin-top:0"{nl_p}>
+      <div class="cta-label">Subscribe to the free newsletter</div>
+      <div style="font-size:34px;font-weight:800;line-height:1.25">
+        Get the nightly results every week. <span style="color:#C6F432">Free.</span>
+      </div>
+      <div class="nl-url-pill"{nl_g}>https://skillmaxx.gilventures.ai/newsletter/</div>
+      <div class="cta-desc">Daily report, per-agent matrix, and raw failure logs at <b style="color:#EDEDEF">skillmaxx.gilventures.ai</b></div>
     </div>
     """
 
     all_slides = [s1, s2, s3, s4, s5, s6]
+    durations = [6.0, 5.5, 5.5, 5.5, 5.0, 5.0]
     return [
         wrap_slide(
             f"<style>{V2_CSS}</style>" + body,
             i + 1,
             total_slides,
             f"SKILLMAXXING · {fmt_short(rep['date']).upper()}",
-            "Swipe →" if i < total_slides - 1 else 'Comment "MAXX"',
+            "Swipe →" if i < total_slides - 1 else "Free Sunday newsletter",
+            animate=animate,
+            duration=durations[i],
         )
         for i, body in enumerate(all_slides)
     ]
+
+
+def _find_chrome() -> str | None:
+    chrome = shutil.which("google-chrome") or shutil.which("chromium") or shutil.which("chromium-browser")
+    if chrome:
+        return chrome
+    mac_chrome = Path("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
+    if mac_chrome.exists():
+        return str(mac_chrome)
+    return None
+
+
+def _launch_playwright_browser(playwright):
+    chrome = _find_chrome()
+    try:
+        return playwright.chromium.launch()
+    except Exception:
+        if not chrome:
+            raise
+        return playwright.chromium.launch(executable_path=chrome)
 
 
 def render_slides_html(slides: list[str], out_dir: Path) -> list[Path]:
@@ -1563,16 +1909,11 @@ def render_slides_html(slides: list[str], out_dir: Path) -> list[Path]:
     except ImportError:
         sync_playwright = None
 
-    chrome = shutil.which("google-chrome") or shutil.which("chromium") or shutil.which("chromium-browser")
+    chrome = _find_chrome()
     if sync_playwright is not None:
         try:
             with sync_playwright() as p:
-                try:
-                    browser = p.chromium.launch()
-                except Exception:
-                    if not chrome:
-                        raise
-                    browser = p.chromium.launch(executable_path=chrome)
+                browser = _launch_playwright_browser(p)
                 page = browser.new_page(viewport={"width": 1080, "height": 1350}, device_scale_factor=1)
                 for i, doc in enumerate(slides, 1):
                     page.set_content(doc, wait_until="load")
@@ -1610,9 +1951,120 @@ def render_slides_html(slides: list[str], out_dir: Path) -> list[Path]:
     return paths
 
 
+def render_slides_animated(slides: list[str], out_dir: Path, fps: int = 30) -> tuple[list[Path], list[Path], Path, list[float]]:
+    ffmpeg = shutil.which("ffmpeg")
+    if not ffmpeg:
+        raise RuntimeError("ffmpeg is required for --animate mode.")
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError as exc:
+        raise RuntimeError("Python playwright is required for --animate mode.") from exc
+
+    out_dir.mkdir(parents=True, exist_ok=True)
+    mp4_paths: list[Path] = []
+    png_paths: list[Path] = []
+    durations: list[float] = []
+
+    with sync_playwright() as p:
+        browser = _launch_playwright_browser(p)
+        page = browser.new_page(viewport={"width": 1080, "height": 1350}, device_scale_factor=1)
+        for i, doc in enumerate(slides, 1):
+            page.set_content(doc, wait_until="load")
+            page.evaluate("document.fonts.ready")
+            dur = float(page.evaluate("parseFloat(document.querySelector('.slide')?.dataset?.duration || '5.5')"))
+            page.evaluate("window.__MANUAL_ANIM_CLOCK = true")
+            n_frames = max(1, int(round(dur * fps)))
+
+            out_mp4 = out_dir / f"slide-{i:02d}.mp4"
+            out_png = out_dir / f"slide-{i:02d}.png"
+
+            cmd = [
+                ffmpeg,
+                "-y",
+                "-loglevel",
+                "error",
+                "-f",
+                "image2pipe",
+                "-vcodec",
+                "png",
+                "-framerate",
+                str(fps),
+                "-i",
+                "-",
+                "-c:v",
+                "libx264",
+                "-pix_fmt",
+                "yuv420p",
+                "-r",
+                str(fps),
+                "-crf",
+                "18",
+                "-preset",
+                "medium",
+                "-movflags",
+                "+faststart",
+                "-video_track_timescale",
+                "15360",
+                str(out_mp4),
+            ]
+            proc = subprocess.Popen(cmd, stdin=subprocess.PIPE)
+            last_png = b""
+            for f_idx in range(n_frames):
+                t_sec = f_idx / float(fps)
+                page.evaluate(f"window.__setAnimTime && window.__setAnimTime({t_sec:.6f})")
+                png_bytes = page.screenshot(type="png")
+                proc.stdin.write(png_bytes)
+                last_png = png_bytes
+            proc.stdin.close()
+            rc = proc.wait()
+            if rc != 0:
+                raise RuntimeError(f"ffmpeg failed on {out_mp4} (exit {rc})")
+
+            # Write final-frame still PNG fallback
+            out_png.write_bytes(last_png)
+            mp4_paths.append(out_mp4)
+            png_paths.append(out_png)
+            durations.append(dur)
+        browser.close()
+
+    # Stitch full deck preview MP4
+    preview_mp4 = out_dir / "preview.mp4"
+    with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False) as tf:
+        concat_path = Path(tf.name)
+        for mp in mp4_paths:
+            tf.write(f"file '{mp.resolve()}'\n")
+    try:
+        subprocess.run(
+            [
+                ffmpeg,
+                "-y",
+                "-loglevel",
+                "error",
+                "-f",
+                "concat",
+                "-safe",
+                "0",
+                "-i",
+                str(concat_path),
+                "-c",
+                "copy",
+                "-movflags",
+                "+faststart",
+                str(preview_mp4),
+            ],
+            check=True,
+            capture_output=True,
+        )
+    finally:
+        concat_path.unlink(missing_ok=True)
+
+    return mp4_paths, png_paths, preview_mp4, durations
+
+
 def zip_dir(folder: Path, zip_path: Path) -> Path:
+    files = sorted([*folder.glob("*.png"), *folder.glob("*.mp4")])
     with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
-        for p in sorted(folder.glob("*.png")):
+        for p in files:
             zf.write(p, arcname=f"{folder.name}/{p.name}")
     return zip_path
 
@@ -1631,6 +2083,8 @@ def main(argv=None) -> int:
     ap.add_argument("--date", help="Report date YYYY-MM-DD (default: latest in src/_data/reports.json)")
     ap.add_argument("--out", default="/workspace/carousels-samples")
     ap.add_argument("--zip", action="store_true")
+    ap.add_argument("--animate", action="store_true", help="Render animated MP4 slides (1080x1350 H.264 30fps) + PNG fallbacks + preview.mp4")
+    ap.add_argument("--fps", type=int, default=30, help="Frame rate for --animate (default: 30)")
     a = ap.parse_args(argv)
 
     data = load_data(a.date)
@@ -1645,11 +2099,26 @@ def main(argv=None) -> int:
 
     for fmt in targets:
         fn, prefix = BUILDERS[fmt]
-        slides = fn(data)
-        name = f"{prefix}-{d_str}"
-        dest = out_root / name
-        pngs = render_slides_html(slides, dest)
-        print(f"carousel {fmt}: rendered {len(pngs)} slides (1080x1350) -> {dest}")
+        if a.animate:
+            anim_prefix = f"v2-animated-{prefix[3:]}" if prefix.startswith("v2-") else f"animated-{prefix}"
+            name = f"{anim_prefix}-{d_str}"
+            dest = out_root / name
+            try:
+                slides = fn(data, animate=True)
+            except TypeError:
+                slides = fn(data)
+            mp4s, pngs, preview, durs = render_slides_animated(slides, dest, fps=a.fps)
+            tot_dur = sum(durs)
+            print(
+                f"carousel {fmt} (animated): {len(mp4s)} mp4s + {len(pngs)} pngs + {preview.name} "
+                f"({tot_dur:.1f}s total @ {a.fps}fps) -> {dest}"
+            )
+        else:
+            slides = fn(data)
+            name = f"{prefix}-{d_str}"
+            dest = out_root / name
+            pngs = render_slides_html(slides, dest)
+            print(f"carousel {fmt}: rendered {len(pngs)} slides (1080x1350) -> {dest}")
         if a.zip:
             zp = zip_dir(dest, out_root / f"{name}.zip")
             print(f"carousel {fmt}: zipped -> {zp}")
