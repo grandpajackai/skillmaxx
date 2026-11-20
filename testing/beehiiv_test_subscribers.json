@@ -1,0 +1,11 @@
+{
+  "_doc": "SHA-256 hashes of lowercased Beehiiv test subscriber emails for pub_5c2d14be-2fac-4704-9dcd-b3d21a0e8a9c (5 current test accounts excluded from first-subscriber Telegram alerts). Plaintext overrides may live in gitignored $SKILLMAXX_STATE/test-subscribers.json.",
+  "publication_id": "pub_5c2d14be-2fac-4704-9dcd-b3d21a0e8a9c",
+  "excluded_sha256": [
+    "5cc7f0dadafdd47c10865ecdab6c82e3d359d41cdecc16c9484aa6ee86bb4de8",
+    "8ab23093bee6aa6e6a080818a455debf94927cd6db5e798930320d20386037d6",
+    "a4d9222b17d2f63a7f6892975fde25824d1ad086eb066218465851afd8388d6b",
+    "c45d5ab382d7cc65e00d0a2ede3b7a3b5899338ea22855f7d6ff6e1749cc7247",
+    "dba5a22b5c9627a734dc1a2e4698ef5bb003e212fb31fb80aa2c7825e9112b1a"
+  ]
+}

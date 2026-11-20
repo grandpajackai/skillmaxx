@@ -133,3 +133,11 @@ No new owner decisions came in on Oct 31. Operating rules adopted after that day
 ## 2026-11-10 — Brandon's calls (recorded by the Nov 11 nightly)
 78. **Sponsor emails go out from Zoho webmail in an attended session** when box SMTP is blocked: Brandon approved sending all 23 prepared Nov 10 emails that way (unattended runs still send nothing).
 79. **Check every sponsor follow-up before sending**: confirm no reply already arrived (including Spam), the same nudge wasn't already sent, and the email is at the right step of the sequence; skip and report anyone who replied, already got a nudge, or was emailed too recently.
+
+## 2026-11-20 — Brandon's SkillMaxx asks (relayed by COO at 3:14 PM ET)
+80. **Goals:** Accept the subscriber goal, set the baseline after 4 weeks (~2026-12-18), and target a **$250/mo** sponsor run rate.
+81. **Newsletter freshness:** Keep Issue #4 (Nov 22) and Issue #5 (Nov 29) fully automatic on the Mac nightly; gather fresh news (`fetch_radar_hn.py`) at Sunday publish time rather than days early. Beehiiv still gets unsent drafts only while all subscribers are test accounts.
+82. **Soft subscribe P.S.:** Append the one-line free newsletter invite (`growth/outreach/SUBSCRIBE_PS.md` -> `https://skillmaxx.gilventures.ai/newsletter/`) to sponsor cold emails, follow-ups, and polite replies to declines (never to opt-outs/unsubscribes).
+83. **Directory listings push:** Resume free awesome-lists, MCP/agent-skill directories, and dev newsletter submissions; track every submission in `growth/listings/LISTINGS.md` and `STATUS.md` (`growth/listings/BROWSER-QUEUE.md` holds browser/email dispatches and external GitHub PR targets).
+84. **First-subscriber Telegram alert:** Ping Brandon once via `~/Projects/brandon-hq/hq/alert.py` when the first non-test Beehiiv subscriber joins, excluding the 5 known test accounts (`testing/check_first_subscriber.py` + SHA-256 hashes in `testing/beehiiv_test_subscribers.json`).
+85. **Social carousels:** Replace Canva with a free local 1080×1350 generator (`growth/carousels/generate.py`) producing non-founder-facing News and Leaderboard carousels from nightly data for Instagram, LinkedIn, and X. Review 2 samples before posting or scheduling anything.

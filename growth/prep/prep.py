@@ -640,10 +640,11 @@ def cmd_recap(d, a):
     except Exception:
         pass
     radar = [os.path.basename(p) for p in radar_files(6, d)]
+    hn_items, hn_err = hn_block(["mcp server", "claude code", "agent skills", "codex"], 6)
     data = {"week": wk.get("key"), "trend": wk.get("trend"), "ranking": wk.get("ranking"),
             "fixed": wk.get("fixed"), "broke": wk.get("broke"), "standout": wk.get("standout"),
             "pipeline_counts": counts(pipeline_rows()), "emails_sent_7d": sent, "merged_prs_7d": prs,
-            "bluesky": bs, "radar_files_7d": radar, "blog_files": [os.path.basename(b) for b in blog][-5:],
+            "bluesky": bs, "radar_files_7d": radar, "hn_radar": hn_items, "hn_error": hn_err, "blog_files": [os.path.basename(b) for b in blog][-5:],
             "newsletter_issues": [os.path.basename(n) for n in news], "facts": facts(d)}
     os.makedirs(a.out, exist_ok=True)
     key = wk.get("key") or f"{d.isocalendar()[0]}-{d.isocalendar()[1]:02d}"
@@ -654,7 +655,7 @@ def cmd_recap(d, a):
         nl_line = (f"Newsletter: issue #{issue_no} is already published for this week ({os.path.relpath(published[1], ROOT)} -> "
                    f"{SITE}/newsletter/issue-{issue_no}/, auto from the Mac, no LLM). No draft written. Optional polish = edit that file; the email send stays held.")
     else:
-        issue_no, draft = newsletter_draft(d, wk, data["facts"])
+        issue_no, draft = newsletter_draft(d, wk, data["facts"], hn_items=hn_items)
         with open(os.path.join(a.out, "newsletter-draft.md"), "w", encoding="utf-8") as fh:
             fh.write(draft)
         data["newsletter_draft"] = {"issue": issue_no, "path": os.path.join(a.out, "newsletter-draft.md")}
@@ -731,7 +732,7 @@ def next_issue_no():
     return (max(nums) + 1) if nums else 1
 
 
-def newsletter_draft(d, wk, f):
+def newsletter_draft(d, wk, f, hn_items=None):
     """No-LLM draft of the next SkillMaxx Weekly issue, mirroring src/newsletter/issue-N.md. Real numbers only."""
     n = next_issue_no()
     r = f.get("latest_report") or {}
@@ -808,8 +809,9 @@ def newsletter_draft(d, wk, f):
             u = f"https://x.com/{m.group(1)}/status/{m.group(2)}"
             if u not in picks:
                 picks.append(u)
-    L += ["## 👀 On our radar (not tested by us yet)", "",
-          "<!-- DRAFT: pick up to 4 from the week's X radar files and write one line each; candidates: "
+    hn_lines = [f"- [{h['title']}]({h.get('url') or h.get('hn')}) ({h.get('points', 0)} pts)" for h in (hn_items or [])[:4] if h.get("title") and (h.get("url") or h.get("hn"))]
+    L += ["## 👀 On our radar (not tested by us yet)", ""] + (hn_lines + [""] if hn_lines else []) + [
+          "<!-- DRAFT: pick up to 4 from HN above or the week's X radar files; candidates: "
           + (" ".join(picks[:8]) or "none found") + " -->", "",
           "Want one of these in the nightly run? Reply with the name.", "",
           "## 🔧 Tip of the week", "", "<!-- DRAFT: one practical tip grounded in this week's data. -->", "", NL_FOOTER]

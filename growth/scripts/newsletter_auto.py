@@ -15,7 +15,7 @@ Rules:
   * The email send stays held (growth/routines/NEWSLETTER-SEND.md). This script never touches Beehiiv.
 Optional Grok polish may edit the published file afterwards; the auto copy is already publishable.
 
-Usage: python3 growth/scripts/newsletter_auto.py [YYYY-MM-DD] [--dry-run] [--print]
+Usage: python3 growth/scripts/newsletter_auto.py [YYYY-MM-DD] [--radar-json PATH] [--dry-run] [--print]
 Exit 0 = written or skipped (already published / nothing to publish); 1 = refused (placeholder check failed)."""
 import glob, html, json, os, re, sys
 from datetime import date, timedelta
@@ -135,7 +135,7 @@ def tip(wk, rep):
             "so you can see in a few seconds if something works in your agent today: [skillmaxx.gilventures.ai/reports/latest/](/reports/latest/)")
 
 
-def build(d, root=None):
+def build(d, root=None, radar=None):
     """(N, text, slug_info) for the week containing d, or (None, reason, None) when nothing should be published."""
     global ROOT
     if root:
@@ -236,6 +236,22 @@ def build(d, root=None):
         blog.append(f"- Sunday: [{clean(t)}](/blog/week-{key}/)")
     if blog:
         L += ["## 📝 On the blog", ""] + blog + [""]
+    radar_lines = []
+    for item in (radar or []):
+        if not isinstance(item, dict):
+            continue
+        t = clean(item.get("title") or "")
+        u = str(item.get("url") or item.get("hn") or "").strip()
+        if not t or not u.startswith(("http://", "https://")) or PLACEHOLDER.search(t) or PLACEHOLDER.search(u):
+            continue
+        pts = int(item.get("points") or 0)
+        hn = str(item.get("hn") or "").strip()
+        extra = f" ({pts} pts" + (f", [HN]({hn})" if hn and hn != u and not PLACEHOLDER.search(hn) else "") + ")" if pts else ""
+        radar_lines.append(f"- [{t}]({u}){extra}")
+        if len(radar_lines) >= 4:
+            break
+    if radar_lines:
+        L += ["## 👀 On our radar (not tested by us yet)", ""] + radar_lines + ["", "Want one of these in the nightly run? Reply with the name.", ""]
     L += ["## 🔧 Tip of the week", "", tip(wk, rep), "", FOOTER]
     return n, "\n".join(L), key
 
@@ -246,13 +262,30 @@ def problems(text):
 
 
 def main(argv):
-    day = next((a for a in argv if not a.startswith("-")), None)
+    radar_path = None
+    pos = []
+    i = 0
+    while i < len(argv):
+        if argv[i] == "--radar-json" and i + 1 < len(argv):
+            radar_path = argv[i + 1]
+            i += 2
+            continue
+        if not argv[i].startswith("-"):
+            pos.append(argv[i])
+        i += 1
+    day = pos[0] if pos else None
     d = date.fromisoformat(day) if day else date.today()
     have = issue_for_week(d)
     if have:
         print(f"newsletter: issue #{have[0]} already covers the week of {d} ({os.path.relpath(have[1], ROOT)}); nothing written")
         return 0
-    n, text, key = build(d)
+    radar = rd_json(os.path.relpath(radar_path, ROOT), []) if radar_path and os.path.exists(radar_path) else []
+    if radar_path and os.path.isabs(radar_path) and os.path.exists(radar_path):
+        try:
+            radar = json.load(open(radar_path, encoding="utf-8"))
+        except (OSError, ValueError):
+            radar = []
+    n, text, key = build(d, radar=radar)
     if n is None:
         print(f"newsletter: skipped: {text}")
         return 0

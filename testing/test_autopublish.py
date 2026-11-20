@@ -84,7 +84,18 @@ def test_newsletter():
     w49 = dict(weeks[0], key="2026-49", start="2026-11-30", end="2026-12-06", standout={"slug": "x", "name": "TODO", "agents": []})
     json.dump([w49, w48] + weeks, open(os.path.join(t, "src/_data/weeks.json"), "w"))
     rc, out = quiet(nl.main, ["2026-12-06"]); assert rc == 1 and "REFUSED" in out and not os.path.exists(os.path.join(t, "src/newsletter/issue-6.md")), out
-    shutil.rmtree(t); print("ok newsletter: numbering, idempotency, front matter, no placeholders, refusal")
+    # Fresh Sunday radar-json renders real news and strips placeholder-looking items.
+    rj = os.path.join(t, "radar.json")
+    json.dump([
+        {"title": "Fresh MCP release", "url": "https://news.ycombinator.com/item?id=123", "points": 42, "comments": 7},
+        {"title": "TBD broken item", "url": "https://news.ycombinator.com/item?id=999", "points": 10, "comments": 1},
+    ], open(rj, "w"))
+    os.remove(os.path.join(t, "src/newsletter/issue-5.md"))
+    rc, out = quiet(nl.main, ["2026-11-29", "--radar-json", rj])
+    assert rc == 0 and os.path.exists(os.path.join(t, "src/newsletter/issue-5.md")), out
+    t5 = open(os.path.join(t, "src/newsletter/issue-5.md")).read()
+    assert "Fresh MCP release" in t5 and "TBD broken item" not in t5 and not nl.problems(t5), t5
+    shutil.rmtree(t); print("ok newsletter: numbering, idempotency, front matter, no placeholders, refusal, radar-json")
 
 
 def test_midweek():
@@ -209,7 +220,10 @@ def test_publish_script():
     s = open(os.path.join(ROOT, "testing/publish_nightly.sh"), encoding="utf-8").read()
     assert "newsletter_auto.py" in s and "midweek_blog_auto.py" in s and "weekly_blog_auto.py" in s
     assert "buffer_weekly" not in s.split("# Sundays: do not run buffer_weekly.py")[0], "Buffer stays off"
-    assert "SKILLMAXX_PRODUCTION=" not in s and "SKILLMAXX_ALLOW_PUSH=" not in s and "beehiiv" not in s.lower()
+    assert "fetch_radar_hn.py" in s and "check_first_subscriber.py" in s
+    assert "SKILLMAXX_PRODUCTION=" not in s and "SKILLMAXX_ALLOW_PUSH=" not in s
+    for bad_bh in ("/posts", "save_post", "schedule_post", "create_post"):
+        assert bad_bh not in s.lower(), f"publish_nightly.sh must never publish to Beehiiv ({bad_bh})"
     assert subprocess.run(["bash", "-n", os.path.join(ROOT, "testing/publish_nightly.sh")]).returncode == 0
     # Generators are offline: no network or mail code at all. The Monday check only GETs the public site.
     for f in ("growth/scripts/newsletter_auto.py", "growth/scripts/midweek_blog_auto.py", "growth/scripts/weekly_blog_auto.py"):
@@ -221,6 +235,57 @@ def test_publish_script():
     print("ok publish script: wired, no Buffer/Beehiiv/prod flags")
 
 
+
+def test_first_subscriber_alert():
+    td = tempfile.mkdtemp()
+    st_dir = os.path.join(td, "state")
+    os.makedirs(st_dir, exist_ok=True)
+    hq_dir = os.path.join(td, "brandon-hq")
+    os.makedirs(os.path.join(hq_dir, "hq"), exist_ok=True)
+    log_path = os.path.join(td, "alert_calls.json")
+    open(os.path.join(hq_dir, "hq", "alert.py"), "w").write(
+        "import json, sys\n"
+        f"open({log_path!r}, 'a').write(json.dumps(sys.argv[1:]) + '\\n')\n"
+        "print('sent=telegram')\n"
+    )
+    script = os.path.join(ROOT, "testing/check_first_subscriber.py")
+    env = {**os.environ, "SKILLMAXX_STATE": st_dir, "SKILLMAXX_BEEHIIV_ENV": "/dev/null"}
+    env.pop("BEEHIIV_API_KEY", None)
+
+    r0 = subprocess.run([sys.executable, script, "--hq-dir", hq_dir], capture_output=True, text=True, env=env)
+    assert r0.returncode == 0 and not os.path.exists(log_path), r0.stdout + r0.stderr
+
+    # Local test exclusion list + committed SHA-256 hash config both exclude test accounts cleanly.
+    open(os.path.join(st_dir, "test-subscribers.json"), "w").write(json.dumps(["excluded-tester@example.com"]))
+    snap = os.path.join(st_dir, "beehiiv-subscribers.json")
+    open(snap, "w").write(json.dumps([
+        {"email": "grandpajackai@gmail.com", "status": "active"},
+        {"email": "skillmaxx@gilventures.ai", "status": "active"},
+        {"email": "excluded-tester@example.com", "status": "active"},
+    ]))
+    r1 = subprocess.run([sys.executable, script, "--hq-dir", hq_dir], capture_output=True, text=True, env=env)
+    assert r1.returncode == 0 and "0 real subscribers" in r1.stdout and not os.path.exists(log_path), r1.stdout + r1.stderr
+    # Also verify committed testing/beehiiv_test_subscribers.json holds 5 valid SHA-256 hashes (no raw emails).
+    cfg = json.load(open(os.path.join(ROOT, "testing/beehiiv_test_subscribers.json")))
+    assert len(cfg["excluded_sha256"]) == 5 and all(len(h) == 64 for h in cfg["excluded_sha256"])
+
+    open(snap, "w").write(json.dumps([
+        {"email": "excluded-tester@example.com", "status": "active"},
+        {"email": "reader@example.org", "status": "active", "acquisition_source": "github"},
+    ]))
+    r2 = subprocess.run([sys.executable, script, "--hq-dir", hq_dir], capture_output=True, text=True, env=env)
+    assert r2.returncode == 0 and "alerted for 1 real subscriber" in r2.stdout, r2.stdout + r2.stderr
+    calls = open(log_path).read().splitlines()
+    assert len(calls) == 1 and "skillmaxx_first_subscriber" in calls[0], calls
+    assert os.path.isfile(os.path.join(st_dir, "first-subscriber-alerted.json"))
+
+    r3 = subprocess.run([sys.executable, script, "--hq-dir", hq_dir], capture_output=True, text=True, env=env)
+    assert r3.returncode == 0 and "already alerted" in r3.stdout
+    assert len(open(log_path).read().splitlines()) == 1
+    shutil.rmtree(td)
+    print("ok first subscriber alert: test accounts excluded, one-shot hq.alert wired")
+
+
 if __name__ == "__main__":
-    test_newsletter(); test_midweek(); test_sunday_guard(); test_monday_check(); test_alert_wiring(); test_publish_script()
+    test_newsletter(); test_midweek(); test_sunday_guard(); test_monday_check(); test_alert_wiring(); test_publish_script(); test_first_subscriber_alert()
     print("test_autopublish: all ok")

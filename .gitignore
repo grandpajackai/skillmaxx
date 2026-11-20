@@ -11,3 +11,5 @@ intake/.dev.vars
 testing/logs/
 testing/status/
 testing/local.env
+growth/newsletter/test-subscribers.local.json
+testing/*.local.json
