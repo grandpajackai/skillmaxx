@@ -14,7 +14,7 @@
 
 ## 2. GitHub Awesome-List PRs & Issues — Waiting on `GitHub (SkillMaxx)` Vault Login
 
-> **Blocked on login (2026-11-20):** The 6 GitHub PRs and `hesreallyhim/awesome-claude-code` issue below are waiting on the SkillMaxx GitHub account login (box browser is signed out of GitHub; `grandpajackai` is Brandon's personal account and must not be used for new external PRs/issues). Telegram request `req-002-github-skillmaxx-vault` is queued in `growth/telegram/REQUESTS.json` asking Brandon to save `"GitHub (SkillMaxx)"` in Settings > Vault.
+> **Blocked on login (2026-11-20):** The GitHub awesome-list PRs, the `hesreallyhim/awesome-claude-code` issue, and the HeyClaude (`heyclau.de`) final submit step below are waiting on the SkillMaxx GitHub account login (box browser is signed out of GitHub; `grandpajackai` is Brandon's personal account and must not be used for new external PRs/issues). Telegram request `req-002-github-skillmaxx-vault` is queued in `growth/telegram/REQUESTS.json` asking Brandon to save `"GitHub (SkillMaxx)"` in Settings > Vault.
 
 | Place | URL | Date | Section & Fit | Status | Link / Target |
 |---|---|---|---|---|---|
@@ -46,7 +46,7 @@ See [`BROWSER-QUEUE.md`](BROWSER-QUEUE.md) for exact form fields and copy-ready 
 | 10 | Lord of Claude | Claude / MCP Directory & News | `editor@lordofclaude.com` (https://www.lordofclaude.com/help) | 2026-11-20 | **Emailed** | Sent 15:44:59 EST from `skillmaxx@gilventures.ai` (`messageId=1795207499492155000`) |
 | 11 | TLDR (AI / Dev) | Dev Newsletter | https://tldr.tech/ | 2026-11-20 | **Skipped** | No free tip form; only paid ads + `support@tldr.tech` (do not email) |
 | 12 | daily.dev | Dev Community/Feed | https://app.daily.dev/ | 2026-11-20 | Ready (browser sign-in) | Free link/post share in AI/dev Squads (`skillmaxx@gilventures.ai`) |
-| 13 | AI Agents Listing | Agent / MCP / Skill Directory | https://aiagentslisting.com/submit | 2026-11-20 | **Ready (newly found)** | Free listing via web form or MCP (`submit_listing`); browser sign-in |
-| 14 | HeyClaude (`JSONbored/awesome-claude`) | Claude Directory | https://heyclau.de/submit | 2026-11-20 | **Ready (newly found)** | Free web submission form for Claude tools/directories |
+| 13 | AI Agents Listing | Agent / MCP / Skill Directory | https://aiagentslisting.com/submit | 2026-11-20 | **Queued (needs account sign-in)** | Form requires an account. Queue: sign up later with `skillmaxx@gilventures.ai`, then submit the free listing (skip any featured upgrade). |
+| 14 | HeyClaude (`JSONbored/awesome-claude`) | Claude Directory | https://heyclau.de/submit | 2026-11-20 | **Queued with SkillMaxx GitHub login batch** | Form preflight passed 2026-11-20; the final step needs GitHub. Submit as `content/agents/skillmaxx.mdx` once `GitHub (SkillMaxx)` is in the Vault. |
 | 15 | `AIAnytime/Awesome-MCP-Servers` | MCP Resources | https://github.com/AIAnytime/Awesome-MCP-Servers | 2026-11-20 | **Ready (newly found, verify fit)** | Has `## Resources` section; check if directory cross-links are accepted before PR |
 | 16 | Existing `DIRECTORY-SUBMISSIONS.md` queue | General / MCP / Launch | FutureTools, Insidr.ai, SaaSHub, mcp.so, mcpservers.org, DevHunt, Uneed, Peerlist, AlternativeTo, OpenAlternative | 2026-11-16 | Ready (browser forms) | Previously cataloged in `growth/seo/DIRECTORY-SUBMISSIONS.md` |

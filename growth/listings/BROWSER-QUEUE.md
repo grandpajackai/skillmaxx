@@ -29,8 +29,9 @@ Standard paste kit also lives in `growth/seo/DIRECTORY-SUBMISSIONS.md`.
 - **URL:** https://app.daily.dev/ (see https://docs.daily.dev/how-to-get-featured/)
 - **Format:** Share link (`https://skillmaxx.gilventures.ai/reports/latest/`) into AI / DevTools Squads with a short factual note: `SkillMaxx runs nightly fresh-container install tests across 428+ agent skills, plugins, and MCP servers in Claude Code, Codex, Grok Build, Cursor, and Pi, publishing pass/fail matrices and raw failure logs with no paywall.`
 
-### 2. AI Agents Listing (NEW — free web form or MCP, browser sign-in)
+### 2. AI Agents Listing (QUEUED — needs account sign-in)
 - **URL:** https://aiagentslisting.com/submit
+- **Status (2026-11-20):** Reached the submit form; an account sign-in is required. Queue: create a free SkillMaxx account later with `skillmaxx@gilventures.ai`, then submit (skip any featured upgrade).
 - **Fields needed:**
   - Name: `SkillMaxx`
   - Website URL: `https://skillmaxx.gilventures.ai/`
@@ -41,8 +42,9 @@ Standard paste kit also lives in `growth/seo/DIRECTORY-SUBMISSIONS.md`.
   - Pricing: `Free` (skip any featured upgrade)
   - Contact email: `skillmaxx@gilventures.ai`
 
-### 3. HeyClaude / `JSONbored/awesome-claude` (NEW — free web form)
+### 3. HeyClaude / `JSONbored/awesome-claude` (QUEUED with SkillMaxx GitHub login batch)
 - **URL:** https://heyclau.de/submit
+- **Status (2026-11-20):** Form preflight passed; the final step needs GitHub (box browser is signed out). Queue with the SkillMaxx GitHub login batch. Target file: `content/agents/skillmaxx.mdx`.
 - **Fields needed:**
   - Category / Type: `Tools` (or `Collections` / `Guides` — note HeyClaude routes tools/directories through `/submit` rather than GitHub content PRs)
   - Name: `SkillMaxx`
@@ -55,9 +57,17 @@ Standard paste kit also lives in `growth/seo/DIRECTORY-SUBMISSIONS.md`.
 
 ## C. External GitHub Awesome-List PRs & Issues — Waiting on `GitHub (SkillMaxx)` Vault Login
 
-All items below must be opened from the **SkillMaxx GitHub account** once Brandon saves `"GitHub (SkillMaxx)"` in Settings > Vault (Telegram request `req-002-github-skillmaxx-vault`). Box browser is currently signed out of GitHub.
+All items below must be opened from the **SkillMaxx GitHub account** once Brandon saves `"GitHub (SkillMaxx)"` in Settings > Vault (Telegram request `req-002-github-skillmaxx-vault`). Box browser is currently signed out of GitHub. This batch also includes finishing the HeyClaude (`heyclau.de`) submission (`content/agents/skillmaxx.mdx`; preflight already passed).
 
-1. **`hesreallyhim/awesome-claude-code` (58.4k★ — GitHub Web UI issue form ONLY; `CONTRIBUTING.md` forbids `gh` CLI)**
+1. **HeyClaude / `JSONbored/awesome-claude` (form preflight passed 2026-11-20; final step needs GitHub)**
+   - URL: https://heyclau.de/submit
+   - Target file: `content/agents/skillmaxx.mdx`
+   - Name: `SkillMaxx`
+   - URL: `https://skillmaxx.gilventures.ai/`
+   - Repo: `https://github.com/grandpajackai/skillmaxx`
+   - Description: `Free directory that install-tests 428+ Claude Code plugins, skills, and MCP servers nightly in fresh sandboxes (plus Codex, Grok Build, Cursor, and Pi) and publishes pass/fail matrices, install commands, and failure logs.`
+   - Contact email: `skillmaxx@gilventures.ai`
+2. **`hesreallyhim/awesome-claude-code` (58.4k★ — GitHub Web UI issue form ONLY; `CONTRIBUTING.md` forbids `gh` CLI)**
    - URL: https://github.com/hesreallyhim/awesome-claude-code/issues/new?template=recommend-resource.yml
    - Display Name: `SkillMaxx`
    - Category: `Lists & Collections`
@@ -66,24 +76,24 @@ All items below must be opened from the **SkillMaxx GitHub account** once Brando
    - Author Link: `https://skillmaxx.gilventures.ai/`
    - Description: `Free directory and nightly test harness that installs 428+ Claude Code plugins, skills, and MCP servers (plus Codex, Grok Build, Cursor, and Pi) in fresh sandboxes every night and publishes pass/fail matrices, copy-paste install commands, and failure logs.`
    - Checklist: check the 5 required boxes; **leave the 6th trap checkbox unchecked**.
-2. **`ccplugins/awesome-claude-code-plugins` (`## Resources`)**:
+3. **`ccplugins/awesome-claude-code-plugins` (`## Resources`)**:
    `- [SkillMaxx](https://skillmaxx.gilventures.ai/) - Free directory of Claude Code plugins, skills, and MCP servers install-tested nightly in fresh sandboxes across 5 coding agents with raw failure logs.`
-3. **`ComposioHQ/awesome-claude-skills` (`### Community Resources`)**:
+4. **`ComposioHQ/awesome-claude-skills` (`### Community Resources`)**:
    `- [SkillMaxx](https://skillmaxx.gilventures.ai/) - Free directory that install-tests 428+ Claude skills, plugins, and MCP servers nightly across 5 coding agents and publishes pass/fail matrices and raw failure logs.`
-4. **`rohitg00/awesome-claude-code-toolkit` (`## Ecosystem` table)**:
+5. **`rohitg00/awesome-claude-code-toolkit` (`## Ecosystem` table)**:
    `| [SkillMaxx](https://skillmaxx.gilventures.ai/) | — | Free directory that install-tests 428+ Claude Code plugins, skills, and MCP servers nightly in clean sandboxes (plus Codex, Grok Build, Cursor, and Pi) with raw pass/fail logs |`
-5. **`Prat011/awesome-llm-skills` (`### Community Resources`)**:
+6. **`Prat011/awesome-llm-skills` (`### Community Resources`)**:
    `- [SkillMaxx](https://skillmaxx.gilventures.ai/) - Free directory of agent skills, plugins, and MCP servers install-tested nightly in Claude Code, Codex, Grok Build, Cursor, and Pi`
-6. **`spencerpauly/awesome-cursor-skills` (`## Tools`)**:
+7. **`spencerpauly/awesome-cursor-skills` (`## Tools`)**:
    `- [SkillMaxx](https://skillmaxx.gilventures.ai/) - Free directory of Cursor MCP servers and agent skills install-tested nightly across 5 coding agents with verified install commands.`
-7. **`ai-boost/awesome-harness-engineering` (`### Verification & CI Integration`)**:
+8. **`ai-boost/awesome-harness-engineering` (`### Verification & CI Integration`)**:
    `- [SkillMaxx](https://skillmaxx.gilventures.ai/) — Open-source nightly sandboxed install-verification harness for 428+ agent skills, plugins, and MCP servers across five coding agents, publishing raw failure logs and pass/fail scorecards.`
-8. **`jamesmurdza/awesome-ai-devtools` (`## Resources` — NEW)**:
+9. **`jamesmurdza/awesome-ai-devtools` (`## Resources` — NEW)**:
    - URL: https://github.com/jamesmurdza/awesome-ai-devtools (PR template requires: tool uses AI, developer-focused, unambiguous description, matches style)
    - Line: `- [SkillMaxx](https://skillmaxx.gilventures.ai/) — Free, open-source directory that install-tests 428+ agent skills, plugins, and MCP servers nightly across Claude Code, Codex, Grok Build, Cursor, and Pi and publishes raw pass/fail logs.`
-9. **`hao-ji-xing/awesome-cursor` (`## Other` or `## Projects` — NEW)**:
+10. **`hao-ji-xing/awesome-cursor` (`## Other` or `## Projects` — NEW)**:
    - URL: https://github.com/hao-ji-xing/awesome-cursor
    - Line: `- [SkillMaxx](https://skillmaxx.gilventures.ai/): Free directory that install-tests Cursor MCP servers and agent skills nightly across 5 coding agents with verified install commands and failure logs.`
-10. **`AIAnytime/Awesome-MCP-Servers` (`## Resources` — NEW, verify fit)**:
+11. **`AIAnytime/Awesome-MCP-Servers` (`## Resources` — NEW, verify fit)**:
    - URL: https://github.com/AIAnytime/Awesome-MCP-Servers
    - Line (only if `## Resources` accepts external test directories): `- [SkillMaxx](https://skillmaxx.gilventures.ai/) — Free directory that install-tests 428+ MCP servers, plugins, and agent skills nightly across five coding clients and publishes raw failure logs.`
