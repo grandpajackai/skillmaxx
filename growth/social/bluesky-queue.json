@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "notes": "SkillMaxx Bluesky queue. growth/scripts/buffer_weekly.py appends weekly items going forward. The Mac launchd job (com.gilventures.skillmaxx.bluesky) and optional box cron run growth/social/bluesky_post.py. Do not put secrets here. Posted URIs live in ~/.local/share/skillmaxx/bluesky-state.json (gitignored, local).",
+  "items": [
+    {
+      "id": "buf-6afbc1c1df36f4d8256372d8",
+      "text": "Nov 14 pass rates, same keyless sandbox:\n\nClaude Code 343/371\nGrok Build 354/386\nCodex 95/119\nCursor 32/54\nPi 86/140\n\nNot a ranking of the agents. It shows how completely add-ons ship for each one.\nhttps://skillmaxx.gilventures.ai/reports/2026-11-14/",
+      "due_at": "2026-11-21T17:00:00-05:00",
+      "images": [],
+      "source": "buffer-migrate",
+      "buffer_post_id": "6afbc1c1df36f4d8256372d8",
+      "buffer_channel_id": "6adfbe402f1f5ed648def519"
+    },
+    {
+      "id": "buf-6afbc1c2797935b975d8a168",
+      "text": "How we label a night of install tests, from the Nov 14 report:\n\nNeeds an API key (25): not broken; our sandbox has no keys on purpose.\nFlaky (9): flip-flopped recently.\nBroken: fails 2 nights in a row after a retry.\n\nhttps://skillmaxx.gilventures.ai/how-we-test/",
+      "due_at": "2026-11-22T18:15:00-05:00",
+      "images": [],
+      "source": "buffer-migrate",
+      "buffer_post_id": "6afbc1c2797935b975d8a168",
+      "buffer_channel_id": "6adfbe402f1f5ed648def519"
+    },
+    {
+      "id": "buf-6afbc1cbdf36f4d8256375b2",
+      "text": "Built a skill, plugin or MCP server? Submit it free: we install it nightly in Claude Code, Codex, Grok Build, Cursor and Pi, and publish the logs.\n\nMost tools listed for one agent turn out to work in two or three more.\nhttps://skillmaxx.gilventures.ai/submit/",
+      "due_at": "2026-11-23T19:30:00-05:00",
+      "images": [],
+      "source": "buffer-migrate",
+      "buffer_post_id": "6afbc1cbdf36f4d8256375b2",
+      "buffer_channel_id": "6adfbe402f1f5ed648def519"
+    }
+  ]
+}
