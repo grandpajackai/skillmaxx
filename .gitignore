@@ -13,3 +13,7 @@ testing/status/
 testing/local.env
 growth/newsletter/test-subscribers.local.json
 testing/*.local.json
+# Local Bluesky poster state (AT URIs, daily cap). Never commit.
+.local-share-skillmaxx/
+growth/social/bluesky-state.json
+growth/social/bluesky-queue.local.json

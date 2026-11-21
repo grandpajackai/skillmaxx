@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.gilventures.skillmaxx.bluesky</string>
+  <key>Comment</key>
+  <string>TEMPLATE only. Do not load this file as-is. On the Mac, run growth/social/install_bluesky.sh install from the live checkout so WorkingDirectory and ProgramArguments match that tree. Posts due SkillMaxx Bluesky queue items every 30 minutes. No LLM.</string>
+  <key>WorkingDirectory</key>
+  <string>/Users/grandpajack/Projects/skillmaxx-local-trial-20261107</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/python3</string>
+    <string>/Users/grandpajack/Projects/skillmaxx-local-trial-20261107/growth/social/bluesky_post.py</string>
+  </array>
+  <key>StartInterval</key>
+  <integer>1800</integer>
+  <key>RunAtLoad</key>
+  <false/>
+  <key>StandardOutPath</key>
+  <string>/Users/grandpajack/.local/share/skillmaxx/logs/bluesky-post.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/grandpajack/.local/share/skillmaxx/logs/bluesky-post.log</string>
+</dict>
+</plist>
