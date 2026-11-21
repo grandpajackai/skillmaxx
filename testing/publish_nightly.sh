@@ -43,7 +43,13 @@ fail() {
 }
 
 [ -n "${SMX_PUBLISH_REEXEC:-}" ] || mkdir "$STATE/publish.lock" 2>/dev/null || { [ -n "$(find "$STATE/publish.lock" -mmin +90 2>/dev/null)" ] && rm -rf "$STATE/publish.lock" && mkdir "$STATE/publish.lock"; } || { echo "publish: another publish is running"; exit 0; }
-trap 'rm -rf "$STATE/publish.lock"' EXIT
+# Marketing status for Brandon HQ. Must never fail the nightly.
+write_marketing_status() {
+  if [ -f "$HERE/write_marketing_status.py" ]; then
+    python3 "$HERE/write_marketing_status.py" || true
+  fi
+}
+trap 'write_marketing_status; rm -rf "$STATE/publish.lock"' EXIT
 echo "publish: $D start $(TZ=America/New_York date '+%F %T %Z')"
 [ "${SKILLMAXX_AUTO_PUBLISH:-1}" = "0" ] && { echo "publish: SKILLMAXX_AUTO_PUBLISH=0, skipping"; exit 0; }
 [ -f "$RES" ] || fail "no results file $RES"

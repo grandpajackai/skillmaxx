@@ -277,3 +277,5 @@
 
 
 - 2026-11-20 7:10 PM ET: Lamp mention for issue 4 rewritten from Dee (Autonomous) overview; Dee replied in-thread with materials; Dee link-send routine moved to Nov 23.
+
+- **2026-11-20 · Grok Bot · HQ marketing-status.json (~11:12 PM ET):** The Mac publisher now writes `~/.local/share/skillmaxx/marketing-status.json` at the end of every `testing/publish_nightly.sh` run (EXIT trap, `|| true`, 10s Beehiiv timeout, atomic temp+rename; never under `.../skillmaxx/work`). Launch-kit schema v1 so Brandon HQ can auto-discover it (`schema_version` 1, dict `kpis`, list `headline`, plus `needs_brandon` and `updated_at`). KPIs: subscribers (Beehiiv total when the Mac env is present, else unknown), blog posts published or queued, listings submitted or accepted, sponsor pipeline row count, last successful publish. `needs_brandon` always includes the carousel CTA reminder and pending titles from `growth/telegram/REQUESTS.json`. Light is red on a failed publish, otherwise yellow when a source is unknown or Brandon still has an item. Dry-run: `testing/write_marketing_status.py --out PATH`. No Mac command was run for this change.
