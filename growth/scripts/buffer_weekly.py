@@ -1,35 +1,37 @@
 #!/usr/bin/env python3
-"""Weekly Buffer top-up without Grok: 3 templated posts per channel (Mon/Wed/Fri of next week) built only
-from the latest weekly scorecard (src/_data/weeks.json). Slots (ET): X 9:30 AM, LinkedIn 12:00 PM, Bluesky 7:30 PM.
-Default saves them as Buffer DRAFTS (Brandon taps "schedule" in Buffer: zero credits). Set
-SKILLMAXX_BUFFER_MODE=schedule in the key file to queue them directly instead.
-Key: ~/.skillmaxx-secrets/buffer.env (chmod 600) with BUFFER_API_KEY=... from https://publish.buffer.com/settings/api
-The key is read from that file only, sent in a header, never printed. Without it the script prints the plan and exits 0.
-Skips a post whose text is already scheduled/drafted (dedupe by text). Free plan: max 10 scheduled per channel.
-Usage: python3 growth/scripts/buffer_weekly.py [--dry-run] [--week-of YYYY-MM-DD (the Monday)]"""
-import json, os, sys, urllib.request
-from datetime import date, datetime, timedelta, timezone
+"""Weekly social top-up without Grok or an LLM: 3 templated posts (Mon/Wed/Fri of next week)
+built only from the latest weekly scorecard (src/_data/weeks.json).
+
+Slots (ET): X 9:30 AM, LinkedIn 12:00 PM, Bluesky 7:30 PM.
+
+X and LinkedIn stay on the Grok Buffer connector — this script does not call the
+Buffer API for any channel (that path would create duplicates).
+
+Bluesky is posted by growth/social/bluesky_post.py, not Buffer. This script enqueues
+the three Bluesky texts into growth/social/bluesky-queue.json (--repo-queue) and/or
+~/.local/share/skillmaxx/bluesky-queue.local.json (the default, so a Mac Sunday
+publish can queue without another PR). Dedupes by text and by id.
+
+Usage: python3 growth/scripts/buffer_weekly.py [--dry-run] [--week-of YYYY-MM-DD]
+                                                [--repo-queue] [--local-queue]
+"""
+import json, os, sys, tempfile
+from datetime import date, timedelta
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 SITE = "https://skillmaxx.gilventures.ai"
-API = "https://api.buffer.com"
-ORG = "6adfb3f8d2cea8f4b234c15b"
+REPO_QUEUE = os.path.join(ROOT, "growth", "social", "bluesky-queue.json")
+LOCAL_QUEUE = os.path.expanduser("~/.local/share/skillmaxx/bluesky-queue.local.json")
 CH = {"x": ("6adfb5c92f1f5ed648deaa83", 9, 30, 280), "linkedin": ("6adfc4f12f1f5ed648df8e37", 12, 0, 1400),
       "bluesky": ("6adfbe402f1f5ed648def519", 19, 30, 300)}
-KEYFILE = os.path.expanduser(os.environ.get("SKILLMAXX_BUFFER_ENV", "~/.skillmaxx-secrets/buffer.env"))
+DAYS = ("mon", "wed", "fri")
 
-def env():
-    e = {}
-    if os.path.exists(KEYFILE):
-        for line in open(KEYFILE):
-            if "=" in line and not line.lstrip().startswith("#"):
-                k, v = line.strip().split("=", 1); e[k] = v.strip().strip('"').strip("'")
-    return e
 
 def et_offset(d):  # US Eastern: EDT 2nd Sun Mar .. 1st Sun Nov
     y = d.year
     mar = date(y, 3, 8) + timedelta((6 - date(y, 3, 8).weekday()) % 7)
     nov = date(y, 11, 1) + timedelta((6 - date(y, 11, 1).weekday()) % 7)
     return "-04:00" if mar <= d < nov else "-05:00"
+
 
 def posts(w):
     t = w["trend"][-1]; p, n = t["pass"], t["tested"]; rate = round(100 * p / n, 1) if n else 0
@@ -44,47 +46,133 @@ def posts(w):
          f"proof it's broken. Check the night-by-night history before you give up on one: {SITE}/reports/")
     return [a, b, c]
 
-def gql(key, q, v):
-    req = urllib.request.Request(API, json.dumps({"query": q, "variables": v}).encode(),
-                                 {"Content-Type": "application/json", "Authorization": "Bearer " + key})
-    return json.load(urllib.request.urlopen(req, timeout=30))
 
-LIST = """query($org: OrganizationId!, $ch: [ChannelId!]) { posts(first: 50, input: {organizationId: $org,
-  filter: {channelIds: $ch, status: [scheduled, draft]}}) { edges { node { id text status } } } }"""
-CREATE = """mutation($input: CreatePostInput!) { createPost(input: $input) {
-  ... on PostActionSuccess { post { id dueAt } } ... on MutationError { message } } }"""
+def load_queue(path):
+    if not os.path.exists(path):
+        return {"schema_version": 1, "items": []}
+    try:
+        doc = json.load(open(path, encoding="utf-8"))
+    except (OSError, ValueError):
+        return {"schema_version": 1, "items": []}
+    if isinstance(doc, list):
+        return {"schema_version": 1, "items": doc}
+    if not isinstance(doc, dict):
+        return {"schema_version": 1, "items": []}
+    items = doc.get("items") or []
+    if not isinstance(items, list):
+        items = []
+    doc["schema_version"] = doc.get("schema_version") or 1
+    doc["items"] = items
+    return doc
+
+
+def atomic_write(path, doc):
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+    fd, tmp = tempfile.mkstemp(prefix=".tmp-", dir=os.path.dirname(path) or ".")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            json.dump(doc, f, indent=2, ensure_ascii=False)
+            f.write("\n")
+        os.replace(tmp, path)
+    except Exception:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
+
+
+def all_known_items():
+    """Dedupe against both queue files so a local enqueue will not collide with a repo slot."""
+    items = []
+    for path in (REPO_QUEUE, LOCAL_QUEUE):
+        items.extend(it for it in load_queue(path)["items"] if isinstance(it, dict))
+    return items
+
+
+def enqueue(path, new_items, dry):
+    doc = load_queue(path)
+    known = all_known_items()
+    have_text = {(it.get("text") or "").strip() for it in known}
+    have_id = {str(it.get("id") or "") for it in known}
+    have_due = {str(it.get("due_at") or "") for it in known if it.get("due_at")}
+    added = 0
+    for it in new_items:
+        if it["id"] in have_id or it["text"].strip() in have_text:
+            print(f"bluesky {it['due_at']}: already queued, skip")
+            continue
+        if it["due_at"] in have_due:
+            print(f"bluesky {it['due_at']}: slot already filled, skip")
+            continue
+        if dry:
+            print(f"[plan] bluesky {it['due_at']} -> {path}: {it['text'][:120]}…")
+            added += 1
+            continue
+        doc["items"].append(it)
+        have_text.add(it["text"].strip())
+        have_id.add(it["id"])
+        have_due.add(it["due_at"])
+        added += 1
+        print(f"bluesky {it['due_at']}: enqueued {it['id']} -> {path}")
+    if not dry and added:
+        # keep due_at order
+        def key(it):
+            return it.get("due_at") or ""
+        doc["items"] = sorted([x for x in doc["items"] if isinstance(x, dict)], key=key)
+        atomic_write(path, doc)
+    return added
+
+
+def planned_bluesky(w, mon):
+    texts = posts(w)
+    out = []
+    for i, txt in enumerate(texts):
+        d = mon + timedelta(2 * i)  # Mon, Wed, Fri
+        _, hh, mm, lim = CH["bluesky"]
+        if len(txt) > lim:
+            txt = txt[:lim - 1] + "…"
+        due = f"{d.isoformat()}T{hh:02d}:{mm:02d}:00{et_offset(d)}"
+        out.append({
+            "id": f"weekly-{w.get('key', mon.isoformat())}-{DAYS[i]}",
+            "text": txt,
+            "due_at": due,
+            "images": [],
+            "source": "buffer_weekly",
+            "week": w.get("key"),
+        })
+    return out
+
 
 def main(argv):
-    # Disabled: the Grok Buffer connector already schedules X, LinkedIn and Bluesky.
-    # Running this would create duplicate drafts or posts. Quiet no-op, exit 0, no API, no alert.
-    print("buffer_weekly: disabled (Grok Buffer connector schedules posts); no-op")
-    return 0
     dry = "--dry-run" in argv
-    weeks = sorted(json.load(open(os.path.join(ROOT, "src/_data/weeks.json"))), key=lambda x: x["end"], reverse=True)
+    # Default: write the local overlay (safe on the Mac after a publish).
+    # --repo-queue also (or only, if --repo-queue is set without local) writes the in-repo file.
+    write_local = "--local-queue" in argv or "--repo-queue" not in argv
+    write_repo = "--repo-queue" in argv
+    if "--repo-queue" not in argv and "--local-queue" not in argv:
+        write_local = True
+    weeks_path = os.path.join(ROOT, "src/_data/weeks.json")
+    weeks = sorted(json.load(open(weeks_path)), key=lambda x: x["end"], reverse=True)
     w = next((x for x in weeks if x.get("runs")), None)
-    if not w: print("no week with runs"); return 0
+    if not w:
+        print("no week with runs")
+        return 0
     today = date.today()
     mon = date.fromisoformat(argv[argv.index("--week-of") + 1]) if "--week-of" in argv else today + timedelta(7 - today.weekday())
-    texts = posts(w); e = env(); key = e.get("BUFFER_API_KEY"); mode = e.get("SKILLMAXX_BUFFER_MODE", "draft")
-    if not key: print(f"no BUFFER_API_KEY in {KEYFILE}: plan only"); dry = True
-    made = 0
-    for name, (cid, hh, mm, lim) in CH.items():
-        have = set()
-        if not dry:
-            r = gql(key, LIST, {"org": ORG, "ch": [cid]})
-            have = {(ed["node"].get("text") or "").strip() for ed in (((r.get("data") or {}).get("posts") or {}).get("edges") or [])}
-        for i, txt in enumerate(texts):
-            d = mon + timedelta(2 * i)  # Mon, Wed, Fri
-            due = f"{d.isoformat()}T{hh:02d}:{mm:02d}:00{et_offset(d)}"
-            if len(txt) > lim: txt = txt[:lim - 1] + "…"
-            if txt.strip() in have: print(f"{name} {due}: already in Buffer, skip"); continue
-            if dry: print(f"[plan] {name} {due} ({mode}): {txt}"); continue
-            inp = {"channelId": cid, "text": txt, "schedulingType": "automatic", "mode": "customScheduled", "dueAt": due,
-                   "saveToDraft": mode != "schedule"}
-            r = gql(key, CREATE, {"input": inp}); res = ((r.get("data") or {}).get("createPost") or {})
-            if res.get("post"): made += 1; print(f"{name} {due}: {mode} ok")
-            else: print(f"{name} {due}: FAILED {res.get('message') or r.get('errors')}")
-    print(f"buffer_weekly: {made} created ({mode})"); return 0
+    items = planned_bluesky(w, mon)
+    print("buffer_weekly: X and LinkedIn left to the Grok Buffer connector (no Buffer API calls)")
+    print(f"buffer_weekly: {len(items)} Bluesky post(s) for week starting {mon.isoformat()} (scorecard {w.get('key')})")
+    added = 0
+    if write_local:
+        added += enqueue(LOCAL_QUEUE, items, dry)
+    if write_repo:
+        added += enqueue(REPO_QUEUE, items, dry)
+    if not write_local and not write_repo:
+        for it in items:
+            print(f"[plan] bluesky {it['due_at']}: {it['text']}")
+    print(f"buffer_weekly: {added} Bluesky item(s) {'planned' if dry else 'enqueued'}")
+    return 0
+
 
 if __name__ == "__main__":
     sys.exit(main(sys.argv[1:]))

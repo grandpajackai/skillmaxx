@@ -1,9 +1,11 @@
 # Buffer daily top-up (Grok Bot routine)
 
+**Updated 2026-11-21:** Bluesky is leaving Buffer so Instagram can use the freed free-plan slot. Do **not** `create_post` to Bluesky channel `6adfbe402f1f5ed648def519` going forward. Enqueue those texts with `python3 growth/scripts/buffer_weekly.py --repo-queue` (open a small PR) or let the Sunday Mac publish write the local overlay. The direct poster is `growth/social/bluesky_post.py` — see `growth/social/BLUESKY.md`. X and LinkedIn are unchanged (Buffer connector). Instagram carousel setup, once the account exists and Bluesky is disconnected: `growth/carousels/INSTAGRAM-SETUP.md`. Do not delete or disconnect the Buffer Bluesky posts/channel until that poster is confirmed live.
+
 Goal: the 2-week calendar runs itself. Brandon approved the posts on 2026-10-26, so moving an approved draft into the queue needs **no new approval**. Bluesky *replies* still need approval (separate rule).
 
 **When:** every day at 8:00 AM ET (before the 9:30 AM X slot).
-**Where:** Buffer org `6adfb3f8d2cea8f4b234c15b`. Channels: X `6adfb5c92f1f5ed648deaa83`, Bluesky `6adfbe402f1f5ed648def519`, LinkedIn `6adfc4f12f1f5ed648df8e37`.
+**Where:** Buffer org `6adfb3f8d2cea8f4b234c15b`. Channels still on Buffer: X `6adfb5c92f1f5ed648deaa83`, LinkedIn `6adfc4f12f1f5ed648df8e37`. Bluesky `6adfbe402f1f5ed648def519` stays connected only until the direct poster is confirmed live, then it is disconnected (do not schedule new Bluesky posts here).
 **Source of truth for text:** `growth/strategy/drafts.py` → `drafts-2026-10-27.json`.
 
 ## Free-plan limits

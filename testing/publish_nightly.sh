@@ -148,8 +148,11 @@ for i in $(seq 1 30); do
   page=$(curl -sf --max-time 20 "$SITE/reports/$D/" 2>/dev/null)
   if [ -n "$page" ] && ! printf '%s' "$page" | grep -q 'No report this night'; then
     status published; echo "publish: live $SITE/reports/$D/"
-    # Sundays: do not run buffer_weekly.py. Buffer posting is handled by the Grok Buffer
-    # connector; the Mac script would only create duplicates. weekly_blog_auto.py is unchanged.
+    # Sundays: enqueue next week's Bluesky posts to the local overlay (no Buffer API).
+    # X and LinkedIn stay on the Grok Buffer connector. weekly_blog_auto.py is unchanged.
+    if [ "$(TZ=America/New_York date +%u)" = 7 ]; then
+      python3 growth/scripts/buffer_weekly.py || echo "publish: buffer_weekly (bluesky queue) failed (non-fatal)"
+    fi
     exit 0
   fi
   sleep 30
