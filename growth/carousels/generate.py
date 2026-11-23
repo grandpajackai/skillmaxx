@@ -224,7 +224,7 @@ def cta_block(extra_html: str = "", animate: bool = False) -> str:
         'Get the nightly results every week. <span style="color:#C6F432">Free.</span>'
         "</div>"
         f'<div class="nl-url-pill"{glow}>{NL_URL}</div>'
-        f'<div class="cta-desc" style="font-size:19px">{extra}</div>'
+        f'<div class="cta-desc">{extra}</div>'
         "</div>"
     )
     keyword = (
@@ -233,7 +233,7 @@ def cta_block(extra_html: str = "", animate: bool = False) -> str:
         '<div style="font-size:34px;font-weight:800;line-height:1.25">'
         f'Comment <span class="kw-pill">{kw}</span> and I&apos;ll send the link.'
         "</div>"
-        '<div class="cta-desc" style="font-size:19px;margin-top:14px">'
+        '<div class="cta-desc" style="margin-top:14px">'
         f"Placeholder only. Default remains the newsletter URL until Brandon chooses. {extra}"
         "</div></div>"
     )
@@ -244,7 +244,7 @@ def cta_block(extra_html: str = "", animate: bool = False) -> str:
         f'Comment <span class="kw-pill">{kw}</span> and I&apos;ll DM the same link.'
         "</div>"
         f'<div class="nl-url-pill"{glow}>{NL_URL}</div>'
-        f'<div class="cta-desc" style="font-size:19px">Or subscribe directly. Keyword fulfillment is not staffed yet. {extra}</div>'
+        f'<div class="cta-desc">Or subscribe directly. Keyword fulfillment is not staffed yet. {extra}</div>'
         "</div>"
     )
     if CFG.cta == "keyword":
@@ -371,6 +371,12 @@ def brand_mark(size: int = 44) -> str:
 
 
 BASE_CSS = """
+/* Phone-first type at 1080px wide (reads at ~390px on a phone, scale ~0.36):
+   h1 64–74px #EDEDEF, h2 50–54px #EDEDEF.
+   Subtitles (.cover-sub, .sub): 36–40px, #E5E7EB — never mid-gray, never <36px.
+   Body (.item-desc, .note, .cta-desc, .stat-lbl): ≥28px, #E5E7EB or #D1D5DB.
+   Chrome (footer, page-num, tags, kickers): ≥22px, #E5E7EB / #D1D5DB, not #71717A or #8A8F98.
+   Do not override these floors in a format stylesheet. */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body {
   width: 1080px;
@@ -415,7 +421,7 @@ html, body {
 }
 .tag {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -427,8 +433,8 @@ html, body {
 }
 .page-num {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 17px;
-  color: #8A8F98;
+  font-size: 22px;
+  color: #E5E7EB;
   background: #131316;
   border: 1px solid rgba(255,255,255,0.10);
   padding: 8px 16px;
@@ -445,7 +451,7 @@ html, body {
   gap: 10px;
   align-self: flex-start;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 17px;
+  font-size: 22px;
   color: #EDEDEF;
   background: #141418;
   border: 1px solid rgba(255,255,255,0.14);
@@ -463,23 +469,23 @@ h1 {
 }
 h1 em, h2 em { font-style: normal; color: #C6F432; }
 h2 {
-  font-size: 50px;
+  font-size: 54px;
   line-height: 1.1;
   font-weight: 700;
   letter-spacing: -0.03em;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 .sub {
-  font-size: 25px;
-  line-height: 1.42;
-  color: #9CA3AF;
-  margin-bottom: 34px;
+  font-size: 36px;
+  line-height: 1.35;
+  color: #E5E7EB;
+  margin-bottom: 22px;
 }
 .cover-sub {
-  font-size: 29px;
-  line-height: 1.45;
-  color: #A1A1AA;
-  margin-bottom: 46px;
+  font-size: 38px;
+  line-height: 1.35;
+  color: #E5E7EB;
+  margin-bottom: 24px;
 }
 .stat-grid {
   display: grid;
@@ -503,7 +509,7 @@ h2 {
   margin-bottom: 8px;
 }
 .stat-val.lime { color: #C6F432; }
-.stat-lbl { font-size: 19px; color: #8A8F98; line-height: 1.3; }
+.stat-lbl { font-size: 28px; color: #D1D5DB; line-height: 1.3; }
 .card-stack { display: flex; flex-direction: column; gap: 16px; }
 .card {
   background: #121215;
@@ -523,9 +529,9 @@ h2 {
   justify-content: space-between;
   margin-bottom: 14px;
 }
-.bar-name { font-size: 26px; font-weight: 600; display: flex; align-items: center; gap: 12px; }
-.bar-nums { font-family: 'JetBrains Mono', monospace; font-size: 24px; font-weight: 600; }
-.bar-nums span { color: #8A8F98; font-size: 19px; font-weight: 400; margin-left: 8px; }
+.bar-name { font-size: 28px; font-weight: 600; display: flex; align-items: center; gap: 12px; }
+.bar-nums { font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 600; }
+.bar-nums span { color: #D1D5DB; font-size: 24px; font-weight: 400; margin-left: 8px; }
 .track { height: 18px; background: #1E1E24; border-radius: 99px; overflow: hidden; }
 .fill { height: 100%; border-radius: 99px; background: #C6F432; }
 .pill {
@@ -533,11 +539,11 @@ h2 {
   align-items: center;
   gap: 6px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 15px;
-  padding: 5px 12px;
+  font-size: 22px;
+  padding: 8px 16px;
   border-radius: 99px;
   border: 1px solid rgba(255,255,255,0.14);
-  color: #D4D4D8;
+  color: #E5E7EB;
   background: #18181D;
 }
 .pill.lime { color: #C6F432; border-color: rgba(198,244,50,0.38); background: rgba(198,244,50,0.08); }
@@ -555,8 +561,8 @@ h2 {
   border-radius: 20px;
   padding: 20px 24px;
 }
-.item-title { font-size: 25px; font-weight: 600; color: #EDEDEF; margin-bottom: 6px; }
-.item-desc { font-size: 18px; color: #9CA3AF; line-height: 1.35; }
+.item-title { font-size: 32px; font-weight: 600; color: #EDEDEF; margin-bottom: 6px; }
+.item-desc { font-size: 28px; color: #E5E7EB; line-height: 1.4; }
 .rank-badge {
   width: 48px;
   height: 48px;
@@ -574,8 +580,8 @@ h2 {
 .note {
   margin-top: auto;
   padding-top: 18px;
-  font-size: 18px;
-  color: #8A8F98;
+  font-size: 28px;
+  color: #E5E7EB;
   line-height: 1.4;
 }
 .cta-box {
@@ -587,7 +593,7 @@ h2 {
 }
 .cta-label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 16px;
+  font-size: 20px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: #C6F432;
@@ -601,7 +607,7 @@ h2 {
   margin-bottom: 10px;
   word-break: break-all;
 }
-.cta-desc { font-size: 21px; color: #9CA3AF; line-height: 1.4; }
+.cta-desc { font-size: 28px; color: #E5E7EB; line-height: 1.4; }
 .footer {
   margin-top: 24px;
   padding-top: 20px;
@@ -610,10 +616,10 @@ h2 {
   align-items: center;
   justify-content: space-between;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 17px;
-  color: #71717A;
+  font-size: 24px;
+  color: #D1D5DB;
 }
-.footer b { color: #D4D4D8; font-weight: 500; }
+.footer b { color: #E5E7EB; font-weight: 600; }
 """
 
 
@@ -1274,19 +1280,19 @@ V2_CSS = """
 }
 .org-dept-name {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 700;
   letter-spacing: 0.04em;
   color: #EDEDEF;
 }
 .org-dept-cnt {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 15px;
-  color: #9CA3AF;
+  font-size: 22px;
+  color: #E5E7EB;
 }
 .dept-kicker {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 15px;
+  font-size: 20px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #C6F432;

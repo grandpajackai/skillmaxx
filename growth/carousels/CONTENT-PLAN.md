@@ -1,12 +1,14 @@
 # SkillMaxx weekly carousel content plan
 
 **Date:** 2026-11-20  
-**Status:** Live cadence is 1–3 carousels a week (see below). First deck scheduled 2026-11-23.  
+**Status:** Live cadence is 1–3 carousels a week (see below). First live deck is the 2026-11-23 install-checks tip carousel.  
 **Source research:** `/workspace/carousels-samples/research/muse-skillmaxx-viral-research-2026-11-20.md` (read-only public research, 20 Nov 2026). Used for hook formulas, slide structure, hashtags, watch accounts, and timely-news *topics*. Treat figures in that file as a snapshot, not live facts. Vendor claims stay flagged. Unverified numbers are never copied onto slides.
 
 **Current operational default:** newsletter CTA (`https://skillmaxx.gilventures.ai/newsletter/`) until Brandon picks a comment-keyword path. See §8.
 
-**Cadence in the weekly / daily social top-up (as of 2026-11-23):** **1–3 carousels a week** across X, LinkedIn, and Instagram (Instagram once the account is restored). The four-deck research calendar below is a later target, not the live queue. First live deck: `src/assets/social/carousels/2026-11-23-pass-rate-correction/` (Issue #4 pass-rate correction, scheduled 2026-11-23).
+**Cadence in the weekly / daily social top-up (as of 2026-11-23):** **1–3 carousels a week** across X, LinkedIn, and Instagram (Instagram once the account is restored). The four-deck research calendar below is a later target, not the live queue. **Editorial preference (Brandon, 2026-11-23):** carousels lead with value or practical tips, not failure stories or post-mortems of our own bugs. Scorecards and honest counts can still appear in later decks; they are not the launch hook.  
+**First live deck:** `src/assets/social/carousels/2026-11-23-install-checks/` (5 checks before you install an agent add-on; 7 LinkedIn slides + 4-slide X set, scheduled 2026-11-23).  
+**Parked, not for launch:** `src/assets/social/carousels/2026-11-23-pass-rate-correction/` (Issue #4 pass-rate correction). Kept in the repo; do not schedule it as a launch deck.
 
 ---
 
@@ -91,7 +93,17 @@ We do not borrow “the guy who built Claude Code” unless we are quoting a sou
 - **TEMPLATE (only if `standout` is present):** “Tonight’s standout: {standout.name} — {standout.desc}” plus stars only when `meta.json` actually has them.
 - **EXAMPLE (2026-11-20 report only):** standout was `MCP time (reference)` with `stars=91859` in `weeks.json` / `reports.json`. Re-read the field before using it; do not hard-code the star count.
 
-**Cover typography rule (from VIRAL-RECIPE.md):** proof in the eyebrow, exact number in the headline, one-line mental model in the subtitle. Slide 1 also needs a visual anchor (org-chart tree or artifact collage), not empty space.
+**Cover typography rule (from VIRAL-RECIPE.md):** proof in the eyebrow, exact number (when the deck is a scorecard) or the tip promise in the headline, one-line mental model in the subtitle. Slide 1 also needs a visual anchor (checklist, org-chart tree, artifact collage, or a full-height command panel), not empty space.
+
+### Typography and contrast (phone-first, 2026-11-23)
+
+Brandon's review of the first square deck: mid-gray 22–25px subtitles disappear on a phone. At 1080px wide, a feed fills about 390px, so type is scaled by ~0.36. Floors live in `growth/carousels/generate.py` (`BASE_CSS`). Format stylesheets, including square overrides, must not go below them.
+
+- **Headline:** h1 64–74px on 1080×1350 (about 60px on 1080×1080), h2 50–54px (about 48px square), color `#EDEDEF`. Lime (`#C6F432`) only on the emphasized word.
+- **Subtitle** (`.cover-sub`, `.sub`): 36–40px, color `#E5E7EB`. Never mid-gray (`#9CA3AF`, `#A1A1AA`, `#8A8F98`) and never smaller than 36px.
+- **Body** (`.item-desc`, `.note`, `.cta-desc`, `.stat-lbl`, check-row copy): no less than about 28px, color `#E5E7EB` or `#D1D5DB`.
+- **Chrome** (footer URL, "Swipe", slide counter, tags, kickers): no less than 22px, color `#E5E7EB` or `#D1D5DB`. Do not use `#71717A` or `#8A8F98` for footer or counter text.
+- **Vertical rhythm:** no large empty gap in the middle of a slide, especially slide 1. Stack the visual tightly under the subtitle, or let meaningful content (checklist rows, a full-height command or CTA panel) fill the remaining height. Do not leave a small pill floating in a void.
 
 ---
 
