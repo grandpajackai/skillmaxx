@@ -1,5 +1,173 @@
 [
  {
+  "key": "2026-48",
+  "start": "2026-11-23",
+  "end": "2026-11-29",
+  "first": "2026-11-23",
+  "last": "2026-11-23",
+  "runs": 1,
+  "trend": [
+   {
+    "date": "2026-11-23",
+    "pass": 905,
+    "tested": 1060,
+    "total": 1085,
+    "needs_key": 25,
+    "rate": 85.4
+   }
+  ],
+  "ranking": [
+   {
+    "agent": "claude_code",
+    "name": "Claude Code",
+    "pass": 341,
+    "tested": 369,
+    "rate": 92.4,
+    "flaky": 13,
+    "needs_key": 5
+   },
+   {
+    "agent": "grok_build",
+    "name": "Grok Build",
+    "pass": 352,
+    "tested": 384,
+    "rate": 91.7,
+    "flaky": 6,
+    "needs_key": 5
+   },
+   {
+    "agent": "codex",
+    "name": "Codex",
+    "pass": 95,
+    "tested": 117,
+    "rate": 81.2,
+    "flaky": 4,
+    "needs_key": 5
+   },
+   {
+    "agent": "pi",
+    "name": "Pi",
+    "pass": 85,
+    "tested": 138,
+    "rate": 61.6,
+    "flaky": 6,
+    "needs_key": 5
+   },
+   {
+    "agent": "cursor",
+    "name": "Cursor",
+    "pass": 32,
+    "tested": 52,
+    "rate": 61.5,
+    "flaky": 9,
+    "needs_key": 5
+   }
+  ],
+  "fixed": [
+   {
+    "slug": "bitbonsai-mcpvault",
+    "name": "@bitbonsai/mcpvault",
+    "n": 4
+   },
+   {
+    "slug": "aiterm-mcp",
+    "name": "aiterm-mcp",
+    "n": 4
+   },
+   {
+    "slug": "korean-law-mcp",
+    "name": "korean-law-mcp",
+    "n": 4
+   },
+   {
+    "slug": "mbox-mcp",
+    "name": "mbox-mcp",
+    "n": 4
+   },
+   {
+    "slug": "next-ai-drawio-mcp-server",
+    "name": "@next-ai-drawio/mcp-server",
+    "n": 3
+   }
+  ],
+  "broke": [
+   {
+    "slug": "cyanheads-pubmed-mcp-server",
+    "name": "@cyanheads/pubmed-mcp-server",
+    "n": 2
+   },
+   {
+    "slug": "putervision-vision-memory-mcp",
+    "name": "@putervision/vision-memory-mcp",
+    "n": 2
+   },
+   {
+    "slug": "rigour-labs-mcp",
+    "name": "@rigour-labs/mcp",
+    "n": 2
+   },
+   {
+    "slug": "browser-devtools-mcp",
+    "name": "browser-devtools-mcp",
+    "n": 2
+   },
+   {
+    "slug": "chrome-devtools",
+    "name": "Chrome DevTools",
+    "n": 1
+   }
+  ],
+  "flaky": [
+   {
+    "slug": "mozilla-firefox-devtools-mcp",
+    "name": "@mozilla/firefox-devtools-mcp",
+    "n": 4
+   },
+   {
+    "slug": "dangahagan-weather-mcp",
+    "name": "@dangahagan/weather-mcp",
+    "n": 3
+   },
+   {
+    "slug": "mozilla-firefox-devtools-mcp-moz",
+    "name": "@mozilla/firefox-devtools-mcp-moz",
+    "n": 3
+   },
+   {
+    "slug": "mcp-sequential-thinking",
+    "name": "MCP sequential-thinking (reference)",
+    "n": 3
+   },
+   {
+    "slug": "cyanheads-pubmed-mcp-server",
+    "name": "@cyanheads/pubmed-mcp-server",
+    "n": 2
+   }
+  ],
+  "fixed_n": 41,
+  "broke_n": 9,
+  "flaky_n": 23,
+  "needs_key": 25,
+  "standout": {
+   "slug": "mcp-time",
+   "name": "MCP time (reference)",
+   "desc": "Time and timezone conversion",
+   "agents": [
+    "claude_code",
+    "codex",
+    "grok_build",
+    "cursor",
+    "pi"
+   ],
+   "why": null,
+   "stars": 91859
+  },
+  "version_changes": [],
+  "svg": "<svg viewBox=\"0 0 560 180\" width=\"100%\" role=\"img\" aria-labelledby=\"ct\" class=\"chart\" xmlns=\"http://www.w3.org/2000/svg\"><title id=\"ct\">Install pass rate by night: 2026-11-23 85.4%</title><line x1=\"34\" y1=\"146\" x2=\"526\" y2=\"146\" stroke=\"currentColor\" stroke-opacity=\".25\"/><text x=\"4\" y=\"38\" font-size=\"11\" fill=\"currentColor\">87%</text><text x=\"4\" y=\"150\" font-size=\"11\" fill=\"currentColor\">80%</text><path d=\"M280.0,66.0\" fill=\"none\" stroke=\"#22c55e\" stroke-width=\"3\" stroke-linejoin=\"round\"/><circle cx=\"280.0\" cy=\"66.0\" r=\"4\" fill=\"#22c55e\"/><text x=\"280.0\" y=\"57.0\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">85.4%</text><text x=\"280.0\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-23</text></svg>",
+  "baseline_start": null,
+  "no_valid_run": []
+ },
+ {
   "key": "2026-47",
   "start": "2026-11-16",
   "end": "2026-11-22",
