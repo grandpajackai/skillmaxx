@@ -1,6 +1,6 @@
 # Sponsor pipeline
 
-**Machine-readable list:** [PIPELINE.csv](PIPELINE.csv) — 153 prospects (as of 2026-11-16 weekly run; 128 + 25 verified Targets; Zed dropped), status column, public contact routes only (no guessed emails).  
+**Machine-readable list:** [PIPELINE.csv](PIPELINE.csv) — 154 prospects (as of 2026-11-22; 153 tracked + Autonomous inbound), status column, public contact routes only (no guessed emails).  
 **Templates + weekly cadence:** [OUTREACH.md](OUTREACH.md).  
 **Pricing / caps:** [../SPONSORS.md](../SPONSORS.md) · [SCALING.md](SCALING.md).  
 **Playbook:** [PLAYBOOK.md](PLAYBOOK.md).
@@ -26,7 +26,29 @@ PIPELINE.csv columns: company, who_they_are, website, contact_route (email/form/
 Routing: verified public email first (never guess) → contact form → if a site only offers call bookings, find a public email → if only a phone, log `call-only` with the number and tell Brandon → else `linkedin`/`x` with the URL and tell Brandon. Call-only and LinkedIn/X leads show in the dashboard "Needs Brandon" list. `inbound-email` is for threads where the prospect wrote to us first (e.g. Autonomous / Dee, dee@autonomous.ai, 2026-11-20). The weekday outreach routine must never email `inbound-email` or `Warm - inbound` rows; only a personal in-thread reply when there is a real reason.
 
 
-## Snapshot (from PIPELINE.csv, 2026-11-16 ~10:20 AM ET, weekly pipeline re-run)
+## Snapshot (from PIPELINE.csv, 2026-11-22 ~11:57 PM ET, dashboard refresh)
+
+**Outbound email status:** PAUSED since Nov 20 after `sales@xata.io` hard bounce (per PR #132 bounce-pause rule); 22+ follow-ups waiting until Brandon lifts the pause. Autonomous (`Warm - inbound`, Dee) has a separate scheduled Mon 10 AM ET routine reply with the issue #4 link.
+
+| Stage | Count |
+|---|---|
+| Target | 26 |
+| Contacted | 101 |
+| Contacted (unconfirmed) | 1 (Nango) |
+| Replied | 4 (WorkOS, Kinde, Liveblocks, PickAPlugin) |
+| Warm - inbound | 1 (Autonomous / Dee) |
+| dm-closed | 7 |
+| call-only (needs Brandon) | 2 (ActiveCampaign, LogRocket) |
+| blocked-form | 2 |
+| x-only (needs Brandon) | 1 (Honeycomb) |
+| declined-warm | 4 (Upstash/Context7, Railway, Better Stack, AssemblyAI) |
+| Bounced | 4 (Rigour Labs, Braintrust, Doppler, Xata) |
+| opted-out | 1 (FusionAuth) |
+| Booked / Live / Lost | 0 / 0 / 0 |
+
+Founding sponsors booked: **0 / 10**. Stripe checked Nov 22 ~11:57 PM ET (Gil Ventures LLC live): 0 charges, 0 Checkout sessions, 0 subscriptions. Beehiiv: 5 active subs, all test/Brandon addresses; issue #4 live on `/newsletter/issue-4/`, emails still held.
+
+### Previous snapshot (from PIPELINE.csv, 2026-11-16 ~10:20 AM ET, weekly pipeline re-run)
 
 This run did **not** send email, forms, or Bluesky notes. The 11 AM daily outreach routine is the only sender today.
 
@@ -50,7 +72,7 @@ Founding sponsors booked: **0 / 10**. Stripe last checked Sun Nov 15 ~6:15 PM ET
 
 New Targets (public routes verified on the live page, 2026-11-16): Typesense, Cerebras, Dify, Flowise, Fern, Zuplo, Diffbot, Oxylabs, Scrapfly, Zenrows, Patronus AI, Cursor (customer-service inbox, low odds), Strapi, Lightning AI, Voyage AI, Cognee, Bruno, Apidog, Cerbos (partner-programme form; press email not used), Teleport, Namespace, Northflank, Dagger, BrowserStack, QA Wolf. Recommended slot for almost all is Newsletter $19 — the site has no Search or Scraping category.
 
-### Previous snapshot (2026-11-02 ~9:15 AM ET, weekly pipeline run)
+#### Earlier snapshot (2026-11-02 ~9:15 AM ET, weekly pipeline run)
 
 | Stage | Count |
 |---|---|

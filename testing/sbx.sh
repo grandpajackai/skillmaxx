@@ -30,14 +30,9 @@ fi
 # throwaway HOME can still be deleted after the container exits.
 NPM_LINK=""
 if [ "$NPM_CACHE_MOUNT" = 1 ]; then
-  if [ "${SKILLMAXX_PREWARM_NPX:-}" = 1 ]; then
-    NPM_LINK="mkdir -p /home/sbx/.npm /tmp/skillmaxx-npm-cache/_cacache /tmp/skillmaxx-npm-cache/_prebuilds /tmp/skillmaxx-npm-cache/_npx && ln -sfn /tmp/skillmaxx-npm-cache/_cacache /home/sbx/.npm/_cacache && ln -sfn /tmp/skillmaxx-npm-cache/_prebuilds /home/sbx/.npm/_prebuilds && ln -sfn /tmp/skillmaxx-npm-cache/_npx /home/sbx/.npm/_npx && "
-  else
-    # Symlink completed pre-warmed _npx/<hash> dirs (ones with package.json) so npx
-    # starts immediately without re-running npm install inside the agent timeout, while
-    # leaving ~/.npm/_npx itself private so non-prewarmed runs cannot race.
-    NPM_LINK="mkdir -p /home/sbx/.npm/_npx /tmp/skillmaxx-npm-cache/_cacache /tmp/skillmaxx-npm-cache/_prebuilds /tmp/skillmaxx-npm-cache/_npx && ln -sfn /tmp/skillmaxx-npm-cache/_cacache /home/sbx/.npm/_cacache && ln -sfn /tmp/skillmaxx-npm-cache/_prebuilds /home/sbx/.npm/_prebuilds && for d in /tmp/skillmaxx-npm-cache/_npx/*; do [ -f "\$d/package.json" ] && ln -sfn "\$d" "/home/sbx/.npm/_npx/\${d##*/}" || true; done && "
-  fi
+  # Keep ~/.npm/_npx private per sandbox so parallel jobs and prewarm never race on npm rename (ENOTEMPTY)
+  # or trip lockfile path mismatches across symlinks. Share only _cacache and _prebuilds.
+  NPM_LINK="mkdir -p /home/sbx/.npm/_npx /tmp/skillmaxx-npm-cache/_cacache /tmp/skillmaxx-npm-cache/_prebuilds && ln -sfn /tmp/skillmaxx-npm-cache/_cacache /home/sbx/.npm/_cacache && ln -sfn /tmp/skillmaxx-npm-cache/_prebuilds /home/sbx/.npm/_prebuilds && "
 fi
 UV_CACHE_MOUNT=
 if [ -n "${SKILLMAXX_UV_CACHE:-}" ] && [ -d "$SKILLMAXX_UV_CACHE" ]; then

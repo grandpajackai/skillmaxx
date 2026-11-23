@@ -91,11 +91,10 @@ def prewarm_npm(pkgs,jobs=3,timeout=400):
   if not pkgs or os.environ.get("SKILLMAXX_SKIP_PREWARM")=="1": return
   cache=npm_cache_dir(); os.makedirs(cache,exist_ok=True); os.environ["SKILLMAXX_NPM_CACHE"]=cache
   print(f"pre-warming {len(pkgs)} npm packages into {cache}",file=sys.stderr,flush=True)
-  env={**os.environ,"SKILLMAXX_PREWARM_NPX":"1"}
   def one(pkg):
     js="console.log('WARM_OK')"; cmd=f"npx -y --package={shlex.quote(pkg)} -- node -e {shlex.quote(js)}"
     try:
-      p=subprocess.run([SBX,"",cmd],capture_output=True,text=True,timeout=timeout,env=env)
+      p=subprocess.run([SBX,"",cmd],capture_output=True,text=True,timeout=timeout)
       ok="WARM_OK" in (p.stdout+p.stderr)
     except subprocess.TimeoutExpired:
       ok=False

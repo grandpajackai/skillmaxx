@@ -129,30 +129,13 @@ export SBX_RECORD="$tmp/docker-cache.txt"
 : > "$SBX_RECORD"
 PATH="$tmp/dockeronly:/usr/bin:/bin" bash testing/sbx.sh "" true || fail docker_cache
 grep -q "$SKILLMAXX_NPM_CACHE:/tmp/skillmaxx-npm-cache" "$SBX_RECORD" || fail docker_npm_bind
-# Prewarm mode symlinks ~/.npm/_npx directly; normal mode symlinks per-package dirs with package.json.
-export SKILLMAXX_PREWARM_NPX=1
-export SBX_RECORD="$tmp/bwrap-prewarm-npx.txt"
-: > "$SBX_RECORD"
-PATH="$tmp/both:/usr/bin:/bin" bash testing/sbx.sh "" true || fail bwrap_prewarm_npx
-grep -q 'ln -sfn /tmp/skillmaxx-npm-cache/_npx /home/sbx/.npm/_npx' "$SBX_RECORD" || fail bwrap_prewarm_npx_link
-unset SKILLMAXX_PREWARM_NPX
+# Never symlink shared _npx into sandboxes (even in prewarm): parallel jobs race on ENOTEMPTY.
 export SBX_RECORD="$tmp/bwrap-norm-npx.txt"
 : > "$SBX_RECORD"
 PATH="$tmp/both:/usr/bin:/bin" bash testing/sbx.sh "" true || fail bwrap_norm_npx
-grep -q 'package.json' "$SBX_RECORD" || fail bwrap_norm_npx_pkgcheck
-
-# Verify the generated NPM_LINK snippet succeeds even when _npx is empty (no partial failure on &&).
-mkdir -p "$tmp/empty_home/.npm" "$tmp/empty_cache/_npx" "$tmp/empty_cache/_cacache" "$tmp/empty_cache/_prebuilds"
-mkdir -p "$tmp/empty_cache/_npx/broken_no_pkg" "$tmp/empty_cache/_npx/good_pkg"
-echo '{}' > "$tmp/empty_cache/_npx/good_pkg/package.json"
-bash -c '
-  mkdir -p "$1/.npm/_npx" &&
-  for d in "$2/_npx/"*; do [ -f "$d/package.json" ] && ln -sfn "$d" "$1/.npm/_npx/${d##*/}" || true; done &&
-  touch "$1/ok"
-' _ "$tmp/empty_home" "$tmp/empty_cache" || fail empty_npx_loop
-[ -f "$tmp/empty_home/ok" ] || fail empty_npx_loop_ran
-[ -L "$tmp/empty_home/.npm/_npx/good_pkg" ] || fail good_pkg_linked
-[ ! -e "$tmp/empty_home/.npm/_npx/broken_no_pkg" ] || fail broken_pkg_skipped
+grep -q 'ln -sfn /tmp/skillmaxx-npm-cache/_cacache /home/sbx/.npm/_cacache' "$SBX_RECORD" || fail bwrap_cacache_link
+grep -q 'ln -sfn /tmp/skillmaxx-npm-cache/_prebuilds /home/sbx/.npm/_prebuilds' "$SBX_RECORD" || fail bwrap_prebuilds_link
+grep -q 'ln -sfn /tmp/skillmaxx-npm-cache/_npx' "$SBX_RECORD" && fail bwrap_shared_npx_forbidden
 unset SKILLMAXX_NPM_CACHE
 
 # uv cache bind is off by default, on when SKILLMAXX_UV_CACHE is a directory.
