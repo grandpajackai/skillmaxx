@@ -21,7 +21,10 @@ Each draft not yet ready to schedule starts with one label line, followed by a b
 Buffer keeps the draft's `dueAt` at the planned time.
 
 ## Images
-Buffer only takes images from public URLs. To add an image: put the PNG/JPG in `src/assets/social/`, then open a PR, wait for CI to pass and squash-merge. Check it's live (`curl -I https://skillmaxx.gilventures.ai/assets/social/<file>` should return 200 with an image/* type). Then attach it with `assets: [{image: {url, metadata: {altText}}}]`. Alt text is always required. When editing a post that already has an image, carry its assets forward. Live now: `pin-chart.png` (Oct 27 X + LinkedIn).
+Buffer only takes images from public URLs. To add an image: put the PNG/JPG in `src/assets/social/`, then open a PR, wait for CI to pass and squash-merge. Check it's live (`curl -I https://skillmaxx.gilventures.ai/assets/social/<file>` should return 200 with an image/* type). Then attach it with `assets: [{image: {url, metadata: {altText}}}]`. Alt text is always required. When editing a post that already has an image, carry its assets forward. Live now: `pin-chart.png` (Oct 27 X + LinkedIn). Carousel decks live under `src/assets/social/carousels/<date-slug>/`.
+
+## Carousels (1–3 per week)
+Schedule **1–3 carousels a week** across X and LinkedIn, and Instagram once the SkillMaxx account is restored and connected to Buffer. Build from real nightly numbers only, commit 1080×1080 (or 1080×1350) PNGs under `src/assets/social/carousels/<date-slug>/`, squash-merge, then `create_post` with public site URLs after deploy (or GitHub raw URLs on `master`). LinkedIn: all slides as a multi-image post, or one PDF document. X: a trimmed set of up to 4 images. Never schedule carousels on the Bluesky Buffer channel. Editorial templates: `growth/carousels/CONTENT-PLAN.md`. Instagram later: `growth/carousels/INSTAGRAM-SETUP.md`.
 
 ## Bluesky (not Buffer)
 On every run, including Sunday: do **not** call `create_post`, `edit_post`, or otherwise schedule anything on Bluesky channel `6adfbe402f1f5ed648def519`. If the next week's Mon/Wed/Fri 7:30 PM ET scorecard posts are not already in `growth/social/bluesky-queue.json`, run `python3 growth/scripts/buffer_weekly.py --repo-queue` and open a PR. Skip Bluesky entirely when listing or topping up Buffer channels.
