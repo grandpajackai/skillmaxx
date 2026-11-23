@@ -41,6 +41,9 @@ def load_requests(path: Path) -> list[dict]:
             continue
         rid = str(it.get("id") or "").strip()
         msg = str(it.get("message") or "").strip()
+        status = str(it.get("status") or "").strip().lower()
+        if status in ("done", "cancelled"):
+            continue
         if rid and msg:
             out.append(it)
     return out
