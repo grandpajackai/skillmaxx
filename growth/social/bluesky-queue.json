@@ -28,6 +28,60 @@
       "source": "buffer-migrate",
       "buffer_post_id": "6afbc1cbdf36f4d8256375b2",
       "buffer_channel_id": "6adfbe402f1f5ed648def519"
+    },
+    {
+      "id": "buf-6b03aefdd5eabfb8ccfee23d",
+      "text": "Nov 22 install tests: 831 of 1,085 installs passed across Claude Code, Codex, Grok Build, Cursor and Pi, in a clean sandbox with no API keys. 15 only needed a key. 36 failed once and get re-checked before we call them broken.\n\nhttps://skillmaxx.gilventures.ai/reports/2026-11-22/",
+      "due_at": "2026-11-24T19:30:00-05:00",
+      "images": [],
+      "source": "buffer-migrate",
+      "buffer_post_id": "6b03aefdd5eabfb8ccfee23d",
+      "buffer_channel_id": "6adfbe402f1f5ed648def519"
+    },
+    {
+      "id": "buf-6b03af04c72676f5e97ffe1b",
+      "text": "Nov 22 pass rates, same keyless sandbox:\n\nClaude Code 329/374\nGrok Build 341/389\nCodex 79/122\nPi 68/143\nCursor 14/57\n\nNot a ranking of the agents. The add-on mix differs per agent.\n\nhttps://skillmaxx.gilventures.ai/reports/2026-11-22/",
+      "due_at": "2026-11-25T19:30:00-05:00",
+      "images": [],
+      "source": "buffer-migrate",
+      "buffer_post_id": "6b03af04c72676f5e97ffe1b",
+      "buffer_channel_id": "6adfbe402f1f5ed648def519"
+    },
+    {
+      "id": "buf-6b03af0bc72676f5e98000a1",
+      "text": "Pending vs broken, Nov 22 run: 36 installs failed once after a retry but had passed the night before. We call those pending. Broken means failing two nights in a row, since one bad night can be a registry blip.\n\nhttps://skillmaxx.gilventures.ai/how-we-test/",
+      "due_at": "2026-11-26T19:30:00-05:00",
+      "images": [],
+      "source": "buffer-migrate",
+      "buffer_post_id": "6b03af0bc72676f5e98000a1",
+      "buffer_channel_id": "6adfbe402f1f5ed648def519"
+    },
+    {
+      "id": "buf-6b03af12a6de38de9eb4c23e",
+      "text": "Cursor shows 14 of 57 in our Nov 22 run. Our Cursor suite is MCP-only and smaller than the others, tested in a keyless sandbox. It measures what installs cleanly there, not how good Cursor is.\n\nhttps://skillmaxx.gilventures.ai/reports/2026-11-22/",
+      "due_at": "2026-11-27T19:30:00-05:00",
+      "images": [],
+      "source": "buffer-migrate",
+      "buffer_post_id": "6b03af12a6de38de9eb4c23e",
+      "buffer_channel_id": "6adfbe402f1f5ed648def519"
+    },
+    {
+      "id": "buf-6b03af1a846b0ee907dbd421",
+      "text": "Wondering if a skill or MCP server installs today? Type its name into the check on our latest report and pick your agent. The answer comes from last night's real install in a clean sandbox, not a README.\n\nhttps://skillmaxx.gilventures.ai/reports/latest/",
+      "due_at": "2026-11-28T17:00:00-05:00",
+      "images": [],
+      "source": "buffer-migrate",
+      "buffer_post_id": "6b03af1a846b0ee907dbd421",
+      "buffer_channel_id": "6adfbe402f1f5ed648def519"
+    },
+    {
+      "id": "buf-6b03af22d864a01105185400",
+      "text": "Why our sandbox has no API keys, on purpose: if a tool installs there, it installs for anyone. In the Nov 22 run, 15 installs only failed because they asked for a key. We list them separately so a missing token never counts as broken.\n\nhttps://skillmaxx.gilventures.ai/how-we-test/",
+      "due_at": "2026-11-29T18:15:00-05:00",
+      "images": [],
+      "source": "buffer-migrate",
+      "buffer_post_id": "6b03af22d864a01105185400",
+      "buffer_channel_id": "6adfbe402f1f5ed648def519"
     }
   ]
 }

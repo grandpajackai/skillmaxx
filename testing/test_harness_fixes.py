@@ -55,6 +55,12 @@ class HarnessFixesTest(unittest.TestCase):
         self.assertIn('"timed out"', src)
         self.assertIn('"✗"', src)
 
+    def test_sbx_keeps_npx_private(self):
+        with open(os.path.join(HERE, "sbx.sh")) as f:
+            sbx = f.read()
+        self.assertNotIn("/tmp/skillmaxx-npm-cache/_npx", sbx)
+        self.assertIn("ln -sfn /tmp/skillmaxx-npm-cache/_cacache /home/sbx/.npm/_cacache", sbx)
+
 
 if __name__ == "__main__":
     unittest.main()

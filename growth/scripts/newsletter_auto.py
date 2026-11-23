@@ -286,8 +286,8 @@ def build(d, root=None, radar=None):
                 if not wk.get("baseline_start") else " We started a new test baseline this week, so we don't compare it with earlier weeks.")
     L += [f"This week we ran {runs} nightly install test{'s' if runs != 1 else ''} ({span}) of agent skills, plugins and MCP servers "
           f"in Claude Code, Codex, Grok Build, Cursor and Pi. On the latest night, {rate}% of the installs we can judge without an API key passed.{move}", "",
-          f"**{wk.get('fixed_n', 0)}** add-on{'s' if wk.get('fixed_n', 0) != 1 else ''} started working, **{wk.get('broke_n', 0)}** broke "
-          f"(failed two nights running) and **{wk.get('flaky_n', 0)}** flipped between pass and fail.", ""]
+          f"**{wk.get('fixed_n', 0)}** install{'s' if wk.get('fixed_n', 0) != 1 else ''} started working, **{wk.get('broke_n', 0)}** broke "
+          f"(failed two nights running) and **{wk.get('flaky_n', 0)}** add-on{'s' if wk.get('flaky_n', 0) != 1 else ''} flipped between pass and fail.", ""]
     if wk.get("no_valid_run"):
         L += [f"We skipped {', '.join(fmt(x) for x in wk['no_valid_run'])} on purpose: a problem in our own test setup made those nights "
               "untrustworthy, so they're marked \"no valid run\" on the [reports page](/reports/). No numbers beat wrong numbers.", ""]
@@ -323,8 +323,13 @@ def build(d, root=None, radar=None):
     parts = []
     for label, kk in (("Fixed", "fixed"), ("Broke", "broke"), ("Flaky", "flaky")):
         if wk.get(kk):
-            more = wk.get(f"{kk}_n", len(wk[kk])) - min(5, len(wk[kk]))
-            parts.append(f"**{label}:** {names(wk[kk])}" + (f" and {more} more" if more > 0 else "") + ".")
+            n_val = wk.get(f"{kk}_n", len(wk[kk]))
+            if kk == "flaky":
+                more = n_val - min(5, len(wk[kk]))
+                suffix = f" and {more} more" if more > 0 else ""
+            else:
+                suffix = f" ({n_val} install{'s' if n_val != 1 else ''} total)" if n_val > min(5, len(wk[kk])) else ""
+            parts.append(f"**{label}:** {names(wk[kk])}{suffix}.")
     L += (parts and [" ".join(parts), ""]) or ["Nothing got fixed or broke this week.", ""]
     links = [f"Full report: [skillmaxx.gilventures.ai/reports/{lastd}/](/reports/{lastd}/)",
              f"Week chart: [skillmaxx.gilventures.ai/reports/week/{key}/](/reports/week/{key}/)",

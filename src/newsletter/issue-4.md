@@ -22,7 +22,7 @@ jsonld: {"@context": "https://schema.org", "@type": "Article", "headline": "Skil
 
 This week we ran 6 nightly install tests (Nov 17 to Nov 22) of agent skills, plugins and MCP servers in Claude Code, Codex, Grok Build, Cursor and Pi. On the latest night, 77.7% of the installs we can judge without an API key passed. That's down from 87.1% on Nov 14 (9.4 points).
 
-**5** add-ons started working, **68** broke (failed two nights running) and **31** flipped between pass and fail.
+**5** installs started working, **68** newly broke this week (failed two nights running; 203 total installs broken on Nov 22) and **31** add-ons flipped between pass and fail.
 
 This issue is put together automatically from our nightly test logs, and every number links to the report it came from.
 
@@ -44,7 +44,7 @@ Night by night: Nov 17 911/1,075 · Nov 18 912/1,075 · Nov 19 906/1,075 · Nov 
 
 **Standout:** [MCP time (reference)](/skills/mcp-time/) installed clean in all 5 agents this week with no flakes. Time and timezone conversion.
 
-**Fixed:** [@putervision/vision-memory-mcp](/skills/putervision-vision-memory-mcp/), [Desktop Commander](/skills/desktop-commander/), [Hyperframes](/skills/hyperframes/), [Monday Crm](/skills/monday-crm/) and 1 more. **Broke:** [@bitbonsai/mcpvault](/skills/bitbonsai-mcpvault/), [@next-ai-drawio/mcp-server](/skills/next-ai-drawio-mcp-server/), [korean-law-mcp](/skills/korean-law-mcp/), [@putervision/vision-memory-mcp](/skills/putervision-vision-memory-mcp/), [aiterm-mcp](/skills/aiterm-mcp/) and 63 more. **Flaky:** [mcp-local-rag](/skills/mcp-local-rag/), [comfyui-mcp](/skills/comfyui-mcp/), [@ironbee-ai/devtools](/skills/ironbee-ai-devtools/), [Hyperframes](/skills/hyperframes/), [@rate-api/mcp](/skills/rate-api-mcp/) and 26 more.
+**Fixed:** [@putervision/vision-memory-mcp](/skills/putervision-vision-memory-mcp/), [Desktop Commander](/skills/desktop-commander/), [Hyperframes](/skills/hyperframes/), [Monday Crm](/skills/monday-crm/) (5 installs total). **Broke:** [@bitbonsai/mcpvault](/skills/bitbonsai-mcpvault/), [@next-ai-drawio/mcp-server](/skills/next-ai-drawio-mcp-server/), [korean-law-mcp](/skills/korean-law-mcp/), [@putervision/vision-memory-mcp](/skills/putervision-vision-memory-mcp/), [aiterm-mcp](/skills/aiterm-mcp/) (68 newly broken installs across 25 add-ons). **Flaky:** [mcp-local-rag](/skills/mcp-local-rag/), [comfyui-mcp](/skills/comfyui-mcp/), [@ironbee-ai/devtools](/skills/ironbee-ai-devtools/), [Hyperframes](/skills/hyperframes/), [@rate-api/mcp](/skills/rate-api-mcp/) and 26 more.
 
 Full report: [skillmaxx.gilventures.ai/reports/2026-11-22/](/reports/2026-11-22/) · Week chart: [skillmaxx.gilventures.ai/reports/week/2026-47/](/reports/week/2026-47/) · Is your tool safe today? [skillmaxx.gilventures.ai/reports/latest/](/reports/latest/)
 

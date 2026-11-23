@@ -36,14 +36,14 @@ Rule: unfollow accounts we followed more than 7 days ago that haven't followed b
 | 2026-11-02 | @aivoyage.bsky.social | indie builder tracking skill-pack trends | no |
 | 2026-11-09 | @theearlyfinish.bsky.social | follow-back (follows us); AI tools newsletter, replied to our pinning tip | no |
 | 2026-11-09 | @pa-dev.bsky.social | follow-back (follows us); Linux dev | no |
-| 2026-11-09 | @peterfriese.dev | Firebase devrel, posted Caliper (skill/MCP evals) | no |
-| 2026-11-09 | @raxytonto.bsky.social | built divorce, an a11y skill for coding agents | no |
-| 2026-11-09 | @night-porter.com | builds Night Porter (hands PR/issue work to coding agents) | no |
-| 2026-11-09 | @hellblazer.com | built a claude-relogin Claude Code skill | no |
-| 2026-11-09 | @ryandaaldo.bsky.social | built bundleferry (Claude Code skill + CLI) | no |
-| 2026-11-09 | @aidev44.bsky.social | weekly AI dev tools roundups | no |
-| 2026-11-09 | @zzdco.bsky.social | building in public, shipped an MCP server | no |
-| 2026-11-09 | @hiroyukichishiro.bsky.social | open-sourced a CLI for use with Codex/coding agents | no |
+| 2026-11-09 | @peterfriese.dev | Firebase devrel, posted Caliper (skill/MCP evals) | no (unfollowed 2026-11-19) |
+| 2026-11-09 | @raxytonto.bsky.social | built divorce, an a11y skill for coding agents | no (unfollowed 2026-11-19) |
+| 2026-11-09 | @night-porter.com | builds Night Porter (hands PR/issue work to coding agents) | no (unfollowed 2026-11-19) |
+| 2026-11-09 | @hellblazer.com | built a claude-relogin Claude Code skill | no (unfollowed 2026-11-19) |
+| 2026-11-09 | @ryandaaldo.bsky.social | built bundleferry (Claude Code skill + CLI) | no (unfollowed 2026-11-19) |
+| 2026-11-09 | @aidev44.bsky.social | weekly AI dev tools roundups | no (unfollowed 2026-11-19) |
+| 2026-11-09 | @zzdco.bsky.social | building in public, shipped an MCP server | no (unfollowed 2026-11-19) |
+| 2026-11-09 | @hiroyukichishiro.bsky.social | open-sourced a CLI for use with Codex/coding agents | no (unfollowed 2026-11-19) |
 | 2026-11-16 | @la-piece.bsky.social | founder of Echoia, building a social MCP; in conversation with us | no |
 | 2026-11-16 | @buckbee.bsky.social | dev/founder, wrote Gauntlet Claude Code review skill | no |
 | 2026-11-16 | @robrich.bsky.social | devrel posting about Claude skills | no |
@@ -53,6 +53,17 @@ Rule: unfollow accounts we followed more than 7 days ago that haven't followed b
 | 2026-11-16 | @jetpackcomposeapp.bsky.social | Android dev resource, published android-cli agent skill | no |
 | 2026-11-16 | @alvinashcraft.com | Microsoft dev-tools docs, shares MCP/agent tools | no |
 
+| 2026-11-19 | @agentmarketindex.bsky.social | follow-back (follows us); tracks payments for AI services | no |
+| 2026-11-19 | @skatkov.com | built POSH Claude Code plugin + MCP | no |
+| 2026-11-19 | @reillywood.com | dev posting about composing MCP tool calls | no |
+| 2026-11-19 | @fsdqui.bsky.social | built Privacy Guard Claude Code plugin | no |
+| 2026-11-19 | @averyvine.com | Xcode, shipped agent skills/tools | no |
+| 2026-11-19 | @brianvermeer.nl | Snyk devrel, MCP/skills security | no |
+| 2026-11-19 | @austegard.com | writes Claude Code skills | no |
+| 2026-11-19 | @aexia.bsky.social | posts about agent rules/skills workflows | no |
+| 2026-11-19 | @alexn.org | dev posting about agent skills | no |
+| 2026-11-19 | @maritvandijk.bsky.social | JetBrains devrel, MCP/skills security talk | no |
+
 ## Run log
 - 2026-10-31: +11 follows, 0 unfollows (no log entries older than 7 days yet). Counts after run: 3 followers / 43 following. Liked 9 builder posts, 5 no-pitch replies (gracefullight, adegoodyer, aethelgardshuman, mailfully, jonasnguyen). Replied to claimidx with nightly 5/5 results. Tagged @anthropic.com and @mariozechner.at in the Nov 1 Buffer scorecard post (no Bluesky accounts found for OpenAI, Cursor or xAI).
 - 2026-11-01: +9 follows, 0 unfollows (nothing older than 7 days). Counts after run: 6 followers / 52 following. Replied to jonasnguyen (idempotency keys) and claimidx (tool-call pass on wishlist). Liked 10 builder posts, 4 no-pitch replies (apievangelist, only-mcp, karanluthra, michaelho02). No new repos shared. Did not follow back gleephoenix (self-disclosed AI-operated) or watermlonmusk (spammy). Tagged @anthropic.com and @sentry.io in the Nov 2 Buffer Bluesky tip post. Browser flagged hidden AI-agent instructions on our own profile page (bsky.app/profile/skillmaxx.bsky.social); not followed — worth checking our bio/pinned post.
@@ -60,3 +71,4 @@ Rule: unfollow accounts we followed more than 7 days ago that haven't followed b
 - 2026-11-09 (Mon run; the Nov 5 run failed and did nothing): done via the AT Protocol API with the app password. +10 follows (2 follow-backs: theearlyfinish, pa-dev; skipped gleephoenix and christian1994-94 as AI-run/bot-like, watermlonmusk spammy). **Unfollowed 45** non-follow-backs followed before Nov 2: the ~30 seed follows from Oct 26 (vscode.dev, xkcd, github.com, bsky.app, buffer.com, kentcdodds, etc.), bymayachen, an unknown/deactivated DID, and the Oct 31/Nov 1 rows marked above. Kept aethelgardshuman, only-mcp, jonasnguyen (active conversations); xwikisas unfollow hit a 502, retry Thursday. Counts after run: 12 followers / 27 following. Replied to Marco (agent-postbox 5/5 results), only-mcp, claimidx (first-error comparison), theearlyfinish (checked-in .claude/settings.json). Liked 11 builder posts, 4 no-pitch replies (peterfriese/Caliper, raxytonto/divorce, night-porter, renice). No new repos shared. Tagged @anthropic.com in the Nov 10 Bluesky Grok Build promo (no xAI Bluesky account exists).
 - 2026-11-12: run happened (per memory: 3 thread replies, 10 likes, 4 no-pitch replies, +9 follows, -10 unfollows incl. the Nov 2 rows and xwikisas; 12 followers / 26 following) but its log/rows were not saved to this file.
 - 2026-11-16 (Mon, box browser): +8 follows (rows above; none follow back yet). Briefly followed then unfollowed colinmbrown (not a builder) and frankfor.you (self-described autonomous AI). Unfollow list (Nov 2 rows + xwikisas) already gone, so 0 unfollows. Counts after run: 14 followers / 34 following. Replied to 6 notifications: la-piece (length limits in social MCP), claimidx x2 (time-server control; grouping Nov 8 failures by first error line, Gemini CLI on list), davibonitao (pronto runtime rules), jonasnguyen (field-level refusals + dry run), younesjd.dev (promised nightly results for his Angular testing skill). Liked 10 builder posts, 4 no-pitch replies (buckbee, colinmbrown, jetpackcomposeapp, rav4nn). Tagged @anthropic.com and @mariozechner.at in the Nov 17 Bluesky Buffer post. bsky.app showed hidden AI-agent text again; ignored.
+- 2026-11-19 (Thu, box browser): +10 follows (rows above; agentmarketindex is a follow-back; skipped christian1994-94 again as bot-like). Unfollowed the 8 Nov 9 non-follow-backs. Counts after run: 14 followers / 36 following. Posted angular-testing results to @younesjd.dev (3n2opa6ie2k2l: 5/5 agents, 3 nightly runs). Replied to jonasnguyen (dry run code path), claimidx (failure labels; Gemini CLI not run yet), buckbee (grading nits). la-piece's Nov 16 reply no longer visible in thread; skipped. Liked 10 builder posts, 4 no-pitch replies (skatkov, reillywood, fsdqui, aivoyage). Nov 20 Buffer Bluesky post names Airwallex; airwallex.bsky.social is an empty unverified account (0 posts), so not tagged. bsky.app showed hidden AI-agent text again; ignored.
