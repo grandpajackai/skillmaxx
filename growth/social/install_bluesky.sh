@@ -1,7 +1,8 @@
 #!/bin/bash
-# Install or print the Mac launchd job and the box cron fallback for Bluesky posting.
-# Does not post. Does not create credentials. install runs only on macOS.
-# Usage: growth/social/install_bluesky.sh {print-plist|install|uninstall|status|print-cron|dry-run}
+# Print or install the Mac launchd job, or print the box supervisor notes.
+# Does not post. Does not create credentials. `install` runs only on macOS
+# and should stay off while the box supervisor is the live runner.
+# Usage: growth/social/install_bluesky.sh {print-plist|install|uninstall|status|print-cron|print-box|dry-run}
 set -uo pipefail
 ROOT=$(cd "$(dirname "$0")/../.." && pwd)
 LABEL=com.gilventures.skillmaxx.bluesky
@@ -46,11 +47,24 @@ EOF
 
 cmd_print_cron() {
   cat <<EOF
-# Box fallback only. Do not also run this if the Mac launchd job is live (the
-# poster dedupes against state + the account feed, but one runner is enough).
-# Install by appending to crontab only after ~/.skillmaxx-secrets/bluesky.env exists
-# (chmod 600). The poster is a no-op without that file.
+# Legacy crontab line. The SkillMaxx box has no cron/systemd (PID 1 is tini),
+# so the live runner is the supervised loop in growth/social/box/ (installed at
+# /home/box/skillmaxx-bluesky/). Do not also enable Mac launchd while that loop
+# is live. The poster is a no-op without ~/.skillmaxx-secrets/bluesky.env.
 */30 * * * * test -f $KEYFILE && /usr/bin/python3 $SCRIPT >> $LOG 2>&1
+EOF
+}
+
+cmd_print_box() {
+  cat <<EOF
+# Live runner (the box is always on). No cron/systemd; same keep-alive pattern
+# as /home/box/skillmaxx-watch and /home/box/skillmaxx-prep:
+#   /home/box/skillmaxx-bluesky/supervise.sh   every 15 minutes
+#   /home/box/skillmaxx-bluesky/keeper.sh      heartbeat watchdog
+#   /home/box/skillmaxx-bluesky/ensure-running.sh  hooked from ~/.bashrc
+# Canonical copies: growth/social/box/
+# Logs: /home/box/skillmaxx-bluesky/bluesky-post.log
+# Do not also run the Mac launchd job while this loop is live.
 EOF
 }
 
@@ -96,12 +110,13 @@ cmd_status() {
 case "${1:-}" in
   print-plist) cmd_print_plist ;;
   print-cron) cmd_print_cron ;;
+  print-box) cmd_print_box ;;
   dry-run) cmd_dry_run ;;
   install) cmd_install ;;
   uninstall) cmd_uninstall ;;
   status) cmd_status ;;
   *)
-    echo "Usage: growth/social/install_bluesky.sh {print-plist|install|uninstall|status|print-cron|dry-run}" >&2
+    echo "Usage: growth/social/install_bluesky.sh {print-plist|install|uninstall|status|print-cron|print-box|dry-run}" >&2
     exit 2
     ;;
 esac

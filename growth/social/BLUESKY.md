@@ -2,11 +2,13 @@
 
 Brandon chose to move Bluesky off the free Buffer plan (3 channels, all used) so Instagram can take that slot for carousels. This path posts to `skillmaxx.bsky.social` with the public AT Protocol. No LLM, no Buffer API, $0.
 
+**Live since 2026-11-23:** the always-on box supervisor at `/home/box/skillmaxx-bluesky/` is the runner. Do not also enable the Mac launchd job. The Buffer Bluesky channel is still connected (disconnect it in the browser after this is confirmed); scheduled Buffer copies of the queue were deleted on 2026-11-23 so nothing double-posts.
+
 ## How it works
 
-1. Upcoming posts live in [`bluesky-queue.json`](bluesky-queue.json) (in the repo) plus an optional local overlay at `~/.local/share/skillmaxx/bluesky-queue.local.json`.
-2. `growth/scripts/buffer_weekly.py` writes the usual Mon/Wed/Fri 7:30 PM ET scorecard posts into that queue. It no longer creates Buffer posts for Bluesky. X and LinkedIn stay on the Grok Buffer connector.
-3. `growth/social/bluesky_post.py` posts items whose `due_at` has passed, records AT URIs in `~/.local/share/skillmaxx/bluesky-state.json`, skips duplicates (queue id, exact text already in state, or the same text already on the account feed), and caps at 3 posts per America/New_York day. `--dry-run` never contacts Bluesky.
+1. Upcoming posts live in [`bluesky-queue.json`](bluesky-queue.json) (in the repo) plus an optional local overlay at `~/.local/share/skillmaxx/bluesky-queue.local.json` on the machine that runs the poster (the box).
+2. The Sunday 10 PM ET Buffer top-up (`skillmaxx-buffer-daily-top-up`, prompt name **SkillMaxx Buffer daily top-up**) must enqueue Bluesky with `python3 growth/scripts/buffer_weekly.py --repo-queue` and open a small PR. It must **not** call Buffer `create_post` for channel `6adfbe402f1f5ed648def519`. X and LinkedIn stay on the Grok Buffer connector. A Mac-only local overlay is not enough: the box poster reads `origin/master` plus the box's own overlay, not the Mac's home directory.
+3. `growth/social/bluesky_post.py` posts items whose `due_at` has passed, records AT URIs in `~/.local/share/skillmaxx/bluesky-state.json`, skips duplicates (queue id, text already in state, or the same text already on the account feed, treating `https://` and a bare host as the same), and caps at 3 posts per America/New_York day. `--dry-run` never contacts Bluesky.
 
 ```bash
 python3 growth/social/bluesky_post.py --dry-run
@@ -18,9 +20,7 @@ python3 growth/social/bluesky_post.py --mark-posted buf-6afbc1c1df36f4d8256372d8
 
 ## Credentials
 
-The box checkout of `/home/box/.skillmaxx-secrets/` has no Bluesky keyfile (names there: `accounts.env`, `intake.env`, `zoho_skillmaxx.json`). No Bluesky app-password env vars were set when this was added. The older community helper (`/workspace/bsky/bs.py`, not in the repo) expected the env alias `BLUESKY_SKILLMAXX_APP_PASSWORD` at runtime; that value is not in the secrets directory and is not in the current environment. Replies in the Bluesky community routine have been posted with that ad-hoc API client or by hand, not by a committed script.
-
-Create a **Bluesky app password** (not the account password) while signed in as `skillmaxx.bsky.social`: [bsky.app Settings → App Passwords](https://bsky.app/settings/app-passwords) → “Add App Password”. Put it only on the Mac (and on the box only if you want the cron fallback) as:
+Create a **Bluesky app password** (not the account password) while signed in as `skillmaxx.bsky.social`: [bsky.app Settings → App Passwords](https://bsky.app/settings/app-passwords) → “Add App Password”. On the box (the live runner):
 
 `~/.skillmaxx-secrets/bluesky.env` (chmod 600)
 
@@ -31,44 +31,45 @@ BLUESKY_APP_PASSWORD=xxxxxxxx
 
 Optional: `BLUESKY_PDS=https://bsky.social`. The script also accepts the older env alias `BLUESKY_SKILLMAXX_APP_PASSWORD`. Override the file path with `SKILLMAXX_BLUESKY_ENV`. Never commit this file, never paste it into chat, never print it.
 
-Without that file the poster exits 0 and posts nothing, so cron/launchd is safe to load after the file exists.
+Without that file the poster exits 0 and posts nothing.
 
-## Mac launchd (primary)
+## Box supervisor (live runner)
 
-Do not install this from Linux or from a remote agent. On the Mac checkout (usually `/Users/grandpajack/Projects/skillmaxx-local-trial-20261107`), after a dry-run looks right and the app-password file is in place:
+The SkillMaxx box has no cron/systemd (PID 1 is tini). The poster is kept alive the same way as `/home/box/skillmaxx-watch` and `/home/box/skillmaxx-prep`:
 
-```bash
-# from the checkout, after git pull / the PR is on master
-python3 growth/social/bluesky_post.py --dry-run
-growth/social/install_bluesky.sh status
-growth/social/install_bluesky.sh install
-# RunAtLoad is false, so start it once you are ready (see overlap note below):
-launchctl kickstart -k gui/$(id -u)/com.gilventures.skillmaxx.bluesky
-```
+- `/home/box/skillmaxx-bluesky/supervise.sh` — every 15 minutes, refresh a dedicated `origin/master` clone, run `bluesky_post.py` (240s timeout)
+- `/home/box/skillmaxx-bluesky/keeper.sh` — 60s heartbeat watchdog
+- `/home/box/skillmaxx-bluesky/ensure-running.sh` — hooked from `~/.bashrc` so a new login shell brings it back
 
-The job label is `com.gilventures.skillmaxx.bluesky`, every 30 minutes. Logs: `~/.local/share/skillmaxx/logs/bluesky-post.log`. `install_bluesky.sh print-plist` writes the live plist with this checkout’s paths. The checked-in `com.gilventures.skillmaxx.bluesky.plist` is a template only; do not `launchctl load` that file as-is.
+Canonical copies of those scripts: [`box/`](box/). Logs: `/home/box/skillmaxx-bluesky/bluesky-post.log`. Print a reminder with `growth/social/install_bluesky.sh print-box`.
 
-`testing/publish_nightly.sh` also runs `buffer_weekly.py` on Sundays after a successful publish, which enqueues the next week’s Bluesky posts into the local overlay (no Buffer API).
+## Mac launchd (do not enable while the box is live)
 
-## Box cron (fallback only)
+`install` in `install_bluesky.sh` runs only on macOS and is **off on purpose** while the box loop is the runner. One poster is enough. The job label would be `com.gilventures.skillmaxx.bluesky`, every 30 minutes. `install_bluesky.sh print-plist` writes a plist with that checkout’s paths. The checked-in `com.gilventures.skillmaxx.bluesky.plist` is a template only; do not `launchctl load` that file as-is.
 
-Only if `~/.skillmaxx-secrets/bluesky.env` exists on the box, and only if the Mac job is not already running. Print the line with `growth/social/install_bluesky.sh print-cron`. The poster is a no-op without the keyfile.
+`testing/publish_nightly.sh` still runs `buffer_weekly.py` on Sundays after a successful publish, which writes the Mac local overlay (no Buffer API). That overlay is a backup only; the live box poster will not see it until the same items land in the repo queue via `--repo-queue` and a merged PR.
 
 ## Overlap with Buffer (do not double-post)
 
-This change **does not** delete or disconnect the Buffer Bluesky channel. The migrated posts below are still scheduled in Buffer. Leave them there until the direct poster is confirmed live, then delete those Buffer posts (or wait until they have published and `--mark-posted` each id). Do not install launchd in live mode while Buffer still holds the same due items.
+Scheduled Buffer copies of the current queue were deleted on 2026-11-23 after `--mark-posted` of the two items Buffer had already published:
 
-| Buffer post id | Time (ET) | Queue id |
-|---|---|---|
-| `6afbc1c1df36f4d8256372d8` | Sat Nov 21, 5:00 PM | `buf-6afbc1c1df36f4d8256372d8` |
-| `6afbc1c2797935b975d8a168` | Sun Nov 22, 6:15 PM | `buf-6afbc1c2797935b975d8a168` |
-| `6afbc1cbdf36f4d8256375b2` | Mon Nov 23, 7:30 PM | `buf-6afbc1cbdf36f4d8256375b2` |
+| Buffer post id | Time (ET) | Queue id | Disposition (2026-11-23) |
+|---|---|---|---|
+| `6afbc1c1df36f4d8256372d8` | Sat Nov 21, 5:00 PM | `buf-6afbc1c1df36f4d8256372d8` | Already published; marked in box state |
+| `6afbc1c2797935b975d8a168` | Sun Nov 22, 6:15 PM | `buf-6afbc1c2797935b975d8a168` | Already published; marked in box state |
+| `6afbc1cbdf36f4d8256375b2` | Mon Nov 23, 7:30 PM | `buf-6afbc1cbdf36f4d8256375b2` | Buffer copy deleted; due on the box poster |
+| `6b03aefdd5eabfb8ccfee23d` | Tue Nov 24, 7:30 PM | `buf-6b03aefdd5eabfb8ccfee23d` | Buffer copy deleted; remains in the repo queue |
+| `6b03af04c72676f5e97ffe1b` | Wed Nov 25, 7:30 PM | `buf-6b03af04c72676f5e97ffe1b` | Buffer copy deleted; remains in the repo queue |
+| `6b03af0bc72676f5e98000a1` | Thu Nov 26, 7:30 PM | `buf-6b03af0bc72676f5e98000a1` | Buffer copy deleted; remains in the repo queue |
+| `6b03af12a6de38de9eb4c23e` | Fri Nov 27, 7:30 PM | `buf-6b03af12a6de38de9eb4c23e` | Buffer copy deleted; remains in the repo queue |
+| `6b03af1a846b0ee907dbd421` | Sat Nov 28, 5:00 PM | `buf-6b03af1a846b0ee907dbd421` | Buffer copy deleted; remains in the repo queue |
+| `6b03af22d864a01105185400` | Sun Nov 29, 6:15 PM | `buf-6b03af22d864a01105185400` | Buffer copy deleted; remains in the repo queue |
 
-Stale Buffer draft `6adfee163bff354cec696067` (planned Tue Nov 3 newsletter #2) was not migrated.
+Stale Buffer draft `6adfee163bff354cec696067` (planned Tue Nov 3 newsletter #2) was not migrated and was left as a draft. Do not schedule it.
 
 ## After the script is confirmed live: disconnect Buffer Bluesky
 
-Only after the remaining Buffer copies are deleted or have already published, free the slot:
+The channel is still connected. Free the slot in the browser (do not do this from an API/tooling pass that only takes posting live):
 
 1. Open [Buffer](https://publish.buffer.com/) signed in to the SkillMaxx org (`6adfb3f8d2cea8f4b234c15b`).
 2. Click the profile avatar in the bottom left, then **Channels**.
@@ -82,4 +83,4 @@ Then connect the SkillMaxx Instagram account in the freed slot. See [`growth/car
 
 ## Sunday / daily Buffer top-up
 
-When scheduling the weekly scorecard posts, do **not** call Buffer `create_post` for channel `6adfbe402f1f5ed648def519`. Run `python3 growth/scripts/buffer_weekly.py --repo-queue` (and open a small PR) or let the Sunday Mac publish write the local overlay. X and LinkedIn stay on Buffer. Details: [`growth/routines/BUFFER-DAILY-TOPUP.md`](../routines/BUFFER-DAILY-TOPUP.md).
+When scheduling the weekly scorecard posts, do **not** call Buffer `create_post` for channel `6adfbe402f1f5ed648def519`. Run `python3 growth/scripts/buffer_weekly.py --repo-queue` (and open a small PR). X and LinkedIn stay on Buffer. Details: [`growth/routines/BUFFER-DAILY-TOPUP.md`](../routines/BUFFER-DAILY-TOPUP.md).

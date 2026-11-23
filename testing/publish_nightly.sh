@@ -148,7 +148,9 @@ for i in $(seq 1 30); do
   page=$(curl -sf --max-time 20 "$SITE/reports/$D/" 2>/dev/null)
   if [ -n "$page" ] && ! printf '%s' "$page" | grep -q 'No report this night'; then
     status published; echo "publish: live $SITE/reports/$D/"
-    # Sundays: enqueue next week's Bluesky posts to the local overlay (no Buffer API).
+    # Sundays: enqueue next week's Bluesky posts to the Mac local overlay (no Buffer API).
+    # Backup only: the live box poster reads origin/master, so the 10 PM ET Buffer
+    # top-up must still run buffer_weekly.py --repo-queue and open a PR.
     # X and LinkedIn stay on the Grok Buffer connector. weekly_blog_auto.py is unchanged.
     if [ "$(TZ=America/New_York date +%u)" = 7 ]; then
       python3 growth/scripts/buffer_weekly.py || echo "publish: buffer_weekly (bluesky queue) failed (non-fatal)"
