@@ -1,13 +1,14 @@
 # SkillMaxx weekly carousel content plan
 
 **Date:** 2026-11-20  
-**Status:** Live cadence is 1–3 carousels a week (see below). First live deck is the 2026-11-23 install-checks tip carousel.  
+**Status:** Live cadence is 1–3 carousels a week (see below). First live deck is the 2026-11-23 Claude Code MCP checks carousel.  
 **Source research:** `/workspace/carousels-samples/research/muse-skillmaxx-viral-research-2026-11-20.md` (read-only public research, 20 Nov 2026). Used for hook formulas, slide structure, hashtags, watch accounts, and timely-news *topics*. Treat figures in that file as a snapshot, not live facts. Vendor claims stay flagged. Unverified numbers are never copied onto slides.
 
 **Current operational default:** newsletter CTA (`https://skillmaxx.gilventures.ai/newsletter/`) until Brandon picks a comment-keyword path. See §8.
 
 **Cadence in the weekly / daily social top-up (as of 2026-11-23):** **1–3 carousels a week** across X, LinkedIn, and Instagram (Instagram once the account is restored). The four-deck research calendar below is a later target, not the live queue. **Editorial preference (Brandon, 2026-11-23):** carousels lead with value or practical tips, not failure stories or post-mortems of our own bugs. Scorecards and honest counts can still appear in later decks; they are not the launch hook.  
-**First live deck:** `src/assets/social/carousels/2026-11-23-install-checks/` (5 checks before you install an agent add-on; 7 LinkedIn slides + 4-slide X set, scheduled 2026-11-23).  
+**First live deck:** `src/assets/social/carousels/2026-11-23-claude-code-mcp-checks/` (Claude Code MCP: your server is installed, Claude Code still can't see it; 7 LinkedIn slides + 4-slide X set, scheduled 2026-11-23). One reader, one tool: Claude Code.  
+**Superseded, not for launch:** `src/assets/social/carousels/2026-11-23-install-checks/` (mixed Claude Code / Cursor / Codex tip deck). Kept in the repo; do not schedule it.  
 **Parked, not for launch:** `src/assets/social/carousels/2026-11-23-pass-rate-correction/` (Issue #4 pass-rate correction). Kept in the repo; do not schedule it as a launch deck.
 
 ---
@@ -104,6 +105,25 @@ Brandon's review of the first square deck: mid-gray 22–25px subtitles disappea
 - **Body** (`.item-desc`, `.note`, `.cta-desc`, `.stat-lbl`, check-row copy): no less than about 28px, color `#E5E7EB` or `#D1D5DB`.
 - **Chrome** (footer URL, "Swipe", slide counter, tags, kickers): no less than 22px, color `#E5E7EB` or `#D1D5DB`. Do not use `#71717A` or `#8A8F98` for footer or counter text.
 - **Vertical rhythm:** no large empty gap in the middle of a slide, especially slide 1. Stack the visual tightly under the subtitle, or let meaningful content (checklist rows, a full-height command or CTA panel) fill the remaining height. Do not leave a small pill floating in a void.
+
+### One reader, one tool, and a weekly rotation (2026-11-23)
+
+Brandon's review of the first tip deck: cover lines like "Pin the marketplace" and "Wait until Cursor says ready" were vague, mixed Claude Code / Cursor / Codex so no single reader got a full path, and did not feel written for a specific person.
+
+- **One reader, one tool per carousel.** Write the deck for one person using one tool (this launch deck: a developer using Claude Code). Do not mix tools on the cover or in the checks.
+- **A cover that stands alone.** The cover lists must be plain, self-explanatory actions a reader can use without the later slides.
+- **Specific steps on later slides.** Each check slide gives the exact command or where to look, what "good" looks like, and the common fix. Commands and UI details must be verified against current official docs. Do not invent flags or output.
+- **Other tools belong on the last content slide, not the cover.** A final content slide may say the same idea applies in Cursor, Codex, or another agent, with one accurate line each.
+- **Weekly mix rotates platforms.** Across the week's carousels, rotate the focus tool through Claude Code, Cursor, and Codex (plus Grok Build or Pi when a tip is genuinely about them). No one platform should be over-represented. Also ship at least one "works anywhere" tip post a week (a short text post is fine; it does not have to be a carousel) so the feed is not only one-agent deep-dives.
+- **Track coverage** in the table below before planning the next deck. Log the focus tool when the carousel is scheduled.
+
+| Date | Deck | Focus tool | Notes |
+| --- | --- | --- | --- |
+| 2026-11-23 | `2026-11-23-claude-code-mcp-checks` | Claude Code | Launch carousel. Last content slide has one line each for Cursor (MCP list should say ready) and Codex (server should be listed as enabled). |
+| 2026-11-23 | `2026-11-23-install-checks` | mixed (superseded) | Do not schedule. |
+| 2026-11-23 | `2026-11-23-pass-rate-correction` | mixed / scorecard (parked) | Do not schedule as a launch deck. |
+
+Next carousel should not be another Claude Code-only deck unless the week's mix already includes Cursor or Codex, or a "works anywhere" tip post is already scheduled.
 
 ---
 
