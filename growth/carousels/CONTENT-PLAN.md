@@ -1,10 +1,12 @@
 # SkillMaxx weekly carousel content plan
 
 **Date:** 2026-11-20  
-**Status:** Plan for review. Nothing is posted, queued in Buffer, or sent to any social API.  
+**Status:** Live cadence is 1–3 carousels a week (see below). First deck scheduled 2026-11-23.  
 **Source research:** `/workspace/carousels-samples/research/muse-skillmaxx-viral-research-2026-11-20.md` (read-only public research, 20 Nov 2026). Used for hook formulas, slide structure, hashtags, watch accounts, and timely-news *topics*. Treat figures in that file as a snapshot, not live facts. Vendor claims stay flagged. Unverified numbers are never copied onto slides.
 
 **Current operational default:** newsletter CTA (`https://skillmaxx.gilventures.ai/newsletter/`) until Brandon picks a comment-keyword path. See §8.
+
+**Cadence in the weekly / daily social top-up (as of 2026-11-23):** **1–3 carousels a week** across X, LinkedIn, and Instagram (Instagram once the account is restored). The four-deck research calendar below is a later target, not the live queue. First live deck: `src/assets/social/carousels/2026-11-23-pass-rate-correction/` (Issue #4 pass-rate correction, scheduled 2026-11-23).
 
 ---
 
