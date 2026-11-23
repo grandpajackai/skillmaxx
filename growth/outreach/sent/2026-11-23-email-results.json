@@ -1,0 +1,268 @@
+{
+ "date": "2026-11-23",
+ "sent": [
+  {
+   "company": "InstantDB",
+   "to": "hello@instantdb.com",
+   "subject": "InstantDB and the apps agents build",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795450657723040400",
+   "sent_at": "2026-11-23 11:17:37 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Blacksmith",
+   "to": "hello@blacksmith.sh",
+   "subject": "a $19 test in front of people running agent CI",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795451062823041600",
+   "sent_at": "2026-11-23 11:24:22 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Chroma",
+   "to": "hello@trychroma.com",
+   "subject": "Re: Package Search MCP and the people picking agent tools",
+   "kind": "fu1",
+   "http": 200,
+   "zoho_messageId": "1795451633213041600",
+   "sent_at": "2026-11-23 11:33:53 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "SerpApi",
+   "to": "contact@serpapi.com",
+   "subject": "search tools for agents, from the install-test side",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795452069818040100",
+   "sent_at": "2026-11-23 11:41:09 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Typesense",
+   "to": "contact@typesense.org",
+   "subject": "open-source search in front of agent builders",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795452572858041600",
+   "sent_at": "2026-11-23 11:49:32 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Letta",
+   "to": "contact@letta.com",
+   "subject": "Re: agent memory, from the install-test side",
+   "kind": "fu1",
+   "http": 200,
+   "zoho_messageId": "1795453185697040100",
+   "sent_at": "2026-11-23 11:59:45 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Cerebras",
+   "to": "info@cerebras.ai",
+   "subject": "fast inference, in front of people picking coding agents",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795453538833040200",
+   "sent_at": "2026-11-23 12:05:38 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Dify",
+   "to": "business@dify.ai",
+   "subject": "a $19 test in front of people building agent workflows",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795454456997041600",
+   "sent_at": "2026-11-23 12:20:57 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Agno",
+   "to": "hello@agno.com",
+   "subject": "Re: what breaks when agents install MCP servers",
+   "kind": "fu1",
+   "http": 200,
+   "zoho_messageId": "1795454825078040100",
+   "sent_at": "2026-11-23 12:27:05 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Flowise",
+   "to": "hello@flowiseai.com",
+   "subject": "a $19 test in front of people building agents",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795457541795040200",
+   "sent_at": "2026-11-23 13:12:21 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Fern",
+   "to": "sales@buildwithfern.com",
+   "subject": "docs and SDKs, in front of people picking agent tools",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795457816933040200",
+   "sent_at": "2026-11-23 13:16:57 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Kilo Code",
+   "to": "sales@kilo.ai",
+   "subject": "Re: a 6th agent column on SkillMaxx?",
+   "kind": "fu1",
+   "http": 200,
+   "zoho_messageId": "1795458138517042000",
+   "sent_at": "2026-11-23 13:22:18 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Diffbot",
+   "to": "sales@diffbot.com",
+   "subject": "web data for agents, from the install-test side",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795458528708040100",
+   "sent_at": "2026-11-23 13:28:48 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Oxylabs",
+   "to": "hello@oxylabs.io",
+   "subject": "scraping and AI tools, in front of agent builders",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795458939267040400",
+   "sent_at": "2026-11-23 13:35:39 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Socket",
+   "to": "sales@socket.dev",
+   "subject": "Re: we npx 45 MCP packages a night",
+   "kind": "fu1",
+   "http": 200,
+   "zoho_messageId": "1795459678860040400",
+   "sent_at": "2026-11-23 13:47:59 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Scrapfly",
+   "to": "sales@scrapfly.io",
+   "subject": "your MCP server and our nightly install tests",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795460196503040400",
+   "sent_at": "2026-11-23 13:56:36 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Zenrows",
+   "to": "partnerships@zenrows.com",
+   "subject": "a $19 test in front of people wiring up scraping",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795460497392042000",
+   "sent_at": "2026-11-23 14:01:37 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Infisical",
+   "to": "team@infisical.com",
+   "subject": "Re: 30 of our MCP checks stopped at 'needs key'",
+   "kind": "fu1",
+   "http": 200,
+   "zoho_messageId": "1795461135636042000",
+   "sent_at": "2026-11-23 14:12:15 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Patronus AI",
+   "to": "contact@patronus.ai",
+   "subject": "evals for the people choosing agent tools",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795461790676042000",
+   "sent_at": "2026-11-23 14:23:10 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Strapi",
+   "to": "marketing@strapi.io",
+   "subject": "a $19 test in front of people building with agents",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795462537981041600",
+   "sent_at": "2026-11-23 14:35:38 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Scalekit",
+   "to": "hi@scalekit.com",
+   "subject": "Re: MCP auth, from 225 nightly installs",
+   "kind": "fu1",
+   "http": 200,
+   "zoho_messageId": "1795462925479042000",
+   "sent_at": "2026-11-23 14:42:05 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Lightning AI",
+   "to": "sales@lightning.ai",
+   "subject": "an AI dev platform in front of agent builders",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795463681369041600",
+   "sent_at": "2026-11-23 14:54:41 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Voyage AI",
+   "to": "contact@voyageai.com",
+   "subject": "embeddings and rerankers, in front of agent builders",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795464053734042000",
+   "sent_at": "2026-11-23 15:00:53 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Knock",
+   "to": "hello@knock.app",
+   "subject": "Re: Knock's agent toolkit and coding agents",
+   "kind": "fu1",
+   "http": 200,
+   "zoho_messageId": "1795465149740042000",
+   "sent_at": "2026-11-23 15:19:09 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Cognee",
+   "to": "info@cognee.ai",
+   "subject": "agent memory, from the install-test side",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795467552466040400",
+   "sent_at": "2026-11-23 15:59:12 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Bruno",
+   "to": "sales@usebruno.com",
+   "subject": "an API client in front of agent builders",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795468935605040400",
+   "sent_at": "2026-11-23 16:22:15 ET",
+   "via": "Zoho Mail API"
+  }
+ ],
+ "skipped": [],
+ "bounces": [],
+ "stopped": null
+}
