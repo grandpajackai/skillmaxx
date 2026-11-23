@@ -1,6 +1,6 @@
 # SkillMaxx Bluesky posting (direct, not Buffer)
 
-Brandon chose to move Bluesky off the free Buffer plan (3 channels, all used) so Instagram can take that slot for carousels. This path posts to `skillmaxx.bsky.social` with the public AT Protocol. No LLM, no Buffer API, $0.
+Brandon chose to move Bluesky off the free Buffer plan (3 channels, all used) so a later channel could take that slot. Instagram `@skillmaxxai` was permanently disabled on 2026-11-23, so do not automatically fill the slot with Instagram. This path posts to `skillmaxx.bsky.social` with the public AT Protocol. No LLM, no Buffer API, $0.
 
 **Live since 2026-11-23:** the always-on box supervisor at `/home/box/skillmaxx-bluesky/` is the runner. Do not also enable the Mac launchd job. The Buffer Bluesky channel is still connected (disconnect it in the browser after this is confirmed); scheduled Buffer copies of the queue were deleted on 2026-11-23 so nothing double-posts.
 
@@ -79,7 +79,7 @@ The channel is still connected. Free the slot in the browser (do not do this fro
 
 Source: [Disconnecting a channel from Buffer](https://support.buffer.com/en-us/articles/disconnecting-a-channel-from-buffer-33vFDqJJjv).
 
-Then connect the SkillMaxx Instagram account in the freed slot. See [`growth/carousels/INSTAGRAM-SETUP.md`](../carousels/INSTAGRAM-SETUP.md).
+Do **not** automatically connect Instagram in the freed slot. `@skillmaxxai` was permanently disabled by Meta on 2026-11-23 (no further review). A new Instagram account is Brandon's call. See [`growth/carousels/INSTAGRAM-SETUP.md`](../carousels/INSTAGRAM-SETUP.md).
 
 ## Sunday / daily Buffer top-up
 

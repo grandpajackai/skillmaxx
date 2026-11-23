@@ -5,12 +5,5 @@
     "message": "SkillMaxx: to let me open the awesome-list PRs from the SkillMaxx GitHub account (not your personal one), please save that account's GitHub login in Grok Bot under Settings > Vault (site github.com, name it \"GitHub (SkillMaxx)\"). If it has 2FA by authenticator app, tell me in chat when you're around. That's all.",
     "severity": "critical",
     "created": "2026-11-20T15:45:00-05:00"
-  },
-  {
-    "id": "req-003-instagram-skillmaxx",
-    "title": "SkillMaxx: create the Instagram account",
-    "message": "SkillMaxx: please create an Instagram account for the brand with skillmaxx@gilventures.ai (a phone is required, so only you can do this step). Switch it to a Creator or Business profile, set the bio and newsletter link from growth/carousels/INSTAGRAM-SETUP.md, and tell me the handle in chat when it's ready. Don't connect it to Buffer yet \u2014 Bluesky still occupies the free-plan slot until the new direct Bluesky poster is confirmed live. After that I'll put Instagram in the freed slot and start the 3-carousels-a-week queue (CTA stays the newsletter).",
-    "severity": "warn",
-    "created": "2026-11-21T14:45:00-05:00"
   }
 ]
