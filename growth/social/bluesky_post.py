@@ -164,12 +164,21 @@ def save_state(path: str, doc: dict) -> None:
     atomic_write(path, json.dumps(doc, indent=2, ensure_ascii=False) + "\n")
 
 
+def canonical_text(s: str) -> str:
+    """Compare text ignoring a leading http(s):// on URLs.
+
+    Buffer/Bluesky often store the same post with a bare host, so an exact
+    string match would miss a post that is already on the account feed.
+    """
+    return re.sub(r"https?://", "", (s or "").strip())
+
+
 def posted_ids(state: dict) -> set[str]:
     return {str(p.get("id") or "") for p in state.get("posted") or [] if p.get("id")}
 
 
 def posted_texts(state: dict) -> set[str]:
-    return {str(p.get("text") or "").strip() for p in state.get("posted") or [] if str(p.get("text") or "").strip()}
+    return {canonical_text(p.get("text") or "") for p in state.get("posted") or [] if str(p.get("text") or "").strip()}
 
 
 def posts_today(state: dict, now: datetime) -> int:
@@ -267,6 +276,7 @@ def author_texts(c: dict, token: str, actor: str, limit: int = 20) -> set[str]:
     for row in feed:
         text = (((row.get("post") or {}).get("record") or {}).get("text") or "").strip()
         if text:
+            out.add(canonical_text(text))
             out.add(text)
     return out
 
@@ -301,9 +311,9 @@ def classify(item: dict, state: dict, now: datetime, feed_texts: set[str] | None
         return "empty text"
     if iid and iid in posted_ids(state):
         return "already in state"
-    if text in posted_texts(state):
+    if canonical_text(text) in posted_texts(state):
         return "text already in state"
-    if feed_texts is not None and text in feed_texts:
+    if feed_texts is not None and canonical_text(text) in feed_texts:
         return "already on account feed"
     try:
         due = parse_dt(str(item.get("due_at") or ""))
@@ -404,6 +414,12 @@ def run_self_test() -> int:
     assert classify(items[1], state, now) == "due"
     assert classify(items[2], state, now) == "already in state"
     assert posts_today(state, now) == 1
+    # Bluesky often stores the same post with a bare host (no https://).
+    url_item = {"id": "url1", "text": "See https://skillmaxx.gilventures.ai/how-we-test/",
+                "due_at": "2026-11-21T19:00:00+00:00"}
+    bare = "See skillmaxx.gilventures.ai/how-we-test/"
+    assert classify(url_item, {"posted": []}, now, {canonical_text(bare)}) == "already on account feed"
+    assert classify(url_item, {"posted": [{"id": "x", "text": bare, "posted_at": "2026-11-21T19:00:00+00:00"}]}, now) == "text already in state"
     log("self-test ok")
     return 0
 

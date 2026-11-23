@@ -7,10 +7,13 @@ Slots (ET): X 9:30 AM, LinkedIn 12:00 PM, Bluesky 7:30 PM.
 X and LinkedIn stay on the Grok Buffer connector — this script does not call the
 Buffer API for any channel (that path would create duplicates).
 
-Bluesky is posted by growth/social/bluesky_post.py, not Buffer. This script enqueues
-the three Bluesky texts into growth/social/bluesky-queue.json (--repo-queue) and/or
-~/.local/share/skillmaxx/bluesky-queue.local.json (the default, so a Mac Sunday
-publish can queue without another PR). Dedupes by text and by id.
+Bluesky is posted by growth/social/bluesky_post.py on the box, not Buffer. This
+script enqueues the three Bluesky texts into growth/social/bluesky-queue.json
+(--repo-queue, required so the box clone of origin/master sees them) and/or
+~/.local/share/skillmaxx/bluesky-queue.local.json (the default, a local overlay
+on the machine that runs this script). The box poster does not see a Mac-only
+overlay, so the Sunday 10 PM ET top-up must pass --repo-queue and open a PR.
+Dedupes by text and by id.
 
 Usage: python3 growth/scripts/buffer_weekly.py [--dry-run] [--week-of YYYY-MM-DD]
                                                 [--repo-queue] [--local-queue]

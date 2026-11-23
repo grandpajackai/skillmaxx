@@ -1,11 +1,13 @@
 # Buffer daily top-up (Grok Bot routine)
 
-**Updated 2026-11-21:** Bluesky is leaving Buffer so Instagram can use the freed free-plan slot. Do **not** `create_post` to Bluesky channel `6adfbe402f1f5ed648def519` going forward. Enqueue those texts with `python3 growth/scripts/buffer_weekly.py --repo-queue` (open a small PR) or let the Sunday Mac publish write the local overlay. The direct poster is `growth/social/bluesky_post.py` — see `growth/social/BLUESKY.md`. X and LinkedIn are unchanged (Buffer connector). Instagram carousel setup, once the account exists and Bluesky is disconnected: `growth/carousels/INSTAGRAM-SETUP.md`. Do not delete or disconnect the Buffer Bluesky posts/channel until that poster is confirmed live.
+Routine id: `skillmaxx-buffer-daily-top-up`. Prompt name: **SkillMaxx Buffer daily top-up**.
+
+**Updated 2026-11-23:** The box Bluesky poster is live. Do **not** `create_post` to Bluesky channel `6adfbe402f1f5ed648def519`. Enqueue those texts with `python3 growth/scripts/buffer_weekly.py --repo-queue` and open a small PR so the box clone of `origin/master` picks them up. Do not rely on the Mac Sunday-publish local overlay — the box cannot see the Mac home directory. The direct poster is `growth/social/bluesky_post.py` — see `growth/social/BLUESKY.md`. X and LinkedIn are unchanged (Buffer connector). Instagram carousel setup, once the account exists and the Buffer Bluesky channel is disconnected in the browser: `growth/carousels/INSTAGRAM-SETUP.md`. Scheduled Buffer Bluesky copies of the current queue were deleted on 2026-11-23; leave the stale Nov 3 draft (`6adfee163bff354cec696067`) alone, and do not disconnect the channel from this routine.
 
 Goal: the 2-week calendar runs itself. Brandon approved the posts on 2026-10-26, so moving an approved draft into the queue needs **no new approval**. Bluesky *replies* still need approval (separate rule).
 
-**When:** every day at 8:00 AM ET (before the 9:30 AM X slot).
-**Where:** Buffer org `6adfb3f8d2cea8f4b234c15b`. Channels still on Buffer: X `6adfb5c92f1f5ed648deaa83`, LinkedIn `6adfc4f12f1f5ed648df8e37`. Bluesky `6adfbe402f1f5ed648def519` stays connected only until the direct poster is confirmed live, then it is disconnected (do not schedule new Bluesky posts here).
+**When:** every day at 10:00 PM ET (the live routine time; this used to say 8:00 AM).
+**Where:** Buffer org `6adfb3f8d2cea8f4b234c15b`. Channels still on Buffer: X `6adfb5c92f1f5ed648deaa83`, LinkedIn `6adfc4f12f1f5ed648df8e37`. Bluesky `6adfbe402f1f5ed648def519` stays connected only until it is disconnected in the browser (do not schedule new Bluesky posts here).
 **Source of truth for text:** `growth/strategy/drafts.py` → `drafts-2026-10-27.json`.
 
 ## Free-plan limits
@@ -21,8 +23,11 @@ Buffer keeps the draft's `dueAt` at the planned time.
 ## Images
 Buffer only takes images from public URLs. To add an image: put the PNG/JPG in `src/assets/social/`, then open a PR, wait for CI to pass and squash-merge. Check it's live (`curl -I https://skillmaxx.gilventures.ai/assets/social/<file>` should return 200 with an image/* type). Then attach it with `assets: [{image: {url, metadata: {altText}}}]`. Alt text is always required. When editing a post that already has an image, carry its assets forward. Live now: `pin-chart.png` (Oct 27 X + LinkedIn).
 
+## Bluesky (not Buffer)
+On every run, including Sunday: do **not** call `create_post`, `edit_post`, or otherwise schedule anything on Bluesky channel `6adfbe402f1f5ed648def519`. If the next week's Mon/Wed/Fri 7:30 PM ET scorecard posts are not already in `growth/social/bluesky-queue.json`, run `python3 growth/scripts/buffer_weekly.py --repo-queue` and open a PR. Skip Bluesky entirely when listing or topping up Buffer channels.
+
 ## Steps
-1. `list_posts` for each channel (status scheduled and draft). Check for duplicates: if a scheduled post's text (with the label stripped) matches a draft's text, delete nothing and skip that draft. Log it.
+1. `list_posts` for X and LinkedIn only (status scheduled and draft). Check for duplicates: if a scheduled post's text (with the label stripped) matches a draft's text, delete nothing and skip that draft. Log it.
 2. Pick the drafts whose planned time is within the next 48 hours.
 3. Gates. A draft is skipped and stays a draft if any of these is true:
    - **REFRESH:** re-read `data/reports.json` (latest night) and `scripts/weekly_scorecard.py` output, then update the numbers in the text. If the claim no longer holds (e.g. Superpowers isn't clean in 4 agents anymore, or the flaky count changed meaning), rewrite it from the same angle with true numbers, keeping the length limits (X ≤280 with URLs = 23, Bluesky ≤300, LinkedIn ≤1400). If no true version exists, skip it and note it in STATUS.md.
