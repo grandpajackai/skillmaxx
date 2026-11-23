@@ -7,7 +7,7 @@
 **Current operational default:** newsletter CTA (`https://skillmaxx.gilventures.ai/newsletter/`) until Brandon picks a comment-keyword path. See §8.
 
 **Cadence in the weekly / daily social top-up (as of 2026-11-23):** **1–3 carousels a week** across X, LinkedIn, and Instagram (Instagram once the account is restored). The four-deck research calendar below is a later target, not the live queue. **Editorial preference (Brandon, 2026-11-23):** carousels lead with value or practical tips, not failure stories or post-mortems of our own bugs. Scorecards and honest counts can still appear in later decks; they are not the launch hook.  
-**First live deck:** `src/assets/social/carousels/2026-11-23-claude-code-mcp-checks/` (Claude Code MCP: your server is installed, Claude Code still can't see it; 7 LinkedIn slides + 4-slide X set, scheduled 2026-11-23). One reader, one tool: Claude Code.  
+**First live deck:** `src/assets/social/carousels/2026-11-23-claude-code-mcp-checks/` (Claude Code MCP: your server is installed, Claude Code still can't see it; 7 LinkedIn + 4 X stills at **1080×1350**, plus an animated set in `animated/` for Instagram once the account is restored; scheduled 2026-11-23). One reader, one tool: Claude Code. LinkedIn and X stay static image posts for this launch.  
 **Superseded, not for launch:** `src/assets/social/carousels/2026-11-23-install-checks/` (mixed Claude Code / Cursor / Codex tip deck). Kept in the repo; do not schedule it.  
 **Parked, not for launch:** `src/assets/social/carousels/2026-11-23-pass-rate-correction/` (Issue #4 pass-rate correction). Kept in the repo; do not schedule it as a launch deck.
 
@@ -105,6 +105,15 @@ Brandon's review of the first square deck: mid-gray 22–25px subtitles disappea
 - **Body** (`.item-desc`, `.note`, `.cta-desc`, `.stat-lbl`, check-row copy): no less than about 28px, color `#E5E7EB` or `#D1D5DB`.
 - **Chrome** (footer URL, "Swipe", slide counter, tags, kickers): no less than 22px, color `#E5E7EB` or `#D1D5DB`. Do not use `#71717A` or `#8A8F98` for footer or counter text.
 - **Vertical rhythm:** no large empty gap in the middle of a slide, especially slide 1. Stack the visual tightly under the subtitle, or let meaningful content (checklist rows, a full-height command or CTA panel) fill the remaining height. Do not leave a small pill floating in a void.
+
+### Vary layouts slide by slide (2026-11-23)
+
+Brandon's review of the first Claude Code MCP deck: every slide used the same headline / body / stacked-box frame, which looked easy to duplicate but too samey to hold a swipe-through. A shared template is fine for brand chrome (logo, type floors, footer). It is not fine as the only composition.
+
+- **Each slide gets a distinct layout archetype.** Do not ship a deck where every slide is "headline, subtitle, and a stack of identical cards." Pick a layout that fits the content: a compact numbered cover strip, a realistic terminal, a diagram, a split gotcha, a two-path flow, a lookup card, a full-bleed CTA, or another v3 frame (org-tree, collage, ranked rows, stat grid).
+- **Reuse the archetype library** in `growth/carousels/generate.py` (`cover_check_strip`, `terminal_window`, `scope_tiers`, `command_card`, `gotcha_callout`, `two_path_flow`, `lookup_result_card`, `cta_bleed_panel`, `wrap_archetype_slide`). Add a new helper there when a deck needs a layout that is missing, so the next carousel can reuse it.
+- **Keep the brand, change the composition.** Same colors, fonts, logo, footer, and typography floors. Vary background glow position per slide, and use a large outlined check-number motif (01, 02, …) so the deck feels sequential but not cloned. Add a subtle swipe cue (pips + next-slide label) that links slides.
+- **Phone first.** Every archetype must still meet the typography floors above and remain readable at ~390px wide.
 
 ### One reader, one tool, and a weekly rotation (2026-11-23)
 
@@ -320,7 +329,13 @@ Last slide shows the newsletter URL **and** a keyword (“Or comment SCORE and I
 
 ## 9. Generator v3
 
-Free, local, no posts. Updates in `growth/carousels/generate.py`:
+Free, local, no posts. The renderer lives at `growth/carousels/generate.py`.
+
+**Animated pipeline is the standard for Instagram and TikTok.** Still PNG carousels are the default for LinkedIn and X image posts. When a deck will also run on Instagram or TikTok Photo Mode, render it with `--animate` in this same generator: it writes per-slide H.264 MP4s (`slide-0N.mp4`), a final-frame PNG fallback, and a stitched `preview.mp4` at 30fps. Default canvas is **1080×1350** (Instagram feed, LinkedIn, X); pass `--size 1080x1920` or `--size both` for TikTok Photo Mode. Tip / how-to decks (including this launch carousel) call the same functions: `set_render(width=1080, height=1350)`, `render_slides_html` for stills, and `render_slides_animated` for the MP4 set.
+
+Reference renders from 2026-11-20 (orgchart, maxxing, timely, plus TikTok variants) live in `/workspace/carousels-samples/v3-animated-*/`. Today's Claude Code MCP deck stores its animated set at `src/assets/social/carousels/2026-11-23-claude-code-mcp-checks/animated/preview.mp4`.
+
+Updates in `growth/carousels/generate.py`:
 
 ```bash
 python3 growth/carousels/generate.py --format v3 --size both --cta newsletter --out /workspace/carousels-samples --zip

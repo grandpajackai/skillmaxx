@@ -854,6 +854,869 @@ def wrap_slide(
 {script_tag}</body></html>"""
 
 
+
+# ---------------------------------------------------------------------------
+# Layout archetypes for tip / how-to carousels
+# ---------------------------------------------------------------------------
+# Reusable slide layouts so a deck does not repeat the same "headline + body
+# + stacked boxes" frame on every slide. Visual language matches the v3
+# generator (Inter / JetBrains Mono, lime #C6F432, dark #0A0A0B, logo,
+# typography floors in BASE_CSS). Built for the default 1080x1350 canvas.
+#
+# Archetypes:
+#   cover_hook_strip  — big-type hook + compact numbered strip
+#   terminal          — realistic terminal window (title-bar dots, mono, status colors)
+#   scope_tiers       — nested / stacked scope diagram
+#   split_gotcha      — command card + large gotcha callout
+#   two_path          — two-path flow with arrows
+#   lookup_card       — result-lookup card + platform chips
+#   cta_fullbleed     — accent full-bleed subscribe slide
+#
+# Vary background with bg="a"|"b"|"c"|"d"|"e"|"f"|"cta". Use motif="01"
+# for the large outlined check number. wrap_archetype_slide adds a swipe cue.
+
+ARCHETYPE_CSS = """
+.slide.bg-a {
+  background:
+    radial-gradient(640px 420px at 92% 4%, rgba(198,244,50,0.16), transparent 65%),
+    radial-gradient(520px 360px at 8% 96%, rgba(34,211,238,0.08), transparent 65%),
+    #0A0A0B;
+}
+.slide.bg-b {
+  background:
+    radial-gradient(620px 480px at 8% 18%, rgba(198,244,50,0.15), transparent 62%),
+    radial-gradient(500px 380px at 92% 88%, rgba(34,211,238,0.10), transparent 65%),
+    #0A0A0B;
+}
+.slide.bg-c {
+  background:
+    radial-gradient(700px 460px at 50% 0%, rgba(198,244,50,0.14), transparent 60%),
+    radial-gradient(480px 340px at 100% 100%, rgba(34,211,238,0.10), transparent 62%),
+    #0A0A0B;
+}
+.slide.bg-d {
+  background:
+    radial-gradient(580px 500px at 100% 42%, rgba(198,244,50,0.15), transparent 62%),
+    radial-gradient(460px 340px at 0% 80%, rgba(34,211,238,0.11), transparent 65%),
+    #0A0A0B;
+}
+.slide.bg-e {
+  background:
+    radial-gradient(640px 420px at 16% 92%, rgba(198,244,50,0.15), transparent 62%),
+    radial-gradient(520px 360px at 88% 8%, rgba(34,211,238,0.10), transparent 65%),
+    #0A0A0B;
+}
+.slide.bg-f {
+  background:
+    radial-gradient(600px 440px at 78% 72%, rgba(198,244,50,0.14), transparent 62%),
+    radial-gradient(480px 360px at 10% 12%, rgba(34,211,238,0.10), transparent 65%),
+    #0A0A0B;
+}
+.slide.bg-cta {
+  background:
+    radial-gradient(920px 760px at 50% 42%, rgba(198,244,50,0.28), transparent 58%),
+    radial-gradient(520px 360px at 8% 96%, rgba(34,211,238,0.10), transparent 65%),
+    #0A0A0B;
+}
+.arch-motif {
+  position: absolute;
+  right: -110px;
+  top: 34%;
+  bottom: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 260px;
+  font-weight: 800;
+  line-height: 0.75;
+  color: transparent;
+  -webkit-text-stroke: 3px rgba(198,244,50,0.13);
+  pointer-events: none;
+  z-index: 0;
+  letter-spacing: -0.08em;
+  user-select: none;
+}
+.slide.bg-cta .arch-motif {
+  -webkit-text-stroke: 3px rgba(198,244,50,0.22);
+}
+.slide > .topbar,
+.slide > .content,
+.slide > .swipe-cue,
+.slide > .footer {
+  position: relative;
+  z-index: 1;
+}
+.tag {
+  font-size: 22px;
+}
+.swipe-cue {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 14px;
+  padding-top: 0;
+}
+.swipe-pips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.swipe-pips span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2A2A30;
+  border: 1px solid rgba(255,255,255,0.14);
+}
+.swipe-pips span.on {
+  width: 28px;
+  border-radius: 99px;
+  background: #C6F432;
+  border-color: #C6F432;
+}
+.swipe-next {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  color: #D1D5DB;
+  letter-spacing: 0.02em;
+}
+.swipe-next b { color: #E5E7EB; font-weight: 600; }
+
+/* Cover: compact numbered strip */
+.arch-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: #121215;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 22px;
+  overflow: hidden;
+  margin-top: 4px;
+  flex: 1;
+}
+.arch-strip-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 22px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  flex: 1;
+}
+.arch-strip-row:last-child { border-bottom: none; }
+.arch-strip-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  font-weight: 700;
+  color: #C6F432;
+  width: 44px;
+  flex: none;
+}
+.arch-strip-copy {
+  font-size: 28px;
+  font-weight: 600;
+  color: #EDEDEF;
+  line-height: 1.3;
+}
+.arch-strip-copy b {
+  color: #C6F432;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Realistic terminal */
+.term {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: #0E0E12;
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 18px 44px rgba(0,0,0,0.55);
+}
+.term-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 18px;
+  background: #16161B;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  color: #D1D5DB;
+}
+.term-dots { display: flex; align-items: center; gap: 8px; margin-right: 10px; }
+.term-dot { width: 12px; height: 12px; border-radius: 50%; }
+.term-body {
+  flex: 1;
+  padding: 22px 24px 24px;
+  font-family: 'JetBrains Mono', monospace;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+.term-cmd {
+  font-size: 28px;
+  font-weight: 700;
+  color: #C6F432;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.term-cmd .prompt { color: #67E8F9; font-weight: 700; margin-right: 10px; }
+.term-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.term-line .mark {
+  font-size: 28px;
+  font-weight: 700;
+  flex: none;
+  width: 28px;
+  line-height: 1.25;
+}
+.term-line .ttl {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
+.term-line .desc {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 28px;
+  color: #E5E7EB;
+  line-height: 1.3;
+  font-weight: 500;
+}
+.term-line.ok { border-color: rgba(198,244,50,0.32); background: rgba(198,244,50,0.06); }
+.term-line.ok .mark, .term-line.ok .ttl { color: #C6F432; }
+.term-line.auth { border-color: rgba(245,158,11,0.40); background: rgba(245,158,11,0.08); }
+.term-line.auth .mark, .term-line.auth .ttl { color: #FCD34D; }
+.term-line.fail { border-color: rgba(239,68,68,0.40); background: rgba(239,68,68,0.08); }
+.term-line.fail .mark, .term-line.fail .ttl { color: #FCA5A5; }
+
+/* Scope tiers */
+.scope-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  min-height: 0;
+  justify-content: center;
+}
+.scope-tier {
+  border-radius: 18px;
+  padding: 18px 22px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: #121215;
+}
+.scope-tier.local {
+  margin-left: 72px;
+  margin-right: 72px;
+  border-color: rgba(198,244,50,0.55);
+  background: #161C0E;
+  box-shadow: 0 0 0 1px rgba(198,244,50,0.12);
+}
+.scope-tier.project {
+  margin-left: 36px;
+  margin-right: 36px;
+  border-color: rgba(34,211,238,0.35);
+  background: #0E1618;
+}
+.scope-tier.user {
+  margin-left: 0;
+  margin-right: 0;
+}
+.scope-tier .name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 28px;
+  font-weight: 700;
+  color: #C6F432;
+  margin-bottom: 4px;
+}
+.scope-tier.project .name { color: #67E8F9; }
+.scope-tier.user .name { color: #EDEDEF; }
+.scope-tier .copy {
+  font-size: 28px;
+  color: #E5E7EB;
+  line-height: 1.35;
+}
+
+/* Split gotcha */
+.split-gotcha {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+  min-height: 0;
+}
+.gotcha {
+  background: linear-gradient(180deg, #2A1E0A, #16120A);
+  border: 1.5px solid rgba(245,158,11,0.48);
+  border-radius: 22px;
+  padding: 24px 26px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.40);
+}
+.gotcha-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #FCD34D;
+  margin-bottom: 10px;
+}
+.gotcha-head {
+  font-size: 36px;
+  font-weight: 800;
+  color: #EDEDEF;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+.gotcha-body {
+  font-size: 28px;
+  color: #E5E7EB;
+  line-height: 1.4;
+}
+
+/* Command card (shared) */
+.cmd-card {
+  background: #0E0E12;
+  border: 1px solid rgba(198,244,50,0.32);
+  border-radius: 20px;
+  padding: 22px 24px;
+}
+.cmd-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #D1D5DB;
+  margin-bottom: 10px;
+}
+.cmd-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 28px;
+  font-weight: 700;
+  color: #C6F432;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-break: break-word;
+  letter-spacing: -0.02em;
+}
+
+/* Two-path flow */
+.path-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+  min-height: 0;
+  justify-content: center;
+}
+.path-row {
+  display: grid;
+  grid-template-columns: 1fr 44px 1fr;
+  gap: 0;
+  align-items: stretch;
+}
+.path-card {
+  background: #121215;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 18px;
+  padding: 18px 20px;
+  position: relative;
+  z-index: 1;
+}
+.path-card.left { border-color: rgba(198,244,50,0.36); background: #161C0E; }
+.path-card.right { border-color: rgba(34,211,238,0.36); background: #0E1618; }
+.path-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.path-card.left .path-kicker { color: #C6F432; }
+.path-card.right .path-kicker { color: #67E8F9; }
+.path-copy {
+  font-size: 28px;
+  color: #E5E7EB;
+  line-height: 1.35;
+}
+.path-copy b {
+  color: #C6F432;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+}
+.path-join {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 28px;
+  color: #D1D5DB;
+}
+.path-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #C6F432;
+  line-height: 1;
+}
+.path-after {
+  background: #121215;
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 16px;
+  padding: 16px 20px;
+  font-size: 28px;
+  color: #E5E7EB;
+  line-height: 1.35;
+}
+.path-after b {
+  color: #C6F432;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+}
+
+/* Lookup card */
+.lookup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 0;
+  justify-content: center;
+}
+.lookup-card {
+  background: #121215;
+  border: 1px solid rgba(198,244,50,0.36);
+  border-radius: 22px;
+  padding: 24px 26px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.40), 0 0 28px rgba(198,244,50,0.08);
+  position: relative;
+  z-index: 1;
+}
+.lookup-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #D1D5DB;
+  margin-bottom: 10px;
+}
+.lookup-url {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 28px;
+  font-weight: 700;
+  color: #C6F432;
+  line-height: 1.35;
+  word-break: break-all;
+  margin-bottom: 18px;
+}
+.lookup-badge {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #0E0E12;
+  border: 1px dashed rgba(198,244,50,0.40);
+  border-radius: 16px;
+  padding: 16px 18px;
+}
+.lookup-badge-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #C6F432;
+}
+.lookup-badge-note {
+  font-size: 28px;
+  color: #E5E7EB;
+  line-height: 1.35;
+}
+.chip-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.chip-row-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #D1D5DB;
+}
+.plat-chip {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #121215;
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 16px;
+  padding: 14px 18px;
+}
+.plat-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 28px;
+  font-weight: 700;
+  color: #C6F432;
+  flex: none;
+  min-width: 120px;
+}
+.plat-copy {
+  font-size: 28px;
+  color: #E5E7EB;
+  line-height: 1.3;
+}
+
+/* Full-bleed CTA */
+.cta-bleed {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.cta-bleed-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #C6F432;
+  border-radius: 28px;
+  padding: 36px 40px;
+  margin-top: 8px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.45), 0 0 50px rgba(198,244,50,0.28);
+  color: #0A0A0B;
+}
+.cta-bleed-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0A0A0B;
+  margin-bottom: 10px;
+}
+.cta-bleed-title {
+  font-size: 64px;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  color: #0A0A0B;
+  margin-bottom: 22px;
+}
+.cta-bleed-url {
+  display: inline-block;
+  align-self: flex-start;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 30px;
+  font-weight: 800;
+  color: #C6F432;
+  background: #0A0A0B;
+  padding: 16px 22px;
+  border-radius: 16px;
+  margin: 0 0 22px;
+  letter-spacing: -0.02em;
+  word-break: break-all;
+}
+.cta-bleed-tag {
+  font-size: 36px;
+  font-weight: 800;
+  color: #0A0A0B;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+.cta-bleed-desc {
+  font-size: 28px;
+  color: #14300A;
+  line-height: 1.4;
+}
+
+/* Shared visual column */
+.visual {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 0;
+  gap: 14px;
+  margin-top: 4px;
+}
+"""
+
+
+def anim_attr(animate: bool, kind: str, **kwargs) -> str:
+    """Build a data-anim attribute string for ANIM_JS, or empty when still."""
+    if not animate:
+        return ""
+    parts = [f'data-anim="{kind}"']
+    for key, val in kwargs.items():
+        attr = key.replace("_", "-")
+        parts.append(f'data-{attr}="{val}"')
+    return " " + " ".join(parts)
+
+
+def motif_html(num: str | None) -> str:
+    if not num:
+        return ""
+    return f'<div class="arch-motif" aria-hidden="true">{esc(str(num))}</div>'
+
+
+def swipe_cue_html(idx: int, total: int, next_label: str | None = None, is_last: bool = False) -> str:
+    pips_html = []
+    for i in range(1, total + 1):
+        cls = ' class="on"' if i == idx else ""
+        pips_html.append(f"<span{cls}></span>")
+    if is_last:
+        nxt = "Free Sunday newsletter"
+    elif next_label:
+        nxt = f"Next: {esc(next_label)}  →"
+    else:
+        nxt = "Swipe →"
+    return (
+        f'<div class="swipe-cue">'
+        f'<div class="swipe-pips">{"".join(pips_html)}</div>'
+        f'<div class="swipe-next"><b>{nxt}</b></div>'
+        f"</div>"
+    )
+
+
+def wrap_archetype_slide(
+    body: str,
+    idx: int,
+    total: int,
+    badge: str,
+    *,
+    footer_right: str | None = None,
+    animate: bool = False,
+    duration: float = 5.5,
+    bg: str = "a",
+    motif: str | None = None,
+    next_label: str | None = None,
+    extra_css: str = "",
+) -> str:
+    """v3 chrome (logo, typography floors, footer) plus a per-slide layout class."""
+    is_last = idx >= total
+    if footer_right is None:
+        footer_right = "Free Sunday newsletter" if is_last else "Swipe →"
+    dur_attr = f' data-duration="{duration:.2f}"' if animate else ""
+    script_tag = f"<script>{ANIM_JS}</script>" if animate else ""
+    chip = preview_chip()
+    bg_class = f"bg-{bg}" if bg else "bg-a"
+    return f"""<!doctype html>
+<html><head><meta charset="utf-8"><style>{font_css()}{base_css()}{ARCHETYPE_CSS}{extra_css}</style></head>
+<body>
+  <div class="slide {bg_class}"{dur_attr}>
+    {motif_html(motif)}
+    <div class="topbar">
+      <div class="brand">{brand_mark(46)}<div>Skill<span>Maxx</span></div></div>
+      <div class="top-meta">
+        <div class="tag">{esc(badge)}</div>
+        <div class="page-num">{idx:02d} / {total:02d}</div>
+      </div>
+    </div>
+    <div class="content">{chip}{body}</div>
+    {swipe_cue_html(idx, total, next_label, is_last)}
+    <div class="footer">
+      <div><b>skillmaxx.gilventures.ai</b></div>
+      <div>{esc(footer_right)}</div>
+    </div>
+  </div>
+{script_tag}</body></html>"""
+
+
+def cover_check_strip(items: list[dict], animate: bool = False) -> str:
+    """Compact numbered strip for a cover. items: [{num, html}] html is pre-escaped."""
+    rows = []
+    for i, it in enumerate(items):
+        delay = f"{0.28 + i * 0.10:.2f}"
+        attr = anim_attr(animate, "row", delay=delay, dur="0.36")
+        rows.append(
+            f'<div class="arch-strip-row"{attr}>'
+            f'<div class="arch-strip-num">{esc(it["num"])}</div>'
+            f'<div class="arch-strip-copy">{it["html"]}</div>'
+            f"</div>"
+        )
+    pop = anim_attr(animate, "pop", delay="0.18", dur="0.40", from_y="16", from_scale="0.96")
+    return f'<div class="arch-strip"{pop}>{"".join(rows)}</div>'
+
+
+def terminal_window(
+    *,
+    title: str,
+    command: str,
+    lines: list[dict],
+    animate: bool = False,
+    delay: float = 0.2,
+) -> str:
+    """Realistic terminal. lines: [{kind: ok|auth|fail, mark, title, desc}]."""
+    pop = anim_attr(animate, "pop", delay=f"{delay:.2f}", dur="0.44", from_y="18", from_scale="0.94")
+    cmd_attr = anim_attr(animate, "row", delay=f"{delay + 0.18:.2f}", dur="0.32")
+    body_lines = [
+        f'<div class="term-cmd"{cmd_attr}><span class="prompt">$</span>{esc(command)}</div>'
+    ]
+    for i, ln in enumerate(lines):
+        kind = ln.get("kind") or "ok"
+        d = delay + 0.38 + i * 0.16
+        attr = anim_attr(animate, "row", delay=f"{d:.2f}", dur="0.36")
+        body_lines.append(
+            f'<div class="term-line {esc(kind)}"{attr}>'
+            f'<div class="mark">{esc(ln.get("mark") or "")}</div>'
+            f"<div><div class=\"ttl\">{esc(ln['title'])}</div>"
+            f'<div class="desc">{esc(ln["desc"])}</div></div>'
+            f"</div>"
+        )
+    return (
+        f'<div class="term"{pop}>'
+        f'<div class="term-bar"><div class="term-dots">'
+        f'<span class="term-dot" style="background:#EF4444"></span>'
+        f'<span class="term-dot" style="background:#F59E0B"></span>'
+        f'<span class="term-dot" style="background:#22C55E"></span>'
+        f"</div>{esc(title)}</div>"
+        f'<div class="term-body">{"".join(body_lines)}</div>'
+        f"</div>"
+    )
+
+
+def command_card(*, kicker: str, command: str, animate: bool = False, delay: float = 0.2) -> str:
+    pop = anim_attr(animate, "pop", delay=f"{delay:.2f}", dur="0.42", from_y="16", from_scale="0.96")
+    return (
+        f'<div class="cmd-card"{pop}>'
+        f'<div class="cmd-kicker">{esc(kicker)}</div>'
+        f'<div class="cmd-pill">{esc(command)}</div>'
+        f"</div>"
+    )
+
+
+def scope_tiers(tiers: list[dict], animate: bool = False) -> str:
+    """Stacked scope diagram. tiers: [{kind, name, copy}] kind is local|project|user."""
+    cards = []
+    for i, t in enumerate(tiers):
+        d = 0.22 + i * 0.16
+        attr = anim_attr(animate, "pop", delay=f"{d:.2f}", dur="0.40", from_y="18", from_scale="0.94")
+        kind = t.get("kind") or "user"
+        cards.append(
+            f'<div class="scope-tier {esc(kind)}"{attr}>'
+            f'<div class="name">{esc(t["name"])}</div>'
+            f'<div class="copy">{t["copy"]}</div>'
+            f"</div>"
+        )
+    return f'<div class="scope-stack">{"".join(cards)}</div>'
+
+
+def gotcha_callout(*, kicker: str, headline: str, body: str, animate: bool = False, delay: float = 0.55) -> str:
+    pop = anim_attr(animate, "pop", delay=f"{delay:.2f}", dur="0.46", from_y="20", from_scale="0.95")
+    glow = anim_attr(animate, "glow", delay=f"{delay + 0.5:.2f}", period="3.4")
+    return (
+        f'<div class="gotcha"{pop}>'
+        f'<div class="gotcha-kicker">{esc(kicker)}</div>'
+        f'<div class="gotcha-head"{glow}>{esc(headline)}</div>'
+        f'<div class="gotcha-body">{body}</div>'
+        f"</div>"
+    )
+
+
+def two_path_flow(
+    *,
+    left_kicker: str,
+    left_html: str,
+    right_kicker: str,
+    right_html: str,
+    after: list[str],
+    animate: bool = False,
+) -> str:
+    left_a = anim_attr(animate, "pop", delay="0.22", dur="0.40", from_y="16", from_scale="0.94")
+    right_a = anim_attr(animate, "pop", delay="0.34", dur="0.40", from_y="16", from_scale="0.94")
+    arrow_a = anim_attr(animate, "pop", delay="0.50", dur="0.30", from_y="8", from_scale="0.9")
+    parts = [
+        f'<div class="path-row">'
+        f'<div class="path-card left"{left_a}><div class="path-kicker">{esc(left_kicker)}</div>'
+        f'<div class="path-copy">{left_html}</div></div>'
+        f'<div class="path-join"{arrow_a}>or</div>'
+        f'<div class="path-card right"{right_a}><div class="path-kicker">{esc(right_kicker)}</div>'
+        f'<div class="path-copy">{right_html}</div></div>'
+        f"</div>"
+        f'<div class="path-arrow"{arrow_a}>↓</div>'
+    ]
+    for i, html in enumerate(after):
+        d = 0.62 + i * 0.16
+        attr = anim_attr(animate, "row", delay=f"{d:.2f}", dur="0.36")
+        parts.append(f'<div class="path-after"{attr}>{html}</div>')
+        if i < len(after) - 1:
+            parts.append(f'<div class="path-arrow"{anim_attr(animate, "pop", delay=f"{d + 0.08:.2f}", dur="0.24")}>↓</div>')
+    return f'<div class="path-flow">{"".join(parts)}</div>'
+
+
+def lookup_result_card(
+    *,
+    kicker: str,
+    url: str,
+    badge_label: str,
+    badge_note: str,
+    chips_kicker: str,
+    chips: list[dict],
+    animate: bool = False,
+) -> str:
+    """Lookup card. badge_note must say the badge is illustrative when it is a mock."""
+    pop = anim_attr(animate, "pop", delay="0.22", dur="0.44", from_y="18", from_scale="0.95")
+    chip_bits = [f'<div class="chip-row-label">{esc(chips_kicker)}</div>']
+    for i, ch in enumerate(chips):
+        attr = anim_attr(animate, "row", delay=f"{0.50 + i * 0.12:.2f}", dur="0.34")
+        chip_bits.append(
+            f'<div class="plat-chip"{attr}>'
+            f'<div class="plat-name">{esc(ch["name"])}</div>'
+            f'<div class="plat-copy">{esc(ch["copy"])}</div>'
+            f"</div>"
+        )
+    return (
+        f'<div class="lookup">'
+        f'<div class="lookup-card"{pop}>'
+        f'<div class="lookup-kicker">{esc(kicker)}</div>'
+        f'<div class="lookup-url">{esc(url)}</div>'
+        f'<div class="lookup-badge">'
+        f'<div class="lookup-badge-label">{esc(badge_label)}</div>'
+        f'<div class="lookup-badge-note">{esc(badge_note)}</div>'
+        f"</div></div>"
+        f'<div class="chip-row">{"".join(chip_bits)}</div>'
+        f"</div>"
+    )
+
+
+def cta_bleed_panel(
+    *,
+    kicker: str,
+    title_html: str,
+    url: str,
+    tagline: str,
+    desc: str,
+    animate: bool = False,
+) -> str:
+    pop = anim_attr(animate, "pop", delay="0.28", dur="0.50", from_y="22", from_scale="0.94")
+    glow = anim_attr(animate, "glow", delay="1.10", period="3.45")
+    kick = f'<div class="cta-bleed-kicker">{esc(kicker)}</div>' if kicker else ""
+    title = f'<div class="cta-bleed-title">{title_html}</div>' if title_html else ""
+    tag = f'<div class="cta-bleed-tag">{esc(tagline)}</div>' if tagline else ""
+    desc_h = f'<div class="cta-bleed-desc">{esc(desc)}</div>' if desc else ""
+    return (
+        f'<div class="cta-bleed-panel"{pop}>'
+        f"{kick}{title}"
+        f'<div class="cta-bleed-url"{glow}>{esc(url)}</div>'
+        f"{tag}{desc_h}"
+        f"</div>"
+    )
+
+
 def build_news_slides(data: dict) -> list[str]:
     rep, wk, skills = data["rep"], data["wk"], data["skills"]
     d_lbl = fmt_date(rep["date"])
