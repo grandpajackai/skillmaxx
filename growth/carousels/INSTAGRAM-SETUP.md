@@ -1,8 +1,25 @@
-# SkillMaxx Instagram setup (Buffer slot after Bluesky moves off)
+# SkillMaxx Instagram setup (account disabled)
 
-Brandon chose to move Bluesky posting off Buffer so this Instagram account can use the freed channel on the free plan (3 channels, 10 scheduled posts each). Carousels stay on Buffer; Bluesky is direct via the AT Protocol ([`growth/social/BLUESKY.md`](../social/BLUESKY.md)). CTA stays the newsletter until Brandon picks otherwise.
+**Status (2026-11-23, America/New_York):** Meta permanently disabled the SkillMaxx Instagram account `@skillmaxxai` for a Community Standards violation. The in-app page said the account goes against Community Standards, nobody can see it anymore, and "You cannot request another review of this decision." The appeal is over. The account and its data are set to be deleted.
 
-Nothing in this document should be posted or connected until the SkillMaxx Instagram account exists and the Bluesky Buffer channel has been disconnected (after the direct poster is confirmed live).
+## What this means
+
+- Do not check the appeal, reconnect Buffer, or queue posts to Instagram. There is no restore path.
+- Carousels continue on LinkedIn and X via Buffer, as already scheduled and planned.
+- Reuse the animated v3 MP4s (`animated/slide-0N.mp4` and `animated/preview.mp4`) as short video posts on the channels we still have. Do not leave them waiting for Instagram.
+- A brand-new Instagram account is Brandon's call. Meta just banned this one, so a new account could get flagged too. Do not create, name, or connect a replacement unless Brandon asks.
+
+Telegram request `req-003-instagram-skillmaxx` is cancelled. The Buffer Bluesky disconnect can still happen on its own schedule (see [`growth/social/BLUESKY.md`](../social/BLUESKY.md)); do not automatically connect Instagram in the freed slot.
+
+The rest of this file is the original Buffer setup and posting plan, kept as a reference **only if** Brandon later approves a new Professional account. Treat every "create the account" / "once the account exists" step below as paused until that decision.
+
+---
+
+# Original setup notes (paused)
+
+Brandon chose to move Bluesky posting off Buffer so an Instagram account could use the freed channel on the free plan (3 channels, 10 scheduled posts each). Carousels stay on Buffer; Bluesky is direct via the AT Protocol ([`growth/social/BLUESKY.md`](../social/BLUESKY.md)). CTA stays the newsletter until Brandon picks otherwise.
+
+Nothing in the paused notes below should be posted or connected unless Brandon later approves a new SkillMaxx Instagram account and the Bluesky Buffer channel has been disconnected (after the direct poster is confirmed live).
 
 ## What Brandon needs to do
 
@@ -15,7 +32,7 @@ Only Brandon can create the account (Instagram asks for a phone). Use the SkillM
    - Bio (draft): `Which AI-agent skills, plugins and MCP servers actually install. Nightly tests in Claude Code, Codex, Grok Build, Cursor and Pi.`
    - Link: `https://skillmaxx.gilventures.ai/newsletter/` (newsletter CTA). Website field if Instagram shows one: the same URL, or `https://skillmaxx.gilventures.ai/` with the newsletter in the bio.
 4. **No Facebook Page is required** for the setup we want. Buffer can auto-publish, show Insights, and manage comments when a Professional account is connected with an Instagram login. A linked Facebook Page is optional and is only needed later for locations, collaborators, liking mentions in Community, or music on Reels with automatic publishing.
-5. **Tell the CEO agent in chat** when the account is a Creator or Business profile and share the handle. Do not connect it to Buffer until Bluesky is off that slot (otherwise the free plan would lock a channel). A Telegram request for this work is in `growth/telegram/REQUESTS.json` (`req-003-instagram-skillmaxx`).
+5. **Tell the CEO agent in chat** when a new account (if Brandon approved one) is a Creator or Business profile and share the handle. Do not connect it to Buffer until Bluesky is off that slot (otherwise the free plan would lock a channel). Telegram request `req-003-instagram-skillmaxx` was cancelled on 2026-11-23 after Meta permanently disabled `@skillmaxxai`.
 
 Full steps for connecting later are in the Buffer doc linked below. Use a desktop browser, log out of other Instagram accounts first, then in Buffer: profile avatar (bottom left) → **Channels** → **Connect Channel** → **Instagram** → under **Professional**, **Connect to Instagram**, and sign in as the SkillMaxx account. Select all permissions.
 

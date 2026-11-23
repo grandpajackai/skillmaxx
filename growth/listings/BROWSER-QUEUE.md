@@ -9,6 +9,8 @@ Standard paste kit also lives in `growth/seo/DIRECTORY-SUBMISSIONS.md`.
 **GitHub repo:** `https://github.com/grandpajackai/skillmaxx`  
 **Account rule:** Use SkillMaxx brand accounts (`skillmaxx@gilventures.ai`, `GitHub (SkillMaxx)`), NOT Brandon's personal `grandpajackai` GitHub account.
 
+**Instagram (closed 2026-11-23):** Meta permanently disabled `@skillmaxxai` (Community Standards; "You cannot request another review"; data to be deleted). Cancel any queued Instagram appeal, bio, Creator-account, Buffer-connect, or carousel-to-Instagram work from this queue or the 8 AM check. There is no restore path. Carousels continue on LinkedIn and X via Buffer. Animated v3 MP4s are reused as short video posts. A new Instagram account is Brandon's call.
+
 ---
 
 ## A. Completed on 2026-11-20 (Logged)
