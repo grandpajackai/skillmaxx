@@ -64,7 +64,21 @@ Rule: unfollow accounts we followed more than 7 days ago that haven't followed b
 | 2026-11-19 | @alexn.org | dev posting about agent skills | no |
 | 2026-11-19 | @maritvandijk.bsky.social | JetBrains devrel, MCP/skills security talk | no |
 
+
+| 2026-11-23 | @liveswarm.bsky.social | follow-back (follows us); Claude Code plugin that shows agent cursors on the page | yes |
+| 2026-11-23 | @den.dev | MCP lead maintainer, asked favorite MCP server | no |
+| 2026-11-23 | @denys.dev | built a Bluesky MCP server with an agent, posts about MCP | no |
+| 2026-11-23 | @tech-val.bsky.social | posted about cutting 200 Claude Code skills down to 8 | no |
+| 2026-11-23 | @michabbb.bsky.social | posted about NVIDIA SkillEvaluator (overlap detection) | no |
+| 2026-11-23 | @arielfrischer.bsky.social | built handup (approval inbox for coding agents) | no |
+| 2026-11-23 | @sdas86.bsky.social | posted about stitch-skills for the Stitch MCP server | no |
+| 2026-11-23 | @katsuraiwamoto.bsky.social | building a Nikon camera MCP server | no |
+| 2026-11-23 | @thebadcode.com | Bluesky SRE, posted about diderot MCP / CLI | no |
+| 2026-11-23 | @ccfteam.bsky.social | posted about tool-result prompt injection / daylight test | no |
+
+
 ## Run log
+- 2026-11-23 (Mon, AT Protocol API via `growth/bluesky/bsky_api.py`; box browser was signed out of bsky.app): +10 follows (rows above; liveswarm is a follow-back; none skipped — liveswarm is a product account, not a self-described AI/bot). 0 unfollows. Counts after run: 16 followers / 46 following. Replied to 6 planned posts: claimidx (uvx first-line split, wording checked against testing/results/2026-11-12.json and 2026-11-13.json; https://bsky.app/profile/skillmaxx.bsky.social/post/3n2yqro2v3u2f), ccfteam (daylight test; 3n2yqrsq2xs2o), den.dev (sequential-thinking; 3n2yqrxemz22a), tech-val (200 skills to 8; 3n2yqs3ugr22k), michabbb (overlap detection; 3n2yqsaev4n2b), arielfrischer (approval inbox; 3n2yqsfeqe52b). Notifications since Thu Nov 19: answered skatkov's PreToolHook reply (https://bsky.app/profile/skillmaxx.bsky.social/post/3n2yqsjvngs2o). Skipped jonasnguyen (restated the same dry-run point, no question) and buckbee ("Me too!"). claimidx and ccfteam notification replies were the planned A1/A2 posts. Liked 12 posts (the 6 reply targets plus denys.dev, sdas86, katsuraiwamoto, thebadcode, everydevai, osrepos); none were already liked. Future community runs should use `growth/bluesky/bsky_api.py`, not the browser.
 - 2026-10-31: +11 follows, 0 unfollows (no log entries older than 7 days yet). Counts after run: 3 followers / 43 following. Liked 9 builder posts, 5 no-pitch replies (gracefullight, adegoodyer, aethelgardshuman, mailfully, jonasnguyen). Replied to claimidx with nightly 5/5 results. Tagged @anthropic.com and @mariozechner.at in the Nov 1 Buffer scorecard post (no Bluesky accounts found for OpenAI, Cursor or xAI).
 - 2026-11-01: +9 follows, 0 unfollows (nothing older than 7 days). Counts after run: 6 followers / 52 following. Replied to jonasnguyen (idempotency keys) and claimidx (tool-call pass on wishlist). Liked 10 builder posts, 4 no-pitch replies (apievangelist, only-mcp, karanluthra, michaelho02). No new repos shared. Did not follow back gleephoenix (self-disclosed AI-operated) or watermlonmusk (spammy). Tagged @anthropic.com and @sentry.io in the Nov 2 Buffer Bluesky tip post. Browser flagged hidden AI-agent instructions on our own profile page (bsky.app/profile/skillmaxx.bsky.social); not followed — worth checking our bio/pinned post.
 - 2026-11-02: +10 follows, 0 unfollows (nothing older than 7 days). Counts after run: 8 followers / 62 following. Replied to only-mcp (tool prefixes), claimidx (claimidx_ask tip, tool-call pass on wishlist) and aethelgardshuman (agent-postbox added to nightly queue, results promised). Liked ~10 builder posts, 6 no-pitch replies (lucasjosh, passagemath, hipstersmoothie, evansims, k33gorg, plus one more). Skipped tuperops, bossanova, moneyprinterops (AI-run/spammy). No Buffer posts for Nov 3 to tag. Note: our Bluesky display name is "SkillMaxx AI", which reads as an AI account.

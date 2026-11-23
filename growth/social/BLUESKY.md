@@ -67,6 +67,19 @@ Scheduled Buffer copies of the current queue were deleted on 2026-11-23 after `-
 
 Stale Buffer draft `6adfee163bff354cec696067` (planned Tue Nov 3 newsletter #2) was not migrated and was left as a draft. Do not schedule it.
 
+## Community actions (replies, likes, follows)
+
+Scheduled posts stay on `bluesky_post.py`. For replies, likes, follows, unfollows, and notification checks, use [`../bluesky/bsky_api.py`](../bluesky/bsky_api.py) with the same `bluesky.env` app password. Do not use the box browser for these (a signed-out bsky.app session is not required). Never print the app password or a session token.
+
+```bash
+python3 growth/bluesky/bsky_api.py login
+python3 growth/bluesky/bsky_api.py reply URL TEXT
+python3 growth/bluesky/bsky_api.py like URL
+python3 growth/bluesky/bsky_api.py follow HANDLE
+python3 growth/bluesky/bsky_api.py unfollow HANDLE
+python3 growth/bluesky/bsky_api.py notifications --since 2026-11-19T00:00:00-05:00 --reasons reply,mention,quote
+```
+
 ## After the script is confirmed live: disconnect Buffer Bluesky
 
 The channel is still connected. Free the slot in the browser (do not do this from an API/tooling pass that only takes posting live):
