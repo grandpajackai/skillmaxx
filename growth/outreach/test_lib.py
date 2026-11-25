@@ -32,14 +32,13 @@ class PostalTests(unittest.TestCase):
         else:
             os.environ["SKILLMAXX_OUTREACH_CONFIG"] = self._old_cfg
 
-    def test_unset_in_committed_config(self):
-        # The committed config.env must stay empty until Brandon approves an address.
+    def test_committed_config_has_approved_address(self):
         os.environ.pop("SKILLMAXX_POSTAL_ADDRESS", None)
         os.environ.pop("SKILLMAXX_OUTREACH_CONFIG", None)
-        self.assertEqual(outreach_config.postal_address(), "")
-        with self.assertRaises(SystemExit) as ctx:
-            outreach_config.require_postal_address()
-        self.assertIn("SKILLMAXX_POSTAL_ADDRESS is unset", str(ctx.exception))
+        addr = outreach_config.postal_address()
+        self.assertIn("66 W Flagler St #900", addr)
+        self.assertIn("Miami, FL 33130", addr)
+        self.assertEqual(outreach_config.require_postal_address(), addr)
 
     def test_footer_and_require(self):
         os.environ["SKILLMAXX_POSTAL_ADDRESS"] = "123 Example St, Springfield, IL 62701"
