@@ -4,8 +4,8 @@
   "start": "2026-11-23",
   "end": "2026-11-29",
   "first": "2026-11-23",
-  "last": "2026-11-24",
-  "runs": 2,
+  "last": "2026-11-25",
+  "runs": 3,
   "trend": [
    {
     "date": "2026-11-23",
@@ -22,53 +22,61 @@
     "total": 1085,
     "needs_key": 25,
     "rate": 86.9
+   },
+   {
+    "date": "2026-11-25",
+    "pass": 921,
+    "tested": 1060,
+    "total": 1085,
+    "needs_key": 25,
+    "rate": 86.9
    }
   ],
   "ranking": [
    {
     "agent": "claude_code",
     "name": "Claude Code",
-    "pass": 684,
-    "tested": 738,
-    "rate": 92.7,
-    "flaky": 15,
-    "needs_key": 10
+    "pass": 1029,
+    "tested": 1107,
+    "rate": 93.0,
+    "flaky": 18,
+    "needs_key": 15
    },
    {
     "agent": "grok_build",
     "name": "Grok Build",
-    "pass": 709,
-    "tested": 768,
-    "rate": 92.3,
-    "flaky": 11,
-    "needs_key": 10
+    "pass": 1067,
+    "tested": 1152,
+    "rate": 92.6,
+    "flaky": 16,
+    "needs_key": 15
    },
    {
     "agent": "codex",
     "name": "Codex",
-    "pass": 193,
-    "tested": 234,
-    "rate": 82.5,
-    "flaky": 7,
-    "needs_key": 10
+    "pass": 290,
+    "tested": 351,
+    "rate": 82.6,
+    "flaky": 10,
+    "needs_key": 15
    },
    {
     "agent": "cursor",
     "name": "Cursor",
-    "pass": 66,
-    "tested": 104,
-    "rate": 63.5,
-    "flaky": 11,
-    "needs_key": 10
+    "pass": 100,
+    "tested": 156,
+    "rate": 64.1,
+    "flaky": 13,
+    "needs_key": 15
    },
    {
     "agent": "pi",
     "name": "Pi",
-    "pass": 174,
-    "tested": 276,
+    "pass": 261,
+    "tested": 414,
     "rate": 63.0,
-    "flaky": 8,
-    "needs_key": 10
+    "flaky": 12,
+    "needs_key": 15
    }
   ],
   "fixed": [
@@ -127,34 +135,34 @@
   ],
   "flaky": [
    {
+    "slug": "mcp-local-rag",
+    "name": "mcp-local-rag",
+    "n": 6
+   },
+   {
+    "slug": "hyperframes",
+    "name": "Hyperframes",
+    "n": 5
+   },
+   {
     "slug": "mozilla-firefox-devtools-mcp",
     "name": "@mozilla/firefox-devtools-mcp",
     "n": 4
    },
    {
-    "slug": "hyperframes",
-    "name": "Hyperframes",
+    "slug": "ironbee-ai-devtools",
+    "name": "@ironbee-ai/devtools",
     "n": 4
    },
    {
-    "slug": "dangahagan-weather-mcp",
-    "name": "@dangahagan/weather-mcp",
-    "n": 3
-   },
-   {
-    "slug": "mozilla-firefox-devtools-mcp-moz",
-    "name": "@mozilla/firefox-devtools-mcp-moz",
-    "n": 3
-   },
-   {
-    "slug": "mcp-sequential-thinking",
-    "name": "MCP sequential-thinking (reference)",
-    "n": 3
+    "slug": "comfyui-mcp",
+    "name": "comfyui-mcp",
+    "n": 4
    }
   ],
-  "fixed_n": 50,
+  "fixed_n": 53,
   "broke_n": 9,
-  "flaky_n": 28,
+  "flaky_n": 31,
   "needs_key": 25,
   "standout": {
    "slug": "mcp-time",
@@ -171,7 +179,7 @@
    "stars": 91859
   },
   "version_changes": [],
-  "svg": "<svg viewBox=\"0 0 560 180\" width=\"100%\" role=\"img\" aria-labelledby=\"ct\" class=\"chart\" xmlns=\"http://www.w3.org/2000/svg\"><title id=\"ct\">Install pass rate by night: 2026-11-23 85.4%, 2026-11-24 86.9%</title><line x1=\"34\" y1=\"146\" x2=\"526\" y2=\"146\" stroke=\"currentColor\" stroke-opacity=\".25\"/><text x=\"4\" y=\"38\" font-size=\"11\" fill=\"currentColor\">89%</text><text x=\"4\" y=\"150\" font-size=\"11\" fill=\"currentColor\">80%</text><path d=\"M34.0,80.1 L526.0,60.4\" fill=\"none\" stroke=\"#22c55e\" stroke-width=\"3\" stroke-linejoin=\"round\"/><circle cx=\"34.0\" cy=\"80.1\" r=\"4\" fill=\"#22c55e\"/><text x=\"34.0\" y=\"71.1\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">85.4%</text><text x=\"34.0\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-23</text><circle cx=\"526.0\" cy=\"60.4\" r=\"4\" fill=\"#22c55e\"/><text x=\"526.0\" y=\"51.4\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">86.9%</text><text x=\"526.0\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-24</text></svg>",
+  "svg": "<svg viewBox=\"0 0 560 180\" width=\"100%\" role=\"img\" aria-labelledby=\"ct\" class=\"chart\" xmlns=\"http://www.w3.org/2000/svg\"><title id=\"ct\">Install pass rate by night: 2026-11-23 85.4%, 2026-11-24 86.9%, 2026-11-25 86.9%</title><line x1=\"34\" y1=\"146\" x2=\"526\" y2=\"146\" stroke=\"currentColor\" stroke-opacity=\".25\"/><text x=\"4\" y=\"38\" font-size=\"11\" fill=\"currentColor\">89%</text><text x=\"4\" y=\"150\" font-size=\"11\" fill=\"currentColor\">80%</text><path d=\"M34.0,80.1 L280.0,60.4 L526.0,60.4\" fill=\"none\" stroke=\"#22c55e\" stroke-width=\"3\" stroke-linejoin=\"round\"/><circle cx=\"34.0\" cy=\"80.1\" r=\"4\" fill=\"#22c55e\"/><text x=\"34.0\" y=\"71.1\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">85.4%</text><text x=\"34.0\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-23</text><circle cx=\"280.0\" cy=\"60.4\" r=\"4\" fill=\"#22c55e\"/><text x=\"280.0\" y=\"51.4\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">86.9%</text><text x=\"280.0\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-24</text><circle cx=\"526.0\" cy=\"60.4\" r=\"4\" fill=\"#22c55e\"/><text x=\"526.0\" y=\"51.4\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">86.9%</text><text x=\"526.0\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-25</text></svg>",
   "baseline_start": null,
   "no_valid_run": []
  },
