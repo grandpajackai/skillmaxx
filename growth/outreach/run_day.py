@@ -131,7 +131,21 @@ def main():
         res_path.write_text(json.dumps(res, indent=1) + "\n")
 
     if args.dry_run:
-        print(f"DRY RUN date={args.date} new={len(new_jobs)} fu={len(fu_jobs)}")
+        rows = lib.load_pipeline(PIPELINE) if PIPELINE.is_file() else []
+        today = dt.date.fromisoformat(args.date)
+        cap = lib.daily_cap(today, lib.bounce_dates_from_pipeline(rows), args.ramp_cap)
+        addr = outreach_config.postal_address()
+        footer = lib.can_spam_footer(addr)
+        print(f"DRY RUN date={args.date}")
+        print(f"hold lifted: yes")
+        print(f"postal address: {addr}")
+        print("footer:")
+        print(footer)
+        print(f"daily cap: {cap}")
+        print(f"spacing: {lib.MIN_GAP_SEC // 60}–{lib.MAX_GAP_SEC // 60} minutes ({lib.MIN_GAP_SEC}–{lib.MAX_GAP_SEC} seconds)")
+        print(f"new jobs: {len(new_jobs)}")
+        print(f"follow-ups: {len(fu_jobs)}")
+        print("No email sent.")
         return
 
     lock = open(LOCK_PATH, "w")
