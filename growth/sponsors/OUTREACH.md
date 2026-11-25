@@ -3,8 +3,9 @@
 **Status:** outreach started 2026-10-27 (Brandon approved start today; newsletter still first-sends Nov 3).  
 **Gate (updated 2026-10-27):** Brandon OK'd outbound now. Ramp cold email ~10/day week 1 (verified public addresses only — never guess). Contact forms can go faster. Still log every send in PIPELINE.csv; follow-ups day 7 / day 14 then stop.  
 **Audience honesty (say this every time):** SkillMaxx launched Oct 2026. Traffic and the list are tiny. Founding prices exist because of that. We share real numbers every month, even when they're small.  
-**Pacing & replies (updated 2026-10-28, Brandon t198):**
-- **Email pacing:** never send in a burst. Spread the day's cold emails at *random* intervals (roughly 20–60 min apart, jittered) between ~9:00 AM and ~6:00 PM America/New_York, weekdays. Daily cap stays on the ramp: ~10/day week 1 → ~20/day week 2 → max 30/day, only if zero bounces/spam complaints. A steady every-5-minutes cadence (~120/day) is **not** used: volume, not spacing, is what hurts a new domain.
+**Pacing & replies (updated 2026-11-25):**
+- **Email pacing:** never send in a burst. Spread the day's cold emails at *random* intervals (20–60 minutes apart, jittered) between **9:00 AM and 5:00 PM** America/New_York, weekdays. An 8-hour window at that gap is roughly 12–20 sends, which is fine. Daily cap follows the ramp (~10/day week 1 → ~20/day week 2 → max 30/day) **unless any bounce landed in the previous 7 days**, in which case the cap is **20/day**. A steady every-5-minutes cadence is **not** used.
+- **CAN-SPAM:** every cold pitch and follow-up must end with a one-line opt-out (`Not interested? Reply "no thanks" and I won't email again.`) plus a physical postal address read from `SKILLMAXX_POSTAL_ADDRESS` in `growth/outreach/config.env`. The sender (`growth/outreach/run_day.py` and `growth/scripts/zoho_mail.py send()`) **refuses to send any email** while that value is unset. Opt-out replies are marked `opted-out` in PIPELINE.csv (do-not-contact); no further mail.
 - **Contact forms:** no fixed cap beyond the 15–30/day target; still one per company, honest, logged.
 - **Every reply gets a quick, personal response** (same day, same thread with In-Reply-To/References): thank them by name, mention something specific about their product, answer only inside the approved sponsor model (send the matching advertise-page payment link if interested). Discounts/custom terms → draft only and report to Brandon.
 - **Decliners:** warm note, zero pitch/pressure, door open for later as the audience grows; light invite to follow the journey on X (@SkillMaxxAI) or Bluesky (skillmaxx.bsky.social) and say we'll follow back, plus the one-line newsletter invite from `growth/outreach/SUBSCRIBE_PS.md` (never on unsubscribes/opt-outs). Set status `declined-warm`, next_follow_up ≈ +90 days, no day-7/14 follow-ups.
@@ -33,7 +34,7 @@ Otherwise mark **UNVERIFIED** and say why (e.g. "newest source 177 days old", "L
 ## 1. Cold email (LinkedIn-level context, plain)
 
 **From:** skillmaxx@gilventures.ai  
-**To:** their public form / published partnerships email only (never invent an address)  
+**To:** a published address only (never invent or guess a name or address). Prefer a named partnerships or sponsorships contact when the brand publishes one on its own site — a `partnerships@` / `sponsors@` address, or a named marketing / DevRel person listed as the partner contact. Use `hello@` / `info@` / `sales@` / `contact@` only when no better published address exists. Record the source URL in the queue and in PIPELINE.csv notes. Helper: `select_published_contact` in `growth/outreach/lib.py`.
 **Length:** ≤150 words
 
 **Subject options (pick one):**
@@ -58,6 +59,8 @@ Brandon
 SkillMaxx · https://skillmaxx.gilventures.ai/advertise/
 
 P.S. If you'd like the weekly install results yourself, the SkillMaxx newsletter is free: https://skillmaxx.gilventures.ai/newsletter/
+Not interested? Reply "no thanks" and I won't email again.
+{approved postal address from growth/outreach/config.env}
 ```
 
 **Slot cheat sheet for the blank:**
@@ -86,6 +89,9 @@ Rules: only after you've publicly engaged their content once; no pitch in the fi
 
 ## 3. Follow-ups (2 steps, then stop)
 
+Before every follow-up, check **both** the mailbox (Inbox + Spam + Sent) **and** `PIPELINE.csv` status. Skip if the row is `Bounced`, `opted-out` / `do-not-contact`, `declined` / `declined-warm`, `Replied`, `Lost`, or `Warm - inbound`. A mailbox that looks quiet is not enough.
+
+
 ### Follow-up 1 — 7 days later
 **Subject:** Re: {original subject}
 
@@ -99,6 +105,8 @@ If sponsoring isn't a fit, a one-line "not now" is genuinely helpful, and so is 
 Brandon
 
 P.S. If you'd like the weekly install results yourself, the SkillMaxx newsletter is free: https://skillmaxx.gilventures.ai/newsletter/
+Not interested? Reply "no thanks" and I won't email again.
+{approved postal address from growth/outreach/config.env}
 ```
 
 ### Follow-up 2 — 14 days after first email (final)
@@ -115,6 +123,8 @@ Thanks either way,
 Brandon
 
 P.S. If you'd like the weekly install results yourself, the SkillMaxx newsletter is free: https://skillmaxx.gilventures.ai/newsletter/
+Not interested? Reply "no thanks" and I won't email again.
+{approved postal address from growth/outreach/config.env}
 ```
 
 After follow-up 2: set status **Lost** (or **Nurture** with next_touch = after 500 subs / BFCM week), no more outbound until a milestone.

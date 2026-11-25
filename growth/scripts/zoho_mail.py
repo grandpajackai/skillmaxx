@@ -15,8 +15,11 @@ Usage:
        reply threads the message on MESSAGE_ID (a message in Inbox or Sent) via action=reply.
 
 Sending is an outside action: only send what Brandon approved.
+send() refuses to call the API while SKILLMAXX_POSTAL_ADDRESS is unset
+(see growth/outreach/config.env). CLI --dry-run is allowed and does not send.
 """
 import argparse, json, os, sys, time, urllib.parse, urllib.request, html as htmlmod
+from pathlib import Path
 
 CREDS = os.environ.get("ZOHO_CREDS", "/home/box/.skillmaxx-secrets/zoho_skillmaxx.json")
 ACCOUNT = os.environ.get("ZOHO_ACCOUNT_ID", "7217576000000008002")
@@ -97,7 +100,16 @@ def _body(a):
     if a.html: return b, "html"
     return b, "plaintext"
 
+def _require_postal_address():
+    outreach = Path(__file__).resolve().parent.parent / "outreach"
+    outreach_s = str(outreach)
+    if outreach_s not in sys.path:
+        sys.path.insert(0, outreach_s)
+    from outreach_config import require_postal_address
+    require_postal_address()
+
 def send(to, subject, body, fmt="plaintext", cc=None, reply_to_mid=None):
+    _require_postal_address()
     p = {"fromAddress": FROM, "toAddress": to, "subject": subject, "content": body, "mailFormat": fmt}
     if cc: p["ccAddress"] = cc
     if reply_to_mid:

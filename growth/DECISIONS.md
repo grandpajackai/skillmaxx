@@ -141,3 +141,8 @@ No new owner decisions came in on Oct 31. Operating rules adopted after that day
 83. **Directory listings push:** Resume free awesome-lists, MCP/agent-skill directories, and dev newsletter submissions; track every submission in `growth/listings/LISTINGS.md` and `STATUS.md` (`growth/listings/BROWSER-QUEUE.md` holds browser/email dispatches and external GitHub PR targets).
 84. **First-subscriber Telegram alert:** Ping Brandon once via `~/Projects/brandon-hq/hq/alert.py` when the first non-test Beehiiv subscriber joins, excluding the 5 known test accounts (`testing/check_first_subscriber.py` + SHA-256 hashes in `testing/beehiiv_test_subscribers.json`).
 85. **Social carousels:** Replace Canva with a free local 1080×1350 generator (`growth/carousels/generate.py`) producing non-founder-facing News and Leaderboard carousels from nightly data for Instagram, LinkedIn, and X. Review 2 samples before posting or scheduling anything.
+
+## 2026-11-25
+86. **Advertise/submit autoresponses (reworded):** The Oct 26 FormSubmit text that said "No bots on this side of the inbox" is retired. Honest copy lives in `growth/inbound/autoresponse-advertise.txt` and `autoresponse-submit.txt`: Brandon reads every inquiry or submission; an AI assistant helps triage. Live `/advertise/` and `/submit/` forms post to the intake worker and do not send an email auto-response (FormSubmit was dropped in PR #88). Any future email auto-ack must use this copy and must skip a thread where Brandon or skillmaxx@ has already replied.
+87. **CAN-SPAM hold:** Commercial outreach is held until Brandon approves a physical postal address and it is set as `SKILLMAXX_POSTAL_ADDRESS` in `growth/outreach/config.env`. The sender will not send any email while it is unset.
+

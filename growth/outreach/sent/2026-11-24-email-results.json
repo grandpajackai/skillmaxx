@@ -1,0 +1,150 @@
+{
+ "date": "2026-11-24",
+ "sent": [
+  {
+   "company": "Northflank",
+   "to": "contact@northflank.com",
+   "subject": "a $19 test in front of people deploying agent workloads",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795537312693041600",
+   "sent_at": "2026-11-24 11:21:52 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Dagger",
+   "to": "contact@dagger.io",
+   "subject": "CI for agents, in front of people picking agent tools",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795537705145042000",
+   "sent_at": "2026-11-24 11:28:25 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "QA Wolf",
+   "to": "hello@qawolf.com",
+   "subject": "AI-driven QA, in front of people running coding agents",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795537988596042000",
+   "sent_at": "2026-11-24 11:33:08 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "BrowserStack",
+   "to": "partners@browserstack.com",
+   "subject": "testing across real devices, in front of agent builders",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795538355951040100",
+   "sent_at": "2026-11-24 11:39:16 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Namespace",
+   "to": "sales@namespace.so",
+   "subject": "fast CI in front of people running coding agents",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795538671381040100",
+   "sent_at": "2026-11-24 11:44:31 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Apidog",
+   "to": "sales@apidog.com",
+   "subject": "your MCP server and our nightly install tests",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795538971558040100",
+   "sent_at": "2026-11-24 11:49:31 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Cursor",
+   "to": "hi@cursor.com",
+   "subject": "a note from the people who install-test inside Cursor",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795539394612041600",
+   "sent_at": "2026-11-24 11:56:34 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Windsurf",
+   "to": "hello@windsurf.com",
+   "subject": "an AI editor in front of people picking coding agents",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795539734251040400",
+   "sent_at": "2026-11-24 12:02:14 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "PromptLayer",
+   "to": "sales@promptlayer.com",
+   "subject": "prompt tooling, in front of people building agents",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795540037650040200",
+   "sent_at": "2026-11-24 12:07:17 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Steel",
+   "to": "sales@steel.dev",
+   "subject": "browser infrastructure for agents, in front of agent builders",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795540373024040100",
+   "sent_at": "2026-11-24 12:12:53 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Zed",
+   "to": "hi@zed.dev",
+   "subject": "an editor with agents, in front of people picking coding agents",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795544087612042000",
+   "sent_at": "2026-11-24 13:14:47 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Glean",
+   "to": "hello@glean.com",
+   "subject": "enterprise search, in front of agent builders",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795547765080042000",
+   "sent_at": "2026-11-24 14:16:05 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "SigNoz",
+   "to": "hello@signoz.io",
+   "subject": "open-source observability, in front of agent builders",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795551370687040200",
+   "sent_at": "2026-11-24 15:16:11 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Deepnote",
+   "to": "hello@deepnote.com",
+   "subject": "notebooks for the agent era, in front of builders",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795551726335041600",
+   "sent_at": "2026-11-24 15:22:06 ET",
+   "via": "Zoho Mail API",
+   "note": "Backfilled from Zoho Sent. The runner timed out listing Spam after SigNoz was saved and exited before writing this row; Zoho confirms the send."
+  }
+ ],
+ "skipped": [],
+ "bounces": [],
+ "stopped": "Zoho Spam-folder timeout after the SigNoz send was logged; Deepnote was already accepted by Zoho Sent (backfilled). Stale /tmp/skillmaxx_outreach.lock cleared 2026-11-25. No process was still running.",
+ "done": "2026-11-24T15:52:00-05:00"
+}

@@ -1,0 +1,8 @@
+Thanks for sending a tool to SkillMaxx!
+
+It's in the review queue. A real person (me, Brandon) looks at every submission, usually within a few days — an AI assistant helps me triage, but I make the listing call. If the install docs check out, it gets listed and joins the nightly install tests in Claude Code, Codex, Grok Build, Cursor and Pi, so you'll see real pass/fail results with logs, good or bad.
+
+Got install notes for a specific agent, or think we'll get something wrong? Email skillmaxx@gilventures.ai and we'll sort it out.
+
+Brandon
+SkillMaxx · https://skillmaxx.gilventures.ai

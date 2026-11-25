@@ -1,0 +1,163 @@
+[
+ [
+  "Northflank",
+  "contact@northflank.com",
+  "a $19 test in front of people deploying agent workloads",
+  "Northflank team",
+  "Agent-built apps and sandboxed workloads need somewhere to run, and deploy platforms come up constantly with our readers."
+ ],
+ [
+  "Dagger",
+  "contact@dagger.io",
+  "CI for agents, in front of people picking agent tools",
+  "Dagger team",
+  "Your partners page says you'd love to chat, and programmable CI with agent workflows is squarely what our readers are tinkering with."
+ ],
+ [
+  "QA Wolf",
+  "hello@qawolf.com",
+  "AI-driven QA, in front of people running coding agents",
+  "QA Wolf team",
+  "Coding agents write a lot of code that nobody tests, so QA is a natural conversation for our readers."
+ ],
+ [
+  "BrowserStack",
+  "partners@browserstack.com",
+  "testing across real devices, in front of agent builders",
+  "BrowserStack team",
+  "Your partners FAQ lists this address, and agent-built apps still have to work on real browsers and devices."
+ ],
+ [
+  "Namespace",
+  "sales@namespace.so",
+  "fast CI in front of people running coding agents",
+  "Namespace team",
+  "Coding agents multiply PRs and CI runs, so CI speed matters more to our readers every month."
+ ],
+ [
+  "Apidog",
+  "sales@apidog.com",
+  "your MCP server and our nightly install tests",
+  "Apidog team",
+  "You ship an MCP server, and MCP installs are the core of what we test."
+ ],
+ [
+  "Cursor",
+  "hi@cursor.com",
+  "a note from the people who install-test inside Cursor",
+  "Cursor team",
+  "Cursor is one of the five agents we test every night (34 of 57 installs passed last night), so we know your users' add-on pain first-hand."
+ ],
+ [
+  "Windsurf",
+  "hello@windsurf.com",
+  "an AI editor in front of people picking coding agents",
+  "Windsurf team",
+  "Your partners page lists this address, and people choosing a coding agent are exactly who reads our results."
+ ],
+ [
+  "PromptLayer",
+  "sales@promptlayer.com",
+  "prompt tooling, in front of people building agents",
+  "PromptLayer team",
+  "Prompt management and observability come up constantly for the agent builders who read us."
+ ],
+ [
+  "Steel",
+  "sales@steel.dev",
+  "browser infrastructure for agents, in front of agent builders",
+  "Steel team",
+  "Browser automation is one of the most popular add-on types we install-test, and agents need somewhere to run it."
+ ],
+ [
+  "Zed",
+  "hi@zed.dev",
+  "an editor with agents, in front of people picking coding agents",
+  "Zed team",
+  "Editors with built-in agents are part of the same buying decision our readers make."
+ ],
+ [
+  "Glean",
+  "hello@glean.com",
+  "enterprise search, in front of agent builders",
+  "Glean team",
+  "Agent builders in our audience keep asking how to connect agents to company knowledge."
+ ],
+ [
+  "SigNoz",
+  "hello@signoz.io",
+  "open-source observability, in front of agent builders",
+  "SigNoz team",
+  "Observability is a category on our site, and open-source options get a lot of attention from our readers."
+ ],
+ [
+  "Deepnote",
+  "hello@deepnote.com",
+  "notebooks for the agent era, in front of builders",
+  "Deepnote team",
+  "Data and AI folks who use notebooks overlap a lot with the people trying coding agents."
+ ],
+ [
+  "Superblocks",
+  "contact@superblocks.com",
+  "internal-app builders, in front of agent users",
+  "Superblocks team",
+  "Your partners page invites contact, and internal tools are a common thing our readers have agents build."
+ ],
+ [
+  "Appsmith",
+  "sales@appsmith.com",
+  "a $19 test in front of people building internal apps with agents",
+  "Appsmith team",
+  "Open-source internal-app builders are a natural fit for readers who have agents scaffold dashboards."
+ ],
+ [
+  "ToolJet",
+  "hello@tooljet.com",
+  "low-code and agents, in front of people building internal tools",
+  "ToolJet team",
+  "Low-code tools and coding agents are increasingly used together by our readers."
+ ],
+ [
+  "Budibase",
+  "sales@budibase.com",
+  "open-source low-code, in front of agent builders",
+  "Budibase team",
+  "Open-source low-code is a natural pair for readers who ship quick apps with agents."
+ ],
+ [
+  "Ably",
+  "hello@ably.com",
+  "realtime infrastructure, in front of agent builders",
+  "Ably team",
+  "Realtime messaging keeps showing up in the agent apps our readers build."
+ ],
+ [
+  "Hygraph",
+  "sales@hygraph.com",
+  "a headless CMS in front of people building with agents",
+  "Hygraph team",
+  "Headless CMS is a common backend for the agent-built sites our readers ship."
+ ],
+ [
+  "Elastic",
+  "info@elastic.co",
+  "search and observability, in front of agent builders",
+  "Elastic team",
+  "Search and retrieval are central to the agent stacks our readers build."
+ ],
+ [
+  "Sendbird",
+  "partnerships@sendbird.com",
+  "chat and AI agents, in front of people picking agent tools",
+  "Sendbird team",
+  "Your partners page invites contact, and in-app chat is a popular thing our readers have agents build."
+ ],
+ [
+  "SingleStore",
+  "team@singlestore.com",
+  "a database in front of agent builders",
+  "SingleStore team",
+  "Databases for agent and RAG workloads are a recurring topic among our readers."
+ ]
+]
