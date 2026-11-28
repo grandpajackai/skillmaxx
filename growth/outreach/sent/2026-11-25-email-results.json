@@ -1,0 +1,19 @@
+{
+ "date": "2026-11-25",
+ "sent": [
+  {
+   "company": "Superblocks",
+   "to": "contact@superblocks.com",
+   "subject": "internal-app builders, in front of agent users",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795623923749138300",
+   "sent_at": "2026-11-25 11:25:23 ET",
+   "via": "Zoho Mail API"
+  }
+ ],
+ "skipped": [],
+ "bounces": [],
+ "stopped": "outside window",
+ "done": "2026-11-26T05:27:16.446606-05:00"
+}
