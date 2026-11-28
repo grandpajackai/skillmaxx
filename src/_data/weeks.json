@@ -4,8 +4,8 @@
   "start": "2026-11-23",
   "end": "2026-11-29",
   "first": "2026-11-23",
-  "last": "2026-11-27",
-  "runs": 5,
+  "last": "2026-11-28",
+  "runs": 6,
   "trend": [
    {
     "date": "2026-11-23",
@@ -46,53 +46,61 @@
     "total": 1085,
     "needs_key": 25,
     "rate": 87.3
+   },
+   {
+    "date": "2026-11-28",
+    "pass": 909,
+    "tested": 1066,
+    "total": 1094,
+    "needs_key": 28,
+    "rate": 85.3
    }
   ],
   "ranking": [
    {
     "agent": "claude_code",
     "name": "Claude Code",
-    "pass": 1721,
-    "tested": 1845,
-    "rate": 93.3,
-    "flaky": 25,
-    "needs_key": 25
+    "pass": 2063,
+    "tested": 2216,
+    "rate": 93.1,
+    "flaky": 29,
+    "needs_key": 31
    },
    {
     "agent": "grok_build",
     "name": "Grok Build",
-    "pass": 1783,
-    "tested": 1920,
-    "rate": 92.9,
-    "flaky": 20,
-    "needs_key": 25
+    "pass": 2135,
+    "tested": 2304,
+    "rate": 92.7,
+    "flaky": 30,
+    "needs_key": 30
    },
    {
     "agent": "codex",
     "name": "Codex",
-    "pass": 485,
-    "tested": 585,
-    "rate": 82.9,
-    "flaky": 15,
-    "needs_key": 25
+    "pass": 581,
+    "tested": 704,
+    "rate": 82.5,
+    "flaky": 16,
+    "needs_key": 31
    },
    {
     "agent": "cursor",
     "name": "Cursor",
-    "pass": 168,
-    "tested": 260,
-    "rate": 64.6,
-    "flaky": 17,
-    "needs_key": 25
+    "pass": 202,
+    "tested": 314,
+    "rate": 64.3,
+    "flaky": 19,
+    "needs_key": 31
    },
    {
     "agent": "pi",
     "name": "Pi",
-    "pass": 435,
-    "tested": 690,
-    "rate": 63.0,
-    "flaky": 15,
-    "needs_key": 25
+    "pass": 520,
+    "tested": 828,
+    "rate": 62.8,
+    "flaky": 17,
+    "needs_key": 30
    }
   ],
   "fixed": [
@@ -153,12 +161,17 @@
    {
     "slug": "mcp-local-rag",
     "name": "mcp-local-rag",
-    "n": 12
+    "n": 13
    },
    {
     "slug": "browser-devtools-mcp",
     "name": "browser-devtools-mcp",
-    "n": 7
+    "n": 9
+   },
+   {
+    "slug": "comfyui-mcp",
+    "name": "comfyui-mcp",
+    "n": 8
    },
    {
     "slug": "hyperframes",
@@ -166,20 +179,15 @@
     "n": 7
    },
    {
-    "slug": "comfyui-mcp",
-    "name": "comfyui-mcp",
-    "n": 7
-   },
-   {
-    "slug": "ironbee-ai-devtools",
-    "name": "@ironbee-ai/devtools",
+    "slug": "rigour-labs-mcp",
+    "name": "@rigour-labs/mcp",
     "n": 6
    }
   ],
   "fixed_n": 53,
   "broke_n": 13,
-  "flaky_n": 33,
-  "needs_key": 25,
+  "flaky_n": 42,
+  "needs_key": 28,
   "standout": {
    "slug": "mcp-time",
    "name": "MCP time (reference)",
@@ -195,7 +203,7 @@
    "stars": 91859
   },
   "version_changes": [],
-  "svg": "<svg viewBox=\"0 0 560 180\" width=\"100%\" role=\"img\" aria-labelledby=\"ct\" class=\"chart\" xmlns=\"http://www.w3.org/2000/svg\"><title id=\"ct\">Install pass rate by night: 2026-11-23 85.4%, 2026-11-24 86.9%, 2026-11-25 86.9%, 2026-11-26 86.8%, 2026-11-27 87.3%</title><line x1=\"34\" y1=\"146\" x2=\"526\" y2=\"146\" stroke=\"currentColor\" stroke-opacity=\".25\"/><text x=\"4\" y=\"38\" font-size=\"11\" fill=\"currentColor\">89%</text><text x=\"4\" y=\"150\" font-size=\"11\" fill=\"currentColor\">80%</text><path d=\"M34.0,83.1 L157.0,64.2 L280.0,64.2 L403.0,65.5 L526.0,59.2\" fill=\"none\" stroke=\"#22c55e\" stroke-width=\"3\" stroke-linejoin=\"round\"/><circle cx=\"34.0\" cy=\"83.1\" r=\"4\" fill=\"#22c55e\"/><text x=\"34.0\" y=\"74.1\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">85.4%</text><text x=\"34.0\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-23</text><circle cx=\"157.0\" cy=\"64.2\" r=\"4\" fill=\"#22c55e\"/><text x=\"157.0\" y=\"55.2\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">86.9%</text><text x=\"157.0\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-24</text><circle cx=\"280.0\" cy=\"64.2\" r=\"4\" fill=\"#22c55e\"/><text x=\"280.0\" y=\"55.2\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">86.9%</text><text x=\"280.0\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-25</text><circle cx=\"403.0\" cy=\"65.5\" r=\"4\" fill=\"#22c55e\"/><text x=\"403.0\" y=\"56.5\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">86.8%</text><text x=\"403.0\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-26</text><circle cx=\"526.0\" cy=\"59.2\" r=\"4\" fill=\"#22c55e\"/><text x=\"526.0\" y=\"50.2\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">87.3%</text><text x=\"526.0\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-27</text></svg>",
+  "svg": "<svg viewBox=\"0 0 560 180\" width=\"100%\" role=\"img\" aria-labelledby=\"ct\" class=\"chart\" xmlns=\"http://www.w3.org/2000/svg\"><title id=\"ct\">Install pass rate by night: 2026-11-23 85.4%, 2026-11-24 86.9%, 2026-11-25 86.9%, 2026-11-26 86.8%, 2026-11-27 87.3%, 2026-11-28 85.3%</title><line x1=\"34\" y1=\"146\" x2=\"526\" y2=\"146\" stroke=\"currentColor\" stroke-opacity=\".25\"/><text x=\"4\" y=\"38\" font-size=\"11\" fill=\"currentColor\">89%</text><text x=\"4\" y=\"150\" font-size=\"11\" fill=\"currentColor\">80%</text><path d=\"M34.0,82.5 L132.4,63.9 L230.8,63.9 L329.2,65.1 L427.6,58.9 L526.0,83.8\" fill=\"none\" stroke=\"#22c55e\" stroke-width=\"3\" stroke-linejoin=\"round\"/><circle cx=\"34.0\" cy=\"82.5\" r=\"4\" fill=\"#22c55e\"/><text x=\"34.0\" y=\"73.5\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">85.4%</text><text x=\"34.0\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-23</text><circle cx=\"132.4\" cy=\"63.9\" r=\"4\" fill=\"#22c55e\"/><text x=\"132.4\" y=\"54.9\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">86.9%</text><text x=\"132.4\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-24</text><circle cx=\"230.8\" cy=\"63.9\" r=\"4\" fill=\"#22c55e\"/><text x=\"230.8\" y=\"54.9\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">86.9%</text><text x=\"230.8\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-25</text><circle cx=\"329.2\" cy=\"65.1\" r=\"4\" fill=\"#22c55e\"/><text x=\"329.2\" y=\"56.1\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">86.8%</text><text x=\"329.2\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-26</text><circle cx=\"427.6\" cy=\"58.9\" r=\"4\" fill=\"#22c55e\"/><text x=\"427.6\" y=\"49.9\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">87.3%</text><text x=\"427.6\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-27</text><circle cx=\"526.0\" cy=\"83.8\" r=\"4\" fill=\"#22c55e\"/><text x=\"526.0\" y=\"74.8\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">85.3%</text><text x=\"526.0\" y=\"162\" font-size=\"11\" text-anchor=\"middle\" fill=\"currentColor\">11-28</text></svg>",
   "baseline_start": null,
   "no_valid_run": []
  },
