@@ -1,0 +1,42 @@
+{
+ "date": "2026-11-26",
+ "sent": [
+  {
+   "company": "Appsmith",
+   "to": "sales@appsmith.com",
+   "subject": "a $19 test in front of people building internal apps with agents",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795710351698155000",
+   "resp": "",
+   "sent_at": "2026-11-26 11:25:51 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "ToolJet",
+   "to": "hello@tooljet.com",
+   "subject": "low-code and agents, in front of people building internal tools",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795711611542155100",
+   "resp": "",
+   "sent_at": "2026-11-26 11:46:51 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Budibase",
+   "to": "sales@budibase.com",
+   "subject": "open-source low-code, in front of agent builders",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795713011448155000",
+   "resp": "",
+   "sent_at": "2026-11-26 12:10:10 ET",
+   "via": "Zoho Mail API"
+  }
+ ],
+ "skipped": [],
+ "bounces": [],
+ "stopped": "outside window",
+ "done": "2026-11-26T23:50:51.165281-05:00"
+}

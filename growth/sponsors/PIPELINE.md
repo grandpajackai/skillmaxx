@@ -1,6 +1,6 @@
 # Sponsor pipeline
 
-**Machine-readable list:** [PIPELINE.csv](PIPELINE.csv) — 154 prospects (as of 2026-11-22; 153 tracked + Autonomous inbound), status column, public contact routes only (no guessed emails).  
+**Machine-readable list:** [PIPELINE.csv](PIPELINE.csv) — 185 prospects (as of 2026-11-27), status column, public contact routes only (no guessed emails).  
 **Templates + weekly cadence:** [OUTREACH.md](OUTREACH.md).  
 **Pricing / caps:** [../SPONSORS.md](../SPONSORS.md) · [SCALING.md](SCALING.md).  
 **Playbook:** [PLAYBOOK.md](PLAYBOOK.md).
