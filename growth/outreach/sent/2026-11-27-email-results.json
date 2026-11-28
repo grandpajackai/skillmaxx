@@ -1,0 +1,108 @@
+{
+ "date": "2026-11-27",
+ "sent": [
+  {
+   "company": "Ably",
+   "to": "hello@ably.com",
+   "subject": "realtime infrastructure, in front of agent builders",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795796820612155300",
+   "sent_at": "2026-11-27 11:27:00 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Hygraph",
+   "to": "sales@hygraph.com",
+   "subject": "a headless CMS in front of people building with agents",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795797361993138400",
+   "sent_at": "2026-11-27 11:36:02 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Elastic",
+   "to": "info@elastic.co",
+   "subject": "search and observability, in front of agent builders",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795797667241155100",
+   "sent_at": "2026-11-27 11:41:07 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Sendbird",
+   "to": "partnerships@sendbird.com",
+   "subject": "chat and AI agents, in front of people picking agent tools",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795798043546138400",
+   "sent_at": "2026-11-27 11:47:23 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "SingleStore",
+   "to": "team@singlestore.com",
+   "subject": "a database in front of agent builders",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795798367809155100",
+   "sent_at": "2026-11-27 11:52:47 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Stack AI",
+   "to": "founders@stack-ai.com",
+   "subject": "a $19 test in front of people building agent workflows",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795798800016155100",
+   "sent_at": "2026-11-27 11:59:59 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Rasa",
+   "to": "sales@rasa.com",
+   "subject": "conversational AI, in front of people picking agent tools",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795799275890155300",
+   "sent_at": "2026-11-27 12:07:55 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Cleanlab",
+   "to": "sales@cleanlab.ai",
+   "subject": "trustworthy AI, in front of people choosing agent tools",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795799642608155300",
+   "sent_at": "2026-11-27 12:14:02 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Speechmatics",
+   "to": "hello@speechmatics.com",
+   "subject": "speech AI, in front of agent builders",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795800108090138400",
+   "sent_at": "2026-11-27 12:21:47 ET",
+   "via": "Zoho Mail API"
+  },
+  {
+   "company": "Hume AI",
+   "to": "hello@hume.ai",
+   "subject": "voice AI, in front of agent builders",
+   "kind": "new",
+   "http": 200,
+   "zoho_messageId": "1795800599320155000",
+   "sent_at": "2026-11-27 12:29:58 ET",
+   "via": "Zoho Mail API"
+  }
+ ],
+ "skipped": [],
+ "bounces": [],
+ "stopped": null
+}

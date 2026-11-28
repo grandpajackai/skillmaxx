@@ -1,0 +1,82 @@
+[
+ [
+  "Decagon",
+  "sales@decagon.ai",
+  "AI support agents, in front of agent builders",
+  "Decagon team",
+  "Support agents are one of the most common things our readers build.",
+  "https://decagon.ai (sales@decagon.ai)"
+ ],
+ [
+  "Synthflow",
+  "sales@synthflow.ai",
+  "voice agents, in front of agent builders",
+  "Synthflow team",
+  "Voice agents are a fast-growing build among our readers.",
+  "https://synthflow.ai (sales@synthflow.ai)"
+ ],
+ [
+  "Tavus",
+  "sales@tavus.io",
+  "video AI, in front of agent builders",
+  "Tavus team",
+  "Video agents are an emerging category among builders reading us.",
+  "https://tavus.io/contact (sales@tavus.io)"
+ ],
+ [
+  "Pulumi",
+  "sales@pulumi.com",
+  "infrastructure as code, in front of people having agents ship infra",
+  "Pulumi team",
+  "Agents that write and deploy infrastructure are a common thing our readers test, and Pulumi is a natural fit for that crowd.",
+  "https://www.pulumi.com"
+ ],
+ [
+  "Runloop",
+  "sales@runloop.ai",
+  "agent sandboxes, in front of people running coding agents",
+  "Runloop team",
+  "Sandboxes for coding agents sit right next to what we install-test every night.",
+  "https://runloop.ai"
+ ],
+ [
+  "Restate",
+  "info@restate.dev",
+  "durable execution, in front of agent builders",
+  "Restate team",
+  "Durable workflows come up whenever people build long-running agents.",
+  "https://restate.dev"
+ ],
+ [
+  "Nhost",
+  "hello@nhost.io",
+  "a backend platform in front of people building with agents",
+  "Nhost team",
+  "Backend-as-a-service is a common stack choice for apps that agents scaffold.",
+  "https://nhost.io"
+ ],
+ [
+  "Payload CMS",
+  "info@payloadcms.com",
+  "a developer-first CMS in front of agent builders",
+  "Payload team",
+  "A code-first CMS is a natural pair for readers who ship quick sites with coding agents.",
+  "https://payloadcms.com"
+ ],
+ [
+  "AgentOps",
+  "adam@agentops.ai",
+  "agent observability, in front of people picking agent tools",
+  "Adam",
+  "Agent observability is a topic our readers care about, and our nightly runs show how agents behave on real installs.",
+  "https://www.agentops.ai"
+ ],
+ [
+  "Morphik",
+  "adi@morphik.ai",
+  "multimodal RAG, in front of agent builders",
+  "Adi",
+  "Retrieval for agents is a frequent theme among people reading our install results.",
+  "https://morphik.ai"
+ ]
+]
