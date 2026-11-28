@@ -54,10 +54,62 @@ def skill_case(it,ag):
        f"echo ---LIST; {v[0]}")
   return (it,ag,"",cmd,v[1])
 def mcp_cmd(it):
-  c=it["install"].get("claude_code") or "";return c.split(" -- ",1)[1] if " -- " in c else None
+  c=it["install"].get("claude_code") or ""
+  if "--transport http" in c or "--transport sse" in c:
+    return None  # remote HTTP/SSE servers are handled by mcp_http()
+  return c.split(" -- ",1)[1] if " -- " in c else None
 def mcp_name(it):
   n=re.sub(r"[^a-z0-9]","",it["slug"].lower())[-20:] or "srv"
   return ("s"+n)[:20] if n[0].isdigit() else n
+def mcp_http(it):
+  """Parse a remote HTTP/SSE MCP listing from the Claude Code install command, or None.
+
+  Official shape: claude mcp add --transport http [--scope user] NAME URL [--header 'K: V']
+  """
+  c=(it.get("install") or {}).get("claude_code") or ""
+  if "--transport http" not in c and "--transport sse" not in c:
+    return None
+  try: parts=shlex.split(c)
+  except ValueError: return None
+  transport="http"; url=None; header=None; name=None; i=0
+  while i<len(parts):
+    p=parts[i]
+    if p=="--transport" and i+1<len(parts): transport=parts[i+1]; i+=2; continue
+    if p=="--scope" and i+1<len(parts): i+=2; continue
+    if p=="--header" and i+1<len(parts): header=parts[i+1]; i+=2; continue
+    if p=="--url" and i+1<len(parts): url=parts[i+1]; i+=2; continue
+    if p in ("claude","mcp","add") or p.startswith("-"): i+=1; continue
+    if p.startswith("http://") or p.startswith("https://"): url=url or p; i+=1; continue
+    name=name or p; i+=1
+  if not url: return None
+  return {"transport": transport, "name": name, "url": url, "header": header}
+def mcp_http_header_flag(header):
+  return f" --header {shlex.quote(header)}" if header else ""
+def mcp_http_headers(header):
+  if not header or ":" not in header: return {}
+  k,v=header.split(":",1); return {k.strip(): v.strip()}
+def mcp_http_case(it, ag, h=None):
+  """Nightly case for a remote HTTP MCP server. Claude Code, Codex and Cursor only:
+  official docs exist for those clients. Grok Build and Pi stay untested until documented."""
+  h=h or mcp_http(it)
+  if not h: return None
+  n=mcp_name(it); url=h["url"]; header=h.get("header"); transport=h.get("transport") or "http"
+  flag=mcp_http_header_flag(header)
+  if ag=="claude_code":
+    cmd=f"claude mcp add --transport {transport} --scope user {n} {shlex.quote(url)}{flag} 2>&1; echo ---LIST; claude mcp list 2>&1"
+    return (it,ag,"",cmd,lambda o,n=n: re.search(rf"^{n}:.*Connected",o.split('---LIST')[-1],re.M) is not None)
+  if ag=="codex":
+    # Official setup is ~/.codex/config.toml; the CLI also accepts --url. Do not run
+    # mcp_probe.py: that helper is for local stdio servers.
+    cmd=f"codex mcp add {n} --url {shlex.quote(url)}{flag} 2>&1; echo ---LIST; codex mcp list 2>&1"
+    return (it,ag,"",cmd,lambda o,n=n: re.search(rf"^{n}\s+.*\benabled\b",o.split('---LIST')[-1],re.M) is not None)
+  if ag=="cursor":
+    server={"url": url}
+    if header: server["headers"]=mcp_http_headers(header)
+    cfg=json.dumps({"mcpServers":{n:server}})
+    cmd=f"mkdir -p ~/.cursor && echo {shlex.quote(cfg)} > ~/.cursor/mcp.json && cursor-agent mcp enable {n} 2>&1; echo ---LIST; cursor-agent mcp list 2>&1; cursor-agent mcp list-tools {n} 2>&1 | head -8"
+    return (it,ag,"",cmd,lambda o,n=n: re.search(rf"^{n}: ready",o.split('---LIST')[-1],re.M) is not None)
+  return None
 def npx_package(cmd):
   """Package name from an `npx -y <pkg>` (or `npx --package <pkg>`) MCP start command."""
   if not cmd: return None
@@ -145,6 +197,7 @@ def cases():
     for ag in AG:
       if ag=="claude_code":
         if "claude-plugins-official" in L: out.append((it,ag,"claude",f"claude plugin install {s}@claude-plugins-official 2>&1 && (claude plugin enable {s}@claude-plugins-official >/dev/null 2>&1 || true); echo ---LIST; claude plugin list 2>&1",lambda o,s=s: re.search(rf"{re.escape(s)}@claude-plugins-official[\s\S]{{0,120}}enabled",o.split('---LIST')[-1]) is not None))
+        elif ismcp and mcp_http(it): out.append(mcp_http_case(it,ag))
         elif ismcp and mcp_cmd(it): n=mcp_name(it);out.append((it,ag,"",f"claude mcp add {n} -- {mcp_cmd(it)} 2>&1; echo ---LIST; claude mcp list 2>&1",lambda o,n=n: re.search(rf"^{n}:.*Connected",o.split('---LIST')[-1],re.M) is not None))
       elif ag=="grok_build":
         cmd=grok_plugin_install(s,it.get("listings",[]))
@@ -152,10 +205,12 @@ def cases():
         elif ismcp and mcp_cmd(it): n=mcp_name(it);out.append((it,ag,"",f"grok mcp add {n} -- {mcp_cmd(it)} 2>&1; echo ---LIST; grok mcp list 2>&1; grok mcp doctor 2>&1",lambda o,n=n: re.search(rf"^\s*{n} \(stdio[\s\S]*?handshake OK",o.split('---LIST')[-1],re.M) is not None and "0 healthy" not in o))
       elif ag=="codex":
         if "openai/plugins" in L: out.append((it,ag,"codex",f"codex plugin add {s}@openai-plugins-mirror 2>&1; echo ---LIST; codex plugin list 2>&1",lambda o,s=s: re.search(rf"^{re.escape(s)}@openai-plugins-mirror\s+(installed|enabled)",o.split('---LIST')[-1],re.M) is not None))
+        elif ismcp and mcp_http(it): out.append(mcp_http_case(it,ag))
         elif ismcp and mcp_cmd(it):  # Codex CLI has no MCP health check: verify Codex registers it enabled, then handshake the exact command it would launch
           n=mcp_name(it);out.append((it,ag,"",f"codex mcp add {n} -- {mcp_cmd(it)} 2>&1; echo ---LIST; codex mcp list 2>&1; python3 /tmp/smx-testing/mcp_probe.py {mcp_cmd(it)} 2>&1",lambda o,n=n: re.search(rf"^{n}\s+.*\benabled\b",o.split('---LIST')[-1],re.M) is not None and "PROBE OK" in o))
       elif ag=="cursor":
-        if ismcp and mcp_cmd(it):
+        if ismcp and mcp_http(it): out.append(mcp_http_case(it,ag))
+        elif ismcp and mcp_cmd(it):
           n=mcp_name(it);parts=shlex.split(mcp_cmd(it));cfg=json.dumps({"mcpServers":{n:{"command":parts[0],"args":parts[1:]}}})
           out.append((it,ag,"",f"mkdir -p ~/.cursor && echo {shlex.quote(cfg)} > ~/.cursor/mcp.json && cursor-agent mcp enable {n} 2>&1; echo ---LIST; cursor-agent mcp list 2>&1; cursor-agent mcp list-tools {n} 2>&1 | head -8",lambda o,n=n: re.search(rf"^{n}: ready",o.split('---LIST')[-1],re.M) is not None))
       elif ag=="pi":

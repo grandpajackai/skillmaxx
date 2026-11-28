@@ -6578,6 +6578,41 @@
       "notes": "Grok Build status relies on xAI docs saying Grok reads Claude Code plugins automatically."
     },
     {
+      "slug": "govisit",
+      "name": "GoVisit Tools",
+      "description": "Hosted Streamable HTTP MCP server at https://govisit.ai/mcp. It exposes the same read tools and argument schemas as the GoVisit HTTP API, including travel discovery and Search availability. The public server requires no GoVisit API key. Community submission via the SkillMaxx submit form, Nov 27 2026.",
+      "source_url": "https://govisit.ai/en/docs/developers/mcp/overview",
+      "category": "developer tools",
+      "type": "mcp-server",
+      "install": {
+        "claude_code": "claude mcp add --transport http --scope user govisit https://govisit.ai/mcp",
+        "codex": "~/.codex/config.toml: [mcp_servers.govisit] url = \"https://govisit.ai/mcp\"",
+        "grok_build": "grok mcp add govisit --url https://govisit.ai/mcp",
+        "cursor": "~/.cursor/mcp.json: {\"mcpServers\":{\"govisit\":{\"url\":\"https://govisit.ai/mcp\"}}}",
+        "pi": "pi mcp add govisit --url https://govisit.ai/mcp"
+      },
+      "compatibility": {
+        "claude_code": "unknown",
+        "codex": "unknown",
+        "grok_build": "unknown",
+        "cursor": "unknown",
+        "pi": "unknown"
+      },
+      "compat_sources": {
+        "claude_code": null,
+        "codex": null,
+        "grok_build": null,
+        "cursor": null,
+        "pi": null
+      },
+      "listings": [
+        "https://govisit.ai/en/docs/developers/mcp/overview",
+        "https://govisit.ai/"
+      ],
+      "listing_url": "https://govisit.ai/en/docs/developers/mcp/overview",
+      "notes": "Remote Streamable HTTP MCP at https://govisit.ai/mcp. Official docs say to use that URL in a client's remote MCP settings; they do not publish per-client install commands, so compatibility stays unknown and the listed commands follow the same HTTP pattern used for other remote MCP listings. The public server requires no GoVisit API key. MCP tool calls share the HTTP API's request quota and execution limits, and a listed tool can still return unsupported for an individual hotel or itinerary. Use is under the GoVisit Data Use License (attributed travel-planning use; no bulk extraction, resale, or competing data products). A browser GET to the endpoint returns HTTP 405. The nightly sandbox already has network access (bubblewrap network on; Docker --network bridge), so install tests can reach the hosted endpoint; no key is required."
+    },
+    {
       "slug": "govtribe",
       "name": "Govtribe",
       "description": "Government contracting research and capture workflows in Claude: opportunity and pipeline briefs, bid/no-bid and competitor analysis, price-to-win and proposal prep, powered by the GovTribe connector.",
@@ -14361,6 +14396,42 @@
       ],
       "listing_url": "https://github.com/anthropics/claude-plugins-official",
       "notes": "Grok Build status relies on xAI docs saying Grok reads Claude Code plugins automatically."
+    },
+    {
+      "slug": "xainvault",
+      "name": "Xainvault",
+      "description": "Remote MCP server that scans AI skill packages, applies policy and human approval, and distributes only approved Ready versions to agents. Community submission via the SkillMaxx submit form, Nov 27 2026.",
+      "source_url": "https://github.com/xainvault/xainvault-mcp",
+      "category": "developer tools",
+      "type": "mcp-server",
+      "install": {
+        "claude_code": "claude mcp add --transport http --scope user xainvault https://xainvault.com/mcp --header \"X-API-Key: $XAINVAULT_ACCESS_KEY\"",
+        "codex": "~/.codex/config.toml: [mcp_servers.xainvault] url = \"https://xainvault.com/mcp\" http_headers = { \"X-API-Key\" = \"$XAINVAULT_ACCESS_KEY\" }",
+        "grok_build": "grok mcp add xainvault --url https://xainvault.com/mcp --header \"X-API-Key: $XAINVAULT_ACCESS_KEY\"",
+        "cursor": "~/.cursor/mcp.json: {\"mcpServers\":{\"xainvault\":{\"url\":\"https://xainvault.com/mcp\",\"headers\":{\"X-API-Key\":\"$XAINVAULT_ACCESS_KEY\"}}}}",
+        "pi": "pi mcp add xainvault --url https://xainvault.com/mcp --header \"X-API-Key: $XAINVAULT_ACCESS_KEY\""
+      },
+      "compatibility": {
+        "claude_code": "documented",
+        "codex": "documented",
+        "grok_build": "unknown",
+        "cursor": "documented",
+        "pi": "unknown"
+      },
+      "compat_sources": {
+        "claude_code": "https://xainvault.com/docs/connect-agents",
+        "codex": "https://xainvault.com/docs/connect-agents",
+        "grok_build": null,
+        "cursor": "https://xainvault.com/docs/connect-agents",
+        "pi": null
+      },
+      "listings": [
+        "https://xainvault.com/docs/connect-agents",
+        "https://github.com/xainvault/xainvault-mcp",
+        "https://xainvault.com/"
+      ],
+      "listing_url": "https://xainvault.com/docs/connect-agents",
+      "notes": "Remote HTTP MCP at https://xainvault.com/mcp. Claude Code, Codex, Cursor, VS Code, Windsurf and Antigravity authenticate with an access key in the X-API-Key header (keys start with xv_key_, are shown once, and expire in 30, 90 or 180 days). ChatGPT and Claude (web, Desktop, Cowork, mobile) connect with OAuth instead; do not paste an access key there. Official docs do not list Grok Build or Pi; those install lines follow the same HTTP + header pattern used for other remote MCP listings and stay unknown. The GitHub repo is public connection guides and example skills only, with no application code. Our keyless sandbox has no Xainvault account or access key, so nightly install tests will likely show needs-key."
     },
     {
       "slug": "xcode",
