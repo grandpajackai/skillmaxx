@@ -62,5 +62,57 @@ class HarnessFixesTest(unittest.TestCase):
         self.assertIn("ln -sfn /tmp/skillmaxx-npm-cache/_cacache /home/sbx/.npm/_cacache", sbx)
 
 
+    def test_mcp_http_parses_remote_listings_and_skips_stdio(self):
+        with open(os.path.join(ROOT, "data/skills.json")) as f:
+            items = {i["slug"]: i for i in json.load(f)["items"]}
+        xv = rt.mcp_http(items["xainvault"])
+        self.assertEqual(xv["url"], "https://xainvault.com/mcp")
+        self.assertEqual(xv["header"], "X-API-Key: $XAINVAULT_ACCESS_KEY")
+        self.assertEqual(xv["transport"], "http")
+        self.assertEqual(xv["name"], "xainvault")
+        gv = rt.mcp_http(items["govisit"])
+        self.assertEqual(gv["url"], "https://govisit.ai/mcp")
+        self.assertIsNone(gv["header"])
+        self.assertEqual(gv["name"], "govisit")
+        qv = rt.mcp_http(items["qovia"])
+        self.assertEqual(qv["url"], "https://api.qovia.ai/mcp")
+        self.assertEqual(qv["header"], "Authorization: Bearer $QOVIA_API_KEY")
+        self.assertIsNone(rt.mcp_http(items["claimidx"]))
+        self.assertIsNone(rt.mcp_cmd(items["xainvault"]))
+        self.assertIsNone(rt.mcp_cmd(items["govisit"]))
+        self.assertIsNone(rt.mcp_cmd(items["qovia"]))
+        self.assertIsNotNone(rt.mcp_cmd(items["claimidx"]))
+
+    def test_remote_http_mcp_cases_for_documented_clients_only(self):
+        with open(os.path.join(ROOT, "data/skills.json")) as f:
+            items = {i["slug"]: i for i in json.load(f)["items"]}
+        rt.AG = ["claude_code", "grok_build", "codex", "cursor", "pi"]
+        rt.a = types.SimpleNamespace(limit=0)
+        for slug in ("xainvault", "govisit", "qovia"):
+            rt.items = [items[slug]]
+            cs = rt.cases()
+            agents = [c[1] for c in cs]
+            self.assertEqual(agents, ["claude_code", "codex", "cursor"], slug)
+            cmds = {c[1]: c[3] for c in cs}
+            self.assertIn("--transport http", cmds["claude_code"])
+            self.assertIn("--url", cmds["codex"])
+            self.assertNotIn("mcp_probe.py", cmds["codex"])
+            self.assertIn('"url"', cmds["cursor"])
+            if slug == "xainvault":
+                self.assertIn("X-API-Key", cmds["claude_code"])
+                self.assertIn("https://xainvault.com/mcp", cmds["claude_code"])
+                self.assertTrue(cs[0][4]("ok\n---LIST\nxainvault: Connected"))
+                self.assertFalse(cs[0][4]("ok\n---LIST\nxainvault: Failed"))
+            if slug == "govisit":
+                self.assertIn("https://govisit.ai/mcp", cmds["claude_code"])
+                self.assertNotIn("--header", cmds["claude_code"])
+            if slug == "qovia":
+                self.assertIn("Authorization: Bearer", cmds["claude_code"])
+        # stdio MCP servers still get all 5 agents
+        rt.items = [items["claimidx"]]
+        cs = rt.cases()
+        self.assertEqual([c[1] for c in cs], ["claude_code", "grok_build", "codex", "cursor", "pi"])
+
+
 if __name__ == "__main__":
     unittest.main()
